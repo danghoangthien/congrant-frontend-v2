@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/congrant-app/static/css/main.fb63d44f.css",
+    "main.js": "/congrant-app/static/js/main.ab759f60.js",
+    "static/js/787.7d5e7b00.chunk.js": "/congrant-app/static/js/787.7d5e7b00.chunk.js",
+    "static/media/not_found_icon.svg": "/congrant-app/static/media/not_found_icon.d5fbbdb9b2ec0415c1f8c2cdbc70dbdc.svg",
+    "static/media/background.png": "/congrant-app/static/media/background.71aba39ea339e7553ba4.png",
+    "index.html": "/congrant-app/index.html",
+    "main.fb63d44f.css.map": "/congrant-app/static/css/main.fb63d44f.css.map",
+    "main.ab759f60.js.map": "/congrant-app/static/js/main.ab759f60.js.map",
+    "787.7d5e7b00.chunk.js.map": "/congrant-app/static/js/787.7d5e7b00.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fb63d44f.css",
+    "static/js/main.ab759f60.js"
+  ]
+}
