@@ -10,10 +10,26 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #000000;
+    background-color: #ffffff;
   }
 
   body.fontLoaded {
     font-family: 'Open Sans', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .ant-btn>span {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .ant-pagination-prev .ant-pagination-item-link,
+  .ant-pagination-next .ant-pagination-item-link,
+  .ant-pagination-item, .ant-pagination-total-text  {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & .display-inline-flex {
+    display: inline-flex;
   }
 `;
