@@ -1,6 +1,8 @@
-import { Typography, Tag } from 'antd';
+import { Typography, Tag, Drawer } from 'antd';
 
+import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
+import Detail from '../SupporterPage/components/Detail';
 
 import {
   RECEIPT_METHODS,
@@ -133,8 +135,11 @@ const columnMap = {
   },
   supporter: {
     title: 'サポーター',
-    dataIndex: 'supporter',
-    render: supporter => <Text type="success">{supporter}</Text>,
+    render: row => (
+      <DrawerHandle drawerTitle="Supporter Detail" drawerComponent={<Detail data={row} />}>
+        <Text type="success">{row.supporter}</Text>
+      </DrawerHandle>
+    ),
     csvOutput: ({ supporter }) => supporter,
   },
   project: {
