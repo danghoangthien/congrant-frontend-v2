@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import { StyleConstants, ScreenSizes, PRIMARY_COLOR } from 'styles/StyleConstants';
 
-export const FundingPageLayout = styled.div`
+export const SupporterPageLayout = styled.div`
   width: 100%;
   & .item {
     flex-shrink: 0;
@@ -83,5 +83,13 @@ export const FundingPageLayout = styled.div`
   & .table-title {
     font-size: 16px;
     font-weight: 700;
+  }
+
+  & .line {
+    content: '';
+    display: inline-block;
+    background: #8c8c8a;
+    width: 1px;
+    height: 32px;
   }
 `;

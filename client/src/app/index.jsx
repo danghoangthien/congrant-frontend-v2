@@ -15,6 +15,7 @@ import AppLayout from 'app/components/Layout';
 
 import HomePage from './pages/HomePage';
 import FundingPage from './pages/FundingPage';
+import SupporterPage from './pages/SupporterPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 import { URL } from 'utils/constant';
@@ -43,6 +44,11 @@ export function App() {
           <Route path={process.env.PUBLIC_URL + '/funding'}>
             <AppLayout>
               <FundingPage />
+            </AppLayout>
+          </Route>
+          <Route path={process.env.PUBLIC_URL + '/supporter'}>
+            <AppLayout>
+              <SupporterPage />
             </AppLayout>
           </Route>
           <Route component={NotFoundPage} />

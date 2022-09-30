@@ -31,9 +31,38 @@ export const SlyledLayout = styled.div<{}>`
     background: transparent;
   }
   & .ant-layout-content {
-    background: #f0f0ee;
+    background: #f4f6f7;
   }
   & .ant-modal-content {
     border-radius: 10px;
+  }
+`;
+
+export const SlyledHeader = styled.div<{}>`
+  & .ant-layout-header {
+    background: #f4f6f7;
+  }
+
+  & .line {
+    content: '';
+    display: inline-block;
+    background: #8c8c8a;
+    width: 1px;
+    height: 32px;
+  }
+
+  & .user-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #bfbfbd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .user-profile {
+    display flex;
+    align-items:center;
   }
 `;

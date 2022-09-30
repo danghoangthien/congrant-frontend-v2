@@ -6,15 +6,17 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
     line-height: 1.5;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   body {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック ProN", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     background-color: #ffffff;
   }
 
   body.fontLoaded {
-    font-family: 'Open Sans', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック ProN", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   }
 
   .ant-btn>span {
@@ -31,5 +33,28 @@ export const GlobalStyle = createGlobalStyle`
   }
   & .display-inline-flex {
     display: inline-flex;
+  }
+
+  .ant-layout-content {
+    background: #F4F6F7;
+  }
+
+  .ant-table-thead>tr>th {
+    font-weight: 700;
+  }
+
+  .common-table-wrapper {
+    position: relative;
+
+    .selected-status-ops {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .bold {
+    font-weight: 700;
   }
 `;

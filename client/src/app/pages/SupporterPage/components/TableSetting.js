@@ -9,7 +9,7 @@ import { getWithExpiry, setWithExpiry } from 'utils/localStorageHandler';
 import '../Models/received';
 
 const model_settings = {
-  receivedFundingList: {
+  receivedSupporterList: {
     columnMap,
     localstorageKey: COLUMN_SETTING_LOCALSTORAGE,
   },

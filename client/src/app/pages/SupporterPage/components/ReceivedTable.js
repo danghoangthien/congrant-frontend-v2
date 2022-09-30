@@ -13,7 +13,7 @@ import '../Models/received';
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
 let columns = getRenderColumns();
 
-const FundingTable = ({ model }) => {
+const SupporterTable = ({ model }) => {
   const dispatch = useDispatch();
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   console.log('selectedRowKeys', selectedRowKeys);
@@ -165,4 +165,4 @@ const FundingTable = ({ model }) => {
   );
 };
 
-export default FundingTable;
+export default SupporterTable;

@@ -61,6 +61,16 @@ const Filters = () => {
                 <Input placeholder="1,000円              ->            10,000円" />
               </Form.Item>
             </Col>
+            <Col span={6} key={'f'}>
+              <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
+                <Input placeholder="1,000円              ->            10,000円" />
+              </Form.Item>
+            </Col>
+            <Col span={6} key={'f'}>
+              <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
+                <Input placeholder="1,000円              ->            10,000円" />
+              </Form.Item>
+            </Col>
           </Row>
         </Form>
       </Row>

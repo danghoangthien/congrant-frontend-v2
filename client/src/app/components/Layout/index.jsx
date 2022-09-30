@@ -1,17 +1,41 @@
 import { Layout } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledSidebar, SlyledLayout } from './Layout.style';
-import { Row, Col } from 'antd';
+import { StyledSidebar, SlyledLayout, SlyledHeader } from './Layout.style';
+import { Row, Dropdown, Menu, Space } from 'antd';
 import {
   PayCircleOutlined,
   HeartOutlined,
   PlaySquareOutlined,
   InfoCircleOutlined,
   UserOutlined,
+  DownOutlined,
 } from '@ant-design/icons';
 
 const { Header, Footer, Sider, Content } = Layout;
+
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: (
+          <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            アカウント設定
+          </a>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+            ログアウト
+          </a>
+        ),
+      },
+    ]}
+  />
+);
 
 const AppLayout = ({ children }) => (
   <>
@@ -29,23 +53,35 @@ const AppLayout = ({ children }) => (
         </StyledSidebar>
 
         <Layout>
-          <Header>
-            <Row>
-              <Col type="flex" align="right" sm={24} md={24} lg={24}>
-                <HeartOutlined className="display-inline-flex" />
-                <span className="display-inline-flex ml-1">{'お得な割引プラン'}</span>
-                <PlaySquareOutlined className="display-inline-flex ml-2" />
-                <span className="display-inline-flex ml-1">{'お得な割引プラン'}</span>
-                <InfoCircleOutlined className="display-inline-flex ml-2" />
-                <span className="display-inline-flex ml-1">{'お得な割引プラン'}</span>
-                <span className="ml-1" style={{ fontSize: '30px' }}>
-                  |
-                </span>
-                <UserOutlined className="display-inline-flex ml-2" style={{ fontSize: '30px' }} />
-                <span className="display-inline-flex ml-1">{'お得な割引プラン'}</span>
-              </Col>
-            </Row>
-          </Header>
+          <SlyledHeader>
+            <Header>
+              <Row justify="end" align="middle">
+                <div>
+                  <HeartOutlined className="display-inline-flex" />
+                  <span className="display-inline-flex ml-1">{'お得な割引プラン'}</span>
+                </div>
+                <div>
+                  <PlaySquareOutlined className="display-inline-flex ml-4" />
+                  <span className="display-inline-flex ml-1">{'お得な割引プラン'}</span>
+                </div>
+                <div>
+                  <InfoCircleOutlined className="display-inline-flex ml-4" />
+                  <span className="display-inline-flex ml-1">{'お得な割引プラン'}</span>
+                </div>
+                <span className="line ml-8 mr-8"></span>
+                <Dropdown overlay={menu}>
+                  <Row align="middle">
+                    <UserOutlined
+                      className="user-icon display-inline-flex"
+                      style={{ fontSize: '18px', color: '#ffffff' }}
+                    />
+                    <span className="display-inline-flex ml-4">{'荒木 雄大'}</span>
+                    <DownOutlined className="ml-4" style={{ fontSize: '12px' }} />
+                  </Row>
+                </Dropdown>
+              </Row>
+            </Header>
+          </SlyledHeader>
           <Content>{children}</Content>
           <Footer>Footer</Footer>
         </Layout>

@@ -45,7 +45,7 @@ const Download = ({ model }) => {
     const csvData = parseCSVData();
     const header = parseCsvHeader();
     console.log('header', header);
-    const fileName = `received_funding.csv`;
+    const fileName = `received_Supporter.csv`;
     createCsvDownload(header, csvData, fileName);
   };
   const download = async () => {
