@@ -104,7 +104,46 @@ const FundingTable = ({ model }) => {
           <TableSetting model={model} />
         </Col>
       </Row>
+      {hasSelected && (
+        <Row className="selected-status-ops py-2 px-2">
+          <Col sm={24} md={24} lg={24}>
+            <Checkbox
+              checked={selectedRowKeys.length == items.length}
+              onChange={e => {
+                if (e.target.checked) {
+                  setSelectedRowKeys(
+                    items.map(item => {
+                      return item[columns[0].dataIndex];
+                    }),
+                  );
+                } else {
+                  setSelectedRowKeys([]);
+                }
+              }}
+            >
+              全件選択
+            </Checkbox>
+            <span className="ml-5">{hasSelected ? `${selectedRowKeys.length} 件選択中` : ''}</span>
+            <Button className="ml-5" icon={<MailOutlined />}>
+              {'メールを送る'}
+            </Button>
+            <Select
+              className="ml-5"
+              defaultValue={{
+                value: '1',
+              }}
+              style={{
+                width: 155,
+              }}
+              onChange={onSelectChange}
+            >
+              <Select.Option value="1">{'その他の一括操作'}</Select.Option>
+            </Select>
+          </Col>
+        </Row>
+      )}
       <Table
+        className="mb-5"
         key={Math.random()}
         columns={columns}
         rowKey={columns[0].dataIndex} /** must be unique, ex: ID or seq */
@@ -112,47 +151,12 @@ const FundingTable = ({ model }) => {
         loading={loading}
         dataSource={items}
         pagination={false}
+        showHeader={!hasSelected}
       />
       <Row className="mb-5 mx-5">
         <Col sm={24} md={12} lg={12}></Col>
         <Col sm={24} md={12} lg={12}>
           {renderPagination()}
-        </Col>
-      </Row>
-      <Row className="mb-5 selected-status-ops py-2 px-2">
-        <Col sm={24} md={24} lg={24}>
-          <Checkbox
-            checked={selectedRowKeys.length == items.length}
-            onChange={e => {
-              if (e.target.checked) {
-                setSelectedRowKeys(
-                  items.map(item => {
-                    return item[columns[0].dataIndex];
-                  }),
-                );
-              } else {
-                setSelectedRowKeys([]);
-              }
-            }}
-          >
-            全件選択
-          </Checkbox>
-          <span className="ml-5">{hasSelected ? `${selectedRowKeys.length} 件選択中` : ''}</span>
-          <Button className="ml-5" icon={<MailOutlined />}>
-            {'メールを送る'}
-          </Button>
-          <Select
-            className="ml-5"
-            defaultValue={{
-              value: '1',
-            }}
-            style={{
-              width: 155,
-            }}
-            onChange={onSelectChange}
-          >
-            <Select.Option value="1">{'その他の一括操作'}</Select.Option>
-          </Select>
         </Col>
       </Row>
     </Card>

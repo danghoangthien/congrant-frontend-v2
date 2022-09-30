@@ -1,10 +1,25 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Table, Row, Col, Pagination, Button, Checkbox, Select, Form, Input } from 'antd';
+import {
+  Card,
+  Table,
+  Row,
+  Col,
+  Pagination,
+  Button,
+  Checkbox,
+  Select,
+  Form,
+  Input,
+  DatePicker,
+} from 'antd';
 import { FilterOutlined } from '@ant-design/icons';
 
-const Filters = () => {
+const { RangePicker } = DatePicker;
+
+const Filters = ({ open }) => {
   const [form] = Form.useForm();
+  if (!open) return <></>;
   return (
     <Card className="ma-5">
       <Row className="mb-3">
@@ -33,27 +48,35 @@ const Filters = () => {
           <Row gutter={24}>
             <Col span={6} key={'a'}>
               <Form.Item name={`field-a`} label={`受領日`}>
-                <Input placeholder="開始日" />
+                <RangePicker placeholder={['開始日', '終了日']} />
               </Form.Item>
             </Col>
             <Col span={6} key={'ab'}>
               <Form.Item name={`field-b`} label={`プロジェクト`}>
-                <Input placeholder="選択してください" />
+                <Select placeholder={'選択してください'} onChange={() => {}}>
+                  <Select.Option value="1">{'---'}</Select.Option>
+                </Select>
               </Form.Item>
             </Col>
             <Col span={6} key={'c'}>
               <Form.Item name={`field-c`} label={`受領方法`}>
-                <Input placeholder="選択してください" />
+                <Select placeholder={'選択してください'} onChange={() => {}}>
+                  <Select.Option value="1">{'---'}</Select.Option>
+                </Select>
               </Form.Item>
             </Col>
             <Col span={6} key={'d'}>
               <Form.Item name={`field-d`} label={`寄付タイプ`}>
-                <Input placeholder="選択してください" />
+                <Select placeholder={'選択してください'} onChange={() => {}}>
+                  <Select.Option value="1">{'---'}</Select.Option>
+                </Select>
               </Form.Item>
             </Col>
             <Col span={6} key={'e'}>
               <Form.Item name={`field-c`} label={`プラン`}>
-                <Input placeholder="選択してください" />
+                <Select placeholder={'選択してください'} onChange={() => {}}>
+                  <Select.Option value="1">{'---'}</Select.Option>
+                </Select>
               </Form.Item>
             </Col>
             <Col span={6} key={'f'}>

@@ -12,6 +12,7 @@ import { FundingPageLayout } from './FundingPage.style';
 
 const FundingPage = (): JSX.Element => {
   const url = window.location.pathname?.split('/');
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const renderPageTitle = (): JSX.Element => {
     return (
@@ -44,13 +45,17 @@ const FundingPage = (): JSX.Element => {
               placeholder="フリーワード検索"
               prefix={<SearchOutlined />}
             />
-            <Button className="ml-1" icon={<FilterOutlined />}>
+            <Button
+              className="ml-1"
+              icon={<FilterOutlined />}
+              onClick={() => setFilterOpen(!filterOpen)}
+            >
               {'フィルタ'}
             </Button>
           </div>
         </div>
         <div className="item">
-          <Filters />
+          <Filters open={filterOpen} />
         </div>
         <div className="item">
           <ReceivedTable model="receivedFundingList" />
