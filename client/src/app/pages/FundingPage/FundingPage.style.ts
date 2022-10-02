@@ -47,4 +47,7 @@ export const FundingPageLayout = styled.div`
   & .free-search {
     width: 200px;
   }
+  & .ant-descriptions-item-label {
+    width: 200px;
+  }
 `;

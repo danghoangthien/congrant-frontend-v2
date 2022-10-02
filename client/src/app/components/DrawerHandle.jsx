@@ -13,6 +13,7 @@ const DrawerHandle = ({ children, drawerTitle, drawerComponent }) => {
         {children}
       </span>
       <Drawer
+        width="550"
         title={drawerTitle || 'Drawer'}
         placement="right"
         onClose={() => setOpen(false)}

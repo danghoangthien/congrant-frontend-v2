@@ -32,9 +32,14 @@ const receivedFundingList = {
       // });
 
       const { page } = queries;
+
       const currentPage = page || 1;
+      const startSlice = (currentPage - 1) * pagination.limit;
+      const endslice = startSlice + pagination.limit;
+      const sliced = dataSource.slice(startSlice, endslice);
       this.setData({
-        items: [dataSource[currentPage - 1]],
+        //items: [dataSource[currentPage - 1]],
+        items: pagination.limit ? sliced : dataSource,
         pagination: {
           ...pagination,
           current_page: parseInt(currentPage),
