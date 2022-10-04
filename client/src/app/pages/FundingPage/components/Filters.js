@@ -25,9 +25,9 @@ const Filters = ({ open }) => {
       <Row className="mb-3">
         <Col sm={24} md={20} lg={20}>
           <FilterOutlined className="display-inline-flex" />
-          <span className="ml-3">{'表示項目'}</span>
+          <span className="ml-2">{'フィルタ'}</span>
           <Select
-            className="ml-3"
+            className="ml-4"
             defaultValue={{
               value: '1',
             }}
@@ -73,14 +73,14 @@ const Filters = ({ open }) => {
               </Form.Item>
             </Col>
             <Col span={6} key={'e'}>
-              <Form.Item name={`field-c`} label={`プラン`}>
+              <Form.Item className="mb-0" name={`field-c`} label={`プラン`}>
                 <Select placeholder={'選択してください'} onChange={() => {}}>
                   <Select.Option value="1">{'---'}</Select.Option>
                 </Select>
               </Form.Item>
             </Col>
             <Col span={6} key={'f'}>
-              <Form.Item name={`field-d`} label={`金額`}>
+              <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
                 <Input placeholder="1,000円              ->            10,000円" />
               </Form.Item>
             </Col>

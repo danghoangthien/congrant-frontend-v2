@@ -53,7 +53,7 @@ const Download = ({ model }) => {
   };
   return (
     <>
-      <Button icon={<DownloadOutlined />} onClick={download} className="ml-3">
+      <Button icon={<DownloadOutlined />} onClick={download}>
         {'ダウンロード'}
       </Button>
     </>

@@ -35,7 +35,7 @@ const TableSetting = ({ model }) => {
   const renderColumns = () => {
     return Object.keys(_columnMap).map(columnName => {
       return (
-        <Col span={3}>
+        <Col className="mb-2">
           <Checkbox value={columnName}>{_columnMap[columnName].title}</Checkbox>
         </Col>
       );
@@ -68,19 +68,21 @@ const TableSetting = ({ model }) => {
   return (
     <>
       <Button icon={<SettingOutlined />} onClick={showModal}>
-        Settings
+        表示設定
       </Button>
       <Modal
         title="表示設定"
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={1000}
+        width={572}
         className="modalStyle"
+        cancelText="キャンセル"
+        okText="保存する"
       >
         <Row className="mb-8">
           <Col sm={24} md={20} lg={24}>
-            <h3>{'表示件数'}</h3>
+            <h3 className="bold">{'表示設定'}</h3>
           </Col>
           <Col sm={24} md={24} lg={24}>
             <Select
@@ -98,7 +100,7 @@ const TableSetting = ({ model }) => {
         </Row>
         <Row className="mb-3">
           <Col sm={24} md={20} lg={20}>
-            <h3>{'表示項目'}</h3>
+            <h3 className="bold">{'表示項目'}</h3>
           </Col>
           <Col type="flex" align="right" sm={24} md={4} lg={4}>
             <Button onClick={onReset}>{'リセット'}</Button>
@@ -107,6 +109,26 @@ const TableSetting = ({ model }) => {
         <Row className="mb-3">
           <Col sm={24} md={24} lg={20}>
             <span>{'基本項目'}</span>
+          </Col>
+        </Row>
+        <Row className="mb-8">
+          <Col sm={24} md={24} lg={24}>
+            <Checkbox.Group
+              key={Math.random()}
+              style={{
+                width: '100%',
+              }}
+              onChange={onCheckboxGroupChange}
+              defaultValue={column_setting}
+            >
+              <Row>{renderColumns()}</Row>
+            </Checkbox.Group>
+          </Col>
+        </Row>
+
+        <Row className="mb-3">
+          <Col sm={24} md={24} lg={20}>
+            <span>{'カスタム項目'}</span>
           </Col>
         </Row>
         <Row>

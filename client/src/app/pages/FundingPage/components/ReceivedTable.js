@@ -93,15 +93,18 @@ const FundingTable = ({ model }) => {
 
   return (
     <Card className="ma-5">
-      <Row className="mb-5 mx-5">
+      <Row className="mb-5">
         <Col sm={24} md={12} lg={10}>
-          {'受領済み寄付一覧'} <Download model={model} />
+          <span className="table-title mr-4">{'受領済み寄付一覧'}</span>
+          <Download model={model} />
         </Col>
-        <Col sm={24} md={10} lg={12}>
-          {renderPagination()}
-        </Col>
-        <Col sm={24} md={2} lg={2} className="text-center">
-          <TableSetting model={model} />
+        <Col sm={24} md={12} lg={14}>
+          <Row align="middle" justify="end">
+            <Col className="mr-4">{renderPagination()}</Col>
+            <Col className="text-center">
+              <TableSetting model={model} />
+            </Col>
+          </Row>
         </Col>
       </Row>
       {hasSelected && (
@@ -143,7 +146,7 @@ const FundingTable = ({ model }) => {
         </Row>
       )}
       <Table
-        className="mb-5"
+        className="mb-6"
         key={Math.random()}
         columns={columns}
         rowKey={columns[0].dataIndex} /** must be unique, ex: ID or seq */
