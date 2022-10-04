@@ -7,8 +7,13 @@ export const FundingPageLayout = styled.div`
     flex-shrink: 0;
     flex-grow: 1;
   }
+  & .ant-pagination-item,
+  .ant-pagination-total-text {
+    height: 22px;
+  }
   & .ant-pagination-item {
     border-color: white;
+    min-width: 22px;
   }
   & .ant-pagination-item-link {
     border-color: white;
@@ -49,5 +54,31 @@ export const FundingPageLayout = styled.div`
   }
   & .ant-descriptions-item-label {
     width: 200px;
+  }
+  & .page-title {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  & .switch-btn {
+    .ant-btn {
+      border: none;
+      border-radius: 0;
+      border: 1px solid #d9d9d6;
+      &.active {
+        border-color: #63b233;
+      }
+      &:first-of-type {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+      &:last-of-type {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+    }
+  }
+  & .table-title {
+    font-size: 16px;
+    font-weight: 700;
   }
 `;
