@@ -1,4 +1,4 @@
-import { Typography, Tag, Drawer } from 'antd';
+import { Typography, Tag } from 'antd';
 
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';

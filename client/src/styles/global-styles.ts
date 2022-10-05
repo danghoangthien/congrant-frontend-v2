@@ -1,4 +1,7 @@
+import styled from 'styled-components/macro';
 import { createGlobalStyle } from 'styled-components';
+
+import { StyleConstants, ScreenSizes, PRIMARY_COLOR } from 'styles/StyleConstants';
 /* istanbul ignore next */
 export const GlobalStyle = createGlobalStyle`
   html,
@@ -49,5 +52,17 @@ export const GlobalStyle = createGlobalStyle`
   }
   .bold {
     font-weight: 700;
+  }
+`;
+
+export const StyledPrimaryIcon = styled.span`
+  & .anticon {
+    color: ${PRIMARY_COLOR};
+  }
+`;
+
+export const StyledWarningIcon = styled.span`
+  & .anticon {
+    color: #ff4d4f;
   }
 `;
