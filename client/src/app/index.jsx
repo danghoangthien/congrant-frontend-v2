@@ -15,10 +15,12 @@ import AppLayout from 'app/components/Layout';
 
 import HomePage from './pages/HomePage';
 import FundingPage from './pages/FundingPage';
+import EditorPage from './pages/EditorPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 import { URL } from 'utils/constant';
 import { useTranslation } from 'react-i18next';
+import CkeditorPage from './pages/CkeditorPage';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -43,6 +45,16 @@ export function App() {
           <Route path={process.env.PUBLIC_URL + '/funding'}>
             <AppLayout>
               <FundingPage />
+            </AppLayout>
+          </Route>
+          <Route path={process.env.PUBLIC_URL + '/editor'}>
+            <AppLayout>
+              <EditorPage />
+            </AppLayout>
+          </Route>
+          <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
+            <AppLayout>
+              <CkeditorPage />
             </AppLayout>
           </Route>
           <Route component={NotFoundPage} />
