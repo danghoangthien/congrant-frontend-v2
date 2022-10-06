@@ -1,6 +1,10 @@
 import { Tabs } from 'antd';
 
 import BasicInfo from './BasicInfo';
+import Memo from './Memo';
+import Donation from './Donation';
+import ContinuousContract from './ContinuousContract';
+import Receipt from './Receipt';
 
 const Detail = ({ data }) => {
   console.log('Detail data', data);
@@ -10,16 +14,16 @@ const Detail = ({ data }) => {
         <BasicInfo />
       </Tabs.TabPane>
       <Tabs.TabPane tab="メモ" key="item-2">
-        メモ
+        <Memo />
       </Tabs.TabPane>
       <Tabs.TabPane tab="寄付" key="item-3">
-        寄付
+        <Donation />
       </Tabs.TabPane>
       <Tabs.TabPane tab="継続契約" key="item-4">
-        継続契約
+        <ContinuousContract />
       </Tabs.TabPane>
       <Tabs.TabPane tab="領収書" key="item-5">
-        領収書
+        <Receipt />
       </Tabs.TabPane>
     </Tabs>
   );

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Drawer } from 'antd';
 
-const DrawerHandle = ({ children, drawerTitle, drawerComponent }) => {
-  const [open, setOpen] = useState(false);
+const DrawerHandle = ({ children, drawerTitle, drawerComponent, isOpen = false }) => {
+  const [open, setOpen] = useState(isOpen);
   return (
     <>
       <span

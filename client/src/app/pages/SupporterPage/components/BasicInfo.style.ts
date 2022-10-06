@@ -5,4 +5,10 @@ export const DescriptionStyle = styled.div`
   & .ant-descriptions-item-label {
     width: 200px;
   }
+  & .ant-descriptions-header {
+    margin-bottom: 10px;
+  }
+  & .ant-select {
+    width: 100%;
+  }
 `;
