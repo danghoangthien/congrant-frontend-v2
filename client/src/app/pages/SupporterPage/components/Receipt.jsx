@@ -3,10 +3,8 @@ import { Badge, Descriptions, Row, Col, Button, Table, Tag } from 'antd';
 import { StyledPrimaryIcon } from 'styles/global-styles';
 import { CopyOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { StyledBadgeDot } from './ContinuousContract.style';
-
-const LIST_MODE = 0;
-const DETAIL_MODE = 1;
-const EDIT_MODE = 2;
+import ReceiptDetail from './ReceipDetail';
+import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from './../const';
 
 const Title = ({ title }) => {
   return (
@@ -89,7 +87,19 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
   const columns = Object.keys(columnMap).map(columnName => {
     return columnMap[columnName];
   });
-  return <Table dataSource={dataSource} columns={columns} />;
+  return (
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: event => {
+            setMode(DETAIL_MODE);
+          }, // click row
+        };
+      }}
+    />
+  );
 };
 
 const ListModeContent = ({ data, mode, setMode }) => {
@@ -137,7 +147,19 @@ const ListModeContent = ({ data, mode, setMode }) => {
   const columns = Object.keys(columnMap).map(columnName => {
     return columnMap[columnName];
   });
-  return <Table dataSource={dataSource} columns={columns} />;
+  return (
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: event => {
+            setMode(DETAIL_MODE);
+          }, // click row
+        };
+      }}
+    />
+  );
 };
 
 const Receipt = ({ data }) => {
@@ -146,10 +168,15 @@ const Receipt = ({ data }) => {
   console.log('Donation mode', mode);
   return (
     <>
-      <Title title="年間領収書" />
-      <AnnualListModeContent />
-      <Title title="領収書" />
-      <ListModeContent />
+      {mode === LIST_MODE && (
+        <>
+          <Title title="年間領収書" />
+          <AnnualListModeContent {...{ data, mode, setMode }} />
+          <Title title="領収書" />
+          <ListModeContent {...{ data, mode, setMode }} />
+        </>
+      )}
+      {mode === DETAIL_MODE && <ReceiptDetail {...{ data, mode, setMode }} />}
     </>
   );
 };

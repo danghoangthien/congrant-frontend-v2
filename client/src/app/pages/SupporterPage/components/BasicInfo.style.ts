@@ -8,4 +8,7 @@ export const DescriptionStyle = styled.div`
   & .ant-descriptions-header {
     margin-bottom: 10px;
   }
+  & .ant-select {
+    width: 100%;
+  }
 `;

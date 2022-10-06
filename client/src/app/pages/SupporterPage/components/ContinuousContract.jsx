@@ -3,8 +3,8 @@ import { Badge, Row, Col, Table, Tag } from 'antd';
 import { StyledBadgeDot } from './ContinuousContract.style';
 import { StyledPrimaryIcon } from 'styles/global-styles';
 import { MinusOutlined } from '@ant-design/icons';
-
-const LIST_MODE = 0;
+import ContinuousContractDetail from './ContinuousContractDetail';
+import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from './../const';
 
 const Title = () => {
   return (
@@ -66,7 +66,19 @@ const ListModeContent = ({ data, mode, setMode }) => {
   const columns = Object.keys(columnMap).map(columnName => {
     return columnMap[columnName];
   });
-  return <Table dataSource={dataSource} columns={columns} />;
+  return (
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: event => {
+            setMode(DETAIL_MODE);
+          }, // click row
+        };
+      }}
+    />
+  );
 };
 
 const ContinuousContract = ({ data }) => {
@@ -75,8 +87,13 @@ const ContinuousContract = ({ data }) => {
   console.log('ContinuousContract mode', mode);
   return (
     <>
-      <Title />
-      {mode == LIST_MODE && <ListModeContent />}
+      {mode == LIST_MODE && (
+        <>
+          <Title />
+          <ListModeContent {...{ data, mode, setMode }} />
+        </>
+      )}
+      {mode == DETAIL_MODE && <ContinuousContractDetail {...{ data, mode, setMode }} />}
     </>
   );
 };
