@@ -1,4 +1,4 @@
-import { Typography, Tag } from 'antd';
+import { Typography, Tag, Button } from 'antd';
 
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
@@ -18,7 +18,7 @@ const dataSource = Array.from(Array(50).keys()).map(i => ({
   key: `${i}`,
   personal_id: `${'20220730' + i}`,
   full_name: '荒木 雄大',
-  attributes: ['abc'],
+  attributes: ['abc', ['xyz']],
   email: `danghoangthien+${i}@gmail.com`,
   phone: `${'0938354758' + i}`,
   recent_donation: '3,000円',
@@ -30,41 +30,40 @@ const columnMap = {
     title: '個人ID',
     render: row => (
       <DrawerHandle drawerTitle={row.full_name} drawerComponent={<Detail data={row} />}>
-        {row.personal_id}
+        <Button type="link">{row.personal_id} </Button>
       </DrawerHandle>
     ),
     csvOutput: ({ personal_id }) => personal_id,
   },
   full_name: {
-    full_name: '氏名',
+    title: '氏名',
     dataIndex: 'full_name',
-    csvOutput: ({ full_name }) => full_name,
+    csvOutput: full_name => full_name,
   },
   attributes: {
     title: '属性',
-    dataIndex: 'attributes',
-    csvOutput: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
+    render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
+    csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
   },
   email: {
     title: 'メールアドレス',
     dataIndex: 'email',
-    csvOutput: ({ email }) => email,
+    csvOutput: email => email,
   },
   phone: {
     title: '電話番号',
     dataIndex: 'phone',
-
-    csvOutput: ({ phone }) => phone,
+    csvOutput: phone => phone,
   },
   recent_donation: {
     title: '直近の寄付',
     dataIndex: 'recent_donation',
-    csvOutput: ({ recent_donation }) => recent_donation,
+    csvOutput: recent_donation => recent_donation,
   },
   cumulative_donation: {
     title: '累計寄付',
     dataIndex: 'cumulative_donation',
-    csvOutput: ({ cumulative_donation }) => cumulative_donation,
+    csvOutput: cumulative_donation => cumulative_donation,
   },
 };
 
