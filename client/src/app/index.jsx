@@ -50,20 +50,11 @@ export function App() {
               <SupporterPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/editor'}>
-              <AppLayout>
-                <EditorPage />
-              </AppLayout>
+              <EditorPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
-              <AppLayout>
-                <CkeditorPage />
-              </AppLayout>
+              <CkeditorPage />
             </Route>
-            {/* <Route path={process.env.PUBLIC_URL + '/ckeditor_classic'}>
-            <AppLayout>
-              <CkeditorClassicPage />
-            </AppLayout>
-          </Route> */}
           </AppLayout>
           <Route component={NotFoundPage} />
         </Switch>
