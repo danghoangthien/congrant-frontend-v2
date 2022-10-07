@@ -4,7 +4,7 @@ import { StyledPrimaryIcon } from 'styles/global-styles';
 import { CopyOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { StyledBadgeDot } from './ContinuousContract.style';
 import ReceiptDetail from './ReceipDetail';
-import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from './../const';
+import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
 
 const Title = ({ title }) => {
   return (

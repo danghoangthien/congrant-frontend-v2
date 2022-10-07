@@ -8,7 +8,7 @@ import {
   EditOutlined,
 } from '@ant-design/icons';
 import { BoldLabel, CopiableText } from './Sprites';
-import { LIST_MODE, EDIT_MODE } from '../const';
+import { LIST_MODE, EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 
 const Title = ({ mode, setMode }) => {

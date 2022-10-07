@@ -2,10 +2,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { Badge, Descriptions, Row, Col, Button, Table, Tag } from 'antd';
 import { StyledPrimaryIcon } from 'styles/global-styles';
 import { CopyOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
-
-const LIST_MODE = 0;
-const DETAIL_MODE = 1;
-const EDIT_MODE = 2;
+import DonationDetail from './DonationDetail';
+import DonationEdit from './DonationEdit';
+import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
 
 const Title = ({ mode, setMode }) => {
   return (
@@ -93,7 +92,17 @@ const ListModeContent = ({ data, mode, setMode }) => {
   });
   return (
     <>
-      <Table dataSource={dataSource} columns={columns} />
+      <Table
+        dataSource={dataSource}
+        columns={columns}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: event => {
+              setMode(DETAIL_MODE);
+            }, // click row
+          };
+        }}
+      />
     </>
   );
 };
@@ -104,8 +113,14 @@ const Donation = ({ data }) => {
   console.log('Donation mode', mode);
   return (
     <>
-      <Title />
-      {mode == LIST_MODE && <ListModeContent />}
+      {mode === LIST_MODE && (
+        <>
+          <Title />
+          <ListModeContent {...{ data, mode, setMode }} />
+        </>
+      )}
+      {mode === DETAIL_MODE && <DonationDetail {...{ data, mode, setMode }} />}
+      {mode === EDIT_MODE && <DonationEdit {...{ data, mode, setMode }} />}
     </>
   );
 };
