@@ -21,6 +21,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { URL } from 'utils/constant';
 import { useTranslation } from 'react-i18next';
 import CkeditorPage from './pages/CkeditorPage';
+import CkeditorClassicPage from './pages/CkeditorClassicPage';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -57,6 +58,11 @@ export function App() {
               <CkeditorPage />
             </AppLayout>
           </Route>
+          {/* <Route path={process.env.PUBLIC_URL + '/ckeditor_classic'}>
+            <AppLayout>
+              <CkeditorClassicPage />
+            </AppLayout>
+          </Route> */}
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

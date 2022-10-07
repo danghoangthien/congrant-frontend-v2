@@ -11,8 +11,17 @@ import Paragraph from '@editorjs/paragraph';
 import NestedList from '@editorjs/nested-list';
 import AlignmentTuneTool from 'editorjs-text-alignment-blocktune';
 // import Carousel from '@mr8bit/carousel-editorjs';
+import editorjsColumns from '@calumk/editorjs-columns';
 
 const ImageGallery = require('@rodrigoodhin/editorjs-image-gallery');
+
+let column_tools = {
+  header: Header,
+  image: ImageTool,
+};
+
+// next define the tools in the main block
+// Warning - Dont just use main_tools - you will probably generate a circular reference
 
 const EditorPage = () => {
   const { path } = useRouteMatch();
@@ -20,6 +29,12 @@ const EditorPage = () => {
     const editor = new EditorJS({
       // holder: 'editorjs',
       tools: {
+        columns: {
+          class: editorjsColumns,
+          config: {
+            tools: column_tools, // ref the column_tools
+          },
+        },
         imageGallery: ImageGallery,
         embed: {
           class: Embed,
