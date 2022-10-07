@@ -78,6 +78,18 @@ const AppLayout = ({ children }) => {
                       {!collapsed ? <span className="ml-1">{'個人サポーター'}</span> : <></>}
                     </Link>
                   </Col>
+                  <Col className="mt-3" type="flex" align="left" sm={24} md={24} lg={24}>
+                    <Link className="sidebar-link" to={`/editor`}>
+                      <UserOutlined className="display-inline-flex" />
+                      {!collapsed ? <span className="ml-1">{'Editor.js'}</span> : <></>}
+                    </Link>
+                  </Col>
+                  <Col className="mt-3" type="flex" align="left" sm={24} md={24} lg={24}>
+                    <Link className="sidebar-link" to={`/Ckeditor`}>
+                      <UserOutlined className="display-inline-flex" />
+                      {!collapsed ? <span className="ml-1">{'Ckeditor'}</span> : <></>}
+                    </Link>
+                  </Col>
                 </Row>
               </div>
             </Sider>
