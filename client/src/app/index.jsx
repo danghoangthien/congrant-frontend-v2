@@ -16,6 +16,7 @@ import AppLayout from 'app/components/Layout';
 import HomePage from './pages/HomePage';
 import FundingPage from './pages/FundingPage';
 import EditorPage from './pages/EditorPage';
+import SupporterPage from './pages/SupporterPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 import { URL } from 'utils/constant';
@@ -38,31 +39,32 @@ export function App() {
           <meta name="description" content="A Congrant application." />
         </Helmet>
         <Switch>
-          <Route path={process.env.PUBLIC_URL + '/home'}>
-            <AppLayout>
+          <AppLayout>
+            <Route path={process.env.PUBLIC_URL + '/home'}>
               <HomePage />
-            </AppLayout>
-          </Route>
-          <Route path={process.env.PUBLIC_URL + '/funding'}>
-            <AppLayout>
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/funding'}>
               <FundingPage />
-            </AppLayout>
-          </Route>
-          <Route path={process.env.PUBLIC_URL + '/editor'}>
-            <AppLayout>
-              <EditorPage />
-            </AppLayout>
-          </Route>
-          <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
-            <AppLayout>
-              <CkeditorPage />
-            </AppLayout>
-          </Route>
-          {/* <Route path={process.env.PUBLIC_URL + '/ckeditor_classic'}>
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/supporter'}>
+              <SupporterPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/editor'}>
+              <AppLayout>
+                <EditorPage />
+              </AppLayout>
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
+              <AppLayout>
+                <CkeditorPage />
+              </AppLayout>
+            </Route>
+            {/* <Route path={process.env.PUBLIC_URL + '/ckeditor_classic'}>
             <AppLayout>
               <CkeditorClassicPage />
             </AppLayout>
           </Route> */}
+          </AppLayout>
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

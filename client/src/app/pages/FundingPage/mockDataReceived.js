@@ -1,4 +1,4 @@
-import { Typography, Tag } from 'antd';
+import { Typography, Tag, Button } from 'antd';
 
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
@@ -302,7 +302,7 @@ const columnMap = {
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
-        <Text type="success">{row.supporter}</Text>
+        <Button type="link">{row.supporter}</Button>
       </DrawerHandle>
     ),
     csvOutput: ({ supporter }) => supporter,

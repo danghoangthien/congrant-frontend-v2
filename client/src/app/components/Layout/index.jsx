@@ -73,12 +73,10 @@ const AppLayout = ({ children }) => {
                     </Link>
                   </Col>
                   <Col className="mt-3" type="flex" align="left" sm={24} md={24} lg={24}>
-                    {/*
-                    <Link className="sidebar-link" to={`/funding/received`}>
-                      <PayCircleOutlined className="display-inline-flex" />
-                      {!collapsed ? <span className="ml-1">{'寄付決済'}</span> : <></>}
+                    <Link className="sidebar-link" to={`/supporter`}>
+                      <UserOutlined className="display-inline-flex" />
+                      {!collapsed ? <span className="ml-1">{'個人サポーター'}</span> : <></>}
                     </Link>
-                    */}
                   </Col>
                 </Row>
               </div>
