@@ -7,13 +7,13 @@ import { push } from 'connected-react-router';
 import { useHistory } from 'react-router-dom';
 import TableSetting from './TableSetting';
 import Download from './Download';
-import { getRenderColumns } from '../mockDataReceived';
+
 import '../Models/received';
+import '../Models/unclaimed';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
-let columns = getRenderColumns();
 
-const FundingTable = ({ model }) => {
+const FundingTable = ({ model, getRenderColumns }) => {
   const dispatch = useDispatch();
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   console.log('selectedRowKeys', selectedRowKeys);
@@ -25,7 +25,7 @@ const FundingTable = ({ model }) => {
   const loading = useSelector(state => state.loading.models[model]);
 
   const usp = new URLSearchParams(search);
-
+  let columns = getRenderColumns();
   useMemo(() => {
     dispatch[model].list(query);
   }, [dispatch, query]);

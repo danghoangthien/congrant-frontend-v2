@@ -9,12 +9,15 @@ import TableSetting from './TableSetting';
 import Download from './Download';
 import { getRenderColumns } from '../mockData';
 import '../Models/index';
+import DrawerHandle from '../../../components/DrawerHandle';
+import Detail from './Detail';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
 let columns = getRenderColumns();
 
 const SupporterTable = ({ model }) => {
   const dispatch = useDispatch();
+  const [activeRow, setActiveRow] = useState(null);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   console.log('selectedRowKeys', selectedRowKeys);
   const { items, pagination, column_setting } = useSelector(state => state[model]);
@@ -155,6 +158,11 @@ const SupporterTable = ({ model }) => {
         dataSource={items}
         pagination={false}
         showHeader={!hasSelected}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: () => setActiveRow(record),
+          };
+        }}
       />
       <Row className="mb-5 mx-5">
         <Col sm={24} md={12} lg={12}></Col>
@@ -162,6 +170,15 @@ const SupporterTable = ({ model }) => {
           {renderPagination()}
         </Col>
       </Row>
+      {activeRow && (
+        <DrawerHandle
+          key={Math.random()}
+          drawerTitle={activeRow.full_name}
+          drawerComponent={<Detail data={activeRow} />}
+          isOpen
+          onDrawerClose={() => setActiveRow(null)}
+        />
+      )}
     </Card>
   );
 };

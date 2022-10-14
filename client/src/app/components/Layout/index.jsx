@@ -125,7 +125,13 @@ const AppLayout = ({ children }) => {
                 </Row>
               </Header>
             </SlyledHeader>
-            <Content>{children}</Content>
+            <Content
+              style={{
+                minHeight: '90vh',
+              }}
+            >
+              {children}
+            </Content>
             <Footer>Footer</Footer>
           </Layout>
         </Layout>

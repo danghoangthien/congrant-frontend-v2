@@ -23,7 +23,6 @@ export const StyledSidebar = styled.div<{}>`
 `;
 
 export const SlyledLayout = styled.div<{}>`
-  height: 100%;
   & .ant-layout-has-sider {
     height: 100%;
   }

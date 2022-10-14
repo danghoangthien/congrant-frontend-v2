@@ -5,6 +5,10 @@ import { Row, Col, Button, Modal, Checkbox, Select } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
 
 import { columnMap, COLUMN_SETTING_LOCALSTORAGE } from '../mockDataReceived';
+import {
+  columnMap as unclaimedColumnMap,
+  COLUMN_SETTING_LOCALSTORAGE as UNCLAIMED_COLUMN_SETTING_LOCALSTORAGE,
+} from '../mockData';
 import { getWithExpiry, setWithExpiry } from 'utils/localStorageHandler';
 import '../Models/received';
 
@@ -12,6 +16,10 @@ const model_settings = {
   receivedFundingList: {
     columnMap,
     localstorageKey: COLUMN_SETTING_LOCALSTORAGE,
+  },
+  unclaimedFundingList: {
+    columnMap: unclaimedColumnMap,
+    localstorageKey: UNCLAIMED_COLUMN_SETTING_LOCALSTORAGE,
   },
 };
 
