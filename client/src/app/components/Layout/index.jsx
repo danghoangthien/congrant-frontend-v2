@@ -1,8 +1,8 @@
 import { Layout } from 'antd';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { StyledSidebar, SlyledLayout, SlyledHeader } from './Layout.style';
-import { Row, Col, Button, Dropdown, Menu, Space } from 'antd';
+import { Row, Col, Button, Dropdown, Menu, Space, Typography } from 'antd';
 import {
   PayCircleOutlined,
   HeartOutlined,
@@ -51,8 +51,17 @@ const CollapseIcon = ({ collapsed, ...props }) => {
   );
 };
 
+const HighlightOnActive = ({ children, isActive }) => {
+  const Wrapper = isActive ? Typography.Text : React.Fragment;
+  return <Wrapper type="success">{children}</Wrapper>;
+};
+
 const AppLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const location = useLocation();
+  const isActive = path => {
+    return path === location.pathname;
+  };
   return (
     <>
       <SlyledLayout>
@@ -69,25 +78,61 @@ const AppLayout = ({ children }) => {
                   <Col type="flex" align="left" sm={24} md={24} lg={24}>
                     <Link className="sidebar-link" to={`/funding/received`}>
                       <PayCircleOutlined className="display-inline-flex" />
-                      {!collapsed ? <span className="ml-1">{'寄付決済'}</span> : <></>}
+                      {!collapsed ? (
+                        <HighlightOnActive isActive={isActive(`/funding/received`)}>
+                          <span className="ml-1">{'寄付決済'}</span>
+                        </HighlightOnActive>
+                      ) : (
+                        <></>
+                      )}
                     </Link>
                   </Col>
                   <Col className="mt-3" type="flex" align="left" sm={24} md={24} lg={24}>
                     <Link className="sidebar-link" to={`/supporter`}>
                       <UserOutlined className="display-inline-flex" />
-                      {!collapsed ? <span className="ml-1">{'個人サポーター'}</span> : <></>}
+                      {!collapsed ? (
+                        <HighlightOnActive isActive={isActive(`/supporter`)}>
+                          <span className="ml-1">{'個人サポーター'}</span>{' '}
+                        </HighlightOnActive>
+                      ) : (
+                        <></>
+                      )}
+                    </Link>
+                  </Col>
+                  <Col className="mt-3" type="flex" align="left" sm={24} md={24} lg={24}>
+                    <Link className="sidebar-link" to={`/group-supporter`}>
+                      <UserOutlined className="display-inline-flex" />
+                      {!collapsed ? (
+                        <HighlightOnActive isActive={isActive(`/group-supporter`)}>
+                          <span className="ml-1">{'法人サポーター'}</span>{' '}
+                        </HighlightOnActive>
+                      ) : (
+                        <></>
+                      )}
                     </Link>
                   </Col>
                   <Col className="mt-3" type="flex" align="left" sm={24} md={24} lg={24}>
                     <Link className="sidebar-link" to={`/editor`}>
                       <UserOutlined className="display-inline-flex" />
-                      {!collapsed ? <span className="ml-1">{'Editor.js'}</span> : <></>}
+                      {!collapsed ? (
+                        <HighlightOnActive isActive={isActive(`/editor`)}>
+                          <span className="ml-1">{'Editor.js'}</span>
+                        </HighlightOnActive>
+                      ) : (
+                        <></>
+                      )}
                     </Link>
                   </Col>
                   <Col className="mt-3" type="flex" align="left" sm={24} md={24} lg={24}>
                     <Link className="sidebar-link" to={`/Ckeditor`}>
                       <UserOutlined className="display-inline-flex" />
-                      {!collapsed ? <span className="ml-1">{'Ckeditor'}</span> : <></>}
+                      {!collapsed ? (
+                        <HighlightOnActive isActive={isActive(`/Ckeditor`)}>
+                          <span className="ml-1">{'Ckeditor'}</span>
+                        </HighlightOnActive>
+                      ) : (
+                        <></>
+                      )}
                     </Link>
                   </Col>
                 </Row>
@@ -125,7 +170,13 @@ const AppLayout = ({ children }) => {
                 </Row>
               </Header>
             </SlyledHeader>
-            <Content>{children}</Content>
+            <Content
+              style={{
+                minHeight: '90vh',
+              }}
+            >
+              {children}
+            </Content>
             <Footer>Footer</Footer>
           </Layout>
         </Layout>

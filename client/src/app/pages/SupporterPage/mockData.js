@@ -14,11 +14,11 @@ import {
 
 const { Text } = Typography;
 
-const dataSource = Array.from(Array(50).keys()).map(i => ({
+const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
   personal_id: `${'20220730' + i}`,
   full_name: '荒木 雄大',
-  attributes: ['abc', ['xyz']],
+  attributes: ['abc', 'xyz'],
   email: `danghoangthien+${i}@gmail.com`,
   phone: `${'0938354758' + i}`,
   recent_donation: '3,000円',
@@ -85,8 +85,8 @@ const getRenderColumns = () => {
 
 const pagination = {
   current_page: 1,
-  limit: 5,
-  total_items: 50,
+  limit: 50,
+  total_items: 500,
   total_page: 10,
 };
 

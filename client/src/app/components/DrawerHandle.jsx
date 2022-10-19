@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { Drawer } from 'antd';
 
-const DrawerHandle = ({ children, drawerTitle, drawerComponent, isOpen = false }) => {
+const DrawerHandle = ({
+  children,
+  drawerTitle,
+  drawerComponent,
+  onDrawerClose,
+  isOpen = false,
+}) => {
   const [open, setOpen] = useState(isOpen);
   return (
     <>
@@ -16,7 +22,10 @@ const DrawerHandle = ({ children, drawerTitle, drawerComponent, isOpen = false }
         width="550"
         title={drawerTitle || 'Drawer'}
         placement="right"
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          setOpen(false);
+          onDrawerClose();
+        }}
         visible={open}
       >
         {drawerComponent}
