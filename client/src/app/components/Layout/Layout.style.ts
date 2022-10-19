@@ -16,9 +16,19 @@ export const StyledSidebar = styled.div<{}>`
   & .sidebar-link {
     text-decoration: none;
     color: #000;
+    display: flex;
+    align-items: center;
   }
   & .sidebar-link:hover {
     cursor: pointer;
+  }
+
+  & .sidebar-wrapper {
+    padding: 16px 24px;
+  }
+
+  & .menu-txt {
+    margin-left: 10px;
   }
 `;
 
