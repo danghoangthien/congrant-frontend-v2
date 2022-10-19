@@ -4,19 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Button, Modal, Checkbox, Select } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
 
-import { columnMap, COLUMN_SETTING_LOCALSTORAGE } from '../mockData';
-import { getWithExpiry, setWithExpiry } from 'utils/localStorageHandler';
-import '../Models/index.js';
+import { setWithExpiry } from 'utils/localStorageHandler';
 
-const model_settings = {
-  supporterList: {
-    columnMap,
-    localstorageKey: COLUMN_SETTING_LOCALSTORAGE,
-  },
-};
-
-const TableSetting = ({ model }) => {
-  const { localstorageKey, columnMap: _columnMap } = model_settings[model];
+const TableSetting = ({ model, columnMap, localstorageKey }) => {
   const dispatch = useDispatch();
   const { column_setting } = useSelector(state => state[model]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,10 +23,10 @@ const TableSetting = ({ model }) => {
   };
 
   const renderColumns = () => {
-    return Object.keys(_columnMap).map(columnName => {
+    return Object.keys(columnMap).map(columnName => {
       return (
         <Col className="mb-2">
-          <Checkbox value={columnName}>{_columnMap[columnName].title}</Checkbox>
+          <Checkbox value={columnName}>{columnMap[columnName].title}</Checkbox>
         </Col>
       );
     });
@@ -55,9 +45,9 @@ const TableSetting = ({ model }) => {
 
   const onReset = () => {
     //console.log('onReset', true);
-    setWithExpiry(localstorageKey, Object.keys(_columnMap), 9_000_000_000);
+    setWithExpiry(localstorageKey, Object.keys(columnMap), 9_000_000_000);
     dispatch[model].setData({
-      column_setting: Object.keys(_columnMap),
+      column_setting: Object.keys(columnMap),
     });
   };
 

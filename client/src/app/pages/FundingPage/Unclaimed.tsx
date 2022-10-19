@@ -2,15 +2,29 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Button, Badge, Input, Row } from 'antd';
-import ReceivedTable from './components/ReceivedTable';
+import Table from 'app/components/Table';
 import Filters from './components/Filters';
-import { PayCircleOutlined, SearchOutlined, FilterOutlined } from '@ant-design/icons';
+import { PayCircleOutlined, SearchOutlined, MailOutlined } from '@ant-design/icons';
 import { FundingPageLayout } from './FundingPage.style';
-import { getRenderColumns } from './mockData';
+import * as metaData from './mockData';
+import './Models/unclaimed';
+
+const MailButton = ({ selectedRowKeys }) => {
+  return (
+    <Button
+      className="ml-5"
+      icon={<MailOutlined />}
+      onClick={() => {
+        console.log('selectedRowKeys', selectedRowKeys);
+      }}
+    >
+      {'メールを送る'}
+    </Button>
+  );
+};
 
 const FundingPage = (): JSX.Element => {
-  const url = window.location.pathname?.split('/');
-  const [filterOpen, setFilterOpen] = useState(false);
+  const [filterOpen] = useState(false);
 
   const renderPageTitle = (): JSX.Element => {
     return (
@@ -56,7 +70,12 @@ const FundingPage = (): JSX.Element => {
           <Filters open={filterOpen} />
         </div>
         <div className="item">
-          <ReceivedTable model="unclaimedFundingList" getRenderColumns={getRenderColumns} />
+          <Table
+            model="unclaimedFundingList"
+            metaData={metaData}
+            Detail={<></>}
+            selectedItemsActions={[MailButton]}
+          />
         </div>
       </FundingPageLayout>
     </>

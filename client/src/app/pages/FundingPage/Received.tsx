@@ -1,18 +1,29 @@
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { translations } from 'locales/translations';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-
-import ReceivedTable from './components/ReceivedTable';
+import Table from 'app/components/Table';
 import Filters from './components/Filters';
-import { PayCircleOutlined, SearchOutlined, FilterOutlined } from '@ant-design/icons';
+import { PayCircleOutlined, SearchOutlined, FilterOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Badge, Input, Row } from 'antd';
-import { getRenderColumns } from './mockDataReceived';
 import { FundingPageLayout } from './FundingPage.style';
+import * as metaData from './mockDataReceived';
+import './Models/received';
+
+const MailButton = ({ selectedRowKeys }) => {
+  return (
+    <Button
+      className="ml-5"
+      icon={<MailOutlined />}
+      onClick={() => {
+        console.log('selectedRowKeys', selectedRowKeys);
+      }}
+    >
+      {'メールを送る'}
+    </Button>
+  );
+};
 
 const FundingPage = (): JSX.Element => {
-  const url = window.location.pathname?.split('/');
   const [filterOpen, setFilterOpen] = useState(false);
 
   const renderPageTitle = (): JSX.Element => {
@@ -65,7 +76,12 @@ const FundingPage = (): JSX.Element => {
           <Filters open={filterOpen} />
         </div>
         <div className="item">
-          <ReceivedTable model="receivedFundingList" getRenderColumns={getRenderColumns} />
+          <Table
+            model="receivedFundingList"
+            metaData={metaData}
+            Detail={<></>}
+            selectedItemsActions={[MailButton]}
+          />
         </div>
       </FundingPageLayout>
     </>

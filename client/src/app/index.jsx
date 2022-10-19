@@ -17,12 +17,13 @@ import HomePage from './pages/HomePage';
 import FundingPage from './pages/FundingPage';
 import EditorPage from './pages/EditorPage';
 import SupporterPage from './pages/SupporterPage';
+import SupporterNamingPage from './pages/SupporterPage/Naming';
+import SupporterNamingDetailPage from './pages/SupporterPage/NamingDetail';
+import GroupSupporterPage from './pages/GroupSupporterPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-import { URL } from 'utils/constant';
 import { useTranslation } from 'react-i18next';
 import CkeditorPage from './pages/CkeditorPage';
-import CkeditorClassicPage from './pages/CkeditorClassicPage';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -48,6 +49,15 @@ export function App() {
             </Route>
             <Route path={process.env.PUBLIC_URL + '/supporter'}>
               <SupporterPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/supporter-naming'}>
+              <SupporterNamingPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/supporter-naming-detail'}>
+              <SupporterNamingDetailPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/group-supporter'}>
+              <GroupSupporterPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/editor'}>
               <EditorPage />

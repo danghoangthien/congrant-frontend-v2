@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import { createCsvDownload } from 'utils/helper';
-import { columnMap } from '../mockData';
 
-const Download = ({ model }) => {
+const Download = ({ model, columnMap, fileName }) => {
   const dispatch = useDispatch();
   const { download_items } = useSelector(state => state[model]);
   const {
@@ -45,8 +44,8 @@ const Download = ({ model }) => {
     const csvData = parseCSVData();
     const header = parseCsvHeader();
     console.log('header', header);
-    const fileName = `supporter_list.csv`;
-    createCsvDownload(header, csvData, fileName);
+    const file = `${fileName || 'download'}.csv`;
+    createCsvDownload(header, csvData, file);
   };
   const download = async () => {
     dispatch[model].download(query);

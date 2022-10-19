@@ -1,27 +1,21 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Table, Row, Col, Pagination, Button, Checkbox, Select } from 'antd';
+import { Card, Table, Row, Col, Pagination, Button, Checkbox, Select, Space } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import { push } from 'connected-react-router';
-
-import { useHistory } from 'react-router-dom';
-import TableSetting from './TableSetting';
 import Download from './Download';
-import { getRenderColumns } from '../mockData';
-import '../Models/index';
-import DrawerHandle from '../../../components/DrawerHandle';
-import Detail from './Detail';
+import TableSetting from './TableSetting';
+import DrawerHandle from 'app/components/DrawerHandle';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
-let columns = getRenderColumns();
 
-const SupporterTable = ({ model }) => {
+const DataTable = ({ model, metaData, Detail, selectedItemsActions = [] }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   console.log('selectedRowKeys', selectedRowKeys);
   const { items, pagination, column_setting } = useSelector(state => state[model]);
-
+  let columns = metaData.getRenderColumns();
   const {
     location: { query, pathname, search },
   } = useSelector(state => state.router);
@@ -35,7 +29,7 @@ const SupporterTable = ({ model }) => {
 
   useEffect(() => {
     if (column_setting !== null) {
-      columns = getRenderColumns();
+      columns = metaData.getRenderColumns();
       dispatch[model].list(query);
     }
   }, [column_setting]);
@@ -76,7 +70,6 @@ const SupporterTable = ({ model }) => {
   }
 
   const renderPagination = () => {
-    console.log('pagination', pagination);
     return (
       <Pagination
         className="decoupled-pagination"
@@ -99,13 +92,17 @@ const SupporterTable = ({ model }) => {
       <Row className="mb-5">
         <Col sm={24} md={12} lg={10}>
           <span className="table-title mr-4">{'受領済み寄付一覧'}</span>
-          <Download model={model} />
+          <Download model={model} columnMap={metaData.columnMap} />
         </Col>
         <Col sm={24} md={12} lg={14}>
           <Row align="middle" justify="end">
             <Col className="mr-4">{renderPagination()}</Col>
             <Col className="text-center">
-              <TableSetting model={model} />
+              <TableSetting
+                model={model}
+                columnMap={metaData.columnMap}
+                localstorageKey={metaData.COLUMN_SETTING_LOCALSTORAGE}
+              />
             </Col>
           </Row>
         </Col>
@@ -130,9 +127,9 @@ const SupporterTable = ({ model }) => {
               全件選択
             </Checkbox>
             <span className="ml-5">{hasSelected ? `${selectedRowKeys.length} 件選択中` : ''}</span>
-            <Button className="ml-5" icon={<MailOutlined />}>
-              {'メールを送る'}
-            </Button>
+            {selectedItemsActions.map(Component => {
+              return <Component selectedRowKeys={selectedRowKeys} />;
+            })}
             <Select
               className="ml-5"
               defaultValue={{
@@ -183,4 +180,4 @@ const SupporterTable = ({ model }) => {
   );
 };
 
-export default SupporterTable;
+export default DataTable;
