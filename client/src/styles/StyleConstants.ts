@@ -15,4 +15,5 @@ export enum ScreenSizes {
   xlarge = '1920px',
 }
 
-export const PRIMARY_COLOR = '#63B233';
+export const PRIMARY_COLOR = '#63b233';
+export const WARNING_COLOR = '#ff4d4f';

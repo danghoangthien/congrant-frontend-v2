@@ -7,17 +7,6 @@ export const SupporterPageLayout = styled.div`
     flex-shrink: 0;
     flex-grow: 1;
   }
-  & .ant-pagination-item,
-  .ant-pagination-total-text {
-    height: 22px;
-  }
-  & .ant-pagination-item {
-    border-color: white;
-    min-width: 22px;
-  }
-  & .ant-pagination-item-link {
-    border-color: white;
-  }
   & .ant-pagination-item-active {
     a {
       color: ${PRIMARY_COLOR};

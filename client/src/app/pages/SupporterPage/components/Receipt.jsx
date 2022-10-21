@@ -9,34 +9,18 @@ import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
 const Title = ({ title }) => {
   return (
     <Row className="my-5">
-      <Col sm={24} md={24} lg={24}>
-        <h3 className="bold display-inline-flex">
-          <StyledPrimaryIcon>
-            <MinusOutlined className="display-inline-flex bold mr-2" />
-          </StyledPrimaryIcon>
-          {title}
-        </h3>
+      <Col>
+        <h3 className="supporter-detail-ttl">{title}</h3>
       </Col>
     </Row>
   );
 };
 
-const BoldLabel = ({ label }) => {
-  return <span className="bold">{label}</span>;
-};
-
-const CopiableText = ({ children }) => {
+const ReceiptTitle = ({ title }) => {
   return (
-    <Row className="mt-2">
-      <Col sm={24} md={12} lg={12}>
-        {children}
-      </Col>
-      <Col type="flex" align="right" sm={24} md={12} lg={12}>
-        <CopyOutlined
-          className="display-inline-flex"
-          style={{ color: '#c0c0c0' }}
-          onClick={() => {}}
-        />
+    <Row className="my-5">
+      <Col>
+        <h3 className="supporter-detail-ttl -sml">{title}</h3>
       </Col>
     </Row>
   );
@@ -54,34 +38,33 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
         </StyledBadgeDot>
       ),
     },
-    frequency: {
-      title: '頻度',
-      dataIndex: 'frequency',
-      render: frequency => <Tag color="green">{frequency}</Tag>,
+    issue_date: {
+      title: '発行日',
+      dataIndex: 'issue_date',
     },
-    plan: {
-      title: 'プラン',
-      dataIndex: 'plan',
+    receipt_id: {
+      title: '領収書ID',
+      dataIndex: 'receipt_id',
     },
-    amount: {
-      title: '金額',
-      dataIndex: 'amount',
+    action: {
+      title: 'アクション',
+      dataIndex: 'action',
     },
   };
   const dataSource = [
     {
       key: '1',
       status: '継続中',
-      frequency: '毎月',
-      plan: 'ゴールドサポーター',
-      amount: '10,000円/月',
+      issue_date: '2021-01-15',
+      receipt_id: '2022-123456',
+      action: '-',
     },
     {
       key: '2',
       status: '継続中',
-      frequency: '毎月',
-      plan: 'ゴールドサポーター',
-      amount: '10,000円/月',
+      issue_date: '2021-01-15',
+      receipt_id: '2022-123456',
+      action: '-',
     },
   ];
   const columns = Object.keys(columnMap).map(columnName => {
@@ -89,8 +72,10 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
   });
   return (
     <Table
+      className="detail-table"
       dataSource={dataSource}
       columns={columns}
+      pagination={false}
       onRow={(record, rowIndex) => {
         return {
           onClick: event => {
@@ -114,34 +99,33 @@ const ListModeContent = ({ data, mode, setMode }) => {
         </StyledBadgeDot>
       ),
     },
-    frequency: {
-      title: '頻度',
-      dataIndex: 'frequency',
-      render: frequency => <Tag color="green">{frequency}</Tag>,
+    issue_date: {
+      title: '発行日',
+      dataIndex: 'issue_date',
     },
-    plan: {
-      title: 'プラン',
-      dataIndex: 'plan',
+    receipt_id: {
+      title: '領収書ID',
+      dataIndex: 'receipt_id',
     },
-    amount: {
-      title: '金額',
-      dataIndex: 'amount',
+    action: {
+      title: 'アクション',
+      dataIndex: 'action',
     },
   };
   const dataSource = [
     {
       key: '1',
       status: '継続中',
-      frequency: '毎月',
-      plan: 'ゴールドサポーター',
-      amount: '10,000円/月',
+      issue_date: '2021-01-15',
+      receipt_id: '2022-123456',
+      action: '-',
     },
     {
       key: '2',
       status: '継続中',
-      frequency: '毎月',
-      plan: 'ゴールドサポーター',
-      amount: '10,000円/月',
+      issue_date: '2021-01-15',
+      receipt_id: '2022-123456',
+      action: '-',
     },
   ];
   const columns = Object.keys(columnMap).map(columnName => {
@@ -149,8 +133,10 @@ const ListModeContent = ({ data, mode, setMode }) => {
   });
   return (
     <Table
+      className="detail-table"
       dataSource={dataSource}
       columns={columns}
+      pagination={false}
       onRow={(record, rowIndex) => {
         return {
           onClick: event => {
@@ -170,9 +156,10 @@ const Receipt = ({ data }) => {
     <>
       {mode === LIST_MODE && (
         <>
-          <Title title="年間領収書" />
-          <AnnualListModeContent {...{ data, mode, setMode }} />
           <Title title="領収書" />
+          <ReceiptTitle title="合算領収書" />
+          <AnnualListModeContent {...{ data, mode, setMode }} />
+          <ReceiptTitle title="都度領収書" />
           <ListModeContent {...{ data, mode, setMode }} />
         </>
       )}

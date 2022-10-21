@@ -9,6 +9,12 @@ const DrawerHandle = ({
   isOpen = false,
 }) => {
   const [open, setOpen] = useState(isOpen);
+
+  const onClose = () => {
+    setOpen(false);
+    onDrawerClose();
+  };
+
   return (
     <>
       <span
@@ -19,13 +25,11 @@ const DrawerHandle = ({
         {children}
       </span>
       <Drawer
-        width="550"
-        title={drawerTitle || 'Drawer'}
+        closable={false}
+        width="50%"
+        // title={drawerTitle || 'Drawer'}
         placement="right"
-        onClose={() => {
-          setOpen(false);
-          onDrawerClose();
-        }}
+        onClose={onClose}
         visible={open}
       >
         {drawerComponent}

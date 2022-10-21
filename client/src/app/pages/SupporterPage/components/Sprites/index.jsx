@@ -8,7 +8,7 @@ export const BoldLabel = ({ label }) => {
 
 export const CopiableText = ({ children }) => {
   return (
-    <Row className="mt-2">
+    <Row>
       <Col sm={24} md={12} lg={12}>
         {children}
       </Col>

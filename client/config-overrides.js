@@ -16,6 +16,34 @@ module.exports = function override(config) {
     new webpack.ProvidePlugin({
       process: 'process/browser',
       Buffer: ['buffer', 'Buffer'],
+      rules: [
+        {
+          test: /\.less$/,
+          use: [
+            {
+              loader: 'style-loader',
+            },
+            {
+              loader: 'css-loader', // translates CSS into CommonJS
+            },
+            {
+              loader: 'less-loader', // compiles Less to CSS
+              options: {
+                lessOptions: {
+                  // If you are using less-loader@5 please spread the lessOptions to options directly
+                  modifyVars: {
+                    'primary-color': '#1DA57A',
+                    'link-color': '#1DA57A',
+                    'border-radius-base': '10px',
+                  },
+                  javascriptEnabled: true,
+                },
+              },
+            },
+          ],
+          // ...other rules
+        },
+      ],
     }),
   ]);
   return config;

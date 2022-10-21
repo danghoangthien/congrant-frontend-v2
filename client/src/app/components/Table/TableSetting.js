@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Button, Modal, Checkbox, Select } from 'antd';
-import { SettingOutlined } from '@ant-design/icons';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import { setWithExpiry } from 'utils/localStorageHandler';
 
@@ -10,6 +10,7 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
   const dispatch = useDispatch();
   const { column_setting } = useSelector(state => state[model]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -25,7 +26,7 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
   const renderColumns = () => {
     return Object.keys(columnMap).map(columnName => {
       return (
-        <Col className="mb-2">
+        <Col span={6} className="mb-2">
           <Checkbox value={columnName}>{columnMap[columnName].title}</Checkbox>
         </Col>
       );
@@ -57,8 +58,11 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
 
   return (
     <>
-      <Button icon={<SettingOutlined />} onClick={showModal}>
-        表示設定
+      <Button onClick={showModal}>
+        <Row align="middle">
+          <SettingsIcon className="mr-2" style={{ width: '16px' }} />
+          表示設定
+        </Row>
       </Button>
       <Modal
         title="表示設定"
@@ -71,58 +75,37 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
         okText="保存する"
       >
         <Row className="mb-8">
-          <Col sm={24} md={20} lg={24}>
-            <h3 className="bold">{'表示設定'}</h3>
+          <Col span={24} className="mb-2">
+            <div style={{ fontSize: '14px', color: 'rgba(0, 0, 0, 0.5)' }} className="bold">
+              {'表示件数'}
+            </div>
           </Col>
-          <Col sm={24} md={24} lg={24}>
+          <Col span={24}>
             <Select
               defaultValue={{
                 value: '1',
               }}
               style={{
-                width: 65,
+                width: '100%',
               }}
               onChange={onSelectChange}
             >
-              <Select.Option value="1">1</Select.Option>
+              <Select.Option value="1">50件</Select.Option>
             </Select>
           </Col>
         </Row>
-        <Row className="mb-3">
-          <Col sm={24} md={20} lg={20}>
-            <h3 className="bold">{'表示項目'}</h3>
+        <Row className="mb-3" align="middle" justify="space-between">
+          <Col>
+            <div style={{ fontSize: '14px' }} className="bold">
+              {'表示項目'}
+            </div>
           </Col>
-          <Col type="flex" align="right" sm={24} md={4} lg={4}>
+          <Col>
             <Button onClick={onReset}>{'リセット'}</Button>
           </Col>
         </Row>
-        <Row className="mb-3">
-          <Col sm={24} md={24} lg={20}>
-            <span>{'基本項目'}</span>
-          </Col>
-        </Row>
         <Row className="mb-8">
-          <Col sm={24} md={24} lg={24}>
-            <Checkbox.Group
-              key={Math.random()}
-              style={{
-                width: '100%',
-              }}
-              onChange={onCheckboxGroupChange}
-              defaultValue={column_setting}
-            >
-              <Row>{renderColumns()}</Row>
-            </Checkbox.Group>
-          </Col>
-        </Row>
-
-        <Row className="mb-3">
-          <Col sm={24} md={24} lg={20}>
-            <span>{'カスタム項目'}</span>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={24} md={24} lg={24}>
+          <Col span={24}>
             <Checkbox.Group
               key={Math.random()}
               style={{
