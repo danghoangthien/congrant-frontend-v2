@@ -6,13 +6,10 @@ import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail from './components/Detail';
-import {
-  PayCircleOutlined,
-  SearchOutlined,
-  FilterOutlined,
-  MailOutlined,
-  PlusOutlined,
-} from '@ant-design/icons';
+import { SearchOutlined, MailOutlined, PlusOutlined } from '@ant-design/icons';
+import PersonIcon from '@mui/icons-material/Person';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+
 import { Button, Input, Row, Col, Badge } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 
@@ -39,7 +36,7 @@ const SupporterPage = () => {
     return (
       <>
         <Helmet>
-          <title>{'Supporter management'}</title>
+          <title>{'個人サポーター'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -50,31 +47,46 @@ const SupporterPage = () => {
     <>
       {renderPageTitle()}
       <SupporterPageLayout>
-        <div className="item mx-8 my-8">
-          <Row>
-            <Col sm={24} md={12} lg={12}>
-              <span className="page-title">
-                <PayCircleOutlined className="display-inline-flex" />
-              </span>
-              <span className="ml-1 page-title">{'個人サポーター'}</span>
-              <Input
-                className="ml-3 free-search"
-                placeholder="フリーワード検索"
-                prefix={<SearchOutlined />}
-              />
-              <Button
-                className="ml-1"
-                icon={<FilterOutlined />}
-                onClick={() => setFilterOpen(!filterOpen)}
-              >
-                {'フィルタ'}
-              </Button>
+        <div className="item mb-7">
+          <Row justify="space-between" align="middle">
+            {/* 左の部分・Left Part */}
+            <Col>
+              <Row type="flex" align="middle">
+                <Col className="mr-6">
+                  <span className="page-title">
+                    <PersonIcon style={{ fontSize: '32px' }} />
+                    <span className="ml-1 page-title">{'個人サポーター'}</span>
+                  </span>
+                </Col>
+                <Col className="mr-2">
+                  <Input
+                    className="free-search"
+                    placeholder="フリーワード検索"
+                    prefix={<SearchOutlined />}
+                  />
+                </Col>
+                <Col>
+                  <Button
+                    className="filter-button"
+                    icon={<FilterAltIcon />}
+                    onClick={() => setFilterOpen(!filterOpen)}
+                  >
+                    {'フィルタ'}
+                  </Button>
+                </Col>
+              </Row>
             </Col>
-            <Col type="flex" align="right" sm={24} md={12} lg={12}>
-              <Link className="sidebar-link" to={`/supporter-naming`}>
+
+            {/* 右の部分・Right Part */}
+            <Col>
+              <Link to={`/supporter-naming`}>
                 <Button>
                   <span>{'名寄せ候補'}</span>
-                  <Badge className="ml-1 display-inline-flex pb-1" count={99}></Badge>
+                  <Badge
+                    className="ml-1 display-inline-flex pb-1"
+                    style={{ backgroundColor: '#c72a32' }}
+                    count={99}
+                  ></Badge>
                 </Button>
               </Link>
               <Button className="active ml-2" type="primary">
@@ -84,11 +96,16 @@ const SupporterPage = () => {
             </Col>
           </Row>
         </div>
+
+        {/* フィルター・Filter */}
         <div className="item">
           <Filters open={filterOpen} />
         </div>
+
+        {/* ページコンテンツ・Page Content */}
         <div className="item">
           <Table
+            TableName="個人サポーター一覧"
             model="supporterList"
             metaData={metaData}
             Detail={Detail}

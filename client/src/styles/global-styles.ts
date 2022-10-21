@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import { createGlobalStyle } from 'styled-components';
 
-import { StyleConstants, ScreenSizes, PRIMARY_COLOR } from 'styles/StyleConstants';
+import { StyleConstants, ScreenSizes, PRIMARY_COLOR, WARNING_COLOR } from 'styles/StyleConstants';
 /* istanbul ignore next */
 export const GlobalStyle = createGlobalStyle`
   html,
@@ -25,22 +25,15 @@ export const GlobalStyle = createGlobalStyle`
     display: inline-flex;
     align-items: center;
   }
-
-  .ant-pagination-prev .ant-pagination-item-link,
-  .ant-pagination-next .ant-pagination-item-link,
-  .ant-pagination-item, .ant-pagination-total-text  {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
   & .display-inline-flex {
     display: inline-flex;
   }
-  .ant-layout-content {
+  .ant-layout {
     background: #F4F6F7;
   }
   .ant-table-thead>tr>th {
     font-weight: 700;
+    border-top: 1px solid transparent
   }
   .common-table-wrapper {
     position: relative;
@@ -54,16 +47,67 @@ export const GlobalStyle = createGlobalStyle`
   .bold {
     font-weight: 700;
   }
+
+  // buttons
+  .filter-button {
+    display: flex;
+    align: center;
+
+    >svg {
+      width: 16px;
+      margin-right: 10px;
+    }
+  }
+
+  .action-btn {
+    padding: 0px 10px;
+  }
+
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+
+    >svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+  }
+
+  .icon-only-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0px 7px;
+
+    >svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // input label
+  .ant-form-item-label>label {
+    color: rgba(0,0,0,0.5);
+    font-weight: 600;
+  }
+
+  // tab
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    text-shadow: none;
+    font-weight: 600;
+  }
 `;
 
 export const StyledPrimaryIcon = styled.span`
-  & .anticon {
+  & .anticon,
+  svg {
     color: ${PRIMARY_COLOR};
   }
 `;
 
 export const StyledWarningIcon = styled.span`
-  & .anticon {
-    color: #ff4d4f;
+  & .anticon,
+  svg {
+    color: ${WARNING_COLOR};
   }
 `;

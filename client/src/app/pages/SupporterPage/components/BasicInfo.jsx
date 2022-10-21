@@ -16,6 +16,7 @@ import { DescriptionStyle } from './BasicInfo.style';
 import { EditOutlined, SaveOutlined } from '@ant-design/icons';
 import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const dateFormat = 'YYYY-MM-DD';
 const BasicInfoTitle = ({ mode, setMode }) => {
@@ -24,10 +25,14 @@ const BasicInfoTitle = ({ mode, setMode }) => {
     if (mode === DETAIL_MODE) {
       return (
         <>
-          <Button icon={<EditOutlined />} type="primary" onClick={() => setMode(EDIT_MODE)}>
-            {'編集'}
-          </Button>
-          <Button className="ml-2">{'...'}</Button>
+          <Row align="middle">
+            <Button icon={<EditOutlined />} type="primary" onClick={() => setMode(EDIT_MODE)}>
+              {'編集'}
+            </Button>
+            <Button className="ml-2 icon-only-btn">
+              <MoreHorizIcon />
+            </Button>
+          </Row>
         </>
       );
     } else {
@@ -42,13 +47,11 @@ const BasicInfoTitle = ({ mode, setMode }) => {
     }
   };
   return (
-    <Row className="mt-2">
-      <Col sm={24} md={12} lg={12}>
-        <h3 className="bold">{'基本情報'}</h3>
+    <Row justify="space-between" align="middle" className="mt-4 mb-3">
+      <Col>
+        <h3 className="supporter-detail-ttl">{'基本情報'}</h3>
       </Col>
-      <Col type="flex" align="right" sm={24} md={12} lg={12}>
-        {actionByMode(mode)}
-      </Col>
+      <Col>{actionByMode(mode)}</Col>
     </Row>
   );
 };
@@ -214,7 +217,7 @@ const BasicInfo = ({ data }) => {
   console.log('BasicInfo mode', mode);
   return (
     <>
-      {mode == DETAIL_MODE ? (
+      {mode === DETAIL_MODE ? (
         <ViewModeContent data={data} mode={mode} setMode={setMode} />
       ) : (
         <EditModeContent data={data} mode={mode} setMode={setMode} />

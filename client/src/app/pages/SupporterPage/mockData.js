@@ -1,4 +1,4 @@
-import { Typography, Tag, Button } from 'antd';
+import { Typography, Tag } from 'antd';
 
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
@@ -11,8 +11,6 @@ import {
   RECEIPT_STATUSES,
   DONATION_TYPE_COLORS,
 } from './consts';
-
-const { Text } = Typography;
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
@@ -30,7 +28,49 @@ const columnMap = {
     title: '個人ID',
     render: row => (
       <DrawerHandle drawerTitle={row.full_name} drawerComponent={<Detail data={row} />}>
-        <Button type="link">{row.personal_id} </Button>
+        {row.personal_id}
+      </DrawerHandle>
+    ),
+    csvOutput: ({ personal_id }) => personal_id,
+  },
+  full_name: {
+    title: '氏名',
+    dataIndex: 'full_name',
+    csvOutput: full_name => full_name,
+  },
+  attributes: {
+    title: '属性',
+    render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
+    csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
+  },
+  email: {
+    title: 'メールアドレス',
+    dataIndex: 'email',
+    csvOutput: email => email,
+  },
+  phone: {
+    title: '電話番号',
+    dataIndex: 'phone',
+    csvOutput: phone => phone,
+  },
+  recent_donation: {
+    title: '直近の寄付',
+    dataIndex: 'recent_donation',
+    csvOutput: recent_donation => recent_donation,
+  },
+  cumulative_donation: {
+    title: '累計寄付',
+    dataIndex: 'cumulative_donation',
+    csvOutput: cumulative_donation => cumulative_donation,
+  },
+};
+
+const columnMap2 = {
+  personal_id: {
+    title: '個人ID',
+    render: row => (
+      <DrawerHandle drawerTitle={row.full_name} drawerComponent={<Detail data={row} />}>
+        {row.personal_id}
       </DrawerHandle>
     ),
     csvOutput: ({ personal_id }) => personal_id,
@@ -90,4 +130,11 @@ const pagination = {
   total_page: 10,
 };
 
-export { getRenderColumns, dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap };
+export {
+  getRenderColumns,
+  dataSource,
+  pagination,
+  COLUMN_SETTING_LOCALSTORAGE,
+  columnMap,
+  columnMap2,
+};

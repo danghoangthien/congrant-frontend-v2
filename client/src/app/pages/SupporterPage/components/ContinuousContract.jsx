@@ -8,14 +8,9 @@ import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
 
 const Title = () => {
   return (
-    <Row className="mt-2">
-      <Col sm={24} md={24} lg={24}>
-        <h3 className="bold">
-          <StyledPrimaryIcon>
-            <MinusOutlined className="display-inline-flex bold mr-2" />
-          </StyledPrimaryIcon>
-          {'基本情報'}
-        </h3>
+    <Row className="mt-4 mb-8">
+      <Col>
+        <h3 className="supporter-detail-ttl">{'継続契約'}</h3>
       </Col>
     </Row>
   );
@@ -70,6 +65,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
     <Table
       dataSource={dataSource}
       columns={columns}
+      pagination={false}
       onRow={(record, rowIndex) => {
         return {
           onClick: event => {

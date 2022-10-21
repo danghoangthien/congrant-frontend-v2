@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
-import { StyleConstants, ScreenSizes, PRIMARY_COLOR } from 'styles/StyleConstants';
 
-export const DescriptionStyle = styled.div`
+export const DonationStyle = styled.div`
   & .ant-descriptions-item-label {
     width: 160px;
   }

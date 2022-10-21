@@ -5,25 +5,25 @@ import { CopyOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import DonationDetail from './DonationDetail';
 import DonationEdit from './DonationEdit';
 import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import { DonationStyle } from './Donation.style';
+import AddIcon from '@mui/icons-material/Add';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const Title = ({ mode, setMode }) => {
   return (
-    <Row className="my-5">
-      <Col sm={24} md={12} lg={12}>
-        <h3 className="bold display-inline-flex">
-          <StyledPrimaryIcon>
-            <MinusOutlined className="display-inline-flex bold mr-2" />
-          </StyledPrimaryIcon>
-          {'基本情報'}
-        </h3>
+    <Row justify="space-between" align="middle" className="mt-4 mb-8">
+      <Col>
+        <h3 className="supporter-detail-ttl">{'寄付決済'}</h3>
       </Col>
-      <Col type="flex" align="right" sm={24} md={12} lg={12}>
-        <>
-          <Button icon={<PlusOutlined />} type="primary">
-            {'追加'}
+      <Col>
+        <Row align="middle">
+          <Button className="icon-btn" icon={<AddIcon />} type="primary">
+            {'寄付の登録'}
           </Button>
-          <Button className="ml-2">{'...'}</Button>
-        </>
+          <Button className="ml-2 icon-only-btn">
+            <MoreHorizIcon />
+          </Button>
+        </Row>
       </Col>
     </Row>
   );
@@ -95,6 +95,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
       <Table
         dataSource={dataSource}
         columns={columns}
+        pagination={false}
         onRow={(record, rowIndex) => {
           return {
             onClick: event => {
@@ -115,8 +116,10 @@ const Donation = ({ data }) => {
     <>
       {mode === LIST_MODE && (
         <>
-          <Title />
-          <ListModeContent {...{ data, mode, setMode }} />
+          <DonationStyle>
+            <Title />
+            <ListModeContent {...{ data, mode, setMode }} />
+          </DonationStyle>
         </>
       )}
       {mode === DETAIL_MODE && <DonationDetail {...{ data, mode, setMode }} />}

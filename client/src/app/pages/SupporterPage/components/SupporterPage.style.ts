@@ -7,27 +7,12 @@ export const SupporterPageLayout = styled.div`
     flex-shrink: 0;
     flex-grow: 1;
   }
-  & .ant-pagination-item,
-  .ant-pagination-total-text {
-    height: 22px;
-  }
-  & .ant-pagination-item {
-    border-color: white;
-    min-width: 22px;
-  }
-  & .ant-pagination-item-link {
-    border-color: white;
-  }
-  & .ant-pagination-item-active {
-    a {
-      color: ${PRIMARY_COLOR};
-    }
-    border-color: ${PRIMARY_COLOR} !important;
-  }
-  & .decoupled-pagination {
-    text-align: right;
-  }
-
+  // & .ant-pagination-item-active {
+  //   a {
+  //     color: ${PRIMARY_COLOR};
+  //   }
+  //   border-color: ${PRIMARY_COLOR} !important;
+  // }
   & .ant-card {
     border-radius: 10px;
   }
@@ -56,8 +41,10 @@ export const SupporterPageLayout = styled.div`
     width: 200px;
   }
   & .page-title {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
+    display: flex;
+    align-items: center;
   }
   & .switch-btn {
     .ant-btn {
