@@ -79,7 +79,7 @@ const SupporterPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={`/supporter-naming`}>
+              <Link to={`/individuals-naming`}>
                 <Button>
                   <span>{'名寄せ候補'}</span>
                   <Badge

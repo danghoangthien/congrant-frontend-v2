@@ -51,7 +51,7 @@ const FundingPage = (): JSX.Element => {
               <Button className="active" type="primary">
                 {'受領済み'}
               </Button>
-              <Link className="sidebar-link" to={`/funding/unclaimed`}>
+              <Link className="sidebar-link" to={`/donations/unclaimed`}>
                 <Button>
                   <span>{'未受領'}</span>
                   <Badge className="ml-1 display-inline-flex pb-1" count={99}></Badge>

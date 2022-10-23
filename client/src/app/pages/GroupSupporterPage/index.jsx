@@ -91,7 +91,7 @@ const GroupSupporterPage = () => {
           <Table
             model="groupSupporterList"
             metaData={metaData}
-            Detail={<></>}
+            Detail={null}
             selectedItemsActions={[MailButton]}
           />
         </div>

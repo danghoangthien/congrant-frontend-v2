@@ -16,7 +16,7 @@ import {
 const { Text } = Typography;
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
-  id: `${i}`,
+  id: `${i + 1}`,
   application_date: `2022-07-30`,
   supporter: `荒木 雄大 ${i}`,
   project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -27,6 +27,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 
 const columnMap = {
   id: {
+    width: 50,
     title: 'ID',
     dataIndex: 'id',
     csvOutput: ({ id }) => id,

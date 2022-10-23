@@ -226,6 +226,21 @@ const AppLayout = ({ children }) => {
                         </HighlightOnActive>
                       </Link>
                     </Col>
+                    {/* 団体設定 */}
+                    <Col className="menu-item" span={24} type="flex" align="left">
+                      <Link className="sidebar-link" to={`/corporation-settings`}>
+                        <HighlightOnActive isActive={isActive(`/corporation-settings`)}>
+                          {collapsed ? (
+                            <Tooltip title="団体設定" placement="right">
+                              <SettingsIcon />
+                            </Tooltip>
+                          ) : (
+                            <SettingsIcon />
+                          )}
+                          <span className="menu-txt">{'団体設定'}</span>
+                        </HighlightOnActive>
+                      </Link>
+                    </Col>
 
                     {/* Editor.js */}
                     <Col className="menu-item" span={24} type="flex" align="left">

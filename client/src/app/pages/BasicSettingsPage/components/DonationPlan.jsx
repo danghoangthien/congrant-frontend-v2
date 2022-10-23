@@ -25,6 +25,7 @@ const columnMap = {
     dataIndex: 'plan_name',
   },
   amount: {
+    width: 150,
     title: '金額',
     dataIndex: 'amount',
   },
