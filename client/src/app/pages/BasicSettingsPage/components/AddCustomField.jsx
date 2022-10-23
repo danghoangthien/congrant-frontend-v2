@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Button, Radio, Space, Input, Checkbox } from 'antd';
-import { PlusOutlined, InfoCircleFilled, MenuOutlined } from '@ant-design/icons';
+import { PlusOutlined, MenuOutlined } from '@ant-design/icons';
 import {
   SettingsInputContainer,
   SettingLabel,
   SettingInput,
+  SettingInfoLabel,
 } from '../../GroupSettingsPage/components/Sprites';
 import { DraggableInputItem } from './Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
@@ -48,14 +49,7 @@ const AddCustomField = ({ title }) => {
               <SettingInput placeholder={'寄付の使用用途'} />
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer
-            label={
-              <Space align="center">
-                <span>{'団体ロゴ'}</span>
-                <InfoCircleFilled className="display-inline-flex" />
-              </Space>
-            }
-          >
+          <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <TextArea placeholder={'3,000'} />
             </Col>

@@ -1,7 +1,6 @@
 import { Row, Col, Button, Space } from 'antd';
-import { InfoCircleFilled } from '@ant-design/icons';
 import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
-import { SettingsInputContainer, SettingLabel, SettingInput } from './Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInput, SettingInfoLabel } from './Sprites';
 
 const GroupInformation = () => {
   return (
@@ -75,14 +74,7 @@ const GroupInformation = () => {
           <SettingsInputContainer label={<SettingLabel label={'活動カテゴリ'} required />}>
             <SettingInput placeholder={'選択してください'} />
           </SettingsInputContainer>
-          <SettingsInputContainer
-            label={
-              <Space align="center">
-                <span>{'団体ロゴ'}</span>
-                <InfoCircleFilled className="display-inline-flex" />
-              </Space>
-            }
-          >
+          <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
             <StyledUploadPicture style={{ width: '600px' }}>
               <Space direction="vertical" align="center">
                 <span className="upload-picture-title">{'+'}</span>

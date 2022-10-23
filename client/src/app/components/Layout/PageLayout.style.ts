@@ -46,6 +46,11 @@ export const PageLayout = styled.div`
     display: flex;
     align-items: center;
   }
+  & .page-sub-title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
   & .switch-btn {
     .ant-btn {
       border: none;

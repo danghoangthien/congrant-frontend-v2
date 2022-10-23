@@ -1,6 +1,10 @@
-import { Row, Col, Tag, Button, Input, Space, Table, Radio, Checkbox } from 'antd';
-import { EditOutlined, InfoCircleFilled, EyeFilled } from '@ant-design/icons';
-
+import { Row, Col, Button, Space, Table, Radio, Checkbox } from 'antd';
+import { EditOutlined, EyeFilled } from '@ant-design/icons';
+import {
+  SettingsInputContainer,
+  SettingInput,
+  SettingInfoLabel,
+} from '../../GroupSettingsPage/components/Sprites';
 import { StyledUploadPicture, StyledForm } from '../BasicSettingsPage.style';
 import ReceiptTemplate from './ReceiptTemplate';
 
@@ -13,7 +17,6 @@ const dataSource = Array.from(Array(3).keys()).map(i => ({
 
 const columnMap = {
   is_default: {
-    width: 120,
     title: 'デフォルト',
     render: ({ is_default }) => <Radio checked={is_default} />,
   },
@@ -22,7 +25,6 @@ const columnMap = {
     dataIndex: 'name',
   },
   action: {
-    width: 80,
     title: 'アクション',
     render: row => (
       <Space align="center">
@@ -53,15 +55,9 @@ const Receipt = () => {
           </Col>
         </Row>
         <StyledForm>
-          {/*  印影 */}
           <Row className="item mb-5">
-            <Col className="item mb-2" sm={24} md={24} lg={24}>
-              <Space align="center">
-                <span className="form-title">{'印影'}</span>
-                <InfoCircleFilled className="display-inline-flex" />
-              </Space>
-            </Col>
-            <Col className="item mb-2" sm={24} md={24} lg={24}>
+            {/*  印影 */}
+            <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
               <StyledUploadPicture>
                 <div className="upload-picture">
                   <Space direction="vertical" align="center" style={{ width: 'max-content' }}>
@@ -70,35 +66,15 @@ const Receipt = () => {
                   </Space>
                 </div>
               </StyledUploadPicture>
-            </Col>
-          </Row>
-          {/*  認定通知書番号 */}
-          <Row className="item mb-5">
-            <Col className="item mb-2" sm={24} md={24} lg={24}>
-              <Space align="center">
-                <span className="form-title">{'認定通知書番号'}</span>
-                <InfoCircleFilled className="display-inline-flex" />
-              </Space>
-            </Col>
-            <Col className="item mb-2" sm={24} md={24} lg={24}>
-              <Space align="center">
-                <Input placeholder={''} />
-              </Space>
-            </Col>
-          </Row>
-          {/*  認定年月日 */}
-          <Row className="item mb-5">
-            <Col className="item mb-2" sm={24} md={24} lg={24}>
-              <Space align="center">
-                <span className="form-title">{'認定年月日'}</span>
-                <InfoCircleFilled className="display-inline-flex" />
-              </Space>
-            </Col>
-            <Col className="item my-2" sm={24} md={24} lg={24}>
-              <Space align="center">
-                <Input placeholder={''} />
-              </Space>
-            </Col>
+            </SettingsInputContainer>
+            {/*  認定通知書番号 */}
+            <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
+              <SettingInput placeholder={''} />
+            </SettingsInputContainer>
+            {/*  認定年月日 */}
+            <SettingsInputContainer label={<SettingInfoLabel label={'認定年月日'} />}>
+              <SettingInput placeholder={''} />
+            </SettingsInputContainer>
           </Row>
         </StyledForm>
         {/* テンプレート */}
@@ -108,7 +84,7 @@ const Receipt = () => {
           </Col>
         </Row>
         <Row className="item mb-5">
-          <Col className="item mb-2" sm={24} md={20} lg={12}>
+          <Col className="item mb-2" sm={24} md={20} lg={24}>
             <Table dataSource={dataSource} columns={columns} pagination={false} />
           </Col>
         </Row>

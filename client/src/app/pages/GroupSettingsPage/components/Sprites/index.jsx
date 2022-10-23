@@ -4,6 +4,7 @@ import {
   StyledLabel,
   StyledInput,
 } from 'app/components/Layout/SettingsLayout.style';
+import { InfoCircleFilled } from '@ant-design/icons';
 
 const SettingsInputContainer = ({ children, label }) => {
   return (
@@ -18,15 +19,26 @@ const SettingsInputContainer = ({ children, label }) => {
   );
 };
 
-const SettingLabel = ({ label, required }) => (
+const SettingLabel = ({ label, required, info }) => (
   <StyledLabel>
-    {required && <StyledRequired className="mr-1">{'*'}</StyledRequired>}
-    <>{label}</>
+    <Space>
+      {required && <StyledRequired>{'*'}</StyledRequired>}
+      <>{label}</>
+      {info && <>{info}</>}
+    </Space>
   </StyledLabel>
+);
+
+const SettingInfoLabel = ({ label, required }) => (
+  <SettingLabel
+    required={required || false}
+    label={label}
+    info={<InfoCircleFilled className="display-inline-flex ml-2" />}
+  />
 );
 
 const SettingInput = ({ placeholder, ...rest }) => (
   <StyledInput placeholder={placeholder} {...rest} />
 );
 
-export { SettingsInputContainer, SettingLabel, SettingInput };
+export { SettingsInputContainer, SettingLabel, SettingInfoLabel, SettingInput };

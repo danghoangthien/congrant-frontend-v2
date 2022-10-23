@@ -1,5 +1,9 @@
-import { Row, Col, Tag, Button, Table, Space, Input } from 'antd';
-import { MenuOutlined, EditOutlined, InfoCircleFilled } from '@ant-design/icons';
+import { Row, Col, Button } from 'antd';
+import {
+  SettingsInputContainer,
+  SettingInput,
+  SettingInfoLabel,
+} from '../../GroupSettingsPage/components/Sprites';
 
 const AccessAnalysis = () => {
   return (
@@ -11,28 +15,12 @@ const AccessAnalysis = () => {
           </Col>
         </Row>
         <Row className="item mb-2">
-          <Col className="item my-2" sm={24} md={24} lg={24}>
-            <Space align="center">
-              <span>{'Google アナリティクス'}</span>
-              <InfoCircleFilled className="display-inline-flex" />
-            </Space>
-          </Col>
-          <Col className="item my-2" sm={24} md={24} lg={24}>
-            <Space align="center">
-              <Input placeholder={'G-XXXXXXXXX'} />
-            </Space>
-          </Col>
-          <Col className="item my-2" sm={24} md={24} lg={24}>
-            <Space align="center">
-              <span>{'Google タグマネージャー'}</span>
-              <InfoCircleFilled className="display-inline-flex" />
-            </Space>
-          </Col>
-          <Col className="item my-2" sm={24} md={24} lg={24}>
-            <Space align="center">
-              <Input placeholder={'G-XXXXXXXXX'} />
-            </Space>
-          </Col>
+          <SettingsInputContainer label={<SettingInfoLabel label={'Google アナリティクス'} />}>
+            <SettingInput placeholder={'G-XXXXXXXXX'} />
+          </SettingsInputContainer>
+          <SettingsInputContainer label={<SettingInfoLabel label={'Google タグマネージャー'} />}>
+            <SettingInput placeholder={'G-XXXXXXXXX'} />
+          </SettingsInputContainer>
         </Row>
         <Row className="item mt-15">
           <Col sm={24} md={24} lg={24}>
