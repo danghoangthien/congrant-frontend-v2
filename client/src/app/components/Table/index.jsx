@@ -9,7 +9,7 @@ import DrawerHandle from 'app/components/DrawerHandle';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
 
-const DataTable = ({ model, metaData, Detail, selectedItemsActions, TableName = [] }) => {
+const DataTable = ({ model, metaData, Detail = null, selectedItemsActions, TableName = [] }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -132,7 +132,7 @@ const DataTable = ({ model, metaData, Detail, selectedItemsActions, TableName = 
           <Row className="my-4 mx-6" justify="end">
             <Col>{renderPagination()}</Col>
           </Row>
-          {activeRow && (
+          {activeRow && Detail && (
             <DrawerHandle
               key={Math.random()}
               // drawerTitle={activeRow.full_name}

@@ -95,6 +95,13 @@ export const GlobalStyle = createGlobalStyle`
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     text-shadow: none;
     font-weight: 600;
+  .page-title {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .page-sub-title {
+    font-size: 20px;
+    font-weight: 700;
   }
 `;
 
@@ -109,5 +116,12 @@ export const StyledWarningIcon = styled.span`
   & .anticon,
   svg {
     color: ${WARNING_COLOR};
+  }
+`;
+
+export const StyledBadgeDot = styled.div`
+  & .ant-badge-status-dot {
+    width: 10px;
+    height: 10px;
   }
 `;

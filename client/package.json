@@ -118,6 +118,7 @@
     "@editorjs/simple-image": "1.4.1",
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
+    "@mui/core": "5.0.0-alpha.54",
     "@mui/icons-material": "5.10.9",
     "@mui/material": "5.10.10",
     "@reduxjs/toolkit": "1.7.1",

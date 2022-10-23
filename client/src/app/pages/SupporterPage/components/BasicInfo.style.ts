@@ -9,7 +9,8 @@ export const DescriptionStyle = styled.div`
     width: 100%;
   }
 
-  & .ant-descriptions-bordered .ant-descriptions-item-content, .ant-descriptions-bordered .ant-descriptions-item-label {
+  & .ant-descriptions-bordered .ant-descriptions-item-content,
+  .ant-descriptions-bordered .ant-descriptions-item-label {
     padding: 12px;
   }
 `;

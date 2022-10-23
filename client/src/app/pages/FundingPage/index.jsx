@@ -9,7 +9,7 @@ const FundingPage = () => {
   return (
     <>
       <Switch>
-        <Route path={`${path}/received`} component={Received} />
+        <Route path={`${path}`} component={Received} />
         <Route path={`${path}/unclaimed`} component={Unclaimed} />
       </Switch>
     </>

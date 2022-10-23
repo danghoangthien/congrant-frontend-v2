@@ -79,7 +79,6 @@ const FundingPage = (): JSX.Element => {
           <Table
             model="receivedFundingList"
             metaData={metaData}
-            Detail={<></>}
             selectedItemsActions={[MailButton]}
           />
         </div>
