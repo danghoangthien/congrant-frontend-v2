@@ -16,4 +16,23 @@ const createCsvDownload = (header, data, fileName = 'data.csv') => {
   document.body.removeChild(downloadLink);
 };
 
-export { createCsvDownload };
+const sleep = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+async function* gCountDown(counter, sleepMs = 1_000) {
+  while (counter >= 0) {
+    await sleep(sleepMs);
+    yield counter--;
+  }
+}
+
+async function* gInterval(sleepMs = 1_000) {
+  let id = 1;
+  while (true) {
+    await sleep(sleepMs);
+    yield id++;
+  }
+}
+
+export { createCsvDownload, sleep, gCountDown, gInterval };

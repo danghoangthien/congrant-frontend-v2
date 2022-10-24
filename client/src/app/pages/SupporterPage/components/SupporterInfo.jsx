@@ -4,7 +4,7 @@ import userImage from 'styles/assets/icon_supporter.svg';
 import EmailIcon from '@mui/icons-material/Email';
 import CloseIcon from '@mui/icons-material/Close';
 
-const SupporterInfo = () => {
+const SupporterInfo = ({ closeDrawer }) => {
   return (
     <>
       <SupporterInfoStyle>
@@ -26,7 +26,7 @@ const SupporterInfo = () => {
                 <Button className="mr-5 icon-btn" icon={<EmailIcon className="mr-2" />}>
                   {'メールを送る'}
                 </Button>
-                <CloseIcon />
+                <CloseIcon onClick={() => closeDrawer()} />
               </Row>
             </Col>
           </Row>

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Drawer } from 'antd';
+import { sleep } from 'utils/helper';
 
 const DrawerHandle = ({
   children,
@@ -10,8 +11,9 @@ const DrawerHandle = ({
 }) => {
   const [open, setOpen] = useState(isOpen);
 
-  const onClose = () => {
+  const onClose = async () => {
     setOpen(false);
+    await sleep(500);
     onDrawerClose();
   };
 
@@ -27,12 +29,12 @@ const DrawerHandle = ({
       <Drawer
         closable={false}
         width="50%"
-        // title={drawerTitle || 'Drawer'}
+        title={drawerTitle || 'Drawer'}
         placement="right"
         onClose={onClose}
         visible={open}
       >
-        {drawerComponent}
+        {React.cloneElement(drawerComponent, { closeDrawer: () => setOpen(false) })}
       </Drawer>
     </>
   );

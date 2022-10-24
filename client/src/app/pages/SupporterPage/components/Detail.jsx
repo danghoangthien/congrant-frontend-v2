@@ -7,11 +7,11 @@ import Donation from './Donation';
 import ContinuousContract from './ContinuousContract';
 import Receipt from './Receipt';
 
-const Detail = ({ data }) => {
+const Detail = ({ data, closeDrawer }) => {
   console.log('Detail data', data);
   return (
     <StyledDetail>
-      <SupporterInfo />
+      <SupporterInfo closeDrawer={closeDrawer} />
       <Tabs type="card" tabBarGutter={4} className="mt-6">
         <Tabs.TabPane tab="基本情報" key="item-1">
           <BasicInfo />
