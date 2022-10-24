@@ -23,10 +23,12 @@ const SupporterInfo = ({ closeDrawer }) => {
             </Col>
             <Col>
               <Row align="middle">
-                <Button className="mr-5 icon-btn" icon={<EmailIcon className="mr-2" />}>
+                <Button className="icon-btn" icon={<EmailIcon className="mr-2 pointer" />}>
                   {'メールを送る'}
                 </Button>
-                <CloseIcon onClick={() => closeDrawer()} />
+                <Button type="text">
+                  <CloseIcon className="pointer" onClick={() => closeDrawer()} />
+                </Button>
               </Row>
             </Col>
           </Row>
