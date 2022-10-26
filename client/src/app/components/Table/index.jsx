@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Table, Row, Col, Pagination, Checkbox, Select } from 'antd';
 import { push } from 'connected-react-router';
@@ -9,7 +9,7 @@ import DrawerHandle from 'app/components/DrawerHandle';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
 
-const DataTable = ({ model, metaData, Detail, selectedItemsActions, TableName = [] }) => {
+const DataTable = ({ model, metaData, Detail = null, selectedItemsActions, TableName = [] }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -132,11 +132,11 @@ const DataTable = ({ model, metaData, Detail, selectedItemsActions, TableName = 
           <Row className="my-4 mx-6" justify="end">
             <Col>{renderPagination()}</Col>
           </Row>
-          {activeRow && (
+          {activeRow && Detail && (
             <DrawerHandle
               key={Math.random()}
               // drawerTitle={activeRow.full_name}
-              drawerComponent={<Detail data={activeRow} />}
+              drawerComponent={React.cloneElement(Detail, { data: activeRow })}
               isOpen
               onDrawerClose={() => setActiveRow(null)}
             />

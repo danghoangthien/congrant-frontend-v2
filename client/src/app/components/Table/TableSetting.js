@@ -61,7 +61,7 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
       <Button onClick={showModal}>
         <Row align="middle">
           <SettingsIcon className="mr-2" style={{ width: '16px' }} />
-          表示設定
+          {'表示設定'}
         </Row>
       </Button>
       <Modal

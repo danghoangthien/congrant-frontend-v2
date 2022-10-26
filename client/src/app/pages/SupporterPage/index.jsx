@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
-import Detail from './components/Detail';
+import Detail, { DETAIL_KEY_MAP } from './components/Detail';
 import { SearchOutlined, MailOutlined, PlusOutlined } from '@ant-design/icons';
 import PersonIcon from '@mui/icons-material/Person';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
@@ -79,7 +79,7 @@ const SupporterPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={`/supporter-naming`}>
+              <Link to={`/individuals-naming`}>
                 <Button>
                   <span>{'名寄せ候補'}</span>
                   <Badge
@@ -108,7 +108,7 @@ const SupporterPage = () => {
             TableName="個人サポーター一覧"
             model="supporterList"
             metaData={metaData}
-            Detail={Detail}
+            Detail={<Detail activeKey={DETAIL_KEY_MAP.BASIC_INFO} />}
             selectedItemsActions={[MailButton]}
           />
         </div>

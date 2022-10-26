@@ -4,7 +4,7 @@ import userImage from 'styles/assets/icon_supporter.svg';
 import EmailIcon from '@mui/icons-material/Email';
 import CloseIcon from '@mui/icons-material/Close';
 
-const SupporterInfo = () => {
+const SupporterInfo = ({ closeDrawer }) => {
   return (
     <>
       <SupporterInfoStyle>
@@ -23,10 +23,12 @@ const SupporterInfo = () => {
             </Col>
             <Col>
               <Row align="middle">
-                <Button className="mr-5 icon-btn" icon={<EmailIcon className="mr-2" />}>
+                <Button className="icon-btn" icon={<EmailIcon className="mr-2 pointer" />}>
                   {'メールを送る'}
                 </Button>
-                <CloseIcon />
+                <Button type="text">
+                  <CloseIcon className="pointer" onClick={() => closeDrawer()} />
+                </Button>
               </Row>
             </Col>
           </Row>

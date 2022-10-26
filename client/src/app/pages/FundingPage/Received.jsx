@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
+import Detail, { DETAIL_KEY_MAP } from '../SupporterPage/components/Detail';
 import { PayCircleOutlined, SearchOutlined, FilterOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Badge, Input, Row } from 'antd';
 import { FundingPageLayout } from './FundingPage.style';
@@ -23,10 +24,10 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
-const FundingPage = (): JSX.Element => {
+const FundingPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const renderPageTitle = (): JSX.Element => {
+  const renderPageTitle = () => {
     return (
       <>
         <Helmet>
@@ -51,7 +52,7 @@ const FundingPage = (): JSX.Element => {
               <Button className="active" type="primary">
                 {'受領済み'}
               </Button>
-              <Link className="sidebar-link" to={`/funding/unclaimed`}>
+              <Link className="sidebar-link" to={`/donations/unclaimed`}>
                 <Button>
                   <span>{'未受領'}</span>
                   <Badge className="ml-1 display-inline-flex pb-1" count={99}></Badge>
@@ -79,8 +80,8 @@ const FundingPage = (): JSX.Element => {
           <Table
             model="receivedFundingList"
             metaData={metaData}
-            Detail={<></>}
             selectedItemsActions={[MailButton]}
+            Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
           />
         </div>
       </FundingPageLayout>

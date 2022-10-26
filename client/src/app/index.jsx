@@ -16,6 +16,8 @@ import AppLayout from 'app/components/Layout';
 import HomePage from './pages/HomePage';
 import FundingPage from './pages/FundingPage';
 import EditorPage from './pages/EditorPage';
+import BasicSettingsPage from './pages/BasicSettingsPage';
+import GroupSettingsPage from './pages/GroupSettingsPage';
 import SupporterPage from './pages/SupporterPage';
 import SupporterNamingPage from './pages/SupporterPage/Naming';
 import SupporterNamingDetailPage from './pages/SupporterPage/NamingDetail';
@@ -44,20 +46,26 @@ export function App() {
             <Route path={process.env.PUBLIC_URL + '/home'}>
               <HomePage />
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/funding'}>
+            <Route path={process.env.PUBLIC_URL + '/donations'}>
               <FundingPage />
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/supporter'}>
+            <Route path={process.env.PUBLIC_URL + '/individuals'}>
               <SupporterPage />
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/supporter-naming'}>
+            <Route path={process.env.PUBLIC_URL + '/individuals-naming'}>
               <SupporterNamingPage />
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/supporter-naming-detail'}>
+            <Route path={process.env.PUBLIC_URL + '/individuals-naming-detail'}>
               <SupporterNamingDetailPage />
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/group-supporter'}>
+            <Route path={process.env.PUBLIC_URL + '/corporations'}>
               <GroupSupporterPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/settings'}>
+              <BasicSettingsPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/corporation-settings'}>
+              <GroupSettingsPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/editor'}>
               <EditorPage />
