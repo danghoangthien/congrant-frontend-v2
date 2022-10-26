@@ -20,7 +20,7 @@ const Detail = ({ data, closeDrawer, activeKey }) => {
   return (
     <StyledDetail>
       <SupporterInfo closeDrawer={closeDrawer} />
-      <Tabs activeKey={activeKey} type="card" tabBarGutter={4} className="mt-6">
+      <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-6">
         <Tabs.TabPane tab="基本情報" key="1">
           <BasicInfo />
         </Tabs.TabPane>

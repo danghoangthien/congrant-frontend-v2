@@ -22,6 +22,7 @@ import SupporterPage from './pages/SupporterPage';
 import SupporterNamingPage from './pages/SupporterPage/Naming';
 import SupporterNamingDetailPage from './pages/SupporterPage/NamingDetail';
 import GroupSupporterPage from './pages/GroupSupporterPage';
+import ProjectPage from './pages/ProjectPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 import { useTranslation } from 'react-i18next';
@@ -45,6 +46,9 @@ export function App() {
           <AppLayout>
             <Route path={process.env.PUBLIC_URL + '/home'}>
               <HomePage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/projects'}>
+              <ProjectPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/donations'}>
               <FundingPage />
