@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Table, Row, Col, Pagination, Checkbox, Select } from 'antd';
 import { push } from 'connected-react-router';
@@ -136,7 +136,7 @@ const DataTable = ({ model, metaData, Detail = null, selectedItemsActions, Table
             <DrawerHandle
               key={Math.random()}
               // drawerTitle={activeRow.full_name}
-              drawerComponent={<Detail data={activeRow} />}
+              drawerComponent={React.cloneElement(Detail, { data: activeRow })}
               isOpen
               onDrawerClose={() => setActiveRow(null)}
             />

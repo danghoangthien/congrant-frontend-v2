@@ -28,8 +28,9 @@ import { PRIMARY_COLOR } from 'styles/StyleConstants';
 
 // Initialize languages
 import './locales/i18n';
-//import 'antd/dist/antd.min.css';
+
 import 'antd/dist/antd.variable.min.css';
+import 'antd/dist/antd.less';
 import 'antd-css-utilities/utility.min.css';
 
 // Observe loading of Inter (to remove 'Inter', remove the <link> tag in
@@ -45,7 +46,7 @@ const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 ConfigProvider.config({
   theme: {
-    primaryColor: PRIMARY_COLOR,
+    //primaryColor: PRIMARY_COLOR,
   },
 });
 

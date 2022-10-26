@@ -14,6 +14,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Input, Row, Col, Badge } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
+import Detail, { DETAIL_KEY_MAP } from '../SupporterPage/components/Detail';
 
 import './Models/index';
 
@@ -91,7 +92,7 @@ const GroupSupporterPage = () => {
           <Table
             model="groupSupporterList"
             metaData={metaData}
-            Detail={null}
+            Detail={<Detail activeKey={DETAIL_KEY_MAP.BASIC_INFO} />}
             selectedItemsActions={[MailButton]}
           />
         </div>

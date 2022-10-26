@@ -1,8 +1,6 @@
-import { Typography, Tag, Button } from 'antd';
+import { Typography, Tag } from 'antd';
 
-import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
-import Detail from '../SupporterPage/components/Detail';
 
 import {
   RECEIPT_METHODS,
@@ -11,8 +9,6 @@ import {
   RECEIPT_STATUSES,
   DONATION_TYPE_COLORS,
 } from './consts';
-
-const { Text } = Typography;
 
 const dataSource = [
   {
@@ -300,11 +296,7 @@ const columnMap = {
   },
   supporter: {
     title: 'サポーター',
-    render: row => (
-      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
-        <Button type="link">{row.supporter}</Button>
-      </DrawerHandle>
-    ),
+    render: row => row.supporter,
     csvOutput: ({ supporter }) => supporter,
   },
   project: {

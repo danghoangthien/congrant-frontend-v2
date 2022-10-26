@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
+import Detail, { DETAIL_KEY_MAP } from '../SupporterPage/components/Detail';
 import { PayCircleOutlined, SearchOutlined, FilterOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Badge, Input, Row } from 'antd';
 import { FundingPageLayout } from './FundingPage.style';
@@ -23,10 +24,10 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
-const FundingPage = (): JSX.Element => {
+const FundingPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const renderPageTitle = (): JSX.Element => {
+  const renderPageTitle = () => {
     return (
       <>
         <Helmet>
@@ -80,6 +81,7 @@ const FundingPage = (): JSX.Element => {
             model="receivedFundingList"
             metaData={metaData}
             selectedItemsActions={[MailButton]}
+            Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
           />
         </div>
       </FundingPageLayout>

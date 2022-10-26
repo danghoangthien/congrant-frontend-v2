@@ -29,7 +29,7 @@ const DrawerHandle = ({
       <Drawer
         closable={false}
         width="50%"
-        title={drawerTitle || 'Drawer'}
+        //title={drawerTitle || 'Drawer'}
         placement="right"
         onClose={onClose}
         visible={open}

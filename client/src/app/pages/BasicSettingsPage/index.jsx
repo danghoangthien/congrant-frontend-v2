@@ -6,6 +6,7 @@ import ReceiptMethod from './components/ReceiptMethod';
 import CustomField from './components/CustomField';
 import AccessAnalysis from './components/AccessAnalysis';
 import Receipt from './components/Receipt';
+import { PayCircleOutlined } from '@ant-design/icons';
 
 const SETTING_COMPONENT_MAP = {
   donationPlan: {
@@ -39,6 +40,15 @@ const SETTING_COMPONENT_MAP = {
     Component: Receipt,
   },
 };
-const BasicSettingsPage = () => <SettingsPage settingComponentMap={SETTING_COMPONENT_MAP} />;
+
+const Title = () => (
+  <span className="ml-1 page-title">
+    <PayCircleOutlined className="display-inline-flex mr-1" /> {'法人サポーター'}
+  </span>
+);
+
+const BasicSettingsPage = () => (
+  <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
+);
 
 export default BasicSettingsPage;

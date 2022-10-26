@@ -3,7 +3,7 @@ import { Radio, Space, Row, Col, Card } from 'antd';
 import { StyledRadioGroup } from './SettingsLayout.style';
 import { PageLayout } from './PageLayout.style';
 
-const SettingsPage = ({ settingComponentMap }) => {
+const SettingsPage = ({ title, settingComponentMap }) => {
   const [activeSetting, setActiveSetting] = useState(Object.keys(settingComponentMap)[0]);
   const onChange = e => {
     console.log();
@@ -14,8 +14,9 @@ const SettingsPage = ({ settingComponentMap }) => {
   return (
     <>
       <PageLayout>
-        <div className="item">
-          <Card className="ma-5" style={{ minWidth: '1000px' }}>
+        <div className="item mx-5">{title}</div>
+        <div className="item ma-5">
+          <Card style={{ minWidth: '1000px' }}>
             <Row>
               <Col sm={24} md={5} lg={5} style={{ minWidth: '300px' }}>
                 <StyledRadioGroup>

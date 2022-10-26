@@ -4,6 +4,7 @@ import Representative from './components/Representative';
 import Administrator from './components/Administrator';
 import AccountInformation from './components/AccountInformation';
 import UserManagement from './components/UserManagement';
+import { PayCircleOutlined } from '@ant-design/icons';
 
 const SETTING_COMPONENT_MAP = {
   groupInformation: {
@@ -34,6 +35,14 @@ const SETTING_COMPONENT_MAP = {
 };
 
 console.log('GroupSettingsPage');
-const GroupSettingsPage = () => <SettingsPage settingComponentMap={SETTING_COMPONENT_MAP} />;
+
+const Title = () => (
+  <span className="ml-1 page-title">
+    <PayCircleOutlined className="display-inline-flex mr-1" /> {'法人サポーター'}
+  </span>
+);
+const GroupSettingsPage = () => (
+  <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
+);
 
 export default GroupSettingsPage;
