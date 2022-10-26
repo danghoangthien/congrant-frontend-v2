@@ -43,7 +43,7 @@ const SETTING_COMPONENT_MAP = {
 
 const Title = () => (
   <span className="ml-1 page-title">
-    <PayCircleOutlined className="display-inline-flex mr-1" /> {'法人サポーター'}
+    <PayCircleOutlined className="display-inline-flex mr-1" /> {'基本設定'}
   </span>
 );
 
