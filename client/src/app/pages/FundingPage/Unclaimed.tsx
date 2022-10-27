@@ -70,11 +70,7 @@ const FundingPage = (): JSX.Element => {
           <Filters open={filterOpen} />
         </div>
         <div className="item">
-          <Table
-            model="unclaimedFundingList"
-            metaData={metaData}
-            selectedItemsActions={[MailButton]}
-          />
+          <Table model="unclaimedFundingList" metaData={metaData} contextButtons={[MailButton]} />
         </div>
       </FundingPageLayout>
     </>

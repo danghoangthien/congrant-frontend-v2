@@ -80,7 +80,7 @@ const FundingPage = () => {
           <Table
             model="receivedFundingList"
             metaData={metaData}
-            selectedItemsActions={[MailButton]}
+            contextButtons={[MailButton]}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
           />
         </div>

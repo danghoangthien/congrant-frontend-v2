@@ -93,7 +93,7 @@ const GroupSupporterPage = () => {
             model="groupSupporterList"
             metaData={metaData}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.BASIC_INFO} />}
-            selectedItemsActions={[MailButton]}
+            contextButtons={[MailButton]}
           />
         </div>
       </SupporterPageLayout>

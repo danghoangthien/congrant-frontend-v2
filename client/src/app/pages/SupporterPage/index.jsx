@@ -6,11 +6,17 @@ import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from './components/Detail';
-import { SearchOutlined, MailOutlined, PlusOutlined } from '@ant-design/icons';
+import {
+  SearchOutlined,
+  MailOutlined,
+  PlusOutlined,
+  TagFilled,
+  DeleteFilled,
+} from '@ant-design/icons';
 import PersonIcon from '@mui/icons-material/Person';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
-import { Button, Input, Row, Col, Badge } from 'antd';
+import { Button, Input, Row, Col, Badge, Space } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 
 import './Models/index';
@@ -28,6 +34,33 @@ const MailButton = ({ selectedRowKeys }) => {
     </Button>
   );
 };
+
+const contextDropdownItems = selectedRowKeys => [
+  {
+    key: '1',
+    label: (
+      <Space
+        onClick={() => {
+          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+        }}
+      >
+        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'属性を設定する'}</span>
+      </Space>
+    ),
+  },
+  {
+    key: '2',
+    label: (
+      <Space
+        onClick={() => {
+          console.log('selectedRowKeys', selectedRowKeys);
+        }}
+      >
+        <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+      </Space>
+    ),
+  },
+];
 
 const SupporterPage = () => {
   const url = window.location.pathname?.split('/');
@@ -109,7 +142,8 @@ const SupporterPage = () => {
             model="supporterList"
             metaData={metaData}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.BASIC_INFO} />}
-            selectedItemsActions={[MailButton]}
+            contextButtons={[MailButton]}
+            contextDropdownItems={contextDropdownItems}
           />
         </div>
       </SupporterPageLayout>
