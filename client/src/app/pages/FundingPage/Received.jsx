@@ -82,6 +82,7 @@ const FundingPage = () => {
             metaData={metaData}
             contextButtons={[MailButton]}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
+            TableName={'受領済みの寄付一覧'}
           />
         </div>
       </FundingPageLayout>

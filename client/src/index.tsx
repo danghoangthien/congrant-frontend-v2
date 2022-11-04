@@ -49,7 +49,7 @@ ConfigProvider.config({
     primaryColor: PRIMARY_COLOR,
   },
 });
-
+console.log('shiett');
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

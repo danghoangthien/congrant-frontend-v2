@@ -27,9 +27,7 @@
       "moduleResolution": "node",
       "noEmit": true,
       "allowSyntheticDefaultImports": true,
-      "types": [
-        "node"
-      ]
+      "types": ["node"]
     }
   }
 }

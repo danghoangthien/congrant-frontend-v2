@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { Input, Select } from 'antd';
+const { TextArea } = Input;
 
 export const StyledRadioGroup = styled.div`
   & .ant-space-item {
@@ -45,7 +46,7 @@ export const StyledUploadPicture = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 24px;
+    padding: 12px 12px;
     gap: 8px;
 
     width: 132px;
@@ -136,6 +137,28 @@ export const StyledInput = styled(Input)`
   width: 600px;
 `;
 
+export const StyledTextarea = styled(TextArea)`
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  height: 62px;
+  width: 600px;
+`;
+
+export const StyledTextareaMedium = styled(TextArea)`
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  height: 128px;
+  width: 600px;
+`;
+
 export const StyledSelect = styled(Select)`
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -145,4 +168,12 @@ export const StyledSelect = styled(Select)`
   line-height: 24px;
   height: 40pxpx;
   width: 600px;
+`;
+
+export const StyledSubtitle = styled.div`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.5);
 `;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Filters from './components/Filters';
 import {
   SearchOutlined,
@@ -61,7 +61,7 @@ const menu = (
 );
 
 const ProjectPage = () => {
-  const url = window.location.pathname?.split('/');
+  const history = useHistory();
   const [filterOpen, setFilterOpen] = useState(false);
   const renderPageTitle = () => {
     return (
@@ -123,11 +123,15 @@ const ProjectPage = () => {
         {/* ページコンテンツ・Page Content */}
 
         <Card
-          title={<span className="bold">{'法人サポーター'}</span>}
+          title={<span className="bold">{'プロジェクト一覧'}</span>}
           style={{ minWidth: '1000px' }}
         >
           {Array.from(Array(3).keys()).map(i => (
-            <Row style={{ minWidth: '1000px' }} className="mb-5">
+            <Row
+              onClick={() => history.push(`projects/${i + 1}/summary`)}
+              style={{ minWidth: '1000px' }}
+              className="mb-5"
+            >
               <Col flex="160px">
                 <Image
                   width={160}
@@ -161,7 +165,7 @@ const ProjectPage = () => {
                   <span>{'寄付総額 123,456円 寄付件数 123件'}</span>
                 </Space>
               </Col>
-              <Col align="right" flex="auto">
+              <Col align="right" flex="auto" onClick={e => e.stopPropagation()}>
                 <Dropdown overlay={menu} placement="bottomRight">
                   <Button icon={<EllipsisOutlined />} className="ml-2" />
                 </Dropdown>

@@ -1,8 +1,10 @@
-import { Col, Space } from 'antd';
+import { Row, Col, Space } from 'antd';
 import {
   StyledRequired,
   StyledLabel,
   StyledInput,
+  StyledTextarea,
+  StyledSelect,
 } from 'app/components/Layout/SettingsLayout.style';
 import { InfoCircleFilled } from '@ant-design/icons';
 
@@ -33,7 +35,7 @@ const SettingInfoLabel = ({ label, required }) => (
   <SettingLabel
     required={required || false}
     label={label}
-    info={<InfoCircleFilled className="display-inline-flex ml-2" />}
+    info={<InfoCircleFilled className="display-inline-flex" />}
   />
 );
 
@@ -41,4 +43,19 @@ const SettingInput = ({ placeholder, ...rest }) => (
   <StyledInput placeholder={placeholder} {...rest} />
 );
 
-export { SettingsInputContainer, SettingLabel, SettingInfoLabel, SettingInput };
+const SettingTextarea = ({ placeholder, ...rest }) => (
+  <StyledTextarea placeholder={placeholder} {...rest} />
+);
+
+const SettingSelect = ({ placeholder, ...rest }) => (
+  <StyledSelect placeholder={placeholder} {...rest} />
+);
+
+export {
+  SettingsInputContainer,
+  SettingLabel,
+  SettingInfoLabel,
+  SettingInput,
+  SettingTextarea,
+  SettingSelect,
+};
