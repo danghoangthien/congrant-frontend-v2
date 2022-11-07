@@ -12,7 +12,7 @@ import {
   RECEIPT_STATUSES,
   DONATION_TYPE_COLORS,
 } from './consts';
-
+import { EllipsisOutlined } from '@ant-design/icons';
 const { Text } = Typography;
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
@@ -75,7 +75,7 @@ const columnMap = {
     render: row => (
       <>
         <Button type="primary">{'入金消込'}</Button>
-        <Button className="ml-2">{'...'}</Button>
+        <Button icon={<EllipsisOutlined />} className="ml-2" />
       </>
     ),
   },

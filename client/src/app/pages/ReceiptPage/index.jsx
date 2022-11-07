@@ -1,23 +1,16 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
-import Detail, { DETAIL_KEY_MAP } from './components/Detail';
-import {
-  SearchOutlined,
-  MailOutlined,
-  PlusOutlined,
-  TagFilled,
-  DeleteFilled,
-} from '@ant-design/icons';
-import PersonIcon from '@mui/icons-material/Person';
+import Detail, { DETAIL_KEY_MAP } from 'app/pages/SupporterPage/components/Detail';
+import { SearchOutlined, MailOutlined, EllipsisOutlined } from '@ant-design/icons';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-
-import { Button, Input, Row, Col, Badge, Space } from 'antd';
-import { SupporterPageLayout } from './components/SupporterPage.style';
+import MenuIcon from '@mui/icons-material/Menu';
+import HistoryIcon from '@mui/icons-material/History';
+import NewReceipt from './components/NewReceipt';
+import { Button, Input, Row, Col, Space, Dropdown, Menu } from 'antd';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
 import './Models/index';
 
@@ -35,41 +28,26 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
-const contextDropdownItems = selectedRowKeys => [
+const contextDropdownItems = metaData.menuItems;
+
+const headerContextDropdownItems = [
   {
     key: '1',
     label: (
-      <Space
-        onClick={() => {
-          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
-        }}
-      >
-        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'属性を設定する'}</span>
-      </Space>
-    ),
-  },
-  {
-    key: '2',
-    label: (
-      <Space
-        onClick={() => {
-          console.log('selectedRowKeys', selectedRowKeys);
-        }}
-      >
-        <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+      <Space onClick={() => {}}>
+        <HistoryIcon style={{ color: 'black' }} /> <span className="ml-2">{'一括作成履歴'}</span>
       </Space>
     ),
   },
 ];
 
-const SupporterPage = () => {
-  const url = window.location.pathname?.split('/');
+const ReceiptPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const renderPageTitle = () => {
     return (
       <>
         <Helmet>
-          <title>{'個人サポーター'}</title>
+          <title>{'領収書'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -79,7 +57,7 @@ const SupporterPage = () => {
   return (
     <>
       {renderPageTitle()}
-      <SupporterPageLayout>
+      <PageLayout>
         <div className="item mb-7">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
@@ -87,8 +65,8 @@ const SupporterPage = () => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <span className="page-title">
-                    <PersonIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-1 page-title">{'個人サポーター'}</span>
+                    <MenuIcon style={{ fontSize: '32px' }} />
+                    <span className="ml-1 page-title">{'領収書'}</span>
                   </span>
                 </Col>
                 <Col className="mr-2">
@@ -112,20 +90,14 @@ const SupporterPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={`/individuals-naming`}>
-                <Button>
-                  <span>{'名寄せ候補'}</span>
-                  <Badge
-                    className="ml-1 display-inline-flex pb-1"
-                    style={{ backgroundColor: '#c72a32' }}
-                    count={99}
-                  ></Badge>
-                </Button>
-              </Link>
-              <Button className="active ml-2" type="primary">
-                <PlusOutlined className="display-inline-flex" />
-                <span className="ml-2">{'個人サポーターの登録'}</span>
-              </Button>
+              <NewReceipt />
+              <Dropdown
+                className="ml-2"
+                overlay={<Menu items={headerContextDropdownItems} />}
+                placement="bottomRight"
+              >
+                <Button icon={<EllipsisOutlined />} />
+              </Dropdown>
             </Col>
           </Row>
         </div>
@@ -138,17 +110,17 @@ const SupporterPage = () => {
         {/* ページコンテンツ・Page Content */}
         <div className="item">
           <Table
-            TableName="個人サポーター一覧"
-            model="supporterList"
+            TableName="領収書一覧"
+            model="receiptList"
             metaData={metaData}
-            Detail={<Detail activeKey={DETAIL_KEY_MAP.BASIC_INFO} />}
+            Detail={<Detail activeKey={DETAIL_KEY_MAP.RECEIPT} />}
             contextButtons={[MailButton]}
             contextDropdownItems={contextDropdownItems}
           />
         </div>
-      </SupporterPageLayout>
+      </PageLayout>
     </>
   );
 };
 
-export default SupporterPage;
+export default ReceiptPage;

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Table, Row, Col, Pagination, Checkbox, Select } from 'antd';
+import { Card, Table, Row, Col, Pagination, Checkbox, Select, Dropdown, Menu } from 'antd';
 import { push } from 'connected-react-router';
 import Download from './Download';
 import TableSetting from './TableSetting';
@@ -9,7 +9,14 @@ import DrawerHandle from 'app/components/DrawerHandle';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
 
-const DataTable = ({ model, metaData, Detail = null, selectedItemsActions, TableName = [] }) => {
+const DataTable = ({
+  model,
+  metaData,
+  Detail = null,
+  contextButtons = [],
+  contextDropdownItems = () => {},
+  TableName = [],
+}) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -165,21 +172,22 @@ const DataTable = ({ model, metaData, Detail = null, selectedItemsActions, Table
                 <span className="ml-5">
                   {hasSelected ? `${selectedRowKeys.length} 件選択中` : ''}
                 </span>
-                {selectedItemsActions.map(Component => {
+                {contextButtons.map(Component => {
                   return <Component selectedRowKeys={selectedRowKeys} />;
                 })}
-                <Select
-                  className="ml-5"
-                  defaultValue={{
-                    value: '1',
-                  }}
-                  style={{
-                    width: 155,
-                  }}
-                  onChange={onSelectChange}
+                <Dropdown
+                  overlay={<Menu items={contextDropdownItems(selectedRowKeys) || []} />}
+                  placement="topRight"
                 >
-                  <Select.Option value="1">{'その他の一括操作'}</Select.Option>
-                </Select>
+                  <Select
+                    className="ml-5"
+                    style={{
+                      width: 155,
+                    }}
+                    placeholder={'その他の一括操作'}
+                    open={false}
+                  />
+                </Dropdown>
               </Col>
             </Row>
           </div>

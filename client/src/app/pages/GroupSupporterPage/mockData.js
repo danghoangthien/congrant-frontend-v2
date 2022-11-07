@@ -1,4 +1,5 @@
-import { Typography, Tag, Button } from 'antd';
+import { Menu, Dropdown, Tag, Button } from 'antd';
+import { EllipsisOutlined, TagFilled, DeleteFilled, SendOutlined } from '@ant-design/icons';
 
 import DrawerHandle from 'app/components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
@@ -11,7 +12,38 @@ import {
   DONATION_TYPE_COLORS,
 } from './consts';
 
-const { Text } = Typography;
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: (
+          <>
+            <SendOutlined style={{ color: 'black' }} />{' '}
+            <span className="ml-2">{'メッセージを送る'}</span>
+          </>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <>
+            <TagFilled style={{ color: 'black' }} />{' '}
+            <span className="ml-2">{'属性を設定する'}</span>
+          </>
+        ),
+      },
+      {
+        key: '3',
+        label: (
+          <>
+            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+          </>
+        ),
+      },
+    ]}
+  />
+);
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
@@ -26,12 +58,12 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 
 const columnMap = {
   group_id: {
-    title: '法人ID',
+    title: '法人NO',
     render: row => <Button type="link">{row.group_id} </Button>,
     csvOutput: ({ group_id }) => group_id,
   },
   group_name: {
-    title: '氏名',
+    title: '法人名',
     dataIndex: 'group_name',
     csvOutput: ({ group_name }) => group_name,
   },
@@ -60,12 +92,12 @@ const columnMap = {
     dataIndex: 'cumulative_donation',
     csvOutput: cumulative_donation => cumulative_donation,
   },
-  operate: {
-    title: '受領日',
+  action: {
+    title: 'アクション',
     render: row => (
-      <>
-        <Button>{'...'}</Button>
-      </>
+      <Dropdown overlay={menu} placement="bottomRight">
+        <Button icon={<EllipsisOutlined />} />
+      </Dropdown>
     ),
   },
 };

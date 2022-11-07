@@ -48,7 +48,7 @@ const FundingPage = (): JSX.Element => {
               <span className="ml-1">{'寄付決済'}</span>
             </div>
             <div className="switch-btn ml-8">
-              <Link className="sidebar-link" to={`/donations`}>
+              <Link className="sidebar-link" to={``}>
                 <Button>
                   <span>{'受領済み'}</span>
                   <Badge className="ml-1 display-inline-flex pb-1" count={88}></Badge>
@@ -70,11 +70,7 @@ const FundingPage = (): JSX.Element => {
           <Filters open={filterOpen} />
         </div>
         <div className="item">
-          <Table
-            model="unclaimedFundingList"
-            metaData={metaData}
-            selectedItemsActions={[MailButton]}
-          />
+          <Table model="unclaimedFundingList" metaData={metaData} contextButtons={[MailButton]} />
         </div>
       </FundingPageLayout>
     </>

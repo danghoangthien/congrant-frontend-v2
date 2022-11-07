@@ -1,5 +1,5 @@
-import { Typography, Tag } from 'antd';
-
+import { Dropdown, Tag, Button, Menu } from 'antd';
+import { EllipsisOutlined, TagFilled, DeleteFilled, SendOutlined } from '@ant-design/icons';
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import Detail from './components/Detail';
@@ -11,6 +11,38 @@ import {
   RECEIPT_STATUSES,
   DONATION_TYPE_COLORS,
 } from './consts';
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: (
+          <>
+            <SendOutlined style={{ color: 'black' }} />{' '}
+            <span className="ml-2">{'メッセージを送る'}</span>
+          </>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <>
+            <TagFilled style={{ color: 'black' }} />{' '}
+            <span className="ml-2">{'属性を設定する'}</span>
+          </>
+        ),
+      },
+      {
+        key: '3',
+        label: (
+          <>
+            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+          </>
+        ),
+      },
+    ]}
+  />
+);
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
@@ -18,7 +50,6 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
   full_name: '荒木 雄大',
   attributes: ['abc', 'xyz'],
   email: `danghoangthien+${i}@gmail.com`,
-  phone: `${'0938354758' + i}`,
   recent_donation: '3,000円',
   cumulative_donation: '4,000円',
 }));
@@ -63,16 +94,20 @@ const columnMap = {
     dataIndex: 'cumulative_donation',
     csvOutput: cumulative_donation => cumulative_donation,
   },
+  action: {
+    title: 'アクション',
+    render: row => (
+      <Dropdown overlay={menu} placement="bottomRight">
+        <Button icon={<EllipsisOutlined />} />
+      </Dropdown>
+    ),
+  },
 };
 
 const columnMap2 = {
   personal_id: {
-    title: '個人ID',
-    render: row => (
-      <DrawerHandle drawerTitle={row.full_name} drawerComponent={<Detail data={row} />}>
-        {row.personal_id}
-      </DrawerHandle>
-    ),
+    title: '個人No',
+    render: row => <>{row.personal_id}</>,
     csvOutput: ({ personal_id }) => personal_id,
   },
   full_name: {
@@ -89,11 +124,6 @@ const columnMap2 = {
     title: 'メールアドレス',
     dataIndex: 'email',
     csvOutput: email => email,
-  },
-  phone: {
-    title: '電話番号',
-    dataIndex: 'phone',
-    csvOutput: phone => phone,
   },
   recent_donation: {
     title: '直近の寄付',

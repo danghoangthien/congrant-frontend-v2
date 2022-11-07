@@ -23,12 +23,15 @@ import SupporterNamingPage from './pages/SupporterPage/Naming';
 import SupporterNamingDetailPage from './pages/SupporterPage/NamingDetail';
 import GroupSupporterPage from './pages/GroupSupporterPage';
 import ProjectPage from './pages/ProjectPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
+import ReceiptPage from './pages/ReceiptPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 import { useTranslation } from 'react-i18next';
 import CkeditorPage from './pages/CkeditorPage';
 
 export function App() {
+  console.log('Appppp');
   const { i18n } = useTranslation();
   console.log('process.env.PUBLIC_URL', process.env.PUBLIC_URL);
   return (
@@ -47,9 +50,13 @@ export function App() {
             <Route path={process.env.PUBLIC_URL + '/home'}>
               <HomePage />
             </Route>
-            <Route path={process.env.PUBLIC_URL + '/projects'}>
+            <Route path={process.env.PUBLIC_URL + '/projects/:id'}>
+              <ProjectDetailPage />
+            </Route>
+            <Route exact path={process.env.PUBLIC_URL + '/projects'}>
               <ProjectPage />
             </Route>
+
             <Route path={process.env.PUBLIC_URL + '/donations'}>
               <FundingPage />
             </Route>
@@ -64,6 +71,9 @@ export function App() {
             </Route>
             <Route path={process.env.PUBLIC_URL + '/corporations'}>
               <GroupSupporterPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/receipts'}>
+              <ReceiptPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/settings'}>
               <BasicSettingsPage />

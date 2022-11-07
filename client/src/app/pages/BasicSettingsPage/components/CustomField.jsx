@@ -1,5 +1,5 @@
 import { Row, Col, Tag, Button, Table } from 'antd';
-import { MenuOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { MenuOutlined, EditOutlined, EllipsisOutlined } from '@ant-design/icons';
 import AddCustomField from './AddCustomField';
 
 const dataSource = Array.from(Array(5).keys()).map(i => ({
@@ -30,7 +30,7 @@ const columnMap = {
     render: row => (
       <>
         <Button icon={<EditOutlined />}>{'編集'}</Button>
-        <Button className="ml-2">{'...'}</Button>
+        <Button icon={<EllipsisOutlined />} className="ml-2" />
       </>
     ),
   },

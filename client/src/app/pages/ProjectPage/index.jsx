@@ -1,13 +1,27 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Filters from './components/Filters';
-import { SearchOutlined, MailOutlined, PlusOutlined } from '@ant-design/icons';
+import {
+  SearchOutlined,
+  MailOutlined,
+  PlusOutlined,
+  EllipsisOutlined,
+  CopyFilled,
+  DeleteFilled,
+} from '@ant-design/icons';
 import PersonIcon from '@mui/icons-material/Person';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
-import { Button, Input, Row, Col, Badge } from 'antd';
+import { Button, Input, Row, Col, Card, Space, Image, Tag, Divider, Menu, Dropdown } from 'antd';
+
+import LaunchNewProject from './components/LaunchNewProject';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import {
+  StatusTag as StyledStatusTag,
+  ProjectTitle as StyledProjectTitle,
+  ProjectUrl as StyledProjectUrl,
+} from './index.style';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
@@ -23,8 +37,31 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: (
+          <>
+            <CopyFilled /> <span className="ml-2">{'複製'}</span>
+          </>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <>
+            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+          </>
+        ),
+      },
+    ]}
+  />
+);
+
 const ProjectPage = () => {
-  const url = window.location.pathname?.split('/');
+  const history = useHistory();
   const [filterOpen, setFilterOpen] = useState(false);
   const renderPageTitle = () => {
     return (
@@ -73,20 +110,7 @@ const ProjectPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={`/individuals-naming`}>
-                <Button>
-                  <span>{'名寄せ候補'}</span>
-                  <Badge
-                    className="ml-1 display-inline-flex pb-1"
-                    style={{ backgroundColor: '#c72a32' }}
-                    count={99}
-                  ></Badge>
-                </Button>
-              </Link>
-              <Button className="active ml-2" type="primary">
-                <PlusOutlined className="display-inline-flex" />
-                <span className="ml-2">{'個人サポーターの登録'}</span>
-              </Button>
+              <LaunchNewProject />
             </Col>
           </Row>
         </div>
@@ -97,7 +121,58 @@ const ProjectPage = () => {
         </div>
 
         {/* ページコンテンツ・Page Content */}
-        <div className="item"></div>
+
+        <Card
+          title={<span className="bold">{'プロジェクト一覧'}</span>}
+          style={{ minWidth: '1000px' }}
+        >
+          {Array.from(Array(3).keys()).map(i => (
+            <Row
+              onClick={() => history.push(`projects/${i + 1}/summary`)}
+              style={{ minWidth: '1000px' }}
+              className="mb-5"
+            >
+              <Col flex="160px">
+                <Image
+                  width={160}
+                  height={104}
+                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </Col>
+              <Col flex="auto" style={{ maxWidth: '900px' }}>
+                <Space className="ml-5" style={{ width: '100%', height: '33%' }}>
+                  <StyledStatusTag>{'公開中'}</StyledStatusTag>
+                  <StyledProjectTitle>
+                    {'NPO法人コングラントへのご支援をお願いします！'}
+                  </StyledProjectTitle>
+                </Space>
+                <Space className="ml-5" style={{ width: '100%', height: '33%' }} align="start">
+                  <StyledProjectUrl>
+                    {'公開URL：https://congrant.com/XXXXXXXXXXXXXXXXXXX'}
+                  </StyledProjectUrl>
+                </Space>
+                <Space className="ml-5" style={{ width: '100%', height: '33%' }}>
+                  <Tag style={{ marginRight: '0px' }} color="success">
+                    {'クラウドファンディング'}
+                  </Tag>
+                  <Divider type="vertical" />
+                  <Tag color="processing">{'単発'}</Tag>
+                  <Tag color="error">{'毎月'}</Tag>
+                  <Tag color="magenta">{'毎年'}</Tag>
+                  <Divider type="vertical" />
+                  <span>{'最終更新 2022-08-01 12:34:45'}</span>
+                  <Divider type="vertical" />
+                  <span>{'寄付総額 123,456円 寄付件数 123件'}</span>
+                </Space>
+              </Col>
+              <Col align="right" flex="auto" onClick={e => e.stopPropagation()}>
+                <Dropdown overlay={menu} placement="bottomRight">
+                  <Button icon={<EllipsisOutlined />} className="ml-2" />
+                </Dropdown>
+              </Col>
+            </Row>
+          ))}
+        </Card>
       </PageLayout>
     </>
   );

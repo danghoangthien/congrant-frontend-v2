@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Badge, Descriptions, Row, Col, Button, Table, Tag } from 'antd';
 import { StyledPrimaryIcon } from 'styles/global-styles';
-import { CopyOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import { CopyOutlined, PlusOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { StyledBadgeDot } from './ContinuousContract.style';
 import ReceiptDetail from './ReceipDetail';
 import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import ExportPDF from 'app/pages/ReceiptPage/components/ExportPDF';
 
 const Title = ({ title }) => {
   return (
@@ -48,7 +49,12 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
     },
     action: {
       title: 'アクション',
-      dataIndex: 'action',
+      render: () => (
+        <>
+          <ExportPDF />
+          <Button className="ml-2" icon={<EllipsisOutlined />} />
+        </>
+      ),
     },
   };
   const dataSource = [
@@ -109,7 +115,12 @@ const ListModeContent = ({ data, mode, setMode }) => {
     },
     action: {
       title: 'アクション',
-      dataIndex: 'action',
+      render: () => (
+        <>
+          <ExportPDF />
+          <Button className="ml-2" icon={<EllipsisOutlined />} />
+        </>
+      ),
     },
   };
   const dataSource = [

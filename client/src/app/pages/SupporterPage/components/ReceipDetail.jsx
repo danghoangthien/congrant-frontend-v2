@@ -6,6 +6,7 @@ import {
   MinusOutlined,
   CloseOutlined,
   EditOutlined,
+  EllipsisOutlined,
 } from '@ant-design/icons';
 import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, EDIT_MODE } from '../consts';
@@ -40,7 +41,7 @@ const Title = ({ mode, setMode }) => {
             </Button>
             <Button icon={<MailOutlined />} className="ml-2" />
             <Button icon={<CopyOutlined />} className="ml-2" />
-            <Button className="ml-2">{'...'}</Button>
+            <Button icon={<EllipsisOutlined />} className="ml-2" />
           </>
         </Col>
       </Row>

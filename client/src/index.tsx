@@ -46,10 +46,10 @@ const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 ConfigProvider.config({
   theme: {
-    //primaryColor: PRIMARY_COLOR,
+    primaryColor: PRIMARY_COLOR,
   },
 });
-
+console.log('shiett');
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

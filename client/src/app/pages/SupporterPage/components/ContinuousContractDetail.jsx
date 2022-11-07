@@ -1,12 +1,6 @@
 import { Descriptions, Row, Col, Button, Tag } from 'antd';
 import { StyledPrimaryIcon } from 'styles/global-styles';
-import {
-  CopyOutlined,
-  MailOutlined,
-  MinusOutlined,
-  CloseOutlined,
-  EditOutlined,
-} from '@ant-design/icons';
+import { MinusOutlined, CloseOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
@@ -35,7 +29,7 @@ const Title = ({ mode, setMode }) => {
         </Col>
         <Col type="flex" align="right" sm={24} md={12} lg={12}>
           <>
-            <Button className="ml-2">{'...'}</Button>
+            <Button icon={<EllipsisOutlined />} className="ml-2" />
           </>
         </Col>
       </Row>

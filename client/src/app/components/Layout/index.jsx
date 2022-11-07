@@ -4,9 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { StyledSidebar, SlyledLayout, SlyledHeader } from './Layout.style';
 import { Row, Col, Dropdown, Menu, Typography, Tooltip } from 'antd';
 import {
-  HeartOutlined,
-  PlaySquareOutlined,
-  InfoCircleOutlined,
   UserOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -73,6 +70,7 @@ const HighlightOnActive = ({ children, isActive }) => {
 };
 
 const AppLayout = ({ children }) => {
+  console.count('AppLayout');
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
   const isActive = path => {
@@ -241,7 +239,6 @@ const AppLayout = ({ children }) => {
                         </HighlightOnActive>
                       </Link>
                     </Col>
-
                     {/* Editor.js */}
                     <Col className="menu-item" span={24} type="flex" align="left">
                       <Link className="sidebar-link" to={`/editor`}>
