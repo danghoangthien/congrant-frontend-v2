@@ -34,7 +34,7 @@ const DrawerHandle = ({
         onClose={onClose}
         visible={open}
       >
-        {React.cloneElement(drawerComponent, { closeDrawer: () => setOpen(false) })}
+        {React.cloneElement(drawerComponent, { closeDrawer: onClose })}
       </Drawer>
     </>
   );

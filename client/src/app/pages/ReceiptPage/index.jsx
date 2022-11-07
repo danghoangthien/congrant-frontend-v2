@@ -1,22 +1,15 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/SupporterPage/components/Detail';
-import {
-  SearchOutlined,
-  MailOutlined,
-  PlusOutlined,
-  TagFilled,
-  DeleteFilled,
-} from '@ant-design/icons';
+import { SearchOutlined, MailOutlined, EllipsisOutlined } from '@ant-design/icons';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import MenuIcon from '@mui/icons-material/Menu';
-
-import { Button, Input, Row, Col, Badge, Space } from 'antd';
+import HistoryIcon from '@mui/icons-material/History';
+import NewReceipt from './components/NewReceipt';
+import { Button, Input, Row, Col, Space, Dropdown, Menu } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
 import './Models/index';
@@ -36,6 +29,17 @@ const MailButton = ({ selectedRowKeys }) => {
 };
 
 const contextDropdownItems = metaData.menuItems;
+
+const headerContextDropdownItems = [
+  {
+    key: '1',
+    label: (
+      <Space onClick={() => {}}>
+        <HistoryIcon style={{ color: 'black' }} /> <span className="ml-2">{'一括作成履歴'}</span>
+      </Space>
+    ),
+  },
+];
 
 const ReceiptPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -86,20 +90,14 @@ const ReceiptPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={`/individuals-naming`}>
-                <Button>
-                  <span>{'名寄せ候補'}</span>
-                  <Badge
-                    className="ml-1 display-inline-flex pb-1"
-                    style={{ backgroundColor: '#c72a32' }}
-                    count={99}
-                  ></Badge>
-                </Button>
-              </Link>
-              <Button className="active ml-2" type="primary">
-                <PlusOutlined className="display-inline-flex" />
-                <span className="ml-2">{'個人サポーターの登録'}</span>
-              </Button>
+              <NewReceipt />
+              <Dropdown
+                className="ml-2"
+                overlay={<Menu items={headerContextDropdownItems} />}
+                placement="bottomRight"
+              >
+                <Button icon={<EllipsisOutlined />} />
+              </Dropdown>
             </Col>
           </Row>
         </div>
