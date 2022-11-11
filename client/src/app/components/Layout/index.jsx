@@ -131,21 +131,21 @@ const items4 = [
     null,
     [
       getItem(
-        <Link className="sub-user-menu-link" to={`test2`}>
+        <Link className="sub-user-menu-link" to={`/corporation-settings`}>
           <AdminPanelSettingsIcon />
           団体設定
         </Link>,
         '3',
       ),
       getItem(
-        <Link className="sub-user-menu-link" to={`test2`}>
+        <Link className="sub-user-menu-link" to={`/individuals-settings`}>
           <ManageAccountsIcon />
           個人設定
         </Link>,
         '4',
       ),
       getItem(
-        <Link className="sub-user-menu-link" to={`test2`}>
+        <Link className="sub-user-menu-link" to={`/logout`}>
           <LogoutIcon />
           ログアウト
         </Link>,
@@ -273,12 +273,12 @@ const AppLayout = ({ children }) => {
                       </Row>
 
                       {/* コングラントロゴ・Logo */}
-                      {/* <Row>
+                      <Row>
                         <div className="logo-wrapper">
                           <img className="logo-icon" src={LogoIcon} alt="コングラントロゴ" />
                           <img className="logo-text" src={LogoText} alt="コングラントロゴ" />
                         </div>
-                      </Row> */}
+                      </Row>
                     </div>
 
                     {/* メアインメニュー・Main Menu */}
