@@ -48,15 +48,16 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
   personal_id: `${'20220730' + i}`,
   full_name: '荒木 雄大',
-  attributes: ['abc', 'xyz'],
+  attributes: ['理事', 'ボランティア'],
   email: `danghoangthien+${i}@gmail.com`,
   recent_donation: '3,000円',
-  cumulative_donation: '4,000円',
+  cumulative_donation: '12,000円',
 }));
 
 const columnMap = {
+  // 個人No.
   personal_id: {
-    title: '個人ID',
+    title: '個人No.',
     render: row => (
       <DrawerHandle drawerTitle={row.full_name} drawerComponent={<Detail data={row} />}>
         {row.personal_id}
@@ -64,31 +65,31 @@ const columnMap = {
     ),
     csvOutput: ({ personal_id }) => personal_id,
   },
+  // 氏名
   full_name: {
     title: '氏名',
     dataIndex: 'full_name',
     csvOutput: full_name => full_name,
   },
+  // 属性
   attributes: {
     title: '属性',
     render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
     csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
   },
+  // メールアドレス
   email: {
     title: 'メールアドレス',
     dataIndex: 'email',
     csvOutput: email => email,
   },
-  phone: {
-    title: '電話番号',
-    dataIndex: 'phone',
-    csvOutput: phone => phone,
-  },
+  // 直近の寄付
   recent_donation: {
     title: '直近の寄付',
     dataIndex: 'recent_donation',
     csvOutput: recent_donation => recent_donation,
   },
+  // 累計寄付
   cumulative_donation: {
     title: '累計寄付',
     dataIndex: 'cumulative_donation',
@@ -160,11 +161,4 @@ const pagination = {
   total_page: 10,
 };
 
-export {
-  getRenderColumns,
-  dataSource,
-  pagination,
-  COLUMN_SETTING_LOCALSTORAGE,
-  columnMap,
-  columnMap2,
-};
+export { getRenderColumns, dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap };

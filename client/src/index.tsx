@@ -25,6 +25,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import reportWebVitals from 'reportWebVitals';
 import { ConfigProvider } from 'antd';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
+import jaJp from 'antd/es/locale/ja_JP';
 
 // Initialize languages
 import './locales/i18n';
@@ -49,17 +50,19 @@ ConfigProvider.config({
     primaryColor: PRIMARY_COLOR,
   },
 });
-console.log('shiett');
+
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <HelmetProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </HelmetProvider>
-    </ConnectedRouter>
-  </Provider>,
+  <ConfigProvider locale={jaJp}>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <HelmetProvider>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </HelmetProvider>
+      </ConnectedRouter>
+    </Provider>
+  </ConfigProvider>,
   MOUNT_NODE,
 );
 

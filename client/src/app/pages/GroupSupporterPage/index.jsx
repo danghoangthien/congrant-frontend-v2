@@ -15,6 +15,8 @@ import {
 import { Button, Input, Row, Col, Badge } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import Detail, { DETAIL_KEY_MAP } from '../SupporterPage/components/Detail';
+import DomainIcon from '@mui/icons-material/Domain';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 import './Models/index';
 
@@ -51,36 +53,51 @@ const GroupSupporterPage = () => {
     <>
       {renderPageTitle()}
       <SupporterPageLayout>
-        <div className="item mx-8 my-8">
-          <Row>
-            <Col sm={24} md={12} lg={12}>
-              <span className="page-title">
-                <PayCircleOutlined className="display-inline-flex" />
-              </span>
-              <span className="ml-1 page-title">{'法人サポーター'}</span>
-              <Input
-                className="ml-3 free-search"
-                placeholder="フリーワード検索"
-                prefix={<SearchOutlined />}
-              />
-              <Button
-                className="ml-1"
-                icon={<FilterOutlined />}
-                onClick={() => setFilterOpen(!filterOpen)}
-              >
-                {'フィルタ'}
-              </Button>
+        <div className="item mb-6">
+          <Row justify="space-between" align="middle">
+            {/* 左の部分・Left Part */}
+            <Col>
+              <Row type="flex" align="middle">
+                <Col className="mr-6">
+                  <span className="page-title">
+                    <DomainIcon style={{ fontSize: '32px' }} />
+                    <span className="ml-1">{'個人サポーター'}</span>
+                  </span>
+                </Col>
+                <Col className="mr-2">
+                  <Input
+                    className="free-search"
+                    placeholder="フリーワード検索"
+                    prefix={<SearchOutlined />}
+                  />
+                </Col>
+                <Col>
+                  <Button
+                    className="filter-button"
+                    icon={<FilterAltIcon />}
+                    onClick={() => setFilterOpen(!filterOpen)}
+                  >
+                    {'フィルタ'}
+                  </Button>
+                </Col>
+              </Row>
             </Col>
-            <Col type="flex" align="right" sm={24} md={12} lg={12}>
-              <Link className="sidebar-link" to={`/funding/unclaimed`}>
+
+            {/* 右の部分・Right Part */}
+            <Col>
+              <Link to={`/individuals-naming`}>
                 <Button>
                   <span>{'名寄せ候補'}</span>
-                  <Badge className="ml-1 display-inline-flex pb-1" count={99}></Badge>
+                  <Badge
+                    className="ml-1 display-inline-flex pb-1"
+                    style={{ backgroundColor: '#c72a32' }}
+                    count={99}
+                  ></Badge>
                 </Button>
               </Link>
               <Button className="active ml-2" type="primary">
                 <PlusOutlined className="display-inline-flex" />
-                <span className="ml-2">{'法人サポーターの登録'}</span>
+                <span className="ml-2">{'個人サポーターの登録'}</span>
               </Button>
             </Col>
           </Row>

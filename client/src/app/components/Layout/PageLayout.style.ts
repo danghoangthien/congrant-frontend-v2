@@ -47,8 +47,7 @@ export const PageLayout = styled.div`
     align-items: center;
   }
   & .page-sub-title {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 16px;
     font-weight: 600;
   }
   & .switch-btn {
@@ -77,6 +76,5 @@ export const PageLayout = styled.div`
 
 export const StyledModalTitle = styled.span`
   font-size: 20px;
-  line-height: 28px;
   font-weight: 600;
 `;

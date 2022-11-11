@@ -80,7 +80,7 @@ const SupporterPage = () => {
     <>
       {renderPageTitle()}
       <SupporterPageLayout>
-        <div className="item mb-7">
+        <div className="item mb-6">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
             <Col>
@@ -88,7 +88,7 @@ const SupporterPage = () => {
                 <Col className="mr-6">
                   <span className="page-title">
                     <PersonIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-1 page-title">{'個人サポーター'}</span>
+                    <span className="ml-1">{'個人サポーター'}</span>
                   </span>
                 </Col>
                 <Col className="mr-2">

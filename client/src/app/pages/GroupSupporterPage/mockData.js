@@ -58,7 +58,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 
 const columnMap = {
   group_id: {
-    title: '法人NO',
+    title: '法人No.',
     render: row => <Button type="link">{row.group_id} </Button>,
     csvOutput: ({ group_id }) => group_id,
   },
