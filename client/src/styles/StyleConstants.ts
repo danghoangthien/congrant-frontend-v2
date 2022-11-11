@@ -17,3 +17,7 @@ export enum ScreenSizes {
 
 export const PRIMARY_COLOR = '#63b233';
 export const WARNING_COLOR = '#ff4d4f';
+export const BORDER_COLOR = '#f0f0ee';
+export const CARD_BORDER_COLOR = '#d9d9d7';
+export const BORDER_RADIUS = '4px';
+export const FONT_COLOR = 'rgba(0,0,0,0.85)';

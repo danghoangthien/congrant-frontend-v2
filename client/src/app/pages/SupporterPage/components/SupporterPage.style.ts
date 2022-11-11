@@ -40,12 +40,7 @@ export const SupporterPageLayout = styled.div`
   & .ant-descriptions-item-label {
     width: 200px;
   }
-  & .page-title {
-    font-size: 28px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-  }
+
   & .switch-btn {
     .ant-btn {
       border: none;

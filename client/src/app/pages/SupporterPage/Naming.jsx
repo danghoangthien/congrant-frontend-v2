@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import { Card, Row, Col, Checkbox, Button, Table, Tag } from 'antd';
+
 const Naming = () => {
   const options = [
     { label: 'メールアドレスが一致', value: '1' },
@@ -8,6 +9,7 @@ const Naming = () => {
     { label: '電話番号が一致', value: '3' },
     { label: '郵便番号が一致', value: '4' },
   ];
+
   const dataSource = Array.from(Array(5).keys()).map(i => ({
     key: `${i}`,
     personal_id: `${'20220730' + i}`,
@@ -50,8 +52,13 @@ const Naming = () => {
   return (
     <>
       <SupporterPageLayout>
-        <div className="item">
-          <Card className="ma-5">
+        <Row type="flex" align="middle" className="mb-6">
+          <Col className="mr-6">
+            <span className="sub-page-title">{'個人サポーターの名寄せ'}</span>
+          </Col>
+        </Row>
+        <div className="item mb-6">
+          <Card>
             <Row className="mb-3">
               <Col sm={24} md={24} lg={24}>
                 <span className="bold">{'名寄せ条件（AND）'}</span>
@@ -64,8 +71,8 @@ const Naming = () => {
             </Row>
           </Card>
         </div>
-        <div className="item">
-          <Card className="ma-5">
+        <div className="item mb-6">
+          <Card>
             <Row className="mb-3">
               <Col sm={24} md={20} lg={20}>
                 <span className="bold">
@@ -97,7 +104,7 @@ const Naming = () => {
           </Card>
         </div>
         <div className="item">
-          <Card className="ma-5">
+          <Card>
             <Row className="mb-3">
               <Col sm={24} md={20} lg={20}>
                 <span className="bold">

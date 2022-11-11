@@ -151,44 +151,43 @@ const DataTable = ({
         </Card>
         {hasSelected && (
           <div className="index-table-toolbar">
-            <Row className="selected-status-ops py-3 px-6">
-              <Col>
-                <Checkbox
-                  checked={selectedRowKeys.length == items.length}
-                  onChange={e => {
-                    if (e.target.checked) {
-                      setSelectedRowKeys(
-                        items.map(item => {
-                          return item[columns[0].dataIndex];
-                        }),
-                      );
-                    } else {
-                      setSelectedRowKeys([]);
-                    }
+            <Row align="middle" className="selected-status-ops py-3 px-6">
+              <Checkbox
+                style={{ fontSize: '16px', fontWeight: '600' }}
+                checked={selectedRowKeys.length === items.length}
+                onChange={e => {
+                  if (e.target.checked) {
+                    setSelectedRowKeys(
+                      items.map(item => {
+                        return item[columns[0].dataIndex];
+                      }),
+                    );
+                  } else {
+                    setSelectedRowKeys([]);
+                  }
+                }}
+              >
+                全件選択
+              </Checkbox>
+              <span className="ml-5 mr-8">
+                {hasSelected ? `${selectedRowKeys.length}件選択中` : ''}
+              </span>
+              {contextButtons.map(Component => {
+                return <Component selectedRowKeys={selectedRowKeys} />;
+              })}
+              <Dropdown
+                overlay={<Menu items={contextDropdownItems(selectedRowKeys) || []} />}
+                placement="topRight"
+              >
+                <Select
+                  className="ml-5"
+                  style={{
+                    width: 155,
                   }}
-                >
-                  全件選択
-                </Checkbox>
-                <span className="ml-5">
-                  {hasSelected ? `${selectedRowKeys.length} 件選択中` : ''}
-                </span>
-                {contextButtons.map(Component => {
-                  return <Component selectedRowKeys={selectedRowKeys} />;
-                })}
-                <Dropdown
-                  overlay={<Menu items={contextDropdownItems(selectedRowKeys) || []} />}
-                  placement="topRight"
-                >
-                  <Select
-                    className="ml-5"
-                    style={{
-                      width: 155,
-                    }}
-                    placeholder={'その他の一括操作'}
-                    open={false}
-                  />
-                </Dropdown>
-              </Col>
+                  placeholder={'その他の一括操作'}
+                  open={false}
+                />
+              </Dropdown>
             </Row>
           </div>
         )}

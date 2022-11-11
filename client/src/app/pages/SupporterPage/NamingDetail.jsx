@@ -302,18 +302,15 @@ const NamingDetail = () => {
   return (
     <>
       <SupporterPageLayout>
-        <div className="item mx-8 my-8">
+        <div className="item mb-6">
           <Row>
             <Col sm={24} md={12} lg={12}>
-              <Typography.Text className="page-title bold" type="success">
-                |
-              </Typography.Text>
-              <span className="ml-1 page-title">{'名寄せ先の選択'}</span>
+              <span className="sub-page-title">{'名寄せ先の選択'}</span>
             </Col>
           </Row>
         </div>
         <div className="item">
-          <Card className="ma-5">
+          <Card>
             <Row className="mb-3">
               <Col sm={24} md={20} lg={20}>
                 <span className="bold">
