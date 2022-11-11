@@ -15,6 +15,7 @@ import {
 import { Button, Input, Row, Col, Badge } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import Detail, { DETAIL_KEY_MAP } from '../SupporterPage/components/Detail';
+import AddSupporter from './components/AddSupporter';
 
 import './Models/index';
 
@@ -78,10 +79,7 @@ const GroupSupporterPage = () => {
                   <Badge className="ml-1 display-inline-flex pb-1" count={99}></Badge>
                 </Button>
               </Link>
-              <Button className="active ml-2" type="primary">
-                <PlusOutlined className="display-inline-flex" />
-                <span className="ml-2">{'法人サポーターの登録'}</span>
-              </Button>
+              <AddSupporter />
             </Col>
           </Row>
         </div>

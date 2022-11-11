@@ -26,6 +26,7 @@ import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrow
 import SlideshowIcon from '@mui/icons-material/Slideshow';
 import HelpIcon from '@mui/icons-material/Help';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 const { Header, Sider, Content } = Layout;
 
@@ -236,6 +237,21 @@ const AppLayout = ({ children }) => {
                             <SettingsIcon />
                           )}
                           <span className="menu-txt">{'団体設定'}</span>
+                        </HighlightOnActive>
+                      </Link>
+                    </Col>
+                    {/* 個人設定 */}
+                    <Col className="menu-item" span={24} type="flex" align="left">
+                      <Link className="sidebar-link" to={`/individuals-settings`}>
+                        <HighlightOnActive isActive={isActive(`/individuals-settings`)}>
+                          {collapsed ? (
+                            <Tooltip title="個人設定" placement="right">
+                              <ManageAccountsIcon />
+                            </Tooltip>
+                          ) : (
+                            <ManageAccountsIcon />
+                          )}
+                          <span className="menu-txt">{'個人設定'}</span>
                         </HighlightOnActive>
                       </Link>
                     </Col>

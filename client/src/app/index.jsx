@@ -18,6 +18,7 @@ import FundingPage from './pages/FundingPage';
 import EditorPage from './pages/EditorPage';
 import BasicSettingsPage from './pages/BasicSettingsPage';
 import GroupSettingsPage from './pages/GroupSettingsPage';
+import PersonalSettingsPage from './pages/PersonalSettingPage';
 import SupporterPage from './pages/SupporterPage';
 import SupporterNamingPage from './pages/SupporterPage/Naming';
 import SupporterNamingDetailPage from './pages/SupporterPage/NamingDetail';
@@ -25,7 +26,9 @@ import GroupSupporterPage from './pages/GroupSupporterPage';
 import ProjectPage from './pages/ProjectPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ReceiptPage from './pages/ReceiptPage';
+import ReceiptBulkPage from './pages/ReceiptBulkPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import ContinuousContractPage from './pages/ContinuousContractPage';
 
 import { useTranslation } from 'react-i18next';
 import CkeditorPage from './pages/CkeditorPage';
@@ -60,6 +63,9 @@ export function App() {
             <Route path={process.env.PUBLIC_URL + '/donations'}>
               <FundingPage />
             </Route>
+            <Route path={process.env.PUBLIC_URL + '/reccurings'}>
+              <ContinuousContractPage />
+            </Route>
             <Route path={process.env.PUBLIC_URL + '/individuals'}>
               <SupporterPage />
             </Route>
@@ -75,11 +81,17 @@ export function App() {
             <Route path={process.env.PUBLIC_URL + '/receipts'}>
               <ReceiptPage />
             </Route>
+            <Route path={process.env.PUBLIC_URL + '/receipts-bulk'}>
+              <ReceiptBulkPage />
+            </Route>
             <Route path={process.env.PUBLIC_URL + '/settings'}>
               <BasicSettingsPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/corporation-settings'}>
               <GroupSettingsPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/individuals-settings'}>
+              <PersonalSettingsPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/editor'}>
               <EditorPage />

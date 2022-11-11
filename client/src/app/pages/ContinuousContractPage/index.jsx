@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/SupporterPage/components/Detail';
-import { SearchOutlined, MailOutlined, EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
+import { SearchOutlined, MailOutlined, EllipsisOutlined } from '@ant-design/icons';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import MenuIcon from '@mui/icons-material/Menu';
-import HistoryIcon from '@mui/icons-material/History';
-import NewReceipt from './components/NewReceipt';
-import { Button, Input, Row, Col, Space, Dropdown, Menu } from 'antd';
+import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import CachedIcon from '@mui/icons-material/Cached';
+import SendIcon from '@mui/icons-material/Send';
 
 import './Models/index';
 
@@ -31,18 +29,7 @@ const MailButton = ({ selectedRowKeys }) => {
 
 const contextDropdownItems = metaData.menuItems;
 
-const headerContextDropdownItems = [
-  {
-    key: '1',
-    label: (
-      <Space onClick={() => {}}>
-        <HistoryIcon style={{ color: 'black' }} /> <span className="ml-2">{'一括作成履歴'}</span>
-      </Space>
-    ),
-  },
-];
-
-const ReceiptPage = () => {
+const ContinuousContractPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const renderPageTitle = () => {
     return (
@@ -66,8 +53,8 @@ const ReceiptPage = () => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <span className="page-title">
-                    <MenuIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-1 page-title">{'領収書'}</span>
+                    <CachedIcon style={{ fontSize: '32px' }} />
+                    <span className="ml-1 page-title">{'継続契約'}</span>
                   </span>
                 </Col>
                 <Col className="mr-2">
@@ -91,20 +78,15 @@ const ReceiptPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={'/receipts-bulk'}>
-                <Button type="primary">
-                  <PlusOutlined className="display-inline-flex" />
-                  <span>{'領収書の一括作成'}</span>
-                </Button>
-              </Link>
-
-              <Dropdown
-                className="ml-2"
-                overlay={<Menu items={headerContextDropdownItems} />}
-                placement="bottomRight"
-              >
-                <Button icon={<EllipsisOutlined />} />
-              </Dropdown>
+              <Space>
+                <Badge
+                  style={{ backgroundColor: '#C72A32' }}
+                  className="ml-1 display-inline-flex pb-1"
+                  count={99}
+                ></Badge>
+                <span>{'再決済待ちのレコードのみを表示'}</span>
+                <Switch defaultChecked />
+              </Space>
             </Col>
           </Row>
         </div>
@@ -118,9 +100,9 @@ const ReceiptPage = () => {
         <div className="item">
           <Table
             TableName="領収書一覧"
-            model="receiptList"
+            model="continuousContractList"
             metaData={metaData}
-            Detail={<Detail activeKey={DETAIL_KEY_MAP.RECEIPT} />}
+            Detail={<Detail activeKey={DETAIL_KEY_MAP.RECURRING} />}
             contextButtons={[MailButton]}
             contextDropdownItems={contextDropdownItems}
           />
@@ -130,4 +112,4 @@ const ReceiptPage = () => {
   );
 };
 
-export default ReceiptPage;
+export default ContinuousContractPage;
