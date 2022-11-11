@@ -18,7 +18,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 import { Button, Input, Row, Col, Badge, Space } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
-
+import AddSupporter from './components/AddSupporter';
 import './Models/index';
 
 const MailButton = ({ selectedRowKeys }) => {
@@ -122,10 +122,7 @@ const SupporterPage = () => {
                   ></Badge>
                 </Button>
               </Link>
-              <Button className="active ml-2" type="primary">
-                <PlusOutlined className="display-inline-flex" />
-                <span className="ml-2">{'個人サポーターの登録'}</span>
-              </Button>
+              <AddSupporter />
             </Col>
           </Row>
         </div>

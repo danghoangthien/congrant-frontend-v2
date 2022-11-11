@@ -33,7 +33,7 @@ const ExportPDF = ({ title }) => {
         }}
         type="primary"
       >
-        <span>{'PDF'}</span>
+        <span>{'PDFF'}</span>
       </Button>
       <Modal
         title={<StyledModalTitle>{'領収書ダウンロードURLの送信'}</StyledModalTitle>}
