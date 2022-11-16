@@ -51,13 +51,7 @@ const columns = Object.keys(columnMap).map(columnName => {
 });
 
 const SummaryTable = () => (
-  <Table
-    className="no-btm-bdr"
-    dataSource={dataSource}
-    columns={columns}
-    pagination={false}
-    style={{ width: '100%' }}
-  />
+  <Table dataSource={dataSource} columns={columns} pagination={false} style={{ width: '100%' }} />
 );
 
 export default SummaryTable;

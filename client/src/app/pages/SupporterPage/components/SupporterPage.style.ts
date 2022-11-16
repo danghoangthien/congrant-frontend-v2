@@ -34,9 +34,6 @@ export const SupporterPageLayout = styled.div`
   & .display-inline-flex {
     display: inline-flex;
   }
-  & .free-search {
-    width: 200px;
-  }
   & .ant-descriptions-item-label {
     width: 200px;
   }

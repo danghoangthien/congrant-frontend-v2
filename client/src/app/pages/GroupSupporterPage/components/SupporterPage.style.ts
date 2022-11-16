@@ -38,15 +38,12 @@ export const SupporterPageLayout = styled.div`
   & .display-inline-flex {
     display: inline-flex;
   }
-  & .free-search {
-    width: 200px;
-  }
   & .ant-descriptions-item-label {
     width: 200px;
   }
   & .page-title {
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 600;
   }
   & .switch-btn {
     .ant-btn {

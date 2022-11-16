@@ -14,18 +14,17 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
     width: 100%;
-    line-height: 1.5;
+    // line-height: 1.5;
     font-size: 16px;
     color: rgba(0,0,0,0.85);
   }
 
   body {
     font-family: "ヒラギノ角ゴシック", "Hiragino Kaku Gothic", "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Sans", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    background-color: #ffffff;
   }
 
-  body.fontLoaded {
-    font-family: "ヒラギノ角ゴシック", "Hiragino Kaku Gothic", "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Sans", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  .roboto-mono {
+    font-family: 'Roboto Mono', monospace;
   }
 
   .ant-btn>span {
@@ -54,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
   // buttons
   .filter-button {
     display: flex;
-    align: center;
+    align-items: center;
 
     >svg {
       width: 16px;
@@ -102,7 +101,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .page-title {
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 600;
     display: flex;
     align-items: center;
   }
@@ -179,8 +178,9 @@ export const GlobalStyle = createGlobalStyle`
     .bread-crumb-content {
       background: ${PRIMARY_COLOR};
       padding: 5px 16px;
-      display: inline-block;
       font-weight: 600;
+      display: flex;
+      align-items: center;
     }
     span.bread-crumb-content {
       color: #ffffff;
@@ -235,10 +235,8 @@ export const GlobalStyle = createGlobalStyle`
     padding: 17px 12px;
   }
 
-  .no-btm-bdr {
-    .ant-table-tbody>tr:last-of-type>td {
-      border-bottom: none;
-    }
+  .table-card {
+    padding-bottom: 36px;
   }
 
   // POP-UP MENU
@@ -246,6 +244,47 @@ export const GlobalStyle = createGlobalStyle`
     & .ant-menu {
       border-radius: 4px;
     }
+  }
+
+  // ANTD INPUT
+  .ant-input {
+    border-radius: 4px;
+
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: rgba(0,0,0,0.2);
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: rgba(0,0,0,0.2);
+      opacity: 1;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: rgba(0,0,0,0.2);
+      opacity: 1;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: rgba(0,0,0,0.2);
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: rgba(0,0,0,0.2);
+    }
+  }
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    #909;
+}
+
+  // ANTD PICKER
+  .ant-picker {
+    border-radius: 4px;
+  }
+
+  // ANTD SELECT
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 4px;
+  }
+
+  .ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+    color: rgba(0,0,0,0.2);
   }
 
   // LEFT MENU
@@ -260,6 +299,11 @@ export const GlobalStyle = createGlobalStyle`
       display: inline-block;
       margin-right: 8px;
     }
+  }
+
+  // ICON
+  .custom-icon {
+    height: auto !important;
   }
 `;
 
