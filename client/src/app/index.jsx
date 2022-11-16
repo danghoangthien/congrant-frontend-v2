@@ -14,6 +14,13 @@ import { GlobalStyle } from '../styles/global-styles';
 import AppLayout from 'app/components/Layout';
 
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import RegisterReviewPage from './pages/RegisterPage/Review';
+import RegisterStepsPage from './pages/RegisterPage/Steps';
+import RegisterConfirmPage from './pages/RegisterPage/Confirmation';
+import RegisterSuccessPage from './pages/RegisterPage/Success';
+import EmailVerifyPage from './pages/LoginPage/EmailVerify';
 import FundingPage from './pages/FundingPage';
 import EditorPage from './pages/EditorPage';
 import BasicSettingsPage from './pages/BasicSettingsPage';
@@ -49,6 +56,29 @@ export function App() {
           <meta name="description" content="A Congrant application." />
         </Helmet>
         <Switch>
+          <>
+            <Route path={process.env.PUBLIC_URL + '/login'}>
+              <LoginPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/register'}>
+              <RegisterPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/register-review'}>
+              <RegisterReviewPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/register-start'}>
+              <RegisterStepsPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/register-confirmation'}>
+              <RegisterConfirmPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/register-success'}>
+              <RegisterSuccessPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/email-verify'}>
+              <EmailVerifyPage />
+            </Route>
+          </>
           <AppLayout>
             <Route path={process.env.PUBLIC_URL + '/home'}>
               <HomePage />

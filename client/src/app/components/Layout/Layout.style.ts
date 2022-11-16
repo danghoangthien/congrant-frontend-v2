@@ -1,5 +1,12 @@
 import styled from 'styled-components/macro';
-import { StyleConstants, ScreenSizes, PRIMARY_COLOR, BORDER_COLOR, CARD_BORDER_COLOR, FONT_COLOR } from 'styles/StyleConstants';
+import {
+  StyleConstants,
+  ScreenSizes,
+  PRIMARY_COLOR,
+  BORDER_COLOR,
+  CARD_BORDER_COLOR,
+  FONT_COLOR,
+} from 'styles/StyleConstants';
 
 export const StyledSidebar = styled.div<{}>`
   & .ant-layout-has-sider {
@@ -264,7 +271,7 @@ export const SlyledLayout = styled.div<{}>`
 
 export const SlyledHeader = styled.div<{}>`
   & .ant-layout-header {
-    background: #F0F0EE;
+    background: #f0f0ee;
   }
   & .line {
     content: '';
