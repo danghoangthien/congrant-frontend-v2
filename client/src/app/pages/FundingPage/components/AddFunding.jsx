@@ -27,7 +27,7 @@ const AddFunding = () => {
 
   return (
     <>
-      <Button onClick={showModal} className="active ml-2" type="primary">
+      <Button onClick={showModal} className="active" type="primary" style={{ fontWeight: '300' }}>
         <PlusOutlined className="display-inline-flex" />
         <span className="ml-2">{'寄付の登録'}</span>
       </Button>

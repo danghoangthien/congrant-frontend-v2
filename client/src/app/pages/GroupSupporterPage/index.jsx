@@ -67,7 +67,7 @@ const GroupSupporterPage = () => {
                 <Col className="mr-2">
                   <Input
                     className="free-search"
-                    placeholder="フリーワード検索"
+                    placeholder="フリー検索"
                     prefix={<SearchOutlined />}
                   />
                 </Col>

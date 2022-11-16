@@ -36,11 +36,11 @@ import 'antd-css-utilities/utility.min.css';
 
 // Observe loading of Inter (to remove 'Inter', remove the <link> tag in
 // the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Inter', {});
+const robotoMonoObserver = new FontFaceObserver('Roboto Mono', {});
 
 // When Inter is loaded, add a font-family using Inter to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
+robotoMonoObserver.load().then(() => {
+  document.documentElement.className += 'roboto-mono';
 });
 
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;

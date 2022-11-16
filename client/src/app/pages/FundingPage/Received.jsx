@@ -1,10 +1,18 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+// Antd
+import { Button, Badge, Input, Row, Col, Space, Breadcrumb } from 'antd';
+// Components
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import AddFunding from './components/AddFunding';
 import Detail, { DETAIL_KEY_MAP } from '../SupporterPage/components/Detail';
+import './Models/received';
+// Styles
+// import { FundingPageLayout } from './FundingPage.style';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
+// Icons
 import {
   PayCircleOutlined,
   SearchOutlined,
@@ -12,10 +20,11 @@ import {
   MailOutlined,
   EllipsisOutlined,
 } from '@ant-design/icons';
-import { Button, Badge, Input, Row, Col, Space } from 'antd';
-import { FundingPageLayout } from './FundingPage.style';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import SearchIcon from '@mui/icons-material/Search';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+// Meta
 import * as metaData from './mockDataReceived';
-import './Models/received';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
@@ -31,52 +40,58 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
+const renderPageTitle = () => {
+  return (
+    <>
+      <Helmet>
+        <title>{'寄付決済'}</title>
+        <meta name="description" content={'...'} />
+      </Helmet>
+    </>
+  );
+};
+
 const FundingPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
-
-  const renderPageTitle = () => {
-    return (
-      <>
-        <Helmet>
-          <title>{'Funding Received'}</title>
-          <meta name="description" content={'...'} />
-        </Helmet>
-      </>
-    );
-  };
 
   return (
     <>
       {renderPageTitle()}
-      <FundingPageLayout>
+      <PageLayout>
         <div className="item mb-7">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
             <Col>
               <Row type="flex" align="middle">
-                <div className="page-title">
-                  <PayCircleOutlined className="display-inline-flex" />
-                  <span className="ml-1">{'寄付決済'}</span>
+                <div className="page-title mr-6">
+                  <FavoriteIcon style={{ fontSize: '32px' }} />
+                  <span className="ml-2">{'寄付決済'}</span>
                 </div>
-                <div className="switch-btn ml-8">
-                  <Button className="active" type="primary">
-                    {'受領済み'}
-                  </Button>
-                  <Link className="sidebar-link" to={`/donations/unclaimed`}>
-                    <Button>
-                      <span>{'未受領'}</span>
-                      <Badge className="ml-1 display-inline-flex pb-1" count={99}></Badge>
-                    </Button>
-                  </Link>
-                </div>
+
+                <Breadcrumb className="bread-crumb mr-2" separator="">
+                  <Breadcrumb.Item>
+                    <span className="bread-crumb-content">受領済み</span>
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item>
+                    <Link className="bread-crumb-content" to={`/donations/received`}>
+                      未受領
+                      <Badge
+                        className="ml-1 roboto-mono"
+                        count={99}
+                        style={{ backgroundColor: '#C72A32' }}
+                      ></Badge>
+                    </Link>
+                  </Breadcrumb.Item>
+                </Breadcrumb>
+
                 <Input
-                  className="ml-3 free-search"
-                  placeholder="フリーワード検索"
-                  prefix={<SearchOutlined />}
+                  className="free-search mr-2"
+                  placeholder="フリー検索"
+                  prefix={<SearchIcon />}
                 />
                 <Button
-                  className="ml-1"
-                  icon={<FilterOutlined />}
+                  className="filter-button"
+                  icon={<FilterAltIcon />}
                   onClick={() => setFilterOpen(!filterOpen)}
                 >
                   {'フィルタ'}
@@ -104,7 +119,7 @@ const FundingPage = () => {
             TableName={'受領済みの寄付一覧'}
           />
         </div>
-      </FundingPageLayout>
+      </PageLayout>
     </>
   );
 };

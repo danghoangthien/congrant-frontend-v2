@@ -10,6 +10,8 @@ import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import CachedIcon from '@mui/icons-material/Cached';
 import SendIcon from '@mui/icons-material/Send';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import SearchIcon from '@mui/icons-material/Search';
 
 import './Models/index';
 
@@ -35,7 +37,7 @@ const ContinuousContractPage = () => {
     return (
       <>
         <Helmet>
-          <title>{'領収書'}</title>
+          <title>{'継続契約'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -46,23 +48,19 @@ const ContinuousContractPage = () => {
     <>
       {renderPageTitle()}
       <PageLayout>
-        <div className="item mb-7">
+        <div className="item mb-6">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <span className="page-title">
-                    <CachedIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-1 page-title">{'継続契約'}</span>
+                    <AutorenewIcon style={{ fontSize: '32px' }} />
+                    <span className="ml-2 page-title">{'継続契約'}</span>
                   </span>
                 </Col>
                 <Col className="mr-2">
-                  <Input
-                    className="free-search"
-                    placeholder="フリーワード検索"
-                    prefix={<SearchOutlined />}
-                  />
+                  <Input className="free-search" placeholder="フリー検索" prefix={<SearchIcon />} />
                 </Col>
                 <Col>
                   <Button
@@ -78,13 +76,15 @@ const ContinuousContractPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Space>
+              <Space align="baseline" size={8}>
                 <Badge
                   style={{ backgroundColor: '#C72A32' }}
-                  className="ml-1 display-inline-flex pb-1"
+                  className="roboto-mono"
                   count={99}
                 ></Badge>
-                <span>{'再決済待ちのレコードのみを表示'}</span>
+                <span style={{ fontWeight: '300', fontSize: '14px' }}>
+                  {'再決済待ちのレコードのみを表示'}
+                </span>
                 <Switch defaultChecked />
               </Space>
             </Col>
@@ -99,7 +99,7 @@ const ContinuousContractPage = () => {
         {/* ページコンテンツ・Page Content */}
         <div className="item">
           <Table
-            TableName="領収書一覧"
+            TableName="継続契約一覧"
             model="continuousContractList"
             metaData={metaData}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.RECURRING} />}

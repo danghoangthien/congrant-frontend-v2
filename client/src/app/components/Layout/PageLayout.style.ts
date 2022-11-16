@@ -35,14 +35,19 @@ export const PageLayout = styled.div`
     display: inline-flex;
   }
   & .free-search {
-    width: 200px;
+    width: 216px;
+    border-radius: 4px;
+
+    svg {
+      font-size: 16px;
+    }
   }
   & .ant-descriptions-item-label {
     width: 200px;
   }
   & .page-title {
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 600;
     display: flex;
     align-items: center;
   }
