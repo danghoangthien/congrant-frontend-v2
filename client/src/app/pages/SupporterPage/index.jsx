@@ -15,11 +15,13 @@ import {
 } from '@ant-design/icons';
 import PersonIcon from '@mui/icons-material/Person';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import SearchIcon from '@mui/icons-material/Search';
 
 import { Button, Input, Row, Col, Badge, Space } from 'antd';
-import { SupporterPageLayout } from './components/SupporterPage.style';
 import AddSupporter from './components/AddSupporter';
 import './Models/index';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
+// import { SupporterPageLayout } from './components/SupporterPage.style';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
@@ -79,7 +81,7 @@ const SupporterPage = () => {
   return (
     <>
       {renderPageTitle()}
-      <SupporterPageLayout>
+      <PageLayout>
         <div className="item mb-6">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
@@ -92,11 +94,7 @@ const SupporterPage = () => {
                   </span>
                 </Col>
                 <Col className="mr-2">
-                  <Input
-                    className="free-search"
-                    placeholder="フリーワード検索"
-                    prefix={<SearchOutlined />}
-                  />
+                  <Input className="free-search" placeholder="フリー検索" prefix={<SearchIcon />} />
                 </Col>
                 <Col>
                   <Button
@@ -143,7 +141,7 @@ const SupporterPage = () => {
             contextDropdownItems={contextDropdownItems}
           />
         </div>
-      </SupporterPageLayout>
+      </PageLayout>
     </>
   );
 };

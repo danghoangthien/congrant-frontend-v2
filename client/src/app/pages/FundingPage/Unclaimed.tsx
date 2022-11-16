@@ -61,7 +61,7 @@ const FundingPage = (): JSX.Element => {
             </div>
             <Input
               className="ml-3 free-search"
-              placeholder="フリーワード検索"
+              placeholder="フリー検索"
               prefix={<SearchOutlined />}
             />
           </Row>
