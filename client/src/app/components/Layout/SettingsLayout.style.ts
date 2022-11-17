@@ -135,6 +135,7 @@ export const StyledInput = styled(Input)`
   line-height: 24px;
   height: 40pxpx;
   width: 600px;
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 export const StyledTextarea = styled(TextArea)`
@@ -146,6 +147,7 @@ export const StyledTextarea = styled(TextArea)`
   line-height: 24px;
   height: 62px;
   width: 600px;
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 export const StyledTextareaMedium = styled(TextArea)`

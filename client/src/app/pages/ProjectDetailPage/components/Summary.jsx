@@ -15,8 +15,8 @@ const Summary = () => {
     return (
       <>
         <Helmet>
-          <title>{'プロジェクトトップ'}</title>
-          <meta name="description" content={'プロジェクトトップ'} />
+          <title>{'プロジェクト'}</title>
+          <meta name="description" content={'プロジェクト'} />
         </Helmet>
       </>
     );
@@ -32,7 +32,7 @@ const Summary = () => {
             <Row type="flex" align="middle">
               <Col className="mr-6">
                 <span className="page-title">
-                  <span className="ml-1 sub-page-title">{'プロジェクトトップ'}</span>
+                  <span className="sub-page-title">{'プロジェクト'}</span>
                 </span>
               </Col>
               <Col className="mr-2">
@@ -70,9 +70,6 @@ const Summary = () => {
 
         {/* サマリー */}
         <Card className="mb-5 table-card" bodyStyle={{ padding: 0 }}>
-          <Row className="px-6 py-5">
-            <span className="page-sub-title">{'サマリー'}</span>
-          </Row>
           <Row>
             <SummaryTable />
           </Row>

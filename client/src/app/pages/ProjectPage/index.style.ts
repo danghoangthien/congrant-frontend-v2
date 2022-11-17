@@ -25,6 +25,9 @@ export const ProjectUrl = styled.div`
   font-size: 12px;
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 12px;
+  a {
+    color: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export const ProjectLaunchType = styled.div`

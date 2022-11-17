@@ -66,6 +66,11 @@ const AdvanceSetting = () => {
             </Col>
           </SettingsInputContainer>
         </Row>
+        <Row className="item mb-2">
+          <SettingsInputContainer label={<SettingInfoLabel label={'SNSシェア'} required />}>
+            <Checkbox checked>{'SNSシェアの案内を表示する'}</Checkbox>
+          </SettingsInputContainer>
+        </Row>
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <span className="page-sub-title">{'自動返信メール'}</span>
@@ -73,17 +78,10 @@ const AdvanceSetting = () => {
         </Row>
         <Row className="item mb-2">
           <SettingsInputContainer
-            label={<SettingInfoLabel label={'完了画面のメッセージ'} required />}
-          >
-            <Checkbox checked>{'決済完了メールの内容を編集する'}</Checkbox>
-          </SettingsInputContainer>
-        </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer
-            label={<SettingInfoLabel label={'完了画面のメッセージ'} required />}
+            label={<SettingInfoLabel label={'決済完了メールの内容'} required />}
           >
             <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Checkbox checked>{'完了画面のメッセージを編集する'}</Checkbox>
+              <Checkbox checked>{'決済完了メールの内容を編集する'}</Checkbox>
             </Col>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <SettingTextarea
@@ -95,14 +93,33 @@ const AdvanceSetting = () => {
             </Col>
           </SettingsInputContainer>
         </Row>
-
+        <Row className="mb-2">
+          <Col sm={24} md={24} lg={24}>
+            <span className="page-sub-title">{'銀行振込の振込先口座'}</span>
+          </Col>
+        </Row>
+        <Row className="item mb-2">
+          <SettingsInputContainer label={<SettingInfoLabel label={'口座情報'} required />}>
+            <Col className="item mb-5" sm={24} md={24} lg={24}>
+              <Checkbox checked>{'銀行振込希望のサポーターに案内する口座情報を編集する'}</Checkbox>
+            </Col>
+            <Col className="item mb-5" sm={24} md={24} lg={24}>
+              <SettingTextarea
+                rows="6"
+                placeholder={
+                  '下記口座に1週間以内にお振込ください。\n\n金融機関名：\n支店名　　：\n口座番号　：\n口座名義　：'
+                }
+              />
+            </Col>
+          </SettingsInputContainer>
+        </Row>
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <span className="page-sub-title">{'限定公開'}</span>
           </Col>
         </Row>
         <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingInfoLabel label={'金額の自由入力'} required />}>
+          <SettingsInputContainer>
             <Row className="mb-2">
               <Space>
                 <Checkbox checked>{'プロジェクトを限定公開にする'}</Checkbox>
@@ -116,7 +133,7 @@ const AdvanceSetting = () => {
               </Space>
             </Row>
             <Row>
-              <Space className="ml-5">
+              <Space className="">
                 <span>{'パスワード'}</span>
                 <Input placeholder="abcd1234" style={{ width: '200px' }} />
               </Space>

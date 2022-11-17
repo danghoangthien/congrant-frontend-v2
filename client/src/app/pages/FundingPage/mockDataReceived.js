@@ -1,12 +1,15 @@
-import { Typography, Tag } from 'antd';
-
+import { Button, Tag, Badge, Space } from 'antd';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { getWithExpiry } from 'utils/localStorageHandler';
+import { randomOutput } from 'utils/helper';
+import { StyledBadgeDot } from 'app/components/Styled/index.style';
 
 import {
   RECEIPT_METHODS,
   DONATION_TYPES,
   PLANS,
   RECEIPT_STATUSES,
+  RECEIPT_STATUS_COLOR,
   DONATION_TYPE_COLORS,
 } from './consts';
 
@@ -20,7 +23,7 @@ const dataSource = [
     donation_type: '1',
     plan: '0',
     amount: '3,000円',
-    receipt_status: '1',
+    receipt_status: 1,
   },
   {
     key: '2',
@@ -28,10 +31,10 @@ const dataSource = [
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
-    donation_type: '1',
+    donation_type: '2',
     plan: '0',
     amount: '3,000円',
-    receipt_status: '1',
+    receipt_status: 1,
   },
   {
     key: '3',
@@ -42,7 +45,7 @@ const dataSource = [
     donation_type: '1',
     plan: '0',
     amount: '3,000円',
-    receipt: '1',
+    receipt_status: 0,
   },
   {
     key: '4',
@@ -61,7 +64,7 @@ const dataSource = [
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
-    donation_type: '1',
+    donation_type: '3',
     plan: '0',
     amount: '3,000円',
     receipt_status: '1',
@@ -123,7 +126,7 @@ const dataSource = [
   },
   {
     key: '11',
-    date_of_receipt: '2022-07-25',
+    date_of_receipt: '2021-07-25',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -134,7 +137,7 @@ const dataSource = [
   },
   {
     key: '12',
-    date_of_receipt: '2022-07-24',
+    date_of_receipt: '2021-07-24',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -145,7 +148,7 @@ const dataSource = [
   },
   {
     key: '13',
-    date_of_receipt: '2022-07-23',
+    date_of_receipt: '2021-07-23',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -156,7 +159,7 @@ const dataSource = [
   },
   {
     key: '14',
-    date_of_receipt: '2022-07-22',
+    date_of_receipt: '2021-07-22',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -167,7 +170,7 @@ const dataSource = [
   },
   {
     key: '15',
-    date_of_receipt: '2022-07-21',
+    date_of_receipt: '2021-07-21',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -178,7 +181,7 @@ const dataSource = [
   },
   {
     key: '16',
-    date_of_receipt: '2022-07-20',
+    date_of_receipt: '2021-07-20',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -189,7 +192,7 @@ const dataSource = [
   },
   {
     key: '17',
-    date_of_receipt: '2022-07-19',
+    date_of_receipt: '2021-07-19',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -200,7 +203,7 @@ const dataSource = [
   },
   {
     key: '18',
-    date_of_receipt: '2022-07-18',
+    date_of_receipt: '2021-07-18',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -211,7 +214,7 @@ const dataSource = [
   },
   {
     key: '19',
-    date_of_receipt: '2022-07-17',
+    date_of_receipt: '2021-07-17',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -222,7 +225,7 @@ const dataSource = [
   },
   {
     key: '20',
-    date_of_receipt: '2022-07-16',
+    date_of_receipt: '2021-07-16',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -233,7 +236,7 @@ const dataSource = [
   },
   {
     key: '21',
-    date_of_receipt: '2022-07-15',
+    date_of_receipt: '2021-07-15',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -244,7 +247,7 @@ const dataSource = [
   },
   {
     key: '22',
-    date_of_receipt: '2022-07-14',
+    date_of_receipt: '2021-07-14',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -255,7 +258,7 @@ const dataSource = [
   },
   {
     key: '23',
-    date_of_receipt: '2022-07-13',
+    date_of_receipt: '2021-07-13',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -266,7 +269,7 @@ const dataSource = [
   },
   {
     key: '24',
-    date_of_receipt: '2022-07-12',
+    date_of_receipt: '2021-07-12',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -277,7 +280,7 @@ const dataSource = [
   },
   {
     key: '25',
-    date_of_receipt: '2022-07-11',
+    date_of_receipt: '2021-07-11',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -296,7 +299,7 @@ const columnMap = {
   },
   supporter: {
     title: 'サポーター',
-    render: row => row.supporter,
+    render: row => <Button type="link">{row.supporter}</Button>,
     csvOutput: ({ supporter }) => supporter,
   },
   project: {
@@ -320,19 +323,38 @@ const columnMap = {
   },
   plan_and_amount: {
     title: 'プラン・金額',
-    render: ({ plan, amount }) => (
-      <>
-        {PLANS[plan] || ''}
-        <br />
-        {amount}
-      </>
-    ),
+    render: ({ amount }) => {
+      const plan = randomOutput([
+        'シルバーサポーター',
+        '賛助会員（都度更新）',
+        '正会員（自動更新）',
+        '',
+      ]);
+      return (
+        <>
+          {plan && (
+            <>
+              {plan}
+              <br />
+            </>
+          )}
+          {amount}
+        </>
+      );
+    },
     csvOutput: ({ plan, amount }) => `${PLANS[plan] || ''} ${amount}`,
   },
   receipt_status: {
     title: '領収書',
     dataIndex: 'receipt_status',
-    render: receipt_status => RECEIPT_STATUSES[receipt_status] || '',
+    render: receipt_status => (
+      <StyledBadgeDot>
+        <Badge
+          status={RECEIPT_STATUS_COLOR[receipt_status]}
+          text={RECEIPT_STATUSES[receipt_status]}
+        />
+      </StyledBadgeDot>
+    ),
     csvOutput: ({ receipt_status }) => RECEIPT_STATUSES[receipt_status] || '',
   },
 };
@@ -359,5 +381,22 @@ const pagination = {
   total_items: 25,
   total_page: 5,
 };
+const menuItems = selectedRowKeys => [
+  {
+    key: '1',
+    label: (
+      <Space onClick={() => {}}>
+        <DeleteIcon style={{ color: 'black' }} /> <span className="ml-2">{'削除'}</span>
+      </Space>
+    ),
+  },
+];
 
-export { getRenderColumns, dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap };
+export {
+  getRenderColumns,
+  dataSource,
+  pagination,
+  COLUMN_SETTING_LOCALSTORAGE,
+  columnMap,
+  menuItems,
+};

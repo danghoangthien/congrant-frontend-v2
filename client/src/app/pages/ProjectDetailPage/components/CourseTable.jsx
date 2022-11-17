@@ -1,8 +1,17 @@
 import { Select, Button, Table, Typography, Badge, Dropdown, Menu } from 'antd';
 import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
 import { StyledBadgeDot } from 'app/pages/SupporterPage/components/ContinuousContract.style';
+import { randomOutput } from 'utils/helper';
 
-const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
+const RECEIPT_STATUSES = {
+  0: '受領済み',
+  1: '未受領',
+};
+
+const RECEIPT_STATUS_COLOR = {
+  0: 'success',
+  1: 'warning',
+};
 
 // Action Menu
 const menu = (
@@ -40,7 +49,7 @@ const menu = (
 
 const dataSource = Array.from(Array(5).keys()).map(i => ({
   application_datetime: randomOutput(['2022-07-30  12:34:56']),
-  receipt_status: randomOutput(['受領済み', '未受領']),
+  receipt_status: randomOutput([0, 1]),
   date_of_receipt: '2022-07-30',
   supporter: randomOutput(['田中 太郎', '山田 花子', '鈴木 一郎']),
   receipt_method: randomOutput(['カード決済', '銀行振込']),
@@ -60,7 +69,10 @@ const columnMap = {
     dataIndex: 'receipt_status',
     render: receipt_status => (
       <StyledBadgeDot>
-        <Badge status="success" text={receipt_status} />
+        <Badge
+          status={RECEIPT_STATUS_COLOR[receipt_status]}
+          text={RECEIPT_STATUSES[receipt_status]}
+        />
       </StyledBadgeDot>
     ),
   },

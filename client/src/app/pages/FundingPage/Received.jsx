@@ -23,6 +23,7 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import SendIcon from '@mui/icons-material/Send';
 // Meta
 import * as metaData from './mockDataReceived';
 
@@ -30,7 +31,7 @@ const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
       className="ml-5"
-      icon={<MailOutlined />}
+      icon={<SendIcon />}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}
@@ -117,6 +118,7 @@ const FundingPage = () => {
             contextButtons={[MailButton]}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
             TableName={'受領済みの寄付一覧'}
+            contextDropdownItems={metaData.menuItems}
           />
         </div>
       </PageLayout>

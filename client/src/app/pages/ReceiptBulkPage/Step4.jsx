@@ -1,16 +1,7 @@
 import { Row, Col, Image, Space, Descriptions, DatePicker, Button, Table } from 'antd';
 import { SendOutlined, DownloadOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import {
-  SettingsInputContainer,
-  SettingInfoLabel,
-  SettingTextarea,
-} from 'app/pages/GroupSettingsPage/components/Sprites';
-import { DescriptionStyle } from 'app/pages/SupporterPage/components/BasicInfo.style';
-import { BoldLabel, CopiableText } from 'app/pages/SupporterPage/components/Sprites';
 import './Models/index';
-const { RangePicker } = DatePicker;
-const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const Step4 = () => {
   const dispatch = useDispatch();
