@@ -89,7 +89,7 @@ const DataTable = ({
           onChange: onPageChange,
           pageSizeOptions: PAGE_SIZE_OPTIONS,
           onShowSizeChange,
-          showTotal: total => `全${total}件`,
+          showTotal: (total, range) => `${range[0]}〜${range[1]}件/${total}件`,
         }}
       />
     );

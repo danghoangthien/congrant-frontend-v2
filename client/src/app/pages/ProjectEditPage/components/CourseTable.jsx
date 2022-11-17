@@ -1,5 +1,7 @@
-import { Select, Button, Table, Typography, Image } from 'antd';
-import { EditOutlined, EllipsisOutlined } from '@ant-design/icons';
+import { Button, Table, Image } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons';
+import MenuIcon from '@mui/icons-material/Menu';
+import EditIcon from '@mui/icons-material/Edit';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -10,6 +12,11 @@ const dataSource = Array.from(Array(5).keys()).map(i => ({
 }));
 
 const columnMap = {
+  id: {
+    width: 50,
+    title: '',
+    render: () => <MenuIcon style={{ fontSize: '24px' }} />,
+  },
   image: {
     width: 150,
     title: 'イメージ',
@@ -41,7 +48,10 @@ const columnMap = {
     title: 'アクション',
     render: row => (
       <>
-        <Button icon={<EditOutlined />}>{'編集'}</Button>
+        <Button icon={<EditIcon className="display-inline-flex" style={{ fontSize: '14px' }} />}>
+          &nbsp;
+          {'編集'}
+        </Button>
         <Button className="ml-2" icon={<EllipsisOutlined />} />
       </>
     ),
@@ -51,6 +61,13 @@ const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });
 
-const CourseTable = () => <Table dataSource={dataSource} columns={columns} pagination={false} />;
+const CourseTable = () => (
+  <Table
+    style={{ minWidth: '900px' }}
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+  />
+);
 
 export default CourseTable;

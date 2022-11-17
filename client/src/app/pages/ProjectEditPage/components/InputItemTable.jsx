@@ -2,11 +2,56 @@ import { Row, Col, Tag, Radio, Table } from 'antd';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
-const dataSource = Array.from(Array(15).keys()).map(i => ({
-  item: randomOutput(['氏名（ふりがな）', '氏名', '性別', '生年月日', 'メールアドレス']),
-  type: randomOutput([1, 2, 3]),
-}));
-
+const dataSource = [
+  {
+    item: '氏名',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '氏名（ふりがな）',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '性別',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '生年月日',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: 'メールアドレス',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '電話番号',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '住所',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '備考欄',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '応援コメント',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: 'お子様のお名前',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '認知経路',
+    type: randomOutput([1, 2, 3]),
+  },
+  {
+    item: '寄付理由',
+    type: randomOutput([1, 2, 3]),
+  },
+];
 const columnMap = {
   item: {
     width: 250,

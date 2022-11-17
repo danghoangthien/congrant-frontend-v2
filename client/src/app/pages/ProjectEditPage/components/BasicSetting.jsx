@@ -1,11 +1,12 @@
 import { Row, Col, Button, DatePicker, Space, Radio, Tag } from 'antd';
-
+import { useParams } from 'react-router-dom';
 import {
   SettingsInputContainer,
   SettingLabel,
   SettingInfoLabel,
   SettingInput,
   SettingTextarea,
+  SettingSelect,
 } from './../../GroupSettingsPage/components/Sprites';
 
 import { StyledSubtitle, StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
@@ -19,6 +20,7 @@ export const StyledTag = styled(Tag)`
 `;
 
 const BasicSetting = () => {
+  const params = useParams();
   return (
     <>
       <div className="item ml-5">
@@ -53,7 +55,7 @@ const BasicSetting = () => {
               <SettingInput placeholder={'寄付をする'} />
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
+          <SettingsInputContainer label={<SettingInfoLabel label={'トップ画像'} required />}>
             <Space>
               <StyledUploadPicture
                 style={{
@@ -78,7 +80,7 @@ const BasicSetting = () => {
               </StyledUploadPicture>
             </Space>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingInfoLabel label={'ボタンテキスト'} required />}>
+          <SettingsInputContainer label={<SettingInfoLabel label={'テーマカラー'} required />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <Space>
                 {[
@@ -98,30 +100,61 @@ const BasicSetting = () => {
               </Space>
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'テーマカラー'} required />}>
-            <Col className="item" sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'1,000,000'} suffix="円" />
-            </Col>
-            <Col>
-              <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
-            </Col>
-          </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'ネクストゴール'} />}>
-            <Col className="item" sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'2,000,000'} suffix="円" />
-            </Col>
-            <Col>
-              <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
-            </Col>
-          </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'受付期間'} required />}>
-            <Col className="item" sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'2,000,000'} suffix="円" />
-            </Col>
-            <Col>
-              <StyledSubtitle>{'開始日'}</StyledSubtitle>
-            </Col>
-          </SettingsInputContainer>
+          {params?.id == 2 ? (
+            <>
+              <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
+                <Col className="item" sm={24} md={24} lg={24}>
+                  <SettingSelect placeholder={'設定しない'} />
+                </Col>
+                <Col>
+                  <StyledSubtitle style={{ width: '600px' }}>
+                    {
+                      '管理画面のホームに表示されるダッシュボードに影響します。一般には公開されません。あとから変更することも可能です。'
+                    }
+                  </StyledSubtitle>
+                </Col>
+              </SettingsInputContainer>
+              <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
+                <Col className="item" sm={24} md={24} lg={24}>
+                  <DatePicker style={{ width: '600px' }} placeholder={'yyyy-mm-dd hh:mm'} />
+                </Col>
+                <Col>
+                  <StyledSubtitle style={{ width: '600px' }}>
+                    {
+                      '受付開始日時を指定すると、その日時まで寄付ボタンが押せなくなります。ページの“公開日”を指定する機能ではありませんのでご注意ください（ページは審査完了後すぐに公開されます）。'
+                    }
+                  </StyledSubtitle>
+                </Col>
+              </SettingsInputContainer>
+            </>
+          ) : (
+            <>
+              <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
+                <Col className="item" sm={24} md={24} lg={24}>
+                  <SettingInput placeholder={'1,000,000'} suffix="円" />
+                </Col>
+                <Col>
+                  <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
+                </Col>
+              </SettingsInputContainer>
+              <SettingsInputContainer label={<SettingLabel label={'ネクストゴール'} />}>
+                <Col className="item" sm={24} md={24} lg={24}>
+                  <SettingInput placeholder={'2,000,000'} suffix="円" />
+                </Col>
+                <Col>
+                  <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
+                </Col>
+              </SettingsInputContainer>
+              <SettingsInputContainer label={<SettingLabel label={'受付期間'} required />}>
+                <Col className="item" sm={24} md={24} lg={24}>
+                  <SettingInput placeholder={'2,000,000'} suffix="円" />
+                </Col>
+                <Col>
+                  <StyledSubtitle>{'開始日'}</StyledSubtitle>
+                </Col>
+              </SettingsInputContainer>
+            </>
+          )}
         </Row>
       </div>
     </>

@@ -78,58 +78,59 @@ export function App() {
             <Route path={process.env.PUBLIC_URL + '/email-verify'}>
               <EmailVerifyPage />
             </Route>
-          </>
-          <AppLayout>
-            <Route path={process.env.PUBLIC_URL + '/home'}>
-              <HomePage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/projects/:id'}>
-              <ProjectDetailPage />
-            </Route>
-            <Route exact path={process.env.PUBLIC_URL + '/projects'}>
-              <ProjectPage />
-            </Route>
+            <AppLayout>
+              <Route path={process.env.PUBLIC_URL + '/home'}>
+                <HomePage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/projects/:id'}>
+                <ProjectDetailPage />
+              </Route>
+              <Route exact path={process.env.PUBLIC_URL + '/projects'}>
+                <ProjectPage />
+              </Route>
 
-            <Route path={process.env.PUBLIC_URL + '/donations'}>
-              <FundingPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/reccurings'}>
-              <ContinuousContractPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/individuals'}>
-              <SupporterPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/individuals-naming'}>
-              <SupporterNamingPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/individuals-naming-detail'}>
-              <SupporterNamingDetailPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/corporations'}>
-              <GroupSupporterPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/receipts'}>
-              <ReceiptPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/receipts-bulk'}>
-              <ReceiptBulkPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/settings'}>
-              <BasicSettingsPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/corporation-settings'}>
-              <GroupSettingsPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/individuals-settings'}>
-              <PersonalSettingsPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/editor'}>
-              <EditorPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
-              <CkeditorPage />
-            </Route>
-          </AppLayout>
+              <Route path={process.env.PUBLIC_URL + '/donations'}>
+                <FundingPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/reccurings'}>
+                <ContinuousContractPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/individuals'}>
+                <SupporterPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/individuals-naming'}>
+                <SupporterNamingPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/individuals-naming-detail'}>
+                <SupporterNamingDetailPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/corporations'}>
+                <GroupSupporterPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/receipts'}>
+                <ReceiptPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/receipts-bulk'}>
+                <ReceiptBulkPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/settings'}>
+                <BasicSettingsPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/corporation-settings'}>
+                <GroupSettingsPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/individuals-settings'}>
+                <PersonalSettingsPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/editor'}>
+                <EditorPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
+                <CkeditorPage />
+              </Route>
+            </AppLayout>
+          </>
+
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

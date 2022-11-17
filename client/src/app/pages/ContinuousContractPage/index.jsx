@@ -8,8 +8,6 @@ import { SearchOutlined, MailOutlined, EllipsisOutlined } from '@ant-design/icon
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import CachedIcon from '@mui/icons-material/Cached';
-import SendIcon from '@mui/icons-material/Send';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import SearchIcon from '@mui/icons-material/Search';
 

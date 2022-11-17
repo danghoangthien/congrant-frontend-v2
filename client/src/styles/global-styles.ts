@@ -111,18 +111,6 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     position: relative;
     padding-left: 24px;
-
-    &:before {
-      content: "";
-      width: 4px;
-      height: 24px;
-      background: ${PRIMARY_COLOR};
-      display: inline-block;
-      position: absolute;
-      left: 10px;
-      top: 10px;
-      border-radius: 5px;
-    }
   }
 
   .page-sub-title {

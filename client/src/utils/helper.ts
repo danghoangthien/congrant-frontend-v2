@@ -35,4 +35,6 @@ async function* gInterval(sleepMs = 1_000) {
   }
 }
 
-export { createCsvDownload, sleep, gCountDown, gInterval };
+const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
+
+export { createCsvDownload, sleep, gCountDown, gInterval, randomOutput };
