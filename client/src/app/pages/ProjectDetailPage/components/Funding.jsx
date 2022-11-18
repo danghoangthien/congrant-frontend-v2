@@ -5,8 +5,8 @@ import Table from 'app/components/Table';
 import Filters from 'app/pages/ProjectDetailPage/components/Filters';
 import { Button, Col, Row, Breadcrumb } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import * as metaData from 'app/pages/FundingPage/mockDataReceived';
-import 'app/pages/FundingPage/Models/received';
+import * as metaData from 'app/pages/DonationPage/mockDataReceived';
+import 'app/pages/DonationPage/Models/received';
 // Icons
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
@@ -27,7 +27,7 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
-const FundingPage = () => {
+const DonationPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const params = useParams();
   console.log('params', params);
@@ -123,4 +123,4 @@ const FundingPage = () => {
   );
 };
 
-export default FundingPage;
+export default DonationPage;

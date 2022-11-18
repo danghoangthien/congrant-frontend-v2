@@ -1,14 +1,18 @@
 import { useTranslation } from 'react-i18next';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
 import { Tabs, Space } from 'antd';
 import Login from './Login';
-import TrialRegistration from './TrialRegistration';
+import Register from 'app/pages/LoginPage/Register';
 // Icons
 import LogoText from 'styles/assets/logo_text.svg';
 import LogoIcon from 'styles/assets/logo_icon.svg';
 
 const LoginPage = () => {
+  const { path } = useRouteMatch();
+  const history = useHistory();
+  console.log('path', path);
   const renderPageTitle = () => {
     return (
       <>
@@ -20,6 +24,16 @@ const LoginPage = () => {
     );
   };
 
+  const onTabClick = key => {
+    if (key === '2') {
+      history.push('/register');
+    } else {
+      history.push('/login');
+    }
+  };
+
+  const activeKey = path === '/login' ? '1' : '2';
+
   return (
     <>
       {renderPageTitle()}
@@ -29,12 +43,12 @@ const LoginPage = () => {
           <img className="logo-text" src={LogoText} alt="コングラントロゴ" />
         </Space>
         <div className="item login-container">
-          <Tabs defaultActiveKey="1" type="card">
+          <Tabs defaultActiveKey={activeKey} onTabClick={onTabClick} type="card">
             <Tabs.TabPane tab={<span style={{ textAlign: 'center' }}>{'ログイン'}</span>} key="1">
               <Login />
             </Tabs.TabPane>
             <Tabs.TabPane tab={<span style={{ textAlign: 'center' }}>{'お試し登録'}</span>} key="2">
-              <TrialRegistration />
+              <Register />
             </Tabs.TabPane>
           </Tabs>
         </div>

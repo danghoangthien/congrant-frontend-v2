@@ -8,7 +8,7 @@ import {
   SettingInput,
   SettingTextarea,
   SettingSelect,
-} from '../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 import { DraggableInputItem } from 'app/pages/BasicSettingsPage/components/Sprites';
 
 import InputItemTable from './InputItemTable';

@@ -3,7 +3,7 @@ import {
   SettingsInputContainer,
   SettingInput,
   SettingInfoLabel,
-} from '../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 
 const AccessAnalysis = () => {
   return (

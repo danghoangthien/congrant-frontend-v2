@@ -7,7 +7,7 @@ import {
   SettingInput,
   SettingInfoLabel,
   SettingTextarea,
-} from '../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
 

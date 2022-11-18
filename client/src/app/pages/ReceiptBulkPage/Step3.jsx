@@ -16,9 +16,9 @@ import {
   SettingsInputContainer,
   SettingInfoLabel,
   SettingTextarea,
-} from 'app/pages/GroupSettingsPage/components/Sprites';
-import { DescriptionStyle } from 'app/pages/SupporterPage/components/BasicInfo.style';
-import { BoldLabel, CopiableText } from 'app/pages/SupporterPage/components/Sprites';
+} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { DescriptionStyle } from 'app/pages/IndividualPage/components/BasicInfo.style';
+import { BoldLabel, CopiableText } from 'app/pages/IndividualPage/components/Sprites';
 import './Models/index';
 const { RangePicker } = DatePicker;
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];

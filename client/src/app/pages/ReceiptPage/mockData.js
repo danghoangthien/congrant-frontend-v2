@@ -1,7 +1,7 @@
 import { Dropdown, Button, Menu, Badge, Space } from 'antd';
 import { EllipsisOutlined, TagFilled, DeleteFilled, SendOutlined } from '@ant-design/icons';
 import { getWithExpiry } from 'utils/localStorageHandler';
-import { StyledBadgeDot } from 'app/pages/SupporterPage/components/ContinuousContract.style';
+import { StyledBadgeDot } from 'app/pages/IndividualPage/components/ContinuousContract.style';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 import {

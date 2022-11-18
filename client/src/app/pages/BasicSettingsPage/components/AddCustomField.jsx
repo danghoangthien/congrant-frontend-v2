@@ -6,7 +6,7 @@ import {
   SettingLabel,
   SettingInput,
   SettingInfoLabel,
-} from '../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 import { DraggableInputItem } from './Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
