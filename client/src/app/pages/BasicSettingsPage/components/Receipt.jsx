@@ -4,7 +4,7 @@ import {
   SettingsInputContainer,
   SettingInput,
   SettingInfoLabel,
-} from '../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 import { StyledUploadPicture, StyledForm } from '../BasicSettingsPage.style';
 import ReceiptTemplate from './ReceiptTemplate';
 

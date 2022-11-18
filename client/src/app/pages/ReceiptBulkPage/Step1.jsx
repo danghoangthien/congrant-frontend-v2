@@ -5,7 +5,7 @@ import {
   SettingsInputContainer,
   SettingInfoLabel,
   SettingTextarea,
-} from 'app/pages/GroupSettingsPage/components/Sprites';
+} from 'app/pages/CorporationSettingPage/components/Sprites';
 
 import './Models/index';
 

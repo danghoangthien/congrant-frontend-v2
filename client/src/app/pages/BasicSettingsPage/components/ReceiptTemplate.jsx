@@ -5,7 +5,7 @@ import {
   SettingsInputContainer,
   SettingLabel,
   SettingInput,
-} from '../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import TextArea from 'antd/lib/input/TextArea';
 

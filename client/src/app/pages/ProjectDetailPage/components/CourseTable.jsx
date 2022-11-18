@@ -1,6 +1,6 @@
 import { Select, Button, Table, Typography, Badge, Dropdown, Menu } from 'antd';
 import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
-import { StyledBadgeDot } from 'app/pages/SupporterPage/components/ContinuousContract.style';
+import { StyledBadgeDot } from 'app/pages/IndividualPage/components/ContinuousContract.style';
 import { randomOutput } from 'utils/helper';
 
 const RECEIPT_STATUSES = {

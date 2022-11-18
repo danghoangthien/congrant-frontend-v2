@@ -15,33 +15,33 @@ import AppLayout from 'app/components/Layout';
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import RegisterReviewPage from './pages/RegisterPage/Review';
-import RegisterStepsPage from './pages/RegisterPage/Steps';
-import RegisterConfirmPage from './pages/RegisterPage/Confirmation';
-import RegisterSuccessPage from './pages/RegisterPage/Success';
+import VerificationPage from './pages/VerificationPage';
+import RegisterCompletePage from './pages/LoginPage/Complete';
+import RegisterReviewPage from './pages/VerificationPage/Review';
+import RegisterStepsPage from './pages/VerificationPage/Steps';
+import VerificationConfirmationPage from './pages/VerificationPage/Confirmation';
+import VerificationCompletePage from './pages/VerificationPage/Complete';
 import EmailVerifyPage from './pages/LoginPage/EmailVerify';
-import FundingPage from './pages/FundingPage';
+import DonationPage from './pages/DonationPage';
 import EditorPage from './pages/EditorPage';
 import BasicSettingsPage from './pages/BasicSettingsPage';
-import GroupSettingsPage from './pages/GroupSettingsPage';
-import PersonalSettingsPage from './pages/PersonalSettingPage';
-import SupporterPage from './pages/SupporterPage';
-import SupporterNamingPage from './pages/SupporterPage/Naming';
-import SupporterNamingDetailPage from './pages/SupporterPage/NamingDetail';
-import GroupSupporterPage from './pages/GroupSupporterPage';
+import CorporationSettingPage from './pages/CorporationSettingPage';
+import IndividualSettingsPage from './pages/IndividualSettingsPage';
+import IndividualPage from './pages/IndividualPage';
+import IndividualNamingPage from './pages/IndividualPage/Naming';
+import IndividualNamingDetailPage from './pages/IndividualPage/NamingDetail';
+import CorporationPage from './pages/CorporationPage';
 import ProjectPage from './pages/ProjectPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ReceiptPage from './pages/ReceiptPage';
 import ReceiptBulkPage from './pages/ReceiptBulkPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import ContinuousContractPage from './pages/ContinuousContractPage';
+import ReccuringPage from './pages/ReccuringPage';
 
 import { useTranslation } from 'react-i18next';
 import CkeditorPage from './pages/CkeditorPage';
 
 export function App() {
-  console.log('Appppp');
   const { i18n } = useTranslation();
   console.log('process.env.PUBLIC_URL', process.env.PUBLIC_URL);
   return (
@@ -56,81 +56,84 @@ export function App() {
           <meta name="description" content="A Congrant application." />
         </Helmet>
         <Switch>
-          <>
-            <Route path={process.env.PUBLIC_URL + '/login'}>
-              <LoginPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/register'}>
-              <RegisterPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/register-review'}>
-              <RegisterReviewPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/register-start'}>
-              <RegisterStepsPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/register-confirmation'}>
-              <RegisterConfirmPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/register-success'}>
-              <RegisterSuccessPage />
-            </Route>
-            <Route path={process.env.PUBLIC_URL + '/email-verify'}>
-              <EmailVerifyPage />
-            </Route>
-            <AppLayout>
-              <Route path={process.env.PUBLIC_URL + '/home'}>
-                <HomePage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/projects/:id'}>
-                <ProjectDetailPage />
-              </Route>
-              <Route exact path={process.env.PUBLIC_URL + '/projects'}>
-                <ProjectPage />
-              </Route>
+          <Route path={process.env.PUBLIC_URL + '/login'}>
+            <LoginPage />
+          </Route>
+          <Route path={process.env.PUBLIC_URL + '/register'}>
+            <LoginPage />
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + '/register/complete'}>
+            <RegisterCompletePage />
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + '/register/verify-email'}>
+            <EmailVerifyPage />
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + '/verification'}>
+            <VerificationPage />
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + '/register-review'}>
+            <RegisterReviewPage />
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + '/register-start'}>
+            <RegisterStepsPage />
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + '/verification/confirmation'}>
+            <VerificationConfirmationPage />
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + '/verification/complete'}>
+            <VerificationCompletePage />
+          </Route>
 
-              <Route path={process.env.PUBLIC_URL + '/donations'}>
-                <FundingPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/reccurings'}>
-                <ContinuousContractPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/individuals'}>
-                <SupporterPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/individuals-naming'}>
-                <SupporterNamingPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/individuals-naming-detail'}>
-                <SupporterNamingDetailPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/corporations'}>
-                <GroupSupporterPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/receipts'}>
-                <ReceiptPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/receipts-bulk'}>
-                <ReceiptBulkPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/settings'}>
-                <BasicSettingsPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/corporation-settings'}>
-                <GroupSettingsPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/individuals-settings'}>
-                <PersonalSettingsPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/editor'}>
-                <EditorPage />
-              </Route>
-              <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
-                <CkeditorPage />
-              </Route>
-            </AppLayout>
-          </>
-
+          <AppLayout>
+            <Route path={process.env.PUBLIC_URL + '/home'}>
+              <HomePage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/projects/:id'}>
+              <ProjectDetailPage />
+            </Route>
+            <Route exact path={process.env.PUBLIC_URL + '/projects'}>
+              <ProjectPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/donations'}>
+              <DonationPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/reccurings'}>
+              <ReccuringPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/individuals'}>
+              <IndividualPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/individuals-naming'}>
+              <IndividualNamingPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/individuals-naming-detail'}>
+              <IndividualNamingDetailPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/corporations'}>
+              <CorporationPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/receipts'}>
+              <ReceiptPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/receipts-bulk'}>
+              <ReceiptBulkPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/settings'}>
+              <BasicSettingsPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/corporation-settings'}>
+              <CorporationSettingPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/individuals-settings'}>
+              <IndividualSettingsPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/editor'}>
+              <EditorPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/ckeditor'}>
+              <CkeditorPage />
+            </Route>
+          </AppLayout>
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

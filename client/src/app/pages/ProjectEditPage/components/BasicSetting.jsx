@@ -7,7 +7,7 @@ import {
   SettingInput,
   SettingTextarea,
   SettingSelect,
-} from './../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 
 import { StyledSubtitle, StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
 

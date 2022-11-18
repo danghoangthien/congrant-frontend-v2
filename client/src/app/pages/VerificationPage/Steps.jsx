@@ -1,16 +1,24 @@
-import { Tabs, Row, Col, Card, Tag, Space } from 'antd';
-import { StyledDetail } from 'app/pages/IndividualPage/components/Detail.style';
-import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import styled from 'styled-components/macro';
+import { Helmet } from 'react-helmet-async';
 import { useSelector, useDispatch } from 'react-redux';
+import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
+import { Row, Col, Input, Space, Tabs, Tag, Button } from 'antd';
+import './Models/index';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
-import HistoryTable from './HistoryTable';
-import MenuIcon from '@mui/icons-material/Menu';
-import './Models/index';
-import styled from 'styled-components/macro';
+import {
+  SettingsInputContainer,
+  SettingLabel,
+  SettingInput,
+  SettingSelect,
+} from 'app/pages/CorporationSettingPage/components/Sprites';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
+
+// Icons
+import LogoText from 'styles/assets/logo_text.svg';
+import LogoIcon from 'styles/assets/logo_icon.svg';
 
 const StyledTag = styled(Tag)`
   width: 32px;
@@ -24,7 +32,7 @@ const StyledTag = styled(Tag)`
   font-size: 16px;
 `;
 
-const StyledBulkCreateTabs = styled(Tabs)`
+const StyledTabs = styled(Tabs)`
   .ant-tabs-nav {
     border-bottom: none !important;
   }
@@ -39,9 +47,8 @@ const StyledBulkCreateTabs = styled(Tabs)`
   }
 `;
 
-const ReceiptBulkPage = () => {
-  const dispatch = useDispatch();
-  const { active } = useSelector(state => state['receiptBulkStep']);
+const RegisterStepsPage = () => {
+  const { active } = useSelector(state => state['registerStep']);
   const TabName = ({ current, active, children }) => {
     const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
     return (
@@ -51,49 +58,45 @@ const ReceiptBulkPage = () => {
       </Space>
     );
   };
-
-  if (active === '5') {
+  const renderPageTitle = () => {
     return (
-      <PageLayout>
-        <div className="item mb-7">
-          <Row justify="space-between" align="middle">
-            <Col className="mr-6 mb-5">
-              <span className="page-title">
-                <MenuIcon style={{ fontSize: '32px' }} />
-                <span className="ml-1 page-title">{'一括作成履歴'}</span>
-              </span>
-            </Col>
-          </Row>
-          <HistoryTable />
-        </div>
-      </PageLayout>
+      <>
+        <Helmet>
+          <title>{''}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
     );
-  }
+  };
+
   return (
-    <PageLayout>
-      <div className="item mb-7">
-        <Row justify="space-between" align="middle">
-          <Col className="mr-6">
-            <span className="page-title">
-              <MenuIcon style={{ fontSize: '32px' }} />
-              <span className="ml-1 page-title">{'一括作成'}</span>
-            </span>
-          </Col>
-        </Row>
-        <Card style={{ minWidth: '1000px' }}>
-          <StyledDetail>
-            {active === '4' && <Step4 />}
-            {['1', '2', '3'].includes(active) && (
-              <StyledBulkCreateTabs
+    <>
+      {renderPageTitle()}
+      <LoginPageLayout>
+        <Space className="mb-5" align="center">
+          <img className="logo-icon" src={LogoIcon} alt="コングラントロゴ" />
+          <img className="logo-text" src={LogoText} alt="コングラントロゴ" />
+        </Space>
+        <div className="item login-container">
+          <Row className="mb-2">
+            <Space
+              className="mb-2 px-10 py-5"
+              direction="vertical"
+              align="center"
+              size="middle"
+              style={{ display: 'flex' }}
+            >
+              <StyledTabs
                 activeKey={active}
                 type="card"
                 tabBarGutter={4}
                 className="mt-6"
+                moreIcon={null}
               >
                 <Tabs.TabPane
                   tab={
                     <TabName current="1" active={active}>
-                      {'作成方法'}
+                      {'団体情報'}
                     </TabName>
                   }
                   key="1"
@@ -103,7 +106,7 @@ const ReceiptBulkPage = () => {
                 <Tabs.TabPane
                   tab={
                     <TabName current="2" active={active}>
-                      {'作成条件'}
+                      {'管理者情報'}
                     </TabName>
                   }
                   key="2"
@@ -113,7 +116,7 @@ const ReceiptBulkPage = () => {
                 <Tabs.TabPane
                   tab={
                     <TabName current="3" active={active}>
-                      {'確認'}
+                      {'代表者情報'}
                     </TabName>
                   }
                   key="3"
@@ -123,20 +126,25 @@ const ReceiptBulkPage = () => {
                 <Tabs.TabPane
                   tab={
                     <TabName current="4" active={active}>
-                      {'完了'}
+                      {'口座情報'}
                     </TabName>
                   }
                   key="4"
                 >
-                  <></>
+                  <Step4 />
                 </Tabs.TabPane>
-              </StyledBulkCreateTabs>
-            )}
-          </StyledDetail>
-        </Card>
-      </div>
-    </PageLayout>
+              </StyledTabs>
+            </Space>
+          </Row>
+        </div>
+        <Space>
+          <Button style={{ width: '700px', textAlign: 'end' }} type="link" onClick={() => {}}>
+            {'まずは管理画面を試したい（審査をスキップ）'}
+          </Button>
+        </Space>
+      </LoginPageLayout>
+    </>
   );
 };
 
-export default ReceiptBulkPage;
+export default RegisterStepsPage;

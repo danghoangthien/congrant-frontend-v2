@@ -4,7 +4,7 @@ import {
   SettingsInputContainer,
   SettingInfoLabel,
   SettingTextarea,
-} from '../../GroupSettingsPage/components/Sprites';
+} from '../../CorporationSettingPage/components/Sprites';
 
 import styled from 'styled-components/macro';
 
