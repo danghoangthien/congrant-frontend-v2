@@ -10,6 +10,7 @@ import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import SearchIcon from '@mui/icons-material/Search';
+import SendIcon from '@mui/icons-material/Send';
 
 import './Models/index';
 
@@ -17,7 +18,7 @@ const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
       className="ml-5"
-      icon={<MailOutlined />}
+      icon={<SendIcon />}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}

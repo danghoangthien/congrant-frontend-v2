@@ -105,7 +105,7 @@ const columnMap = {
     width: 160,
     title: 'リターン発送状況',
     render: ({ return_shipping_status }) => {
-      const status = randomOutput(['未発送', '発送済み']);
+      const statuses = ['未発送', '発送済み'];
       return (
         <Select
           defaultValue={{
@@ -116,7 +116,8 @@ const columnMap = {
           }}
           onChange={() => {}}
         >
-          <Select.Option value="1">{status}</Select.Option>
+          <Select.Option value="1">{statuses[0]}</Select.Option>
+          <Select.Option value="2">{statuses[1]}</Select.Option>
         </Select>
       );
     },

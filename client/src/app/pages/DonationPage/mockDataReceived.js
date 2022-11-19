@@ -1,4 +1,4 @@
-import { Button, Tag, Badge, Space } from 'antd';
+import { Button, Tag, Badge, Space, Typography } from 'antd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import { randomOutput } from 'utils/helper';
@@ -299,7 +299,16 @@ const columnMap = {
   },
   supporter: {
     title: 'サポーター',
-    render: row => <Button type="link">{row.supporter}</Button>,
+    render: row => (
+      <Typography.Text
+        style={{
+          color: '#63B233',
+          cursor: 'pointer',
+        }}
+      >
+        {row.supporter}
+      </Typography.Text>
+    ),
     csvOutput: ({ supporter }) => supporter,
   },
   project: {
@@ -317,7 +326,15 @@ const columnMap = {
     title: '寄付タイプ',
     dataIndex: 'donation_type',
     render: donation_type => (
-      <Tag color={DONATION_TYPE_COLORS[donation_type]}>{DONATION_TYPES[donation_type] || ''}</Tag>
+      <Tag
+        style={{
+          color: DONATION_TYPE_COLORS[donation_type][2],
+          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
+          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+        }}
+      >
+        {DONATION_TYPES[donation_type] || ''}
+      </Tag>
     ),
     csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
   },

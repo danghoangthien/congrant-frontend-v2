@@ -21,7 +21,7 @@ const Filters = ({ open }) => {
   const [form] = Form.useForm();
   if (!open) return <></>;
   return (
-    <Card className="ma-5">
+    <Card className="my-5">
       <Row className="mb-3">
         <Col sm={24} md={20} lg={20}>
           <FilterOutlined className="display-inline-flex" />

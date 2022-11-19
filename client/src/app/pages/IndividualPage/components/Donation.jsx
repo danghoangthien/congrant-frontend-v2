@@ -58,11 +58,11 @@ const ListModeContent = ({ data, mode, setMode }) => {
       dataIndex: 'date_of_receipt',
     },
     donation_id: {
-      title: '寄付ID',
+      title: '寄付No',
       dataIndex: 'donation_id',
     },
     type: {
-      title: '種類',
+      title: '寄付タイプ',
       dataIndex: 'type',
       render: type => <Tag color="blue">{type}</Tag>,
     },
@@ -118,7 +118,26 @@ const Donation = ({ data }) => {
         <>
           <DonationStyle>
             <Title />
-            <ListModeContent {...{ data, mode, setMode }} />
+            <Row className="mb-5">
+              <Col sm={24} md={24} lg={24}>
+                <span className="page-sub-title">{'受領済み'}</span>
+              </Col>
+            </Row>
+            <Row className="mb-5">
+              <Col sm={24} md={24} lg={24}>
+                <ListModeContent {...{ data, mode, setMode }} />
+              </Col>
+            </Row>
+            <Row className="mb-5">
+              <Col sm={24} md={24} lg={24}>
+                <span className="page-sub-title">{'未受領'}</span>
+              </Col>
+            </Row>
+            <Row className="mb-5">
+              <Col sm={24} md={24} lg={24}>
+                <ListModeContent {...{ data, mode, setMode }} />
+              </Col>
+            </Row>
           </DonationStyle>
         </>
       )}

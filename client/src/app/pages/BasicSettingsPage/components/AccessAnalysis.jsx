@@ -11,7 +11,7 @@ const AccessAnalysis = () => {
       <div className="item ml-5">
         <Row className="mb-5">
           <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'名寄せ先の選択'}</span>
+            <span className="page-title">{'アクセス分析'}</span>
           </Col>
         </Row>
         <Row className="item mb-2">

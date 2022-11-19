@@ -22,12 +22,13 @@ import AddSupporter from './components/AddSupporter';
 import './Models/index';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // import { SupporterPageLayout } from './components/SupporterPage.style';
+import SendIcon from '@mui/icons-material/Send';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
       className="ml-5"
-      icon={<MailOutlined />}
+      icon={<SendIcon />}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}

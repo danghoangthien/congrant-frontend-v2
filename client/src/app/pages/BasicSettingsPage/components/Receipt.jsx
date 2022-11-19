@@ -1,4 +1,4 @@
-import { Row, Col, Button, Space, Table, Radio, Checkbox } from 'antd';
+import { Row, Col, Button, Space, Table, Radio, Checkbox, DatePicker } from 'antd';
 import { EditOutlined, EyeFilled } from '@ant-design/icons';
 import {
   SettingsInputContainer,
@@ -11,14 +11,19 @@ import ReceiptTemplate from './ReceiptTemplate';
 const dataSource = Array.from(Array(3).keys()).map(i => ({
   i: `${i}`,
   is_default: true,
-  name: '賛助会員（都度更新',
+  name: '賛助会員（都度更新)',
   amount: `5,000円/月`,
 }));
 
 const columnMap = {
   is_default: {
+    width: 80,
     title: 'デフォルト',
-    render: ({ is_default }) => <Radio checked={is_default} />,
+    render: ({ is_default }) => (
+      <div style={{ width: '80px', textAlign: 'center' }}>
+        <Radio checked={is_default} />
+      </div>
+    ),
   },
   name: {
     title: '名称',
@@ -45,19 +50,19 @@ const Receipt = () => {
       <div className="item ml-5">
         <Row className="mb-5">
           <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'名寄せ先の選択'}</span>
+            <span className="page-title">{'領収書'}</span>
           </Col>
         </Row>
         {/* 寄付決済 */}
         <Row className="item mb-5">
           <Col className="item mb-2" sm={24} md={24} lg={24}>
-            <span className="page-sub-title">{'寄付決済'}</span>
+            <span className="page-sub-title">{'基本設定'}</span>
           </Col>
         </Row>
         <StyledForm>
           <Row className="item mb-5">
             {/*  印影 */}
-            <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
+            <SettingsInputContainer label={<SettingInfoLabel label={'印影'} />}>
               <StyledUploadPicture>
                 <div className="upload-picture">
                   <Space direction="vertical" align="center" style={{ width: 'max-content' }}>
@@ -68,12 +73,12 @@ const Receipt = () => {
               </StyledUploadPicture>
             </SettingsInputContainer>
             {/*  認定通知書番号 */}
-            <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
+            <SettingsInputContainer label={<SettingInfoLabel label={'認定通知書番号'} />}>
               <SettingInput placeholder={''} />
             </SettingsInputContainer>
             {/*  認定年月日 */}
             <SettingsInputContainer label={<SettingInfoLabel label={'認定年月日'} />}>
-              <SettingInput placeholder={''} />
+              <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '600px' }} />
             </SettingsInputContainer>
           </Row>
         </StyledForm>

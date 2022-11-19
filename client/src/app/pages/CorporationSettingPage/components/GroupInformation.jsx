@@ -1,6 +1,12 @@
-import { Row, Col, Button, Space } from 'antd';
+import { Row, Col, Button, Space, Radio } from 'antd';
 import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
-import { SettingsInputContainer, SettingLabel, SettingInput, SettingInfoLabel } from './Sprites';
+import {
+  SettingsInputContainer,
+  SettingLabel,
+  SettingInput,
+  SettingInfoLabel,
+  SettingSelect,
+} from './Sprites';
 
 const GroupInformation = () => {
   return (
@@ -8,10 +14,20 @@ const GroupInformation = () => {
       <div className="item ml-5">
         <Row className="mb-5">
           <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'名寄せ先の選択'}</span>
+            <span className="page-title">{'団体情報'}</span>
           </Col>
         </Row>
         <Row className="item mb-2">
+          <SettingsInputContainer label={<SettingLabel label={'法人格の有無'} required />}>
+            <Col className="item" sm={24} md={24} lg={24}>
+              <Radio.Group onChange={() => {}} defaultValue={1}>
+                <Space direction="horizontal">
+                  <Radio value={1}>{'法人格あり'}</Radio>
+                  <Radio value={2}>{'法人格なし（任意団体）'}</Radio>
+                </Space>
+              </Radio.Group>
+            </Col>
+          </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'団体名'} required />}>
             <SettingInput placeholder={'例：NPO法人コングラント'} />
           </SettingsInputContainer>
@@ -69,10 +85,10 @@ const GroupInformation = () => {
             <SettingInput placeholder={'例：https://hogehoge.com'} />
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'業種'} required />}>
-            <SettingInput placeholder={'選択してください'} />
+            <SettingSelect placeholder={'選択してください'} />
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'活動カテゴリ'} required />}>
-            <SettingInput placeholder={'選択してください'} />
+            <SettingSelect placeholder={'選択してください'} />
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
             <StyledUploadPicture style={{ width: '600px' }}>

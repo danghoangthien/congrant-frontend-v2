@@ -35,6 +35,15 @@ const SupporterInfo = ({ closeDrawer }) => {
           <Row className="mb-3">
             <Tag>理事</Tag>
             <Tag>ボランティア</Tag>
+            <Tag
+              style={{
+                border: '1px dashed #d9d9d9',
+                color: 'rgba(0, 0, 0, 0.5)',
+              }}
+            >
+              {'+ '}
+              {'属性を追加する'}
+            </Tag>
           </Row>
           <Row>
             <Col span={12}>

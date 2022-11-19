@@ -1,5 +1,11 @@
-import { Dropdown, Tag, Button, Menu } from 'antd';
-import { EllipsisOutlined, TagFilled, DeleteFilled, SendOutlined } from '@ant-design/icons';
+import { Dropdown, Tag, Button, Menu, Tooltip, Space } from 'antd';
+import {
+  CopyOutlined,
+  EllipsisOutlined,
+  TagFilled,
+  DeleteFilled,
+  SendOutlined,
+} from '@ant-design/icons';
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import Detail from './components/Detail';
@@ -81,18 +87,44 @@ const columnMap = {
   email: {
     title: 'メールアドレス',
     dataIndex: 'email',
-    csvOutput: email => email,
+    render: email => (
+      <Tooltip
+        title={
+          <>
+            <Space>
+              <CopyOutlined className="display-inline-flex" onClick={() => {}} />
+              {'コピー'}
+            </Space>
+          </>
+        }
+      >
+        <span>{email}</span>
+      </Tooltip>
+    ),
+    csvOutput: ({ email }) => email,
   },
   // 直近の寄付
   recent_donation: {
     title: '直近の寄付',
     dataIndex: 'recent_donation',
+    render: recent_donation => (
+      <Space direction="vertical">
+        <span>{'2022-07-05'}</span>
+        <span>{recent_donation}</span>
+      </Space>
+    ),
     csvOutput: recent_donation => recent_donation,
   },
   // 累計寄付
   cumulative_donation: {
     title: '累計寄付',
     dataIndex: 'cumulative_donation',
+    render: cumulative_donation => (
+      <Space direction="vertical">
+        <span>{cumulative_donation}</span>
+        <span>{'8回'}</span>
+      </Space>
+    ),
     csvOutput: cumulative_donation => cumulative_donation,
   },
   action: {

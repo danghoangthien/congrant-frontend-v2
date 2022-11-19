@@ -5,18 +5,14 @@ import { useDispatch } from 'react-redux';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
-import {
-  PayCircleOutlined,
-  SearchOutlined,
-  FilterOutlined,
-  MailOutlined,
-  PlusOutlined,
-} from '@ant-design/icons';
-import { Button, Input, Row, Col, Badge } from 'antd';
+import { SearchOutlined, PlusOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
+
+import { Button, Input, Row, Col, Badge, Space } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
 import DomainIcon from '@mui/icons-material/Domain';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import SendIcon from '@mui/icons-material/Send';
 
 import './Models/index';
 
@@ -24,7 +20,7 @@ const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
       className="ml-5"
-      icon={<MailOutlined />}
+      icon={<SendIcon />}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}
@@ -34,7 +30,34 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
-const GroupSupporterPage = () => {
+const contextDropdownItems = selectedRowKeys => [
+  {
+    key: '1',
+    label: (
+      <Space
+        onClick={() => {
+          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+        }}
+      >
+        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'属性を設定する'}</span>
+      </Space>
+    ),
+  },
+  {
+    key: '2',
+    label: (
+      <Space
+        onClick={() => {
+          console.log('selectedRowKeys', selectedRowKeys);
+        }}
+      >
+        <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+      </Space>
+    ),
+  },
+];
+
+const CorporationPage = () => {
   const url = window.location.pathname?.split('/');
   const [filterOpen, setFilterOpen] = useState(false);
   const dispatch = useDispatch();
@@ -111,6 +134,7 @@ const GroupSupporterPage = () => {
             metaData={metaData}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.BASIC_INFO} />}
             contextButtons={[MailButton]}
+            contextDropdownItems={contextDropdownItems}
           />
         </div>
       </SupporterPageLayout>
@@ -118,4 +142,4 @@ const GroupSupporterPage = () => {
   );
 };
 
-export default GroupSupporterPage;
+export default CorporationPage;

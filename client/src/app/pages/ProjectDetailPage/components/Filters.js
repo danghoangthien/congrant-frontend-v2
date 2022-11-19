@@ -79,8 +79,32 @@ const Filters = ({ open }) => {
                   </Form.Item>
                 </Col>
                 <Col span={6} key={'e'}>
-                  <Form.Item className="mb-0" name={`field-e`} label={`金額`}>
-                    <Input placeholder="3,000円              ->            6,000円" />
+                  <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
+                    <Input.Group compact>
+                      <Input
+                        style={{ width: '120px', textAlign: 'center' }}
+                        placeholder="3,000円"
+                      />
+                      <Input
+                        className="site-input-split"
+                        style={{
+                          width: '47.5px',
+                          borderLeft: 0,
+                          borderRight: 0,
+                          pointerEvents: 'none',
+                        }}
+                        placeholder="->"
+                      />
+                      <Input
+                        className="site-input-right"
+                        style={{
+                          borderLeft: 0,
+                          width: '120px',
+                          textAlign: 'center',
+                        }}
+                        placeholder="6,000円"
+                      />
+                    </Input.Group>
                   </Form.Item>
                 </Col>
               </Row>
