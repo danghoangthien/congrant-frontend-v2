@@ -151,7 +151,15 @@ const DonationDetail = ({ data, mode, setMode }) => {
           <CopiableText>{'2022-07-30'}</CopiableText>
         </Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
-          <Tag>{'単発'}</Tag>
+          <Tag
+            style={{
+              color: '#2878CB',
+              backgroundColor: '#E9F1FA',
+              border: '#94BCE5',
+            }}
+          >
+            {'単発'}
+          </Tag>
         </Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="プロジェクト" />}>
           {'NPO法人コングラントへのご支援をお願いします！'}

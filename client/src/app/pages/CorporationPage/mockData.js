@@ -47,6 +47,7 @@ const menu = (
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
+  supporterType: '2',
   group_id: `${'20220730' + i}`,
   group_name: 'コングラント株式会社',
   manager: 'CSR部 課長  鈴木 一郎',
@@ -59,7 +60,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 const columnMap = {
   group_id: {
     title: '法人No.',
-    render: row => <Button type="link">{row.group_id} </Button>,
+    render: row => row.group_id,
     csvOutput: ({ group_id }) => group_id,
   },
   group_name: {

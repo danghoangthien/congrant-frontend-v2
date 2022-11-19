@@ -9,9 +9,9 @@ const DONATION_TYPES = {
 };
 
 const DONATION_TYPE_COLORS = {
-  1: 'blue',
-  2: 'orange',
-  3: 'pink',
+  1: ['#E9F1FA', '#94BCE5', '#2878CB'], // background, border, color
+  2: ['#FCF0EB', '#EFB29B', '#DE6536'],
+  3: ['#FBEAF4', '#EA96C6', '#D42C8E'],
 };
 
 const RECEIPT_STATUSES = {
@@ -20,7 +20,7 @@ const RECEIPT_STATUSES = {
 };
 
 const RECEIPT_STATUS_COLOR = {
-  0: 'default',
+  0: 'warning',
   1: 'success',
 };
 

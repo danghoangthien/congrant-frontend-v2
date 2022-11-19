@@ -44,24 +44,26 @@ const AddCustomField = ({ title }) => {
         okText="登録する"
       >
         <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'項目名'} />}>
+          <SettingsInputContainer label={<SettingLabel label={'項目名'} required />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <SettingInput placeholder={'寄付の使用用途'} />
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
+          <SettingsInputContainer label={<SettingInfoLabel label={'補足説明'} />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <TextArea placeholder={'3,000'} />
+              <TextArea placeholder={'寄付の使用用途のご希望がある場合はご選択ください。'} />
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'回答形式'} required />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <Radio checked>{'単数選択'}</Radio>
-                <Radio>{'複数選択'}</Radio>
-                <Radio>{'自由入力（1行）'}</Radio>
-                <Radio>{'自由入力（複数行）'}</Radio>
-              </Space>
+              <Radio.Group onChange={() => {}} defaultValue={1}>
+                <Space direction="horizontal">
+                  <Radio value={1}>{'単数選択'}</Radio>
+                  <Radio value={2}>{'複数選択'}</Radio>
+                  <Radio value={3}>{'自由入力（1行）'}</Radio>
+                  <Radio value={4}>{'自由入力（複数行）'}</Radio>
+                </Space>
+              </Radio.Group>
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'回答選択肢'} required />}>

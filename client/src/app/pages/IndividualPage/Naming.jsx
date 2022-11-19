@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SupporterPageLayout } from './components/SupporterPage.style';
-import { Card, Row, Col, Checkbox, Button, Table, Tag } from 'antd';
+import { Card, Row, Col, Checkbox, Button, Table, Tooltip, Space } from 'antd';
+import { CopyOutlined } from '@ant-design/icons';
 
 const Naming = () => {
   const options = [
@@ -33,6 +34,20 @@ const Naming = () => {
     email: {
       title: 'メールアドレス',
       dataIndex: 'email',
+      render: email => (
+        <Tooltip
+          title={
+            <>
+              <Space>
+                <CopyOutlined className="display-inline-flex" onClick={() => {}} />
+                {'コピー'}
+              </Space>
+            </>
+          }
+        >
+          <span>{email}</span>
+        </Tooltip>
+      ),
       csvOutput: ({ email }) => email,
     },
     phone: {
@@ -49,6 +64,17 @@ const Naming = () => {
   const columns = Object.keys(columnMap).map(columnName => {
     return columnMap[columnName];
   });
+
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+    getCheckboxProps: record => ({
+      disabled: record.name === 'Disabled User',
+      // Column configuration not to be checked
+      name: record.name,
+    }),
+  };
   return (
     <>
       <SupporterPageLayout>
@@ -89,7 +115,14 @@ const Naming = () => {
             </Row>
             <Row className="mb-3">
               <Col sm={24} md={24} lg={24}>
-                <Table dataSource={dataSource} columns={columns} />
+                <Table
+                  dataSource={dataSource}
+                  columns={columns}
+                  rowSelection={{
+                    ...rowSelection,
+                  }}
+                  pagination={false}
+                />
               </Col>
             </Row>
             <Row className="mb-3">
@@ -119,7 +152,14 @@ const Naming = () => {
             </Row>
             <Row className="mb-3">
               <Col sm={24} md={24} lg={24}>
-                <Table dataSource={dataSource} columns={columns} />
+                <Table
+                  dataSource={dataSource}
+                  columns={columns}
+                  rowSelection={{
+                    ...rowSelection,
+                  }}
+                  pagination={false}
+                />
               </Col>
             </Row>
             <Row className="mb-3">

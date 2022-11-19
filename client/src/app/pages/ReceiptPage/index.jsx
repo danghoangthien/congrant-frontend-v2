@@ -12,6 +12,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import NewReceipt from './components/NewReceipt';
 import { Button, Input, Row, Col, Space, Dropdown, Menu } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import SendIcon from '@mui/icons-material/Send';
 
 import './Models/index';
 
@@ -19,7 +20,7 @@ const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
       className="ml-5"
-      icon={<MailOutlined />}
+      icon={<SendIcon />}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}

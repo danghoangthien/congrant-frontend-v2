@@ -27,18 +27,13 @@ const AccountInformation = () => {
               <SettingInput placeholder={'例：1234'} />
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'金融機関コード'} required />}>
+          <SettingsInputContainer label={<SettingLabel label={'支店コード'} required />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <SettingInput placeholder={'例：1234'} />
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'口座種別'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <Radio>{'普通'}</Radio>
-                <Radio>{'当座'}</Radio>
-              </Space>
-            </Col>
+            {'普通'}
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'口座番号'} required />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>

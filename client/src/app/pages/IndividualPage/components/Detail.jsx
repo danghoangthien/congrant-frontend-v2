@@ -2,6 +2,7 @@ import { Tabs } from 'antd';
 import { StyledDetail } from './Detail.style';
 import SupporterInfo from './SupporterInfo';
 import BasicInfo from './BasicInfo';
+import CorporationBasicInfo from './CorporationBasicInfo';
 import Memo from './Memo';
 import Donation from './Donation';
 import ContinuousContract from './ContinuousContract';
@@ -17,12 +18,13 @@ export const DETAIL_KEY_MAP = {
 
 const Detail = ({ data, closeDrawer, activeKey }) => {
   console.log('Detail data', data);
+  const { supporterType = 1 } = data;
   return (
     <StyledDetail>
       <SupporterInfo closeDrawer={closeDrawer} />
       <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-6">
         <Tabs.TabPane tab="基本情報" key="1">
-          <BasicInfo />
+          {supporterType == '1' ? <BasicInfo data={data} /> : <CorporationBasicInfo data={data} />}
         </Tabs.TabPane>
         <Tabs.TabPane tab="内部メモ" key="2">
           <Memo />
