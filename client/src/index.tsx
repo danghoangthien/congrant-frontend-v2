@@ -33,6 +33,7 @@ import './locales/i18n';
 import 'antd/dist/antd.variable.min.css';
 import 'antd/dist/antd.less';
 import 'antd-css-utilities/utility.min.css';
+import 'styles/congrant-theme.less';
 
 // Observe loading of Inter (to remove 'Inter', remove the <link> tag in
 // the index.html file and this observer)

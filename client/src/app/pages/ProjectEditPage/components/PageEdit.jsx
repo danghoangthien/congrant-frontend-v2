@@ -21,7 +21,7 @@ export const StyledTag = styled(Tag)`
 const PageEdit = () => {
   return (
     <>
-      <div className="item ml-5">
+      <div className="item">
         <Row className="mb-5">
           <Col sm={24} md={24} lg={24}>
             <span className="page-title">{'ページ編集'}</span>

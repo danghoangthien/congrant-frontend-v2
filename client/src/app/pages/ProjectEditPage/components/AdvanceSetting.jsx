@@ -1,5 +1,5 @@
 import { Row, Col, Input, Space, Radio, Tag, Checkbox } from 'antd';
-import { InfoCircleFilled } from '@ant-design/icons';
+import InfoIcon from '@mui/icons-material/Info';
 import {
   SettingsInputContainer,
   SettingInfoLabel,
@@ -17,10 +17,10 @@ export const StyledTag = styled(Tag)`
 const AdvanceSetting = () => {
   return (
     <>
-      <div className="item ml-5">
+      <div className="item">
         <Row className="mb-5">
           <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'詳細設定'}</span>
+            <div className="page-title01">{'詳細設定'}</div>
           </Col>
         </Row>
         <Row className="mb-2">
@@ -28,14 +28,12 @@ const AdvanceSetting = () => {
             <span className="page-sub-title">{'フォーム画面'}</span>
           </Col>
         </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer
-            label={<SettingInfoLabel label={'フォーム画面の説明文'} required />}
-          >
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+        <Row className="item mb-14">
+          <SettingsInputContainer label={<SettingInfoLabel label={'フォーム画面の説明文'} />}>
+            <Col className="item mb-2" sm={24} md={24} lg={24}>
               <Checkbox checked>{'フォーム画面の説明文を編集する'}</Checkbox>
             </Col>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
                 placeholder={
                   '私たちの活動にご関心を寄せてくださり誠にありがとうございます。ぜひ、温かいご支援をお願いいたします。'
@@ -44,21 +42,19 @@ const AdvanceSetting = () => {
             </Col>
           </SettingsInputContainer>
         </Row>
+
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <span className="page-sub-title">{'完了画面'}</span>
           </Col>
         </Row>
-        <Row className="item mb-5">
-          <SettingsInputContainer
-            label={<SettingInfoLabel label={'完了画面のメッセージ'} required />}
-          >
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+        <Row className="item mb-10">
+          <SettingsInputContainer label={<SettingInfoLabel label={'完了画面のメッセージ'} />}>
+            <Col className="item mb-2" sm={24} md={24} lg={24}>
               <Checkbox checked>{'完了画面のメッセージを編集する'}</Checkbox>
             </Col>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
-                rows="3"
                 placeholder={
                   'ご支援のお申し込み、誠にありがとうございました\nご登録いただいたメールアドレス宛に申し込み完了のメールが送信されておりますのでご確認お願いします。。'
                 }
@@ -66,24 +62,25 @@ const AdvanceSetting = () => {
             </Col>
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingInfoLabel label={'SNSシェア'} required />}>
+
+        <Row className="item mb-14">
+          <SettingsInputContainer label={<SettingInfoLabel label={'SNSシェア'} />}>
             <Checkbox checked>{'SNSシェアの案内を表示する'}</Checkbox>
           </SettingsInputContainer>
         </Row>
+
+        {/* 自動返信メール */}
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <span className="page-sub-title">{'自動返信メール'}</span>
           </Col>
         </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer
-            label={<SettingInfoLabel label={'決済完了メールの内容'} required />}
-          >
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+        <Row className="item mb-14">
+          <SettingsInputContainer label={<SettingInfoLabel label={'決済完了メールの内容'} />}>
+            <Col className="item mb-2" sm={24} md={24} lg={24}>
               <Checkbox checked>{'決済完了メールの内容を編集する'}</Checkbox>
             </Col>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
                 rows="3"
                 placeholder={
@@ -93,17 +90,26 @@ const AdvanceSetting = () => {
             </Col>
           </SettingsInputContainer>
         </Row>
+
+        {/* 銀行振込の振込先口座 */}
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <span className="page-sub-title">{'銀行振込の振込先口座'}</span>
           </Col>
         </Row>
         <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingInfoLabel label={'口座情報'} required />}>
+          <SettingsInputContainer label={<SettingInfoLabel label={'銀行振込'} />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
+              <Checkbox checked>{'銀行振込での寄付を受け付ける'}</Checkbox>
+            </Col>
+          </SettingsInputContainer>
+        </Row>
+        <Row className="item mb-14">
+          <SettingsInputContainer label={<SettingInfoLabel label={'口座情報'} />}>
+            <Col className="item mb-2" sm={24} md={24} lg={24}>
               <Checkbox checked>{'銀行振込希望のサポーターに案内する口座情報を編集する'}</Checkbox>
             </Col>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
                 rows="6"
                 placeholder={
@@ -113,6 +119,29 @@ const AdvanceSetting = () => {
             </Col>
           </SettingsInputContainer>
         </Row>
+
+        {/* 活動報告・応援コメント */}
+        <Row className="mb-2">
+          <Col sm={24} md={24} lg={24}>
+            <span className="page-sub-title">{'活動報告・応援コメント'}</span>
+          </Col>
+        </Row>
+        <Row className="item mb-2">
+          <SettingsInputContainer label={<SettingInfoLabel label={'活動報告'} />}>
+            <Col className="item mb-5" sm={24} md={24} lg={24}>
+              <Checkbox checked>{'活動報告機能を利用する'}</Checkbox>
+            </Col>
+          </SettingsInputContainer>
+        </Row>
+        <Row className="item mb-14">
+          <SettingsInputContainer label={<SettingInfoLabel label={'応援コメント'} />}>
+            <Col className="item mb-2" sm={24} md={24} lg={24}>
+              <Checkbox checked>{'応援コメント機能を利用する'}</Checkbox>
+            </Col>
+          </SettingsInputContainer>
+        </Row>
+
+        {/* 限定公開 */}
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <span className="page-sub-title">{'限定公開'}</span>
@@ -121,20 +150,16 @@ const AdvanceSetting = () => {
         <Row className="item mb-2">
           <SettingsInputContainer>
             <Row className="mb-2">
-              <Space>
-                <Checkbox checked>{'プロジェクトを限定公開にする'}</Checkbox>
-                <InfoCircleFilled className="display-inline-flex ml-1" />
-              </Space>
+              <Checkbox checked>{'プロジェクトを限定公開にする'}</Checkbox>
+              <InfoIcon style={{ width: '16px' }} />
             </Row>
             <Row className="mb-2">
-              <Space>
-                <Checkbox checked>{'プロジェクトに閲覧パスワードを設定する'}</Checkbox>
-                <InfoCircleFilled className="display-inline-flex ml-1" />
-              </Space>
+              <Checkbox checked>{'プロジェクトに閲覧パスワードを設定する'}</Checkbox>
+              <InfoIcon style={{ width: '16px' }} />
             </Row>
             <Row>
-              <Space className="">
-                <span>{'パスワード'}</span>
+              <Space size={16}>
+                <span style={{ fontSize: '16px' }}>{'パスワード'}</span>
                 <Input placeholder="abcd1234" style={{ width: '200px' }} />
               </Space>
             </Row>

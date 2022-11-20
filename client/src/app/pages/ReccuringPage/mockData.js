@@ -1,8 +1,8 @@
 import { Tag, Badge, Space } from 'antd';
 import { EllipsisOutlined, CopyFilled, DeleteFilled, SendOutlined } from '@ant-design/icons';
 import { getWithExpiry } from 'utils/localStorageHandler';
-import { StyledBadgeDot } from 'app/pages/IndividualPage/components/ContinuousContract.style';
 import SendIcon from '@mui/icons-material/Send';
+import { StyledBadgeDot } from 'styles/global-styles';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 

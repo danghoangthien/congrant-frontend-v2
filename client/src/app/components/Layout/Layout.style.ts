@@ -3,9 +3,9 @@ import {
   StyleConstants,
   ScreenSizes,
   PRIMARY_COLOR,
-  BORDER_COLOR,
-  CARD_BORDER_COLOR,
-  FONT_COLOR,
+  LIGHT_GRAY,
+  GRAY,
+  TEXT_COLOR,
 } from 'styles/StyleConstants';
 
 export const StyledSidebar = styled.div<{}>`
@@ -145,13 +145,13 @@ export const SlyledLayout = styled.div<{}>`
   //   margin: 0;
   //   padding: 8px 24px !important;
   //   height: auto;
-  //   border-top: 1px solid ${CARD_BORDER_COLOR};
+  //   border-top: 1px solid ${GRAY};
   // }
 
   
 
   & .sub-menu-item {
-    border-top: 1px solid ${CARD_BORDER_COLOR};
+    border-top: 1px solid ${GRAY};
 
     .ant-menu-title-content {
       width: 100%;
@@ -170,7 +170,7 @@ export const SlyledLayout = styled.div<{}>`
         margin: 0;
         padding: 8px 24px !important;
         height: auto;
-        border-top: 1px solid ${CARD_BORDER_COLOR};
+        border-top: 1px solid ${GRAY};
       }
     }
   }
@@ -211,8 +211,8 @@ export const SlyledLayout = styled.div<{}>`
       margin: 0;
       padding: 8px 24px !important;
       height: auto;
-      border-top: 1px solid ${CARD_BORDER_COLOR};
-      color: ${FONT_COLOR};
+      border-top: 1px solid ${GRAY};
+      color: ${TEXT_COLOR};
 
       &:hover {
         color: ${PRIMARY_COLOR};
@@ -229,7 +229,7 @@ export const SlyledLayout = styled.div<{}>`
 
     & .user-box {
       padding: 16px 24px;
-      border-top: 1px solid ${CARD_BORDER_COLOR};
+      border-top: 1px solid ${GRAY};
   
       .user-name {
         font-size: 12px;

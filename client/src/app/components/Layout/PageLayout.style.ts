@@ -45,16 +45,6 @@ export const PageLayout = styled.div`
   & .ant-descriptions-item-label {
     width: 200px;
   }
-  & .page-title {
-    font-size: 28px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-  }
-  & .page-sub-title {
-    font-size: 16px;
-    font-weight: 600;
-  }
   & .switch-btn {
     .ant-btn {
       border: none;
@@ -75,7 +65,7 @@ export const PageLayout = styled.div`
   }
   & .table-title {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
   }
 `;
 

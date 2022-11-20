@@ -4,10 +4,14 @@ import { createGlobalStyle } from 'styled-components';
 import {
   PRIMARY_COLOR,
   WARNING_COLOR,
-  BORDER_RADIUS,
-  CARD_BORDER_COLOR,
-  BORDER_COLOR,
+  // BORDER_RADIUS,
+  GRAY,
+  LIGHT_GRAY,
+  TEXT_COLOR,
+  TEXT_GRAY_COLOR,
+  PLACEHOLDER_COLOR,
 } from 'styles/StyleConstants';
+
 /* istanbul ignore next */
 export const GlobalStyle = createGlobalStyle`
   html,
@@ -16,15 +20,21 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     // line-height: 1.5;
     font-size: 16px;
-    color: rgba(0,0,0,0.85);
+    // color: rgba(0,0,0,0.85);
   }
 
   body {
-    font-family: "ヒラギノ角ゴシック", "Hiragino Kaku Gothic", "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Sans", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-family: system-ui;
   }
 
+  // FONTS
   .roboto-mono {
     font-family: 'Roboto Mono', monospace;
+  }
+
+  // TAGS
+  strong {
+    font-weight: 600;
   }
 
   .ant-btn>span {
@@ -47,7 +57,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   .bold {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   // buttons
@@ -93,31 +103,6 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
   }
 
-  // TAB
-  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    text-shadow: none;
-    font-weight: 600;
-  }
-
-  .page-title {
-    font-size: 28px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-  }
-
-  .sub-page-title {
-    font-size: 28px;
-    font-weight: 600;
-    position: relative;
-    padding-left: 24px;
-  }
-
-  .page-sub-title {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
   // IMAGE
   .thumb-image {
     overflow: hidden;
@@ -130,9 +115,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // BUTTON
-  .ant-btn {
-    border-radius: ${BORDER_RADIUS};
+  .ant-primary-btn {
+    // box-shadow: 0 2px 0 rgb(0 0 0 / 1.6%);
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
   }
+
+  .ant-btn-sm {
+    padding: 0 9px;
+  }
+
   .icon-btn {
     display: flex;
     align-items: center;
@@ -140,27 +131,37 @@ export const GlobalStyle = createGlobalStyle`
 
   // CARD
   .ant-card {
-    border: 1px solid ${CARD_BORDER_COLOR};
-    border-radius: ${BORDER_RADIUS};
+    border: 1px solid ${GRAY};
     overflow: hidden;
   }
 
   // MODAL
   .ant-modal-header {
     border-radius: 10px 10px 0 0;
+    padding: 18px 24px;
   }
   .ant-modal-content {
     border-radius: 10px;
   }
 
+  .ant-modal-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .modal-inner-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: ${TEXT_GRAY_COLOR};
+  }
+
   // BREADCRUMB
   & .bread-crumb {
-    border: 1px solid ${CARD_BORDER_COLOR};
-    border-radius: 4px;
+    border: 1px solid ${GRAY};
     overflow: hidden;
       
     li:not(:last-of-type) .bread-crumb-content {
-      border-right: 1px solid ${CARD_BORDER_COLOR};
+      border-right: 1px solid ${GRAY};
     }
 
     .bread-crumb-content {
@@ -193,6 +194,7 @@ export const GlobalStyle = createGlobalStyle`
     sup {
       color: rgba(0,0,0,.5);
       font-size: 12px;
+      font-family: 'Roboto Mono', monospace;
     }
   }
 
@@ -201,16 +203,16 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
-  // TABLE
+  // ANTD TABLE
   .ant-table-thead>tr>th {
-    border-color: ${BORDER_COLOR};
+    border-color: ${LIGHT_GRAY};
     border-top: 1px solid transparent;
     background: #fafaf8;
     font-weight: 600;
   }
   
   .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan]):before {
-    background-color: ${BORDER_COLOR};
+    background-color: ${LIGHT_GRAY};
   }
 
   .ant-table-thead>tr>th,
@@ -228,51 +230,44 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // POP-UP MENU
-  & .ant-menu-submenu-popup {
-    & .ant-menu {
-      border-radius: 4px;
-    }
-  }
 
   // ANTD INPUT
   .ant-input {
-    border-radius: 4px;
+    font-size: 16px;
+    padding: 6px 11px;
 
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-      color: rgba(0,0,0,0.2);
+      color: ${PLACEHOLDER_COLOR};
     }
     :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-      color: rgba(0,0,0,0.2);
+      color: ${PLACEHOLDER_COLOR};
       opacity: 1;
     }
     ::-moz-placeholder { /* Mozilla Firefox 19+ */
-      color: rgba(0,0,0,0.2);
+      color: ${PLACEHOLDER_COLOR};
       opacity: 1;
     }
     :-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: rgba(0,0,0,0.2);
+      color: ${PLACEHOLDER_COLOR};
     }
     ::-ms-input-placeholder { /* Microsoft Edge */
-      color: rgba(0,0,0,0.2);
+      color: ${PLACEHOLDER_COLOR};
     }
   }
 
-::placeholder { /* Most modern browsers support this now. */
-   color:    #909;
-}
-
   // ANTD PICKER
-  .ant-picker {
-    border-radius: 4px;
+  .ant-picker-separator {
+    display: flex;
+    align-items: center;
   }
 
   // ANTD SELECT
-  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-    border-radius: 4px;
+  .ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+    color: ${PLACEHOLDER_COLOR};
   }
 
-  .ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
-    color: rgba(0,0,0,0.2);
+  .ant-select {
+    font-size: 16px;
   }
 
   // LEFT MENU
@@ -290,8 +285,100 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // ICON
-  .custom-icon {
+  & .custom-icon {
     height: auto !important;
+  }
+
+  .info-icon {
+    color: ${TEXT_COLOR};
+  }
+
+  // ACTION MENU
+  & .action-menu {
+    & .ant-dropdown-menu-title-content {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // PAGINATION
+  .ant-pagination-item,
+  .ant-pagination-total-text {
+    font-weight: 300;
+  }
+
+  // TAB
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    text-shadow: none;
+    font-weight: 600;
+  }
+
+  .ant-tabs-card>.ant-tabs-nav .ant-tabs-tab, 
+  .ant-tabs-card>div>.ant-tabs-nav .ant-tabs-tab {
+    border-color: ${GRAY};
+  }
+
+  .ant-tabs-tab {
+    font-size: 16px;
+  }
+
+  .ant-tabs-top>.ant-tabs-nav {
+    margin-bottom: 40px;
+  }
+
+  // TITLE
+  .page-title01 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .page-title {
+    font-size: 28px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+
+  .sub-page-title {
+    font-size: 28px;
+    font-weight: 600;
+    position: relative;
+    padding-left: 24px;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 24px;
+      background: ${PRIMARY_COLOR};
+      border-radius: 6px;
+      position: absolute;
+      top: 11px;
+      left: 8px;
+    }
+  }
+
+  .page-sub-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  // CHECKBOX
+  .ant-checkbox-inner {
+    border-radius: 2px;
+  }
+
+  .ant-checkbox-wrapper {
+    font-size: 16px;
+  }
+
+  // RADIO
+  .ant-radio-wrapper {
+    font-size: 16px;
+  }
+
+  .ant-radio-checked .ant-radio-inner::after {
+    transform: scale(0.6);
   }
 `;
 
@@ -311,7 +398,7 @@ export const StyledWarningIcon = styled.span`
 
 export const StyledBadgeDot = styled.div`
   & .ant-badge-status-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
 `;

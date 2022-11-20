@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Button, Modal, Checkbox, Select } from 'antd';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 import { setWithExpiry } from 'utils/localStorageHandler';
 
@@ -79,9 +80,7 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
       >
         <Row className="mb-8">
           <Col span={24} className="mb-2">
-            <div style={{ fontSize: '14px', color: 'rgba(0, 0, 0, 0.5)' }} className="bold">
-              {'表示件数'}
-            </div>
+            <div className="modal-inner-title">{'表示件数'}</div>
           </Col>
           <Col span={24}>
             <Select
@@ -99,12 +98,12 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
         </Row>
         <Row className="mb-3" align="middle" justify="space-between">
           <Col>
-            <div style={{ fontSize: '14px' }} className="bold">
-              {'表示項目'}
-            </div>
+            <div className="modal-inner-title">{'表示項目'}</div>
           </Col>
           <Col>
-            <Button onClick={onReset}>{'リセット'}</Button>
+            <Button onClick={onReset} size="small">
+              {'リセット'}
+            </Button>
           </Col>
         </Row>
         <Row className="mb-8">

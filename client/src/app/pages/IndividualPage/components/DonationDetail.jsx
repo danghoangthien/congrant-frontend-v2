@@ -1,18 +1,9 @@
-import { Anchor, Badge, Descriptions, Row, Col, Button, Tag, Table } from 'antd';
-import { StyledPrimaryIcon } from 'styles/global-styles';
-import {
-  CopyOutlined,
-  MailOutlined,
-  MinusOutlined,
-  CloseOutlined,
-  EditOutlined,
-} from '@ant-design/icons';
+import { Badge, Descriptions, Row, Col, Button, Tag, Table } from 'antd';
+import { StyledPrimaryIcon, StyledBadgeDot } from 'styles/global-styles';
+import { MinusOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
 import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
-import { StyledBadgeDot } from './ContinuousContract.style';
-
-const { Link } = Anchor;
 
 const columnMap = {
   status: {
