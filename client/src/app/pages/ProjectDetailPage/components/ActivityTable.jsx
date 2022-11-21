@@ -1,6 +1,7 @@
 import { Tag, Table, Dropdown, Button, Menu } from 'antd';
 import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
 import EditIcon from '@mui/icons-material/Edit';
+import { StyledStatusTag2 } from 'styles/StatusTag.style';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -57,7 +58,7 @@ const columns = [
     width: 150,
     title: 'ステータス',
     dataIndex: 'status',
-    render: status => <Tag color="processing">{'単発'}</Tag>,
+    render: status => <StyledStatusTag2 className="non-public">{'非公開'}</StyledStatusTag2>,
   },
   {
     title: 'タイトル',
@@ -83,7 +84,13 @@ const columns = [
 ];
 
 const ActivityTable = () => (
-  <Table tableLayout="fixed" dataSource={dataSource} columns={columns} pagination={false} />
+  <Table
+    className="common-table"
+    tableLayout="fixed"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+  />
 );
 
 export default ActivityTable;

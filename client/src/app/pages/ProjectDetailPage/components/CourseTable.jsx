@@ -132,6 +132,7 @@ const columnMap = {
     ),
   },
 };
+
 const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });

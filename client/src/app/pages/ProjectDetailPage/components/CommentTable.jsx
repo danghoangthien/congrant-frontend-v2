@@ -1,6 +1,7 @@
 import { Tag, Table, Dropdown, Button, Menu } from 'antd';
 import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { StyledStatusTag2 } from 'styles/StatusTag.style';
 
 const dataSource = Array.from(Array(3).keys()).map(i => ({
   pub_date: '2023-04-01',
@@ -54,7 +55,7 @@ const columns = [
     width: 150,
     title: 'ステータス',
     dataIndex: 'status',
-    render: status => <Tag color="processing">{'単発'}</Tag>,
+    render: status => <StyledStatusTag2 className="public">{'公開'}</StyledStatusTag2>,
   },
   {
     width: 150,
@@ -80,7 +81,7 @@ const columns = [
     render: action => (
       <>
         <Button className="active mr-2" type="primary">
-          {'編集'}
+          {'返信'}
         </Button>
         <Dropdown overlay={menu} placement="bottomRight">
           <Button icon={<EllipsisOutlined />} />
@@ -91,7 +92,13 @@ const columns = [
 ];
 
 const CommentTable = () => (
-  <Table tableLayout="fixed" dataSource={dataSource} columns={columns} pagination={false} />
+  <Table
+    className="common-table"
+    tableLayout="fixed"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+  />
 );
 
 export default CommentTable;

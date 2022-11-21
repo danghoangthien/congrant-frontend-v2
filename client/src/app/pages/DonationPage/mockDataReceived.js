@@ -1,5 +1,4 @@
-import { Button, Tag, Badge, Space, Typography } from 'antd';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Tag, Badge, Space, Typography } from 'antd';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import { randomOutput } from 'utils/helper';
 import { StyledBadgeDot } from 'styles/global-styles';
@@ -23,7 +22,7 @@ const dataSource = [
     donation_type: '1',
     plan: '0',
     amount: '3,000円',
-    receipt_status: 1,
+    receipt_status: 2,
   },
   {
     key: '2',
@@ -399,12 +398,20 @@ const pagination = {
   total_items: 25,
   total_page: 5,
 };
+
 const menuItems = selectedRowKeys => [
   {
     key: '1',
+    className: 'danger',
     label: (
       <Space onClick={() => {}}>
-        <DeleteIcon style={{ color: 'black' }} /> <span className="ml-2">{'削除'}</span>
+        <span
+          className="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', display: 'flex' }}
+        >
+          delete
+        </span>
+        <span>{'削除'}</span>
       </Space>
     ),
   },

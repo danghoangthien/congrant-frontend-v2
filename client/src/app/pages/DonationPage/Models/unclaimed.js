@@ -1,6 +1,7 @@
 import store from 'appRedux/store';
 import { dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap } from '../mockData';
 import { getWithExpiry } from 'utils/localStorageHandler';
+
 const INITIAL_STATE = {
   items: [],
   pagination: {},

@@ -15,8 +15,8 @@ const Summary = () => {
     return (
       <>
         <Helmet>
-          <title>{'プロジェクト'}</title>
-          <meta name="description" content={'プロジェクト'} />
+          <title>{'プロジェクトトップ'}</title>
+          <meta name="description" content={'プロジェクトトップ'} />
         </Helmet>
       </>
     );
@@ -31,7 +31,7 @@ const Summary = () => {
           <Col>
             <Row type="flex" align="middle">
               <Col className="mr-6">
-                <div className="sub-page-title">{'プロジェクト'}</div>
+                <div className="sub-page-title">{'プロジェクトトップ'}</div>
               </Col>
               <Col className="mr-2">
                 <Breadcrumb className="bread-crumb" separator="">

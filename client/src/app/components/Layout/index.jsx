@@ -253,7 +253,7 @@ const AppLayout = ({ children }) => {
                 trigger={null}
                 collapsed={collapsed}
                 collapsible
-                width={216}
+                width={217}
                 onCollapse={() => setCollapsed(!collapsed)}
                 style={{
                   overflow: 'auto',
