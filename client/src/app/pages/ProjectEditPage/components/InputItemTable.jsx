@@ -1,4 +1,5 @@
-import { Row, Col, Tag, Radio, Table } from 'antd';
+import { Radio, Table } from 'antd';
+import { SlyledInputTable } from './InputItemTable.Style';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -52,6 +53,7 @@ const dataSource = [
     type: randomOutput([1, 2, 3]),
   },
 ];
+
 const columnMap = {
   item: {
     width: 250,
@@ -71,10 +73,15 @@ const columnMap = {
     ),
   },
 };
+
 const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });
 
-const InputItemTable = () => <Table dataSource={dataSource} columns={columns} pagination={false} />;
+const InputItemTable = () => (
+  <SlyledInputTable>
+    <Table className="small-table" dataSource={dataSource} columns={columns} pagination={false} />
+  </SlyledInputTable>
+);
 
 export default InputItemTable;

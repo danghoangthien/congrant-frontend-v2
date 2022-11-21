@@ -14,17 +14,17 @@ const Course = () => {
     <>
       <div className="item ml-5">
         <Row className="mb-5">
-          <Col sm={24} md={24} lg={24}>
+          <Col span={24}>
             <span className="page-title">{'コース'}</span>
           </Col>
         </Row>
         <Row className="mb-5">
-          <Col sm={12} md={12} lg={12}>
+          <Col span={24}>
             <CourseTable />
           </Col>
         </Row>
         <Row className="mb-2">
-          <Col sm={12} md={12} lg={12}>
+          <Col span={24}>
             <AddCourse />
           </Col>
         </Row>

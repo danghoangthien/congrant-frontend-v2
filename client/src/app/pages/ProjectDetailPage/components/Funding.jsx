@@ -52,9 +52,7 @@ const DonationPage = () => {
           <Col>
             <Row type="flex" align="middle">
               <Col className="mr-6">
-                <span className="page-title">
-                  <span className="ml-1 sub-page-title">{'プロジェクトトップ'}</span>
-                </span>
+                <div className="sub-page-title">{'プロジェクトトップ'}</div>
               </Col>
               <Col className="mr-2">
                 <Breadcrumb className="bread-crumb" separator="">

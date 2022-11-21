@@ -1,10 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Badge, Row, Col, Table, Tag } from 'antd';
-import { StyledBadgeDot } from './ContinuousContract.style';
-import { StyledPrimaryIcon } from 'styles/global-styles';
-import { MinusOutlined } from '@ant-design/icons';
+import { StyledBadgeDot } from 'styles/global-styles';
 import ContinuousContractDetail from './ContinuousContractDetail';
-import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import { LIST_MODE, DETAIL_MODE } from '../consts';
 
 const Title = () => {
   return (

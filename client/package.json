@@ -127,12 +127,15 @@
     "@rodrigoodhin/editorjs-image-gallery": "0.1.0",
     "antd-css-utilities": "1.0.3",
     "axios": "0.27.2",
+    "babel-plugin-import": "1.13.5",
     "big-number": "2.0.0",
     "ckeditor5-build-classic": "1.0.0",
     "ckeditor5-custom-build": "./packages/ckeditor5-custom-build-v0.0.1.tgz",
     "connected-react-router": "6.9.3",
     "craco-less": "2.0.0",
     "css-loader": "6.7.1",
+    "customize-cra": "1.0.0",
+    "customize-cra-less-loader": "2.0.0",
     "editorjs-header-with-anchor": "2.6.0",
     "editorjs-html": "3.4.2",
     "editorjs-text-alignment-blocktune": "1.0.3",
@@ -140,10 +143,10 @@
     "i18next": "21.6.6",
     "i18next-browser-languagedetector": "6.1.2",
     "moment": "2.29.4",
-    "postcss-loader": "4",
     "raw-loader": "4",
     "react": "17.0.2",
     "react-app-polyfill": "3.0.0",
+    "react-app-rewire-less": "2.1.3",
     "react-dom": "17.0.2",
     "react-helmet-async": "1.3.0",
     "react-i18next": "11.16.5",
@@ -225,6 +228,10 @@
     "ts-node": "10.4.0",
     "typescript": "4.5.4",
     "url": "0.11.0"
+  },
+  "theme": {
+    "primary-color": "blue",
+    "border-radius-base": "20px"
   },
   "browserslist": {
     "production": [

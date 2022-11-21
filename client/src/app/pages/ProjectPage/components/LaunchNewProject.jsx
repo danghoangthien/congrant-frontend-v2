@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Tag, Space, Input, Typography } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { Row, Col, Modal, Button } from 'antd';
 import AddIcon from '@mui/icons-material/Add';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
-import { StyledLaunchProject } from './LaunchNewProject.style';
-
 import {
-  ProjectLaunchType as StyledProjectLaunchType,
-  ProjectTitle as StyledProjectTitle,
-  ProjectLaunchTypeInfo as StyledProjectLaunchTypeInfo,
-} from './../index.style';
-const { TextArea } = Input;
+  StyledProjectLaunchList,
+  StyledProjectLaunchTitle,
+  StyledProjectLaunchTypeInfo,
+  StyledProjectLaunchType,
+} from './LaunchNewProject.style';
 
 const LaunchNewProject = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,15 +47,15 @@ const LaunchNewProject = () => {
               <StyledProjectLaunchTypeInfo color="#EFF7EB" className="mb-5">
                 {'通常の寄付・会費を集める'}
               </StyledProjectLaunchTypeInfo>
-              <StyledProjectTitle
+              <StyledProjectLaunchTitle
                 className="mb-5"
                 style={{
                   color: '#63B233',
                 }}
               >
                 {'ベーシック'}
-              </StyledProjectTitle>
-              <StyledLaunchProject>
+              </StyledProjectLaunchTitle>
+              <StyledProjectLaunchList>
                 <ul className="project-info">
                   <li>
                     <strong>{'単発、毎月、毎年の3種類の寄付を1つのページで'}</strong>
@@ -67,7 +64,7 @@ const LaunchNewProject = () => {
                   <li>{'募集期間の指定はできません'}</li>
                   <li>{'目標金額、寄付状況の表示はできません'}</li>
                 </ul>
-              </StyledLaunchProject>
+              </StyledProjectLaunchList>
             </StyledProjectLaunchType>
           </Col>
           <Col span={8}>
@@ -75,15 +72,15 @@ const LaunchNewProject = () => {
               <StyledProjectLaunchTypeInfo color="#E9F1FA" className="mb-5">
                 {'短期で集中的に集める'}
               </StyledProjectLaunchTypeInfo>
-              <StyledProjectTitle
+              <StyledProjectLaunchTitle
                 className="mb-5"
                 style={{
                   color: '#2878CB',
                 }}
               >
                 {'クラウドファンディング'}
-              </StyledProjectTitle>
-              <StyledLaunchProject>
+              </StyledProjectLaunchTitle>
+              <StyledProjectLaunchList>
                 <ul className="project-info">
                   <li>
                     <strong>{'単発寄付のみ'}</strong>
@@ -92,7 +89,7 @@ const LaunchNewProject = () => {
                   <li>{'指定する必要があります'}</li>
                   <li>{'目標金額、寄付状況を表示できます'}</li>
                 </ul>
-              </StyledLaunchProject>
+              </StyledProjectLaunchList>
             </StyledProjectLaunchType>
           </Col>
           <Col span={8}>
@@ -100,15 +97,15 @@ const LaunchNewProject = () => {
               <StyledProjectLaunchTypeInfo color="#F9EAEA" className="mb-5">
                 {'マンスリーサポーターを増やす'}
               </StyledProjectLaunchTypeInfo>
-              <StyledProjectTitle
+              <StyledProjectLaunchTitle
                 className="mb-5"
                 style={{
                   color: '#C72A32',
                 }}
               >
                 {'マンスリーファンディング'}
-              </StyledProjectTitle>
-              <StyledLaunchProject>
+              </StyledProjectLaunchTitle>
+              <StyledProjectLaunchList>
                 <ul className="project-info">
                   <li>
                     <strong>{'単発寄付のみ'}</strong>
@@ -117,7 +114,7 @@ const LaunchNewProject = () => {
                   <li>{'募集期間の指定はできません'}</li>
                   <li>{'目標金額、寄付状況の表示はできません'}</li>
                 </ul>
-              </StyledLaunchProject>
+              </StyledProjectLaunchList>
             </StyledProjectLaunchType>
           </Col>
         </Row>

@@ -65,6 +65,6 @@ export const DonationPageLayout = styled.div`
   }
   & .table-title {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
   }
 `;

@@ -31,9 +31,7 @@ const Summary = () => {
           <Col>
             <Row type="flex" align="middle">
               <Col className="mr-6">
-                <span className="page-title">
-                  <span className="sub-page-title">{'プロジェクト'}</span>
-                </span>
+                <div className="sub-page-title">{'プロジェクト'}</div>
               </Col>
               <Col className="mr-2">
                 <Breadcrumb className="bread-crumb" separator="">
@@ -70,13 +68,18 @@ const Summary = () => {
 
         {/* サマリー */}
         <Card className="mb-5 table-card" bodyStyle={{ padding: 0 }}>
+          <Row justify="space-between" className="px-6 py-5">
+            <Space align="center">
+              <span className="page-sub-title">{'サマリー'}</span>
+            </Space>
+          </Row>
           <Row>
             <SummaryTable />
           </Row>
         </Card>
 
         {/* 活動報告 */}
-        <Card className="mb-5 table-card" bodyStyle={{ padding: 0 }}>
+        <Card className="mb-5 table-card pb-0" bodyStyle={{ padding: 0 }}>
           <Row justify="space-between" className="px-6 py-5">
             <Space align="center">
               <span className="page-sub-title">{'活動報告'}</span>
@@ -103,10 +106,10 @@ const Summary = () => {
         </Card>
 
         {/* 応援コメント */}
-        <Card className="mb-5 table-card" bodyStyle={{ padding: 0 }}>
+        <Card className="mb-5 table-card pb-0" bodyStyle={{ padding: 0 }}>
           <Row justify="space-between" className="px-6 py-5">
             <Space align="center">
-              <span className="page-sub-title">{'活動報告'}</span>
+              <span className="page-sub-title">{'応援コメント'}</span>
               <Badge
                 className="common-badge"
                 count={99}

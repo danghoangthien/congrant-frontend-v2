@@ -1,6 +1,9 @@
 import styled from 'styled-components/macro';
-import { Input, Select } from 'antd';
+import { TEXT_GRAY_COLOR, RED_COLOR } from 'styles/StyleConstants';
+import { Input, Select, DatePicker } from 'antd';
+
 const { TextArea } = Input;
+const { RangePicker } = DatePicker;
 
 export const StyledRadioGroup = styled.div`
   & .ant-space-item {
@@ -109,73 +112,45 @@ export const StyledForm = styled.div`
 
 export const StyledRequired = styled.span`
   font-family: SimSong;
-  width: 7px;
-  color: #c72a32;
+  color: ${RED_COLOR};
   font-weight: 400;
-  font-size: 14px;
 `;
 
 export const StyledLabel = styled.div`
-  display: block;
-  font-family: 'Hiragino Kaku Gothic Pro';
-  font-style: normal;
-  height: 22px;
   font-weight: 600;
   font-size: 14px;
-  line-height: 22px;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${TEXT_GRAY_COLOR};
+`;
+
+export const StyledSettingLabel = styled.div`
+  & .info-icon {
+    width: 13px;
+  }
 `;
 
 export const StyledInput = styled(Input)`
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
-  height: 40pxpx;
-  width: 600px;
-  color: rgba(0, 0, 0, 0.5);
+  padding: 5px 11px;
 `;
 
 export const StyledTextarea = styled(TextArea)`
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  font-weight: 300;
   font-size: 16px;
-  line-height: 24px;
-  height: 62px;
-  width: 600px;
-  color: rgba(0, 0, 0, 0.5);
 `;
 
 export const StyledTextareaMedium = styled(TextArea)`
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
-  height: 128px;
-  width: 600px;
 `;
 
 export const StyledSelect = styled(Select)`
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
-  height: 40pxpx;
-  width: 600px;
+  width: 100%;
 `;
 
 export const StyledSubtitle = styled.div`
-  font-style: normal;
   font-weight: 300;
   font-size: 14px;
-  line-height: 22px;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${TEXT_GRAY_COLOR};
+`;
+
+export const StyledRangePicker = styled(RangePicker)`
+  padding: 7px 11px;
 `;

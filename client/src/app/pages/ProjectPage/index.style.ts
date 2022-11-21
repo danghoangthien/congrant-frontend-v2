@@ -1,6 +1,5 @@
 import styled from 'styled-components/macro';
-import { Tag } from 'antd';
-import { BORDER_COLOR } from 'styles/StyleConstants';
+import { LIGHT_GRAY } from 'styles/StyleConstants';
 
 export const StatusTag = styled.div`
   font-weight: 600;
@@ -30,29 +29,6 @@ export const ProjectUrl = styled.div`
   }
 `;
 
-export const ProjectLaunchType = styled.div`
-{
-  height: 100%;
-  box-sizing: border-box;
-  padding: 24px 16px;
-  border: 1px solid #d9d9d7;
-  border-radius: 4px;
-`;
-
-export const ProjectLaunchTypeInfo = styled(Tag)`
-  height: 30px;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 30px;
-  text-align: center;
-  border-radius: 24px;
-  color: rgba(0, 0, 0, 0.85);
-  display: block;
-  border: 0;
-  width: 100%;
-  padding: 0 15px;
-`;
-
 export const ProjectCard = styled.div`
   & .project-card-wrapper {
     .ant-card-body {
@@ -76,7 +52,7 @@ export const ProjectCard = styled.div`
     }
 
     &:not(:last-of-type) {
-      border-bottom: 1px solid ${BORDER_COLOR};
+      border-bottom: 1px solid ${LIGHT_GRAY};
     }
   }
   & .project-head {

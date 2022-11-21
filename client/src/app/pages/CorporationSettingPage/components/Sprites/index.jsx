@@ -1,20 +1,23 @@
-import { Row, Col, Space } from 'antd';
+import { Col, Space } from 'antd';
 import {
   StyledRequired,
   StyledLabel,
   StyledInput,
   StyledTextarea,
   StyledSelect,
+  StyledSettingLabel,
+  StyledRangePicker,
 } from 'app/components/Layout/SettingsLayout.style';
-import { InfoCircleFilled } from '@ant-design/icons';
+
+import InfoIcon from '@mui/icons-material/Info';
 
 const SettingsInputContainer = ({ children, label }) => {
   return (
     <>
-      <Col className="item my-2" sm={24} md={24} lg={24}>
+      <Col className="item mb-2" sm={24} md={24} lg={24}>
         <Space align="center">{label}</Space>
       </Col>
-      <Col className="item my-2" sm={24} md={24} lg={24}>
+      <Col className="item" sm={24} md={24} lg={24}>
         {children}
       </Col>
     </>
@@ -23,7 +26,7 @@ const SettingsInputContainer = ({ children, label }) => {
 
 const SettingLabel = ({ label, required, info }) => (
   <StyledLabel>
-    <Space>
+    <Space size={4}>
       {required && <StyledRequired>{'*'}</StyledRequired>}
       <>{label}</>
       {info && <>{info}</>}
@@ -32,11 +35,13 @@ const SettingLabel = ({ label, required, info }) => (
 );
 
 const SettingInfoLabel = ({ label, required }) => (
-  <SettingLabel
-    required={required || false}
-    label={label}
-    info={<InfoCircleFilled className="display-inline-flex" />}
-  />
+  <StyledSettingLabel>
+    <SettingLabel
+      required={required || false}
+      label={label}
+      info={<InfoIcon className="info-icon" />}
+    />
+  </StyledSettingLabel>
 );
 
 const SettingInput = ({ placeholder, ...rest }) => (
@@ -51,6 +56,10 @@ const SettingSelect = ({ placeholder, ...rest }) => (
   <StyledSelect placeholder={placeholder} {...rest} />
 );
 
+const SettingRangePicker = ({ placeholder, ...rest }) => (
+  <StyledRangePicker placeholder={placeholder} {...rest} />
+);
+
 export {
   SettingsInputContainer,
   SettingLabel,
@@ -58,4 +67,5 @@ export {
   SettingInput,
   SettingTextarea,
   SettingSelect,
+  SettingRangePicker,
 };

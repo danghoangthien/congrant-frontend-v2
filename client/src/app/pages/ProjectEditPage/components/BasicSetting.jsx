@@ -1,5 +1,7 @@
-import { Row, Col, Button, DatePicker, Space, Radio, Tag } from 'antd';
 import { useParams } from 'react-router-dom';
+// ANTD
+import { Row, Col, DatePicker, Space, Tag } from 'antd';
+// COMPONENTS
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -7,10 +9,10 @@ import {
   SettingInput,
   SettingTextarea,
   SettingSelect,
+  SettingRangePicker,
 } from '../../CorporationSettingPage/components/Sprites';
-
+// STYLING
 import { StyledSubtitle, StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
-
 import styled from 'styled-components/macro';
 
 export const StyledTag = styled(Tag)`
@@ -23,17 +25,19 @@ const BasicSetting = () => {
   const params = useParams();
   return (
     <>
-      <div className="item ml-5">
+      <div>
         <Row className="mb-5">
-          <Col sm={24} md={24} lg={24}>
+          <Col span={24}>
             <span className="page-title">{'基本設定'}</span>
           </Col>
         </Row>
+
+        {/* ページタイトル（最大50文字） */}
         <Row className="item mb-2">
           <SettingsInputContainer
             label={<SettingLabel label={'ページタイトル（最大50文字）'} required />}
           >
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item mb-8" span={24}>
               <SettingTextarea
                 placeholder={
                   '子どもたちの未来を守るため、NPO法人コングラントへのご寄付をお願いします'
@@ -41,8 +45,10 @@ const BasicSetting = () => {
               />
             </Col>
           </SettingsInputContainer>
+
+          {/* 概要文（最大400文字） */}
           <SettingsInputContainer label={<SettingLabel label={'概要文（最大400文字）'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item mb-8" span={24}>
               <SettingTextarea
                 placeholder={
                   'NPO法人コングラントは、XXX県XX市でこども食堂を毎週金曜日に開催しています。地元の食材を使って、こどもたちに暖かくておいしい食事をお腹いっぱいに食べてもらいたい！そのためには皆さまからのご支援が必要です。子どもたちのために、食堂の運営資金のサポートをしていただけませんか？'
@@ -50,38 +56,49 @@ const BasicSetting = () => {
               />
             </Col>
           </SettingsInputContainer>
+
+          {/* ボタンテキスト */}
           <SettingsInputContainer label={<SettingInfoLabel label={'ボタンテキスト'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item mb-8" span={24}>
               <SettingInput placeholder={'寄付をする'} />
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingInfoLabel label={'トップ画像'} required />}>
-            <Space>
-              <StyledUploadPicture
-                style={{
-                  width: '124px',
-                }}
-              >
-                <div
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    background: 'url(/markus-spiske-97Rpu-UmCaY-unsplash-300x200.jpeg) center',
-                    opacity: '0.8',
-                  }}
-                ></div>
-              </StyledUploadPicture>
 
-              <StyledUploadPicture style={{ width: '124px' }}>
-                <Space direction="vertical" align="center">
-                  <span className="upload-picture-title">{'+'}</span>
-                  <span className="upload-picture-title">{'アップロード'}</span>
-                </Space>
-              </StyledUploadPicture>
-            </Space>
-          </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingInfoLabel label={'テーマカラー'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+          {/* トップ画像 */}
+          <div className="mb-8">
+            <SettingsInputContainer label={<SettingLabel label={'トップ画像'} required />}>
+              <Space>
+                <StyledUploadPicture
+                  style={{
+                    width: '124px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      background: 'url(/markus-spiske-97Rpu-UmCaY-unsplash-300x200.jpeg) center',
+                      opacity: '0.8',
+                    }}
+                  ></div>
+                </StyledUploadPicture>
+
+                <StyledUploadPicture style={{ width: '124px' }}>
+                  <Space direction="vertical" align="center">
+                    <span className="upload-picture-title">{'+'}</span>
+                    <span className="upload-picture-title">{'アップロード'}</span>
+                  </Space>
+                </StyledUploadPicture>
+              </Space>
+              <Row>
+                <StyledSubtitle>{'画像は3枚まで設定できます。'}</StyledSubtitle>
+              </Row>
+            </SettingsInputContainer>
+          </div>
+
+          {/* テーマカラー */}
+          <SettingsInputContainer label={<SettingLabel label={'テーマカラー'} required />}>
+            <Col className="item mb-5" span={24}>
               <Space>
                 {[
                   '#0457C9',
@@ -100,59 +117,87 @@ const BasicSetting = () => {
               </Space>
             </Col>
           </SettingsInputContainer>
-          {params?.id == 2 ? (
+
+          {/* 目標金額 */}
+          {params?.id === '1' ? (
             <>
-              <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
-                <Col className="item" sm={24} md={24} lg={24}>
-                  <SettingSelect placeholder={'設定しない'} />
-                </Col>
-                <Col>
-                  <StyledSubtitle style={{ width: '600px' }}>
-                    {
-                      '管理画面のホームに表示されるダッシュボードに影響します。一般には公開されません。あとから変更することも可能です。'
-                    }
-                  </StyledSubtitle>
-                </Col>
-              </SettingsInputContainer>
-              <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
-                <Col className="item" sm={24} md={24} lg={24}>
-                  <DatePicker style={{ width: '600px' }} placeholder={'yyyy-mm-dd hh:mm'} />
-                </Col>
-                <Col>
-                  <StyledSubtitle style={{ width: '600px' }}>
-                    {
-                      '受付開始日時を指定すると、その日時まで寄付ボタンが押せなくなります。ページの“公開日”を指定する機能ではありませんのでご注意ください（ページは審査完了後すぐに公開されます）。'
-                    }
-                  </StyledSubtitle>
-                </Col>
-              </SettingsInputContainer>
+              {/* プロジェクトの目標値 */}
+              <Col span={24} className="mb-8">
+                <SettingsInputContainer label={<SettingLabel label={'プロジェクトの目標値'} />}>
+                  <Col span={24}>
+                    <SettingSelect placeholder={'設定しない'} />
+                  </Col>
+                  <Col>
+                    <StyledSubtitle>
+                      <div>
+                        管理画面のホームに表示されるダッシュボードに影響します。一般には公開されません。
+                        <br />
+                        あとから変更することも可能です。
+                      </div>
+                    </StyledSubtitle>
+                  </Col>
+                </SettingsInputContainer>
+              </Col>
+
+              {/* 受付開始日時 */}
+              <Col span={24}>
+                <SettingsInputContainer label={<SettingLabel label={'受付開始日時'} />}>
+                  <Col span={24}>
+                    <DatePicker
+                      showTime
+                      style={{ width: '100%' }}
+                      placeholder={'yyyy-mm-dd hh:mm'}
+                    />
+                  </Col>
+                  <Col>
+                    <StyledSubtitle>
+                      <div>
+                        受付開始日時を指定すると、その日時まで寄付ボタンが押せなくなります。
+                        <br />
+                        ページの“公開日”を指定する機能ではありませんのでご注意ください（ページは審査完了後すぐに公開されます）。
+                      </div>
+                    </StyledSubtitle>
+                  </Col>
+                </SettingsInputContainer>
+              </Col>
             </>
           ) : (
             <>
-              <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
-                <Col className="item" sm={24} md={24} lg={24}>
-                  <SettingInput placeholder={'1,000,000'} suffix="円" />
-                </Col>
-                <Col>
-                  <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
-                </Col>
-              </SettingsInputContainer>
-              <SettingsInputContainer label={<SettingLabel label={'ネクストゴール'} />}>
-                <Col className="item" sm={24} md={24} lg={24}>
-                  <SettingInput placeholder={'2,000,000'} suffix="円" />
-                </Col>
-                <Col>
-                  <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
-                </Col>
-              </SettingsInputContainer>
-              <SettingsInputContainer label={<SettingLabel label={'受付期間'} required />}>
-                <Col className="item" sm={24} md={24} lg={24}>
-                  <SettingInput placeholder={'2,000,000'} suffix="円" />
-                </Col>
-                <Col>
-                  <StyledSubtitle>{'開始日'}</StyledSubtitle>
-                </Col>
-              </SettingsInputContainer>
+              {/* 目標金額 */}
+              <Col span={24} className="mb-8">
+                <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
+                  <Col span={24}>
+                    <SettingInput placeholder={'1,000,000'} suffix="円" />
+                  </Col>
+                  <Col>
+                    <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
+                  </Col>
+                </SettingsInputContainer>
+              </Col>
+
+              {/* ネクストゴール */}
+              <Col span={24} className="mb-8">
+                <SettingsInputContainer label={<SettingLabel label={'ネクストゴール'} />}>
+                  <Col span={24}>
+                    <SettingInput placeholder={'2,000,000'} suffix="円" />
+                  </Col>
+                  <Col>
+                    <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
+                  </Col>
+                </SettingsInputContainer>
+              </Col>
+
+              {/* 受付期間 */}
+              <Col span={24}>
+                <SettingsInputContainer label={<SettingLabel label={'受付期間'} required />}>
+                  <Col>
+                    <SettingRangePicker placeholder={['開始日', '終了日']} />
+                  </Col>
+                  <Col>
+                    <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
+                  </Col>
+                </SettingsInputContainer>
+              </Col>
             </>
           )}
         </Row>

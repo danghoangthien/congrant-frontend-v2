@@ -1,7 +1,7 @@
 import { Select, Button, Table, Typography, Badge, Dropdown, Menu } from 'antd';
 import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
-import { StyledBadgeDot } from 'app/pages/IndividualPage/components/ContinuousContract.style';
 import { randomOutput } from 'utils/helper';
+import { StyledBadgeDot } from 'styles/global-styles';
 
 const RECEIPT_STATUSES = {
   0: '受領済み',

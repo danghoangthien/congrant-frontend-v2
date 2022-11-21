@@ -2,7 +2,7 @@ import { Button, Tag, Badge, Space, Typography } from 'antd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import { randomOutput } from 'utils/helper';
-import { StyledBadgeDot } from 'app/components/Styled/index.style';
+import { StyledBadgeDot } from 'styles/global-styles';
 
 import {
   RECEIPT_METHODS,
@@ -293,6 +293,7 @@ const dataSource = [
 
 const columnMap = {
   date_of_receipt: {
+    width: 140,
     title: '受領日',
     dataIndex: 'date_of_receipt',
     csvOutput: ({ date_of_receipt }) => date_of_receipt,

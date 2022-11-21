@@ -40,6 +40,7 @@ const MailButton = ({ selectedRowKeys }) => {
 
 const menu = (
   <Menu
+    className="action-menu"
     items={[
       {
         key: '1',
@@ -182,7 +183,7 @@ const ProjectPage = () => {
                     </div>
                   </Col>
                   <Col flex="40px" onClick={e => e.stopPropagation()}>
-                    <Dropdown overlay={menu} placement="bottomRight">
+                    <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
                       <Button icon={<EllipsisOutlined />} className="ml-2" />
                     </Dropdown>
                   </Col>

@@ -6,6 +6,7 @@ import {
   columnMap,
 } from '../mockDataReceived';
 import { getWithExpiry } from 'utils/localStorageHandler';
+
 const INITIAL_STATE = {
   items: [],
   pagination: {},
