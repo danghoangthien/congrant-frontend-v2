@@ -15,13 +15,15 @@ const DONATION_TYPE_COLORS = {
 };
 
 const RECEIPT_STATUSES = {
-  0: '未発行',
-  1: '発行済み',
+  0: '未発行', // unissued
+  1: '発行済み', // issued
+  2: '未作成', // not created yet
 };
 
 const RECEIPT_STATUS_COLOR = {
   0: 'warning',
   1: 'success',
+  2: '',
 };
 
 const PLANS = {

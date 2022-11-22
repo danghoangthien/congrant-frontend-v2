@@ -1,22 +1,34 @@
-import { Typography, Button, DatePicker } from 'antd';
+import { Button, DatePicker, Dropdown, Menu, Space } from 'antd';
 import moment from 'moment';
 
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import Detail from '../IndividualPage/components/Detail';
 
-import {
-  RECEIPT_METHODS,
-  DONATION_TYPES,
-  PLANS,
-  RECEIPT_STATUSES,
-  DONATION_TYPE_COLORS,
-} from './consts';
-import { EllipsisOutlined } from '@ant-design/icons';
-const { Text } = Typography;
+import { DANGER_COLOR } from 'styles/StyleConstants';
+
+import { PLANS } from './consts';
+
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: '金額を変更して消込',
+      },
+      {
+        key: '2',
+        label: '非表示',
+      },
+      {
+        key: '3',
+        label: <span style={{ color: DANGER_COLOR }}>{'削除'}</span>,
+      },
+    ]}
+  />
+);
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
-  id: `${i + 1}`,
   application_date: `2022-07-30`,
   supporter: `荒木 雄大 ${i}`,
   project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -26,22 +38,18 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 }));
 
 const columnMap = {
-  id: {
-    width: 50,
-    title: 'ID',
-    dataIndex: 'id',
-    csvOutput: ({ id }) => id,
-  },
   application_date: {
+    width: 150,
     title: '申込日',
     dataIndex: 'application_date',
     csvOutput: ({ application_date }) => application_date,
   },
   supporter: {
+    width: 150,
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
-        <Button type="link">{row.supporter}</Button>
+        <span className="supporter-link">{row.supporter}</span>
       </DrawerHandle>
     ),
     csvOutput: ({ supporter }) => supporter,
@@ -52,6 +60,7 @@ const columnMap = {
     csvOutput: ({ project }) => project,
   },
   plan_and_amount: {
+    width: 150,
     title: 'プラン・金額',
     render: ({ plan, amount }) => (
       <>
@@ -63,6 +72,7 @@ const columnMap = {
     csvOutput: ({ plan, amount }) => `${PLANS[plan] || ''} ${amount}`,
   },
   date_of_receipt: {
+    width: 150,
     title: '受領日',
     dataIndex: 'date_of_receipt',
     render: date_of_receipt => (
@@ -71,12 +81,18 @@ const columnMap = {
     csvOutput: ({ date_of_receipt }) => date_of_receipt,
   },
   operate: {
-    title: '受領日',
+    width: 150,
+    title: 'アクション',
     render: row => (
-      <>
+      <Space>
         <Button type="primary">{'入金消込'}</Button>
-        <Button icon={<EllipsisOutlined />} className="ml-2" />
-      </>
+        <Dropdown overlay={menu} placement="bottomRight">
+          <Button
+            className="more-menu-btn"
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
+          />
+        </Dropdown>
+      </Space>
     ),
   },
 };

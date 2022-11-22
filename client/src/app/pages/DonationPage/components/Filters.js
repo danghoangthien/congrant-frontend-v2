@@ -1,6 +1,3 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
 import { Card, Row, Col, Button, Select, Form, Input, DatePicker } from 'antd';
 
 const { RangePicker } = DatePicker;
@@ -19,14 +16,15 @@ const Filters = ({ open }) => {
           <Row>
             <Col className="mr-2">
               <Select
-                defaultValue={{
-                  value: '1',
-                }}
+                // defaultValue={{
+                //   value: '1',
+                // }}
                 onChange={() => {}}
                 size="small"
                 style={{
                   width: '256px',
                 }}
+                placeholder={'保存されたフィルタ'}
               >
                 <Select.Option value="1">{'保存されたフィルタ'}</Select.Option>
               </Select>
@@ -45,7 +43,7 @@ const Filters = ({ open }) => {
             <Row gutter={24}>
               <Col span={6} key={'a'}>
                 <Form.Item name={`field-a`} label={`受領日`}>
-                  <RangePicker placeholder={['開始日', '終了日']} />
+                  <RangePicker placeholder={['開始日', '終了日']} style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               <Col span={6} key={'b'}>
@@ -78,26 +76,32 @@ const Filters = ({ open }) => {
               </Col>
               <Col span={6} key={'e'}>
                 <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
-                  <Input.Group compact>
-                    <Input style={{ width: '120px', textAlign: 'center' }} placeholder="3,000円" />
+                  <Input.Group compact className="num-range-input">
+                    <Input
+                      style={{ width: 'calc(50% - 15px)', textAlign: 'center' }}
+                      placeholder="3,000"
+                    />
                     <Input
                       className="site-input-split"
                       style={{
-                        width: '47.5px',
+                        width: '30px',
                         borderLeft: 0,
                         borderRight: 0,
                         pointerEvents: 'none',
+                        background: '#ffffff',
                       }}
-                      placeholder="->"
+                      placeholder="~"
+                      disabled
                     />
                     <Input
                       className="site-input-right"
                       style={{
                         borderLeft: 0,
-                        width: '120px',
+                        width: 'calc(50% - 15px)',
                         textAlign: 'center',
                       }}
-                      placeholder="6,000円"
+                      placeholder="6,000"
+                      suffix="円"
                     />
                   </Input.Group>
                 </Form.Item>

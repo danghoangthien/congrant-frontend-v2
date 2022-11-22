@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Radio, Checkbox, Space, DatePicker } from 'antd';
+import { Row, Col, Button, Space, DatePicker } from 'antd';
+
+// COMPONENTS
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -7,8 +9,8 @@ import {
   SettingSelect,
   SettingTextarea,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
-import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
-import { PlusOutlined } from '@ant-design/icons';
+// STYLE
+import { StyledModalTitle, StyledModal } from 'styles/Modal.style';
 
 const AddFunding = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,101 +29,143 @@ const AddFunding = () => {
 
   return (
     <>
-      <Button onClick={showModal} className="active" type="primary" style={{ fontWeight: '300' }}>
-        <PlusOutlined className="display-inline-flex" />
-        <span className="ml-2">{'寄付の登録'}</span>
+      {/* 寄付の登録ボタン・Add Funding Button */}
+      <Button
+        onClick={showModal}
+        className="active icon-btn"
+        type="primary"
+        style={{ fontWeight: '300' }}
+      >
+        <span className="material-symbols-outlined">add</span>
+        {'寄付の登録'}
       </Button>
-      <Modal
-        title={<StyledModalTitle>{'寄付決済の新規登録'}</StyledModalTitle>}
+
+      {/* 寄付の登録モーダル・Add Funding Modal */}
+      <StyledModal
+        title={<StyledModalTitle className="modal-title">{'寄付決済の新規登録'}</StyledModalTitle>}
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={650}
-        className="modalStyle"
+        width={480}
         footer={null}
+        closeIcon={<span class="material-symbols-outlined">close</span>}
       >
-        <Row className="item mb-2">
+        {/* サポーター */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'サポーター'} />}>
-            <SettingInput placeholder={'コングラント株式会社'} />
+            <SettingInput placeholder={'氏名・法人名などを入力してください'} />
           </SettingsInputContainer>
         </Row>
 
-        <Row className="item mb-2">
+        {/* 受領日 */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'受領日'} required />}>
-            <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '600px' }} />
+            <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* 入金日 */}
+        <Row className="item mb-6">
+          <SettingsInputContainer label={<SettingLabel label={'入金日'} required />}>
+            <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
+          </SettingsInputContainer>
+        </Row>
+
+        {/* 寄付タイプ */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'寄付タイプ'} />}>
-            <SettingSelect value={'単発'} disabled />
+            <SettingSelect size="large" value={'単発'} disabled />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* プロジェクト */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'プロジェクト'} />}>
-            <SettingSelect placeholder={'選択してください'} />
+            <SettingSelect size="large" placeholder={'選択してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* プラン */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'プラン'} />}>
-            <SettingSelect placeholder={'選択してください'} />
+            <SettingSelect size="large" placeholder={'選択してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* 単価・口数 */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'単価・口数'} required />}>
-            <Space direction="horizontal">
-              <SettingInput style={{ width: '295px' }} value="3,000" suffix="円" />
-              <SettingInput style={{ width: '295px' }} value="1" suffix="口" />
+            <Space size={16}>
+              <SettingInput placeholder="3,000" suffix="円" />
+              <SettingInput placeholder="1" suffix="口" />
             </Space>
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* 金額 */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'金額'} />}>
-            <SettingInput value="3,000" suffix="円" />
+            <SettingInput placeholder="3,000" suffix="円" />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* 受領方法 */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'受領方法'} />}>
-            <SettingSelect placeholder={'選択してください'} />
+            <SettingSelect size="large" placeholder={'選択してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'受領方法'} />}>
-            <SettingTextarea rows="3" placeholder={'備考を入力してください'} />
+
+        {/* 備考欄 */}
+        <Row className="item mb-10">
+          <SettingsInputContainer label={<SettingLabel label={'備考欄'} />}>
+            <SettingTextarea rows="2" placeholder={'備考を入力してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="mb-5">
+
+        {/* カスタム項目 */}
+        <Row className="mb-4">
           <Col sm={24} md={24} lg={24}>
             <span className="page-sub-title">{'カスタム項目'}</span>
           </Col>
         </Row>
-        <Row className="item mb-2">
+
+        {/* 認知経路 */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'認知経路'} />}>
-            <SettingSelect placeholder={'選択してください'} />
+            <SettingSelect size="large" placeholder={'選択してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* 寄付の使用用途 */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'寄付の使用用途'} />}>
-            <SettingSelect placeholder={'選択してください'} />
+            <SettingSelect size="large" placeholder={'選択してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+
+        {/* 支援経験 */}
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'支援経験'} />}>
-            <SettingSelect placeholder={'選択してください'} />
+            <SettingSelect size="large" placeholder={'選択してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'受領方法'} />}>
-            <SettingTextarea rows="3" />
+
+        {/* 寄付理由 */}
+        <Row className="item mb-6">
+          <SettingsInputContainer label={<SettingLabel label={'寄付理由'} />}>
+            <SettingTextarea rows="2" />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mt-15">
+
+        <Row className="mt-10">
           <Col sm={24} md={24} lg={24} align="center">
-            <Button className="active" type="primary" style={{ width: '100%' }}>
-              <span className="ml-2">{'登録する'}</span>
+            <Button size="large" type="primary" style={{ width: '100%', fontWeight: '600' }}>
+              <span>{'登録する'}</span>
             </Button>
           </Col>
         </Row>
-      </Modal>
+      </StyledModal>
     </>
   );
 };

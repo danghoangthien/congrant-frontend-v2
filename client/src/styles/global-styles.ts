@@ -4,12 +4,13 @@ import { createGlobalStyle } from 'styled-components';
 import {
   PRIMARY_COLOR,
   WARNING_COLOR,
-  // BORDER_RADIUS,
+  BORDER_RADIUS,
   GRAY,
   LIGHT_GRAY,
   TEXT_COLOR,
   TEXT_GRAY_COLOR,
   PLACEHOLDER_COLOR,
+  DANGER_COLOR,
 } from 'styles/StyleConstants';
 
 /* istanbul ignore next */
@@ -64,9 +65,10 @@ export const GlobalStyle = createGlobalStyle`
   .filter-button {
     display: flex;
     align-items: center;
+    box-shadow: none !important;
 
-    >svg {
-      width: 16px;
+    .material-symbols-outlined {
+      font-size: 18px;
       margin-right: 10px;
     }
   }
@@ -78,6 +80,11 @@ export const GlobalStyle = createGlobalStyle`
   .icon-btn {
     display: inline-flex;
     align-items: center;
+
+    .material-symbols-outlined {
+      font-size: 18px;
+      margin-right: 8px;
+    }
 
     >svg {
       width: 16px;
@@ -115,6 +122,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // BUTTON
+  .ant-btn {
+    font-weight: 300;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  }
+
   .ant-primary-btn {
     // box-shadow: 0 2px 0 rgb(0 0 0 / 1.6%);
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
@@ -127,6 +139,20 @@ export const GlobalStyle = createGlobalStyle`
   .icon-btn {
     display: flex;
     align-items: center;
+  }
+
+  .fill-icon {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  }
+
+  .more-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+
+    span {
+      font-size: 16px;
+    }
   }
 
   // CARD
@@ -159,6 +185,7 @@ export const GlobalStyle = createGlobalStyle`
   & .bread-crumb {
     border: 1px solid ${GRAY};
     overflow: hidden;
+    border-radius: ${BORDER_RADIUS};
       
     li:not(:last-of-type) .bread-crumb-content {
       border-right: 1px solid ${GRAY};
@@ -166,11 +193,12 @@ export const GlobalStyle = createGlobalStyle`
 
     .bread-crumb-content {
       background: ${PRIMARY_COLOR};
-      padding: 5px 16px;
+      padding: 4px 16px;
       font-weight: 600;
       display: flex;
       align-items: center;
     }
+
     span.bread-crumb-content {
       color: #ffffff;
     }
@@ -229,6 +257,12 @@ export const GlobalStyle = createGlobalStyle`
     padding-bottom: 36px;
   }
 
+  .common-table {
+    .ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
+      padding: 17px 24px;
+    }
+  }
+
   // POP-UP MENU
 
   // ANTD INPUT
@@ -255,6 +289,18 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .site-input-split {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .num-range-input {
+    >input,
+    >span {
+      height: 32px;
+    }
+  }
+
   // ANTD PICKER
   .ant-picker-separator {
     display: flex;
@@ -262,7 +308,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // ANTD SELECT
-  .ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  .ant-select-selection-placeholder {
     color: ${PLACEHOLDER_COLOR};
   }
 
@@ -301,10 +347,24 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .ant-dropdown-menu-item,
+  .ant-dropdown-menu-submenu-title {
+    font-weight: 300;
+
+    &.danger {
+      background: ${DANGER_COLOR};
+      color: #fff;
+    }
+  }
+
   // PAGINATION
   .ant-pagination-item,
   .ant-pagination-total-text {
     font-weight: 300;
+  }
+
+  .ant-pagination-total-text {
+    margin-right: 16px;
   }
 
   // TAB
@@ -337,6 +397,11 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     display: flex;
     align-items: center;
+
+    .icon {
+      font-size: 30px;
+      font-weight: 300;
+    }
   }
 
   .sub-page-title {
@@ -379,6 +444,29 @@ export const GlobalStyle = createGlobalStyle`
 
   .ant-radio-checked .ant-radio-inner::after {
     transform: scale(0.6);
+  }
+
+  // SEARCH BUTTON
+  & .free-search {
+    width: 216px;
+    border-radius: 4px;
+    height: 32px;
+
+    span {
+      font-size: 18px;
+    }
+  }
+
+  // LINK
+  .supporter-link {
+    font-weight: 600;
+    font-size: 14px;
+    color: ${PRIMARY_COLOR};
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 

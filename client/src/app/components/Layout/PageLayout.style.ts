@@ -34,14 +34,6 @@ export const PageLayout = styled.div`
   & .display-inline-flex {
     display: inline-flex;
   }
-  & .free-search {
-    width: 216px;
-    border-radius: 4px;
-
-    svg {
-      font-size: 16px;
-    }
-  }
   & .ant-descriptions-item-label {
     width: 200px;
   }

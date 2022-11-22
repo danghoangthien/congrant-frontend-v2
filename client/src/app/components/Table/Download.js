@@ -52,7 +52,11 @@ const Download = ({ model, columnMap, fileName }) => {
   };
   return (
     <>
-      <Button icon={<DownloadOutlined />} onClick={download}>
+      <Button
+        className="icon-btn"
+        icon={<span className="material-symbols-outlined">download</span>}
+        onClick={download}
+      >
         {'ダウンロード'}
       </Button>
     </>

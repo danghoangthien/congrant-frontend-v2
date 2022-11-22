@@ -60,11 +60,11 @@ const TableSetting = ({ model, columnMap, localstorageKey }) => {
   return (
     <>
       {/* SETTING BUTTONS */}
-      <Button onClick={showModal}>
-        <Row align="middle">
-          <SettingsIcon className="mr-2 custom-icon" style={{ width: '16px' }} />
-          {'表示設定'}
-        </Row>
+      <Button onClick={showModal} className="icon-btn">
+        <span className="material-symbols-outlined fill-icon" style={{ fontSize: '16px' }}>
+          settings
+        </span>
+        {'表示設定'}
       </Button>
 
       {/* SETTING MODAL */}

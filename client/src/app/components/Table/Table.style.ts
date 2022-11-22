@@ -15,4 +15,17 @@ export const TableStyle = styled.div`
     width: 100%;
     transform: translateX(-24px);
   }
+
+  & .check-all-btn {
+    text-decoration: underline;
+    background: none;
+    padding: 0;
+    color: #ffffff;
+    box-shadow: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 `;
