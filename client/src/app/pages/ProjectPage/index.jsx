@@ -155,7 +155,7 @@ const ProjectPage = () => {
                         </StyledProjectTitle>
                       </div>
                     </div>
-                    <div>
+                    <div onClick={e => e.stopPropagation()}>
                       <StyledProjectUrl>
                         <a
                           href="https://congrant.com/XXXXXXXXXXXXXXXXXXX"

@@ -93,6 +93,9 @@ export const StyledUploadPicture = styled.div`
 
       color: rgba(0, 0, 0, 0.5);
     }
+    .ant-upload-select-picture-card {
+      border: none;
+    }
   }
 `;
 

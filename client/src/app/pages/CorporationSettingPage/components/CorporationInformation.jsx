@@ -1,5 +1,4 @@
-import { Row, Col, Button, Space, Radio } from 'antd';
-import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
+import { Row, Col, Button, Space, Radio, Upload } from 'antd';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -7,6 +6,8 @@ import {
   SettingInfoLabel,
   SettingSelect,
 } from './Sprites';
+
+import SingleImageUpoload from 'app/components/SingleImageUpload';
 
 const GroupInformation = () => {
   return (
@@ -91,12 +92,7 @@ const GroupInformation = () => {
             <SettingSelect placeholder={'選択してください'} />
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
-            <StyledUploadPicture style={{ width: '600px' }}>
-              <Space direction="vertical" align="center">
-                <span className="upload-picture-title">{'+'}</span>
-                <span className="upload-picture-title">{'アップロード'}</span>
-              </Space>
-            </StyledUploadPicture>
+            <SingleImageUpoload />
           </SettingsInputContainer>
         </Row>
         <Row className="item mt-15">

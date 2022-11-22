@@ -137,8 +137,25 @@ const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });
 
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  },
+  getCheckboxProps: record => ({
+    name: record.name,
+  }),
+};
+
 const CourseTable = () => (
-  <Table tableLayout="fixed" dataSource={dataSource} columns={columns} pagination={false} />
+  <Table
+    tableLayout="fixed"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+    rowSelection={{
+      ...rowSelection,
+    }}
+  />
 );
 
 export default CourseTable;
