@@ -1,5 +1,5 @@
 import SettingsPage from 'app/components/Layout/SettingsPage';
-import GroupInformation from './components/GroupInformation';
+import CorporationInformation from './components/CorporationInformation';
 import Representative from './components/Representative';
 import Administrator from './components/Administrator';
 import AccountInformation from './components/AccountInformation';
@@ -10,7 +10,7 @@ const SETTING_COMPONENT_MAP = {
   groupInformation: {
     id: 1,
     name: '団体情報',
-    Component: GroupInformation,
+    Component: CorporationInformation,
   },
   representative: {
     id: 2,

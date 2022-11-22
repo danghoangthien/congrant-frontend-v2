@@ -39,18 +39,17 @@ const dataSource = [
   {
     item: '応援コメント',
     type: randomOutput([1, 2, 3]),
-  },
-  {
-    item: 'お子様のお名前',
-    type: randomOutput([1, 2, 3]),
+    selected: 2,
   },
   {
     item: '認知経路',
     type: randomOutput([1, 2, 3]),
+    selected: 3,
   },
   {
     item: '寄付理由',
     type: randomOutput([1, 2, 3]),
+    selected: 3,
   },
 ];
 
@@ -62,15 +61,26 @@ const columnMap = {
   },
   type: {
     title: '必須/任意/非表示',
-    render: ({ type }) => (
-      <>
-        <Radio.Group value={type}>
-          <Radio value={1}>{'必須'}</Radio>
-          <Radio value={2}>{'任意'}</Radio>
-          <Radio value={3}>{'非表示'}</Radio>
-        </Radio.Group>
-      </>
-    ),
+    render: ({ selected, item }) => {
+      const isRequiredDisabled = item === '応援コメント';
+      const isAnyDisabled = item === 'メールアドレス';
+      const isHiddenDisabled = item === 'メールアドレス';
+      return (
+        <>
+          <Radio.Group value={selected || 1}>
+            <Radio value={1} disabled={isRequiredDisabled}>
+              {'必須'}
+            </Radio>
+            <Radio value={2} disabled={isAnyDisabled}>
+              {'任意'}
+            </Radio>
+            <Radio value={3} disabled={isHiddenDisabled}>
+              {'非表示'}
+            </Radio>
+          </Radio.Group>
+        </>
+      );
+    },
   },
 };
 
