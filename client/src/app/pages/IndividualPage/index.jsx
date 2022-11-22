@@ -19,6 +19,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import { Button, Input, Row, Col, Badge, Space } from 'antd';
 import AddSupporter from './components/AddSupporter';
+import AddAttribute from './components/AddAttribute';
 import './Models/index';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // import { SupporterPageLayout } from './components/SupporterPage.style';
@@ -41,15 +42,7 @@ const MailButton = ({ selectedRowKeys }) => {
 const contextDropdownItems = selectedRowKeys => [
   {
     key: '1',
-    label: (
-      <Space
-        onClick={() => {
-          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
-        }}
-      >
-        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'属性を設定する'}</span>
-      </Space>
-    ),
+    label: <AddAttribute />,
   },
   {
     key: '2',

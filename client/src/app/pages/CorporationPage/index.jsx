@@ -13,6 +13,7 @@ import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
 import DomainIcon from '@mui/icons-material/Domain';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SendIcon from '@mui/icons-material/Send';
+import AddAttribute from './components/AddAttribute';
 
 import './Models/index';
 
@@ -33,15 +34,7 @@ const MailButton = ({ selectedRowKeys }) => {
 const contextDropdownItems = selectedRowKeys => [
   {
     key: '1',
-    label: (
-      <Space
-        onClick={() => {
-          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
-        }}
-      >
-        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'属性を設定する'}</span>
-      </Space>
-    ),
+    label: <AddAttribute />,
   },
   {
     key: '2',
