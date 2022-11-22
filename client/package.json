@@ -142,6 +142,7 @@
     "fontfaceobserver": "2.1.0",
     "i18next": "21.6.6",
     "i18next-browser-languagedetector": "6.1.2",
+    "material-symbols": "0.4.0",
     "moment": "2.29.4",
     "raw-loader": "4",
     "react": "17.0.2",

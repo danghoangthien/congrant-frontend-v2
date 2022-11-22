@@ -8,7 +8,6 @@ import { SearchOutlined, MailOutlined, EllipsisOutlined } from '@ant-design/icon
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
 import SearchIcon from '@mui/icons-material/Search';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -54,17 +53,21 @@ const ContinuousContractPage = () => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <span className="page-title">
-                    <AutorenewIcon style={{ fontSize: '32px' }} />
+                    <span className="material-symbols-outlined icon">autorenew</span>
                     <span className="ml-2 page-title">{'継続契約'}</span>
                   </span>
                 </Col>
                 <Col className="mr-2">
-                  <Input className="free-search" placeholder="フリー検索" prefix={<SearchIcon />} />
+                  <Input
+                    className="free-search"
+                    placeholder="フリー検索"
+                    prefix={<span className="material-symbols-outlined">search</span>}
+                  />
                 </Col>
                 <Col>
                   <Button
                     className="filter-button"
-                    icon={<FilterAltIcon />}
+                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
                     onClick={() => setFilterOpen(!filterOpen)}
                   >
                     {'フィルタ'}
@@ -98,12 +101,13 @@ const ContinuousContractPage = () => {
         {/* ページコンテンツ・Page Content */}
         <div className="item">
           <Table
+            tableLayout="fixed"
             TableName="継続契約一覧"
             model="continuousContractList"
             metaData={metaData}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.RECURRING} />}
             contextButtons={[MailButton]}
-            contextDropdownItems={contextDropdownItems}
+            // contextDropdownItems={contextDropdownItems}
           />
         </div>
       </PageLayout>

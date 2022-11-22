@@ -1,18 +1,6 @@
 import styled from 'styled-components/macro';
 import { LIGHT_GRAY } from 'styles/StyleConstants';
 
-export const StatusTag = styled.div`
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 22px;
-  color: #ffffff;
-  background: #63b233;
-  border-radius: 40px;
-  padding: 0 12px;
-  height: 22px;
-  white-space: nowrap;
-`;
-
 export const ProjectTitle = styled.div`
   font-weight: 600;
   font-size: 20px;

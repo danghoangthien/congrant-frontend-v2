@@ -1,12 +1,5 @@
 import styled from 'styled-components/macro';
-import {
-  StyleConstants,
-  ScreenSizes,
-  PRIMARY_COLOR,
-  LIGHT_GRAY,
-  GRAY,
-  TEXT_COLOR,
-} from 'styles/StyleConstants';
+import { PRIMARY_COLOR, GRAY, TEXT_COLOR } from 'styles/StyleConstants';
 
 export const StyledSidebar = styled.div<{}>`
   & .ant-layout-has-sider {
@@ -15,6 +8,7 @@ export const StyledSidebar = styled.div<{}>`
   & .ant-layout-sider {
     height: 100%;
     background-color: #ffffff;
+    border-right: 1px solid ${GRAY};
   }
   & .ant-layout-sider-children {
   }

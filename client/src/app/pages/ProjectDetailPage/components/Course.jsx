@@ -33,7 +33,7 @@ const CoursePage = () => {
             <Row type="flex" align="middle">
               <Col className="mr-6">
                 <span className="page-title">
-                  <span className="ml-1 sub-page-title">{'プロジェクトトップ'}</span>
+                  <span className="sub-page-title">{'プロジェクトトップ'}</span>
                 </span>
               </Col>
               <Col className="mr-2">
@@ -48,7 +48,11 @@ const CoursePage = () => {
                       寄付決済
                     </Link>
                   </Breadcrumb.Item>
-                  {params?.id === '2' && <span className="bread-crumb-content">コース別</span>}
+                  {params?.id === '2' && (
+                    <Breadcrumb.Item>
+                      <span className="bread-crumb-content">コース別</span>
+                    </Breadcrumb.Item>
+                  )}
                 </Breadcrumb>
               </Col>
             </Row>
@@ -66,9 +70,11 @@ const CoursePage = () => {
 
         {/* コースカード・Course Card */}
         <Card className="mb-5 table-card" bodyStyle={{ padding: 0 }}>
-          <Row className="px-6 py-5">
+          <Row className="px-6 py-4">
             <Space align="center">
-              <span className="page-sub-title">{'Aコース（残数：9個/20個）'}</span>
+              <span style={{ fontSize: '16px', fontWeight: '600' }}>
+                {'Aコース（残数：9個/20個）'}
+              </span>
               <Button icon={<DownloadOutlined />}>{'ダウンロード'}</Button>
             </Space>
           </Row>
@@ -80,9 +86,11 @@ const CoursePage = () => {
 
         {/* コースカード・Course Card */}
         <Card className="table-card" bodyStyle={{ padding: 0 }}>
-          <Row className="px-6 py-5">
+          <Row className="px-6 py-4">
             <Space align="center">
-              <span className="page-sub-title">{'Bコース（残数：9個/20個）'}</span>
+              <span style={{ fontSize: '16px', fontWeight: '600' }}>
+                {'Bコース（残数：9個/20個）'}
+              </span>
               <Button icon={<DownloadOutlined />}>{'ダウンロード'}</Button>
             </Space>
           </Row>

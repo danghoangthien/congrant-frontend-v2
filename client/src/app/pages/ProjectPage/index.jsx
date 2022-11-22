@@ -17,8 +17,10 @@ import { Button, Input, Row, Col, Card, Space, Image, Tag, Divider, Menu, Dropdo
 
 import LaunchNewProject from './components/LaunchNewProject';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import { StyledDonationTypeTag } from 'styles/Tag.style';
+import { StyledStatusTag } from 'styles/StatusTag.style';
 import {
-  StatusTag as StyledStatusTag,
+  // StatusTag as StyledStatusTag,
   ProjectTitle as StyledProjectTitle,
   ProjectUrl as StyledProjectUrl,
   ProjectCard as StyledProjectCard,
@@ -38,6 +40,7 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
+// アクション・Action Menu
 const menu = (
   <Menu
     className="action-menu"
@@ -80,6 +83,7 @@ const ProjectPage = () => {
     <>
       {renderPageTitle()}
       <PageLayout>
+        {/* ヘッディング・Heading */}
         <div className="item mb-7">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
@@ -143,9 +147,7 @@ const ProjectPage = () => {
                   <Col flex="calc(100% - 200px)" className="px-6">
                     <div className="project-head">
                       <div style={{ width: '66px' }} className="pt-1">
-                        <StyledStatusTag>
-                          <span>{'公開中'}</span>
-                        </StyledStatusTag>
+                        <StyledStatusTag className="public">{'公開中'}</StyledStatusTag>
                       </div>
                       <div style={{ width: 'calc(100% - 66px)' }} className="pl-2">
                         <StyledProjectTitle>
@@ -159,6 +161,7 @@ const ProjectPage = () => {
                           href="https://congrant.com/XXXXXXXXXXXXXXXXXXX"
                           target="_blank"
                           rel="noreferrer"
+                          onClick={e => e.stopPropagation()}
                         >
                           {'公開URL：https://congrant.com/XXXXXXXXXXXXXXXXXXX'}
                         </a>
@@ -169,9 +172,9 @@ const ProjectPage = () => {
                         {'クラウドファンディング'}
                       </Tag>
                       <Divider type="vertical" />
-                      <Tag color="processing">{'単発'}</Tag>
-                      <Tag color="error">{'毎月'}</Tag>
-                      <Tag color="magenta">{'毎年'}</Tag>
+                      <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
+                      <StyledDonationTypeTag className="monthly">{'毎月'}</StyledDonationTypeTag>
+                      <StyledDonationTypeTag className="yearly">{'毎年'}</StyledDonationTypeTag>
                       <Divider type="vertical" />
                       <span className="project-sub-ttl">最終更新</span>
                       <span>{'2022-08-01 12:34:45'}</span>
@@ -183,7 +186,7 @@ const ProjectPage = () => {
                     </div>
                   </Col>
                   <Col flex="40px" onClick={e => e.stopPropagation()}>
-                    <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
+                    <Dropdown overlay={menu} placement="bottomRight" trigger={['hover']}>
                       <Button icon={<EllipsisOutlined />} className="ml-2" />
                     </Dropdown>
                   </Col>

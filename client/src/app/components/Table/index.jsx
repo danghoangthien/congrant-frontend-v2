@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Table, Row, Col, Pagination, Checkbox, Select, Dropdown, Menu } from 'antd';
+import { Card, Table, Row, Col, Pagination, Checkbox, Select, Dropdown, Menu, Space } from 'antd';
 import { push } from 'connected-react-router';
 import Download from './Download';
 import TableSetting from './TableSetting';
@@ -16,6 +16,7 @@ const DataTable = ({
   contextButtons = [],
   contextDropdownItems = () => {},
   TableName = [],
+  hasTableSetting,
 }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
@@ -77,6 +78,7 @@ const DataTable = ({
     dispatch(push(`${pathname}?${usp}`));
   }
 
+  // ページネーション・Pagination
   const renderPagination = () => {
     return (
       <Pagination
@@ -99,22 +101,26 @@ const DataTable = ({
     <TableStyle>
       <>
         <Card bodyStyle={{ padding: 0 }} className={hasSelected && 'mb-14'}>
-          <Row className="my-5 mx-6">
+          <Row className="py-4 px-6">
             <Col sm={24} md={12} lg={10}>
-              <span className="table-title mr-4">{TableName}</span>
-              <Download model={model} columnMap={metaData.columnMap} />
+              <Space size={24}>
+                <span className="table-title">{TableName}</span>
+                <Download model={model} columnMap={metaData.columnMap} />
+              </Space>
             </Col>
-            <Col sm={24} md={12} lg={14}>
-              <Row align="middle" justify="end">
-                <Col className="text-center">
-                  <TableSetting
-                    model={model}
-                    columnMap={metaData.columnMap}
-                    localstorageKey={metaData.COLUMN_SETTING_LOCALSTORAGE}
-                  />
-                </Col>
-              </Row>
-            </Col>
+            {hasTableSetting && (
+              <Col sm={24} md={12} lg={14}>
+                <Row align="middle" justify="end">
+                  <Col className="text-center">
+                    <TableSetting
+                      model={model}
+                      columnMap={metaData.columnMap}
+                      localstorageKey={metaData.COLUMN_SETTING_LOCALSTORAGE}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            )}
           </Row>
           <Row className="index-table-wrapper">
             <Col span={24}>
@@ -166,23 +172,41 @@ const DataTable = ({
                     setSelectedRowKeys([]);
                   }
                 }}
+              ></Checkbox>
+              <span className="mx-4">{hasSelected ? `${selectedRowKeys.length}件選択中` : ''}</span>
+              <span
+                className="check-all-btn mr-8"
+                onClick={e => {
+                  if (selectedRowKeys.length !== items.length) {
+                    setSelectedRowKeys(
+                      items.map(item => {
+                        return item[columns[0].dataIndex];
+                      }),
+                    );
+                  } else {
+                    setSelectedRowKeys([]);
+                  }
+                }}
               >
                 全件選択
-              </Checkbox>
-              <span className="ml-5 mr-8">
-                {hasSelected ? `${selectedRowKeys.length}件選択中` : ''}
               </span>
               {contextButtons.map(Component => {
                 return <Component selectedRowKeys={selectedRowKeys} />;
               })}
               <Dropdown
-                overlay={<Menu items={contextDropdownItems(selectedRowKeys) || []} />}
+                overlay={
+                  <Menu
+                    className="other-action-menu"
+                    items={contextDropdownItems(selectedRowKeys) || []}
+                  />
+                }
                 placement="topRight"
+                trigger={['hover']}
               >
                 <Select
                   className="ml-5"
                   style={{
-                    width: 155,
+                    width: 210,
                   }}
                   placeholder={'その他の一括操作'}
                   open={false}

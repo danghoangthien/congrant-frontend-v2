@@ -17,7 +17,9 @@ import { RED_COLOR } from 'styles/StyleConstants';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SendIcon from '@mui/icons-material/Send';
 // Meta
-import * as metaData from './mockDataReceived';
+import * as metaData from './mockData';
+// Model
+import './Models/unclaimed';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
@@ -42,10 +44,7 @@ const menu = (
         key: '1',
         label: (
           <>
-            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
-              upload
-            </span>
-            <span className="ml-2">{'一括アップロード'}</span>
+            <span className="ml-2">{'非表示のレコードを表示する'}</span>
           </>
         ),
       },
@@ -83,17 +82,19 @@ const FundingPage = () => {
 
                 <Breadcrumb className="bread-crumb mr-2" separator="">
                   <Breadcrumb.Item>
-                    <span className="bread-crumb-content">受領済み</span>
+                    <Link className="bread-crumb-content" to={`/donations/received`}>
+                      受領済み
+                    </Link>
                   </Breadcrumb.Item>
                   <Breadcrumb.Item>
-                    <Link className="bread-crumb-content" to={`/donations/unclaimed`}>
+                    <span className="bread-crumb-content">
                       未受領
                       <Badge
                         className="ml-1 roboto-mono"
                         count={99}
                         style={{ backgroundColor: RED_COLOR, boxShadow: 'none' }}
                       ></Badge>
-                    </Link>
+                    </span>
                   </Breadcrumb.Item>
                 </Breadcrumb>
 
@@ -103,20 +104,12 @@ const FundingPage = () => {
                   placeholder="フリー検索"
                   prefix={<span className="material-symbols-outlined">search</span>}
                 />
-                <Button
-                  className="filter-button"
-                  icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
-                  onClick={() => setFilterOpen(!filterOpen)}
-                >
-                  {'フィルタ'}
-                </Button>
               </Row>
             </Col>
 
             {/* 右の部分・Right Part */}
             <Col>
               <Space>
-                <AddFunding />
                 <Dropdown overlay={menu} placement="bottomRight" trigger={['hover']}>
                   <Button
                     className="more-menu-btn"
@@ -128,22 +121,15 @@ const FundingPage = () => {
           </Row>
         </div>
 
-        {/* フィルタ・Filter */}
-        <div className="item">
-          <Filters open={filterOpen} />
-        </div>
-
         {/* メインコンテンツ・Main Content */}
         <div className="item">
           <Table
             tableLayout="fixed"
-            model="receivedFundingList"
+            model="unclaimedFundingList"
             metaData={metaData}
             contextButtons={[MailButton]}
-            Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
-            TableName={'受領済みの寄付一覧'}
-            contextDropdownItems={metaData.menuItems}
-            hasTableSetting
+            // Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
+            TableName={'未受領の寄付一覧'}
           />
         </div>
       </PageLayout>

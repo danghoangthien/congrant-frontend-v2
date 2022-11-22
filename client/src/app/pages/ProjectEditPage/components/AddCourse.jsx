@@ -30,10 +30,12 @@ const AddCourse = ({ title }) => {
 
   return (
     <>
-      <Button onClick={showModal} type="primary">
-        <PlusOutlined className="display-inline-flex" />
+      <Button onClick={showModal} type="primary" className="icon-btn">
+        <span className="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
+
+      {/* コース追加モーダル・Add Course Modal */}
       <Modal
         title={<StyledModalTitle>{'コース登録'}</StyledModalTitle>}
         visible={isModalOpen}
