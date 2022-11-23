@@ -116,7 +116,7 @@ const columnMap = {
     csvOutput: cumulative_donation => cumulative_donation,
   },
   action: {
-    width: 100,
+    width: 120,
     title: 'アクション',
     render: row => (
       <Dropdown overlay={menu} placement="bottomRight">

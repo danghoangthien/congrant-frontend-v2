@@ -147,7 +147,7 @@ const columnMap = {
     dataIndex: 'amount',
   },
   action: {
-    width: 100,
+    width: 120,
     title: 'アクション',
     render: row => (
       <Dropdown overlay={<Menu items={menuItems([row.key])} />} placement="bottomRight">

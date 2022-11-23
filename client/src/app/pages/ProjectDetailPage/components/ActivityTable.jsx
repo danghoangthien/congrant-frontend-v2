@@ -1,14 +1,37 @@
-import { Tag, Table, Dropdown, Button, Menu } from 'antd';
-import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
-import EditIcon from '@mui/icons-material/Edit';
+import { Link } from 'react-router-dom';
+import { Table, Dropdown, Button, Menu, Space } from 'antd';
 import { StyledStatusTag2 } from 'styles/StatusTag.style';
+import styled from 'styled-components/macro';
+import { DANGER_COLOR } from 'styles/StyleConstants';
+
+const StyledLink = styled(Link)`
+  color: #000000;
+
+  & .material-symbols-outlined {
+    font-size: 16px;
+    margin-left: 8px;
+    vertical-align: text-bottom;
+  }
+`;
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = Array.from(Array(3).keys()).map(i => ({
   pub_date: '2023-04-01',
-  status: '123,456円',
-  title: '123件',
+  status: randomOutput([
+    <StyledStatusTag2 className="public">{'公開'}</StyledStatusTag2>,
+    <StyledStatusTag2 className="non-public">{'非公開'}</StyledStatusTag2>,
+  ]),
+  title: randomOutput([
+    <StyledLink to={'/'} target="_blank">
+      <span className="">{'マンスリーサポーター30人達成しました！'}</span>
+      <span class="material-symbols-outlined">open_in_new</span>
+    </StyledLink>,
+    <StyledLink to={'/'} target="_blank">
+      <span className="">{'マンスリーサポーターが20人に'}</span>
+      <span class="material-symbols-outlined">open_in_new</span>
+    </StyledLink>,
+  ]),
   support_amount_last_month: '123,456円',
   action: 'アクション',
 }));
@@ -16,31 +39,34 @@ const dataSource = Array.from(Array(3).keys()).map(i => ({
 // Action Menu
 const menu = (
   <Menu
+    className="action-menu"
     items={[
       {
         key: '1',
         label: (
-          <>
-            <SendOutlined style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'メッセージを送る'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              content_copy
+            </span>
+            <span>{'複製'}</span>
+          </Space>
         ),
       },
       {
         key: '2',
         label: (
-          <>
-            <TagFilled style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'属性を設定する'}</span>
-          </>
-        ),
-      },
-      {
-        key: '3',
-        label: (
-          <>
-            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
+            >
+              delete
+            </span>
+            <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+          </Space>
         ),
       },
     ]}
@@ -58,12 +84,12 @@ const columns = [
     width: 150,
     title: 'ステータス',
     dataIndex: 'status',
-    render: status => <StyledStatusTag2 className="non-public">{'非公開'}</StyledStatusTag2>,
+    render: status => status,
   },
   {
     title: 'タイトル',
     dataIndex: 'title',
-    render: title => 'マンスリーサポーター30人達成しました！',
+    render: title => title,
   },
   {
     width: 150,
@@ -71,14 +97,15 @@ const columns = [
     align: 'center',
     dataIndex: 'action',
     render: action => (
-      <>
-        <Button className="active mr-2" type="primary">
-          {'編集'}
-        </Button>
+      <Space>
+        <Button type="primary">{'編集'}</Button>
         <Dropdown overlay={menu} placement="bottomRight">
-          <Button icon={<EllipsisOutlined />} />
+          <Button
+            icon={<span class="material-symbols-outlined">more_horiz</span>}
+            className="more-menu-btn"
+          />
         </Dropdown>
-      </>
+      </Space>
     ),
   },
 ];

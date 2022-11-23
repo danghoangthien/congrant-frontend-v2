@@ -382,6 +382,10 @@ export const GlobalStyle = createGlobalStyle`
     border-color: ${GRAY};
   }
 
+  .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before {
+    border-color: ${GRAY};
+  }
+
   .ant-tabs-tab {
     font-size: 16px;
   }

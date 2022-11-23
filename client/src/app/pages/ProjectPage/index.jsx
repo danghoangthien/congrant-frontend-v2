@@ -2,43 +2,17 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useHistory } from 'react-router-dom';
 import Filters from './components/Filters';
-import {
-  SearchOutlined,
-  MailOutlined,
-  PlusOutlined,
-  EllipsisOutlined,
-  CopyFilled,
-  DeleteFilled,
-} from '@ant-design/icons';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import FlagIcon from '@mui/icons-material/Flag';
-
 import { Button, Input, Row, Col, Card, Space, Image, Tag, Divider, Menu, Dropdown } from 'antd';
-
+import { DANGER_COLOR } from 'styles/StyleConstants';
 import LaunchNewProject from './components/LaunchNewProject';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 import { StyledStatusTag } from 'styles/StatusTag.style';
 import {
-  // StatusTag as StyledStatusTag,
   ProjectTitle as StyledProjectTitle,
   ProjectUrl as StyledProjectUrl,
   ProjectCard as StyledProjectCard,
 } from './index.style';
-
-const MailButton = ({ selectedRowKeys }) => {
-  return (
-    <Button
-      className="icon-btn"
-      icon={<span className="material-symbols-outlined fill-icon">send</span>}
-      onClick={() => {
-        console.log('selectedRowKeys', selectedRowKeys);
-      }}
-    >
-      {'メールを送る'}
-    </Button>
-  );
-};
 
 // アクション・Action Menu
 const menu = (
@@ -48,17 +22,29 @@ const menu = (
       {
         key: '1',
         label: (
-          <>
-            <CopyFilled /> <span className="ml-2">{'複製'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              content_copy
+            </span>
+            <span>{'複製'}</span>
+          </Space>
         ),
       },
       {
         key: '2',
         label: (
-          <>
-            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
+            >
+              delete
+            </span>
+            <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+          </Space>
         ),
       },
     ]}
@@ -90,22 +76,22 @@ const ProjectPage = () => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <span className="page-title">
-                    <FlagIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-2 page-title">{'プロジェクト'}</span>
-                  </span>
+                  <div className="page-title">
+                    <span className="material-symbols-outlined fill-icon icon">flag</span>
+                    <span className="ml-2">{'プロジェクト'}</span>
+                  </div>
                 </Col>
                 <Col className="mr-2">
                   <Input
                     className="free-search"
                     placeholder="フリー検索"
-                    prefix={<SearchOutlined />}
+                    prefix={<span className="material-symbols-outlined">search</span>}
                   />
                 </Col>
                 <Col>
                   <Button
                     className="filter-button"
-                    icon={<FilterAltIcon />}
+                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
                     onClick={() => setFilterOpen(!filterOpen)}
                   >
                     {'フィルタ'}
@@ -187,7 +173,10 @@ const ProjectPage = () => {
                   </Col>
                   <Col flex="40px" onClick={e => e.stopPropagation()}>
                     <Dropdown overlay={menu} placement="bottomRight" trigger={['hover']}>
-                      <Button icon={<EllipsisOutlined />} className="ml-2" />
+                      <Button
+                        icon={<span class="material-symbols-outlined">more_horiz</span>}
+                        className="more-menu-btn"
+                      />
                     </Dropdown>
                   </Col>
                 </Row>

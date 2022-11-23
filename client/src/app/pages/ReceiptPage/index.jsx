@@ -106,8 +106,8 @@ const ReceiptPage = () => {
             <Col>
               <Space>
                 <Link to={'/receipts-bulk'}>
-                  <Button type="primary">
-                    <PlusOutlined className="display-inline-flex" />
+                  <Button className="icon-btn" type="primary">
+                    <span className="material-symbols-outlined">add</span>
                     <span>{'領収書の一括作成'}</span>
                   </Button>
                 </Link>

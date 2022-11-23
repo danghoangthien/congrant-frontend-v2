@@ -41,10 +41,6 @@ export const SupporterPageLayout = styled.div`
   & .ant-descriptions-item-label {
     width: 200px;
   }
-  & .page-title {
-    font-size: 30px;
-    font-weight: 600;
-  }
   & .switch-btn {
     .ant-btn {
       border: none;

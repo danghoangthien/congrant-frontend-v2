@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Button, Radio, Space } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -25,10 +24,11 @@ const AddDonationPlan = () => {
 
   return (
     <>
-      <Button onClick={showModal} type="primary">
-        <PlusOutlined className="display-inline-flex" />
+      <Button className="icon-btn" onClick={showModal} type="primary">
+        <span class="material-symbols-outlined fill-icon">add</span>
         <span>{'追加'}</span>
       </Button>
+
       <Modal
         title={<StyledModalTitle>{'プラン登録'}</StyledModalTitle>}
         visible={isModalOpen}

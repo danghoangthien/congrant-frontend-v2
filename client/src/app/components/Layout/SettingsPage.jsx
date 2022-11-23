@@ -4,24 +4,28 @@ import { Radio, Space, Row, Col, Card } from 'antd';
 import { StyledRadioGroup } from './SettingsLayout.style';
 import { PageLayout } from './PageLayout.style';
 
-const SettingsPage = ({ title, settingComponentMap }) => {
+const SettingsPage = ({ meta, title, settingComponentMap }) => {
   const renderPageTitle = () => {
     return (
       <>
         <Helmet>
-          <title>{'基本設定'}</title>
+          <title>{meta}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
     );
   };
+
   const [activeSetting, setActiveSetting] = useState(Object.keys(settingComponentMap)[0]);
+
   const onChange = e => {
     console.log();
     setActiveSetting(e.target.value);
   };
+
   // console.log('activeSetting', activeSetting);
   const ActiveComponent = settingComponentMap[activeSetting].Component;
+
   return (
     <>
       {renderPageTitle()}

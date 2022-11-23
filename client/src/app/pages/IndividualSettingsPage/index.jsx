@@ -36,7 +36,7 @@ const Title = () => (
   </div>
 );
 const PersonalSettingsPage = () => (
-  <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
+  <SettingsPage meta="個人設定" title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
 );
 
 export default PersonalSettingsPage;

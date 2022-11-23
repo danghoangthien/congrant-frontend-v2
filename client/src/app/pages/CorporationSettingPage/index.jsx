@@ -36,11 +36,12 @@ const SETTING_COMPONENT_MAP = {
 const Title = () => (
   <div className="page-title">
     <span class="material-symbols-outlined fill-icon icon">admin_panel_settings</span>
-    <span className="ml-2">{'個人設定'}</span>
+    <span className="ml-2">{'団体設定'}</span>
   </div>
 );
+
 const GroupSettingsPage = () => (
-  <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
+  <SettingsPage meta="団体設定" title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
 );
 
 export default GroupSettingsPage;

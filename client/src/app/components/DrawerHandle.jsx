@@ -27,6 +27,7 @@ const DrawerHandle = ({
         {children}
       </span>
       <Drawer
+        bodyStyle={{ padding: '24px 32px 54px' }}
         closable={false}
         width="50%"
         //title={drawerTitle || 'Drawer'}

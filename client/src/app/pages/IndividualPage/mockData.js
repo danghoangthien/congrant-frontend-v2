@@ -139,7 +139,10 @@ const columnMap = {
     title: 'アクション',
     render: row => (
       <Dropdown overlay={menu} placement="bottomRight">
-        <Button icon={<EllipsisOutlined />} />
+        <Button
+          className="more-menu-btn"
+          icon={<span className="material-symbols-outlined">more_horiz</span>}
+        />
       </Dropdown>
     ),
   },

@@ -76,40 +76,48 @@ const FundingPage = () => {
             {/* 左の部分・Left Part */}
             <Col>
               <Row type="flex" align="middle">
-                <div className="page-title mr-6">
-                  <span className="material-symbols-outlined fill-icon icon">favorite</span>
-                  <span className="ml-2">{'寄付決済'}</span>
-                </div>
+                <Col className="mr-6">
+                  <div className="page-title">
+                    <span className="material-symbols-outlined fill-icon icon">favorite</span>
+                    <span className="ml-2">{'寄付決済'}</span>
+                  </div>
+                </Col>
 
-                <Breadcrumb className="bread-crumb mr-2" separator="">
-                  <Breadcrumb.Item>
-                    <span className="bread-crumb-content">受領済み</span>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item>
-                    <Link className="bread-crumb-content" to={`/donations/unclaimed`}>
-                      未受領
-                      <Badge
-                        className="ml-1 roboto-mono"
-                        count={99}
-                        style={{ backgroundColor: RED_COLOR, boxShadow: 'none' }}
-                      ></Badge>
-                    </Link>
-                  </Breadcrumb.Item>
-                </Breadcrumb>
+                <Col className="mr-2">
+                  <Breadcrumb className="bread-crumb" separator="">
+                    <Breadcrumb.Item>
+                      <span className="bread-crumb-content">受領済み</span>
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item>
+                      <Link className="bread-crumb-content" to={`/donations/unclaimed`}>
+                        未受領
+                        <Badge
+                          className="ml-1 roboto-mono"
+                          count={99}
+                          style={{ backgroundColor: RED_COLOR, boxShadow: 'none' }}
+                        ></Badge>
+                      </Link>
+                    </Breadcrumb.Item>
+                  </Breadcrumb>
+                </Col>
 
                 {/* フリー検索 */}
-                <Input
-                  className="free-search mr-2"
-                  placeholder="フリー検索"
-                  prefix={<span className="material-symbols-outlined">search</span>}
-                />
-                <Button
-                  className="filter-button"
-                  icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
-                  onClick={() => setFilterOpen(!filterOpen)}
-                >
-                  {'フィルタ'}
-                </Button>
+                <Col className="mr-2">
+                  <Input
+                    className="free-search"
+                    placeholder="フリー検索"
+                    prefix={<span className="material-symbols-outlined">search</span>}
+                  />
+                </Col>
+                <Col>
+                  <Button
+                    className="filter-button"
+                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
+                    onClick={() => setFilterOpen(!filterOpen)}
+                  >
+                    {'フィルタ'}
+                  </Button>
+                </Col>
               </Row>
             </Col>
 

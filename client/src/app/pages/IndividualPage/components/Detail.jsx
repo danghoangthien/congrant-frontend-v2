@@ -7,6 +7,7 @@ import Memo from './Memo';
 import Donation from './Donation';
 import ContinuousContract from './ContinuousContract';
 import Receipt from './Receipt';
+import { randomOutput } from 'utils/helper';
 
 export const DETAIL_KEY_MAP = {
   BASIC_INFO: '1',
@@ -18,13 +19,13 @@ export const DETAIL_KEY_MAP = {
 
 const Detail = ({ data, closeDrawer, activeKey }) => {
   console.log('Detail data', data);
-  const { supporterType = 1 } = data;
+  const { supporterType = randomOutput([1, 2]) } = data;
   return (
     <StyledDetail>
       <SupporterInfo closeDrawer={closeDrawer} />
       <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-6">
         <Tabs.TabPane tab="基本情報" key="1">
-          {supporterType == '1' ? <BasicInfo data={data} /> : <CorporationBasicInfo data={data} />}
+          {supporterType === 1 ? <BasicInfo data={data} /> : <CorporationBasicInfo data={data} />}
         </Tabs.TabPane>
         <Tabs.TabPane tab="内部メモ" key="2">
           <Memo />
