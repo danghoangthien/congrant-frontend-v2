@@ -1,4 +1,5 @@
 import { Button, Row, Col, Tag } from 'antd';
+import DynamicTags from 'app/components/DynamicTags';
 import { SupporterInfoStyle } from './SupporterInfo.style';
 import userImage from 'styles/assets/icon_supporter.svg';
 import EmailIcon from '@mui/icons-material/Email';
@@ -33,17 +34,11 @@ const SupporterInfo = ({ closeDrawer }) => {
             </Col>
           </Row>
           <Row className="mb-3">
-            <Tag>理事</Tag>
-            <Tag>ボランティア</Tag>
-            <Tag
-              style={{
-                border: '1px dashed #d9d9d9',
-                color: 'rgba(0, 0, 0, 0.5)',
-              }}
-            >
-              {'+ '}
-              {'属性を追加する'}
-            </Tag>
+            <DynamicTags
+              tagList={['理事', 'ボランティア']}
+              availableTagList={['理事', 'ボランティア', 'more', 'and more']}
+              addMoreLabel={'属性を追加する'}
+            />
           </Row>
           <Row>
             <Col span={12}>

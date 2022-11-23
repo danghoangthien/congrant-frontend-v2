@@ -8,6 +8,7 @@ import Detail, { DETAIL_KEY_MAP } from './components/Detail';
 
 import { Button, Input, Row, Col, Badge, Space, Dropdown, Menu } from 'antd';
 import AddSupporter from './components/AddSupporter';
+import AddAttribute from './components/AddAttribute';
 import './Models/index';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { DANGER_COLOR } from 'styles/StyleConstants';
@@ -30,21 +31,7 @@ const MailButton = ({ selectedRowKeys }) => {
 const contextDropdownItems = selectedRowKeys => [
   {
     key: '1',
-    label: (
-      <Space
-        onClick={() => {
-          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
-        }}
-      >
-        <span
-          class="material-symbols-outlined fill-icon"
-          style={{ fontSize: '16px', display: 'flex' }}
-        >
-          sell
-        </span>
-        <span>{'属性を設定する'}</span>
-      </Space>
-    ),
+    label: <AddAttribute />,
   },
   {
     key: '2',

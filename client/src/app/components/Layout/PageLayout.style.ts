@@ -61,7 +61,6 @@ export const PageLayout = styled.div`
   }
 
   & .setting-wrapper {
-    
   }
 `;
 

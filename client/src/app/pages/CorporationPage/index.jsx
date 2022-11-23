@@ -9,6 +9,8 @@ import * as metaData from './mockData';
 import { Button, Input, Row, Col, Badge, Space, Dropdown, Menu } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
+import AddAttribute from './components/AddAttribute';
+
 import AddSupporter from './components/AddSupporter';
 // MODEL
 import './Models/index';
@@ -53,21 +55,7 @@ const menu = (
 const contextDropdownItems = selectedRowKeys => [
   {
     key: '1',
-    label: (
-      <Space
-        onClick={() => {
-          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
-        }}
-      >
-        <span
-          class="material-symbols-outlined fill-icon"
-          style={{ fontSize: '16px', display: 'flex' }}
-        >
-          sell
-        </span>
-        <span>{'属性を設定する'}</span>
-      </Space>
-    ),
+    label: <AddAttribute />,
   },
   {
     key: '2',

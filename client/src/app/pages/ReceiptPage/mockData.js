@@ -1,11 +1,13 @@
 import { getWithExpiry } from 'utils/localStorageHandler';
 // ANTD
-import { Dropdown, Button, Menu, Badge, Space } from 'antd';
+import { Dropdown, Button, Menu, Badge, Space, Typography } from 'antd';
 // STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
 import { DANGER_COLOR } from 'styles/StyleConstants';
 // CONST
 import { RECEIPT_STATUSES, RECEIPT_STATUS_COLOR } from 'utils/consts';
+import DrawerHandle from '../../components/DrawerHandle';
+import Detail from '../IndividualPage/components/Detail';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -126,7 +128,18 @@ const columnMap = {
   },
   supporter: {
     title: 'サポーター',
-    render: row => <Button type="link">{row.supporter}</Button>,
+    render: row => (
+      <DrawerHandle drawerTitle={row.supporter} drawerComponent={<Detail data={row} />}>
+        <Typography.Text
+          style={{
+            color: '#63B233',
+            cursor: 'pointer',
+          }}
+        >
+          {row.supporter}
+        </Typography.Text>
+      </DrawerHandle>
+    ),
     csvOutput: ({ supporter }) => supporter,
   },
   amount: {
