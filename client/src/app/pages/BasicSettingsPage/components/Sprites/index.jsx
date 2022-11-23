@@ -1,15 +1,22 @@
 import { Space, Badge } from 'antd';
-import { MenuOutlined, DeleteFilled } from '@ant-design/icons';
+import { TEXT_GRAY_COLOR, DANGER_COLOR, LIGHT_GRAY } from 'styles/StyleConstants';
 
 export const DraggableInputItem = ({ count, InputComponent }) => (
   <Space align="center">
-    <MenuOutlined className="display-inline-flex" />
+    <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+      menu
+    </span>
     {InputComponent}
     <Badge
-      count={count}
-      className="display-inline-flex"
-      style={{ backgroundColor: '#F0F0EE', color: '#000000', opacity: '0.5' }}
+      count={'99'}
+      className="roboto-mono"
+      style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
     />
-    <DeleteFilled className="display-inline-flex" style={{ color: '#FF4D4F' }} />
+    <span
+      class="material-symbols-outlined fill-icon"
+      style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
+    >
+      delete
+    </span>
   </Space>
 );

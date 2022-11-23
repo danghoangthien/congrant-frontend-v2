@@ -1,5 +1,11 @@
+import { Helmet } from 'react-helmet-async';
+// ANTD
 import { Row, Col, Tag } from 'antd';
+// STYLE
 import styled from 'styled-components/macro';
+// LAYOUT
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
+// TABLE
 import HistoryTable from './HistoryTable';
 
 export const StyledTag = styled(Tag)`
@@ -8,23 +14,35 @@ export const StyledTag = styled(Tag)`
   border-radius: 4px;
 `;
 
-const Course = () => {
+const History = () => {
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'領収書一括作成履歴'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
     <>
-      <div className="item ml-5">
-        <Row className="mb-5">
-          <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'一括作成履歴'}</span>
+      {renderPageTitle()}
+      <PageLayout>
+        <Row className="mb-6">
+          <Col span={24}>
+            <div className="sub-page-title">{'一括作成履歴'}</div>
           </Col>
         </Row>
         <Row className="mb-5">
-          <Col sm={12} md={12} lg={12}>
+          <Col span={24}>
             <HistoryTable />
           </Col>
         </Row>
-      </div>
+      </PageLayout>
     </>
   );
 };
 
-export default Course;
+export default History;

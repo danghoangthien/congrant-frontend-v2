@@ -1,11 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
 import { StyledFilter } from './Filter.style';
 
-import { Card, Row, Col, Button, Select, Form, Input, DatePicker } from 'antd';
-
-const { RangePicker } = DatePicker;
+import { Card, Row, Col, Button, Select, Form } from 'antd';
 
 const Filters = ({ open }) => {
   const [form] = Form.useForm();
@@ -14,7 +9,7 @@ const Filters = ({ open }) => {
     <StyledFilter>
       <Card className="mb-6">
         {/* フィルターヘッダー・Filter Header */}
-        <Row className="mb-6" justify="space-between">
+        <Row className="mb-5" justify="space-between">
           <Col>
             <span className="filter-box-title">{'フィルタ'}</span>
           </Col>
@@ -46,36 +41,31 @@ const Filters = ({ open }) => {
             <Form form={form} layout={'vertical'}>
               <Row gutter={24}>
                 <Col span={6} key={'a'}>
-                  <Form.Item name={`field-a`} label={`属性`}>
-                    <Select placeholder={'領収書タイプ'} onChange={() => {}}>
-                      <Select.Option value="1">{'---'}</Select.Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col span={6} key={'b'}>
-                  <Form.Item name={`field-b`} label={`年齢`}>
-                    <Select placeholder={'発行ステータス'} onChange={() => {}}>
-                      <Select.Option value="1">{'---'}</Select.Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col span={6} key={'c'}>
-                  <Form.Item name={`field-c`} label={`性別`}>
-                    <Select placeholder={'発行日'} onChange={() => {}}>
-                      <Select.Option value="1">{'---'}</Select.Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col span={6} key={'d'}>
-                  <Form.Item name={`field-d`} label={`テンプレート`}>
+                  <Form.Item className="mb-0" name={`field-a`} label={`領収書タイプ`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
-                  <Form.Item className="mb-0" name={`field-e`} label={`テンプレート`}>
-                    <Input placeholder="3,000円              ->            6,000円" />
+                <Col span={6} key={'b'}>
+                  <Form.Item className="mb-0" name={`field-b`} label={`発行ステータス`}>
+                    <Select placeholder={'選択してください'} onChange={() => {}}>
+                      <Select.Option value="1">{'---'}</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={6} key={'c'}>
+                  <Form.Item className="mb-0" name={`field-c`} label={`発行日`}>
+                    <Select placeholder={'選択してください'} onChange={() => {}}>
+                      <Select.Option value="1">{'---'}</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={6} key={'d'}>
+                  <Form.Item className="mb-0" name={`field-d`} label={`テンプレート`}>
+                    <Select placeholder={'選択してください'} onChange={() => {}}>
+                      <Select.Option value="1">{'---'}</Select.Option>
+                    </Select>
                   </Form.Item>
                 </Col>
               </Row>

@@ -1,16 +1,11 @@
-import { Dropdown, Button, Menu, Badge, Space } from 'antd';
-import { EllipsisOutlined, TagFilled, DeleteFilled, SendOutlined } from '@ant-design/icons';
 import { getWithExpiry } from 'utils/localStorageHandler';
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+// ANTD
+import { Dropdown, Button, Menu, Badge, Space } from 'antd';
+// STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
-
-import {
-  RECEIPT_METHODS,
-  DONATION_TYPES,
-  PLANS,
-  RECEIPT_STATUSES,
-  DONATION_TYPE_COLORS,
-} from './consts';
+import { DANGER_COLOR } from 'styles/StyleConstants';
+// CONST
+import { RECEIPT_STATUSES, RECEIPT_STATUS_COLOR } from 'utils/consts';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -23,8 +18,13 @@ export const menuItems = selectedRowKeys => [
           console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
-        <SendOutlined style={{ color: 'black' }} />{' '}
-        <span className="ml-2">{'領収書URLを送る'}</span>
+        <span
+          className="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', verticalAlign: 'middle' }}
+        >
+          send
+        </span>
+        <span>{'領収書URLを送る'}</span>
       </Space>
     ),
   },
@@ -36,7 +36,13 @@ export const menuItems = selectedRowKeys => [
           console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
-        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'領収書URLをコピー'}</span>
+        <span
+          class="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', verticalAlign: 'middle' }}
+        >
+          check_box
+        </span>
+        <span>{'発行済みにする'}</span>
       </Space>
     ),
   },
@@ -48,8 +54,13 @@ export const menuItems = selectedRowKeys => [
           console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
-        <KeyboardReturnIcon style={{ color: 'black' }} />{' '}
-        <span className="ml-2">{'未発行にもどす'}</span>
+        <span
+          class="material-symbols-outlined"
+          style={{ fontSize: '16px', verticalAlign: 'middle' }}
+        >
+          keyboard_return
+        </span>
+        <span>{'未発行に戻す'}</span>
       </Space>
     ),
   },
@@ -61,7 +72,13 @@ export const menuItems = selectedRowKeys => [
           console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
-        <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+        <span
+          class="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
+        >
+          delete
+        </span>
+        <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
       </Space>
     ),
   },
@@ -70,32 +87,35 @@ export const menuItems = selectedRowKeys => [
 const dataSource = Array.from(Array(10).keys()).map(i => ({
   key: `${i}`,
   receipt_no: `${'20220730' + i}`,
-  issuing_status: randomOutput(['発行済み', '未発行']),
+  receipt_status: randomOutput([0, 1, 2]),
   issuing_date: randomOutput(['2023-04-01', '2023-11-05', '2023-03-05']),
   template: randomOutput(['標準領収書']),
-  amount: '3,000円',
+  amount: randomOutput(['3,000円', '24,000円']),
   supporter: randomOutput(['田中 太郎', '山田 花子']),
 }));
 
 const columnMap = {
   receipt_no: {
-    width: '80',
+    width: 120,
     title: '領収書No',
     dataIndex: 'receipt_no',
     csvOutput: ({ receipt_no }) => receipt_no,
   },
-  issuing_status: {
+  receipt_status: {
     title: '発行ステータス',
-    dataIndex: 'issuing_status',
-    render: issuing_status => (
+    dataIndex: 'receipt_status',
+    render: receipt_status => (
       <StyledBadgeDot>
-        <Badge status="success" text={issuing_status} />
+        <Badge
+          status={RECEIPT_STATUS_COLOR[receipt_status]}
+          text={RECEIPT_STATUSES[receipt_status]}
+        />
       </StyledBadgeDot>
     ),
-    csvOutput: ({ issuing_status }) => issuing_status,
+    csvOutput: ({ receipt_status }) => RECEIPT_STATUSES[receipt_status] || '',
   },
   issuing_date: {
-    title: '属発行日性',
+    title: '発行日',
     render: ({ issuing_date }) => issuing_date,
     csvOutput: ({ issuing_date }) => issuing_date,
   },
@@ -110,15 +130,18 @@ const columnMap = {
     csvOutput: ({ supporter }) => supporter,
   },
   amount: {
-    width: 150,
     title: '金額',
     dataIndex: 'amount',
   },
   action: {
+    width: 100,
     title: 'アクション',
     render: row => (
       <Dropdown overlay={<Menu items={menuItems([row.key])} />} placement="bottomRight">
-        <Button icon={<EllipsisOutlined />} />
+        <Button
+          className="more-menu-btn"
+          icon={<span className="material-symbols-outlined">more_horiz</span>}
+        />
       </Dropdown>
     ),
   },

@@ -4,25 +4,21 @@ import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
-import { SearchOutlined, MailOutlined, EllipsisOutlined } from '@ant-design/icons';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import SearchIcon from '@mui/icons-material/Search';
-import SendIcon from '@mui/icons-material/Send';
 
 import './Models/index';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
-      className="ml-5"
-      icon={<SendIcon />}
+      className="icon-btn"
+      icon={<span className="material-symbols-outlined fill-icon">send</span>}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}
     >
-      {'メールを送る'}
+      {'メッセージを送る'}
     </Button>
   );
 };
@@ -107,7 +103,7 @@ const ContinuousContractPage = () => {
             metaData={metaData}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.RECURRING} />}
             contextButtons={[MailButton]}
-            // contextDropdownItems={contextDropdownItems}
+            contextDropdownItems={contextDropdownItems}
           />
         </div>
       </PageLayout>

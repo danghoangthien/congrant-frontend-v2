@@ -16,7 +16,7 @@ export const StyledModal = styled(Modal)`
 
   & .ant-modal-close {
     top: 4px;
-    right: 28px;
+    right: 20px;
   }
 
   & .ant-modal-close-x {
@@ -26,7 +26,7 @@ export const StyledModal = styled(Modal)`
   }
 
   & .material-symbols-outlined {
-    font-size: 40px;
+    font-size: 30px;
     color: ${WHITE_COLOR};
   }
 
@@ -40,5 +40,13 @@ export const StyledModal = styled(Modal)`
 
   & .ant-modal-content {
     border-radius: 0;
+  }
+
+  & .input-wrapper {
+    width: 100%;
+
+    .ant-space-item {
+      width: 100%;
+    }
   }
 `;

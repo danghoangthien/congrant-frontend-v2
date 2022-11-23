@@ -1,16 +1,8 @@
-import { Menu, Dropdown, Tag, Button } from 'antd';
-import { EllipsisOutlined, TagFilled, DeleteFilled, SendOutlined } from '@ant-design/icons';
-
-import DrawerHandle from 'app/components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
-
-import {
-  RECEIPT_METHODS,
-  DONATION_TYPES,
-  PLANS,
-  RECEIPT_STATUSES,
-  DONATION_TYPE_COLORS,
-} from './consts';
+// ANTD
+import { Menu, Dropdown, Tag, Button, Space } from 'antd';
+// CONST
+import { DANGER_COLOR } from 'styles/StyleConstants';
 
 const menu = (
   <Menu
@@ -18,27 +10,43 @@ const menu = (
       {
         key: '1',
         label: (
-          <>
-            <SendOutlined style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'メッセージを送る'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', display: 'flex' }}
+            >
+              send
+            </span>
+            <span>{'メッセージを送る'}</span>
+          </Space>
         ),
       },
       {
         key: '2',
         label: (
-          <>
-            <TagFilled style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'属性を設定する'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', display: 'flex' }}
+            >
+              sell
+            </span>
+            <span>{'属性を設定する'}</span>
+          </Space>
         ),
       },
       {
         key: '3',
         label: (
-          <>
-            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ color: DANGER_COLOR, fontSize: '16px', display: 'flex' }}
+            >
+              delete
+            </span>
+            <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+          </Space>
         ),
       },
     ]}
@@ -48,13 +56,15 @@ const menu = (
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
   supporterType: '2',
-  group_id: `${'20220730' + i}`,
+  group_id: `${'10000' + i}`,
   group_name: 'コングラント株式会社',
   manager: 'CSR部 課長  鈴木 一郎',
-  attributes: ['meta', 'group'],
+  attributes: ['属性', '属性2'],
   email: `danghoangthien+${i}@gmail.com`,
+  recent_donation_date: '2022-07-15',
   recent_donation: '3,000円',
-  cumulative_donation: '4,000円',
+  cumulative_donation: '12,000円',
+  cumulative_donation_times: '4回',
 }));
 
 const columnMap = {
@@ -85,19 +95,35 @@ const columnMap = {
   },
   recent_donation: {
     title: '直近の寄付',
-    dataIndex: 'recent_donation',
+    render: ({ recent_donation, recent_donation_date }) => (
+      <>
+        {recent_donation_date}
+        <br />
+        {recent_donation}
+      </>
+    ),
     csvOutput: recent_donation => recent_donation,
   },
   cumulative_donation: {
     title: '累計寄付',
-    dataIndex: 'cumulative_donation',
+    render: ({ cumulative_donation, cumulative_donation_times }) => (
+      <>
+        {cumulative_donation}
+        <br />
+        {cumulative_donation_times}
+      </>
+    ),
     csvOutput: cumulative_donation => cumulative_donation,
   },
   action: {
+    width: 100,
     title: 'アクション',
     render: row => (
       <Dropdown overlay={menu} placement="bottomRight">
-        <Button icon={<EllipsisOutlined />} />
+        <Button
+          className="more-menu-btn"
+          icon={<span className="material-symbols-outlined">more_horiz</span>}
+        />
       </Dropdown>
     ),
   },

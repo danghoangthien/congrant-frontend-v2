@@ -1,49 +1,55 @@
 import { Dropdown, Tag, Button, Menu, Tooltip, Space } from 'antd';
-import {
-  CopyOutlined,
-  EllipsisOutlined,
-  TagFilled,
-  DeleteFilled,
-  SendOutlined,
-} from '@ant-design/icons';
+import { CopyOutlined, EllipsisOutlined } from '@ant-design/icons';
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import Detail from './components/Detail';
+// CONST
+import { DANGER_COLOR } from 'styles/StyleConstants';
 
-import {
-  RECEIPT_METHODS,
-  DONATION_TYPES,
-  PLANS,
-  RECEIPT_STATUSES,
-  DONATION_TYPE_COLORS,
-} from './consts';
+// RECORD ACTION MENU
 const menu = (
   <Menu
     items={[
       {
         key: '1',
         label: (
-          <>
-            <SendOutlined style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'メッセージを送る'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', display: 'flex' }}
+            >
+              send
+            </span>
+            <span>{'メッセージを送る'}</span>
+          </Space>
         ),
       },
       {
         key: '2',
         label: (
-          <>
-            <TagFilled style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'属性を設定する'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', display: 'flex' }}
+            >
+              sell
+            </span>
+            <span>{'属性を設定する'}</span>
+          </Space>
         ),
       },
       {
         key: '3',
         label: (
-          <>
-            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ color: DANGER_COLOR, fontSize: '16px', display: 'flex' }}
+            >
+              delete
+            </span>
+            <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+          </Space>
         ),
       },
     ]}
@@ -63,6 +69,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 const columnMap = {
   // 個人No.
   personal_id: {
+    width: 120,
     title: '個人No.',
     render: row => (
       <DrawerHandle drawerTitle={row.full_name} drawerComponent={<Detail data={row} />}>
@@ -128,45 +135,13 @@ const columnMap = {
     csvOutput: cumulative_donation => cumulative_donation,
   },
   action: {
+    width: 120,
     title: 'アクション',
     render: row => (
       <Dropdown overlay={menu} placement="bottomRight">
         <Button icon={<EllipsisOutlined />} />
       </Dropdown>
     ),
-  },
-};
-
-const columnMap2 = {
-  personal_id: {
-    title: '個人No',
-    render: row => <>{row.personal_id}</>,
-    csvOutput: ({ personal_id }) => personal_id,
-  },
-  full_name: {
-    title: '氏名',
-    dataIndex: 'full_name',
-    csvOutput: full_name => full_name,
-  },
-  attributes: {
-    title: '属性',
-    render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
-    csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
-  },
-  email: {
-    title: 'メールアドレス',
-    dataIndex: 'email',
-    csvOutput: email => email,
-  },
-  recent_donation: {
-    title: '直近の寄付',
-    dataIndex: 'recent_donation',
-    csvOutput: recent_donation => recent_donation,
-  },
-  cumulative_donation: {
-    title: '累計寄付',
-    dataIndex: 'cumulative_donation',
-    csvOutput: cumulative_donation => cumulative_donation,
   },
 };
 

@@ -1,0 +1,116 @@
+import { Helmet } from 'react-helmet-async';
+import { Tabs, Row, Col, Card, Tag, Space } from 'antd';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import { StyledBulkCreateTabs } from './ReceiptBulk.style';
+import { useSelector, useDispatch } from 'react-redux';
+import Step1 from './Step1';
+import Step2 from './Step2';
+import Step3 from './Step3';
+import Step4 from './Step4';
+import HistoryTable from './HistoryTable';
+import MenuIcon from '@mui/icons-material/Menu';
+import './Models/index';
+import styled from 'styled-components/macro';
+import { PRIMARY_COLOR } from 'styles/StyleConstants';
+
+const StyledTag = styled(Tag)`
+  width: 32px;
+  height: 32px;
+  border-radius: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+`;
+
+const Create = () => {
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'領収書一括作成'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
+  const dispatch = useDispatch();
+  const { active } = useSelector(state => state['receiptBulkStep']);
+  const TabName = ({ current, active, children }) => {
+    const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
+    return (
+      <Space>
+        <StyledTag color={color}>{current}</StyledTag>
+        {children}
+      </Space>
+    );
+  };
+
+  return (
+    <>
+      {renderPageTitle()}
+      <PageLayout>
+        <>
+          <Row className="mb-5">
+            <Col>
+              <div className="sub-page-title">{'一括作成'}</div>
+            </Col>
+          </Row>
+
+          {/* メインコンテンツ・Card */}
+          <Card bodyStyle={{ padding: '46px 40px' }}>
+            {active === '4' && <Step4 />}
+            {['1', '2', '3'].includes(active) && (
+              <StyledBulkCreateTabs activeKey={active} type="card" tabBarGutter={6}>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="1" active={active}>
+                      {'作成方法'}
+                    </TabName>
+                  }
+                  key="1"
+                >
+                  <Step1 />
+                </Tabs.TabPane>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="2" active={active}>
+                      {'作成条件'}
+                    </TabName>
+                  }
+                  key="2"
+                >
+                  <Step2 />
+                </Tabs.TabPane>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="3" active={active}>
+                      {'確認'}
+                    </TabName>
+                  }
+                  key="3"
+                >
+                  <Step3 />
+                </Tabs.TabPane>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="4" active={active}>
+                      {'完了'}
+                    </TabName>
+                  }
+                  key="4"
+                >
+                  <></>
+                </Tabs.TabPane>
+              </StyledBulkCreateTabs>
+            )}
+          </Card>
+        </>
+      </PageLayout>
+    </>
+  );
+};
+
+export default Create;

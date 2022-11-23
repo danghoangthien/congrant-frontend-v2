@@ -26,8 +26,8 @@ const ReceiptTemplate = () => {
 
   return (
     <>
-      <Button onClick={showModal} type="primary">
-        <PlusOutlined className="display-inline-flex" />
+      <Button className="icon-btn" onClick={showModal} type="primary">
+        <span class="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
       <Modal
@@ -35,26 +35,26 @@ const ReceiptTemplate = () => {
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={650}
+        width={572}
         className="modalStyle"
         cancelText="キャンセル"
         okText="登録する"
       >
-        <Row className="item mb-2">
+        <Row>
           <SettingsInputContainer label={<SettingLabel label={'名称'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item mb-6" sm={24} md={24} lg={24}>
               <SettingInput placeholder={'テンプレート1'} />
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'表示タイトル'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item mb-6" sm={24} md={24} lg={24}>
               <SettingInput placeholder={'寄付金受領証明書'} />
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'挨拶文'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col className="item mb-6" sm={24} md={24} lg={24}>
               <TextArea
-                style={{ height: 120 }}
+                rows={3}
                 value={
                   'この度は私たちの活動を応援くださり誠にありがとうございました。\n' +
                   'いただいたご支援は今後の活動で大切に使わせていただきます。\n' +
@@ -64,8 +64,8 @@ const ReceiptTemplate = () => {
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'備考欄'} />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <TextArea style={{ height: 120 }} />
+            <Col sm={24} md={24} lg={24}>
+              <TextArea rows={3} />
             </Col>
           </SettingsInputContainer>
         </Row>

@@ -16,29 +16,39 @@ import SendIcon from '@mui/icons-material/Send';
 
 import './Models/index';
 
+// メッセージを送るボタン
 const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
-      className="ml-5"
-      icon={<SendIcon />}
+      className="icon-btn"
+      icon={<span className="material-symbols-outlined fill-icon">send</span>}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}
     >
-      {'メールを送る'}
+      {'メッセージを送る'}
     </Button>
   );
 };
 
+// その他の操作メニュー
 const contextDropdownItems = metaData.menuItems;
 
 const headerContextDropdownItems = [
   {
     key: '1',
     label: (
-      <Space onClick={() => {}}>
-        <HistoryIcon style={{ color: 'black' }} /> <span className="ml-2">{'一括作成履歴'}</span>
-      </Space>
+      <Link to={`receipts-bulk/history`}>
+        <Space onClick={() => {}}>
+          <span
+            class="material-symbols-outlined"
+            style={{ fontSize: '16px', verticalAlign: 'middle' }}
+          >
+            history
+          </span>
+          <span>{'一括作成履歴'}</span>
+        </Space>
+      </Link>
     ),
   },
 ];
@@ -67,21 +77,23 @@ const ReceiptPage = () => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <span className="page-title">
-                    <MenuIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-1 page-title">{'領収書'}</span>
+                    <span class="material-symbols-outlined fill-icon" style={{ fontSize: '30px' }}>
+                      receipt
+                    </span>
+                    <span className="ml-2 page-title">{'領収書'}</span>
                   </span>
                 </Col>
                 <Col className="mr-2">
                   <Input
                     className="free-search"
                     placeholder="フリー検索"
-                    prefix={<SearchOutlined />}
+                    prefix={<span className="material-symbols-outlined">search</span>}
                   />
                 </Col>
                 <Col>
                   <Button
                     className="filter-button"
-                    icon={<FilterAltIcon />}
+                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
                     onClick={() => setFilterOpen(!filterOpen)}
                   >
                     {'フィルタ'}
@@ -92,20 +104,23 @@ const ReceiptPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={'/receipts-bulk'}>
-                <Button type="primary">
-                  <PlusOutlined className="display-inline-flex" />
-                  <span>{'領収書の一括作成'}</span>
-                </Button>
-              </Link>
-
-              <Dropdown
-                className="ml-2"
-                overlay={<Menu items={headerContextDropdownItems} />}
-                placement="bottomRight"
-              >
-                <Button icon={<EllipsisOutlined />} />
-              </Dropdown>
+              <Space>
+                <Link to={'/receipts-bulk'}>
+                  <Button type="primary">
+                    <PlusOutlined className="display-inline-flex" />
+                    <span>{'領収書の一括作成'}</span>
+                  </Button>
+                </Link>
+                <Dropdown
+                  overlay={<Menu items={headerContextDropdownItems} />}
+                  placement="bottomRight"
+                >
+                  <Button
+                    className="more-menu-btn"
+                    icon={<span className="material-symbols-outlined">more_horiz</span>}
+                  />
+                </Dropdown>
+              </Space>
             </Col>
           </Row>
         </div>

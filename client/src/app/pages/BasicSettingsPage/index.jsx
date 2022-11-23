@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import SettingsPage from 'app/components/Layout/SettingsPage';
 import DonationPlan from './components/DonationPlan';
 import SupportAttribute from './components/SupportAttribute';
@@ -6,9 +5,13 @@ import ReceiptMethod from './components/ReceiptMethod';
 import CustomField from './components/CustomField';
 import AccessAnalysis from './components/AccessAnalysis';
 import Receipt from './components/Receipt';
-import SettingsIcon from '@mui/icons-material/Settings';
 
 const SETTING_COMPONENT_MAP = {
+  // PublicInfo: {
+  //   id: 1,
+  //   name: '公開情報',
+  //   Component: PublicInfo,
+  // },
   donationPlan: {
     id: 1,
     name: '寄付プラン',
@@ -42,9 +45,10 @@ const SETTING_COMPONENT_MAP = {
 };
 
 const Title = () => (
-  <span className="ml-1 page-title">
-    <SettingsIcon className="display-inline-flex mr-1" /> {'基本設定'}
-  </span>
+  <div className="page-title">
+    <span class="material-symbols-outlined fill-icon icon">settings</span>
+    <span className="ml-2">{'基本設定'}</span>
+  </div>
 );
 
 const BasicSettingsPage = () => (

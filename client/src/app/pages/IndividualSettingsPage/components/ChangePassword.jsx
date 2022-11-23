@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Button } from 'antd';
-import { SettingsInputContainer, SettingLabel, SettingInput } from './Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInputPassword } from './Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const ChangePassword = () => {
@@ -31,30 +31,32 @@ const ChangePassword = () => {
         width={650}
         className="modalStyle"
         cancelText="キャンセル"
-        okText="招待を送信"
+        okText="変更する"
       >
-        <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'新しいパスワード'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'******'} type="password" />
-            </Col>
-          </SettingsInputContainer>
-        </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer
-            label={<SettingLabel label={'新しいパスワード（確認用）'} required />}
-          >
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'******'} type="password" />
-            </Col>
-          </SettingsInputContainer>
-        </Row>
-        <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'現在のパスワード'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'******'} type="password" />
-            </Col>
-          </SettingsInputContainer>
+        <Row>
+          <Col className="mb-2" span={24}>
+            <SettingsInputContainer label={<SettingLabel label={'現在のパスワード'} required />}>
+              <Col className="mb-4" sm={24} md={24} lg={24}>
+                <SettingInputPassword placeholder={'******'} type="password" />
+              </Col>
+            </SettingsInputContainer>
+          </Col>
+          <Col className="mb-2" span={24}>
+            <SettingsInputContainer label={<SettingLabel label={'新しいパスワード'} required />}>
+              <Col className="mb-4" sm={24} md={24} lg={24}>
+                <SettingInputPassword placeholder={'******'} type="password" />
+              </Col>
+            </SettingsInputContainer>
+          </Col>
+          <Col className="mb-2" span={24}>
+            <SettingsInputContainer
+              label={<SettingLabel label={'新しいパスワード（確認用）'} required />}
+            >
+              <Col className="mb-4" sm={24} md={24} lg={24}>
+                <SettingInputPassword placeholder={'******'} type="password" />
+              </Col>
+            </SettingsInputContainer>
+          </Col>
         </Row>
       </Modal>
     </>
