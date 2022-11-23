@@ -1,16 +1,21 @@
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+// ANTD
 import { Tabs, Card, Row, Col, Button, Dropdown, Menu } from 'antd';
+// STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
+// COMPONENT
 import BasicSetting from './components/BasicSetting';
 import AdvanceSetting from './components/AdvanceSetting';
 import PageEdit from './components/PageEdit';
 import FormEdit from './components/FormEdit';
 import Course from './components/Course';
+// ICON
 import SaveIcon from '@mui/icons-material/Save';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DownOutlined } from '@ant-design/icons';
+// CONST
 import { PLACEHOLDER_COLOR } from 'styles/StyleConstants';
+
 export const EDIT_KEY_MAP = {
   BASIC_INFO: '1',
   MEMO: '2',
@@ -96,7 +101,12 @@ const ProjectEditPage = ({ activeKey }) => {
 
         {/* Main Content */}
         <Card className="item" bodyStyle={{ padding: '32px 40px' }}>
-          <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4}>
+          <Tabs
+            defaultActiveKey={activeKey}
+            type="card"
+            tabBarGutter={4}
+            className="project-edit-tab"
+          >
             <Tabs.TabPane tab="基本情報" key="1">
               <BasicSetting />
             </Tabs.TabPane>

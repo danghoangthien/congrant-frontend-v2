@@ -1,9 +1,9 @@
-import { Row, Col, Tag, Button, Table } from 'antd';
-import { MenuOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { Row, Col, Tag, Button, Table, Dropdown, Menu, Space } from 'antd';
 import AddDonationPlan from './AddDonationPlan';
 import { randomOutput } from 'utils/helper';
 
 import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'app/pages/DonationPage/consts';
+import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const dataSource = Array.from(Array(5).keys()).map(i => ({
   i: `${i}`,
@@ -17,14 +17,34 @@ const dataSource = Array.from(Array(5).keys()).map(i => ({
   amount: randomOutput(['5,000円/月', '115,000円/月', '27,000円/月']),
 }));
 
+// レコードアクションメニュー・Record Action Menu
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: 'アクション1',
+      },
+      {
+        key: '2',
+        label: 'アクション2',
+      },
+    ]}
+  />
+);
+
 const columnMap = {
   empty: {
     width: 50,
     title: '',
-    render: row => <MenuOutlined className="display-inline-flex" />,
+    render: row => (
+      <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+        menu
+      </span>
+    ),
   },
   donation_type: {
-    width: 150,
+    width: 80,
     title: '頻度',
     dataIndex: 'donation_type',
     render: donation_type => (
@@ -49,16 +69,27 @@ const columnMap = {
     dataIndex: 'amount',
   },
   action: {
-    width: 180,
+    width: 160,
     title: 'アクション',
     render: row => (
-      <>
-        <Button icon={<EditOutlined />}>{'編集'}</Button>
-        <Button className="ml-2">{'...'}</Button>
-      </>
+      <Space>
+        <Button
+          className="icon-btn"
+          icon={<span class="material-symbols-outlined fill-icon">edit</span>}
+        >
+          {'編集'}
+        </Button>
+        <Dropdown overlay={menu} placement="bottomRight">
+          <Button
+            className="more-menu-btn"
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
+          />
+        </Dropdown>
+      </Space>
     ),
   },
 };
+
 const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });
@@ -66,23 +97,21 @@ const columns = Object.keys(columnMap).map(columnName => {
 const DonationPlan = () => {
   return (
     <>
-      <div className="item ml-5">
-        <Row className="mb-5">
-          <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'寄付プラン'}</span>
-          </Col>
-        </Row>
-        <Row className="item mb-2">
-          <Col sm={24} md={24} lg={24}>
-            <Table dataSource={dataSource} columns={columns} pagination={false} />
-          </Col>
-        </Row>
-        <Row className="item">
-          <Col sm={24} md={24} lg={24}>
-            <AddDonationPlan />
-          </Col>
-        </Row>
-      </div>
+      <Row className="mb-6">
+        <Col sm={24} md={24} lg={24}>
+          <span className="page-title01">{'寄付プラン'}</span>
+        </Col>
+      </Row>
+      <Row className="mb-6">
+        <Col sm={24} md={24} lg={24}>
+          <Table tableLayout="fixed" dataSource={dataSource} columns={columns} pagination={false} />
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={24} md={24} lg={24}>
+          <AddDonationPlan />
+        </Col>
+      </Row>
     </>
   );
 };

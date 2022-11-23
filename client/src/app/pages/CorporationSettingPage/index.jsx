@@ -4,7 +4,6 @@ import Representative from './components/Representative';
 import Administrator from './components/Administrator';
 import AccountInformation from './components/AccountInformation';
 import UserManagement from './components/UserManagement';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const SETTING_COMPONENT_MAP = {
   groupInformation: {
@@ -34,12 +33,11 @@ const SETTING_COMPONENT_MAP = {
   },
 };
 
-console.log('GroupSettingsPage');
-
 const Title = () => (
-  <span className="ml-1 page-title">
-    <AdminPanelSettingsIcon className="display-inline-flex mr-1" /> {'団体設定'}
-  </span>
+  <div className="page-title">
+    <span class="material-symbols-outlined fill-icon icon">admin_panel_settings</span>
+    <span className="ml-2">{'個人設定'}</span>
+  </div>
 );
 const GroupSettingsPage = () => (
   <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />

@@ -1,10 +1,11 @@
-import { Row, Col, Space } from 'antd';
+import { Col, Space } from 'antd';
 import {
   StyledRequired,
   StyledLabel,
   StyledInput,
   StyledTextarea,
   StyledSelect,
+  StyledInputPassword,
 } from 'app/components/Layout/SettingsLayout.style';
 import { InfoCircleFilled } from '@ant-design/icons';
 
@@ -43,6 +44,10 @@ const SettingInput = ({ placeholder, ...rest }) => (
   <StyledInput placeholder={placeholder} {...rest} />
 );
 
+const SettingInputPassword = ({ placeholder, ...rest }) => (
+  <StyledInputPassword placeholder={placeholder} {...rest} />
+);
+
 const SettingTextarea = ({ placeholder, ...rest }) => (
   <StyledTextarea placeholder={placeholder} {...rest} />
 );
@@ -58,4 +63,5 @@ export {
   SettingInput,
   SettingTextarea,
   SettingSelect,
+  SettingInputPassword,
 };

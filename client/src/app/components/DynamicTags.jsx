@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { Input, Tag, Tooltip } from 'antd';
+import { Input, Select, Tag, Tooltip } from 'antd';
 
-const DynamicTags = ({ tagList, onSuccess, addMoreLabel }) => {
+const DynamicTags = ({ tagList = [], availableTagList = [], onSuccess, addMoreLabel }) => {
   const [tags, setTags] = useState(tagList);
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [editInputIndex, setEditInputIndex] = useState(-1);
   const [editInputValue, setEditInputValue] = useState('');
+  const [selectedItems, setSelectedItems] = useState(tagList);
   const inputRef = useRef(null);
   const editInputRef = useRef(null);
 
@@ -30,6 +31,15 @@ const DynamicTags = ({ tagList, onSuccess, addMoreLabel }) => {
   };
   const handleInputChange = e => {
     setInputValue(e.target.value);
+  };
+  const handleSelect = e => {
+    const _inputValue = e.target.value;
+    if (_inputValue && tags.indexOf(_inputValue) === -1) {
+      const newTags = [...tags, _inputValue];
+      setTags(newTags);
+      onSuccess && onSuccess(newTags);
+    }
+    setInputVisible(false);
   };
   const handleInputConfirm = () => {
     if (inputValue && tags.indexOf(inputValue) === -1) {
@@ -98,16 +108,19 @@ const DynamicTags = ({ tagList, onSuccess, addMoreLabel }) => {
         );
       })}
       {inputVisible && (
-        <Input
-          ref={inputRef}
-          type="text"
-          size="small"
-          className="tag-input"
-          value={inputValue}
-          onChange={handleInputChange}
-          onBlur={handleInputConfirm}
-          onPressEnter={handleInputConfirm}
-        />
+        <>
+          <Select
+            mode="multiple"
+            value={tags}
+            onChange={setTags}
+            style={{ width: '100%' }}
+            options={availableTagList.map(item => ({
+              value: item,
+              label: item,
+            }))}
+            onBlur={() => setInputVisible(false)}
+          />
+        </>
       )}
       {!inputVisible && (
         <Tag

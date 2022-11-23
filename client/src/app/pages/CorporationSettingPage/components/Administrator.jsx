@@ -1,97 +1,162 @@
-import { Row, Col, Button, DatePicker, Space, Radio } from 'antd';
+// ANTD
+import { Row, Col, Button, DatePicker, Space, Card } from 'antd';
+// STYLE
+import styled from 'styled-components/macro';
+// CONTS
+import { EXTRA_LIGHT_RED_COLOR } from 'styles/StyleConstants';
+// COMPONENT
+import {
+  SettingsInputContainer,
+  SettingLabel,
+  SettingInput,
+  SettingsInputWrapper,
+} from './Sprites';
+// MODAL
+import ChangeAdministrator from './ChangeAdministrator';
 
-import { SettingsInputContainer, SettingLabel, SettingInput } from './Sprites';
+export const StyledCard = styled(Card)`
+  background: ${EXTRA_LIGHT_RED_COLOR};
+  border-radius: 4px !important;
+  border: none !important;
+`;
 
 const Administrator = () => {
   return (
-    <>
-      <div className="item ml-5">
-        <Row className="mb-5">
-          <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'管理者'}</span>
-          </Col>
+    <Row>
+      <Col span={24} className="mb-6">
+        <Row className="mb-6" justify="space-between" align="middle">
+          <div className="page-title01">{'管理者'}</div>
+          <ChangeAdministrator />
         </Row>
-        <Row className="item mb-2">
+        <Row>
+          <StyledCard style={{ width: '100%' }} bodyStyle={{ padding: '16px 24px' }}>
+            管理者情報の編集・管理者の変更を行う際には、決済代行会社の再審査が行われます。
+          </StyledCard>
+        </Row>
+      </Col>
+
+      <Col span={24}>
+        {/* 氏名 */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'氏名'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput placeholder={'例：田中'} style={{ width: '295px' }} />
-                <SettingInput placeholder={'例：太郎'} style={{ width: '295px' }} />
-              </Space>
+            <Col sm={24} md={24} lg={24}>
+              <SettingsInputWrapper>
+                <SettingInput placeholder={'例：田中'} style={{ width: '100%' }} />
+                <SettingInput placeholder={'例：太郎'} style={{ width: '100%' }} />
+              </SettingsInputWrapper>
             </Col>
           </SettingsInputContainer>
+        </Row>
+
+        {/* 氏名（カナ表記) */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'氏名（カナ表記)'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput placeholder={'例：タナカ'} style={{ width: '295px' }} />
-                <SettingInput placeholder={'例：タロウ'} style={{ width: '295px' }} />
-              </Space>
+            <Col sm={24} md={24} lg={24}>
+              <SettingsInputWrapper>
+                <SettingInput placeholder={'例：タナカ'} style={{ width: '100%' }} />
+                <SettingInput placeholder={'例：タロウ'} style={{ width: '100%' }} />
+              </SettingsInputWrapper>
             </Col>
           </SettingsInputContainer>
+        </Row>
+
+        {/* 生年月日 */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'生年月日'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '600px' }} />
+            <Col sm={24} md={24} lg={24}>
+              <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
             </Col>
           </SettingsInputContainer>
+        </Row>
+
+        {/* 役職 */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'役職'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col sm={24} md={24} lg={24}>
               <SettingInput placeholder={'例：事務局長'} />
             </Col>
           </SettingsInputContainer>
+        </Row>
+
+        {/* メールアドレス */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+            <Col sm={24} md={24} lg={24}>
               <SettingInput placeholder={'例：03-1234-5678'} />
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'登記番号'} required />}>
+        </Row>
+
+        {/* 電話番号 */}
+        <Row className="mb-6">
+          <SettingsInputContainer label={<SettingLabel label={'電話番号'} required />}>
             <SettingInput placeholder={'例：03-1234-5678'} />
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'所在'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput addonBefore="〒" placeholder={'0000000'} style={{ width: '295px' }} />
-                <SettingInput disabled placeholder={'都道府県'} style={{ width: '295px' }} />
-              </Space>
+        </Row>
+
+        {/* 所在 */}
+        <Row className="mb-6">
+          <SettingsInputContainer label={<SettingLabel label={'住所'} required />}>
+            <Col className="mb-4" sm={24} md={24} lg={24}>
+              <SettingsInputWrapper size={16}>
+                <SettingInput
+                  size="large"
+                  addonBefore="〒"
+                  placeholder={'0000000'}
+                  style={{ width: '100%' }}
+                />
+                <SettingInput
+                  size="large"
+                  disabled
+                  placeholder={'都道府県'}
+                  style={{ width: '100%' }}
+                />
+              </SettingsInputWrapper>
             </Col>
-            <Col className="item my-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput placeholder={'市区町村'} />
-              </Space>
+            <Col className="mb-4" sm={24} md={24} lg={24}>
+              <SettingInput size="large" placeholder={'市区町村'} />
             </Col>
-            <Col className="item my-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput placeholder={'番地・建物名・部屋番号'} />
-              </Space>
-            </Col>
-          </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'所在 (カナ表記)'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput addonBefore="〒" placeholder={'0000000'} style={{ width: '295px' }} />
-                <SettingInput disabled placeholder={'都道府県'} style={{ width: '295px' }} />
-              </Space>
-            </Col>
-            <Col className="item my-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput placeholder={'市区町村'} />
-              </Space>
-            </Col>
-            <Col className="item my-5" sm={24} md={24} lg={24}>
-              <Space direction="horizontal">
-                <SettingInput placeholder={'番地・建物名・部屋番号'} />
-              </Space>
+            <Col sm={24} md={24} lg={24}>
+              <SettingInput size="large" placeholder={'番地・建物名・部屋番号'} />
             </Col>
           </SettingsInputContainer>
         </Row>
-        <Row className="item mt-15">
-          <Col sm={24} md={24} lg={24}>
-            <Button className="active" type="primary">
-              <span className="ml-2">{'保存する'}</span>
-            </Button>
-          </Col>
+
+        {/* 住所（カナ表記） */}
+        <Row>
+          <SettingsInputContainer label={<SettingLabel label={'住所（カナ表記）'} required />}>
+            <Col className="mb-4" sm={24} md={24} lg={24}>
+              <SettingsInputWrapper>
+                <SettingInput
+                  size="large"
+                  addonBefore="〒"
+                  placeholder={'0000000'}
+                  style={{ width: '100%' }}
+                />
+                <SettingInput
+                  size="large"
+                  disabled
+                  placeholder={'都道府県'}
+                  style={{ width: '100%' }}
+                />
+              </SettingsInputWrapper>
+            </Col>
+            <Col className="mb-4" sm={24} md={24} lg={24}>
+              <SettingInput size="large" placeholder={'市区町村（カナ)'} />
+            </Col>
+            <Col sm={24} md={24} lg={24}>
+              <SettingInput size="large" placeholder={'番地・建物名・部屋番号（カナ)'} />
+            </Col>
+          </SettingsInputContainer>
         </Row>
-      </div>
-    </>
+      </Col>
+
+      <Col span={24} className="mt-14">
+        <Button type="primary" size="large">
+          <span style={{ fontWeight: '600' }}>{'保存する（要再審査）'}</span>
+        </Button>
+      </Col>
+    </Row>
   );
 };
 

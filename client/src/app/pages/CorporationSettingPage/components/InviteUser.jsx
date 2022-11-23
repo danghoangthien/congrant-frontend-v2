@@ -21,10 +21,12 @@ const InviteUser = () => {
 
   return (
     <>
-      <Button onClick={showModal} type="primary">
-        <PlusOutlined className="display-inline-flex" />
+      <Button className="icon-btn" onClick={showModal} type="primary">
+        <span class="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
+
+      {/* モーダル */}
       <Modal
         title={<StyledModalTitle>{'新規ユーザーの招待'}</StyledModalTitle>}
         visible={isModalOpen}
@@ -35,11 +37,9 @@ const InviteUser = () => {
         cancelText="キャンセル"
         okText="招待を送信"
       >
-        <Row className="item mb-2">
+        <Row>
           <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'例：tanaka@congrant.com'} />
-            </Col>
+            <SettingInput placeholder={'例：tanaka@congrant.com'} />
           </SettingsInputContainer>
         </Row>
       </Modal>

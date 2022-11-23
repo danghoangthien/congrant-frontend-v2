@@ -1,19 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  Card,
-  Table,
-  Row,
-  Col,
-  Pagination,
-  Button,
-  Checkbox,
-  Select,
-  Form,
-  Input,
-  DatePicker,
-} from 'antd';
-import { FilterOutlined } from '@ant-design/icons';
+import { StyledFilter } from 'styles/Filter.style';
+
+import { Card, Row, Col, Button, Select, Form, Input, DatePicker } from 'antd';
 
 const { RangePicker } = DatePicker;
 
@@ -21,73 +8,107 @@ const Filters = ({ open }) => {
   const [form] = Form.useForm();
   if (!open) return <></>;
   return (
-    <Card className="my-5">
-      <Row className="mb-3">
-        <Col sm={24} md={20} lg={20}>
-          <FilterOutlined className="display-inline-flex" />
-          <span className="ml-2">{'フィルタ'}</span>
-          <Select
-            className="ml-4"
-            defaultValue={{
-              value: '1',
-            }}
-            style={{
-              width: 185,
-            }}
-            onChange={() => {}}
-          >
-            <Select.Option value="1">{'保存されたフィルタ'}</Select.Option>
-          </Select>
-        </Col>
-        <Col type="flex" align="right" sm={24} md={4} lg={4}>
-          <Button type="primary">{'フィルタを保存'}</Button>
-        </Col>
-      </Row>
-      <Row className="my-5">
-        <Form form={form} layout={'vertical'}>
-          <Row gutter={24}>
-            <Col span={6} key={'a'}>
-              <Form.Item name={`field-a`} label={`受領日`}>
-                <RangePicker placeholder={['開始日', '終了日']} />
-              </Form.Item>
-            </Col>
-            <Col span={6} key={'ab'}>
-              <Form.Item name={`field-b`} label={`プロジェクト`}>
-                <Select placeholder={'選択してください'} onChange={() => {}}>
-                  <Select.Option value="1">{'---'}</Select.Option>
+    <StyledFilter>
+      <Card className="mb-6">
+        {/* フィルターヘッダー・Filter Header */}
+        <Row className="mb-6" justify="space-between">
+          <Col>
+            <span className="filter-box-title">{'フィルタ'}</span>
+          </Col>
+
+          <Col>
+            <Row>
+              <Col className="mr-2">
+                <Select
+                  defaultValue={{
+                    value: '1',
+                  }}
+                  onChange={() => {}}
+                  size="small"
+                  style={{
+                    width: '256px',
+                  }}
+                >
+                  <Select.Option value="1">{'保存されたフィルタ'}</Select.Option>
                 </Select>
-              </Form.Item>
-            </Col>
-            <Col span={6} key={'c'}>
-              <Form.Item name={`field-c`} label={`受領方法`}>
-                <Select placeholder={'選択してください'} onChange={() => {}}>
-                  <Select.Option value="1">{'---'}</Select.Option>
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col span={6} key={'d'}>
-              <Form.Item name={`field-d`} label={`寄付タイプ`}>
-                <Select placeholder={'選択してください'} onChange={() => {}}>
-                  <Select.Option value="1">{'---'}</Select.Option>
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col span={6} key={'e'}>
-              <Form.Item className="mb-0" name={`field-c`} label={`プラン`}>
-                <Select placeholder={'選択してください'} onChange={() => {}}>
-                  <Select.Option value="1">{'---'}</Select.Option>
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col span={6} key={'f'}>
-              <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
-                <Input placeholder="1,000円              ->            10,000円" />
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
-      </Row>
-    </Card>
+              </Col>
+              <Button size="small">{'保存'}</Button>
+            </Row>
+          </Col>
+        </Row>
+
+        {/* フィルターコンテンツ・Filter Content */}
+        <Row>
+          <Col span={24}>
+            <Form form={form} layout={'vertical'}>
+              <Row gutter={24}>
+                <Col span={6} key={'a'}>
+                  <Form.Item name={`field-a`} label={`属性`}>
+                    <Select placeholder={'選択してください'} onChange={() => {}}>
+                      <Select.Option value="1">{'---'}</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={6} key={'d'}>
+                  <Form.Item name={`field-d`} label={`エリア`}>
+                    <Select placeholder={'選択してください'} onChange={() => {}}>
+                      <Select.Option value="1">{'---'}</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={6} key={'e'}>
+                  <Form.Item name={`field-c`} label={`広報物への掲載可否`}>
+                    <Select placeholder={'選択してください'} onChange={() => {}}>
+                      <Select.Option value="1">{'---'}</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={6} key={'e'}>
+                  <Form.Item name={`field-a`} label={`直近の決済日`}>
+                    <RangePicker style={{ width: '100%' }} placeholder={['開始日', '終了日']} />
+                  </Form.Item>
+                </Col>
+                <Col span={6} key={'e'}>
+                  <Form.Item className="mb-0" name={`field-d`} label={`累計寄付金額`}>
+                    <Input.Group compact className="num-range-input">
+                      <Input style={{ width: 'calc(50% - 15px)' }} placeholder="3,000" />
+                      <Input
+                        className="site-input-split"
+                        style={{
+                          width: '30px',
+                          borderLeft: 0,
+                          borderRight: 0,
+                          pointerEvents: 'none',
+                          background: '#ffffff',
+                        }}
+                        placeholder="~"
+                        disabled
+                      />
+                      <Input
+                        className="site-input-right"
+                        style={{
+                          borderLeft: 0,
+                          width: 'calc(50% - 15px)',
+                        }}
+                        placeholder="6,000"
+                        suffix="円"
+                      />
+                    </Input.Group>
+                  </Form.Item>
+                </Col>
+                <Col span={6} key={'e'}>
+                  <Form.Item className="mb-0" name={`field-c`} label={`郵送物の送付可否`}>
+                    <Select placeholder={'選択してください'} onChange={() => {}}>
+                      <Select.Option value="1">{'---'}</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
+          </Col>
+        </Row>
+      </Card>
+    </StyledFilter>
   );
 };
 

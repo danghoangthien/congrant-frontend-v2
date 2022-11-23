@@ -1,25 +1,30 @@
 import styled from 'styled-components/macro';
-import { TEXT_GRAY_COLOR, RED_COLOR } from 'styles/StyleConstants';
-import { Input, Select, DatePicker } from 'antd';
+import { TEXT_GRAY_COLOR, RED_COLOR, GRAY } from 'styles/StyleConstants';
+import { Input, Select, DatePicker, Space } from 'antd';
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 export const StyledRadioGroup = styled.div`
+  & .ant-radio-group {
+    width: 100%;
+  }
+  & .ant-radio-button-wrapper:first-child:last-child {
+    border-radius: 0;
+  }
   & .ant-space-item {
     & .ant-radio-button-wrapper {
-      width: 300px;
+      width: 100%;
       border-bottom: 0px;
       font-size: 16px;
       line-height: 45px;
       height: 45px;
     }
     & .ant-radio-button-wrapper-checked {
-      border: solid 1px #d9d9d9;
+      border-color: ${GRAY};
     }
     .ant-radio-button-wrapper-checked:not([class*=' ant-radio-button-wrapper-disabled']).ant-radio-button-wrapper:first-child {
-      border-right-color: #d9d9d9;
-      border-bottom: 0px;
+      border-right-color: ${GRAY};
     }
     .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
       box-shadow: 0px;
@@ -34,7 +39,7 @@ export const StyledRadioGroup = styled.div`
   & .ant-space-item:last-child {
     & .ant-radio-button-wrapper {
       border-radius: 0 0 10px 10px;
-      border-bottom: solid 1px #d9d9d9;
+      border-bottom: solid 1px ${GRAY};
     }
   }
 `;
@@ -133,6 +138,10 @@ export const StyledSettingLabel = styled.div`
 
 export const StyledInput = styled(Input)`
   font-weight: 300;
+`;
+
+export const StyledInputPassword = styled(Input.Password)`
+  font-weight: 300;
   padding: 5px 11px;
 `;
 
@@ -156,4 +165,12 @@ export const StyledSubtitle = styled.div`
 
 export const StyledRangePicker = styled(RangePicker)`
   padding: 7px 11px;
+`;
+
+export const StyledInputWrapper = styled(Space)`
+  width: 100%;
+
+  .ant-space-item {
+    width: 100%;
+  }
 `;

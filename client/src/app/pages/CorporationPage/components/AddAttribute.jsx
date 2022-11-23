@@ -8,9 +8,22 @@ import {
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { TagFilled } from '@ant-design/icons';
+import styled from 'styled-components/macro';
 
+export const StyledRadioGroup = styled(Radio.Group)`
+  width: 100%;
+  .ant-radio-button-wrapper {
+    width: 50%;
+  }
+`;
+const attributes = [
+  { label: '属性の追加', value: 0 },
+  { label: '属性の削除', value: 1 },
+];
 const AddAttribute = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [activeTab, setActiveTab] = useState(attributes[0].value);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -22,6 +35,10 @@ const AddAttribute = () => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+
+  const onRadioChange = ({ target: { value } }) => {
+    setActiveTab(value);
   };
 
   return (
@@ -40,21 +57,26 @@ const AddAttribute = () => {
         okText="登録する"
       >
         <Row className="item mb-2">
-          <Col sm={24} md={12} lg={12}>
-            <Button type="primary" style={{ width: '100%' }}>
-              <span className="ml-2">{'属性の追加'}</span>
-            </Button>
-          </Col>
-          <Col sm={24} md={12} lg={12}>
-            <Button style={{ width: '100%' }}>
-              <span className="ml-2">{'属性の削除'}</span>
-            </Button>
+          <Col sm={24} md={24} lg={24}>
+            <StyledRadioGroup
+              options={attributes}
+              onChange={onRadioChange}
+              value={attributes[activeTab].value}
+              optionType="button"
+              buttonStyle="solid"
+            />
           </Col>
         </Row>
         <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'追加する属性'} required />}>
-            <SettingInput placeholder={'選択してください'} />
-          </SettingsInputContainer>
+          {activeTab === 0 ? (
+            <SettingsInputContainer label={<SettingLabel label={'追加する属性'} required />}>
+              <SettingInput placeholder={'選択してください'} />
+            </SettingsInputContainer>
+          ) : (
+            <SettingsInputContainer label={<SettingLabel label={'削除する属性'} required />}>
+              <SettingInput placeholder={'選択してください'} />
+            </SettingsInputContainer>
+          )}
         </Row>
       </Modal>
     </>

@@ -77,10 +77,7 @@ const Filters = ({ open }) => {
               <Col span={6} key={'e'}>
                 <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
                   <Input.Group compact className="num-range-input">
-                    <Input
-                      style={{ width: 'calc(50% - 15px)', textAlign: 'center' }}
-                      placeholder="3,000"
-                    />
+                    <Input style={{ width: 'calc(50% - 15px)' }} placeholder="3,000" />
                     <Input
                       className="site-input-split"
                       style={{
@@ -98,7 +95,6 @@ const Filters = ({ open }) => {
                       style={{
                         borderLeft: 0,
                         width: 'calc(50% - 15px)',
-                        textAlign: 'center',
                       }}
                       placeholder="6,000"
                       suffix="円"

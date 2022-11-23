@@ -59,6 +59,9 @@ export const PageLayout = styled.div`
     font-size: 16px;
     font-weight: 600;
   }
+
+  & .setting-wrapper {
+  }
 `;
 
 export const StyledModalTitle = styled.span`

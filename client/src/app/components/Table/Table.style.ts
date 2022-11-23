@@ -28,4 +28,12 @@ export const TableStyle = styled.div`
       text-decoration: none;
     }
   }
+
+  & .other-action-menu {
+    background: red;
+
+    & .ant-space-item {
+      display: flex;
+    }
+  }
 `;

@@ -34,7 +34,11 @@ const SupporterInfo = ({ closeDrawer }) => {
             </Col>
           </Row>
           <Row className="mb-3">
-            <DynamicTags tagList={['理事', 'ボランティア']} addMoreLabel={'属性を追加する'} />
+            <DynamicTags
+              tagList={['理事', 'ボランティア']}
+              availableTagList={['理事', 'ボランティア', 'more', 'and more']}
+              addMoreLabel={'属性を追加する'}
+            />
           </Row>
           <Row>
             <Col span={12}>
