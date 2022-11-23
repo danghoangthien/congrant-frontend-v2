@@ -29,10 +29,11 @@ const AddCustomField = ({ title }) => {
 
   return (
     <>
-      <Button onClick={showModal} type="primary">
-        <PlusOutlined className="display-inline-flex" />
+      <Button className="icon-btn" onClick={showModal} type="primary">
+        <span class="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
+
       <Modal
         title={<StyledModalTitle>{title}</StyledModalTitle>}
         visible={isModalOpen}

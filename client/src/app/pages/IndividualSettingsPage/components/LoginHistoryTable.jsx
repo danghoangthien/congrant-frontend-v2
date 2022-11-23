@@ -1,5 +1,4 @@
-import { Space, Button, Table } from 'antd';
-import { DownloadOutlined, SendOutlined } from '@ant-design/icons';
+import { Table } from 'antd';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -27,10 +26,12 @@ const columnMap = {
     dataIndex: 'ip',
   },
   browser: {
+    width: 200,
     title: 'デバイス',
     dataIndex: 'browser',
   },
 };
+
 const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });

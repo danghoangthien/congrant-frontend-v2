@@ -1,43 +1,51 @@
-import { Tag, Table, Dropdown, Button, Menu } from 'antd';
-import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
+import { Table, Dropdown, Button, Menu, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { StyledStatusTag2 } from 'styles/StatusTag.style';
+import { DANGER_COLOR } from 'styles/StyleConstants';
+
+const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = Array.from(Array(3).keys()).map(i => ({
   pub_date: '2023-04-01',
-  status: '123,456円',
-  name: <Tag color="processing">{'単発'}</Tag>,
+  status: randomOutput([
+    <StyledStatusTag2 className="public">{'公開'}</StyledStatusTag2>,
+    <StyledStatusTag2 className="non-public">{'非公開'}</StyledStatusTag2>,
+  ]),
+  name: randomOutput([<Link to="/">田中 太郎</Link>, <Link to="/">Huy Nguyen</Link>]),
   comment: '応援しています！',
   reply: 'ありがとうございます！',
 }));
 
 const menu = (
   <Menu
+    className="action-menu"
     items={[
       {
         key: '1',
         label: (
-          <>
-            <SendOutlined style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'メッセージを送る'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              content_copy
+            </span>
+            <span>{'複製'}</span>
+          </Space>
         ),
       },
       {
         key: '2',
         label: (
-          <>
-            <TagFilled style={{ color: 'black' }} />{' '}
-            <span className="ml-2">{'属性を設定する'}</span>
-          </>
-        ),
-      },
-      {
-        key: '3',
-        label: (
-          <>
-            <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
-          </>
+          <Space>
+            <span
+              class="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
+            >
+              delete
+            </span>
+            <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+          </Space>
         ),
       },
     ]}
@@ -55,13 +63,13 @@ const columns = [
     width: 150,
     title: 'ステータス',
     dataIndex: 'status',
-    render: status => <StyledStatusTag2 className="public">{'公開'}</StyledStatusTag2>,
+    render: status => status,
   },
   {
     width: 150,
     title: 'お名前',
     dataIndex: 'name',
-    render: name => <Link to="/">田中 太郎</Link>,
+    render: name => name,
   },
   {
     title: 'コメント',
@@ -79,14 +87,15 @@ const columns = [
     align: 'center',
     dataIndex: 'action',
     render: action => (
-      <>
-        <Button className="active mr-2" type="primary">
-          {'返信'}
-        </Button>
+      <Space>
+        <Button type="primary">{'編集'}</Button>
         <Dropdown overlay={menu} placement="bottomRight">
-          <Button icon={<EllipsisOutlined />} />
+          <Button
+            icon={<span class="material-symbols-outlined">more_horiz</span>}
+            className="more-menu-btn"
+          />
         </Dropdown>
-      </>
+      </Space>
     ),
   },
 ];

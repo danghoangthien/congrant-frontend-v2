@@ -196,7 +196,7 @@ const columnMap = {
 
   // アクション
   operate: {
-    width: 100,
+    width: 120,
     title: 'アクション',
     render: row => (
       <Space>

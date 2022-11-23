@@ -5,9 +5,7 @@ const SupportAttribute = () => {
   return (
     <Row>
       <Col span={24} className="mb-8">
-        <Col sm={24} md={24} lg={24}>
-          <span className="page-title01">{'サポーター属性'}</span>
-        </Col>
+        <span className="page-title01">{'サポーター属性'}</span>
       </Col>
 
       <Col span={24} className="mb-6">
@@ -75,6 +73,7 @@ const SupportAttribute = () => {
           </Col>
         </Row>
       </Col>
+
       <Col span={24} className="pl-8">
         <Space align="center">
           <Input placeholder={'理事'} />

@@ -27,7 +27,7 @@ const BasicInformation = () => {
         <Col span={24}>
           <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
             <Row className="mb-2">
-              <SettingInput placeholder={'荒木雄大'} disabled />
+              <SettingInput placeholder={'araki@congrant.com'} disabled />
             </Row>
             <Row align="end">
               <ChangeEmail />

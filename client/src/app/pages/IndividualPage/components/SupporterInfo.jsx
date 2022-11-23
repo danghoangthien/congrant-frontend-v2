@@ -23,10 +23,13 @@ const SupporterInfo = ({ closeDrawer }) => {
             </Col>
             <Col>
               <Row align="middle">
-                <Button className="icon-btn" icon={<EmailIcon className="mr-2 pointer" />}>
+                <Button
+                  className="icon-btn less-shadow-btn"
+                  icon={<span class="material-symbols-outlined fill-icon">mail</span>}
+                >
                   {'メールを送る'}
                 </Button>
-                <Button type="text">
+                <Button type="text" style={{ boxShadow: 'none' }}>
                   <CloseIcon className="pointer" onClick={() => closeDrawer()} />
                 </Button>
               </Row>
@@ -55,9 +58,10 @@ const SupporterInfo = ({ closeDrawer }) => {
             </Col>
             <Col span={12}>
               <div className="supporter-detail-donation">
-                <span className="supporter-detail-donation-ttl">直近の寄付</span>
-                <span className="supporter-detail-donation-txt">2022-12-15</span>
-                <span className="supporter-detail-donation-txt">（3,000円）</span>
+                <span className="supporter-detail-donation-ttl">累計寄付</span>
+                <span>36,000円</span>
+                <span>{' / '}</span>
+                <span>12件</span>
               </div>
             </Col>
           </Row>
