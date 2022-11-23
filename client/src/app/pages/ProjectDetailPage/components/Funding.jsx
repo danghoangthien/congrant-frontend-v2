@@ -11,13 +11,12 @@ import 'app/pages/DonationPage/Models/received';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import SendIcon from '@mui/icons-material/Send';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
       className="icon-btn"
-      icon={<SendIcon />}
+      icon={<span className="material-symbols-outlined fill-icon">send</span>}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}

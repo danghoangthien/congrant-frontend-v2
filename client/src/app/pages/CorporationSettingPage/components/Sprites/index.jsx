@@ -7,6 +7,7 @@ import {
   StyledSelect,
   StyledSettingLabel,
   StyledRangePicker,
+  StyledInputWrapper,
 } from 'app/components/Layout/SettingsLayout.style';
 
 import InfoIcon from '@mui/icons-material/Info';
@@ -22,6 +23,10 @@ const SettingsInputContainer = ({ children, label }) => {
       </Col>
     </>
   );
+};
+
+const SettingsInputWrapper = ({ children, label }) => {
+  return <StyledInputWrapper size={16}>{children}</StyledInputWrapper>;
 };
 
 const SettingLabel = ({ label, required, info }) => (
@@ -68,4 +73,5 @@ export {
   SettingTextarea,
   SettingSelect,
   SettingRangePicker,
+  SettingsInputWrapper,
 };

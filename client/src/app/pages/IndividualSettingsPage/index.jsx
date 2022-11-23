@@ -3,7 +3,6 @@ import BasicInformation from './components/BasicInformation';
 import TwoFactor from './components/TwoFactor';
 import Notification from './components/Notification';
 import LoginHistory from './components/LoginHistory';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 const SETTING_COMPONENT_MAP = {
   basicInformation: {
@@ -31,9 +30,10 @@ const SETTING_COMPONENT_MAP = {
 console.log('GroupSettingsPage');
 
 const Title = () => (
-  <span className="ml-1 page-title">
-    <ManageAccountsIcon className="display-inline-flex mr-1" /> {'個人設定'}
-  </span>
+  <div className="page-title">
+    <span class="material-symbols-outlined fill-icon icon">manage_accounts</span>
+    <span className="ml-2">{'個人設定'}</span>
+  </div>
 );
 const PersonalSettingsPage = () => (
   <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />

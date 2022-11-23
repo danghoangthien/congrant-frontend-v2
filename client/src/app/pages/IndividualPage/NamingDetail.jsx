@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import { DescriptionStyle } from './components/BasicInfo.style';
 import { BoldLabel, CopiableText } from './components/Sprites';
@@ -13,6 +14,7 @@ const DetailGrid = () => {
         <Col sm={5} md={5} lg={5}>
           <span className="bold">{'名寄せ後のデータ'}</span>
         </Col>
+        {/* LOOP PART START */}
         <Col sm={5} md={5} lg={5}>
           <span className="bold">{'候補1'}</span>
         </Col>
@@ -22,6 +24,7 @@ const DetailGrid = () => {
         <Col sm={4} md={4} lg={4}>
           <span className="bold">{'候補3'}</span>
         </Col>
+        {/* LOOP PART END */}
       </Row>
       {/* 個人ID */}
       <Row className="mb-3">
@@ -299,21 +302,36 @@ const DetailGrid = () => {
 };
 
 const NamingDetail = () => {
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'名寄せ先の選択'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
     <>
+      {renderPageTitle()}
       <SupporterPageLayout>
+        {/* タイトル・Title */}
         <div className="item mb-6">
           <Row>
             <Col sm={24} md={12} lg={12}>
-              <span className="sub-page-title">{'名寄せ先の選択'}</span>
+              <div className="sub-page-title">{'名寄せ先の選択'}</div>
             </Col>
           </Row>
         </div>
+
+        {/* コンテンツ・Content */}
         <div className="item">
-          <Card>
-            <Row className="mb-3">
+          <Card bodyStyle={{ padding: 0 }}>
+            <Row className="py-4 px-6">
               <Col sm={24} md={20} lg={20}>
-                <span className="bold">
+                <span style={{ fontSize: '16px', fontWeight: '600' }}>
                   {'メールアドレス「tanaka@gmail.com」と氏名「田中 太郎」が一致'}
                 </span>
               </Col>
@@ -323,12 +341,14 @@ const NamingDetail = () => {
                 </Button>
               </Col>
             </Row>
+
             <Row className="mb-3">
               <Col sm={24} md={24} lg={24}>
                 <DetailGrid />
               </Col>
             </Row>
-            <Row className="mb-3">
+
+            <Row className="py-4 px-6">
               <Col type="flex" align="right" sm={24} md={24} lg={24}>
                 <Button type="primary">
                   <span>{'名寄せを実行'}</span>

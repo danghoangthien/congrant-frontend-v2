@@ -1,44 +1,59 @@
-import { Row, Col, Button, Space } from 'antd';
-import { SettingsInputContainer, SettingLabel, SettingInput, SettingInfoLabel } from './Sprites';
+import { Row, Col, Button } from 'antd';
+import {
+  SettingsInputContainer,
+  SettingLabel,
+  SettingInput,
+  SettingInputPassword,
+} from './Sprites';
 import ChangeEmail from './ChangeEmail';
 import ChangePassword from './ChangePassword';
 
 const BasicInformation = () => {
   return (
-    <>
-      <div className="item ml-5">
-        <Row className="mb-5">
-          <Col sm={24} md={24} lg={24}>
-            <span className="page-title">{'基本情報'}</span>
-          </Col>
-        </Row>
-        <Row className="item mb-2">
+    <Row>
+      <Col span={24} className="mb-6">
+        <div className="page-title01">{'基本情報'}</div>
+      </Col>
+
+      {/* ユーザー名 */}
+      <Col span={24} className="item mb-2">
+        <Col span={24}>
           <SettingsInputContainer label={<SettingLabel label={'ユーザー名'} required />}>
             <SettingInput placeholder={'荒木雄大'} />
           </SettingsInputContainer>
+        </Col>
+
+        {/* メールアドレス */}
+        <Col span={24}>
           <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
-            <Space direction="vertical" align="end">
+            <Row className="mb-2">
               <SettingInput placeholder={'荒木雄大'} disabled />
+            </Row>
+            <Row align="end">
               <ChangeEmail />
-            </Space>
+            </Row>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
-            <Space direction="vertical" align="end">
-              <SettingInput placeholder={'荒木雄大'} disabled />
+        </Col>
+
+        {/* パスワード */}
+        <Col span={24}>
+          <SettingsInputContainer label={<SettingLabel label={'パスワード'} required />}>
+            <Row className="mb-2">
+              <SettingInputPassword placeholder={'********'} disabled />
+            </Row>
+            <Row align="end">
               <ChangePassword />
-            </Space>
-            <Col sm={24} md={24} lg={24} type="flex" align="right"></Col>
+            </Row>
           </SettingsInputContainer>
-        </Row>
-        <Row className="item mt-15">
-          <Col sm={24} md={24} lg={24}>
-            <Button className="active" type="primary">
-              <span className="ml-2">{'保存する'}</span>
-            </Button>
-          </Col>
-        </Row>
-      </div>
-    </>
+        </Col>
+      </Col>
+
+      <Col span={24} className="item mt-15">
+        <Button size="large" type="primary">
+          <span style={{ fontWeight: '600' }}>{'保存する'}</span>
+        </Button>
+      </Col>
+    </Row>
   );
 };
 

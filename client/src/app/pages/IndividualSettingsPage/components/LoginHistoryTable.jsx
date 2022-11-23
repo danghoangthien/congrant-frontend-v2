@@ -13,7 +13,7 @@ const dataSource = Array.from(Array(5).keys()).map(i => ({
 const columnMap = {
   date_time: {
     width: 200,
-    title: '作成日時',
+    title: '日時',
     dataIndex: 'date_time',
   },
   location: {
@@ -27,7 +27,7 @@ const columnMap = {
     dataIndex: 'ip',
   },
   browser: {
-    title: 'アクション',
+    title: 'デバイス',
     dataIndex: 'browser',
   },
 };

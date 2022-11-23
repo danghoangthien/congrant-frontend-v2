@@ -127,6 +127,10 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
   }
 
+  .less-shadow-btn {
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+  }
+
   .ant-primary-btn {
     // box-shadow: 0 2px 0 rgb(0 0 0 / 1.6%);
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
@@ -268,7 +272,7 @@ export const GlobalStyle = createGlobalStyle`
   // ANTD INPUT
   .ant-input {
     font-size: 16px;
-    padding: 6px 11px;
+    // padding: 6px 11px;
 
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
       color: ${PLACEHOLDER_COLOR};
@@ -382,8 +386,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
 
-  .ant-tabs-top>.ant-tabs-nav {
-    margin-bottom: 40px;
+  // プロジェクト編集ページのタブ
+  .project-edit-tab {
+    .ant-tabs-nav {
+      margin-bottom: 40px;
+    }
   }
 
   // TITLE

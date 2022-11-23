@@ -8,7 +8,7 @@ import {
 } from './Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
-const ChangeEmail = () => {
+const TwoFactorModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -26,18 +26,17 @@ const ChangeEmail = () => {
   return (
     <>
       {/* ボタン */}
-      <Button onClick={showModal}>
-        <span>{'メールアドレスの変更'}</span>
+      <Button className="active" type="primary" onClick={showModal}>
+        <span>{'2段階認証を設定する'}</span>
       </Button>
 
       {/* モーダル */}
       <Modal
-        title={<StyledModalTitle>{'メールアドレスの変更'}</StyledModalTitle>}
+        title={<StyledModalTitle>{'2段階認証の設定'}</StyledModalTitle>}
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         width={650}
-        className="modalStyle"
         cancelText="キャンセル"
         okText="変更する"
       >
@@ -45,10 +44,10 @@ const ChangeEmail = () => {
           <Col span={24} className="mb-2">
             <Row align="end">
               <SettingsInputContainer
-                label={<SettingLabel label={'新しいメールアドレス'} required />}
+                label={<SettingLabel label={'電話番号（SMSを受信できる番号）'} required />}
               >
                 <Col className="mb-2" sm={24} md={24} lg={24}>
-                  <SettingInput placeholder={'tanaka@congrant.com'} />
+                  <SettingInput placeholder={'08012345678'} />
                 </Col>
               </SettingsInputContainer>
               <Button>
@@ -69,4 +68,4 @@ const ChangeEmail = () => {
   );
 };
 
-export default ChangeEmail;
+export default TwoFactorModal;

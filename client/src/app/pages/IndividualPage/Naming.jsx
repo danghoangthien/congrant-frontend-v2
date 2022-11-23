@@ -17,11 +17,13 @@ const Naming = () => {
     full_name: '荒木 雄大',
     email: `yamada+${i}@gmail.com`,
     phone: `${'0938354758' + i}`,
+    postcode: `${'550000' + i}`,
     address: `${'大阪府大阪市西区・・・' + i}`,
   }));
 
   const columnMap = {
     personal_id: {
+      width: 120,
       title: '個人ID',
       dataIndex: 'personal_id',
       csvOutput: ({ personal_id }) => personal_id,
@@ -55,17 +57,24 @@ const Naming = () => {
       dataIndex: 'phone',
       csvOutput: ({ phone }) => phone,
     },
+    postcode: {
+      title: '郵便番号',
+      dataIndex: 'postcode',
+      csvOutput: ({ postcode }) => postcode,
+    },
     address: {
       title: '住所',
       dataIndex: 'address',
       csvOutput: ({ address }) => address,
     },
   };
+
   const columns = Object.keys(columnMap).map(columnName => {
     return columnMap[columnName];
   });
 
   const rowSelection = {
+    columnWidth: '48px',
     onChange: (selectedRowKeys, selectedRows) => {
       console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
@@ -75,102 +84,102 @@ const Naming = () => {
       name: record.name,
     }),
   };
+
   return (
     <>
       <SupporterPageLayout>
+        {/* タイトル・Title */}
         <Row type="flex" align="middle" className="mb-6">
-          <Col className="mr-6">
-            <span className="sub-page-title">{'個人サポーターの名寄せ'}</span>
+          <Col>
+            <div className="sub-page-title">{'個人サポーターの名寄せ'}</div>
           </Col>
         </Row>
-        <div className="item mb-6">
-          <Card>
-            <Row className="mb-3">
-              <Col sm={24} md={24} lg={24}>
-                <span className="bold">{'名寄せ条件（AND）'}</span>
-              </Col>
-            </Row>
-            <Row className="mb-3">
-              <Col sm={24} md={24} lg={24}>
-                <Checkbox.Group options={options} defaultValue={['1']} />
-              </Col>
-            </Row>
-          </Card>
-        </div>
-        <div className="item mb-6">
-          <Card>
-            <Row className="mb-3">
-              <Col sm={24} md={20} lg={20}>
-                <span className="bold">
-                  {'メールアドレス「tanaka@gmail.com」と氏名「田中 太郎」が一致'}
-                </span>
-              </Col>
-              <Col type="flex" align="right" sm={24} md={4} lg={4}>
-                <Link className="sidebar-link" to={`/individuals-naming-detail`}>
-                  <Button type="primary">
-                    <span>{'名寄せ先の選択へ'}</span>
-                  </Button>
-                </Link>
-              </Col>
-            </Row>
-            <Row className="mb-3">
-              <Col sm={24} md={24} lg={24}>
-                <Table
-                  dataSource={dataSource}
-                  columns={columns}
-                  rowSelection={{
-                    ...rowSelection,
-                  }}
-                  pagination={false}
-                />
-              </Col>
-            </Row>
-            <Row className="mb-3">
-              <Col type="flex" align="right" sm={24} md={24} lg={24}>
-                <Link className="sidebar-link" to={`/individuals-naming-detail`}>
-                  <Button type="primary">
-                    <span>{'名寄せ先の選択へ'}</span>
-                  </Button>
-                </Link>
-              </Col>
-            </Row>
-          </Card>
-        </div>
-        <div className="item">
-          <Card>
-            <Row className="mb-3">
-              <Col sm={24} md={20} lg={20}>
-                <span className="bold">
-                  {'メールアドレス「yamada@gmail.com」と氏名「田中 太郎」が一致'}
-                </span>
-              </Col>
-              <Col type="flex" align="right" sm={24} md={4} lg={4}>
-                <Button type="primary" disabled>
+
+        <Card className="mb-6">
+          <Row className="mb-3">
+            <Col sm={24} md={24} lg={24}>
+              <span className="bold">{'名寄せ条件（AND）'}</span>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col sm={24} md={24} lg={24}>
+              <Checkbox.Group options={options} defaultValue={['1']} />
+            </Col>
+          </Row>
+        </Card>
+
+        <Card className="mb-6" bodyStyle={{ padding: 0 }}>
+          <Row className="py-4 px-6">
+            <Col sm={24} md={20} lg={20}>
+              <span style={{ fontSize: '16px', fontWeight: '600' }}>
+                {'メールアドレス「tanaka@gmail.com」と氏名「田中 太郎」が一致'}
+              </span>
+            </Col>
+            <Col type="flex" align="right" sm={24} md={4} lg={4}>
+              <Link className="sidebar-link" to={`/individuals-naming-detail`}>
+                <Button type="primary">
                   <span>{'名寄せ先の選択へ'}</span>
                 </Button>
-              </Col>
-            </Row>
-            <Row className="mb-3">
-              <Col sm={24} md={24} lg={24}>
-                <Table
-                  dataSource={dataSource}
-                  columns={columns}
-                  rowSelection={{
-                    ...rowSelection,
-                  }}
-                  pagination={false}
-                />
-              </Col>
-            </Row>
-            <Row className="mb-3">
-              <Col type="flex" align="right" sm={24} md={24} lg={24}>
-                <Button type="primary" disabled>
+              </Link>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={24} md={24} lg={24}>
+              <Table
+                dataSource={dataSource}
+                columns={columns}
+                rowSelection={{
+                  ...rowSelection,
+                }}
+                pagination={false}
+              />
+            </Col>
+          </Row>
+          <Row className="py-4 px-6">
+            <Col type="flex" align="right" sm={24} md={24} lg={24}>
+              <Link className="sidebar-link" to={`/individuals-naming-detail`}>
+                <Button type="primary">
                   <span>{'名寄せ先の選択へ'}</span>
                 </Button>
-              </Col>
-            </Row>
-          </Card>
-        </div>
+              </Link>
+            </Col>
+          </Row>
+        </Card>
+
+        <Card bodyStyle={{ padding: 0 }}>
+          <Row className="py-4 px-6">
+            <Col sm={24} md={20} lg={20}>
+              <span style={{ fontSize: '16px', fontWeight: '600' }}>
+                {'メールアドレス「yamada@gmail.com」と氏名「山田 花子」が一致'}
+              </span>
+            </Col>
+            <Col type="flex" align="right" sm={24} md={4} lg={4}>
+              <Button type="primary" disabled>
+                <span>{'名寄せ先の選択へ'}</span>
+              </Button>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col sm={24} md={24} lg={24}>
+              <Table
+                tableLayout="fixed"
+                dataSource={dataSource}
+                columns={columns}
+                rowSelection={{
+                  ...rowSelection,
+                }}
+                pagination={false}
+              />
+            </Col>
+          </Row>
+          <Row className="py-4 px-6">
+            <Col type="flex" align="right" sm={24} md={24} lg={24}>
+              <Button type="primary" disabled>
+                <span>{'名寄せ先の選択へ'}</span>
+              </Button>
+            </Col>
+          </Row>
+        </Card>
       </SupporterPageLayout>
     </>
   );

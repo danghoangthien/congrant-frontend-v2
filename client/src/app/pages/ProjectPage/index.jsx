@@ -29,8 +29,8 @@ import {
 const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
-      className="ml-5"
-      icon={<MailOutlined />}
+      className="icon-btn"
+      icon={<span className="material-symbols-outlined fill-icon">send</span>}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}
@@ -92,7 +92,7 @@ const ProjectPage = () => {
                 <Col className="mr-6">
                   <span className="page-title">
                     <FlagIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-1 page-title">{'プロジェクト'}</span>
+                    <span className="ml-2 page-title">{'プロジェクト'}</span>
                   </span>
                 </Col>
                 <Col className="mr-2">

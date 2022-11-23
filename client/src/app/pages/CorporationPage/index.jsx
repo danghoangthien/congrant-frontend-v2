@@ -5,22 +5,21 @@ import { useDispatch } from 'react-redux';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
-import { SearchOutlined, PlusOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
 
-import { Button, Input, Row, Col, Badge, Space } from 'antd';
+import { Button, Input, Row, Col, Badge, Space, Dropdown, Menu } from 'antd';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
-import DomainIcon from '@mui/icons-material/Domain';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import SendIcon from '@mui/icons-material/Send';
-
+import AddSupporter from './components/AddSupporter';
+// MODEL
 import './Models/index';
+// CONST
+import { DANGER_COLOR } from 'styles/StyleConstants';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
-      className="ml-5"
-      icon={<SendIcon />}
+      className="icon-btn"
+      icon={<span className="material-symbols-outlined fill-icon">send</span>}
       onClick={() => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}
@@ -30,6 +29,27 @@ const MailButton = ({ selectedRowKeys }) => {
   );
 };
 
+// アクション・Action Menu
+const menu = (
+  <Menu
+    className="action-menu"
+    items={[
+      {
+        key: '1',
+        label: (
+          <>
+            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
+              upload
+            </span>
+            <span className="ml-2">{'一括アップロード'}</span>
+          </>
+        ),
+      },
+    ]}
+  />
+);
+
+// 複数選択した時の操作バー
 const contextDropdownItems = selectedRowKeys => [
   {
     key: '1',
@@ -39,7 +59,13 @@ const contextDropdownItems = selectedRowKeys => [
           console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
-        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'属性を設定する'}</span>
+        <span
+          class="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', display: 'flex' }}
+        >
+          sell
+        </span>
+        <span>{'属性を設定する'}</span>
       </Space>
     ),
   },
@@ -48,10 +74,16 @@ const contextDropdownItems = selectedRowKeys => [
     label: (
       <Space
         onClick={() => {
-          console.log('selectedRowKeys', selectedRowKeys);
+          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
-        <DeleteFilled style={{ color: 'red' }} /> <span className="ml-2">{'削除'}</span>
+        <span
+          class="material-symbols-outlined fill-icon"
+          style={{ color: DANGER_COLOR, fontSize: '16px', display: 'flex' }}
+        >
+          delete
+        </span>
+        <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
       </Space>
     ),
   },
@@ -65,7 +97,7 @@ const CorporationPage = () => {
     return (
       <>
         <Helmet>
-          <title>{'Supporter management'}</title>
+          <title>{'法人サポーター'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -82,22 +114,24 @@ const CorporationPage = () => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <span className="page-title">
-                    <DomainIcon style={{ fontSize: '32px' }} />
-                    <span className="ml-1">{'個人サポーター'}</span>
-                  </span>
+                  <div className="page-title">
+                    <span class="material-symbols-outlined" style={{ fontSize: '30px' }}>
+                      domain
+                    </span>
+                    <span className="ml-2">{'法人サポーター'}</span>
+                  </div>
                 </Col>
                 <Col className="mr-2">
                   <Input
                     className="free-search"
                     placeholder="フリー検索"
-                    prefix={<SearchOutlined />}
+                    prefix={<span className="material-symbols-outlined">search</span>}
                   />
                 </Col>
                 <Col>
                   <Button
                     className="filter-button"
-                    icon={<FilterAltIcon />}
+                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
                     onClick={() => setFilterOpen(!filterOpen)}
                   >
                     {'フィルタ'}
@@ -108,20 +142,25 @@ const CorporationPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Link to={`/individuals-naming`}>
-                <Button>
-                  <span>{'名寄せ候補'}</span>
-                  <Badge
-                    className="ml-1 display-inline-flex pb-1"
-                    style={{ backgroundColor: '#c72a32' }}
-                    count={99}
-                  ></Badge>
-                </Button>
-              </Link>
-              <Button className="active ml-2" type="primary">
-                <PlusOutlined className="display-inline-flex" />
-                <span className="ml-2">{'個人サポーターの登録'}</span>
-              </Button>
+              <Space>
+                <Link to={`/individuals-naming`}>
+                  <Button>
+                    <span>{'名寄せ候補'}</span>
+                    <Badge
+                      className="ml-1 display-inline-flex pb-1"
+                      style={{ backgroundColor: '#c72a32' }}
+                      count={99}
+                    ></Badge>
+                  </Button>
+                </Link>
+                <AddSupporter />
+                <Dropdown overlay={menu} placement="bottomRight" trigger={['hover']}>
+                  <Button
+                    className="more-menu-btn"
+                    icon={<span className="material-symbols-outlined">more_horiz</span>}
+                  />
+                </Dropdown>
+              </Space>
             </Col>
           </Row>
         </div>
@@ -130,11 +169,14 @@ const CorporationPage = () => {
         </div>
         <div className="item">
           <Table
+            tableLayout="fixed"
+            TableName="法人サポーター一覧"
             model="groupSupporterList"
             metaData={metaData}
             Detail={<Detail activeKey={DETAIL_KEY_MAP.BASIC_INFO} />}
             contextButtons={[MailButton]}
             contextDropdownItems={contextDropdownItems}
+            hasTableSetting
           />
         </div>
       </SupporterPageLayout>

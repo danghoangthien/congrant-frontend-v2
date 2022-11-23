@@ -1,9 +1,20 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Radio, Space, Row, Col, Card } from 'antd';
 import { StyledRadioGroup } from './SettingsLayout.style';
 import { PageLayout } from './PageLayout.style';
 
 const SettingsPage = ({ title, settingComponentMap }) => {
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'基本設定'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
   const [activeSetting, setActiveSetting] = useState(Object.keys(settingComponentMap)[0]);
   const onChange = e => {
     console.log();
@@ -13,15 +24,16 @@ const SettingsPage = ({ title, settingComponentMap }) => {
   const ActiveComponent = settingComponentMap[activeSetting].Component;
   return (
     <>
+      {renderPageTitle()}
       <PageLayout>
         <div className="item mx-5">{title}</div>
         <div className="item ma-5">
-          <Card style={{ minWidth: '1000px' }}>
-            <Row>
-              <Col sm={24} md={5} lg={5} style={{ minWidth: '300px' }}>
+          <Card bodyStyle={{ padding: '32px 40px' }}>
+            <Row className="setting-wrapper">
+              <Col style={{ width: '200px' }}>
                 <StyledRadioGroup>
                   <Radio.Group onChange={onChange} defaultValue={activeSetting}>
-                    <Space direction="vertical" size={0}>
+                    <Space direction="vertical" size={0} style={{ width: '100%' }}>
                       {Object.keys(settingComponentMap).map(componentKey => (
                         <Radio.Button value={componentKey}>
                           {settingComponentMap[componentKey].name}
@@ -31,7 +43,7 @@ const SettingsPage = ({ title, settingComponentMap }) => {
                   </Radio.Group>
                 </StyledRadioGroup>
               </Col>
-              <Col sm={24} md={12} lg={12} style={{ minWidth: '650px' }}>
+              <Col className="pl-8" style={{ width: 'calc(100% - 200px)' }}>
                 <ActiveComponent />
               </Col>
             </Row>

@@ -14,12 +14,18 @@ import {
   DONATION_STATUSES,
 } from './consts';
 
+// その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = selectedRowKeys => [
   {
     key: '1',
     label: (
       <Space onClick={() => {}}>
-        <SendIcon style={{ color: 'black' }} />{' '}
+        <span
+          className="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', verticalAlign: 'middle' }}
+        >
+          send
+        </span>
         <span className="ml-2">{'再決済フォームを送る'}</span>
       </Space>
     ),
@@ -28,13 +34,19 @@ export const menuItems = selectedRowKeys => [
     key: '2',
     label: (
       <Space onClick={() => {}}>
-        <CopyFilled style={{ color: 'black' }} />{' '}
-        <span className="ml-2">{'再決済フォームのURLをコピー'}</span>
+        <span
+          className="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', verticalAlign: 'middle' }}
+        >
+          send
+        </span>
+        <span className="ml-2">{'解約フォームを送る'}</span>
       </Space>
     ),
   },
 ];
 
+// レコードアクションメニュー・Record Action Menu
 const menu = (
   <Menu
     items={[
