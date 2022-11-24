@@ -16,10 +16,8 @@ import {
   Menu,
 } from 'antd';
 import { DescriptionStyle } from './BasicInfo.style';
-import { EditOutlined, SaveOutlined } from '@ant-design/icons';
 import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const action_menu = (
   <Menu
@@ -75,7 +73,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
     }
   };
   return (
-    <Row justify="space-between" align="middle" className="mt-4 mb-3">
+    <Row justify="space-between" align="middle">
       <Col>
         <h3 className="supporter-detail-ttl">{'基本情報'}</h3>
       </Col>

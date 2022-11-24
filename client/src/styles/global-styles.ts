@@ -320,6 +320,12 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
 
+  .ant-select-clear,
+  .ant-select-multiple .ant-select-selection-item-remove {
+    display: flex;
+    align-items: center;
+  }
+
   // LEFT MENU
   & .sub-user-menu-link {
     font-size: 14px;

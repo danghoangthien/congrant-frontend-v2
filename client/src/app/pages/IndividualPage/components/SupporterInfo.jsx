@@ -1,9 +1,8 @@
-import { Button, Row, Col, Tag } from 'antd';
+import { Button, Row, Col, Space } from 'antd';
 import DynamicTags from 'app/components/DynamicTags';
 import { SupporterInfoStyle } from './SupporterInfo.style';
 import userImage from 'styles/assets/icon_supporter.svg';
-import EmailIcon from '@mui/icons-material/Email';
-import CloseIcon from '@mui/icons-material/Close';
+import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const SupporterInfo = ({ closeDrawer }) => {
   return (
@@ -17,32 +16,55 @@ const SupporterInfo = ({ closeDrawer }) => {
                   <img src={userImage} alt="サポーター写真" />
                 </div>
                 <div className="supporter-detail-info">
-                  <div className="supporter-detail-number">123456</div>
-                  <div className="supporter-detail-name">田中 太郎</div>
+                  <div className="supporter-detail-number">{'123456'}</div>
+                  <div className="supporter-detail-name">{'田中 太郎'}</div>
                 </div>
               </div>
             </Col>
             <Col>
-              <Row align="middle">
+              <Space size={16}>
                 <Button
                   className="icon-btn less-shadow-btn"
                   icon={<span class="material-symbols-outlined fill-icon">mail</span>}
                 >
                   {'メールを送る'}
                 </Button>
-                <Button type="text" style={{ boxShadow: 'none' }}>
-                  <CloseIcon className="pointer" onClick={() => closeDrawer()} />
-                </Button>
-              </Row>
+                <Button
+                  type="text"
+                  onClick={() => closeDrawer()}
+                  style={{ boxShadow: 'none' }}
+                  icon={
+                    <span
+                      class="material-symbols-outlined"
+                      style={{ color: TEXT_GRAY_COLOR, fontSize: '30px' }}
+                    >
+                      close
+                    </span>
+                  }
+                ></Button>
+              </Space>
             </Col>
           </Row>
+
+          {/* 属性・Supporter Attributes */}
           <Row className="mb-3">
             <DynamicTags
               tagList={['理事', 'ボランティア']}
-              availableTagList={['理事', 'ボランティア', 'more', 'and more']}
+              availableTagList={[
+                '理事',
+                'ボランティア',
+                'テスト属性',
+                'テスト属性2',
+                'テスト属性3',
+                'テスト属性4',
+                'テスト属性5',
+                'テスト属性6',
+                'テスト属性7',
+              ]}
               addMoreLabel={'属性を追加する'}
             />
           </Row>
+
           <Row>
             <Col span={12}>
               <div className="supporter-detail-donation">

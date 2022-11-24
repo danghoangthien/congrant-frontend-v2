@@ -1,17 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Badge, Descriptions, Row, Col, Button, Table, Tag } from 'antd';
-import { StyledPrimaryIcon } from 'styles/global-styles';
-import { CopyOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import { Row, Col, Button, Table } from 'antd';
 import DonationDetail from './DonationDetail';
 import DonationEdit from './DonationEdit';
 import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
 import { DonationStyle } from './Donation.style';
 import AddIcon from '@mui/icons-material/Add';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { StyledDonationTypeTag } from 'styles/Tag.style';
 
 const Title = ({ mode, setMode }) => {
   return (
-    <Row justify="space-between" align="middle" className="mt-4 mb-8">
+    <Row justify="space-between" align="middle" className="mb-6">
       <Col>
         <h3 className="supporter-detail-ttl">{'寄付決済'}</h3>
       </Col>
@@ -24,27 +23,6 @@ const Title = ({ mode, setMode }) => {
             <MoreHorizIcon />
           </Button>
         </Row>
-      </Col>
-    </Row>
-  );
-};
-
-const BoldLabel = ({ label }) => {
-  return <span className="bold">{label}</span>;
-};
-
-const CopiableText = ({ children }) => {
-  return (
-    <Row className="mt-2">
-      <Col sm={24} md={12} lg={12}>
-        {children}
-      </Col>
-      <Col type="flex" align="right" sm={24} md={12} lg={12}>
-        <CopyOutlined
-          className="display-inline-flex"
-          style={{ color: '#c0c0c0' }}
-          onClick={() => {}}
-        />
       </Col>
     </Row>
   );
@@ -64,32 +42,35 @@ const ListModeContent = ({ data, mode, setMode }) => {
     type: {
       title: '寄付タイプ',
       dataIndex: 'type',
-      render: type => <Tag color="blue">{type}</Tag>,
+      render: type => type,
     },
     amount: {
       title: '金額',
       dataIndex: 'amount',
     },
   };
+
   const dataSource = [
     {
       key: '1',
       date_of_receipt: '2022-07-30',
       donation_id: '30139104',
-      type: '単発',
+      type: <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>,
       amount: '3,000円',
     },
     {
       key: '2',
       date_of_receipt: '2022-07-29',
       donation_id: '20381030',
-      type: '単発',
+      type: <StyledDonationTypeTag className="monthly">{'毎月'}</StyledDonationTypeTag>,
       amount: '1,000円',
     },
   ];
+
   const columns = Object.keys(columnMap).map(columnName => {
     return columnMap[columnName];
   });
+
   return (
     <>
       <Table
@@ -118,11 +99,12 @@ const Donation = ({ data }) => {
         <>
           <DonationStyle>
             <Title />
-            <Row className="mb-5">
+            <Row className="mb-4">
               <Col sm={24} md={24} lg={24}>
                 <span className="page-sub-title">{'受領済み'}</span>
               </Col>
             </Row>
+            {/* テーブル */}
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
                 <ListModeContent {...{ data, mode, setMode }} />
@@ -133,6 +115,7 @@ const Donation = ({ data }) => {
                 <span className="page-sub-title">{'未受領'}</span>
               </Col>
             </Row>
+            {/* テーブル */}
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
                 <ListModeContent {...{ data, mode, setMode }} />

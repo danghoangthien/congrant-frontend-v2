@@ -1,44 +1,42 @@
-import { Descriptions, Row, Col, Button, Tag } from 'antd';
-import { StyledPrimaryIcon } from 'styles/global-styles';
-import { MinusOutlined, CloseOutlined, EllipsisOutlined } from '@ant-design/icons';
+import { Descriptions, Row, Col, Button, Dropdown, Badge, Menu } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
-import { LIST_MODE, EDIT_MODE } from '../consts';
+// import { LIST_MODE, EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
+import { StyledDonationTypeTag } from 'styles/Tag.style';
+import { StyledBadgeDot } from 'styles/global-styles';
+import { DONATION_STATUS_COLOR, DONATION_STATUSES } from 'utils/consts';
+
+// 操作メニュー・Action Menu
+const action_menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: 'アクション1',
+      },
+      {
+        key: '2',
+        label: 'アクション2',
+      },
+    ]}
+  />
+);
 
 const Title = ({ mode, setMode }) => {
   return (
-    <>
-      <Row className="my-5">
-        <Col sm={24} md={24} lg={24}>
-          <CloseOutlined
-            className="display-inline-flex"
-            onClick={() => {
-              setMode(LIST_MODE);
-            }}
+    <Row>
+      <Col sm={24} md={12} lg={12}>
+        <h3 className="supporter-detail-ttl">{'継続契約詳細'}</h3>
+      </Col>
+      <Col type="flex" align="right" sm={24} md={12} lg={12}>
+        <Dropdown overlay={action_menu} placement="bottomRight">
+          <Button
+            className="more-menu-btn"
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
           />
-        </Col>
-      </Row>
-      <Row className="my-5">
-        <Col sm={24} md={12} lg={12}>
-          <h3 className="bold display-inline-flex">
-            <StyledPrimaryIcon>
-              <MinusOutlined className="display-inline-flex bold mr-2" />
-            </StyledPrimaryIcon>
-            {'継続契約詳細'}
-          </h3>
-        </Col>
-        <Col type="flex" align="right" sm={24} md={12} lg={12}>
-          <>
-            <Button icon={<EllipsisOutlined />} className="ml-2" />
-          </>
-        </Col>
-      </Row>
-      <Row className="">
-        <Col sm={24} md={24} lg={24}>
-          <h4 className="bold display-inline-flex">{'基本情報'}</h4>
-        </Col>
-      </Row>
-    </>
+        </Dropdown>
+      </Col>
+    </Row>
   );
 };
 
@@ -58,45 +56,32 @@ const ContinuousContractDetail = ({ data, mode, setMode }) => {
   console.log('ContinuousContractDetail render', true);
   return (
     <DescriptionContainer mode={mode} setMode={setMode}>
-      <Descriptions.Item label={<BoldLabel label="個人ID" />}>
-        <CopiableText>{'123456'}</CopiableText>
+      <Descriptions.Item label={<BoldLabel label="継続契約No" />}>
+        <CopiableText>{'1203171'}</CopiableText>
       </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="氏名" />}>
-        <CopiableText>田中 太郎</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="ふりがな" />}>たなか たろう</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="広報物への氏名掲載" />}>可</Descriptions.Item>
-
-      <Descriptions.Item label={<BoldLabel label="性別" />}>{'男性'}</Descriptions.Item>
-
-      <Descriptions.Item label={<BoldLabel label="生年月日" />}>1991-08-01</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="メールアドレス" />}>
-        <CopiableText>{'tanaka.taro@gmail.com'}</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="電話番号" />}>
-        <CopiableText>08012345678</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="住所" />}>
+      <Descriptions.Item label={<BoldLabel label="ステータス" />}>
         <CopiableText>
-          <p>
-            〒5500002
-            <br />
-            大阪府大阪市西区江戸堀
-            <br />
-            1-2-3＊＊＊＊＊マンション301号室
-          </p>
+          <StyledBadgeDot>
+            <Badge color={DONATION_STATUS_COLOR['1'][0]} text={DONATION_STATUSES['1']} />
+          </StyledBadgeDot>
         </CopiableText>
       </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="郵送物送付" />}>可（1部)</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="属性" />}>
-        <Tag>理事</Tag>
-        <Tag>ボランティア</Tag>
+      <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
+        <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
       </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="備考" />}>
-        <p>
-          あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。
-        </p>
+      <Descriptions.Item label={<BoldLabel label="寄付プラン" />}>
+        ゴールドサポーター
       </Descriptions.Item>
+      <Descriptions.Item label={<BoldLabel label="単価・口数" />}>5,000円・1口</Descriptions.Item>
+      <Descriptions.Item label={<BoldLabel label="金額" />}>5,000円</Descriptions.Item>
+      <Descriptions.Item label={<BoldLabel label="累計寄付金額・回数" />}>
+        <CopiableText>20,000円・4回</CopiableText>
+      </Descriptions.Item>
+      <Descriptions.Item label={<BoldLabel label="初回決済日" />}>
+        <CopiableText>2022-05-01</CopiableText>
+      </Descriptions.Item>
+      <Descriptions.Item label={<BoldLabel label="最終決済日" />}>2022-08-15</Descriptions.Item>
+      <Descriptions.Item label={<BoldLabel label="解約日" />}>-</Descriptions.Item>
     </DescriptionContainer>
   );
 };

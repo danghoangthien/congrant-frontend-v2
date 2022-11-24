@@ -1,97 +1,63 @@
-import { Badge, Descriptions, Row, Col, Button, Tag, Table } from 'antd';
-import { StyledPrimaryIcon, StyledBadgeDot } from 'styles/global-styles';
-import { MinusOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
+import { Descriptions, Row, Col, Button, Dropdown, Space, Menu } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
+import { StyledDonationTypeTag } from 'styles/Tag.style';
+import { LIGHT_GRAY } from 'styles/StyleConstants';
 
-const columnMap = {
-  status: {
-    title: 'ステータス',
-    dataIndex: 'status',
-    render: status => (
-      <StyledBadgeDot>
-        <Badge status="success" text={status} />
-      </StyledBadgeDot>
-    ),
-  },
-  issue_date: {
-    title: '発行日',
-    dataIndex: 'issue_date',
-  },
-  receipt_id: {
-    title: '領収書ID',
-    dataIndex: 'receipt_id',
-  },
-  operation: {
-    title: '操作',
-    render: () => {
-      return (
-        <>
-          <Button type="link">{'開く'}</Button>
-          <Button type="link" className="ml-2">
-            {'URLコピー'}
-          </Button>
-        </>
-      );
-    },
-  },
-};
+import styled from 'styled-components/macro';
 
-const mockDatasource = [
-  {
-    key: '1',
-    status: '発行済み',
-    issue_date: '2022-07-30',
-    receipt_id: '123241',
-  },
-  {
-    key: '2',
-    status: '発行済み',
-    issue_date: '2022-07-29',
-    receipt_id: '56546',
-  },
-];
+const CommentContainer = styled.div`
+  padding: 12px;
+  border-top: 1px solid ${LIGHT_GRAY};
+  border-bottom: 1px solid ${LIGHT_GRAY};
+`;
 
-const columns = Object.keys(columnMap).map(columnName => {
-  return columnMap[columnName];
-});
+// 操作メニュー・Action Menu
+const action_menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: 'アクション1',
+      },
+      {
+        key: '2',
+        label: 'アクション2',
+      },
+    ]}
+  />
+);
 
 const Title = ({ mode, setMode }) => {
   return (
     <>
-      <Row className="my-5">
-        <Col sm={24} md={24} lg={24}>
-          <CloseOutlined
-            className="display-inline-flex"
-            onClick={() => {
-              setMode(LIST_MODE);
-            }}
-          />
-        </Col>
-      </Row>
-      <Row className="my-5">
+      {/* ヘッド */}
+      <Row className="mb-6">
         <Col sm={24} md={12} lg={12}>
-          <h3 className="bold display-inline-flex">
-            <StyledPrimaryIcon>
-              <MinusOutlined className="display-inline-flex bold mr-2" />
-            </StyledPrimaryIcon>
-            {'寄付詳細'}
-          </h3>
+          <h3 className="supporter-detail-ttl">{'寄付詳細'}</h3>
         </Col>
         <Col type="flex" align="right" sm={24} md={12} lg={12}>
-          <>
-            <Button icon={<EditOutlined />} type="primary" onClick={() => setMode(EDIT_MODE)}>
+          <Space size={8}>
+            <Button
+              className="icon-btn"
+              icon={<span class="material-symbols-outlined fill-icon">edit</span>}
+              type="primary"
+              onClick={() => setMode(EDIT_MODE)}
+            >
               {'編集'}
             </Button>
-            <Button className="ml-2">{'...'}</Button>
-          </>
+            <Dropdown overlay={action_menu} placement="bottomRight">
+              <Button
+                className="more-menu-btn"
+                icon={<span className="material-symbols-outlined">more_horiz</span>}
+              />
+            </Dropdown>
+          </Space>
         </Col>
       </Row>
-      <Row className="">
-        <Col sm={24} md={24} lg={24}>
-          <h4 className="bold display-inline-flex">{'基本情報'}</h4>
-        </Col>
+      <Row className="mb-4">
+        <div className="page-sub-title">{'基本項目'}</div>
       </Row>
     </>
   );
@@ -99,25 +65,25 @@ const Title = ({ mode, setMode }) => {
 
 const ExtraFieldTitle = () => {
   return (
-    <>
-      <Row className="my-5">
-        <Col sm={24} md={24} lg={24}>
-          <h4 className="bold display-inline-flex">{'カスタム項目'}</h4>
-        </Col>
-      </Row>
-    </>
+    <Row className="mb-4">
+      <div className="page-sub-title">{'カスタム項目'}</div>
+    </Row>
   );
 };
 
 const ReceiptTitle = () => {
   return (
-    <>
-      <Row className="my-5">
-        <Col sm={24} md={24} lg={24}>
-          <h4 className="bold display-inline-flex">{'領収書'}</h4>
-        </Col>
-      </Row>
-    </>
+    <Row className="mb-4">
+      <div className="page-sub-title">{'領収書'}</div>
+    </Row>
+  );
+};
+
+const CommentTitle = () => {
+  return (
+    <Row className="mb-4">
+      <div className="page-sub-title">{'応援コメント'}</div>
+    </Row>
   );
 };
 
@@ -134,56 +100,93 @@ const DonationDetail = ({ data, mode, setMode }) => {
   return (
     <>
       <Title mode={mode} setMode={setMode} />
-      <DescriptionContainer>
-        <Descriptions.Item label={<BoldLabel label="寄付ID" />}>
-          <CopiableText>{'431051'}</CopiableText>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="受領日" />}>
-          <CopiableText>{'2022-07-30'}</CopiableText>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
-          <Tag
-            style={{
-              color: '#2878CB',
-              backgroundColor: '#E9F1FA',
-              border: '#94BCE5',
-            }}
-          >
-            {'単発'}
-          </Tag>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="プロジェクト" />}>
-          {'NPO法人コングラントへのご支援をお願いします！'}
-        </Descriptions.Item>
+      <Row className="mb-8">
+        <Col span={24}>
+          <DescriptionContainer>
+            <Descriptions.Item label={<BoldLabel label="寄付ID" />}>
+              <CopiableText>{'431051'}</CopiableText>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="受領日" />}>
+              <CopiableText>{'2022-07-30'}</CopiableText>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="入金日" />}>
+              <CopiableText>{'2022-02-20'}</CopiableText>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
+              <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="プロジェクト" />}>
+              {'NPO法人コングラントへのご支援をお願いします！'}
+            </Descriptions.Item>
 
-        <Descriptions.Item label={<BoldLabel label="プラン" />}>{'-'}</Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="プラン" />}>{'-'}</Descriptions.Item>
 
-        <Descriptions.Item label={<BoldLabel label="単価・口数" />}>
-          {'3,000円・1口'}
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="金額" />}>{'3,000円'}</Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="受領方法" />}>{'手渡し'}</Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="登録経路" />}>
-          {'インポート（2022-09-10）'}
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="備考欄" />}>
-          <p>
-            {'領収書は会社宛に送ってください。 〒0000000 ＊＊＊県＊＊＊市＊＊＊＊＊＊＊＊＊＊'}
-            {'＊＊＊＊＊＊＊＊ビル6F ＊＊＊＊株式会社'}
-          </p>
-        </Descriptions.Item>
-      </DescriptionContainer>
-      <ExtraFieldTitle />
-      <DescriptionContainer>
-        <Descriptions.Item label={<BoldLabel label="認知経路" />}>{'SNS'}</Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="寄付の使用用途" />}>
-          {'2022-団体に任せる-30'}
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="支援経験" />}>{'なし'}</Descriptions.Item>
-      </DescriptionContainer>
-      <ReceiptTitle />
-      <Table dataSource={mockDatasource} columns={columns} />
+            <Descriptions.Item label={<BoldLabel label="単価・口数" />}>
+              {'3,000円・1口'}
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="金額" />}>{'3,000円'}</Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="受領方法" />}>
+              {'カード決済'}
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="登録経路" />}>
+              {'コングラント経由（2022-01-01））'}
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="備考欄" />}>
+              <div>
+                領収書は会社宛に送ってください。
+                <br />
+                〒0000000
+                <br />
+                ＊＊＊県＊＊＊市＊＊＊＊＊＊＊＊＊＊
+                <br />
+                ＊＊＊＊＊＊＊＊ビル6F
+                <br />
+                ＊＊＊＊株式会社
+              </div>
+            </Descriptions.Item>
+          </DescriptionContainer>
+        </Col>
+      </Row>
+
+      {/* カスタム項目 */}
+      <Row className="mb-8">
+        <Col span={24}>
+          <ExtraFieldTitle />
+        </Col>
+        <Col span={24}>
+          <DescriptionContainer>
+            <Descriptions.Item label={<BoldLabel label="認知経路" />}>{'SNS'}</Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="寄付の使用用途" />}>
+              {'2022-団体に任せる-30'}
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="支援経験" />}>{'なし'}</Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="寄付理由" />}>{'-'}</Descriptions.Item>
+          </DescriptionContainer>
+        </Col>
+      </Row>
+
+      {/* 応援コメント */}
+      <Row className="mb-8">
+        <Col span={24}>
+          <CommentTitle />
+        </Col>
+        <Col span={24}>
+          <CommentContainer>
+            <div>
+              Twitterでこの活動を知りました。微量ながら応援させていただきます。これからも活動頑張ってください！
+            </div>
+          </CommentContainer>
+        </Col>
+      </Row>
+
+      <Row>
+        <ReceiptTitle />
+        <Col span={24}>
+          <Button type="primary">作成する</Button>
+        </Col>
+      </Row>
     </>
   );
 };
+
 export default DonationDetail;

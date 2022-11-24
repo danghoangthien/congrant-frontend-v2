@@ -13,12 +13,10 @@ import './Models/received';
 // import { FundingPageLayout } from './FundingPage.style';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { RED_COLOR } from 'styles/StyleConstants';
-// Icons
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import SendIcon from '@mui/icons-material/Send';
 // Meta
 import * as metaData from './mockDataReceived';
 
+// メッセージを送るボタン
 const MailButton = ({ selectedRowKeys }) => {
   return (
     <Button
@@ -146,12 +144,12 @@ const FundingPage = () => {
           <Table
             tableLayout="fixed"
             model="receivedFundingList"
-            metaData={metaData}
-            contextButtons={[MailButton]}
-            Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
-            TableName={'受領済みの寄付一覧'}
-            contextDropdownItems={metaData.menuItems}
-            hasTableSetting
+            metaData={metaData} // テーブル中身
+            contextButtons={[MailButton]} // メッセージを送るボタン
+            Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />} // 詳細ページ
+            TableName={'受領済みの寄付一覧'} // テーブルタイトル
+            contextDropdownItems={metaData.menuItems} //　選択時のメニュー
+            hasTableSetting // テーブル表示設定
           />
         </div>
       </PageLayout>

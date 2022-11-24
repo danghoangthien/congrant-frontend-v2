@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Radio, Checkbox, Space, DatePicker } from 'antd';
+import { Row, Col, Modal, Radio, Space } from 'antd';
 import {
   SettingsInputContainer,
   SettingLabel,
   SettingInput,
-  SettingSelect,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
-import { TagFilled } from '@ant-design/icons';
 import styled from 'styled-components/macro';
 
 export const StyledRadioGroup = styled(Radio.Group)`
