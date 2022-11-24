@@ -10,7 +10,7 @@ import {
   SettingLabel,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 
-import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
+import ImageUpload from 'app/components/ImageUpload';
 
 import './Models/index';
 
@@ -127,12 +127,7 @@ const Step1 = () => {
       </Row>
       <Row className="item mb-5">
         <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} required />}>
-          <StyledUploadPicture style={{ width: '600px' }}>
-            <Space direction="vertical" align="center">
-              <span className="upload-picture-title">{'+'}</span>
-              <span className="upload-picture-title">{'アップロード'}</span>
-            </Space>
-          </StyledUploadPicture>
+          <ImageUpload />
         </SettingsInputContainer>
       </Row>
 

@@ -1,14 +1,4 @@
-import { Row, Col, Button, DatePicker, Space, Radio, Tag } from 'antd';
-
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInfoLabel,
-  SettingInput,
-  SettingTextarea,
-} from '../../CorporationSettingPage/components/Sprites';
-
-import { StyledSubtitle, StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
+import { Row, Col, Tag } from 'antd';
 
 import styled from 'styled-components/macro';
 

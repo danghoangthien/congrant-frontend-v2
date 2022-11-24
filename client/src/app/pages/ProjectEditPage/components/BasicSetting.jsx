@@ -11,8 +11,9 @@ import {
   SettingSelect,
   SettingRangePicker,
 } from '../../CorporationSettingPage/components/Sprites';
+import ImageUpload from 'app/components/ImageUpload';
 // STYLING
-import { StyledSubtitle, StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
+import { StyledSubtitle } from 'app/components/Layout/SettingsLayout.style';
 import styled from 'styled-components/macro';
 
 export const StyledTag = styled(Tag)`
@@ -68,27 +69,7 @@ const BasicSetting = () => {
           <div className="mb-8">
             <SettingsInputContainer label={<SettingLabel label={'トップ画像'} required />}>
               <Space>
-                <StyledUploadPicture
-                  style={{
-                    width: '124px',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      background: 'url(/markus-spiske-97Rpu-UmCaY-unsplash-300x200.jpeg) center',
-                      opacity: '0.8',
-                    }}
-                  ></div>
-                </StyledUploadPicture>
-
-                <StyledUploadPicture style={{ width: '124px' }}>
-                  <Space direction="vertical" align="center">
-                    <span className="upload-picture-title">{'+'}</span>
-                    <span className="upload-picture-title">{'アップロード'}</span>
-                  </Space>
-                </StyledUploadPicture>
+                <ImageUpload maxFiles={3} />
               </Space>
               <Row>
                 <StyledSubtitle>{'画像は3枚まで設定できます。'}</StyledSubtitle>

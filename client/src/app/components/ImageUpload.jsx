@@ -26,9 +26,10 @@ const dummyRequest = ({ file, onSuccess }) => {
   }, 0);
 };
 
-const SingleImageUpload = ({ onUploadDone }) => {
+const ImageUpload = ({ onUploadDone = () => {}, width = '100%', maxFiles = 1 }) => {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
+  const [fileList, setFileList] = useState([]);
   const handleChange = info => {
     if (info.file.status === 'uploading') {
       setLoading(true);
@@ -36,6 +37,13 @@ const SingleImageUpload = ({ onUploadDone }) => {
         setLoading(false);
         setImageUrl(url);
         onUploadDone(url);
+        setFileList([
+          ...fileList,
+          {
+            url,
+            status: 'done',
+          },
+        ]);
       });
       return;
     }
@@ -50,36 +58,26 @@ const SingleImageUpload = ({ onUploadDone }) => {
       return;
     }
   };
-
+  console.log('maxFiles', maxFiles, fileList);
   return (
-    <StyledUploadPicture style={{ width: '600px' }}>
-      <Upload
-        customRequest={dummyRequest}
-        beforeUpload={beforeUpload}
-        onChange={handleChange}
-        listType="picture-card"
-        fileList={[]}
-        maxCount={1}
-      >
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt="avatar"
-            style={{
-              width: '100%',
-            }}
-          />
-        ) : (
-          <Space direction="vertical" align="center">
-            <span className="upload-picture-title">
-              {loading ? <LoadingOutlined /> : <PlusOutlined />}
-            </span>
-            <span className="upload-picture-title">{'アップロード'}</span>
-          </Space>
-        )}
-      </Upload>
-    </StyledUploadPicture>
+    <Upload
+      customRequest={dummyRequest}
+      beforeUpload={beforeUpload}
+      onChange={handleChange}
+      listType="picture-card"
+      fileList={fileList}
+      maxCount={maxFiles}
+    >
+      {fileList.length < maxFiles && (
+        <Space align="center" direction="vertical">
+          <span className="upload-picture-title">
+            {loading ? <LoadingOutlined /> : <PlusOutlined />}
+          </span>
+          <span className="upload-picture-title">{'アップロード'}</span>
+        </Space>
+      )}
+    </Upload>
   );
 };
 
-export default SingleImageUpload;
+export default ImageUpload;

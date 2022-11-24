@@ -8,13 +8,14 @@ import Detail from '../IndividualPage/components/Detail';
 import { DANGER_COLOR } from 'styles/StyleConstants';
 
 import { PLANS } from './consts';
+import ChangeAmount from './components/ChangeAmount';
 
-const menu = (
+const menuItems = (
   <Menu
     items={[
       {
         key: '1',
-        label: '金額を変更して消込',
+        label: <ChangeAmount />,
       },
       {
         key: '2',
@@ -86,7 +87,7 @@ const columnMap = {
     render: row => (
       <Space>
         <Button type="primary">{'入金消込'}</Button>
-        <Dropdown overlay={menu} placement="bottomRight">
+        <Dropdown overlay={menuItems} placement="bottomRight">
           <Button
             className="more-menu-btn"
             icon={<span className="material-symbols-outlined">more_horiz</span>}
