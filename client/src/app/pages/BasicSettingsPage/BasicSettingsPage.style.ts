@@ -75,19 +75,6 @@ export const StyledUploadPicture = styled.div`
 
     background: rgba(0, 0, 0, 0.5);
   }
-  .upload-picture-title {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 22px;
-    /* identical to box height, or 157% */
-
-    text-align: center;
-
-    /* Text/Gray */
-
-    color: rgba(0, 0, 0, 0.5);
-  }
 `;
 
 export const StyledForm = styled.div`

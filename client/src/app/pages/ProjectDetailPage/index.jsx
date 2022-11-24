@@ -14,6 +14,7 @@ const DetailPage = () => {
         <Route path={`${path}/funding`} component={Funding} />
         <Route path={`${path}/course`} component={Course} />
         <Route path={`${path}/edit`} component={ProjectEditPage} />
+        <Route path={`/projects/new`} component={ProjectEditPage} />
       </Switch>
     </>
   );

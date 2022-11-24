@@ -9,7 +9,7 @@ import {
   SettingTextarea,
 } from '../../CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
-import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
+import ImageUpload from 'app/components/ImageUpload';
 
 const { TextArea } = Input;
 
@@ -63,12 +63,7 @@ const AddCourse = ({ title }) => {
           </SettingsInputContainer>
 
           <SettingsInputContainer label={<SettingInfoLabel label={'イメージ画像'} />}>
-            <StyledUploadPicture style={{ width: '600px' }}>
-              <Space direction="vertical" align="center">
-                <span className="upload-picture-title">{'+'}</span>
-                <span className="upload-picture-title">{'アップロード'}</span>
-              </Space>
-            </StyledUploadPicture>
+            <ImageUpload width="600px" />
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingInfoLabel label={'個数制限'} />}>
             <Row>

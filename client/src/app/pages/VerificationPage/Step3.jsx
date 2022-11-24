@@ -10,8 +10,6 @@ import {
   SettingLabel,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 
-import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
-
 import './Models/index';
 
 const Step3 = () => {

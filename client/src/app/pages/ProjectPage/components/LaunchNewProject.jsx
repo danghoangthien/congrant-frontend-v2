@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Row, Col, Modal, Button } from 'antd';
+import { useHistory } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import {
@@ -10,6 +11,7 @@ import {
 } from './LaunchNewProject.style';
 
 const LaunchNewProject = () => {
+  const history = useHistory();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -43,7 +45,7 @@ const LaunchNewProject = () => {
       >
         <Row className="item mb-5" gutter={16}>
           <Col span={8}>
-            <StyledProjectLaunchType>
+            <StyledProjectLaunchType onClick={() => history.push(`projects/new?type=1`)}>
               <StyledProjectLaunchTypeInfo color="#EFF7EB" className="mb-5">
                 {'通常の寄付・会費を集める'}
               </StyledProjectLaunchTypeInfo>
@@ -68,7 +70,7 @@ const LaunchNewProject = () => {
             </StyledProjectLaunchType>
           </Col>
           <Col span={8}>
-            <StyledProjectLaunchType>
+            <StyledProjectLaunchType onClick={() => history.push(`projects/new?type=2`)}>
               <StyledProjectLaunchTypeInfo color="#E9F1FA" className="mb-5">
                 {'短期で集中的に集める'}
               </StyledProjectLaunchTypeInfo>
@@ -93,7 +95,7 @@ const LaunchNewProject = () => {
             </StyledProjectLaunchType>
           </Col>
           <Col span={8}>
-            <StyledProjectLaunchType>
+            <StyledProjectLaunchType onClick={() => history.push(`projects/new?type=3`)}>
               <StyledProjectLaunchTypeInfo color="#F9EAEA" className="mb-5">
                 {'マンスリーサポーターを増やす'}
               </StyledProjectLaunchTypeInfo>

@@ -2,20 +2,25 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 // Antd
-import { Button, Badge, Input, Row, Col, Space, Breadcrumb, Menu, Dropdown } from 'antd';
+import {
+  Typography,
+  Button,
+  Badge,
+  Input,
+  Row,
+  Col,
+  Space,
+  Breadcrumb,
+  Menu,
+  Dropdown,
+} from 'antd';
 // Components
 import Table from 'app/components/Table';
-import Filters from './components/Filters';
-import AddFunding from './components/AddFunding';
-import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
-import './Models/received';
+import Swap from './components/Swap';
 // Styles
 // import { FundingPageLayout } from './FundingPage.style';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { RED_COLOR } from 'styles/StyleConstants';
-// Icons
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import SendIcon from '@mui/icons-material/Send';
 // Meta
 import * as metaData from './mockData';
 // Model
@@ -130,6 +135,8 @@ const FundingPage = () => {
             contextButtons={[MailButton]}
             // Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
             TableName={'未受領の寄付一覧'}
+            showDownLoad={false}
+            ExtraTitle={<Swap />}
           />
         </div>
       </PageLayout>

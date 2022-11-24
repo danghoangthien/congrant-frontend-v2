@@ -4,8 +4,9 @@ import {
   SettingInput,
   SettingInfoLabel,
 } from '../../CorporationSettingPage/components/Sprites';
-import { StyledUploadPicture, StyledForm } from '../BasicSettingsPage.style';
+import { StyledForm } from '../BasicSettingsPage.style';
 import ReceiptTemplate from './ReceiptTemplate';
+import ImageUpload from 'app/components/ImageUpload';
 
 // レコードアクションメニュー・Record Action Menu
 const menu = (
@@ -97,14 +98,7 @@ const Receipt = () => {
           {/*  印影 */}
           <Col span={24} className="mb-6">
             <SettingsInputContainer label={<SettingInfoLabel label={'印影'} />}>
-              <StyledUploadPicture>
-                <div className="upload-picture">
-                  <Space direction="vertical" align="center" style={{ width: 'max-content' }}>
-                    <span className="upload-picture-title">{'+'}</span>
-                    <span className="upload-picture-title">{'アップロード'}</span>
-                  </Space>
-                </div>
-              </StyledUploadPicture>
+              <ImageUpload />
             </SettingsInputContainer>
           </Col>
           {/*  認定通知書番号 */}

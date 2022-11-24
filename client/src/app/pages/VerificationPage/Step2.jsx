@@ -10,8 +10,7 @@ import {
   SettingLabel,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 
-import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
-
+import ImageUpload from 'app/components/ImageUpload';
 import './Models/index';
 
 const Step2 = () => {
@@ -104,12 +103,7 @@ const Step2 = () => {
       </Row>
       <Row className="item mb-5">
         <SettingsInputContainer label={<SettingInfoLabel label={'身分証明書等'} required />}>
-          <StyledUploadPicture className="item mb-5" style={{ width: '600px' }}>
-            <Space direction="vertical" align="center">
-              <span className="upload-picture-title">{'+'}</span>
-              <span className="upload-picture-title">{'アップロード'}</span>
-            </Space>
-          </StyledUploadPicture>
+          <ImageUpload />
 
           <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
             有効な身分証明書：

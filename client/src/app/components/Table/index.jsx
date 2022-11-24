@@ -15,8 +15,10 @@ const DataTable = ({
   Detail = null,
   contextButtons = [],
   contextDropdownItems = () => {},
-  TableName = [],
+  TableName = null,
   hasTableSetting,
+  showDownLoad = true,
+  ExtraTitle = null,
 }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
@@ -102,11 +104,14 @@ const DataTable = ({
       <>
         <Card bodyStyle={{ padding: 0 }} className={hasSelected && 'mb-14'}>
           <Row className="py-4 px-6">
-            <Col sm={24} md={12} lg={10}>
+            <Col sm={24} md={12} lg={12}>
               <Space size={24}>
                 <span className="table-title">{TableName}</span>
-                <Download model={model} columnMap={metaData.columnMap} />
+                {showDownLoad && <Download model={model} columnMap={metaData.columnMap} />}
               </Space>
+            </Col>
+            <Col sm={24} md={12} lg={12} type="flex" align="right">
+              {ExtraTitle && ExtraTitle}
             </Col>
             {hasTableSetting && (
               <Col sm={24} md={12} lg={14}>
