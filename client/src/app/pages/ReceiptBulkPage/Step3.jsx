@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Row, Col, Space, Descriptions, Button, Table, Typography } from 'antd';
 // STYLE
 import { DescriptionStyle } from 'app/pages/ReceiptBulkPage/ReceiptBulk.style';
+// COMPONENTS
+import DrawerHandle from 'app/components/DrawerHandle';
+import Detail from '../IndividualPage/components/Detail';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -16,8 +19,11 @@ const columnMap = {
   supporter: {
     width: 250,
     title: 'サポーター名',
-    dataIndex: 'supporter',
-    render: supporter => <Typography.Text type="success">{supporter}</Typography.Text>,
+    render: row => (
+      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
+        <span className="supporter-link">{row.supporter}</span>
+      </DrawerHandle>
+    ),
   },
   number: {
     width: 100,
