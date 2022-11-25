@@ -11,6 +11,10 @@ export const StyledDetail = styled.div`
     }
   }
 
+  & .ant-tabs-nav {
+    margin-bottom: 24px;
+  }
+
   & .detail-table {
     th {
       padding: 12px 12px;

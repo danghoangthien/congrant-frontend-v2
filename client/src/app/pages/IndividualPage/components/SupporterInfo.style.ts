@@ -4,8 +4,10 @@ import { PRIMARY_COLOR } from 'styles/StyleConstants';
 export const SupporterInfoStyle = styled.div`
   & .supporter-detail-box {
     display: flex;
+
     .supporter-detail-number {
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: 300;
     }
     .supporter-detail-name {
       font-size: 16px;

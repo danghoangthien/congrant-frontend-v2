@@ -1,10 +1,15 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Table, Row, Col, Pagination, Checkbox, Select, Dropdown, Menu, Space } from 'antd';
 import { push } from 'connected-react-router';
+// ANTD
+import { Card, Table, Row, Col, Pagination, Checkbox, Select, Dropdown, Menu, Space } from 'antd';
+// DOWNLOAD・ダウンロード
 import Download from './Download';
+// TABLE DISPLAY SETTING・テーブル表示設定
 import TableSetting from './TableSetting';
+// STYLE
 import { TableStyle } from './Table.style';
+// DETAIL DRAWER・詳細ページ
 import DrawerHandle from 'app/components/DrawerHandle';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100];
@@ -14,11 +19,11 @@ const DataTable = ({
   metaData,
   Detail = null,
   contextButtons = [],
-  contextDropdownItems = () => {},
   TableName = null,
   hasTableSetting,
   showDownLoad = true,
   ExtraTitle = null,
+  contextDropdownItems = () => {},
 }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
@@ -30,19 +35,8 @@ const DataTable = ({
     location: { query, pathname, search },
   } = useSelector(state => state.router);
   const loading = useSelector(state => state.loading.models[model]);
-
   const usp = new URLSearchParams(search);
-
-  useMemo(() => {
-    dispatch[model].list(query);
-  }, [dispatch, query]);
-
-  useEffect(() => {
-    if (column_setting !== null) {
-      columns = metaData.getRenderColumns();
-      dispatch[model].list(query);
-    }
-  }, [column_setting]);
+  const hasSelected = selectedRowKeys.length > 0;
 
   const onSelectChange = newSelectedRowKeys => {
     console.log('newSelectedRowKeys', newSelectedRowKeys);
@@ -55,7 +49,35 @@ const DataTable = ({
     columnWidth: '48px',
   };
 
-  const hasSelected = selectedRowKeys.length > 0;
+  // ページネーション・Pagination
+  const renderPagination = () => {
+    return (
+      <Pagination
+        className="decoupled-pagination"
+        key={Math.random()}
+        {...{
+          defaultPageSize: pagination.limit,
+          current: parseInt(pagination.current_page),
+          total: parseInt(pagination.total_items),
+          onChange: onPageChange,
+          pageSizeOptions: PAGE_SIZE_OPTIONS,
+          onShowSizeChange,
+          showTotal: (total, range) => `${range[0]}〜${range[1]}件/${total}件`,
+        }}
+      />
+    );
+  };
+
+  useMemo(() => {
+    dispatch[model].list(query);
+  }, [dispatch, query]);
+
+  useEffect(() => {
+    if (column_setting !== null) {
+      columns = metaData.getRenderColumns();
+      dispatch[model].list(query);
+    }
+  }, [column_setting]);
 
   function onPageChange(page) {
     setSelectedRowKeys([]);
@@ -80,41 +102,25 @@ const DataTable = ({
     dispatch(push(`${pathname}?${usp}`));
   }
 
-  // ページネーション・Pagination
-  const renderPagination = () => {
-    return (
-      <Pagination
-        className="decoupled-pagination"
-        key={Math.random()}
-        {...{
-          defaultPageSize: pagination.limit,
-          current: parseInt(pagination.current_page),
-          total: parseInt(pagination.total_items),
-          onChange: onPageChange,
-          pageSizeOptions: PAGE_SIZE_OPTIONS,
-          onShowSizeChange,
-          showTotal: (total, range) => `${range[0]}〜${range[1]}件/${total}件`,
-        }}
-      />
-    );
-  };
-
   return (
     <TableStyle>
       <>
         <Card bodyStyle={{ padding: 0 }} className={hasSelected && 'mb-14'}>
-          <Row className="py-4 px-6">
-            <Col sm={24} md={12} lg={12}>
+          {/* カードタイトル・Card Head */}
+          <Row className="py-4 px-6" justify="space-between">
+            <Col>
               <Space size={24}>
                 <span className="table-title">{TableName}</span>
                 {showDownLoad && <Download model={model} columnMap={metaData.columnMap} />}
               </Space>
             </Col>
-            <Col sm={24} md={12} lg={12} type="flex" align="right">
-              {ExtraTitle && ExtraTitle}
-            </Col>
+            {ExtraTitle && (
+              <Col type="flex" align="right">
+                {ExtraTitle}
+              </Col>
+            )}
             {hasTableSetting && (
-              <Col sm={24} md={12} lg={14}>
+              <Col>
                 <Row align="middle" justify="end">
                   <Col className="text-center">
                     <TableSetting
@@ -127,6 +133,8 @@ const DataTable = ({
               </Col>
             )}
           </Row>
+
+          {/* テーブル・Table */}
           <Row className="index-table-wrapper">
             <Col span={24}>
               <Table
@@ -147,9 +155,13 @@ const DataTable = ({
               />
             </Col>
           </Row>
+
+          {/* ページネーション・Pagination */}
           <Row className="my-4 mx-6" justify="end">
             <Col>{renderPagination()}</Col>
           </Row>
+
+          {/* 詳細ページ・Detail Drawer */}
           {activeRow && Detail && (
             <DrawerHandle
               key={Math.random()}
@@ -160,6 +172,8 @@ const DataTable = ({
             />
           )}
         </Card>
+
+        {/* 選択時の操作バー・Selected Tool Bar */}
         {hasSelected && (
           <div className="index-table-toolbar">
             <Row align="middle" className="selected-status-ops py-3 px-6">
@@ -198,6 +212,8 @@ const DataTable = ({
               {contextButtons.map(Component => {
                 return <Component selectedRowKeys={selectedRowKeys} />;
               })}
+
+              {/* 操作メニュー */}
               <Dropdown
                 overlay={
                   <Menu

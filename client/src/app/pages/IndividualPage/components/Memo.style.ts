@@ -15,8 +15,7 @@ export const MemoStyle = styled.div`
     align-items: center;
 
     .icon {
-      width: 16px;
-      display: inline-blocl
+      font-size: 16px;
       margin-right: 4px;
     }
   }
@@ -25,6 +24,14 @@ export const MemoStyle = styled.div`
     display: inline-block;
     width: 24px;
     height: 24px;
+
+    .icon {
+      font-size: 16px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   & .edit-button {
@@ -34,10 +41,10 @@ export const MemoStyle = styled.div`
     align-items: center;
     justify-content: center;
 
-     svg {
+    svg {
       color: #fff;
       width: 16px;
-     }
+    }
   }
 
   & .delete-button {
@@ -47,9 +54,9 @@ export const MemoStyle = styled.div`
     align-items: center;
     justify-content: center;
 
-     svg {
+    svg {
       color: ${WARNING_COLOR};
       width: 16px;
-     }
+    }
   }
 `;

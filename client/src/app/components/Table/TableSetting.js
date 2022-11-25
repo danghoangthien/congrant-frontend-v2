@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Button, Modal, Checkbox, Select } from 'antd';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
-
 import { setWithExpiry } from 'utils/localStorageHandler';
+// ANTD
+import { Row, Col, Button, Modal, Checkbox, Select } from 'antd';
 
 const TableSetting = ({ model, columnMap, localstorageKey }) => {
   const dispatch = useDispatch();

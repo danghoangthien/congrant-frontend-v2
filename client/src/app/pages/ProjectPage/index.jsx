@@ -116,7 +116,6 @@ const ProjectPage = () => {
         <StyledProjectCard>
           <Card
             title={<span className="bold">{'プロジェクト一覧'}</span>}
-            style={{ minWidth: '1000px' }}
             className="project-card-wrapper"
           >
             {Array.from(Array(3).keys()).map(i => (

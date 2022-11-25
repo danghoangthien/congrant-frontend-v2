@@ -1,3 +1,5 @@
+import { DARK_GRAY, SUCCESS_COLOR, WARNING_COLOR } from 'styles/StyleConstants';
+
 export const LIST_MODE = 0;
 export const DETAIL_MODE = 1;
 export const EDIT_MODE = 2;
@@ -13,9 +15,21 @@ const DONATION_TYPES = {
 };
 
 const DONATION_TYPE_COLORS = {
-  1: 'blue',
-  2: 'green',
-  3: 'orange',
+  1: ['#E9F1FA', '#94BCE5', '#2878CB'], // background, border, color
+  2: ['#FCF0EB', '#EFB29B', '#DE6536'],
+  3: ['#FBEAF4', '#EA96C6', '#D42C8E'],
+};
+
+const DONATION_STATUSES = {
+  1: '継続中',
+  2: '再決済待ち',
+  3: '解約',
+};
+
+const DONATION_STATUS_COLOR = {
+  1: [SUCCESS_COLOR],
+  2: [WARNING_COLOR],
+  3: [DARK_GRAY],
 };
 
 const RECEIPT_STATUSES = {
@@ -38,6 +52,8 @@ const PLANS = {
 export {
   RECEIPT_METHODS,
   DONATION_TYPES,
+  DONATION_STATUSES,
+  DONATION_STATUS_COLOR,
   RECEIPT_STATUSES,
   PLANS,
   DONATION_TYPE_COLORS,

@@ -4,9 +4,16 @@ import { StyledBadgeDot } from 'styles/global-styles';
 import ContinuousContractDetail from './ContinuousContractDetail';
 import { LIST_MODE, DETAIL_MODE } from '../consts';
 
+import {
+  DONATION_TYPES,
+  DONATION_TYPE_COLORS,
+  DONATION_STATUS_COLOR,
+  DONATION_STATUSES,
+} from 'utils/consts';
+
 const Title = () => {
   return (
-    <Row className="mt-4 mb-8">
+    <Row className="mb-6">
       <Col>
         <h3 className="supporter-detail-ttl">{'継続契約'}</h3>
       </Col>
@@ -16,20 +23,55 @@ const Title = () => {
 
 const ListModeContent = ({ data, mode, setMode }) => {
   console.log('ListModeContent', true);
+
+  const dataSource = [
+    {
+      key: '1',
+      status: '1',
+      donation_type: '1',
+      plan: 'ゴールドサポーター',
+      amount: '10,000円/月',
+    },
+    {
+      key: '2',
+      status: '2',
+      donation_type: '2',
+      plan: 'ゴールドサポーター',
+      amount: '10,000円/月',
+    },
+    {
+      key: '3',
+      status: '3',
+      donation_type: '2',
+      plan: 'ゴールドサポーター',
+      amount: '10,000円/月',
+    },
+  ];
+
   const columnMap = {
     status: {
       title: 'ステータス',
       dataIndex: 'status',
       render: status => (
         <StyledBadgeDot>
-          <Badge status="success" text={status} />
+          <Badge color={DONATION_STATUS_COLOR[status][0]} text={DONATION_STATUSES[status]} />
         </StyledBadgeDot>
       ),
     },
-    frequency: {
+    donation_type: {
       title: '頻度',
-      dataIndex: 'frequency',
-      render: frequency => <Tag color="green">{frequency}</Tag>,
+      dataIndex: 'donation_type',
+      render: donation_type => (
+        <Tag
+          style={{
+            color: DONATION_TYPE_COLORS[donation_type][2],
+            backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
+            border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+          }}
+        >
+          {DONATION_TYPES[donation_type] || ''}
+        </Tag>
+      ),
     },
     plan: {
       title: 'プラン',
@@ -40,25 +82,11 @@ const ListModeContent = ({ data, mode, setMode }) => {
       dataIndex: 'amount',
     },
   };
-  const dataSource = [
-    {
-      key: '1',
-      status: '継続中',
-      frequency: '毎月',
-      plan: 'ゴールドサポーター',
-      amount: '10,000円/月',
-    },
-    {
-      key: '2',
-      status: '継続中',
-      frequency: '毎月',
-      plan: 'ゴールドサポーター',
-      amount: '10,000円/月',
-    },
-  ];
+
   const columns = Object.keys(columnMap).map(columnName => {
     return columnMap[columnName];
   });
+
   return (
     <Table
       dataSource={dataSource}

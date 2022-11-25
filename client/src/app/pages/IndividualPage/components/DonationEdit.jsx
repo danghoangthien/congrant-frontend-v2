@@ -1,48 +1,49 @@
-import moment from 'moment';
-import { Descriptions, Row, Col, Button, Input, Checkbox, Radio, DatePicker, Select } from 'antd';
-import { StyledPrimaryIcon } from 'styles/global-styles';
-import { MinusOutlined, CloseOutlined, SaveOutlined } from '@ant-design/icons';
+import { Descriptions, Row, Col, Button, Input, Select, Dropdown, Menu, Space } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, DETAIL_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
+import { StyledDonationTypeTag } from 'styles/Tag.style';
 
-const dateFormat = 'YYYY-MM-DD';
+// 操作メニュー・Action Menu
+const action_menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: 'アクション1',
+      },
+      {
+        key: '2',
+        label: 'アクション2',
+      },
+    ]}
+  />
+);
 
 const Title = ({ mode, setMode }) => {
   return (
     <>
-      <Row className="my-5">
-        <Col sm={24} md={24} lg={24}>
-          <CloseOutlined
-            className="display-inline-flex"
-            onClick={() => {
-              setMode(LIST_MODE);
-            }}
-          />
-        </Col>
-      </Row>
-      <Row className="my-5">
+      <Row className="mb-6">
         <Col sm={24} md={12} lg={12}>
-          <h3 className="bold display-inline-flex">
-            <StyledPrimaryIcon>
-              <MinusOutlined className="display-inline-flex bold mr-2" />
-            </StyledPrimaryIcon>
-            {'寄付詳細'}
-          </h3>
+          <h3 className="supporter-detail-ttl">{'寄付詳細'}</h3>
         </Col>
         <Col type="flex" align="right" sm={24} md={12} lg={12}>
-          <>
+          <Space size={8}>
             <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
-            <Button className="ml-2" icon={<SaveOutlined />} type="primary">
-              {'保存'}
-            </Button>
-          </>
+            <Dropdown overlay={action_menu} placement="bottomRight">
+              <Button
+                className="icon-btn"
+                type="primary"
+                icon={<span className="material-symbols-outlined fill-icon">save</span>}
+              >
+                保存する
+              </Button>
+            </Dropdown>
+          </Space>
         </Col>
       </Row>
-      <Row className="">
-        <Col sm={24} md={24} lg={24}>
-          <h4 className="bold display-inline-flex">{'基本情報'}</h4>
-        </Col>
+      <Row className="mb-4">
+        <div className="page-sub-title">{'基本項目'}</div>
       </Row>
     </>
   );
@@ -50,13 +51,9 @@ const Title = ({ mode, setMode }) => {
 
 const ExtraFieldTitle = () => {
   return (
-    <>
-      <Row className="my-5">
-        <Col sm={24} md={24} lg={24}>
-          <h4 className="bold display-inline-flex">{'カスタム項目'}</h4>
-        </Col>
-      </Row>
-    </>
+    <Row className="mb-4">
+      <div className="page-sub-title">{'カスタム項目'}</div>
+    </Row>
   );
 };
 
@@ -73,109 +70,106 @@ const DonationEdit = ({ data, mode, setMode }) => {
   return (
     <>
       <Title mode={mode} setMode={setMode} />
-      <DescriptionContainer>
-        <Descriptions.Item label={<BoldLabel label="寄付ID" />}>
-          <CopiableText>{'431051'}</CopiableText>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="受領日" />}>
-          <DatePicker defaultValue={moment('2022-07-30', dateFormat)} format={dateFormat} />
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
-          <Row>
-            <Col className="mb-2" sm={24} md={24} lg={24}>
-              <Select
-                mode="multiple"
-                allowClear
-                placeholder="Please select"
-                defaultValue={[1]}
-                onChange={() => {}}
-              >
-                <Select.Option value={1}>{'単発'}</Select.Option>
-              </Select>
-            </Col>
-          </Row>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="プロジェクト" />}>
-          <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
-            <Select.Option value={1}>{'NPO法人コングラント'}</Select.Option>
-          </Select>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="プラン" />}>
-          <Select placeholder={'選択してください'} onChange={() => {}}>
-            <Select.Option value={1}>{'-'}</Select.Option>
-          </Select>
-        </Descriptions.Item>
+      <Row className="mb-8">
+        <Col span={24}>
+          <DescriptionContainer>
+            <Descriptions.Item label={<BoldLabel label="寄付ID" />}>
+              <CopiableText>{'431051'}</CopiableText>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="受領日" />}>
+              <CopiableText>{'2022-07-30'}</CopiableText>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="入金日" />}>
+              <CopiableText>{'2022-02-20'}</CopiableText>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
+              <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="プロジェクト" />}>
+              {'NPO法人コングラントへのご支援をお願いします！'}
+            </Descriptions.Item>
 
-        <Descriptions.Item label={<BoldLabel label="単価・口数" />}>
-          <Row>
-            <Col className="mb-2" sm={12} md={12} lg={12}>
-              <Input suffix="円" value={'3000'} />
-            </Col>
-            <Col className="pl-2 mb-2" sm={12} md={12} lg={12}>
-              <Input suffix="口" value={'1'} />
-            </Col>
-          </Row>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="金額" />}>{'3,000円'}</Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="受領方法" />}>
-          <Radio.Group onChange={() => {}} value={1}>
-            <Radio value={1}>{'手渡し'}</Radio>
-            <Radio value={2}>{'募金箱'}</Radio>
-            <Radio value={3}>{'口座振替'}</Radio>
-          </Radio.Group>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="登録経路" />}>
-          {'インポート（2022-09-10）'}
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="備考欄" />}>
-          <Input.TextArea
-            style={{
-              height: 250,
-            }}
-            value={
-              '領収書は会社宛に送ってください。 〒0000000 ＊＊＊県＊＊＊市＊＊＊＊＊＊＊＊＊＊' +
-              '＊＊＊＊＊＊＊＊ビル6F ＊＊＊＊株式会社'
-            }
-          />
-        </Descriptions.Item>
-      </DescriptionContainer>
-      <ExtraFieldTitle />
-      <DescriptionContainer>
-        <Descriptions.Item label={<BoldLabel label="認知経路" />}>
-          <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
-            <Select.Option value={1}>{'SNS'}</Select.Option>
-          </Select>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="寄付の使用用途" />}>
-          <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
-            <Select.Option value={1}>{'団体に任せる'}</Select.Option>
-          </Select>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="支援経験" />}>
-          <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
-            <Select.Option value={1}>{'なし'}</Select.Option>
-          </Select>
-        </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="寄付理由" />}>
-          <Input.TextArea
-            style={{
-              height: 50,
-            }}
-            value={''}
-          />
-        </Descriptions.Item>
-      </DescriptionContainer>
-      <Row className="my-5">
+            <Descriptions.Item label={<BoldLabel label="プラン" />}>{'-'}</Descriptions.Item>
+
+            <Descriptions.Item label={<BoldLabel label="単価・口数" />}>
+              {'3,000円・1口'}
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="金額" />}>{'3,000円'}</Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="受領方法" />}>
+              {'カード決済'}
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="登録経路" />}>
+              {'コングラント経由（2022-01-01））'}
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="備考欄" />}>
+              <div>
+                領収書は会社宛に送ってください。
+                <br />
+                〒0000000
+                <br />
+                ＊＊＊県＊＊＊市＊＊＊＊＊＊＊＊＊＊
+                <br />
+                ＊＊＊＊＊＊＊＊ビル6F
+                <br />
+                ＊＊＊＊株式会社
+              </div>
+            </Descriptions.Item>
+          </DescriptionContainer>
+        </Col>
+      </Row>
+
+      {/* カスタム項目 */}
+      <Row className="mb-8">
+        <Col span={24}>
+          <ExtraFieldTitle />
+        </Col>
+        <Col span={24}>
+          <DescriptionContainer>
+            <Descriptions.Item label={<BoldLabel label="認知経路" />}>
+              <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
+                <Select.Option value={1}>{'SNS'}</Select.Option>
+              </Select>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="寄付の使用用途" />}>
+              <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
+                <Select.Option value={1}>{'団体に任せる'}</Select.Option>
+              </Select>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="支援経験" />}>
+              <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
+                <Select.Option value={1}>{'なし'}</Select.Option>
+              </Select>
+            </Descriptions.Item>
+            <Descriptions.Item label={<BoldLabel label="寄付理由" />}>
+              <Input.TextArea
+                style={{
+                  height: 50,
+                }}
+                value={''}
+              />
+            </Descriptions.Item>
+          </DescriptionContainer>
+        </Col>
+      </Row>
+
+      <Row>
         <Col type="flex" align="right" sm={24} md={24} lg={24}>
-          <>
+          <Space size={8}>
             <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
-            <Button className="ml-2" icon={<SaveOutlined />} type="primary">
-              {'保存'}
-            </Button>
-          </>
+            <Dropdown overlay={action_menu} placement="bottomRight">
+              <Button
+                className="icon-btn"
+                type="primary"
+                icon={<span className="material-symbols-outlined fill-icon">save</span>}
+              >
+                保存する
+              </Button>
+            </Dropdown>
+          </Space>
         </Col>
       </Row>
     </>
   );
 };
+
 export default DonationEdit;

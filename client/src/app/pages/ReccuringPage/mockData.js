@@ -1,7 +1,5 @@
 import { Tag, Badge, Space, Button, Dropdown, Menu } from 'antd';
-import { CopyFilled } from '@ant-design/icons';
 import { getWithExpiry } from 'utils/localStorageHandler';
-import SendIcon from '@mui/icons-material/Send';
 import { StyledBadgeDot } from 'styles/global-styles';
 import DrawerHandle from '../../components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';

@@ -31,7 +31,7 @@ import jaJp from 'antd/es/locale/ja_JP';
 import './locales/i18n';
 
 import 'antd/dist/antd.variable.min.css';
-import 'antd/dist/antd.less';
+// import 'antd/dist/antd.less';
 import 'antd-css-utilities/utility.min.css';
 import 'styles/congrant-theme.less';
 import 'material-symbols';
