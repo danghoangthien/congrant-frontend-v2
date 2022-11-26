@@ -1,6 +1,7 @@
 import { Row, Col, Button, Table, Space, Dropdown, Menu } from 'antd';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 // COMPONENT
+import DraggableTable from 'app/components/DraggableTable';
 import AddCustomField from './AddCustomField';
 
 // レコードアクションメニュー・Record Action Menu
@@ -19,11 +20,42 @@ const menu = (
   />
 );
 
-const dataSource = Array.from(Array(5).keys()).map(i => ({
-  i: `${i}`,
-  item_name: `認知経路`,
-  format: '単数選択',
-}));
+const donationPaymentDatasource = [
+  {
+    item_name: `認知経路`,
+    format: '単数選択',
+  },
+  {
+    item_name: `寄付の使用用途`,
+    format: '単数選択',
+  },
+  {
+    item_name: `支援経験`,
+    format: '単数選択',
+  },
+  {
+    item_name: `寄付理由`,
+    format: '自由入力（複数行）',
+  },
+];
+
+const individualDatasource = [
+  {
+    item_name: `お子様のお名前`,
+    format: '自由入力（1行）',
+  },
+];
+
+const corporationDatasource = [
+  {
+    item_name: `代表者名`,
+    format: '自由入力（1行）',
+  },
+  {
+    item_name: `代表者名（ふりがな）`,
+    format: '自由入力（1行）',
+  },
+];
 
 const columnMap = {
   empty: {
@@ -85,7 +117,7 @@ const CustomField = () => {
           <span className="page-sub-title">{'寄付決済'}</span>
         </Col>
         <Col sm={24} md={24} lg={24}>
-          <Table dataSource={dataSource} columns={columns} pagination={false} />
+          <DraggableTable dataSource={donationPaymentDatasource} columns={columns} />
         </Col>
       </Row>
       <Row className="mb-8">
@@ -100,7 +132,7 @@ const CustomField = () => {
           <span className="page-sub-title">{'個人サポーター'}</span>
         </Col>
         <Col sm={24} md={24} lg={24}>
-          <Table dataSource={dataSource} columns={columns} pagination={false} />
+          <DraggableTable dataSource={individualDatasource} columns={columns} pagination={false} />
         </Col>
       </Row>
       <Row className="mb-8">
@@ -115,7 +147,7 @@ const CustomField = () => {
           <span className="page-sub-title">{'法人サポーター'}</span>
         </Col>
         <Col sm={24} md={24} lg={24}>
-          <Table dataSource={dataSource} columns={columns} pagination={false} />
+          <DraggableTable dataSource={corporationDatasource} columns={columns} pagination={false} />
         </Col>
       </Row>
       <Row>

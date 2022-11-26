@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/translations';
 import { Helmet } from 'react-helmet-async';
+import Draggable from 'app/components/DraggableItems';
 
-const HomePage = (): JSX.Element => {
+const HomePage = () => {
   const { t } = useTranslation();
 
-  const renderPageTitle = (): JSX.Element => {
+  const renderPageTitle = () => {
     return (
       <>
         <Helmet>
@@ -19,7 +20,7 @@ const HomePage = (): JSX.Element => {
   return (
     <>
       {renderPageTitle()}
-      HOME PAGE
+      <Draggable />
     </>
   );
 };
