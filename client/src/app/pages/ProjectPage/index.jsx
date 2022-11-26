@@ -14,6 +14,19 @@ import {
   ProjectCard as StyledProjectCard,
 } from './index.style';
 
+const projectData = [
+  {
+    id: 1,
+    title: '',
+    status: '',
+    url: '',
+    paymentType: '',
+    totalDonation: '',
+    lastUpdated: '',
+    number_of_donation: '',
+  },
+];
+
 // アクション・Action Menu
 const menu = (
   <Menu
@@ -160,7 +173,8 @@ const ProjectPage = () => {
                       <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
                       <StyledDonationTypeTag className="monthly">{'毎月'}</StyledDonationTypeTag>
                       <StyledDonationTypeTag className="yearly">{'毎年'}</StyledDonationTypeTag>
-                      <Divider type="vertical" />
+                    </div>
+                    <div>
                       <span className="project-sub-ttl">最終更新</span>
                       <span>{'2022-08-01 12:34:45'}</span>
                       <Divider type="vertical" />

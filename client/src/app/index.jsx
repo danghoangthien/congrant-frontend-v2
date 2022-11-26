@@ -59,14 +59,14 @@ export function App() {
           <Route path={process.env.PUBLIC_URL + '/login'}>
             <LoginPage />
           </Route>
-          <Route path={process.env.PUBLIC_URL + '/register'}>
-            <LoginPage />
-          </Route>
           <Route exact path={process.env.PUBLIC_URL + '/register/complete'}>
             <RegisterCompletePage />
           </Route>
           <Route exact path={process.env.PUBLIC_URL + '/register/verify-email'}>
             <EmailVerifyPage />
+          </Route>
+          <Route path={process.env.PUBLIC_URL + '/register'}>
+            <LoginPage />
           </Route>
           <Route exact path={process.env.PUBLIC_URL + '/verification'}>
             <VerificationPage />
