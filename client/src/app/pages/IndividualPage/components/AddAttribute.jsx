@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Radio, Space } from 'antd';
+import { Row, Col, Modal, Radio, Space, Select } from 'antd';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -7,21 +7,28 @@ import {
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import styled from 'styled-components/macro';
+import { StyledRadioGroup } from 'styles/Element.style';
 
-export const StyledRadioGroup = styled(Radio.Group)`
-  width: 100%;
-  .ant-radio-button-wrapper {
-    width: 50%;
-  }
-`;
 const attributes = [
   { label: '属性の追加', value: 0 },
   { label: '属性の削除', value: 1 },
 ];
+
+const options = [
+  { label: '属性1', value: 1 },
+  { label: '属性1', value: 2 },
+  { label: '属性1', value: 3 },
+  { label: '属性1', value: 4 },
+];
+
 const AddAttribute = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [activeTab, setActiveTab] = useState(attributes[0].value);
+
+  const handleChange = value => {
+    console.log(`selected ${value}`);
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -50,17 +57,19 @@ const AddAttribute = () => {
         </span>
         <span>{'属性を設定する'}</span>
       </Space>
+
       <Modal
         title={<StyledModalTitle>{'属性の設定'}</StyledModalTitle>}
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={650}
+        width={572}
         className="modalStyle"
         cancelText="キャンセル"
         okText="登録する"
+        style={{ borderRadius: '8px' }}
       >
-        <Row className="item mb-2">
+        <Row className="mb-6">
           <Col sm={24} md={24} lg={24}>
             <StyledRadioGroup
               options={attributes}
@@ -71,14 +80,31 @@ const AddAttribute = () => {
             />
           </Col>
         </Row>
-        <Row className="item mb-2">
+
+        <Row>
           {activeTab === 0 ? (
-            <SettingsInputContainer label={<SettingLabel label={'追加する属性'} required />}>
-              <SettingInput placeholder={'選択してください'} />
+            <SettingsInputContainer label={<SettingLabel label={'追加する属性'} />}>
+              <Select
+                mode="tags"
+                style={{
+                  width: '100%',
+                }}
+                placeholder="選択してください"
+                onChange={handleChange}
+                options={options}
+              />
             </SettingsInputContainer>
           ) : (
-            <SettingsInputContainer label={<SettingLabel label={'削除する属性'} required />}>
-              <SettingInput placeholder={'選択してください'} />
+            <SettingsInputContainer label={<SettingLabel label={'削除する属性'} />}>
+              <Select
+                mode="tags"
+                style={{
+                  width: '100%',
+                }}
+                placeholder="選択してください"
+                onChange={handleChange}
+                options={options}
+              />
             </SettingsInputContainer>
           )}
         </Row>

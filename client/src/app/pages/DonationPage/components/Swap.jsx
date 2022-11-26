@@ -41,7 +41,7 @@ const Swap = () => {
         width={480}
         cancelText={false}
         okText="OK"
-        closeIcon={<span class="material-symbols-outlined">close</span>}
+        closeIcon={<span className="material-symbols-outlined">close</span>}
       >
         <Row className="item mb-6">
           <Space>

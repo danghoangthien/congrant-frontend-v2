@@ -1,12 +1,10 @@
-import { Row, Col, Input, Space, DatePicker, Radio, Button, Checkbox } from 'antd';
-import { InfoCircleFilled } from '@ant-design/icons';
+import { Helmet } from 'react-helmet-async';
+import { Row, Col, Space, DatePicker, Radio, Button, Checkbox } from 'antd';
 import { useDispatch } from 'react-redux';
 import {
   SettingsInputContainer,
-  SettingInfoLabel,
-  SettingTextarea,
   SettingInput,
-  SettingSelect,
+  SettingsInputWrapper,
   SettingLabel,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 
@@ -14,83 +12,120 @@ import './Models/index';
 
 const Step3 = () => {
   const dispatch = useDispatch();
+
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'利用審査｜管理者情報'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
-    <div className="item" style={{ width: '600px' }}>
-      <Row className="mb-2">
-        <Col className="mb-5" sm={24} md={24} lg={24} type="flex" align="center">
-          <span className="page-sub-title" style={{ fontSize: '28px' }}>
+    <>
+      {renderPageTitle()}
+      {/* タイトル */}
+      <Row className="mb-8">
+        <Col className="mb-4" sm={24} md={24} lg={24}>
+          <div style={{ textAlign: 'center', fontSize: '28px', fontWeight: '600' }}>
             {'代表者情報'}
-          </span>
+          </div>
         </Col>
         <Col sm={24} md={24} lg={24} type="flex" align="center">
-          <p style={{ width: '375px', fontSize: '16px' }}>
-            {'団体の代表者の情報を登録してください。'}
-          </p>
+          <div style={{ fontSize: '16px' }}>{'団体の代表者の情報を登録してください。'}</div>
         </Col>
       </Row>
-      <Row className="item mb-2">
-        <SettingsInputContainer>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <Checkbox>{'管理者と同じ'}</Checkbox>
-          </Col>
-        </SettingsInputContainer>
+
+      {/* 管理者と同じ */}
+      <Row className="mb-6">
+        <Col span={24}>
+          <Checkbox>{'管理者と同じ'}</Checkbox>
+        </Col>
+      </Row>
+
+      {/* 代表者名 */}
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'代表者名'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <Space direction="horizontal">
-              <SettingInput placeholder={'例：田中'} style={{ width: '295px' }} />
-              <SettingInput placeholder={'例：太郎'} style={{ width: '295px' }} />
-            </Space>
+          <Col sm={24} md={24} lg={24}>
+            <SettingsInputWrapper>
+              <SettingInput size="large" placeholder={'例：田中'} style={{ width: '100%' }} />
+              <SettingInput size="large" placeholder={'例：太郎'} style={{ width: '100%' }} />
+            </SettingsInputWrapper>
           </Col>
         </SettingsInputContainer>
-        <SettingsInputContainer label={<SettingLabel label={'代表者名（カナ表記)'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <Space direction="horizontal">
-              <SettingInput placeholder={'例：タナカ'} style={{ width: '295px' }} />
-              <SettingInput placeholder={'例：タロウ'} style={{ width: '295px' }} />
-            </Space>
+      </Row>
+
+      {/* 代表者名（カナ表記） */}
+      <Row className="mb-6">
+        <SettingsInputContainer label={<SettingLabel label={'代表者名（カナ表記）'} required />}>
+          <Col sm={24} md={24} lg={24}>
+            <SettingsInputWrapper>
+              <SettingInput size="large" placeholder={'例：タナカ'} style={{ width: '100%' }} />
+              <SettingInput size="large" placeholder={'例：タロウ'} style={{ width: '100%' }} />
+            </SettingsInputWrapper>
           </Col>
         </SettingsInputContainer>
+      </Row>
+
+      {/* 生年月日 */}
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'生年月日'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '600px' }} />
+          <Col sm={24} md={24} lg={24}>
+            <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
           </Col>
         </SettingsInputContainer>
+      </Row>
+
+      {/* 直近5年間での特商法に基づく行政処分 */}
+      <Row className="mb-6">
         <SettingsInputContainer
           label={<SettingLabel label={'直近5年間での特商法に基づく行政処分'} required />}
         >
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
+          <Col sm={24} md={24} lg={24}>
             <Space direction="horizontal">
               <Radio>{'あり'}</Radio>
               <Radio>{'なし'}</Radio>
             </Space>
           </Col>
         </SettingsInputContainer>
+      </Row>
+
+      {/* 直近5年間での消費者契約法違反を理由とする敗訴判決 */}
+      <Row>
         <SettingsInputContainer
           label={
             <SettingLabel label={'直近5年間での消費者契約法違反を理由とする敗訴判決'} required />
           }
         >
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <Space direction="horizontal">
+          <Col sm={24} md={24} lg={24}>
+            <Space>
               <Radio>{'あり'}</Radio>
               <Radio>{'なし'}</Radio>
             </Space>
           </Col>
         </SettingsInputContainer>
       </Row>
-      <Row className="mb-2">
-        <Col sm={24} md={24} lg={24} type="flex" align="center">
-          <Space>
+
+      <Row className="mt-12">
+        <Col span={24}>
+          <SettingsInputWrapper>
             <Button
-              style={{ width: '295px' }}
+              size="large"
+              style={{ width: '100%', justifyContent: 'center' }}
+              className="icon-btn"
+              icon={<span className="material-symbols-outlined">chevron_left</span>}
               onClick={() => {
                 dispatch.registerStep.setActive('2');
               }}
             >
-              {'< 戻る'}
+              {'戻る'}
             </Button>
             <Button
-              style={{ width: '295px' }}
+              size="large"
+              style={{ width: '100%' }}
               type="primary"
               onClick={() => {
                 dispatch.registerStep.setActive('4');
@@ -98,10 +133,10 @@ const Step3 = () => {
             >
               {'保存して次へ'}
             </Button>
-          </Space>
+          </SettingsInputWrapper>
         </Col>
       </Row>
-    </div>
+    </>
   );
 };
 

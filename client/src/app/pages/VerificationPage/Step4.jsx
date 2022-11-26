@@ -1,91 +1,113 @@
-import { Row, Col, Input, Space, DatePicker, Radio, Button, Checkbox } from 'antd';
-import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { Link, useHistory } from 'react-router-dom';
+import { Row, Col, Button } from 'antd';
+import { InfoCircleFilled } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import {
   SettingsInputContainer,
   SettingInput,
+  SettingsInputWrapper,
   SettingLabel,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 
 import './Models/index';
 
-const Step4 = () => {
+const Step3 = () => {
   const dispatch = useDispatch();
+
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'利用審査｜管理者情報'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
-    <div className="item" style={{ width: '600px' }}>
-      <Row className="mb-2">
-        <Col className="mb-5" sm={24} md={24} lg={24} type="flex" align="center">
-          <span className="page-sub-title" style={{ fontSize: '28px' }}>
-            {'代表者情報'}
-          </span>
+    <>
+      {renderPageTitle()}
+      {/* タイトル */}
+      <Row className="mb-8">
+        <Col className="mb-4" sm={24} md={24} lg={24}>
+          <div style={{ textAlign: 'center', fontSize: '28px', fontWeight: '600' }}>
+            {'口座情報'}
+          </div>
         </Col>
         <Col sm={24} md={24} lg={24} type="flex" align="center">
-          <p style={{ width: '375px', fontSize: '16px' }}>
-            {'団体の代表者の情報を登録してください。'}
-          </p>
+          <div style={{ fontSize: '16px' }}>{'寄付金振込先の口座情報を登録してください。'}</div>
         </Col>
       </Row>
-      <Row className="item mb-2">
+
+      {/* 銀行名 */}
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'銀行名'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
+          <Col sm={24} md={24} lg={24}>
             <SettingInput placeholder={'例：XX銀行'} />
           </Col>
         </SettingsInputContainer>
+      </Row>
+
+      {/* 支店名 */}
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'支店名'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
+          <Col sm={24} md={24} lg={24}>
             <SettingInput placeholder={'例：XX支店'} />
           </Col>
         </SettingsInputContainer>
-        <SettingsInputContainer label={<SettingLabel label={'金融機関コード'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <SettingInput placeholder={'例：1234'} />
-          </Col>
+      </Row>
+
+      {/* 普通 */}
+      <Row className="mb-6">
+        <SettingsInputContainer label={<SettingLabel label={'口座種別'} />}>
+          {'普通'}
         </SettingsInputContainer>
-        <SettingsInputContainer label={<SettingLabel label={'金融機関コード'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <SettingInput placeholder={'例：1234'} />
-          </Col>
-        </SettingsInputContainer>
-        <SettingsInputContainer label={<SettingLabel label={'口座種別'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
-            <Space direction="horizontal">
-              <Radio>{'普通'}</Radio>
-              <Radio>{'当座'}</Radio>
-            </Space>
-          </Col>
-        </SettingsInputContainer>
+      </Row>
+
+      {/* 普通 */}
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'口座番号'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
+          <Col sm={24} md={24} lg={24}>
             <SettingInput placeholder={'例：1234567'} />
           </Col>
         </SettingsInputContainer>
+      </Row>
+
+      {/* 口座名義 */}
+      <Row>
         <SettingsInputContainer label={<SettingLabel label={'口座名義'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
+          <Col sm={24} md={24} lg={24}>
             <SettingInput placeholder={'例：トクテイヒエイリカツドウホウジンコングラント'} />
           </Col>
         </SettingsInputContainer>
       </Row>
-      <Row className="mb-2">
-        <Col sm={24} md={24} lg={24} type="flex" align="center">
-          <Space>
+
+      <Row className="mt-12">
+        <Col span={24}>
+          <SettingsInputWrapper>
             <Button
-              style={{ width: '295px' }}
+              size="large"
+              style={{ width: '100%', justifyContent: 'center' }}
+              className="icon-btn"
+              icon={<span className="material-symbols-outlined">chevron_left</span>}
               onClick={() => {
-                dispatch.registerStep.setActive('2');
+                dispatch.registerStep.setActive('1');
               }}
             >
-              {'< 戻る'}
+              {'戻る'}
             </Button>
-            <Link to={`/register-confirmation`}>
-              <Button style={{ width: '295px' }} type="primary">
+            <Link to={`/verification/confirmation`}>
+              <Button size="large" style={{ fontWeight: '600', width: '100%' }} type="primary">
                 {'保存して次へ'}
               </Button>
             </Link>
-          </Space>
+          </SettingsInputWrapper>
         </Col>
       </Row>
-    </div>
+    </>
   );
 };
 
-export default Step4;
+export default Step3;

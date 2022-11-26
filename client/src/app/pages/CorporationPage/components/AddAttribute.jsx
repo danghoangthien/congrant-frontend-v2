@@ -44,7 +44,13 @@ const AddAttribute = () => {
   return (
     <>
       <Space onClick={() => showModal()}>
-        <TagFilled style={{ color: 'black' }} /> <span className="ml-2">{'属性を設定する'}</span>
+        <span
+          className="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', display: 'flex' }}
+        >
+          sell
+        </span>
+        <span>{'属性を設定する'}</span>
       </Space>
       <Modal
         title={<StyledModalTitle>{'属性の設定'}</StyledModalTitle>}

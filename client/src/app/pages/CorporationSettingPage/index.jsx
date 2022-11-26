@@ -35,7 +35,7 @@ const SETTING_COMPONENT_MAP = {
 
 const Title = () => (
   <div className="page-title">
-    <span class="material-symbols-outlined fill-icon icon">admin_panel_settings</span>
+    <span className="material-symbols-outlined fill-icon icon">admin_panel_settings</span>
     <span className="ml-2">{'団体設定'}</span>
   </div>
 );

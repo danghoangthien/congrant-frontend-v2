@@ -30,7 +30,7 @@ const columnMap = {
     width: 50,
     title: '',
     render: row => (
-      <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+      <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
         menu
       </span>
     ),
@@ -51,7 +51,7 @@ const columnMap = {
       <Space>
         <Button
           className="icon-btn"
-          icon={<span class="material-symbols-outlined fill-icon">edit</span>}
+          icon={<span className="material-symbols-outlined fill-icon">edit</span>}
         >
           {'編集'}
         </Button>

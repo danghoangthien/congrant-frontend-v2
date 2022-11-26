@@ -25,7 +25,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle' }}
             >
               content_copy
@@ -39,7 +39,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
             >
               delete
@@ -91,7 +91,7 @@ const columns = [
         <Button type="primary">{'編集'}</Button>
         <Dropdown overlay={menu} placement="bottomRight">
           <Button
-            icon={<span class="material-symbols-outlined">more_horiz</span>}
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
             className="more-menu-btn"
           />
         </Dropdown>

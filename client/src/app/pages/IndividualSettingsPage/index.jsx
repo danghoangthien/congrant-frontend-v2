@@ -31,7 +31,7 @@ console.log('GroupSettingsPage');
 
 const Title = () => (
   <div className="page-title">
-    <span class="material-symbols-outlined fill-icon icon">manage_accounts</span>
+    <span className="material-symbols-outlined fill-icon icon">manage_accounts</span>
     <span className="ml-2">{'個人設定'}</span>
   </div>
 );

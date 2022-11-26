@@ -174,3 +174,8 @@ export const StyledInputWrapper = styled(Space)`
     width: 100%;
   }
 `;
+
+export const StyledHelper = styled.div`
+  color: ${TEXT_GRAY_COLOR};
+  font-weight: 300;
+`;

@@ -25,6 +25,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import reportWebVitals from 'reportWebVitals';
 import { ConfigProvider } from 'antd';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
+// import moment from 'moment';
+import 'moment/locale/ja';
 import jaJp from 'antd/es/locale/ja_JP';
 
 // Initialize languages
@@ -54,7 +56,7 @@ ConfigProvider.config({
 });
 
 ReactDOM.render(
-  <ConfigProvider locale={jaJp}>
+  <ConfigProvider locale={jaJp} autoInsertSpaceInButton={false}>
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <HelmetProvider>

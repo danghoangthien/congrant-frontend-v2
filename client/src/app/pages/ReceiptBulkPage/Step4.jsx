@@ -38,7 +38,7 @@ const Step4 = () => {
               size="large"
               onClick={() => {}}
               className="icon-btn"
-              icon={<span class="material-symbols-outlined">download</span>}
+              icon={<span className="material-symbols-outlined">download</span>}
               type="primary"
               style={{ fontWeight: '600' }}
             >
@@ -50,7 +50,7 @@ const Step4 = () => {
               size="large"
               onClick={() => {}}
               className="icon-btn"
-              icon={<span class="material-symbols-outlined fill-icon">send</span>}
+              icon={<span className="material-symbols-outlined fill-icon">send</span>}
               type="primary"
               style={{ fontWeight: '600' }}
             >

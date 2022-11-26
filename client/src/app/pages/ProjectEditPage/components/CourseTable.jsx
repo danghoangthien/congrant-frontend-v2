@@ -1,10 +1,24 @@
-import { Button, Table, Image } from 'antd';
-import { EllipsisOutlined } from '@ant-design/icons';
-import EditIcon from '@mui/icons-material/Edit';
+import { Button, Table, Image, Space, Dropdown, Menu } from 'antd';
 
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
+
+// レコードアクションメニュー・Record Action Menu
+const menu = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        label: 'アクション1',
+      },
+      {
+        key: '2',
+        label: 'アクション2',
+      },
+    ]}
+  />
+);
 
 const dataSource = Array.from(Array(5).keys()).map(i => ({
   name: randomOutput(['Aコース', 'Bコース', 'Cコース']),
@@ -23,6 +37,7 @@ const columnMap = {
     ),
   },
   image: {
+    width: 150,
     title: 'イメージ',
     render: () => (
       <div className="thumb-image" style={{ height: '80px' }}>
@@ -44,21 +59,27 @@ const columnMap = {
     dataIndex: 'amount',
   },
   number_limit: {
-    width: 120,
     title: '個数制限',
     dataIndex: 'number_limit',
   },
   action: {
-    width: 140,
+    width: 160,
     title: 'アクション',
     render: row => (
-      <>
-        <Button icon={<EditIcon className="display-inline-flex" style={{ fontSize: '14px' }} />}>
-          &nbsp;
+      <Space>
+        <Button
+          className="icon-btn"
+          icon={<span className="material-symbols-outlined fill-icon">edit</span>}
+        >
           {'編集'}
         </Button>
-        <Button className="ml-2" icon={<EllipsisOutlined />} />
-      </>
+        <Dropdown overlay={menu} placement="bottomRight">
+          <Button
+            className="more-menu-btn"
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
+          />
+        </Dropdown>
+      </Space>
     ),
   },
 };

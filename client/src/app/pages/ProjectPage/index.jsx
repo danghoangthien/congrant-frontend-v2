@@ -24,7 +24,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle' }}
             >
               content_copy
@@ -38,7 +38,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
             >
               delete
@@ -173,7 +173,7 @@ const ProjectPage = () => {
                   <Col flex="40px" onClick={e => e.stopPropagation()}>
                     <Dropdown overlay={menu} placement="bottomRight" trigger={['hover']}>
                       <Button
-                        icon={<span class="material-symbols-outlined">more_horiz</span>}
+                        icon={<span className="material-symbols-outlined">more_horiz</span>}
                         className="more-menu-btn"
                       />
                     </Dropdown>

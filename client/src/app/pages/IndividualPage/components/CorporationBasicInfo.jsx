@@ -43,7 +43,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
         <Space size={8}>
           <Button
             className="icon-btn"
-            icon={<span class="material-symbols-outlined fill-icon">edit</span>}
+            icon={<span className="material-symbols-outlined fill-icon">edit</span>}
             type="primary"
             onClick={() => setMode(EDIT_MODE)}
           >
@@ -63,7 +63,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
           <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
           <Button
             className="icon-btn"
-            icon={<span class="material-symbols-outlined fill-icon">save</span>}
+            icon={<span className="material-symbols-outlined fill-icon">save</span>}
             type="primary"
           >
             {'保存する'}
@@ -281,7 +281,7 @@ const EditModeContent = ({ data, mode, setMode }) => (
         <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
         <Button
           className="icon-btn"
-          icon={<span class="material-symbols-outlined fill-icon">save</span>}
+          icon={<span className="material-symbols-outlined fill-icon">save</span>}
           type="primary"
         >
           {'保存する'}

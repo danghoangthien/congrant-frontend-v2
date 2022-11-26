@@ -53,13 +53,13 @@ const columnMap = {
         <Button
           disabled
           className="icon-btn less-shadow-btn"
-          icon={<span class="material-symbols-outlined fill-icon">edit</span>}
+          icon={<span className="material-symbols-outlined fill-icon">edit</span>}
         >
           {'編集'}
         </Button>
         <Button
           className="icon-btn less-shadow-btn"
-          icon={<span class="material-symbols-outlined fill-icon">visibility</span>}
+          icon={<span className="material-symbols-outlined fill-icon">visibility</span>}
         >
           {'プレビュー'}
         </Button>
@@ -141,8 +141,8 @@ const Receipt = () => {
           <Checkbox.Group defaultValue={[1]}>
             <Space direction="vertical" align="center">
               <Checkbox value={1}>{'「単発寄付」の領収書を自動送付する'}</Checkbox>
-              <Checkbox value={2}>{'「単発寄付」の領収書を自動送付する'}</Checkbox>
-              <Checkbox value={3}>{'「単発寄付」の領収書を自動送付する'}</Checkbox>
+              <Checkbox value={2}>{'「毎月寄付」の領収書を自動送付する'}</Checkbox>
+              <Checkbox value={3}>{'「毎年寄付」の領収書を自動送付する'}</Checkbox>
             </Space>
           </Checkbox.Group>
         </Col>

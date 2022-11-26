@@ -35,7 +35,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
   project: 'NPO法人コングラントへのご支援をお願いします！',
   plan: '0',
   amount: '3,000円',
-  date_of_receipt: '2022-07-30',
+  date_of_receipt: '',
 }));
 
 const columnMap = {
@@ -76,9 +76,7 @@ const columnMap = {
     width: 150,
     title: '受領日',
     dataIndex: 'date_of_receipt',
-    render: date_of_receipt => (
-      <DatePicker defaultValue={moment(date_of_receipt, 'YYYY-MM-DD')} format={'YYYY-MM-DD'} />
-    ),
+    render: date_of_receipt => <DatePicker format={'YYYY-MM-DD'} />,
     csvOutput: ({ date_of_receipt }) => date_of_receipt,
   },
   operate: {

@@ -42,7 +42,7 @@ const contextDropdownItems = selectedRowKeys => [
         }}
       >
         <span
-          class="material-symbols-outlined fill-icon"
+          className="material-symbols-outlined fill-icon"
           style={{ color: DANGER_COLOR, fontSize: '16px', display: 'flex' }}
         >
           delete

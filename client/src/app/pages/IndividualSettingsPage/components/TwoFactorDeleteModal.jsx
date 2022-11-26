@@ -26,7 +26,7 @@ const TwoFactorModal = () => {
   return (
     <>
       {/* ボタン */}
-      <Button className="active" type="primary" onClick={showModal}>
+      <Button className="active" type="danger" onClick={showModal}>
         <span>{'2段階認証を解除する'}</span>
       </Button>
 
@@ -39,6 +39,7 @@ const TwoFactorModal = () => {
         width={650}
         cancelText="キャンセル"
         okText="解除する"
+        okButtonProps={{ type: 'danger' }}
       >
         <Row>
           <Col span={24}>

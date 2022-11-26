@@ -30,7 +30,7 @@ const AccountInformation = () => {
 
         {/* 普通 */}
         <Row className="mb-6">
-          <SettingsInputContainer label={<SettingLabel label={'口座種別'} required />}>
+          <SettingsInputContainer label={<SettingLabel label={'口座種別'} />}>
             {'普通'}
           </SettingsInputContainer>
         </Row>

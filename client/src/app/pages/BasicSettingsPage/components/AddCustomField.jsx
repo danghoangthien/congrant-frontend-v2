@@ -30,7 +30,7 @@ const AddCustomField = ({ title }) => {
   return (
     <>
       <Button className="icon-btn" onClick={showModal} type="primary">
-        <span class="material-symbols-outlined">add</span>
+        <span className="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
 
@@ -100,7 +100,7 @@ const AddCustomField = ({ title }) => {
                   <Space align="center">
                     <Input placeholder={'理事'} />
                     <Button className="icon-btn" type="primary">
-                      <span class="material-symbols-outlined">add</span>
+                      <span className="material-symbols-outlined">add</span>
                       <span>{'追加'}</span>
                     </Button>
                   </Space>

@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     // line-height: 1.5;
     font-size: 16px;
+    font-weight: 300;
     // color: rgba(0,0,0,0.85);
   }
 
@@ -167,11 +168,11 @@ export const GlobalStyle = createGlobalStyle`
 
   // MODAL
   .ant-modal-header {
-    border-radius: 10px 10px 0 0;
+    border-radius: 8px 8px 0 0;
     padding: 18px 24px;
   }
   .ant-modal-content {
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
   .ant-modal-title {

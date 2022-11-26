@@ -138,7 +138,7 @@ const Step3 = () => {
               dispatch.receiptBulkStep.setActive('4');
             }}
           >
-            {'次へ'}
+            {'作成開始'}
           </Button>
         </Col>
       </Row>

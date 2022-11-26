@@ -2,7 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Layout, ConfigProvider } from 'antd';
 import React, { useState } from 'react';
 import { StyledSidebar, SlyledLayout, SlyledHeader } from './Layout.style';
-import { Row, Col, Dropdown, Menu, Space } from 'antd';
+import { Row, Col, Menu } from 'antd';
 import userImage from 'styles/assets/icon_avatar.svg';
 
 // Icons
@@ -17,12 +17,6 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import DomainIcon from '@mui/icons-material/Domain';
 import SettingsIcon from '@mui/icons-material/Settings';
-import EditIcon from '@mui/icons-material/Edit';
-import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import SlideshowIcon from '@mui/icons-material/Slideshow';
-import HelpIcon from '@mui/icons-material/Help';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { UserOutlined } from '@ant-design/icons';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -39,30 +33,30 @@ function getItem(label, key, icon, children, type) {
   };
 }
 
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
-const menu = (
-  <Menu
-    items={[
-      {
-        key: '1',
-        label: (
-          <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-            アカウント設定
-          </a>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-            ログアウト
-          </a>
-        ),
-      },
-    ]}
-  />
-);
+// const menu = (
+//   <Menu
+//     items={[
+//       {
+//         key: '1',
+//         label: (
+//           <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+//             アカウント設定
+//           </a>
+//         ),
+//       },
+//       {
+//         key: '2',
+//         label: (
+//           <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+//             ログアウト
+//           </a>
+//         ),
+//       },
+//     ]}
+//   />
+// );
 
 const items = [
   getItem('ホーム', '/', <HomeIcon />),
