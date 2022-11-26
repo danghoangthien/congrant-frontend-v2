@@ -7,6 +7,7 @@ import {
   SettingInfoLabel,
   SettingSelect,
 } from '../../CorporationSettingPage/components/Sprites';
+import Draggable from 'app/components/DraggableItems';
 import { DraggableInputItem } from 'app/pages/BasicSettingsPage/components/Sprites';
 import AddIcon from '@mui/icons-material/Add';
 import InfoIcon from '@mui/icons-material/Info';
@@ -63,20 +64,14 @@ const FormEdit = () => {
         </SettingsInputContainer>
       </Row>
       <div className="mb-6">
-        <Row className="mb-2">
-          <Col span={24}>
-            <DraggableInputItem InputComponent={<Input value={'1000'} suffix={'円'} />} />
-          </Col>
-        </Row>
-        <Row className="mb-2">
-          <Col span={24}>
-            <DraggableInputItem InputComponent={<Input value={'3000'} suffix={'円'} />} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <DraggableInputItem InputComponent={<Input value={'17000'} suffix={'円'} />} />
-          </Col>
+        <Row className="item mb-2">
+          <Draggable
+            entries={[
+              <DraggableInputItem InputComponent={<Input value={'1000'} suffix={'円'} />} />,
+              <DraggableInputItem InputComponent={<Input value={'3000'} suffix={'円'} />} />,
+              <DraggableInputItem InputComponent={<Input value={'17000'} suffix={'円'} />} />,
+            ]}
+          />
         </Row>
       </div>
       <Row className="item mb-8">

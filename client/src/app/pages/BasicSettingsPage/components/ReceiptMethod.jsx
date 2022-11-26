@@ -1,4 +1,5 @@
 import { Space, Row, Col, Input, Button } from 'antd';
+import Draggable from 'app/components/DraggableItems';
 import { DraggableInputItem } from './Sprites';
 
 const ReceiptMethod = () => {
@@ -9,20 +10,14 @@ const ReceiptMethod = () => {
       </Col>
 
       <Col span={24} className="mb-6">
-        <Row className="mb-2">
-          <Col sm={24} md={24} lg={24}>
-            <DraggableInputItem count={88} InputComponent={<Input value={'手渡し'} />} />
-          </Col>
-        </Row>
-        <Row className="mb-2">
-          <Col sm={24} md={24} lg={24}>
-            <DraggableInputItem count={77} InputComponent={<Input value={'募金箱'} />} />
-          </Col>
-        </Row>
-        <Row className="mb-2">
-          <Col sm={24} md={24} lg={24}>
-            <DraggableInputItem count={99} InputComponent={<Input value={'郵便振替'} />} />
-          </Col>
+        <Row className="item mb-2">
+          <Draggable
+            entries={[
+              <DraggableInputItem count={88} InputComponent={<Input value={'手渡し'} />} />,
+              <DraggableInputItem count={77} InputComponent={<Input value={'募金箱'} />} />,
+              <DraggableInputItem count={99} InputComponent={<Input value={'郵便振替'} />} />,
+            ]}
+          />
         </Row>
       </Col>
 
