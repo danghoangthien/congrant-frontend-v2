@@ -41,10 +41,14 @@ import 'material-symbols';
 // Observe loading of Inter (to remove 'Inter', remove the <link> tag in
 // the index.html file and this observer)
 const robotoMonoObserver = new FontFaceObserver('Roboto Mono', {});
+const NotoSansObserver = new FontFaceObserver('Noto Sans JP', {});
 
 // When Inter is loaded, add a font-family using Inter to the body
 robotoMonoObserver.load().then(() => {
   document.documentElement.className += 'roboto-mono';
+});
+NotoSansObserver.load().then(() => {
+  document.documentElement.className += 'noto-sans';
 });
 
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
