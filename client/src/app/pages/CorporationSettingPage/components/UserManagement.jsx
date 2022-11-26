@@ -29,7 +29,7 @@ const columnMap = {
     render: row => (
       <Button
         className="icon-btn less-shadow-btn"
-        icon={<span class="material-symbols-outlined fill-icon">delete</span>}
+        icon={<span className="material-symbols-outlined fill-icon">delete</span>}
       >
         {'削除'}
       </Button>

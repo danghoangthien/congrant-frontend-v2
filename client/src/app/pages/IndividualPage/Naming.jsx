@@ -1,9 +1,21 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { SupporterPageLayout } from './components/SupporterPage.style';
 import { Card, Row, Col, Checkbox, Button, Table, Tooltip, Space } from 'antd';
 import { CopyOutlined } from '@ant-design/icons';
 
 const Naming = () => {
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'個人サポーターの名寄せ'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   const options = [
     { label: 'メールアドレスが一致', value: '1' },
     { label: '氏名が一致', value: '2' },
@@ -87,6 +99,7 @@ const Naming = () => {
 
   return (
     <>
+      {renderPageTitle()}
       <SupporterPageLayout>
         {/* タイトル・Title */}
         <Row type="flex" align="middle" className="mb-6">

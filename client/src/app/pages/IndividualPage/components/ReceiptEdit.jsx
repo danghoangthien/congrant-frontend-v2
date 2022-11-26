@@ -15,22 +15,6 @@ import { LIST_MODE, EDIT_MODE, DETAIL_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 
-// 操作メニュー・Action Menu
-const action_menu = (
-  <Menu
-    items={[
-      {
-        key: '1',
-        label: 'アクション1',
-      },
-      {
-        key: '2',
-        label: 'アクション2',
-      },
-    ]}
-  />
-);
-
 const Title = ({ mode, setMode }) => {
   return (
     <Row>
@@ -40,15 +24,13 @@ const Title = ({ mode, setMode }) => {
       <Col type="flex" align="right" sm={24} md={12} lg={12}>
         <Space size={8}>
           <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
-          <Dropdown overlay={action_menu} placement="bottomRight">
-            <Button
-              className="icon-btn"
-              type="primary"
-              icon={<span className="material-symbols-outlined fill-icon">save</span>}
-            >
-              保存する
-            </Button>
-          </Dropdown>
+          <Button
+            className="icon-btn"
+            type="primary"
+            icon={<span className="material-symbols-outlined fill-icon">save</span>}
+          >
+            保存する
+          </Button>
         </Space>
       </Col>
     </Row>

@@ -32,7 +32,7 @@ const AddSupporter = () => {
     <>
       {/* 個人サポーターの登録ボタン・Add Supporter Button */}
       <Button onClick={showModal} className="active icon-btn" type="primary">
-        <span class="material-symbols-outlined">add</span>
+        <span className="material-symbols-outlined">add</span>
         <span>{'個人サポーターの登録'}</span>
       </Button>
 
@@ -46,7 +46,7 @@ const AddSupporter = () => {
         onCancel={handleCancel}
         width={480}
         footer={null}
-        closeIcon={<span class="material-symbols-outlined">close</span>}
+        closeIcon={<span className="material-symbols-outlined">close</span>}
       >
         <Row className="item mb-6">
           <span>

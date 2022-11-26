@@ -27,7 +27,7 @@ const ReceiptTemplate = () => {
   return (
     <>
       <Button className="icon-btn" onClick={showModal} type="primary">
-        <span class="material-symbols-outlined">add</span>
+        <span className="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
       <Modal

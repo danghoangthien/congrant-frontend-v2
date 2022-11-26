@@ -14,10 +14,7 @@ export const PageLayout = styled.div`
   //   border-color: ${PRIMARY_COLOR} !important;
   // }
   & .ant-card {
-    border-radius: 10px;
-  }
-  & .modalStyle .ant-modal-content {
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
   & .text-right {

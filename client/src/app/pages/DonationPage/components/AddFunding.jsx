@@ -48,7 +48,7 @@ const AddFunding = () => {
         onCancel={handleCancel}
         width={480}
         footer={null}
-        closeIcon={<span class="material-symbols-outlined">close</span>}
+        closeIcon={<span className="material-symbols-outlined">close</span>}
       >
         {/* サポーター */}
         <Row className="item mb-6">

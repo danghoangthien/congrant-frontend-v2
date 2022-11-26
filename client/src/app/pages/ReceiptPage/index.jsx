@@ -5,14 +5,8 @@ import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
-import { SearchOutlined, MailOutlined, EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import MenuIcon from '@mui/icons-material/Menu';
-import HistoryIcon from '@mui/icons-material/History';
-import NewReceipt from './components/NewReceipt';
 import { Button, Input, Row, Col, Space, Dropdown, Menu } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import SendIcon from '@mui/icons-material/Send';
 
 import './Models/index';
 
@@ -41,7 +35,7 @@ const headerContextDropdownItems = [
       <Link to={`receipts-bulk/history`}>
         <Space onClick={() => {}}>
           <span
-            class="material-symbols-outlined"
+            className="material-symbols-outlined"
             style={{ fontSize: '16px', verticalAlign: 'middle' }}
           >
             history
@@ -77,7 +71,10 @@ const ReceiptPage = () => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <span className="page-title">
-                    <span class="material-symbols-outlined fill-icon" style={{ fontSize: '30px' }}>
+                    <span
+                      className="material-symbols-outlined fill-icon"
+                      style={{ fontSize: '30px' }}
+                    >
                       receipt
                     </span>
                     <span className="ml-2 page-title">{'領収書'}</span>

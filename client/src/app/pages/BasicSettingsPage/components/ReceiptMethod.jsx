@@ -25,7 +25,7 @@ const ReceiptMethod = () => {
         <Space align="center">
           <Input placeholder={'手渡し'} />
           <Button className="icon-btn" type="primary">
-            <span class="material-symbols-outlined">add</span>
+            <span className="material-symbols-outlined">add</span>
             <span>{'追加'}</span>
           </Button>
         </Space>

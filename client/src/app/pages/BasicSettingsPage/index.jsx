@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import SettingsPage from 'app/components/Layout/SettingsPage';
 import DonationPlan from './components/DonationPlan';
 import SupportAttribute from './components/SupportAttribute';
@@ -5,6 +6,17 @@ import ReceiptMethod from './components/ReceiptMethod';
 import CustomField from './components/CustomField';
 import AccessAnalysis from './components/AccessAnalysis';
 import Receipt from './components/Receipt';
+
+const renderPageTitle = () => {
+  return (
+    <>
+      <Helmet>
+        <title>{'基本設定'}</title>
+        <meta name="description" content={'...'} />
+      </Helmet>
+    </>
+  );
+};
 
 const SETTING_COMPONENT_MAP = {
   // PublicInfo: {
@@ -46,13 +58,16 @@ const SETTING_COMPONENT_MAP = {
 
 const Title = () => (
   <div className="page-title">
-    <span class="material-symbols-outlined fill-icon icon">settings</span>
+    <span className="material-symbols-outlined fill-icon icon">settings</span>
     <span className="ml-2">{'基本設定'}</span>
   </div>
 );
 
 const BasicSettingsPage = () => (
-  <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
+  <>
+    {renderPageTitle()}
+    <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
+  </>
 );
 
 export default BasicSettingsPage;

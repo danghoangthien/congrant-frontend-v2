@@ -5,17 +5,56 @@ import { randomOutput } from 'utils/helper';
 import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'app/pages/DonationPage/consts';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
-const dataSource = Array.from(Array(5).keys()).map(i => ({
-  i: `${i}`,
-  donation_type: randomOutput([1, 2, 3]),
-  plan_name: randomOutput([
-    '賛助会員（都度更新）',
-    '正会員（都度更新）',
-    'ブロンズサポーター',
-    'シルバーサポーター',
-  ]),
-  amount: randomOutput(['5,000円/月', '115,000円/月', '27,000円/月']),
-}));
+// const dataSource = Array.from(Array(5).keys()).map(i => ({
+//   i: `${i}`,
+//   donation_type: randomOutput([1, 2, 3]),
+//   plan_name: randomOutput([
+//     '賛助会員（都度更新）',
+//     '正会員（都度更新）',
+//     'ブロンズサポーター',
+//     'シルバーサポーター',
+//   ]),
+//   amount: randomOutput(['5,000円/月', '115,000円/年', '27,000円/年']),
+// }));
+
+const dataSource = [
+  {
+    i: 1,
+    donation_type: 1,
+    plan_name: '賛助会員（都度更新）',
+    amount: '5,000円',
+  },
+  {
+    i: 2,
+    donation_type: 2,
+    plan_name: '賛助会員（都度更新）',
+    amount: '5,000円/月',
+  },
+  {
+    i: 3,
+    donation_type: 3,
+    plan_name: '賛助会員（都度更新）',
+    amount: '10,000円/年',
+  },
+  {
+    i: 4,
+    donation_type: 1,
+    plan_name: '賛助会員（都度更新）',
+    amount: '5,000円',
+  },
+  {
+    i: 5,
+    donation_type: 2,
+    plan_name: '賛助会員（都度更新）',
+    amount: '5,000円/月',
+  },
+  {
+    i: 6,
+    donation_type: 3,
+    plan_name: '賛助会員（都度更新）',
+    amount: '10,000円/年',
+  },
+];
 
 // レコードアクションメニュー・Record Action Menu
 const menu = (
@@ -38,7 +77,7 @@ const columnMap = {
     width: 50,
     title: '',
     render: row => (
-      <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+      <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
         menu
       </span>
     ),
@@ -75,7 +114,7 @@ const columnMap = {
       <Space>
         <Button
           className="icon-btn"
-          icon={<span class="material-symbols-outlined fill-icon">edit</span>}
+          icon={<span className="material-symbols-outlined fill-icon">edit</span>}
         >
           {'編集'}
         </Button>

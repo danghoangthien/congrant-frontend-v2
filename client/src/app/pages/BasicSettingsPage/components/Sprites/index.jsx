@@ -3,7 +3,7 @@ import { TEXT_GRAY_COLOR, DANGER_COLOR, LIGHT_GRAY } from 'styles/StyleConstants
 
 export const DraggableInputItem = ({ count, InputComponent }) => (
   <Space align="center">
-    <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+    <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
       menu
     </span>
     {InputComponent}
@@ -13,7 +13,7 @@ export const DraggableInputItem = ({ count, InputComponent }) => (
       style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
     />
     <span
-      class="material-symbols-outlined fill-icon"
+      className="material-symbols-outlined fill-icon"
       style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
     >
       delete

@@ -59,9 +59,6 @@ export const SlyledLayout = styled.div<{}>`
   & .ant-layout-content {
     background: #f0f0ee;
   }
-  & .ant-modal-content {
-    border-radius: 10px;
-  }
   & .menu-item {
     text-overflow: clip;
     white-space: nowrap;

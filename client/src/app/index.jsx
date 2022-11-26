@@ -15,9 +15,8 @@ import AppLayout from 'app/components/Layout';
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import VerificationPage from './pages/VerificationPage';
 import RegisterCompletePage from './pages/LoginPage/Complete';
-import RegisterReviewPage from './pages/VerificationPage/Review';
+import RegisterReviewPage from './pages/VerificationPage';
 import RegisterStepsPage from './pages/VerificationPage/Steps';
 import VerificationConfirmationPage from './pages/VerificationPage/Confirmation';
 import VerificationCompletePage from './pages/VerificationPage/Complete';
@@ -55,33 +54,39 @@ export function App() {
         >
           <meta name="description" content="A Congrant application." />
         </Helmet>
+
         <Switch>
-          <Route path={process.env.PUBLIC_URL + '/login'}>
-            <LoginPage />
+          {/* [FO_003] メールアドレス認証 */}
+          <Route exact path={process.env.PUBLIC_URL + '/register/verify_email'}>
+            <EmailVerifyPage />
           </Route>
+          {/* [FO_004] コングラントID登録 */}
           <Route exact path={process.env.PUBLIC_URL + '/register/complete'}>
             <RegisterCompletePage />
           </Route>
-          <Route exact path={process.env.PUBLIC_URL + '/register/verify-email'}>
-            <EmailVerifyPage />
-          </Route>
-          <Route path={process.env.PUBLIC_URL + '/register'}>
-            <LoginPage />
-          </Route>
+          {/* [FO_005] 利用審査 */}
           <Route exact path={process.env.PUBLIC_URL + '/verification'}>
-            <VerificationPage />
-          </Route>
-          <Route exact path={process.env.PUBLIC_URL + '/register-review'}>
             <RegisterReviewPage />
           </Route>
-          <Route exact path={process.env.PUBLIC_URL + '/register-start'}>
+          {/* [FO_006] 利用審査 / 団体情報 */}
+          <Route exact path={process.env.PUBLIC_URL + '/verification/organisation'}>
             <RegisterStepsPage />
           </Route>
+          {/* [FO_010] 利用審査 / 確認画面  */}
           <Route exact path={process.env.PUBLIC_URL + '/verification/confirmation'}>
             <VerificationConfirmationPage />
           </Route>
+          {/* [FO_011] 利用審査 / 審査開始画面 */}
           <Route exact path={process.env.PUBLIC_URL + '/verification/complete'}>
             <VerificationCompletePage />
+          </Route>
+          {/* [FO_001] ログイン */}
+          <Route path={process.env.PUBLIC_URL + '/login'}>
+            <LoginPage />
+          </Route>
+          {/* [FO_002] お試し登録 */}
+          <Route path={process.env.PUBLIC_URL + '/register'}>
+            <LoginPage />
           </Route>
 
           <AppLayout>

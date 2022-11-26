@@ -26,7 +26,7 @@ const MailButton = ({ selectedRowKeys }) => {
         console.log('selectedRowKeys', selectedRowKeys);
       }}
     >
-      {'メールを送る'}
+      {'メッセージを送る'}
     </Button>
   );
 };
@@ -66,7 +66,7 @@ const contextDropdownItems = selectedRowKeys => [
         }}
       >
         <span
-          class="material-symbols-outlined fill-icon"
+          className="material-symbols-outlined fill-icon"
           style={{ color: DANGER_COLOR, fontSize: '16px', display: 'flex' }}
         >
           delete
@@ -103,7 +103,7 @@ const CorporationPage = () => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <div className="page-title">
-                    <span class="material-symbols-outlined" style={{ fontSize: '30px' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '30px' }}>
                       domain
                     </span>
                     <span className="ml-2">{'法人サポーター'}</span>

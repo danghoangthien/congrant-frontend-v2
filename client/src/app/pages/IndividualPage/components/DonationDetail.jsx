@@ -41,7 +41,7 @@ const Title = ({ mode, setMode }) => {
           <Space size={8}>
             <Button
               className="icon-btn"
-              icon={<span class="material-symbols-outlined fill-icon">edit</span>}
+              icon={<span className="material-symbols-outlined fill-icon">edit</span>}
               type="primary"
               onClick={() => setMode(EDIT_MODE)}
             >

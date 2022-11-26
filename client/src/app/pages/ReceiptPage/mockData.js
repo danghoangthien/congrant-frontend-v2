@@ -39,7 +39,7 @@ export const menuItems = selectedRowKeys => [
         }}
       >
         <span
-          class="material-symbols-outlined fill-icon"
+          className="material-symbols-outlined fill-icon"
           style={{ fontSize: '16px', verticalAlign: 'middle' }}
         >
           check_box
@@ -57,7 +57,7 @@ export const menuItems = selectedRowKeys => [
         }}
       >
         <span
-          class="material-symbols-outlined"
+          className="material-symbols-outlined"
           style={{ fontSize: '16px', verticalAlign: 'middle' }}
         >
           keyboard_return
@@ -75,7 +75,7 @@ export const menuItems = selectedRowKeys => [
         }}
       >
         <span
-          class="material-symbols-outlined fill-icon"
+          className="material-symbols-outlined fill-icon"
           style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
         >
           delete

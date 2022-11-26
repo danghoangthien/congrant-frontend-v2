@@ -29,14 +29,14 @@ const columnMap = {
       <Space>
         <Button
           className="icon-btn"
-          icon={<span class="material-symbols-outlined">download</span>}
+          icon={<span className="material-symbols-outlined">download</span>}
           type="primary"
         >
           {'ダウンロード（zip）'}
         </Button>
         <Button
           className="icon-btn"
-          icon={<span class="material-symbols-outlined fill-icon">send</span>}
+          icon={<span className="material-symbols-outlined fill-icon">send</span>}
           type="primary"
         >
           {'メールで送る'}

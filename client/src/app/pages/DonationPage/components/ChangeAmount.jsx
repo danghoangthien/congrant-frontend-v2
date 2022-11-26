@@ -30,7 +30,7 @@ const ChangeAmount = () => {
   return (
     <>
       {/* 寄付の登録ボタン・ChangeAmount Button */}
-      <span onClick={showModal}>{'寄付の登録'}</span>
+      <span onClick={showModal}>{'金額を変更して消込'}</span>
 
       {/* 寄付の登録モーダル・ChangeAmount Modal */}
       <Modal
@@ -40,8 +40,8 @@ const ChangeAmount = () => {
         onCancel={handleCancel}
         width={480}
         cancelText="キャンセル"
-        okText="確定"
-        closeIcon={<span class="material-symbols-outlined">close</span>}
+        okText="変更"
+        closeIcon={<span className="material-symbols-outlined">close</span>}
       >
         {/* プラン */}
         <Row className="item mb-6">
@@ -68,10 +68,9 @@ const ChangeAmount = () => {
         </Row>
 
         {/* 入金日 */}
-        <Row className="item mb-6">
+        <Row>
           <SettingsInputContainer label={<SettingLabel label={'入金日'} required />}>
             <DatePicker
-              size="large"
               defaultValue={moment('2022-04-01', 'YYYY-MM-DD')}
               style={{ width: '100%' }}
             />

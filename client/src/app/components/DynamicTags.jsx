@@ -138,7 +138,10 @@ const DynamicTags = ({ tagList = [], availableTagList = [], onSuccess, addMoreLa
           }}
         >
           <Space size={3}>
-            <span class="material-symbols-outlined" style={{ fontSize: '12px', display: 'flex' }}>
+            <span
+              className="material-symbols-outlined"
+              style={{ fontSize: '12px', display: 'flex' }}
+            >
               add
             </span>
             {addMoreLabel || 'New Tag'}

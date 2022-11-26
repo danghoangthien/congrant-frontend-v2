@@ -7,6 +7,7 @@ import { DonationStyle } from './Donation.style';
 import AddIcon from '@mui/icons-material/Add';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
+import AddFunding from 'app/pages/DonationPage/components/AddFunding';
 
 const Title = ({ mode, setMode }) => {
   return (
@@ -16,9 +17,7 @@ const Title = ({ mode, setMode }) => {
       </Col>
       <Col>
         <Row align="middle">
-          <Button className="icon-btn" icon={<AddIcon />} type="primary">
-            {'寄付の登録'}
-          </Button>
+          <AddFunding />
           <Button className="ml-2 icon-only-btn">
             <MoreHorizIcon />
           </Button>
@@ -33,6 +32,67 @@ const ListModeContent = ({ data, mode, setMode }) => {
   const columnMap = {
     date_of_receipt: {
       title: '受領日',
+      dataIndex: 'date_of_receipt',
+    },
+    donation_id: {
+      title: '寄付No',
+      dataIndex: 'donation_id',
+    },
+    type: {
+      title: '寄付タイプ',
+      dataIndex: 'type',
+      render: type => type,
+    },
+    amount: {
+      title: '金額',
+      dataIndex: 'amount',
+    },
+  };
+
+  const dataSource = [
+    {
+      key: '1',
+      date_of_receipt: '2022-07-30',
+      donation_id: '30139104',
+      type: <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>,
+      amount: '3,000円',
+    },
+    {
+      key: '2',
+      date_of_receipt: '2022-07-29',
+      donation_id: '20381030',
+      type: <StyledDonationTypeTag className="monthly">{'毎月'}</StyledDonationTypeTag>,
+      amount: '1,000円',
+    },
+  ];
+
+  const columns = Object.keys(columnMap).map(columnName => {
+    return columnMap[columnName];
+  });
+
+  return (
+    <>
+      <Table
+        dataSource={dataSource}
+        columns={columns}
+        pagination={false}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: event => {
+              setMode(DETAIL_MODE);
+            }, // click row
+          };
+        }}
+      />
+    </>
+  );
+};
+
+const ListModeContent2 = ({ data, mode, setMode }) => {
+  console.log('ViewModeContent', true);
+  const columnMap = {
+    date_of_receipt: {
+      title: '申込日',
       dataIndex: 'date_of_receipt',
     },
     donation_id: {
@@ -118,7 +178,7 @@ const Donation = ({ data }) => {
             {/* テーブル */}
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
-                <ListModeContent {...{ data, mode, setMode }} />
+                <ListModeContent2 {...{ data, mode, setMode }} />
               </Col>
             </Row>
           </DonationStyle>

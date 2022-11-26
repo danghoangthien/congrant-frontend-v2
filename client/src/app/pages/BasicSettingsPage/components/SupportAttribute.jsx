@@ -12,7 +12,7 @@ const SupportAttribute = () => {
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <Space align="center">
-              <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+              <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
                 menu
               </span>
               <Input value={'理事'} />
@@ -22,7 +22,7 @@ const SupportAttribute = () => {
                 style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
               />
               <span
-                class="material-symbols-outlined fill-icon"
+                className="material-symbols-outlined fill-icon"
                 style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
               >
                 delete
@@ -33,7 +33,7 @@ const SupportAttribute = () => {
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <Space align="center">
-              <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+              <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
                 menu
               </span>
               <Input value={'ボランティア'} />
@@ -43,7 +43,7 @@ const SupportAttribute = () => {
                 style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
               />
               <span
-                class="material-symbols-outlined fill-icon"
+                className="material-symbols-outlined fill-icon"
                 style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
               >
                 delete
@@ -54,7 +54,7 @@ const SupportAttribute = () => {
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24}>
             <Space align="center">
-              <span class="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+              <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
                 menu
               </span>
               <Input value={'代表知人'} />
@@ -64,7 +64,7 @@ const SupportAttribute = () => {
                 style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
               />
               <span
-                class="material-symbols-outlined fill-icon"
+                className="material-symbols-outlined fill-icon"
                 style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
               >
                 delete
@@ -78,7 +78,7 @@ const SupportAttribute = () => {
         <Space align="center">
           <Input placeholder={'理事'} />
           <Button className="icon-btn" type="primary">
-            <span class="material-symbols-outlined">add</span>
+            <span className="material-symbols-outlined">add</span>
             <span>{'追加'}</span>
           </Button>
         </Space>

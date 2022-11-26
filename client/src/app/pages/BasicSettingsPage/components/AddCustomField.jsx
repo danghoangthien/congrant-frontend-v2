@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Button, Radio, Space, Input, Checkbox } from 'antd';
-import { PlusOutlined, MenuOutlined } from '@ant-design/icons';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -37,7 +36,7 @@ const AddCustomField = ({ title }) => {
   return (
     <>
       <Button className="icon-btn" onClick={showModal} type="primary">
-        <span class="material-symbols-outlined">add</span>
+        <span className="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
 
@@ -113,7 +112,13 @@ const AddCustomField = ({ title }) => {
             {dataType === 3 && (
               <Row>
                 <Col sm={24} md={24} lg={24}>
-                  <Input placeholder={'Textbox'} />
+                  <Space align="center">
+                    <Input placeholder={'理事'} />
+                    <Button className="icon-btn" type="primary">
+                      <span className="material-symbols-outlined">add</span>
+                      <span>{'追加'}</span>
+                    </Button>
+                  </Space>
                 </Col>
               </Row>
             )}

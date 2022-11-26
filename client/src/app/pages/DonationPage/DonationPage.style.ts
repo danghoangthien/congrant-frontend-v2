@@ -18,10 +18,7 @@ export const DonationPageLayout = styled.div`
   }
 
   & .ant-card {
-    border-radius: 10px;
-  }
-  & .modalStyle .ant-modal-content {
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
   & .text-right {

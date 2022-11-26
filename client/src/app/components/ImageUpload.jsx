@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Space, Upload, message } from 'antd';
+import { Space, Upload, message, Modal } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { StyledUploadPicture } from 'app/components/Layout/SettingsLayout.style';
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
 };
+
 const beforeUpload = file => {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
   if (!isJpgOrPng) {
@@ -30,6 +30,18 @@ const ImageUpload = ({ onUploadDone = () => {}, width = '100%', maxFiles = 1 }) 
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
   const [fileList, setFileList] = useState([]);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
+  const handlePreview = async file => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
+  };
+  const handleCancel = () => setPreviewOpen(false);
   const handleChange = info => {
     if (info.file.status === 'uploading') {
       setLoading(true);
@@ -60,23 +72,35 @@ const ImageUpload = ({ onUploadDone = () => {}, width = '100%', maxFiles = 1 }) 
   };
   console.log('maxFiles', maxFiles, fileList);
   return (
-    <Upload
-      customRequest={dummyRequest}
-      beforeUpload={beforeUpload}
-      onChange={handleChange}
-      listType="picture-card"
-      fileList={fileList}
-      maxCount={maxFiles}
-    >
-      {fileList.length < maxFiles && (
-        <Space align="center" direction="vertical">
-          <span className="upload-picture-title">
-            {loading ? <LoadingOutlined /> : <PlusOutlined />}
-          </span>
-          <span className="upload-picture-title">{'アップロード'}</span>
-        </Space>
-      )}
-    </Upload>
+    <>
+      <Upload
+        customRequest={dummyRequest}
+        beforeUpload={beforeUpload}
+        onChange={handleChange}
+        listType="picture-card"
+        fileList={fileList}
+        maxCount={maxFiles}
+        onPreview={handlePreview}
+      >
+        {fileList.length < maxFiles && (
+          <Space align="center" direction="vertical">
+            <span className="upload-picture-title">
+              {loading ? <LoadingOutlined /> : <PlusOutlined />}
+            </span>
+            <span className="upload-picture-title">{'アップロード'}</span>
+          </Space>
+        )}
+      </Upload>
+      <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+        <img
+          alt="example"
+          style={{
+            width: '100%',
+          }}
+          src={previewImage}
+        />
+      </Modal>
+    </>
   );
 };
 

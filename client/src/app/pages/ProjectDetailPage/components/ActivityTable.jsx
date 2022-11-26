@@ -3,6 +3,7 @@ import { Table, Dropdown, Button, Menu, Space } from 'antd';
 import { StyledStatusTag2 } from 'styles/StatusTag.style';
 import styled from 'styled-components/macro';
 import { DANGER_COLOR } from 'styles/StyleConstants';
+import ReplyActivity from './ReplyActivity';
 
 const StyledLink = styled(Link)`
   color: #000000;
@@ -25,11 +26,11 @@ const dataSource = Array.from(Array(3).keys()).map(i => ({
   title: randomOutput([
     <StyledLink to={'/'} target="_blank">
       <span className="">{'マンスリーサポーター30人達成しました！'}</span>
-      <span class="material-symbols-outlined">open_in_new</span>
+      <span className="material-symbols-outlined">open_in_new</span>
     </StyledLink>,
     <StyledLink to={'/'} target="_blank">
       <span className="">{'マンスリーサポーターが20人に'}</span>
-      <span class="material-symbols-outlined">open_in_new</span>
+      <span className="material-symbols-outlined">open_in_new</span>
     </StyledLink>,
   ]),
   support_amount_last_month: '123,456円',
@@ -46,7 +47,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle' }}
             >
               content_copy
@@ -60,7 +61,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
             >
               delete
@@ -98,10 +99,10 @@ const columns = [
     dataIndex: 'action',
     render: action => (
       <Space>
-        <Button type="primary">{'編集'}</Button>
+        <ReplyActivity />
         <Dropdown overlay={menu} placement="bottomRight">
           <Button
-            icon={<span class="material-symbols-outlined">more_horiz</span>}
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
             className="more-menu-btn"
           />
         </Dropdown>

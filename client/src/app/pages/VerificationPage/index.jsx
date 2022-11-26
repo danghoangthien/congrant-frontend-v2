@@ -1,7 +1,8 @@
-import { useTranslation } from 'react-i18next';
+import styled from 'styled-components/macro';
+import { Link, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { LoginPageLayout, StyledVericationBox } from 'app/components/Layout/LoginLayout.style';
-import { Row, Col, Input, Space, Radio, Tag, Button } from 'antd';
+import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
+import { Row, Col, Space, Card, Tag, Button } from 'antd';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -9,16 +10,30 @@ import {
   SettingSelect,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 
-// Icons
-import LogoText from 'styles/assets/logo_text.svg';
-import LogoIcon from 'styles/assets/logo_icon.svg';
+import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+// IMAGE
+import Logo from 'styles/assets/logo_congrant.svg';
+
+const StyledTag = styled(Tag)`
+  width: 32px;
+  height: 32px;
+  border-radius: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.5);
+`;
 
 const RegisterPage = () => {
+  const history = useHistory();
+
   const renderPageTitle = () => {
     return (
       <>
         <Helmet>
-          <title>{''}</title>
+          <title>{'利用審査'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -29,60 +44,77 @@ const RegisterPage = () => {
     <>
       {renderPageTitle()}
       <LoginPageLayout>
-        <Space className="mb-5" align="center">
-          <img className="logo-icon" src={LogoIcon} alt="コングラントロゴ" />
-          <img className="logo-text" src={LogoText} alt="コングラントロゴ" />
+        <Space className="mb-8" align="center">
+          <img className="logo-icon" src={Logo} alt="コングラントロゴ" />
         </Space>
-        <div className="item login-container">
-          <Row className="mb-2">
-            <Space
-              className="mb-2 px-10 py-5"
-              direction="vertical"
-              align="center"
-              size="middle"
-              style={{ display: 'flex' }}
-            >
-              <span className="page-sub-title" style={{ fontSize: '28px' }}>
-                {'コングラントIDの登録'}
-              </span>
-              <p style={{ textAlign: 'center', width: '375px' }}>
-                {'仮登録が完了しました。'}
+
+        <Card style={{ width: '600px' }} className="login-card" bodyStyle={{ padding: '40px' }}>
+          <Row className="mb-8" justify="center">
+            <Col className="mb-4" span={24}>
+              <Row justify="center">
+                <div className="page-title">{'利用審査'}</div>
+              </Row>
+            </Col>
+            <Col className="mb-8" span={24}>
+              <div style={{ fontSize: '16px', textAlign: 'center', lineHeight: '1.5' }}>
+                次は利用審査を行います。
                 <br />
-                {'はじめに、コングラントIDを登録してください。'}
-                <br />
-                <span style={{ color: '#FF4D4F' }}>{'※登録後の変更はできません'}</span>
-              </p>
-              <SettingsInputContainer
-                label={<SettingLabel label={'コングラントID（半角英数3文字以上）'} required />}
-              >
-                <SettingInput placeholder={'abczaidan'} style={{ width: '375px' }} />
-              </SettingsInputContainer>
-              <SettingsInputContainer
-                label={
-                  <SettingLabel
-                    label={
-                      <>
-                        <p style={{ textAlign: 'center', width: '375px' }}>
-                          {'コングラントIDはプロジェクトページのURLの一部になります。'}
-                          {
-                            '団体名の略語などを登録してください。例）https://congrant.com/abczaidan/XXXXX'
-                          }
-                        </p>
-                      </>
-                    }
-                  />
-                }
-              />
-              <Space className="mt-5">
-                <SettingsInputContainer>
-                  <Button type="primary" style={{ width: '375px' }} onClick={() => {}}>
-                    {'登録する（登録後の変更不可）'}
+                コングラントで寄付募集を開始するには以下の審査情報の入力が必要です。
+              </div>
+            </Col>
+            <Col style={{ width: '400px' }}>
+              <Row>
+                <Col className="mb-4" span={12}>
+                  <Space size={16}>
+                    <StyledTag style={{ marginRight: 0 }}>{'1'}</StyledTag>
+                    <div style={{ fontSize: '16px', fontWeight: '600', color: TEXT_GRAY_COLOR }}>
+                      {'団体情報'}
+                    </div>
+                  </Space>
+                </Col>
+                <Col className="mb-4" span={12}>
+                  <Space size={16}>
+                    <StyledTag style={{ marginRight: 0 }}>{'2'}</StyledTag>
+                    <div style={{ fontSize: '16px', fontWeight: '600', color: TEXT_GRAY_COLOR }}>
+                      {'代表者情報'}
+                    </div>
+                  </Space>
+                </Col>
+                <Col span={12}>
+                  <Space size={16}>
+                    <StyledTag style={{ marginRight: 0 }}>{'3'}</StyledTag>
+                    <div style={{ fontSize: '16px', fontWeight: '600', color: TEXT_GRAY_COLOR }}>
+                      {'管理者情報'}
+                    </div>
+                  </Space>
+                </Col>
+                <Col span={12}>
+                  <Space size={16}>
+                    <StyledTag style={{ marginRight: 0 }}>{'4'}</StyledTag>
+                    <div style={{ fontSize: '16px', fontWeight: '600', color: TEXT_GRAY_COLOR }}>
+                      {'口座情報'}
+                    </div>
+                  </Space>
+                </Col>
+                <Col span={24} className="mt-6">
+                  <Button
+                    size="large"
+                    type="primary"
+                    style={{ fontWeight: '600', width: '100%' }}
+                    onClick={() => {
+                      history.push(`/verification/organisation`);
+                    }}
+                  >
+                    {'審査情報の入力に進む'}
                   </Button>
-                </SettingsInputContainer>
-              </Space>
-            </Space>
+                </Col>
+              </Row>
+            </Col>
           </Row>
-        </div>
+          <Row>
+            <Link to={`/`}>{'まずは管理画面を試したい（審査をスキップ）'}</Link>
+          </Row>
+        </Card>
       </LoginPageLayout>
     </>
   );

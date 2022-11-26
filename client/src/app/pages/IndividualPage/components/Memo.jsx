@@ -69,7 +69,7 @@ const Memo = ({ data }) => {
                   onClick={() => {}}
                   icon={
                     <span
-                      class="material-symbols-outlined fill-icon icon"
+                      className="material-symbols-outlined fill-icon icon"
                       style={{ color: TEXT_GRAY_COLOR }}
                     >
                       send
@@ -90,7 +90,7 @@ const Memo = ({ data }) => {
                   <Row align="middle">
                     <span className="memo-date">{'2022-09-01 12:23:56'}</span>
                     <span className="memo-person">
-                      <span class="material-symbols-outlined fill-icon icon">person</span>
+                      <span className="material-symbols-outlined fill-icon icon">person</span>
                       荒木 雄大
                     </span>
                   </Row>
@@ -101,7 +101,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button edit-button mr-2"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: '#ffffff' }}
                         >
                           edit
@@ -112,7 +112,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button delete-button"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: PRIMARY_COLOR }}
                         >
                           delete
@@ -138,7 +138,7 @@ const Memo = ({ data }) => {
                   <Row align="middle">
                     <span className="memo-date">{'2022-09-01 12:23:56'}</span>
                     <span className="memo-person">
-                      <span class="material-symbols-outlined fill-icon icon">person</span>
+                      <span className="material-symbols-outlined fill-icon icon">person</span>
                       荒木 雄大
                     </span>
                   </Row>
@@ -149,7 +149,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button edit-button mr-2"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: '#ffffff' }}
                         >
                           edit
@@ -160,7 +160,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button delete-button"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: PRIMARY_COLOR }}
                         >
                           delete
@@ -186,7 +186,7 @@ const Memo = ({ data }) => {
                   <Row align="middle">
                     <span className="memo-date">{'2022-09-01 12:23:56'}</span>
                     <span className="memo-person">
-                      <span class="material-symbols-outlined fill-icon icon">person</span>
+                      <span className="material-symbols-outlined fill-icon icon">person</span>
                       内藤 千賀
                     </span>
                   </Row>
@@ -197,7 +197,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button edit-button mr-2"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: '#ffffff' }}
                         >
                           edit
@@ -208,7 +208,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button delete-button"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: PRIMARY_COLOR }}
                         >
                           delete
@@ -232,7 +232,7 @@ const Memo = ({ data }) => {
                   <Row align="middle">
                     <span className="memo-date">{'2022-09-01 12:23:56'}</span>
                     <span className="memo-person">
-                      <span class="material-symbols-outlined fill-icon icon">person</span>
+                      <span className="material-symbols-outlined fill-icon icon">person</span>
                       荒木 雄大
                     </span>
                   </Row>
@@ -243,7 +243,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button edit-button mr-2"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: '#ffffff' }}
                         >
                           edit
@@ -254,7 +254,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button delete-button"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: PRIMARY_COLOR }}
                         >
                           delete
@@ -280,7 +280,7 @@ const Memo = ({ data }) => {
                   <Row align="middle">
                     <span className="memo-date">{'2022-09-01 12:23:56'}</span>
                     <span className="memo-person">
-                      <span class="material-symbols-outlined fill-icon icon">person</span>
+                      <span className="material-symbols-outlined fill-icon icon">person</span>
                       荒木 雄大
                     </span>
                   </Row>
@@ -291,7 +291,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button edit-button mr-2"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: '#ffffff' }}
                         >
                           edit
@@ -302,7 +302,7 @@ const Memo = ({ data }) => {
                       className="memo-action-button delete-button"
                       icon={
                         <span
-                          class="material-symbols-outlined icon fill-icon"
+                          className="material-symbols-outlined icon fill-icon"
                           style={{ color: PRIMARY_COLOR }}
                         >
                           delete

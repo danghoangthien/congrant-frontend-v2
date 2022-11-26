@@ -12,7 +12,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', display: 'flex' }}
             >
               send
@@ -26,7 +26,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', display: 'flex' }}
             >
               sell
@@ -40,7 +40,7 @@ const menu = (
         label: (
           <Space>
             <span
-              class="material-symbols-outlined fill-icon"
+              className="material-symbols-outlined fill-icon"
               style={{ color: DANGER_COLOR, fontSize: '16px', display: 'flex' }}
             >
               delete
