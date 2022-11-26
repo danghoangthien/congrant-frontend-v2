@@ -70,7 +70,14 @@ const ImageUpload = ({ onUploadDone = () => {}, width = '100%', maxFiles = 1 }) 
       return;
     }
   };
-  console.log('maxFiles', maxFiles, fileList);
+
+  const onRemove = file => {
+    const index = fileList.indexOf(file);
+    const newFileList = fileList.slice();
+    newFileList.splice(index, 1);
+    setFileList(newFileList);
+  };
+
   return (
     <>
       <Upload
@@ -81,6 +88,7 @@ const ImageUpload = ({ onUploadDone = () => {}, width = '100%', maxFiles = 1 }) 
         fileList={fileList}
         maxCount={maxFiles}
         onPreview={handlePreview}
+        onRemove={onRemove}
       >
         {fileList.length < maxFiles && (
           <Space align="center" direction="vertical">
@@ -91,7 +99,7 @@ const ImageUpload = ({ onUploadDone = () => {}, width = '100%', maxFiles = 1 }) 
           </Space>
         )}
       </Upload>
-      <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+      <Modal visible={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
         <img
           alt="example"
           style={{
