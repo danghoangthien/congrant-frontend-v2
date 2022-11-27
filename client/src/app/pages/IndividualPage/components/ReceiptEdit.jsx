@@ -14,7 +14,7 @@ import { BoldLabel, CopiableText } from './Sprites';
 import { LIST_MODE, EDIT_MODE, DETAIL_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
-import ReceiptNavigation from './Sprites/ReceiptNavigation';
+import BreadNavigation from './Sprites/BreadNavigation';
 
 const Title = ({ mode, setMode }) => {
   return (
@@ -54,7 +54,12 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
   console.log('ReceiptDetail render', true);
   return (
     <>
-      <ReceiptNavigation setMode={setMode} />
+      <BreadNavigation
+        setMode={setMode}
+        id={'2022-123456'}
+        label="領収書"
+        identityLabel="領収書No"
+      />
       <DescriptionContainer mode={mode} setMode={setMode}>
         {/* 領収書No */}
         <Descriptions.Item label={<BoldLabel label="領収書No" />}>

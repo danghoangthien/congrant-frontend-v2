@@ -49,6 +49,7 @@ const Step1 = () => {
             className="less-shadow-btn"
             type="primary"
             onClick={() => {
+              dispatch.receiptBulkStep.setCompleted('1');
               dispatch.receiptBulkStep.setActive('2');
             }}
           >

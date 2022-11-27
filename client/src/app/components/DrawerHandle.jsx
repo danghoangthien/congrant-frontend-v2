@@ -38,6 +38,7 @@ const DrawerHandle = ({ children, drawerComponent, onDrawerClose, isOpen = false
         placement="right"
         onClose={onClose}
         visible={open}
+        mask={false}
       >
         {React.cloneElement(drawerComponent, { closeDrawer: onClose })}
       </StyledDrawer>

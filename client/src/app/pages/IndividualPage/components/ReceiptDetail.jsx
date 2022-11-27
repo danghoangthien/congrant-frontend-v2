@@ -1,11 +1,11 @@
 import { Descriptions, Row, Col, Button, Tag, Space, Dropdown, Menu, Badge } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
-import { LIST_MODE, EDIT_MODE } from '../consts';
+import { EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 import { StyledBadgeDot } from 'styles/global-styles';
 import { DONATION_STATUS_COLOR, DONATION_STATUSES } from 'utils/consts';
-import ReceiptNavigation from './Sprites/ReceiptNavigation';
+import BreadNavigation from './Sprites/BreadNavigation';
 
 // 操作メニュー・Action Menu
 const action_menu = (
@@ -67,7 +67,12 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
   console.log('ReceiptDetail render', true);
   return (
     <>
-      <ReceiptNavigation setMode={setMode} />
+      <BreadNavigation
+        setMode={setMode}
+        id={'2022-123456'}
+        label="領収書"
+        identityLabel="領収書No"
+      />
       <DescriptionContainer mode={mode} setMode={setMode}>
         <Descriptions.Item label={<BoldLabel label="領収書No" />}>
           <CopiableText>{'2022-123456'}</CopiableText>
