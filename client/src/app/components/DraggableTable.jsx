@@ -45,7 +45,7 @@ const DraggableBodyRow = ({ index, moveRow, className, style, ...restProps }) =>
   );
 };
 
-const DraggableTable = ({ columns = [], dataSource = [] }) => {
+const DraggableTable = ({ columns = [], dataSource = [], ...rest }) => {
   const [data, setData] = useState(dataSource);
   const components = {
     body: {
@@ -79,6 +79,7 @@ const DraggableTable = ({ columns = [], dataSource = [] }) => {
           };
           return attr;
         }}
+        {...rest}
       />
     </DndProvider>
   );

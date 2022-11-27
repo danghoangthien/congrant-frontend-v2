@@ -196,6 +196,8 @@ const Step1 = () => {
             style={{ fontWeight: '600', width: '100%' }}
             type="primary"
             onClick={() => {
+              // TODO - validation current step
+              dispatch.registerStep.setCompleted('1');
               dispatch.registerStep.setActive('2');
             }}
           >

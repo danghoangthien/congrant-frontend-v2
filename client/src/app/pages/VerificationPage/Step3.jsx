@@ -128,6 +128,7 @@ const Step3 = () => {
               style={{ width: '100%' }}
               type="primary"
               onClick={() => {
+                dispatch.registerStep.setCompleted('3');
                 dispatch.registerStep.setActive('4');
               }}
             >
