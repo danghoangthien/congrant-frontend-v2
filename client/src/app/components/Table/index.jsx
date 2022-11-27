@@ -62,6 +62,7 @@ const DataTable = ({
           onChange: onPageChange,
           pageSizeOptions: PAGE_SIZE_OPTIONS,
           onShowSizeChange,
+          showSizeChanger: false,
           showTotal: (total, range) => `${range[0]}〜${range[1]}件/${total}件`,
         }}
       />

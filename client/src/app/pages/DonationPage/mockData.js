@@ -1,7 +1,7 @@
 import { Button, DatePicker, Dropdown, Menu, Space } from 'antd';
 import moment from 'moment';
 
-import DrawerHandle from '../../components/DrawerHandle';
+import DrawerHandle from 'app/components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import Detail from '../IndividualPage/components/Detail';
 
