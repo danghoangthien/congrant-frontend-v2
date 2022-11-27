@@ -148,7 +148,7 @@ const ProjectPage = () => {
       {renderPageTitle()}
       <PageLayout>
         {/* ヘッディング・Heading */}
-        <div className="item mb-7">
+        <div className="mb-7">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
             <Col>

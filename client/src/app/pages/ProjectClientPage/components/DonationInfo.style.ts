@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { ScreenSizes } from 'styles/StyleConstants';
 
 export const DonationInfoStyle = styled.div`
   .donation-info-title {
@@ -11,10 +12,15 @@ export const DonationInfoStyle = styled.div`
 
     .num {
       font-size: 44px;
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        font-size: 36px;
+      }
     }
   }
 
-  .ant-progress-bg {
+  .ant-progress-bg,
+  .ant-progress-success-bg {
     height: 20px !important;
     border-radius: 4px;
   }
@@ -26,6 +32,7 @@ export const DonationInfoStyle = styled.div`
 
   .ant-progress-inner {
     border-radius: 4px;
+    background: #e0e0e0;
   }
 
   .ant-progress-text {

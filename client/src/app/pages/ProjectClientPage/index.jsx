@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
 // ANTD
 import { Row, Col, Tabs, Badge, Space } from 'antd';
 import DonationInfo from './components/DonationInfo';
@@ -11,8 +12,11 @@ import ProjectClientPageLayout from 'app/components/Layout/ProjectClientPage';
 import HomeTab from './components/HomeTab';
 import ActivityTab from './components/ActivityTab';
 import CommentTab from './components/CommentTab';
+import Media from 'react-media';
 
 const ProjectClientPage = () => {
+  const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
+
   const renderPageTitle = () => {
     return (
       <>
@@ -24,21 +28,45 @@ const ProjectClientPage = () => {
     );
   };
 
+  const params = useParams();
+  console.log(params);
+
+  let project_type;
+  // and conditionally update it as required like below -
+  if (params?.id === '1') {
+    project_type = 'basic';
+  } else if (params?.id === '2') {
+    project_type = 'monthly';
+  } else if (params?.id === '3') {
+    project_type = 'crownfunding';
+  }
+
   return (
     <>
       {renderPageTitle()}
       <ProjectClientPageLayout>
-        <div className="project-client-container">
+        <div className={`project-client-container ${project_type}`}>
           <Row>
             <h1 className="project-title">日本こども支援協会をサポーターとして支えてください</h1>
           </Row>
 
-          <Row className="project-content-container" wrap={false}>
-            <Col className="project-content-main" flex="auto">
+          <Row className="project-content-container" justify="space-between">
+            <Col className="project-content-main" xs={24} lg={params?.id === '1' ? 24 : 16}>
               {/* スライダー・Slider */}
               <Row className="mb-5">
                 <Carousel />
               </Row>
+
+              <Media
+                query="(max-width: 991px)"
+                render={() => (
+                  <Row className="mb-5">
+                    <Col span={24}>
+                      <DonationInfo />
+                    </Col>
+                  </Row>
+                )}
+              />
 
               {/* 概要文・Description Text */}
               <Row className="mb-5">
@@ -49,11 +77,11 @@ const ProjectClientPage = () => {
 
               <Row className="mb-6">
                 {/* SNSシェアー・Share Buttons */}
-                <Col className="mr-6">
+                <Col className="share-container">
                   <Share />
                 </Col>
                 {/* 操作ボタン・Action Buttons */}
-                <Col>
+                <Col className="action-container">
                   <Action />
                 </Col>
               </Row>
@@ -63,7 +91,7 @@ const ProjectClientPage = () => {
                 <Col span={24}>
                   <Tabs defaultActiveKey="1" className="content-tabs" tabBarGutter={30}>
                     {/* ホーム・Home */}
-                    <Tabs.TabPane tab="Home" key="1">
+                    <Tabs.TabPane tab="HOME" key="1">
                       <HomeTab />
                     </Tabs.TabPane>
                     {/* 活動報告・Activity */}
@@ -110,15 +138,32 @@ const ProjectClientPage = () => {
                 </Col>
               </Row>
             </Col>
+
+            {params?.id === '1' && (
+              <Row span={24}>
+                <OrganizationInfo logo={Logo} />
+              </Row>
+            )}
+
             {/* サイダー・Sider（クラファンのみ・Crowdfundding only） */}
-            <Col flex="300px">
-              {/* 寄付情報・ゲージ・Donation Info and Progress bar */}
-              <DonationInfo />
-              {/* 団体情報・Organization Info */}
-              <OrganizationInfo />
-              {/* コース・Course（クラファンのみ・Crowdfunding only） */}
-              <CourseInfo />
-            </Col>
+            {params?.id === '2' || params?.id === '3' ? (
+              <Col xs={24} lg={7}>
+                {/* 寄付情報・ゲージ・Donation Info and Progress bar */}
+                <Media
+                  query="(min-width: 992px)"
+                  render={() => (
+                    <div style={{ marginBottom: '115px' }}>
+                      <DonationInfo />
+                    </div>
+                  )}
+                />
+                {/* 団体情報・Organization Info */}
+                <OrganizationInfo logo={Logo} />
+                <Media query="(min-width: 992px)" render={() => <CourseInfo />} />
+              </Col>
+            ) : (
+              ''
+            )}
           </Row>
         </div>
       </ProjectClientPageLayout>

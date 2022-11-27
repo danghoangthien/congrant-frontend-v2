@@ -37,7 +37,6 @@ import ReceiptBulkPage from './pages/ReceiptBulkPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import ReccuringPage from './pages/ReccuringPage';
 import ProjectClientPage from './pages/ProjectClientPage';
-
 import { useTranslation } from 'react-i18next';
 import CkeditorPage from './pages/CkeditorPage';
 
@@ -90,8 +89,7 @@ export function App() {
             <LoginPage />
           </Route>
 
-          {/* プロジェクトトップ・Project Client */}
-          <Route exact path={process.env.PUBLIC_URL + '/client'}>
+          <Route exact path={process.env.PUBLIC_URL + '/project/client_name/:id'}>
             <ProjectClientPage />
           </Route>
 

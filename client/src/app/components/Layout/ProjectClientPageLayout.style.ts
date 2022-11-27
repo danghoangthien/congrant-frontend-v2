@@ -1,24 +1,40 @@
 import styled from 'styled-components/macro';
-import { PRIMARY_COLOR } from 'styles/StyleConstants';
+import { PRIMARY_COLOR, ScreenSizes } from 'styles/StyleConstants';
 
 export const ProjectClientPageStyle = styled.div`
   height: 100%;
   padding-bottom: 118px;
   color: #222222;
-
   font-family: 'Noto Sans JP', sans-serif;
+
+  & .share-container {
+    margin-right: 24px;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      margin-bottom: 14px;
+      margin-right: 0;
+    }
+  }
 
   & .project-client-container {
     width: 100%;
-    max-width: 1080px;
+    max-width: 1060px;
     margin: 0 auto;
-    padding: 0 20px;
+
+    &.basic {
+      max-width: 700px;
+    }
   }
 
   & .project-title {
     font-size: 30px;
     font-weight: 700;
     margin-bottom: 20px;
+    line-height: 1.4;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      font-size: 22px;
+    }
   }
 
   & .copy-right {
@@ -30,6 +46,10 @@ export const ProjectClientPageStyle = styled.div`
     min-height: 100%;
     border-top: 1px solid #e7e7e7;
     padding: 34px 20px 100px;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      padding: 25px 20px 30px;
+    }
   }
 
   & .project-client-footer {
@@ -43,10 +63,15 @@ export const ProjectClientPageStyle = styled.div`
     max-width: 1080px;
     padding: 0 20px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
 
     & .organization-logo {
-      margin-right: 20px;
-      width: 200px;
+      // margin-right: 20px;
+      // width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       .ant-image {
         height: 42px;
@@ -57,11 +82,24 @@ export const ProjectClientPageStyle = styled.div`
           height: 100%;
           object-fit: contain;
         }
+
+        @media screen and (max-width: ${ScreenSizes.medium}) {
+          height: 45px;
+        }
+      }
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        width: 152px;
       }
     }
 
     & .organization-name {
       font-weight: 500;
+      font-size: 14px;
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        display: none;
+      }
     }
   }
 
@@ -69,6 +107,11 @@ export const ProjectClientPageStyle = styled.div`
     font-size: 16px;
     font-weight: 500;
     line-height: 1.6875;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      font-weight: 400;
+      line-height: 2;
+    }
   }
 
   & .badge {
@@ -100,20 +143,32 @@ export const ProjectClientPageStyle = styled.div`
   }
 
   & .footer-logo {
-    width: 200px;
+    // width: 200px;
 
     .ant-image {
-      height: 42px;
+      height: 35px;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        height: 27px;
+      }
     }
   }
 
   & .project-content-main {
-    padding-right: 60px;
+    // padding-right: 60px;
+    padding-bottom: 60px;
+    // @media screen and (max-width: ${ScreenSizes.medium}) {
+    //   padding-bottom: 60px;
+    // }
+  }
+
+  & #google_translate_element {
+    line-height: 1;
   }
 `;
