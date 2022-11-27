@@ -18,6 +18,7 @@ const projectData = [
   {
     id: 1,
     title: '',
+    type: '',
     status: '',
     url: '',
     paymentType: '',

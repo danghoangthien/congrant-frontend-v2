@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { Row, Button, Space, Modal, Typography } from 'antd';
-
+import styled from 'styled-components/macro';
 // STYLE
 import { StyledModalTitle } from 'styles/Modal.style';
 
+const StyledSwapModal = styled(Modal)`
+  & .ant-modal-footer {
+    .ant-btn-default {
+      display: none;
+    }
+  }
+`;
 const Swap = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,7 +40,7 @@ const Swap = () => {
       </Typography.Text>
 
       {/* 寄付の登録モーダル・ChangeAmount Modal */}
-      <Modal
+      <StyledSwapModal
         title={<StyledModalTitle className="modal-title">{'未受領の寄付とは？'}</StyledModalTitle>}
         visible={isModalOpen}
         onOk={handleOk}
@@ -48,7 +55,7 @@ const Swap = () => {
             <Button>{'swap'}</Button>
           </Space>
         </Row>
-      </Modal>
+      </StyledSwapModal>
     </>
   );
 };
