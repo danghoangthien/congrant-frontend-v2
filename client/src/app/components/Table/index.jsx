@@ -208,7 +208,7 @@ const DataTable = ({
                   }
                 }}
               >
-                全件選択
+                {hasSelected ? `クリア` : '全件選択'}
               </span>
               {contextButtons.map(Component => {
                 return <Component selectedRowKeys={selectedRowKeys} />;

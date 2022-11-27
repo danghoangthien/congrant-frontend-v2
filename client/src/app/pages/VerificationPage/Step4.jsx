@@ -93,7 +93,9 @@ const Step3 = () => {
               className="icon-btn"
               icon={<span className="material-symbols-outlined">chevron_left</span>}
               onClick={() => {
-                dispatch.registerStep.setActive('1');
+                dispatch.registerStep.setActive('1'); //unCompleted
+                dispatch.registerStep.unCompleted('3');
+                dispatch.registerStep.unCompleted('2');
               }}
             >
               {'戻る'}

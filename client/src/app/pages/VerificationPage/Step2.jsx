@@ -201,6 +201,7 @@ const Step2 = () => {
               style={{ width: '100%' }}
               type="primary"
               onClick={() => {
+                dispatch.registerStep.setCompleted('2');
                 dispatch.registerStep.setActive('3');
               }}
             >

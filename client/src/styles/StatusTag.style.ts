@@ -3,6 +3,7 @@ import { Tag } from 'antd';
 import {
   EXTRA_DARK_GRAY,
   PRIMARY_COLOR,
+  WARNING_COLOR,
   EXTRA_LIGHT_PRIMARY_COLOR,
   EXTRA_LIGHT_GRAY,
   GRAY,
@@ -22,6 +23,9 @@ export const StyledStatusTag = styled(Tag)`
 
   &.public {
     background: ${PRIMARY_COLOR};
+  }
+  &.review {
+    background: ${WARNING_COLOR};
   }
   &.non-public {
     background: ${EXTRA_DARK_GRAY};

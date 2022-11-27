@@ -37,4 +37,18 @@ async function* gInterval(sleepMs = 1_000) {
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
-export { createCsvDownload, sleep, gCountDown, gInterval, randomOutput };
+function hexToRgbA(hex: string, opactity = null) {
+  var c: any;
+
+  if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+    c = hex.substring(1).split('');
+    if (c.length == 3) {
+      c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c = '0x' + c.join('');
+    return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + `,${opactity || 1})`;
+  }
+  throw new Error('Bad Hex');
+}
+
+export { createCsvDownload, sleep, gCountDown, gInterval, randomOutput, hexToRgbA };

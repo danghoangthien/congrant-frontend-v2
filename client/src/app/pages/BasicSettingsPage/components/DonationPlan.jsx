@@ -1,7 +1,6 @@
 import { Row, Col, Tag, Button, Table, Dropdown, Menu, Space } from 'antd';
 import AddDonationPlan from './AddDonationPlan';
-import { randomOutput } from 'utils/helper';
-
+import DraggableTable from 'app/components/DraggableTable';
 import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'app/pages/DonationPage/consts';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
@@ -143,7 +142,12 @@ const DonationPlan = () => {
       </Row>
       <Row className="mb-6">
         <Col sm={24} md={24} lg={24}>
-          <Table tableLayout="fixed" dataSource={dataSource} columns={columns} pagination={false} />
+          <DraggableTable
+            tableLayout="fixed"
+            dataSource={dataSource}
+            columns={columns}
+            pagination={false}
+          />
         </Col>
       </Row>
       <Row>
