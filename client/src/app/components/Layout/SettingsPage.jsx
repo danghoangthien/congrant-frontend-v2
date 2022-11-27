@@ -30,8 +30,8 @@ const SettingsPage = ({ meta, title, settingComponentMap }) => {
     <>
       {renderPageTitle()}
       <PageLayout>
-        <div className="item mx-5">{title}</div>
-        <div className="item ma-5">
+        <div className="mb-7">{title}</div>
+        <div>
           <Card bodyStyle={{ padding: '32px 40px' }}>
             <Row className="setting-wrapper">
               <Col style={{ width: '200px' }}>

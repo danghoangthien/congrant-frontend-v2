@@ -93,7 +93,7 @@ const IndividualPage = () => {
     <>
       {renderPageTitle()}
       <PageLayout>
-        <div className="item mb-6">
+        <div className="mb-7">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
             <Col>

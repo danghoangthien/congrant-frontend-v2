@@ -3,7 +3,7 @@ export enum StyleConstants {
 }
 
 export enum ScreenSizes {
-  mobile = '479px',
+  mobile = '575px',
   small = '767px',
   medium = '991px',
   large = '1260px',

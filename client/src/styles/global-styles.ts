@@ -112,6 +112,30 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // IMAGE
+  .img-cover {
+    overflow: hidden;
+    display: block;
+    position: relative;
+  }
+  
+  .img-cover img {
+    object-fit: cover;
+    position: absolute;
+    top: -10000%;
+    right: -10000%;
+    bottom: -10000%;
+    left:-10000%;
+    margin: auto auto;
+    min-width: 1000%;
+    min-height: 1000%;
+    width: 100%;
+    -webkit-transform: scale(.1);
+    -moz-transform: scale(.1);
+    -ms-transform: scale(.1);
+    -o-transform: scale(.1);
+    transform: scale(.1);
+  }
+
   .thumb-image {
     overflow: hidden;
 
