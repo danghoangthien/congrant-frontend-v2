@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
 import { Row, Col, Card, Descriptions, Button } from 'antd';
 import { DescriptionStyle } from 'app/pages/IndividualPage/components/BasicInfo.style';
@@ -9,8 +9,10 @@ import { useDispatch } from 'react-redux';
 import { BoldLabel } from 'utils/Sprites';
 // IMAGE
 import { LogoBox } from './components/Logo';
+import './Models/index';
 
 const Confirmation = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const renderPageTitle = () => {
@@ -59,6 +61,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('1');
+                            history.push(`/verification/organisation`);
                           }}
                         >
                           {'修正'}
@@ -100,6 +103,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('2');
+                            history.push(`/verification/organisation`);
                           }}
                         >
                           {'修正'}
@@ -141,6 +145,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('3');
+                            history.push(`/verification/organisation`);
                           }}
                         >
                           {'修正'}
@@ -182,6 +187,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('4');
+                            history.push(`/verification/organisation`);
                           }}
                         >
                           {'修正'}

@@ -230,7 +230,10 @@ const ProjectPage = () => {
                         </a>
                       </StyledProjectUrl>
                     </div>
-                    <Space className="mb-2" split={<Divider type="vertical" />}>
+                    <Space
+                      className="mb-2"
+                      split={<Divider type="vertical" style={{ backgroundColor: '#D9D9D7' }} />}
+                    >
                       <StyledProjectPaymentTypeTag projectPaymentType={item.paymentType}>
                         {PROJECT_PAYMENT_TYPES[item.paymentType]}
                       </StyledProjectPaymentTypeTag>
