@@ -1,6 +1,6 @@
 import { getWithExpiry } from 'utils/localStorageHandler';
 // ANTD
-import { Dropdown, Button, Menu, Badge, Space, Typography } from 'antd';
+import { Dropdown, Button, Menu, Badge, Space } from 'antd';
 // STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
 import { DANGER_COLOR } from 'styles/StyleConstants';
@@ -130,14 +130,7 @@ const columnMap = {
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle={row.supporter} drawerComponent={<Detail data={row} />}>
-        <Typography.Text
-          style={{
-            color: '#63B233',
-            cursor: 'pointer',
-          }}
-        >
-          {row.supporter}
-        </Typography.Text>
+        <span className="supporter-link">{row.supporter}</span>
       </DrawerHandle>
     ),
     csvOutput: ({ supporter }) => supporter,
