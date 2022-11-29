@@ -1,7 +1,9 @@
-import { Tag, Badge, Space, Typography } from 'antd';
+import { Tag, Badge, Space } from 'antd';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import { randomOutput } from 'utils/helper';
 import { StyledBadgeDot } from 'styles/global-styles';
+import DrawerHandle from 'app/components/DrawerHandle';
+import Detail from '../IndividualPage/components/Detail';
 
 import {
   RECEIPT_METHODS,
@@ -300,14 +302,9 @@ const columnMap = {
   supporter: {
     title: 'サポーター',
     render: row => (
-      <Typography.Text
-        style={{
-          color: '#63B233',
-          cursor: 'pointer',
-        }}
-      >
-        {row.supporter}
-      </Typography.Text>
+      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
+        <span className="supporter-link">{row.supporter}</span>
+      </DrawerHandle>
     ),
     csvOutput: ({ supporter }) => supporter,
   },

@@ -3,10 +3,25 @@ import { Helmet } from 'react-helmet-async';
 import { useHistory } from 'react-router-dom';
 import Filters from './components/Filters';
 import { Button, Input, Row, Col, Card, Space, Image, Tag, Divider, Menu, Dropdown } from 'antd';
-import { DANGER_COLOR } from 'styles/StyleConstants';
 import LaunchNewProject from './components/LaunchNewProject';
+import {
+  PROJECT_TYPES,
+  PROJECT_TYPE_COLORS,
+  PROJECT_PAYMENT_TYPES,
+  PROJECT_PAYMENT_TYPE_COLORS,
+  PROJECT_STATUSES,
+  PROJECT_STATUS_CLASSES,
+  DONATION_TYPES,
+  DONATION_TYPE_CLASSES,
+} from 'utils/consts';
+import { DANGER_COLOR } from 'styles/StyleConstants';
+
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import { StyledDonationTypeTag } from 'styles/Tag.style';
+import {
+  StyledDonationTypeTag,
+  StyledProjectTypeTag,
+  StyledProjectPaymentTypeTag,
+} from 'styles/Tag.style';
 import { StyledStatusTag } from 'styles/StatusTag.style';
 import {
   ProjectTitle as StyledProjectTitle,
@@ -17,13 +32,63 @@ import {
 const projectData = [
   {
     id: 1,
-    title: '',
-    status: '',
-    url: '',
-    paymentType: '',
-    totalDonation: '',
-    lastUpdated: '',
-    number_of_donation: '',
+    title: 'NPO法人コングラントへのご支援をお願いします！',
+    type: 1,
+    status: 1,
+    url: 'https://congrant.com/XXXXXXXXXXXXXXXXXXX',
+    paymentType: 1,
+    donationTypes: [1, 2, 3],
+    totalDonation: '123,456',
+    lastUpdated: '2022-08-01 12:34:45',
+    donationTimes: '123',
+  },
+  {
+    id: 2,
+    title: 'NPO法人コングラントへのご支援をお願いします！',
+    type: 1,
+    status: 4,
+    url: 'https://congrant.com/XXXXXXXXXXXXXXXXXXX',
+    paymentType: 2,
+    donationTypes: [1],
+    totalDonation: '123,000',
+    lastUpdated: '2022-08-01 12:34:45',
+    donationTimes: '777',
+  },
+  {
+    id: 3,
+    title: 'NPO法人コングラントへのご支援をお願いします！',
+    type: 1,
+    status: 1,
+    url: 'https://congrant.com/XXXXXXXXXXXXXXXXXXX',
+    paymentType: 2,
+    donationTypes: [1],
+    totalDonation: '699,000',
+    lastUpdated: '2022-08-01 12:34:45',
+    donationTimes: '11',
+  },
+  {
+    id: 4,
+    title: 'NPO法人コングラントへのご支援をお願いします！',
+    type: 2,
+    status: 2,
+    url: 'https://congrant.com/XXXXXXXXXXXXXXXXXXX',
+    paymentType: 1,
+    donationTypes: [1, 2, 3],
+    totalDonation: '0',
+    lastUpdated: '2022-08-01 12:34:45',
+    donationTimes: '0',
+  },
+  {
+    id: 5,
+    title: 'NPO法人コングラントへのご支援をお願いします！',
+    type: 3,
+    status: 3,
+    url: 'https://congrant.com/XXXXXXXXXXXXXXXXXXX',
+    paymentType: 1,
+    donationTypes: [1, 2, 3],
+    totalDonation: '0',
+    lastUpdated: '2022-08-01 12:34:45',
+    donationTimes: '0',
   },
 ];
 
@@ -131,9 +196,9 @@ const ProjectPage = () => {
             title={<span className="bold">{'プロジェクト一覧'}</span>}
             className="project-card-wrapper"
           >
-            {Array.from(Array(3).keys()).map(i => (
+            {projectData.map(item => (
               <div className="project-card">
-                <Row onClick={() => history.push(`projects/${i + 1}/summary`)}>
+                <Row onClick={() => history.push(`projects/${item.id}/summary`)}>
                   <Col flex="160px">
                     <div className="thumb-image" style={{ height: '104px' }}>
                       <Image
@@ -144,44 +209,56 @@ const ProjectPage = () => {
                   </Col>
                   <Col flex="calc(100% - 200px)" className="px-6">
                     <div className="project-head">
-                      <div style={{ width: '66px' }} className="pt-1">
-                        <StyledStatusTag className="public">{'公開中'}</StyledStatusTag>
-                      </div>
-                      <div style={{ width: 'calc(100% - 66px)' }} className="pl-2">
+                      <Space style={{ width: '100%' }}>
+                        <StyledStatusTag className={PROJECT_STATUS_CLASSES[item.status]}>
+                          {PROJECT_STATUSES[item.status]}
+                        </StyledStatusTag>
                         <StyledProjectTitle>
-                          <div>{'NPO法人コングラントへのご支援をお願いします！'}</div>
+                          <div>{item.title}</div>
                         </StyledProjectTitle>
-                      </div>
+                      </Space>
                     </div>
                     <div onClick={e => e.stopPropagation()}>
                       <StyledProjectUrl>
                         <a
-                          href="https://congrant.com/XXXXXXXXXXXXXXXXXXX"
+                          href={item.url}
                           target="_blank"
                           rel="noreferrer"
                           onClick={e => e.stopPropagation()}
                         >
-                          {'公開URL：https://congrant.com/XXXXXXXXXXXXXXXXXXX'}
+                          {`公開URL：${item.url}`}
                         </a>
                       </StyledProjectUrl>
                     </div>
-                    <div>
-                      <Tag style={{ marginRight: '0px' }} color="success">
-                        {'クラウドファンディング'}
-                      </Tag>
-                      <Divider type="vertical" />
-                      <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
-                      <StyledDonationTypeTag className="monthly">{'毎月'}</StyledDonationTypeTag>
-                      <StyledDonationTypeTag className="yearly">{'毎年'}</StyledDonationTypeTag>
-                    </div>
+                    <Space className="mb-2" split={<Divider type="vertical" />}>
+                      <StyledProjectPaymentTypeTag projectPaymentType={item.paymentType}>
+                        {PROJECT_PAYMENT_TYPES[item.paymentType]}
+                      </StyledProjectPaymentTypeTag>
+                      <StyledProjectTypeTag projectType={item.type}>
+                        {PROJECT_TYPES[item.type]}
+                      </StyledProjectTypeTag>
+                      <Space>
+                        {item.donationTypes.map(donationType => (
+                          <StyledDonationTypeTag className={DONATION_TYPE_CLASSES[donationType]}>
+                            {DONATION_TYPES[donationType]}
+                          </StyledDonationTypeTag>
+                        ))}
+                      </Space>
+                    </Space>
                     <div>
                       <span className="project-sub-ttl">最終更新</span>
-                      <span>{'2022-08-01 12:34:45'}</span>
+                      <span>{item.lastUpdated}</span>
                       <Divider type="vertical" />
                       <span className="project-sub-ttl">寄付総額</span>
-                      <span className="mr-4">{'123,456円'}</span>
+                      <span className="mr-4">
+                        {item.totalDonation}
+                        {'円'}
+                      </span>
                       <span className="project-sub-ttl">寄付件数</span>
-                      <span>{'123件'}</span>
+                      <span>
+                        {item.donationTimes}
+                        {'件'}
+                      </span>
                     </div>
                   </Col>
                   <Col flex="40px" onClick={e => e.stopPropagation()}>

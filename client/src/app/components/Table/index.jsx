@@ -62,6 +62,7 @@ const DataTable = ({
           onChange: onPageChange,
           pageSizeOptions: PAGE_SIZE_OPTIONS,
           onShowSizeChange,
+          showSizeChanger: false,
           showTotal: (total, range) => `${range[0]}〜${range[1]}件/${total}件`,
         }}
       />
@@ -207,7 +208,7 @@ const DataTable = ({
                   }
                 }}
               >
-                全件選択
+                {hasSelected ? `クリア` : '全件選択'}
               </span>
               {contextButtons.map(Component => {
                 return <Component selectedRowKeys={selectedRowKeys} />;

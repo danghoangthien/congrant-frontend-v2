@@ -12,6 +12,7 @@ import Step4 from './Step4';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 // IMAGE
 import { LogoBox } from './components/Logo';
+import DoneIcon from '@mui/icons-material/Done';
 
 const StyledTag = styled(Tag)`
   width: 32px;
@@ -41,7 +42,7 @@ const StyledTabs = styled(Tabs)`
 `;
 
 const RegisterStepsPage = () => {
-  const { active } = useSelector(state => state['registerStep']);
+  const { active, completed } = useSelector(state => state['registerStep']);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,9 +50,10 @@ const RegisterStepsPage = () => {
 
   const TabName = ({ current, active, children }) => {
     const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
+    const isCurrentTabCompleted = completed.includes(current);
     return (
       <Space size={16}>
-        <StyledTag color={color}>{current}</StyledTag>
+        <StyledTag color={color}>{isCurrentTabCompleted ? <DoneIcon /> : current}</StyledTag>
         {children}
       </Space>
     );

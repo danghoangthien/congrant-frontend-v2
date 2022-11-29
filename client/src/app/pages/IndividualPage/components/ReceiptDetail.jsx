@@ -5,6 +5,7 @@ import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 import { StyledBadgeDot } from 'styles/global-styles';
 import { DONATION_STATUS_COLOR, DONATION_STATUSES } from 'utils/consts';
+import ReceiptNavigation from './Sprites/ReceiptNavigation';
 
 // 操作メニュー・Action Menu
 const action_menu = (
@@ -65,44 +66,47 @@ const DescriptionContainer = ({ children, mode, setMode }) => (
 const ReceiptDetail = ({ data, mode, setMode }) => {
   console.log('ReceiptDetail render', true);
   return (
-    <DescriptionContainer mode={mode} setMode={setMode}>
-      <Descriptions.Item label={<BoldLabel label="領収書No" />}>
-        <CopiableText>{'2022-123456'}</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="寄付No" />}>
-        <span style={{ color: PRIMARY_COLOR, fontWeight: '600' }}>
-          431051・431052・431053・431054
-        </span>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="発行ステータス" />}>
-        {' '}
-        <StyledBadgeDot>
-          <Badge color={DONATION_STATUS_COLOR['2'][0]} text={DONATION_STATUSES['2']} />
-        </StyledBadgeDot>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="発行日時" />}>-</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="受領日" />}>
-        {'2022-01-15〜2022-04-15'}
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="宛名" />}>田中 太郎</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="住所" />}>
-        <CopiableText>
-          <div>
-            〒0000000
-            <br />
-            ＊＊＊県＊＊＊市＊＊＊＊＊＊＊＊＊＊
-            <br />
-            ＊＊＊＊＊＊＊＊ビル6F
-            <br />
-            ＊＊＊＊株式会社
-          </div>
-        </CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="テンプレート" />}>
-        <CopiableText>標準領収書</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="メモ" />}>-</Descriptions.Item>
-    </DescriptionContainer>
+    <>
+      <ReceiptNavigation setMode={setMode} />
+      <DescriptionContainer mode={mode} setMode={setMode}>
+        <Descriptions.Item label={<BoldLabel label="領収書No" />}>
+          <CopiableText>{'2022-123456'}</CopiableText>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="寄付No" />}>
+          <span style={{ color: PRIMARY_COLOR, fontWeight: '600' }}>
+            431051・431052・431053・431054
+          </span>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="発行ステータス" />}>
+          {' '}
+          <StyledBadgeDot>
+            <Badge color={DONATION_STATUS_COLOR['2'][0]} text={DONATION_STATUSES['2']} />
+          </StyledBadgeDot>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="発行日時" />}>-</Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="受領日" />}>
+          {'2022-01-15〜2022-04-15'}
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="宛名" />}>田中 太郎</Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="住所" />}>
+          <CopiableText>
+            <div>
+              〒0000000
+              <br />
+              ＊＊＊県＊＊＊市＊＊＊＊＊＊＊＊＊＊
+              <br />
+              ＊＊＊＊＊＊＊＊ビル6F
+              <br />
+              ＊＊＊＊株式会社
+            </div>
+          </CopiableText>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="テンプレート" />}>
+          <CopiableText>標準領収書</CopiableText>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="メモ" />}>-</Descriptions.Item>
+      </DescriptionContainer>
+    </>
   );
 };
 

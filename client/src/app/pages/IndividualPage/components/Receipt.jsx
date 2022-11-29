@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Badge, Row, Col, Button, Table, Dropdown, Menu, Space } from 'antd';
 import { StyledBadgeDot } from 'styles/global-styles';
+import { DANGER_COLOR } from 'styles/StyleConstants';
 import ReceiptDetail from './ReceiptDetail';
 import ReceiptEdit from './ReceiptEdit';
 import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
 import ExportPDF from 'app/pages/ReceiptPage/components/ExportPDF';
-import { DONATION_STATUS_COLOR, DONATION_STATUSES } from 'utils/consts';
+import { RECEIPT_STATUSES, RECEIPT_STATUS_COLOR } from 'utils/consts';
 
 // 操作メニュー・Action Menu
 const action_menu = (
@@ -22,6 +23,102 @@ const action_menu = (
     ]}
   />
 );
+
+export const menuItems = (selectedRowKeys, status) => {
+  let menuItem3 = (
+    <Space
+      onClick={() => {
+        console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+      }}
+    >
+      <span
+        className="material-symbols-outlined"
+        style={{ fontSize: '16px', verticalAlign: 'middle' }}
+      >
+        keyboard_return
+      </span>
+      <span>{'未発行に戻す'}</span>
+    </Space>
+  );
+  console.log(status, RECEIPT_STATUSES[0]);
+  if (RECEIPT_STATUSES[status] == RECEIPT_STATUSES[0]) {
+    menuItem3 = (
+      <Space
+        onClick={() => {
+          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+        }}
+      >
+        <span
+          className="material-symbols-outlined fill-icon"
+          style={{ fontSize: '16px', verticalAlign: 'middle' }}
+        >
+          check_box
+        </span>
+        <span>{'発行済に戻す'}</span>
+      </Space>
+    );
+  }
+  return [
+    {
+      key: '1',
+      label: (
+        <Space
+          onClick={() => {
+            console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+          }}
+        >
+          <span
+            className="material-symbols-outlined fill-icon"
+            style={{ fontSize: '16px', verticalAlign: 'middle' }}
+          >
+            send
+          </span>
+          <span>{'領収書URLを送る'}</span>
+        </Space>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <Space
+          onClick={() => {
+            console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+          }}
+        >
+          <span
+            className="material-symbols-outlined fill-icon"
+            style={{ fontSize: '16px', verticalAlign: 'middle' }}
+          >
+            content_copy
+          </span>
+          <span>{'領収書URLをコピー'}</span>
+        </Space>
+      ),
+    },
+    {
+      key: '3',
+      label: menuItem3,
+    },
+    {
+      key: '4',
+      label: (
+        <Space
+          onClick={() => {
+            console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+          }}
+        >
+          <span
+            className="material-symbols-outlined fill-icon"
+            style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
+          >
+            delete
+          </span>
+          <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+        </Space>
+      ),
+    },
+  ];
+};
 
 const Title = ({ title }) => {
   return (
@@ -50,7 +147,7 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
       dataIndex: 'status',
       render: status => (
         <StyledBadgeDot>
-          <Badge color={DONATION_STATUS_COLOR[status][0]} text={DONATION_STATUSES[status]} />
+          <Badge status={RECEIPT_STATUS_COLOR[status]} text={RECEIPT_STATUSES[status]} />
         </StyledBadgeDot>
       ),
     },
@@ -65,10 +162,10 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
     action: {
       width: 140,
       title: 'アクション',
-      render: () => (
-        <Space>
+      render: row => (
+        <Space onClick={e => e.stopPropagation()}>
           <ExportPDF />
-          <Dropdown overlay={action_menu} placement="bottomRight">
+          <Dropdown overlay={<Menu items={menuItems(null, row.status)} />} placement="bottomRight">
             <Button
               className="more-menu-btn"
               icon={<span className="material-symbols-outlined">more_horiz</span>}
@@ -82,14 +179,14 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
   const dataSource = [
     {
       key: '1',
-      status: '1',
+      status: '0',
       issue_date: '2021-01-15',
       receipt_id: '2022-123456',
       action: '-',
     },
     {
       key: '2',
-      status: '2',
+      status: '1',
       issue_date: '2021-01-15',
       receipt_id: '2022-123456',
       action: '-',
@@ -127,7 +224,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
       dataIndex: 'status',
       render: status => (
         <StyledBadgeDot>
-          <Badge color={DONATION_STATUS_COLOR[status][0]} text={DONATION_STATUSES[status]} />
+          <Badge status={RECEIPT_STATUS_COLOR[status]} text={RECEIPT_STATUSES[status]} />
         </StyledBadgeDot>
       ),
     },
@@ -142,10 +239,10 @@ const ListModeContent = ({ data, mode, setMode }) => {
     action: {
       width: 140,
       title: 'アクション',
-      render: () => (
+      render: row => (
         <Space>
           <ExportPDF />
-          <Dropdown overlay={action_menu} placement="bottomRight">
+          <Dropdown overlay={<Menu items={menuItems(null, row.status)} />} placement="bottomRight">
             <Button
               className="more-menu-btn"
               icon={<span className="material-symbols-outlined">more_horiz</span>}
@@ -207,7 +304,7 @@ const Receipt = ({ data }) => {
           <Title title="領収書" />
           <Row className="mb-8">
             <Col span={24}>
-              <ReceiptTitle title="合算領収書" />
+              <ReceiptTitle title="合計領収書" />
             </Col>
             <Col span={24}>
               <AnnualListModeContent {...{ data, mode, setMode }} />

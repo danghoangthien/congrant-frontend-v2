@@ -2,7 +2,8 @@ import { Select, Button, Table, Typography, Badge, Dropdown, Menu } from 'antd';
 import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
 import { randomOutput } from 'utils/helper';
 import { StyledBadgeDot } from 'styles/global-styles';
-
+import DrawerHandle from 'app/components/DrawerHandle';
+import Detail from 'app/pages/IndividualPage/components/Detail';
 const RECEIPT_STATUSES = {
   0: '受領済み',
   1: '未受領',
@@ -83,8 +84,11 @@ const columnMap = {
   },
   supporter: {
     title: 'サポーター',
-    dataIndex: 'supporter',
-    render: supporter => <Typography.Text type="success">{supporter}</Typography.Text>,
+    render: row => (
+      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
+        <span className="supporter-link">{row.supporter}</span>
+      </DrawerHandle>
+    ),
   },
   receipt_method: {
     width: 120,

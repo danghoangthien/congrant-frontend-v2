@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { Space, Row, Col, Input, Badge, Button } from 'antd';
 import { TEXT_GRAY_COLOR, DANGER_COLOR, LIGHT_GRAY } from 'styles/StyleConstants';
+import Draggable from 'app/components/DraggableItems';
+import { DraggableInputItem } from './Sprites';
 
 const renderPageTitle = () => {
   return (
@@ -23,71 +25,16 @@ const SupportAttribute = () => {
         </Col>
 
         <Col span={24} className="mb-6">
-          <Row className="mb-2">
-            <Col sm={24} md={24} lg={24}>
-              <Space align="center">
-                <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
-                  menu
-                </span>
-                <Input value={'理事'} />
-                <Badge
-                  count={'99'}
-                  className="roboto-mono"
-                  style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
-                />
-                <span
-                  className="material-symbols-outlined fill-icon"
-                  style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
-                >
-                  delete
-                </span>
-              </Space>
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col sm={24} md={24} lg={24}>
-              <Space align="center">
-                <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
-                  menu
-                </span>
-                <Input value={'ボランティア'} />
-                <Badge
-                  count={'99'}
-                  className="roboto-mono"
-                  style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
-                />
-                <span
-                  className="material-symbols-outlined fill-icon"
-                  style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
-                >
-                  delete
-                </span>
-              </Space>
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col sm={24} md={24} lg={24}>
-              <Space align="center">
-                <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
-                  menu
-                </span>
-                <Input value={'代表知人'} />
-                <Badge
-                  count={'99'}
-                  className="roboto-mono"
-                  style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
-                />
-                <span
-                  className="material-symbols-outlined fill-icon"
-                  style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
-                >
-                  delete
-                </span>
-              </Space>
-            </Col>
+          <Row className="item mb-2">
+            <Draggable
+              entries={[
+                <DraggableInputItem count={88} InputComponent={<Input value={'理事'} />} />,
+                <DraggableInputItem count={77} InputComponent={<Input value={'ボランティア'} />} />,
+                <DraggableInputItem count={99} InputComponent={<Input value={'代表知人'} />} />,
+              ]}
+            />
           </Row>
         </Col>
-
         <Col span={24} className="pl-8">
           <Space align="center">
             <Input placeholder={'理事'} />
