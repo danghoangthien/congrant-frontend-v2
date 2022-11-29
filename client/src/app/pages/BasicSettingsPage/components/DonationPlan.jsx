@@ -1,9 +1,21 @@
+import { Helmet } from 'react-helmet-async';
 import { Row, Col, Tag, Button, Table, Dropdown, Menu, Space } from 'antd';
 import AddDonationPlan from './AddDonationPlan';
 import { randomOutput } from 'utils/helper';
 
 import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'app/pages/DonationPage/consts';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+
+const renderPageTitle = () => {
+  return (
+    <>
+      <Helmet>
+        <title>{'寄付プラン'}</title>
+        <meta name="description" content={'...'} />
+      </Helmet>
+    </>
+  );
+};
 
 // const dataSource = Array.from(Array(5).keys()).map(i => ({
 //   i: `${i}`,
@@ -136,6 +148,7 @@ const columns = Object.keys(columnMap).map(columnName => {
 const DonationPlan = () => {
   return (
     <>
+      {renderPageTitle()}
       <Row className="mb-6">
         <Col sm={24} md={24} lg={24}>
           <span className="page-title01">{'寄付プラン'}</span>

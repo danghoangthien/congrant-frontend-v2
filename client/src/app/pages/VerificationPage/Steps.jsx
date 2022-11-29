@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { Helmet } from 'react-helmet-async';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
 import { Row, Card, Space, Tabs, Tag, Button } from 'antd';
 import './Models/index';
@@ -41,6 +42,11 @@ const StyledTabs = styled(Tabs)`
 
 const RegisterStepsPage = () => {
   const { active } = useSelector(state => state['registerStep']);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [active]);
+
   const TabName = ({ current, active, children }) => {
     const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
     return (
