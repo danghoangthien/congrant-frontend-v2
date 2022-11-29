@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const ShareButton = styled.span`
-  height: 25px;
+  height: 24px;
   line-height: 22px;
   background: red;
   display: inline-block;
@@ -17,7 +17,7 @@ export const ShareButton = styled.span`
   }
 
   .ant-space-item {
-    line-height: 1;
+    // line-height: 1;
   }
 
   svg {

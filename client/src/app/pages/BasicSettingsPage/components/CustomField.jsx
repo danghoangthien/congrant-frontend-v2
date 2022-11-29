@@ -1,8 +1,20 @@
+import { Helmet } from 'react-helmet-async';
 import { Row, Col, Button, Table, Space, Dropdown, Menu } from 'antd';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 // COMPONENT
 import DraggableTable from 'app/components/DraggableTable';
 import AddCustomField from './AddCustomField';
+
+const renderPageTitle = () => {
+  return (
+    <>
+      <Helmet>
+        <title>{'カスタム項目'}</title>
+        <meta name="description" content={'...'} />
+      </Helmet>
+    </>
+  );
+};
 
 // レコードアクションメニュー・Record Action Menu
 const menu = (
@@ -105,6 +117,7 @@ const columns = Object.keys(columnMap).map(columnName => {
 const CustomField = () => {
   return (
     <>
+      {renderPageTitle()}
       <Row className="mb-8">
         <Col sm={24} md={24} lg={24}>
           <span className="page-title01">{'カスタム項目'}</span>

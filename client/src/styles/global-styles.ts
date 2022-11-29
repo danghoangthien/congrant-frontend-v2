@@ -525,6 +525,11 @@ export const GlobalStyle = createGlobalStyle`
 
     color: rgba(0, 0, 0, 0.5);
   }
+
+  // ANTD SPACE
+  .ant-space-item {
+    display: flex;
+  }
 `;
 
 export const StyledPrimaryIcon = styled.span`

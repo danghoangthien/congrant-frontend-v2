@@ -3,12 +3,12 @@ import { PRIMARY_COLOR, ScreenSizes } from 'styles/StyleConstants';
 
 export const ProjectClientPageStyle = styled.div`
   height: 100%;
-  padding-bottom: 118px;
   color: #222222;
   font-family: 'Noto Sans JP', sans-serif;
 
   & .share-container {
-    margin-right: 24px;
+    margin-right: 12px;
+    line-height: 1;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       margin-bottom: 14px;
