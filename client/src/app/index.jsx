@@ -102,9 +102,6 @@ export function App() {
             <Route exact path={process.env.PUBLIC_URL + '/payment'}>
               <PaymentPage />
             </Route>
-            <Route exact path={process.env.PUBLIC_URL + '/payment-manage'}>
-              <PaymentManagePage />
-            </Route>
 
             <AppLayout>
               <Route path={process.env.PUBLIC_URL + '/home'}>
@@ -154,6 +151,9 @@ export function App() {
               </Route>
               <Route path={process.env.PUBLIC_URL + '/individuals-settings'}>
                 <IndividualSettingsPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/payments'}>
+                <PaymentManagePage />
               </Route>
               <Route path={process.env.PUBLIC_URL + '/editor'}>
                 <EditorPage />
