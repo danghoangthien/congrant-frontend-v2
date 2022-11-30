@@ -1,11 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import SettingsPage from 'app/components/Layout/SettingsPage';
+import PublicInfo from './components/PublicInfo';
 import DonationPlan from './components/DonationPlan';
 import SupportAttribute from './components/SupportAttribute';
 import ReceiptMethod from './components/ReceiptMethod';
 import CustomField from './components/CustomField';
 import AccessAnalysis from './components/AccessAnalysis';
 import Receipt from './components/Receipt';
+import MailTemplate from './components/MailTemplate';
 
 const renderPageTitle = () => {
   return (
@@ -19,40 +21,45 @@ const renderPageTitle = () => {
 };
 
 const SETTING_COMPONENT_MAP = {
-  // PublicInfo: {
-  //   id: 1,
-  //   name: '公開情報',
-  //   Component: PublicInfo,
-  // },
-  donationPlan: {
+  publicInfo: {
     id: 1,
+    name: '公開情報',
+    Component: PublicInfo,
+  },
+  donationPlan: {
+    id: 2,
     name: '寄付プラン',
     Component: DonationPlan,
   },
   supportAttribute: {
-    id: 2,
+    id: 3,
     name: 'サポーター属性',
     Component: SupportAttribute,
   },
   receiptMethod: {
-    id: 3,
+    id: 4,
     name: '受領方法',
     Component: ReceiptMethod,
   },
   customField: {
-    id: 4,
+    id: 5,
     name: 'カスタム項目',
     Component: CustomField,
   },
   accessAnalysis: {
-    id: 5,
+    id: 6,
     name: 'アクセス解析',
     Component: AccessAnalysis,
   },
   receipt: {
-    id: 6,
+    id: 7,
     name: '領収書',
     Component: Receipt,
+  },
+  mailTemplate: {
+    id: 7,
+    name: 'メールテンプレート',
+    Component: MailTemplate,
   },
 };
 

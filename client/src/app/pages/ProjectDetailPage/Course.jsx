@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 // Antd Components
 import { Button, Col, Row, Card, Space, Breadcrumb } from 'antd';
 // Components
-import CourseTable from './CourseTable';
+import CourseTable from './components/CourseTable';
 // Styles
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // Icons

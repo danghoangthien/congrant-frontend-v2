@@ -27,9 +27,11 @@ import BasicSettingsPage from './pages/BasicSettingsPage';
 import CorporationSettingPage from './pages/CorporationSettingPage';
 import IndividualSettingsPage from './pages/IndividualSettingsPage';
 import IndividualPage from './pages/IndividualPage';
+import IndividualBulkUpload from './pages/IndividualPage/BulkUpload';
 import IndividualNamingPage from './pages/IndividualPage/Naming';
 import IndividualNamingDetailPage from './pages/IndividualPage/NamingDetail';
 import CorporationPage from './pages/CorporationPage';
+import CorporationBulkUpload from './pages/CorporationPage/BulkUpload';
 import ProjectPage from './pages/ProjectPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ReceiptPage from './pages/ReceiptPage';
@@ -37,6 +39,7 @@ import ReceiptBulkPage from './pages/ReceiptBulkPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import ReccuringPage from './pages/ReccuringPage';
 import ProjectClientPage from './pages/ProjectClientPage';
+import PaymentPage from './pages/PaymentPage';
 import { useTranslation } from 'react-i18next';
 import CkeditorPage from './pages/CkeditorPage';
 
@@ -112,6 +115,9 @@ export function App() {
             <Route path={process.env.PUBLIC_URL + '/individuals'}>
               <IndividualPage />
             </Route>
+            <Route path={process.env.PUBLIC_URL + '/individuals-bulk-upload'}>
+              <IndividualBulkUpload />
+            </Route>
             <Route path={process.env.PUBLIC_URL + '/individuals-naming'}>
               <IndividualNamingPage />
             </Route>
@@ -120,6 +126,9 @@ export function App() {
             </Route>
             <Route path={process.env.PUBLIC_URL + '/corporations'}>
               <CorporationPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/corporations-bulk-upload'}>
+              <CorporationBulkUpload />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/receipts'}>
               <ReceiptPage />
@@ -135,6 +144,9 @@ export function App() {
             </Route>
             <Route path={process.env.PUBLIC_URL + '/individuals-settings'}>
               <IndividualSettingsPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/payments'}>
+              <PaymentPage />
             </Route>
             <Route path={process.env.PUBLIC_URL + '/editor'}>
               <EditorPage />

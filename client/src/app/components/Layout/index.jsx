@@ -22,6 +22,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutIcon from '@mui/icons-material/Logout';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -67,6 +68,7 @@ const items = [
   getItem('個人サポーター', '/individuals', <PersonIcon />),
   getItem('法人サポーター', '/corporations', <DomainIcon />),
   getItem('基本設定', '/settings', <SettingsIcon />),
+  getItem('決済明細', '/payments/stripe', <FormatListBulletedIcon />),
   // getItem(null, 'sub-menu', null, [
   //   getItem(
   //     <div>
@@ -340,7 +342,7 @@ const AppLayout = ({ children }) => {
 
             <Layout>
               {/* メイン・Main Content */}
-              <Content className="mx-6 my-7">{children}</Content>
+              <Content>{children}</Content>
             </Layout>
           </Layout>
         </SlyledLayout>

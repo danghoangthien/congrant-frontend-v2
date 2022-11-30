@@ -5,25 +5,42 @@ import EditIcon from '@mui/icons-material/Edit';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { Helmet } from 'react-helmet-async';
 // Components
-import SummaryTable from './SummaryTable';
-import ActivityTable from './ActivityTable';
-import CommentTable from './CommentTable';
+import Breadcumd from 'app/components/Breadcumd';
+import SummaryTable from './components/SummaryTable';
+import ActivityTable from './components/Activity/ActivityTable';
+import CommentTable from './components/CommentTable';
+// Icons
+import FlagIcon from '@mui/icons-material/Flag';
+
+const BREADCUMD_DATA = [
+  {
+    id: 1,
+    title: (
+      <Space>
+        <FlagIcon style={{ fontSize: '14px' }} />
+        <span>{'プロジェクト一覧'}</span>
+      </Space>
+    ),
+    uri: '/projects',
+  },
+  {
+    id: 2,
+    title: 'プロジェクトトップ',
+    uri: '',
+  },
+];
 
 const Summary = () => {
   const params = useParams();
-  const renderPageTitle = () => {
-    return (
-      <>
-        <Helmet>
-          <title>{'プロジェクトトップ'}</title>
-          <meta name="description" content={'プロジェクトトップ'} />
-        </Helmet>
-      </>
-    );
-  };
+
   return (
     <>
-      {renderPageTitle()}
+      <Space className="px-6 py-3" style={{ background: '#ffffff', width: '100%' }}>
+        <Link to="/projects">
+          <Button>{'< 一覧へもどる'}</Button>
+        </Link>
+        <Breadcumd data={BREADCUMD_DATA} active={BREADCUMD_DATA[1].id} />
+      </Space>
       <PageLayout>
         {/* Should create a component for this */}
         <Row justify="space-between" align="middle" className="item mb-5">
@@ -91,6 +108,7 @@ const Summary = () => {
                 }}
               />
             </Space>
+
             <Button className="active mr-2" type="primary">
               {'活動報告の作成'}
             </Button>
@@ -99,9 +117,11 @@ const Summary = () => {
             <ActivityTable />
           </Row>
           <Row justify="end" className="py-4 px-6">
-            <Button className="active mr-2" type="secondary">
-              {'一覧'}
-            </Button>
+            <Link className="sidebar-link" to={`activities`}>
+              <Button className="active mr-2" type="secondary">
+                {'一覧'}
+              </Button>
+            </Link>
           </Row>
         </Card>
 
@@ -123,9 +143,11 @@ const Summary = () => {
             <CommentTable />
           </Row>
           <Row justify="end" className="py-4 px-6">
-            <Button className="active mr-2" type="secondary">
-              {'一覧'}
-            </Button>
+            <Link className="sidebar-link" to={`comments`}>
+              <Button className="active mr-2" type="secondary">
+                {'一覧'}
+              </Button>
+            </Link>
           </Row>
         </Card>
       </PageLayout>

@@ -3,6 +3,10 @@ import { StyleConstants, ScreenSizes, PRIMARY_COLOR } from 'styles/StyleConstant
 
 export const PageLayout = styled.div`
   width: 100%;
+  padding-top: 28px !important;
+  padding-bottom: 24px !important;
+  padding-right: 24px !important;
+  padding-left: 24px !important;
   & .item {
     flex-shrink: 0;
     flex-grow: 1;

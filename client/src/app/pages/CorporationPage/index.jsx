@@ -7,7 +7,7 @@ import Filters from './components/Filters';
 import * as metaData from './mockData';
 
 import { Button, Input, Row, Col, Badge, Space, Dropdown, Menu } from 'antd';
-import { SupporterPageLayout } from './components/SupporterPage.style';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
 import AddAttribute from './components/AddAttribute';
 
@@ -39,12 +39,12 @@ const menu = (
       {
         key: '1',
         label: (
-          <>
+          <Link to="/corporations-bulk-upload">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
               upload
             </span>
             <span className="ml-2">{'一括アップロード'}</span>
-          </>
+          </Link>
         ),
       },
     ]}
@@ -95,7 +95,7 @@ const CorporationPage = () => {
   return (
     <>
       {renderPageTitle()}
-      <SupporterPageLayout>
+      <PageLayout>
         <div className="mb-7">
           <Row justify="space-between" align="middle">
             {/* 左の部分・Left Part */}
@@ -167,7 +167,7 @@ const CorporationPage = () => {
             hasTableSetting
           />
         </div>
-      </SupporterPageLayout>
+      </PageLayout>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { SupporterPageLayout } from './components/SupporterPage.style';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { Card, Row, Col, Checkbox, Button, Table, Tooltip, Space } from 'antd';
 import { CopyOutlined } from '@ant-design/icons';
 
@@ -100,7 +100,7 @@ const Naming = () => {
   return (
     <>
       {renderPageTitle()}
-      <SupporterPageLayout>
+      <PageLayout>
         {/* タイトル・Title */}
         <Row type="flex" align="middle" className="mb-6">
           <Col>
@@ -193,7 +193,7 @@ const Naming = () => {
             </Col>
           </Row>
         </Card>
-      </SupporterPageLayout>
+      </PageLayout>
     </>
   );
 };

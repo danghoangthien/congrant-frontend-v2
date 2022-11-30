@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Radio, Checkbox, Space, DatePicker } from 'antd';
+import { Row, Col, Modal, Button, Radio, Checkbox } from 'antd';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -7,7 +7,6 @@ import {
   SettingHepler,
 } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
-import { TagFilled } from '@ant-design/icons';
 import styled from 'styled-components/macro';
 
 export const StyledRadioGroup = styled(Radio.Group)`
@@ -16,14 +15,9 @@ export const StyledRadioGroup = styled(Radio.Group)`
     width: 50%;
   }
 `;
-const attributes = [
-  { label: '属性の追加', value: 0 },
-  { label: '属性の削除', value: 1 },
-];
+
 const ReplyActivity = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [activeTab, setActiveTab] = useState(attributes[0].value);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -35,10 +29,6 @@ const ReplyActivity = () => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
-  };
-
-  const onRadioChange = ({ target: { value } }) => {
-    setActiveTab(value);
   };
 
   return (
