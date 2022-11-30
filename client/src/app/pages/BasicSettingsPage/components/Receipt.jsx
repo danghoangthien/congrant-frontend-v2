@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Row, Col, Button, Space, Table, Radio, Checkbox, DatePicker, Dropdown, Menu } from 'antd';
 import {
   SettingsInputContainer,
@@ -7,6 +8,17 @@ import {
 import { StyledForm } from '../BasicSettingsPage.style';
 import ReceiptTemplate from './ReceiptTemplate';
 import ImageUpload from 'app/components/ImageUpload';
+
+const renderPageTitle = () => {
+  return (
+    <>
+      <Helmet>
+        <title>{'領収書'}</title>
+        <meta name="description" content={'...'} />
+      </Helmet>
+    </>
+  );
+};
 
 // レコードアクションメニュー・Record Action Menu
 const menu = (
@@ -73,6 +85,7 @@ const columnMap = {
     ),
   },
 };
+
 const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });
@@ -80,6 +93,7 @@ const columns = Object.keys(columnMap).map(columnName => {
 const Receipt = () => {
   return (
     <>
+      {renderPageTitle()}
       <Row className="mb-8">
         <Col sm={24} md={24} lg={24}>
           <span className="page-title01">{'領収書'}</span>

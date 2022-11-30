@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+// LAYOTU
 import SettingsPage from 'app/components/Layout/SettingsPage';
 import PublicInfo from './components/PublicInfo';
 import DonationPlan from './components/DonationPlan';
@@ -8,17 +8,6 @@ import CustomField from './components/CustomField';
 import AccessAnalysis from './components/AccessAnalysis';
 import Receipt from './components/Receipt';
 import MailTemplate from './components/MailTemplate';
-
-const renderPageTitle = () => {
-  return (
-    <>
-      <Helmet>
-        <title>{'基本設定'}</title>
-        <meta name="description" content={'...'} />
-      </Helmet>
-    </>
-  );
-};
 
 const SETTING_COMPONENT_MAP = {
   publicInfo: {
@@ -72,7 +61,6 @@ const Title = () => (
 
 const BasicSettingsPage = () => (
   <>
-    {renderPageTitle()}
     <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
   </>
 );

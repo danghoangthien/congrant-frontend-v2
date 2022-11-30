@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Row, Col, Button } from 'antd';
 import {
   SettingsInputContainer,
@@ -5,9 +6,21 @@ import {
   SettingInfoLabel,
 } from '../../CorporationSettingPage/components/Sprites';
 
+const renderPageTitle = () => {
+  return (
+    <>
+      <Helmet>
+        <title>{'アクセス分析'}</title>
+        <meta name="description" content={'...'} />
+      </Helmet>
+    </>
+  );
+};
+
 const AccessAnalysis = () => {
   return (
     <>
+      {renderPageTitle()}
       <Row className="mb-8">
         <Col sm={24} md={24} lg={24}>
           <span className="page-title01">{'アクセス分析'}</span>

@@ -3,12 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
 import { Row, Col, Space, Card, Tag, Button } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-  SettingSelect,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
 
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 // IMAGE

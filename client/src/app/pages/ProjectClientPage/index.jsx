@@ -6,7 +6,7 @@ import DonationInfo from './components/DonationInfo';
 import OrganizationInfo from './components/OrganizationInfo';
 import CourseInfo from './components/CourseInfo';
 import Carousel from './components/Carousel';
-import Share from './components/Share';
+import Share from 'app/components/Share';
 import Action from './components/Action';
 import ProjectClientPageLayout from 'app/components/Layout/ProjectClientPage';
 import HomeTab from './components/HomeTab';
@@ -75,10 +75,14 @@ const ProjectClientPage = () => {
                 </div>
               </Row>
 
-              <Row className="mb-6">
+              <Row className="mb-6" align="middle">
                 {/* SNSシェアー・Share Buttons */}
                 <Col className="share-container">
-                  <Share />
+                  <Share
+                    twitter={`https://github.com/nygardk/react-share`}
+                    facebook={`https://github.com/nygardk/react-share`}
+                    line={`https://github.com/nygardk/react-share`}
+                  />
                 </Col>
                 {/* 操作ボタン・Action Buttons */}
                 <Col className="action-container">
