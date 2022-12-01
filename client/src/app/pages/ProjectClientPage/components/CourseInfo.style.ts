@@ -2,12 +2,8 @@ import styled from 'styled-components/macro';
 import { Card } from 'antd';
 import { ScreenSizes } from 'styles/StyleConstants';
 
-export const CourseInfoStyle = styled.div`
-  margin-top: 18px;
-`;
-
 export const CourseBox = styled(Card)`
-  margin-top: 18px;
+  margin-top: 20px;
 
   .ant-btn {
     @media screen and (max-width: ${ScreenSizes.medium}) {

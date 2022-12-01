@@ -104,6 +104,28 @@ export const PaymentPageStyle = styled.div`
     width: 100%;
     max-width: 1060px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .organization-info-wrapper {
+      width: 41.5%;
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        width: 100%;
+      }
+    }
+
+    .payment-form-wrapper {
+      width: 54.7%;
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      display: block;
+    }
   }
 
   & #google_translate_element {

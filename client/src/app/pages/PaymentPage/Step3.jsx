@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 // ANTD
 import { Row, Col, Space, Divider } from 'antd';
+// import ReactInputMask from 'react-input-mask';
 // COMPONENT
 import {
   SettingsInputContainer,
@@ -10,8 +12,8 @@ import {
   FormRadioGroupHorizontal,
 } from 'utils/Sprites';
 // STYLE
-import styled from 'styled-components/macro';
 import { StyledButton, StyledBackButton, StyledNotice } from './PaymentPage.style';
+import MaskedInput from 'app/components/MaskedInput';
 // MODEL
 import './Models/index';
 // IMAGE
@@ -19,8 +21,27 @@ import CardImage from 'styles/assets/icon_credit_pay.svg';
 import ApplePayImage from 'styles/assets/icon_apple_pay.svg';
 import GooglePayImage from 'styles/assets/icon_gg_pay.svg';
 
+// const MaskedInput = (props, ref) => {
+//   return (
+//     <ReactInputMask {...props}>
+//       {inputProps => (
+//         <FormInput
+//           size="large"
+//           required
+//           {...inputProps}
+//           ref={ref}
+//           disabled={props.disabled ? props.disabled : null}
+//         />
+//       )}
+//     </ReactInputMask>
+//   );
+// };
+
 const Step3 = () => {
   const dispatch = useDispatch();
+  const [cardValue, setCardValue] = useState('');
+  const [expiryValue, setExpiryValue] = useState('');
+  const [cvcValue, setCvcValue] = useState('');
 
   return (
     <>
@@ -37,7 +58,7 @@ const Step3 = () => {
                   gap={2}
                   image={CardImage}
                   label="クレジットカード"
-                  style={{ padding: '11px', width: '100%' }}
+                  style={{ padding: '11px 8px', width: '100%' }}
                 />
                 <FormRadio
                   value="b"
@@ -45,7 +66,7 @@ const Step3 = () => {
                   gap={2}
                   image={GooglePayImage}
                   label="Google Pay"
-                  style={{ padding: '11px', width: '100%' }}
+                  style={{ padding: '11px 8px', width: '100%' }}
                 />
                 <FormRadio
                   value="c"
@@ -76,7 +97,12 @@ const Step3 = () => {
           {/* カード番号 */}
           <Col className="mb-6" span={24}>
             <SettingsInputContainer label={<FormLabel label={'カード番号'} required />}>
-              <FormInput size="large" required placeholder="0000 0000 0000 0000" />
+              <MaskedInput
+                value={cardValue}
+                onChange={e => setCardValue(e.target.value)}
+                mask="9999 9999 9999 9999"
+                placeholder="0000 0000 0000 0000"
+              />
             </SettingsInputContainer>
           </Col>
           <Col span={24} className="mb-6">
@@ -84,13 +110,23 @@ const Step3 = () => {
               {/* 有効期限 */}
               <Col span={12} className="pa-0">
                 <SettingsInputContainer label={<FormLabel label={'有効期限'} required />}>
-                  <FormInput size="large" required placeholder="yyyy / mm" />
+                  <MaskedInput
+                    value={expiryValue}
+                    onChange={e => setExpiryValue(e.target.value)}
+                    mask="9999 / 99"
+                    placeholder="yyyy / mm"
+                  />
                 </SettingsInputContainer>
               </Col>
               {/* CVC */}
               <Col span={12} className="pa-0">
                 <SettingsInputContainer label={<FormLabel label={'CVC'} required />}>
-                  <FormInput size="large" required placeholder="000" />
+                  <MaskedInput
+                    value={cvcValue}
+                    onChange={e => setCvcValue(e.target.value)}
+                    mask="999"
+                    placeholder="000"
+                  />
                 </SettingsInputContainer>
               </Col>
             </Row>
@@ -103,12 +139,12 @@ const Step3 = () => {
         </Col>
 
         {/* 合計金額 */}
-        <Col span={24} className="mb-8">
-          <Row className="mb-5" align="middle" justify="space-between">
+        <Col span={24}>
+          <Row align="middle" justify="space-between">
             <span className="total-money-title">合計金額</span>
             <span className="total-money-amount">3,000円</span>
           </Row>
-          <Divider />
+          <Divider style={{ margin: '24px 0 30px' }} />
         </Col>
 
         {/* ボタン */}

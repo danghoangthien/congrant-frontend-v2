@@ -100,7 +100,7 @@ export function App() {
             <Route exact path={process.env.PUBLIC_URL + '/project/client_name/:id'}>
               <ProjectClientPage />
             </Route>
-            <Route exact path={process.env.PUBLIC_URL + '/payment'}>
+            <Route exact path={process.env.PUBLIC_URL + '/payment/:id'}>
               <PaymentPage />
             </Route>
 

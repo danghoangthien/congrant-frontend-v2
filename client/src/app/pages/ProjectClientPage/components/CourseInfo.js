@@ -1,11 +1,11 @@
-import { CourseInfoStyle, CourseBox } from './CourseInfo.style';
+import { CourseBox } from './CourseInfo.style';
 import { Card, Row, Col, Image, Descriptions, Button } from 'antd';
 
 const CourseInfo = () => {
   return (
-    <CourseInfoStyle>
+    <>
       <Row>
-        <Col span={24} className="mb-5">
+        <Col span={24}>
           <CourseBox style={{ width: '100%' }} bodyStyle={{ padding: '18px' }}>
             <Row>
               <Col span={24} className="mb-4">
@@ -54,7 +54,7 @@ const CourseInfo = () => {
             </Row>
           </CourseBox>
         </Col>
-        <Col span={24} className="mb-5">
+        <Col span={24}>
           <CourseBox style={{ width: '100%' }} bodyStyle={{ padding: '18px' }}>
             <Row>
               <Col span={24} className="mb-4">
@@ -103,7 +103,7 @@ const CourseInfo = () => {
             </Row>
           </CourseBox>
         </Col>
-        <Col span={24} className="mb-5">
+        <Col span={24}>
           <CourseBox style={{ width: '100%' }} bodyStyle={{ padding: '18px' }}>
             <Row>
               <Col span={24} className="mb-4">
@@ -152,7 +152,7 @@ const CourseInfo = () => {
             </Row>
           </CourseBox>
         </Col>
-        <Col span={24} className="mb-5">
+        <Col span={24}>
           <CourseBox
             style={{ width: '100%' }}
             bodyStyle={{ padding: '18px' }}
@@ -193,7 +193,7 @@ const CourseInfo = () => {
           </CourseBox>
         </Col>
       </Row>
-    </CourseInfoStyle>
+    </>
   );
 };
 

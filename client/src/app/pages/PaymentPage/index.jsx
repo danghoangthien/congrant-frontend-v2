@@ -2,8 +2,10 @@ import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import StickyBox from 'react-sticky-box';
+
 // ANTD
-import { Row, Col, Steps, Card } from 'antd';
+import { Steps, Card } from 'antd';
 // MEDIA QUERY
 // import Media from 'react-media';
 // LAYOUT
@@ -29,6 +31,21 @@ const Payment = () => {
     window.scrollTo(0, 0);
   }, [active]);
 
+  function hexToRgbA(hex, opacity) {
+    var c;
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+      c = hex.substring(1).split('');
+      if (c.length === 3) {
+        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+      }
+      c = '0x' + c.join('');
+      return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + opacity + ')';
+    }
+    throw new Error('Bad Hex');
+  }
+
+  const RGBA_MAIN_COLOR = hexToRgbA(MAIN_COLOR, 0.1);
+
   // STEP STYLE
   const StyledSteps = styled.div`
     .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
@@ -48,7 +65,7 @@ const Payment = () => {
     }
 
     .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
-      color: ${MAIN_COLOR};
+      color: ${hexToRgbA(MAIN_COLOR)};
     }
   `;
 
@@ -88,9 +105,13 @@ const Payment = () => {
       color: ${MAIN_COLOR};
     }
 
-    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
       border-color: ${MAIN_COLOR};
       color: ${MAIN_COLOR};
+    }
+
+    .bank-box {
+      background: ${RGBA_MAIN_COLOR};
     }
   `;
 
@@ -117,36 +138,33 @@ const Payment = () => {
           <Success />
         ) : (
           <div className="payment-container">
-            <Row justify="space-between" gutter={40}>
-              {/* 団体情報・Organization Info */}
-              <Col className="payment-item" xs={{ span: 24 }} lg={{ span: 10 }}>
+            {/* 団体情報・Organization Info */}
+            <div className="organization-info-wrapper">
+              <StickyBox offsetTop={20} offsetBottom={20}>
                 <OrganizationInfo />
-              </Col>
+              </StickyBox>
+            </div>
 
-              {/* フォーム・Form */}
-              <Col className="payment-item" xs={{ span: 24 }} lg={{ span: 14 }}>
-                <Card className="payment-box">
-                  <StyledSteps className="mb-8">
-                    <StyledPaymentSteps
-                      className="payment-steps"
-                      current={active - 1}
-                      labelPlacement="vertical"
-                      responsive={false}
-                    >
-                      <Step title="申込内容" />
-                      <Step title="申込者情報" />
-                      {method === '1' && <Step title="決済情報" />}
-                    </StyledPaymentSteps>
-                  </StyledSteps>
-                  {active === '1' && <Step1 />}
-                  {active === '2' && <Step2 />}
-                  {active === '3' && <Step3 />}
-                  {/* <Step1 /> */}
-                  {/* <Step2 /> */}
-                  {/* <Step3 /> */}
-                </Card>
-              </Col>
-            </Row>
+            {/* フォーム・Form */}
+            <div className="payment-form-wrapper">
+              <Card className="payment-box">
+                <StyledSteps className="mb-8">
+                  <StyledPaymentSteps
+                    className="payment-steps"
+                    current={active - 1}
+                    labelPlacement="vertical"
+                    responsive={false}
+                  >
+                    <Step title="申込内容" />
+                    <Step title="申込者情報" />
+                    {method === '1' && <Step title="決済情報" />}
+                  </StyledPaymentSteps>
+                </StyledSteps>
+                {active === '1' && <Step1 type={params?.id} />}
+                {active === '2' && <Step2 />}
+                {active === '3' && <Step3 />}
+              </Card>
+            </div>
           </div>
         )}
       </PaymentPageLayout>

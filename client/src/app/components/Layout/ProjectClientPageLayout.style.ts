@@ -16,6 +16,10 @@ export const ProjectClientPageStyle = styled.div`
     }
   }
 
+  & .action-container {
+    display: flex;
+  }
+
   & .project-client-container {
     width: 100%;
     max-width: 1060px;
@@ -29,7 +33,7 @@ export const ProjectClientPageStyle = styled.div`
   & .project-title {
     font-size: 30px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     line-height: 1.4;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
@@ -40,12 +44,13 @@ export const ProjectClientPageStyle = styled.div`
   & .copy-right {
     font-size: 13px;
     font-weight: 400;
+    color: #666666;
   }
 
   & main {
     min-height: 100%;
     border-top: 1px solid #e7e7e7;
-    padding: 34px 20px 100px;
+    padding: 30px 20px 100px;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       padding: 25px 20px 30px;
@@ -60,7 +65,7 @@ export const ProjectClientPageStyle = styled.div`
   & .project-client-header {
     background: none;
     width: 100%;
-    max-width: 1080px;
+    max-width: 1100px;
     padding: 0 20px;
     margin: 0 auto;
     display: flex;
@@ -170,5 +175,38 @@ export const ProjectClientPageStyle = styled.div`
 
   & #google_translate_element {
     line-height: 1;
+  }
+
+  .project-content-container {
+    display: flex;
+    justify-content: space-between;
+
+    &.basic {
+      display: block;
+
+      .project-content-main {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      display: block;
+    }
+  }
+
+  .project-content-main {
+    width: 66%;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      width: 100%;
+    }
+  }
+
+  .project-sider {
+    width: 28.3%;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      width: 100%;
+    }
   }
 `;

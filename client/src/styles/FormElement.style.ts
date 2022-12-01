@@ -246,6 +246,77 @@ export const StyledFormRadio = styled(Radio)`
   }
 `;
 
+export const StyledFormCourseRadio = styled(Radio)`
+  padding: 11px 16px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  width: 100%;
+
+  .ant-radio {
+    top: auto;
+
+    + * {
+      padding-right: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        display: block;
+      }
+    }
+  }
+
+  .ant-descriptions-header {
+    margin-bottom: 5px;
+    transform: translateY(-2px);
+  }
+
+  .ant-descriptions-view table {
+    width: auto;
+
+    td:not(:last-child) {
+      padding-right: 20px;
+    }
+  }
+
+  .img-cover {
+    width: 160px;
+    padding-top: 81%;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      width: 100%;
+    }
+  }
+
+  .label {
+    width: calc(100% - 180px);
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #222222;
+  }
+
+  .ant-descriptions-item-container {
+    align-items: center;
+  }
+
+  .ant-descriptions-item-container .ant-descriptions-item-label, .ant-descriptions-item-container .ant-descriptions-item-content {
+    line-height: 1;
+  }
+
+  &.disabled {
+    background: #d9d9d6;
+  }
+`;
+
 export const StyledFormRadioGroup = styled(Radio.Group)`
   width: 100%;
 
@@ -285,7 +356,7 @@ export const StyledFormRadioButton = styled(Radio.Button)`
   border: 1px solid #dddddd;
   background: #dddddd;
   border-radius: 4px !important;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: #929292;
 

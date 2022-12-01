@@ -35,7 +35,7 @@ const Share = ({ twitter, facebook, line }) => {
             <ShareButton className="facebook">
               <Space size={4}>
                 <svg
-                  style={{ width: '8px' }}
+                  style={{ width: '9px' }}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 320 512"
                 >
