@@ -35,7 +35,7 @@ export const OrganizationInfoStyle = styled.div`
     font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   .ant-descriptions-item-label,
@@ -49,13 +49,18 @@ export const OrganizationInfoStyle = styled.div`
     }
   }
 
+  .ant-descriptions-item-container {
+    display: flex;
+    align-items: center;
+  }
+
   .ant-descriptions-item-label {
     margin-right: 7px;
     display: flex;
     align-items: center;
 
     .icon {
-      font-size: 20px;
+      font-size: 18px;
       color: #a5a5a5;
 
       @media screen and (max-width: ${ScreenSizes.medium}) {

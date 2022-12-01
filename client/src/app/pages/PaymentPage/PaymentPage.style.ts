@@ -119,11 +119,7 @@ export const StyledChangeButton = styled(Button)`
   height: auto;
 
   .icon {
-    font-size: 28px;
-
-    @media screen and (max-width: ${ScreenSizes.medium}) {
-      font-size: 36px;
-    }
+    font-size: 36px;
   }
 `;
 
@@ -215,7 +211,7 @@ export const StyledShareBox = styled.div`
 `;
 
 export const StyledBankBox = styled.div`
-  background: #f5f5f1;
+  // background: #f5f5f1;
   width: 100%;
   padding: 24px;
 

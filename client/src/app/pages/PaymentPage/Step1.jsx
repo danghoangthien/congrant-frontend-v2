@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 // ANTD
 import { Row, Col, Space, Divider, Checkbox } from 'antd';
 // COMPONENT
@@ -7,6 +8,7 @@ import {
   FormSelect,
   FormLabel,
   FormRadio,
+  FormCourseRadio,
   FormRadioGroup,
   FormRadioButtonGroup,
   FormRadioButton,
@@ -19,10 +21,12 @@ import PaymentImage from 'styles/assets/icon_payment.svg';
 // MODEL
 import './Models/index';
 
-const Step1 = () => {
+const Step1 = ({ type }) => {
   // const [method, setMethod] = useState('1');
   const { method } = useSelector(state => state['paymentMethod']);
   const dispatch = useDispatch();
+  const params = useParams();
+  console.log(params);
 
   const onMethodChange = e => {
     console.log(e.target.value);
@@ -50,28 +54,71 @@ const Step1 = () => {
         {/* 決済の頻度・Payment Frequency */}
         <Col className="mb-7" span={24}>
           <SettingsInputContainer label={<FormLabel required label={'決済の頻度'} />}>
-            <FormRadioButtonGroup defaultValue="1">
-              <FormRadioButton value="1" label="今回のみ" />
-              {method === '1' && (
-                <>
-                  <FormRadioButton value="2" label="毎月" />
-                  <FormRadioButton value="3" label="毎年" />
-                </>
-              )}
-            </FormRadioButtonGroup>
+            {type === '1' ? (
+              <FormRadioButtonGroup defaultValue="1">
+                <FormRadioButton value="1" label="今回のみ" />
+              </FormRadioButtonGroup>
+            ) : (
+              <FormRadioButtonGroup defaultValue="1">
+                <FormRadioButton value="1" label="今回のみ" />
+                {method === '1' && (
+                  <>
+                    <FormRadioButton value="2" label="毎月" />
+                    <FormRadioButton value="3" label="毎年" />
+                  </>
+                )}
+              </FormRadioButtonGroup>
+            )}
           </SettingsInputContainer>
         </Col>
+
         {/* 金額・Money Amount */}
-        <Col className="mb-7" span={24}>
-          <SettingsInputContainer label={<FormLabel required label={'金額'} />}>
-            <FormSelect
-              required
-              style={{ width: 300 }}
-              size="large"
-              placeholder="選択してください"
-            ></FormSelect>
-          </SettingsInputContainer>
-        </Col>
+        {type === '1' ? (
+          <Col className="mb-7" span={24}>
+            <SettingsInputContainer label={<FormLabel required label={'コース'} />}>
+              <FormRadioGroup
+                defaultValue={'a'}
+                style={{ width: '100%' }}
+                // onChange={onMethodChange}
+              >
+                <FormCourseRadio
+                  value="a"
+                  label="Aコース"
+                  image={`https://media.istockphoto.com/id/624183176/photo/terraced-rice-field-in-mu-cang-chai-vietnam.jpg?s=612x612&w=0&k=20&c=8r_qT3g_x58wtOr6WKNtZDN7D1c4yKWttcfLJDnB9EA=`}
+                  money={`5,000`}
+                  stock={`無制限`}
+                />
+                <FormCourseRadio
+                  value="b"
+                  label="Bコース"
+                  image={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2zsFFjwcC0OxTOXI19SHnSAv8f2m11tUDXA&usqp=CAU`}
+                  money={`5,000`}
+                  stock={`9/10個`}
+                />
+                <FormCourseRadio
+                  disabled
+                  value="c"
+                  label="Cコース"
+                  image={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbbP3rMrl58MRc-KTePEPtvuNlHE9l9sz5RA&usqp=CAU`}
+                  money={`5,000`}
+                  stock={0}
+                />
+              </FormRadioGroup>
+            </SettingsInputContainer>
+          </Col>
+        ) : (
+          <Col className="mb-7" span={24}>
+            <SettingsInputContainer label={<FormLabel required label={'金額'} />}>
+              <FormSelect
+                required
+                style={{ width: 300 }}
+                size="large"
+                placeholder="選択してください"
+              ></FormSelect>
+            </SettingsInputContainer>
+          </Col>
+        )}
+
         {/* 口数選択・Number of items */}
         <Col className="mb-7" span={24}>
           <SettingsInputContainer label={<FormLabel required label={'口数選択'} />}>
@@ -96,7 +143,6 @@ const Step1 = () => {
                 size="large"
                 defaultValue={1}
                 suffix="口"
-                // controls={false}
               ></FormInput>
               <StyledChangeButton className="change-amount-button">
                 <span class="material-symbols-outlined fill-icon icon">add_circle</span>

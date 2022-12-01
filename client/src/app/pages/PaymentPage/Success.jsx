@@ -56,7 +56,7 @@ const Success = () => {
 
         {method === '2' && (
           <Col span={24} className="mb-8">
-            <StyledBankBox>
+            <StyledBankBox className="bank-box">
               <div className="bank-box-title">
                 振込先情報
                 <br />

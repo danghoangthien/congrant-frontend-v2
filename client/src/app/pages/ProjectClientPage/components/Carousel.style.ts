@@ -38,8 +38,29 @@ export const CarouselStyle = styled.div`
   }
 
   .thumb-slider {
+    .swiper-slide-thumb-active {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+
+      &:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
     .swiper-slide {
       // width: 100px !important;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
 
       @media screen and (max-width: ${ScreenSizes.mobile}) {
         // width: auto !important;
@@ -63,5 +84,6 @@ export const CarouselStyle = styled.div`
         object-fit: cover;
         object-position: center;
       }
+    }
   }
 `;
