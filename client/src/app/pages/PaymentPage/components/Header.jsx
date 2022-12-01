@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd';
-import BreadcumdButton from 'app/components/BreadcumdButton';
+import Breadcumd from 'app/components/Breadcumd';
 import { BREADCUMD_DATA } from './../consts';
 
 const Header = ({ activeBreadcumb }) => {
@@ -16,7 +16,7 @@ const Header = ({ activeBreadcumb }) => {
               </div>
             </Col>
             <Col className="mr-2">
-              <BreadcumdButton data={BREADCUMD_DATA} active={activeBreadcumb} />
+              <Breadcumd data={BREADCUMD_DATA} active={activeBreadcumb} style="button" />
             </Col>
           </Row>
         </Col>

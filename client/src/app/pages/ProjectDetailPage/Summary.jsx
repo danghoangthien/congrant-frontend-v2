@@ -39,7 +39,7 @@ const Summary = () => {
         <Link to="/projects">
           <Button>{'< 一覧へもどる'}</Button>
         </Link>
-        <Breadcumd data={BREADCUMD_DATA} active={BREADCUMD_DATA[1].id} />
+        <Breadcumd data={BREADCUMD_DATA} active={BREADCUMD_DATA[1].id} style="button" />
       </Space>
       <PageLayout>
         {/* Should create a component for this */}

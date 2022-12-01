@@ -23,6 +23,7 @@ import VerificationConfirmationPage from './pages/VerificationPage/Confirmation'
 import VerificationCompletePage from './pages/VerificationPage/Complete';
 import EmailVerifyPage from './pages/LoginPage/EmailVerify';
 import DonationPage from './pages/DonationPage';
+import DonationBulkUploadPage from './pages/DonationPage/BulkUpload';
 import EditorPage from './pages/EditorPage';
 import BasicSettingsPage from './pages/BasicSettingsPage';
 import CorporationSettingPage from './pages/CorporationSettingPage';
@@ -115,6 +116,9 @@ export function App() {
               </Route>
               <Route path={process.env.PUBLIC_URL + '/donations'}>
                 <DonationPage />
+              </Route>
+              <Route path={process.env.PUBLIC_URL + '/donations-bulk-upload'}>
+                <DonationBulkUploadPage />
               </Route>
               <Route path={process.env.PUBLIC_URL + '/reccurings'}>
                 <ReccuringPage />

@@ -14,16 +14,20 @@ import { Link } from 'react-router-dom';
 //     uri: '/payments/telecom'
 //   }
 // ]
-const Breadcumb = ({ active, data = [], separator = '/' }) => {
+const Breadcumb = ({ active, data = [], separator = '/', style = null }) => {
+  const breadCumdClassName = style === 'button' ? 'bread-crumb' : '';
+  const breadCumdContentClassName = style === 'button' ? 'bread-crumb-content' : '';
+  const breadCumdSeparator = style === 'button' ? null : separator;
+  const breadCumdActiveStyle = style === 'button' ? null : { color: 'rgba(0, 0, 0, 0.5)' };
   return (
-    <Breadcrumb separator={separator}>
+    <Breadcrumb className={breadCumdClassName} separator={breadCumdSeparator}>
       {data.map(breadcumb => (
         <Breadcrumb.Item>
           {active === breadcumb.id ? (
-            <Space>{breadcumb.title}</Space>
+            <Space className={breadCumdContentClassName}>{breadcumb.title}</Space>
           ) : (
-            <Link to={breadcumb.uri}>
-              <Space style={{ color: 'rgba(0, 0, 0, 0.5)' }}>{breadcumb.title}</Space>
+            <Link className={breadCumdContentClassName} to={breadcumb.uri}>
+              <Space style={breadCumdActiveStyle}>{breadcumb.title}</Space>
             </Link>
           )}
         </Breadcrumb.Item>

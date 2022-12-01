@@ -232,6 +232,10 @@ export const GlobalStyle = createGlobalStyle`
       color: #ffffff;
     }
 
+    div.bread-crumb-content {
+      color: #ffffff;
+    }
+
     a.bread-crumb-content {
       background: #ffffff;
       font-weight: 400;
