@@ -144,7 +144,7 @@ export function App() {
               <Route path={process.env.PUBLIC_URL + '/receipts'}>
                 <ReceiptPage />
               </Route>
-              <Route path={process.env.PUBLIC_URL + '/receipts-bulk'}>
+              <Route path={process.env.PUBLIC_URL + '/receipts-bulk-create'}>
                 <ReceiptBulkPage />
               </Route>
               <Route path={process.env.PUBLIC_URL + '/settings'}>
