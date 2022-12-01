@@ -23,7 +23,7 @@ const Summary = () => {
 
           {/* 右の部分・Right Part */}
           <Col>
-            <Link className="sidebar-link" to={``}>
+            <Link className="sidebar-link" to={`blogs/new-blog`}>
               <Button type="primary" className="icon-btn">
                 <AddIcon style={{ fontSize: '14px' }} className="mr-2" />
                 <span>{'活動報告の作成'}</span>

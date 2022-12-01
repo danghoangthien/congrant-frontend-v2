@@ -108,16 +108,17 @@ const Summary = () => {
                 }}
               />
             </Space>
-
-            <Button className="active mr-2" type="primary">
-              {'活動報告の作成'}
-            </Button>
+            <Link className="sidebar-link" to={`blogs/new-blog`}>
+              <Button className="active mr-2" type="primary">
+                {'活動報告の作成'}
+              </Button>
+            </Link>
           </Row>
           <Row>
             <ActivityTable />
           </Row>
           <Row justify="end" className="py-4 px-6">
-            <Link className="sidebar-link" to={`activities`}>
+            <Link className="sidebar-link" to={`blogs`}>
               <Button className="active mr-2" type="secondary">
                 {'一覧'}
               </Button>
