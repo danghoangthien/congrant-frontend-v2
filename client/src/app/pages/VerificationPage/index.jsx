@@ -96,7 +96,7 @@ const RegisterPage = () => {
                     type="primary"
                     style={{ fontWeight: '600', width: '100%' }}
                     onClick={() => {
-                      history.push(`/verification/organisation`);
+                      history.push(`/app/verification/organisation`);
                     }}
                   >
                     {'審査情報の入力に進む'}

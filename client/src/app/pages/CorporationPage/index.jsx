@@ -39,7 +39,7 @@ const menu = (
       {
         key: '1',
         label: (
-          <Link to="/corporations-bulk-upload">
+          <Link to="/app/corporations-bulk-upload">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
               upload
             </span>
@@ -131,7 +131,7 @@ const CorporationPage = () => {
             {/* 右の部分・Right Part */}
             <Col>
               <Space>
-                <Link to={`/individuals-naming`}>
+                <Link to={`/app/individuals-naming`}>
                   <Button>
                     <span>{'名寄せ候補'}</span>
                     <Badge

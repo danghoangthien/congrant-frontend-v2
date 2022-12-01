@@ -32,7 +32,7 @@ const headerContextDropdownItems = [
   {
     key: '1',
     label: (
-      <Link to={`receipts-bulk/history`}>
+      <Link to={`/app/receipts-bulk-create/history`}>
         <Space onClick={() => {}}>
           <span
             className="material-symbols-outlined"
@@ -102,7 +102,7 @@ const ReceiptPage = () => {
             {/* 右の部分・Right Part */}
             <Col>
               <Space>
-                <Link to={'/receipts-bulk'}>
+                <Link to={'/app/receipts-bulk-create'}>
                   <Button className="icon-btn" type="primary">
                     <span className="material-symbols-outlined">add</span>
                     <span>{'領収書の一括作成'}</span>

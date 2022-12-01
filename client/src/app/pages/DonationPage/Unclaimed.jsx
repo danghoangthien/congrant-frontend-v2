@@ -87,7 +87,7 @@ const FundingPage = () => {
 
                 <Breadcrumb className="bread-crumb mr-2" separator="">
                   <Breadcrumb.Item>
-                    <Link className="bread-crumb-content" to={`/donations/received`}>
+                    <Link className="bread-crumb-content" to={`/app/donations/paid`}>
                       受領済み
                     </Link>
                   </Breadcrumb.Item>

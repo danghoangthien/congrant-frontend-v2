@@ -308,7 +308,8 @@ export const StyledFormCourseRadio = styled(Radio)`
     align-items: center;
   }
 
-  .ant-descriptions-item-container .ant-descriptions-item-label, .ant-descriptions-item-container .ant-descriptions-item-content {
+  .ant-descriptions-item-container .ant-descriptions-item-label,
+  .ant-descriptions-item-container .ant-descriptions-item-content {
     line-height: 1;
   }
 

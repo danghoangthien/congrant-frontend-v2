@@ -14,9 +14,9 @@ const LoginPage = () => {
 
   const onTabClick = key => {
     if (key === '2') {
-      history.push('/register');
+      history.push('/app/register');
     } else {
-      history.push('/login');
+      history.push('/app/login');
     }
   };
 

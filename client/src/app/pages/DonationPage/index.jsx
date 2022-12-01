@@ -9,8 +9,8 @@ const DonationPage = () => {
   return (
     <>
       <Switch>
-        <Route exact path={`${path}/unclaimed`} component={Unclaimed} />
-        <Route path={`${path}`} component={Received} />
+        <Route exact path={`${path}/unpaid`} component={Unclaimed} />
+        <Route path={`${path}/`} component={Received} />
       </Switch>
     </>
   );

@@ -61,7 +61,7 @@ const Login = () => {
           </Button>
         </Row>
         <Row>
-          <Link to={'/projects'}>{'パスワードを忘れた方はこちら'}</Link>
+          <Link to={'/app/projects'}>{'パスワードを忘れた方はこちら'}</Link>
         </Row>
       </div>
     </>

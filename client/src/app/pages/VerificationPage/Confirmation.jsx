@@ -61,7 +61,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('1');
-                            history.push(`/verification/organisation`);
+                            history.push(`/app/verification/organisation`);
                           }}
                         >
                           {'修正'}
@@ -103,7 +103,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('2');
-                            history.push(`/verification/organisation`);
+                            history.push(`/app/verification/organisation`);
                           }}
                         >
                           {'修正'}
@@ -145,7 +145,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('3');
-                            history.push(`/verification/organisation`);
+                            history.push(`/app/verification/organisation`);
                           }}
                         >
                           {'修正'}
@@ -187,7 +187,7 @@ const Confirmation = () => {
                         <Button
                           onClick={() => {
                             dispatch.registerStep.setActive('4');
-                            history.push(`/verification/organisation`);
+                            history.push(`/app/verification/organisation`);
                           }}
                         >
                           {'修正'}
@@ -217,7 +217,7 @@ const Confirmation = () => {
 
           <Row className="mt-6">
             <Col span={24}>
-              <Link to={`/verification/complete`}>
+              <Link to={`/app/verification/complete`}>
                 <Button size="large" type="primary" style={{ width: '100%', fontWeight: '600' }}>
                   {'審査開始'}
                 </Button>

@@ -104,7 +104,7 @@ const Step4 = () => {
             <Link
               onClick={() => {
                 dispatch.registerStep.setCompleted('4');
-                history.push(`/verification/confirmation`);
+                history.push(`/app/verification/confirmation`);
               }}
             >
               <Button size="large" style={{ fontWeight: '600', width: '100%' }} type="primary">

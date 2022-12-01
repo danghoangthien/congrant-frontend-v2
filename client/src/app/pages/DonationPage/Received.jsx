@@ -39,7 +39,7 @@ const menu = (
       {
         key: '1',
         label: (
-          <Link to="/donations-bulk-upload">
+          <Link to="/app/donations-bulk-upload">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
               upload
             </span>
@@ -87,7 +87,7 @@ const FundingPage = () => {
                       <span className="bread-crumb-content">受領済み</span>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                      <Link className="bread-crumb-content" to={`/donations/unclaimed`}>
+                      <Link className="bread-crumb-content" to={`/app/donations/unpaid`}>
                         未受領
                         <Badge
                           className="ml-1 roboto-mono"

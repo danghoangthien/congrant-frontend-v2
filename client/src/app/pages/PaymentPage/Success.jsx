@@ -103,7 +103,7 @@ const Success = () => {
               size="large"
               style={{ width: '288px' }}
               onClick={() => {
-                history.push(`/project/client_name/1`);
+                history.push(`/app/project/client_name/1`);
               }}
             >
               プロジェクトのトップへ戻る
