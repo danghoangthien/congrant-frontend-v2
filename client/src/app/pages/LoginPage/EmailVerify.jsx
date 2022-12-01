@@ -58,13 +58,13 @@ const EmailVerify = () => {
               type="primary"
               style={{ width: '100%', fontWeight: '600' }}
               onClick={() => {
-                history.push(`/register/complete`);
+                history.push(`/app/register/complete`);
               }}
             >
               認証
             </Button>
           </Row>
-          <Link to={`/register`} style={{ fontWeight: '300' }}>
+          <Link to={`/app/register`} style={{ fontWeight: '300' }}>
             {'認証コードを再送する'}
           </Link>
         </Card>

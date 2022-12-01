@@ -135,6 +135,7 @@ const Step3 = () => {
             className="less-shadow-btn"
             type="primary"
             onClick={() => {
+              dispatch.receiptBulkStep.setCompleted('3');
               dispatch.receiptBulkStep.setActive('4');
             }}
           >

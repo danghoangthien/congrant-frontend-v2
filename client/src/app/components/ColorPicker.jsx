@@ -39,10 +39,12 @@ class ColorPicker extends React.Component {
           background: `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`,
         },
         swatch: {
-          padding: '0px',
+          padding: '3px',
           display: 'inline-block',
           cursor: 'pointer',
           marginRight: '8px',
+          borderRadius: '4px',
+          border: 'solid 1px #d9d9d7',
         },
         popover: {
           position: 'absolute',

@@ -198,7 +198,7 @@ const ProjectPage = () => {
           >
             {projectData.map(item => (
               <div className="project-card">
-                <Row onClick={() => history.push(`projects/${item.id}/summary`)}>
+                <Row onClick={() => history.push(`/app/projects/${item.id}/summary`)}>
                   <Col flex="160px">
                     <div className="thumb-image" style={{ height: '104px' }}>
                       <Image
@@ -230,7 +230,10 @@ const ProjectPage = () => {
                         </a>
                       </StyledProjectUrl>
                     </div>
-                    <Space className="mb-2" split={<Divider type="vertical" />}>
+                    <Space
+                      className="mb-2"
+                      split={<Divider type="vertical" style={{ backgroundColor: '#D9D9D7' }} />}
+                    >
                       <StyledProjectPaymentTypeTag projectPaymentType={item.paymentType}>
                         {PROJECT_PAYMENT_TYPES[item.paymentType]}
                       </StyledProjectPaymentTypeTag>

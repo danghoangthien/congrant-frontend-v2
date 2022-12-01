@@ -61,12 +61,12 @@ const menu = (
       {
         key: '1',
         label: (
-          <>
+          <Link to="/app/individuals-bulk-upload">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
               upload
             </span>
             <span className="ml-2">{'一括アップロード'}</span>
-          </>
+          </Link>
         ),
       },
     ]}
@@ -126,7 +126,7 @@ const IndividualPage = () => {
             {/* 右の部分・Right Part */}
             <Col>
               <Space>
-                <Link to={`/individuals-naming`}>
+                <Link to={`/app/individuals-naming`}>
                   <Button className="icon-btn">
                     <span>{'名寄せ候補'}</span>
                     <Badge

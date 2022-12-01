@@ -12,7 +12,8 @@ import { DraggableInputItem } from 'app/pages/BasicSettingsPage/components/Sprit
 import AddIcon from '@mui/icons-material/Add';
 import InfoIcon from '@mui/icons-material/Info';
 
-import InputItemTable from './InputItemTable';
+import IndividualItemTable from './IndividualItemTable';
+import CorporationItemTable from './CorporationItemTable';
 
 export const StyledTag = styled(Tag)`
   width: 40px;
@@ -129,7 +130,7 @@ const FormEdit = () => {
       </Row>
       <Row className="mb-8">
         <Col span={24}>
-          <InputItemTable />
+          <IndividualItemTable />
         </Col>
       </Row>
       <Row className="mb-5">
@@ -139,7 +140,7 @@ const FormEdit = () => {
       </Row>
       <Row className="mb-5">
         <Col span={24}>
-          <InputItemTable />
+          <CorporationItemTable />
         </Col>
       </Row>
     </>

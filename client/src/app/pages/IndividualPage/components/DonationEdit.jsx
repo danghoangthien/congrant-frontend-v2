@@ -1,10 +1,11 @@
 import { Descriptions, Row, Col, Button, Input, Select, Dropdown, Menu, Space } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
-import { LIST_MODE, DETAIL_MODE } from '../consts';
+import BreadNavigation from './Sprites/BreadNavigation';
+import { DETAIL_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 
-const Title = ({ mode, setMode }) => {
+const Title = ({ setMode }) => {
   return (
     <>
       <Row className="mb-6">
@@ -51,6 +52,7 @@ const DonationEdit = ({ data, mode, setMode }) => {
   console.log('DonationDetail render', true);
   return (
     <>
+      <BreadNavigation setMode={setMode} id={'431051'} label="寄付決済" identityLabel="寄付No" />
       <Title mode={mode} setMode={setMode} />
       <Row className="mb-8">
         <Col span={24}>

@@ -62,6 +62,7 @@ const StyledTemplatePreviewText = styled.div`
   font-weight: 600;
   font-size: 16px;
   border-radius: 1px;
+  border-left: solid 3px ${props => props.selectedcolor || PRIMARY_COLOR};
   color: ${props => props.selectedcolor || PRIMARY_COLOR};
   background-color: ${props => hexToRgbA(props.selectedcolor, 0.05) || PRIMARY_COLOR};
 `;

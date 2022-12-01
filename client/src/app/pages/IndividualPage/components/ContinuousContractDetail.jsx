@@ -1,5 +1,6 @@
 import { Descriptions, Row, Col, Button, Dropdown, Badge, Menu } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
+import BreadNavigation from './Sprites/BreadNavigation';
 // import { LIST_MODE, EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
@@ -55,34 +56,42 @@ const DescriptionContainer = ({ children, mode, setMode }) => (
 const ContinuousContractDetail = ({ data, mode, setMode }) => {
   console.log('ContinuousContractDetail render', true);
   return (
-    <DescriptionContainer mode={mode} setMode={setMode}>
-      <Descriptions.Item label={<BoldLabel label="継続契約No" />}>
-        <CopiableText>{'1203171'}</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="ステータス" />}>
-        <CopiableText>
-          <StyledBadgeDot>
-            <Badge color={DONATION_STATUS_COLOR['1'][0]} text={DONATION_STATUSES['1']} />
-          </StyledBadgeDot>
-        </CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
-        <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="寄付プラン" />}>
-        ゴールドサポーター
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="単価・口数" />}>5,000円・1口</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="金額" />}>5,000円</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="累計寄付金額・回数" />}>
-        <CopiableText>20,000円・4回</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="初回決済日" />}>
-        <CopiableText>2022-05-01</CopiableText>
-      </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="最終決済日" />}>2022-08-15</Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="解約日" />}>-</Descriptions.Item>
-    </DescriptionContainer>
+    <>
+      <BreadNavigation
+        setMode={setMode}
+        id={'1203171'}
+        label="継続契約"
+        identityLabel="継続契約No"
+      />
+      <DescriptionContainer mode={mode} setMode={setMode}>
+        <Descriptions.Item label={<BoldLabel label="継続契約No" />}>
+          <CopiableText>{'1203171'}</CopiableText>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="ステータス" />}>
+          <CopiableText>
+            <StyledBadgeDot>
+              <Badge color={DONATION_STATUS_COLOR['1'][0]} text={DONATION_STATUSES['1']} />
+            </StyledBadgeDot>
+          </CopiableText>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="寄付タイプ" />}>
+          <StyledDonationTypeTag className="once">{'単発'}</StyledDonationTypeTag>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="寄付プラン" />}>
+          ゴールドサポーター
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="単価・口数" />}>5,000円・1口</Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="金額" />}>5,000円</Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="累計寄付金額・回数" />}>
+          <CopiableText>20,000円・4回</CopiableText>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="初回決済日" />}>
+          <CopiableText>2022-05-01</CopiableText>
+        </Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="最終決済日" />}>2022-08-15</Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="解約日" />}>-</Descriptions.Item>
+      </DescriptionContainer>
+    </>
   );
 };
 export default ContinuousContractDetail;

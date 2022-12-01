@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { SupporterPageLayout } from './components/SupporterPage.style';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { Card, Row, Col, Checkbox, Button, Table, Tooltip, Space } from 'antd';
 import { CopyOutlined } from '@ant-design/icons';
 
@@ -100,7 +100,7 @@ const Naming = () => {
   return (
     <>
       {renderPageTitle()}
-      <SupporterPageLayout>
+      <PageLayout>
         {/* タイトル・Title */}
         <Row type="flex" align="middle" className="mb-6">
           <Col>
@@ -129,7 +129,7 @@ const Naming = () => {
               </span>
             </Col>
             <Col type="flex" align="right" sm={24} md={4} lg={4}>
-              <Link className="sidebar-link" to={`/individuals-naming-detail`}>
+              <Link className="sidebar-link" to={`/app/individuals-naming-detail`}>
                 <Button type="primary">
                   <span>{'名寄せ先の選択へ'}</span>
                 </Button>
@@ -150,7 +150,7 @@ const Naming = () => {
           </Row>
           <Row className="py-4 px-6">
             <Col type="flex" align="right" sm={24} md={24} lg={24}>
-              <Link className="sidebar-link" to={`/individuals-naming-detail`}>
+              <Link className="sidebar-link" to={`/app/individuals-naming-detail`}>
                 <Button type="primary">
                   <span>{'名寄せ先の選択へ'}</span>
                 </Button>
@@ -193,7 +193,7 @@ const Naming = () => {
             </Col>
           </Row>
         </Card>
-      </SupporterPageLayout>
+      </PageLayout>
     </>
   );
 };

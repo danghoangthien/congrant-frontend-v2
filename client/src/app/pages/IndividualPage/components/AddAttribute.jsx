@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Radio, Space, Select } from 'antd';
+import { Row, Col, Modal, Space, Select } from 'antd';
 import {
   SettingsInputContainer,
   SettingLabel,
-  SettingInput,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
-import styled from 'styled-components/macro';
 import { StyledRadioGroup } from 'styles/Element.style';
 
 const attributes = [

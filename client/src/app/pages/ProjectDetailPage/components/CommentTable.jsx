@@ -2,7 +2,7 @@ import { Table, Dropdown, Button, Menu, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { StyledStatusTag2 } from 'styles/StatusTag.style';
 import { DANGER_COLOR } from 'styles/StyleConstants';
-
+import Reply from './Reply';
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = Array.from(Array(3).keys()).map(i => ({
@@ -88,7 +88,7 @@ const columns = [
     dataIndex: 'action',
     render: action => (
       <Space>
-        <Button type="primary">{'編集'}</Button>
+        <Reply />
         <Dropdown overlay={menu} placement="bottomRight">
           <Button
             icon={<span className="material-symbols-outlined">more_horiz</span>}

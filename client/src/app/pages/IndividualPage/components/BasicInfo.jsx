@@ -17,7 +17,7 @@ import {
 } from 'antd';
 import { DescriptionStyle } from './BasicInfo.style';
 import { BoldLabel, CopiableText } from './Sprites';
-import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import { DETAIL_MODE, EDIT_MODE } from '../consts';
 
 // 操作メニュー・Action Menu
 const action_menu = (

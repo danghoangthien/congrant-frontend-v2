@@ -3,7 +3,6 @@ import { Table, Dropdown, Button, Menu, Space } from 'antd';
 import { StyledStatusTag2 } from 'styles/StatusTag.style';
 import styled from 'styled-components/macro';
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import ReplyActivity from './ReplyActivity';
 
 const StyledLink = styled(Link)`
   color: #000000;
@@ -18,6 +17,7 @@ const StyledLink = styled(Link)`
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = Array.from(Array(3).keys()).map(i => ({
+  id: i + 1,
   pub_date: '2023-04-01',
   status: randomOutput([
     <StyledStatusTag2 className="public">{'公開'}</StyledStatusTag2>,
@@ -96,10 +96,13 @@ const columns = [
     width: 150,
     title: 'アクション',
     align: 'center',
-    dataIndex: 'action',
-    render: action => (
+    render: row => (
       <Space>
-        <ReplyActivity />
+        <Link className="sidebar-link" to={`activities/${row.id}`}>
+          <Button onClick={() => {}} type="primary">
+            {'編集'}
+          </Button>
+        </Link>
         <Dropdown overlay={menu} placement="bottomRight">
           <Button
             icon={<span className="material-symbols-outlined">more_horiz</span>}

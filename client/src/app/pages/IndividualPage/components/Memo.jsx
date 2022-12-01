@@ -83,247 +83,74 @@ const Memo = ({ data }) => {
 
         {/* メモコンテンツ・Memo List */}
         <>
-          <Row className="mb-8">
-            <Col span={24} className="mb-2">
-              <Row justify="space-between" align="middle">
-                <Col>
-                  <Row align="middle">
-                    <span className="memo-date">{'2022-09-01 12:23:56'}</span>
-                    <span className="memo-person">
-                      <span className="material-symbols-outlined fill-icon icon">person</span>
-                      荒木 雄大
-                    </span>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row align="middle">
-                    <Button
-                      className="memo-action-button edit-button mr-2"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: '#ffffff' }}
-                        >
-                          edit
-                        </span>
-                      }
-                    ></Button>
-                    <Button
-                      className="memo-action-button delete-button"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: PRIMARY_COLOR }}
-                        >
-                          delete
-                        </span>
-                      }
-                    ></Button>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
-            <Col span={24}>
-              <div>
-                {
-                  '田中さんの紹介で会社の同僚の鈴木さんという方が寄付を検討してくれているようです。次回のイベントに参加されるということなので声かけをしてみます。次回田中さんにお会いした時にお礼を伝えます。'
-                }
-              </div>
-            </Col>
-          </Row>
-          <Row className="mb-8">
-            <Col span={24} className="mb-2">
-              <Row justify="space-between" align="middle">
-                <Col>
-                  <Row align="middle">
-                    <span className="memo-date">{'2022-09-01 12:23:56'}</span>
-                    <span className="memo-person">
-                      <span className="material-symbols-outlined fill-icon icon">person</span>
-                      荒木 雄大
-                    </span>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row align="middle">
-                    <Button
-                      className="memo-action-button edit-button mr-2"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: '#ffffff' }}
-                        >
-                          edit
-                        </span>
-                      }
-                    ></Button>
-                    <Button
-                      className="memo-action-button delete-button"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: PRIMARY_COLOR }}
-                        >
-                          delete
-                        </span>
-                      }
-                    ></Button>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
-            <Col span={24}>
-              <div>
-                {
-                  '田中さんの紹介で会社の同僚の鈴木さんという方が寄付を検討してくれているようです。次回のイベントに参加されるということなので声かけをしてみます。次回田中さんにお会いした時にお礼を伝えます。'
-                }
-              </div>
-            </Col>
-          </Row>
-          <Row className="mb-8">
-            <Col span={24} className="mb-2">
-              <Row justify="space-between" align="middle">
-                <Col>
-                  <Row align="middle">
-                    <span className="memo-date">{'2022-09-01 12:23:56'}</span>
-                    <span className="memo-person">
-                      <span className="material-symbols-outlined fill-icon icon">person</span>
-                      内藤 千賀
-                    </span>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row align="middle">
-                    <Button
-                      className="memo-action-button edit-button mr-2"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: '#ffffff' }}
-                        >
-                          edit
-                        </span>
-                      }
-                    ></Button>
-                    <Button
-                      className="memo-action-button delete-button"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: PRIMARY_COLOR }}
-                        >
-                          delete
-                        </span>
-                      }
-                    ></Button>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
-            <Col span={24}>
-              <div>
-                {'電話で寄付の増額の連絡があった。山田が対応して金額変更の方法をお伝えしました。'}
-              </div>
-            </Col>
-          </Row>
-          <Row className="mb-8">
-            <Col span={24} className="mb-2">
-              <Row justify="space-between" align="middle">
-                <Col>
-                  <Row align="middle">
-                    <span className="memo-date">{'2022-09-01 12:23:56'}</span>
-                    <span className="memo-person">
-                      <span className="material-symbols-outlined fill-icon icon">person</span>
-                      荒木 雄大
-                    </span>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row align="middle">
-                    <Button
-                      className="memo-action-button edit-button mr-2"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: '#ffffff' }}
-                        >
-                          edit
-                        </span>
-                      }
-                    ></Button>
-                    <Button
-                      className="memo-action-button delete-button"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: PRIMARY_COLOR }}
-                        >
-                          delete
-                        </span>
-                      }
-                    ></Button>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
-            <Col span={24}>
-              <div>
-                {
-                  '田中さんの紹介で会社の同僚の鈴木さんという方が寄付を検討してくれているようです。次回のイベントに参加されるということなので声かけをしてみます。次回田中さんにお会いした時にお礼を伝えます。'
-                }
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24} className="mb-2">
-              <Row justify="space-between" align="middle">
-                <Col>
-                  <Row align="middle">
-                    <span className="memo-date">{'2022-09-01 12:23:56'}</span>
-                    <span className="memo-person">
-                      <span className="material-symbols-outlined fill-icon icon">person</span>
-                      荒木 雄大
-                    </span>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row align="middle">
-                    <Button
-                      className="memo-action-button edit-button mr-2"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: '#ffffff' }}
-                        >
-                          edit
-                        </span>
-                      }
-                    ></Button>
-                    <Button
-                      className="memo-action-button delete-button"
-                      icon={
-                        <span
-                          className="material-symbols-outlined icon fill-icon"
-                          style={{ color: PRIMARY_COLOR }}
-                        >
-                          delete
-                        </span>
-                      }
-                    ></Button>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
-            <Col span={24}>
-              <div>
-                {
-                  '田中さんの紹介で会社の同僚の鈴木さんという方が寄付を検討してくれているようです。次回のイベントに参加されるということなので声かけをしてみます。次回田中さんにお会いした時にお礼を伝えます。'
-                }
-              </div>
-            </Col>
-          </Row>
+          {Array.from(Array(5).keys()).map(i => (
+            <MemoItem />
+          ))}
         </>
       </MemoStyle>
     </>
+  );
+};
+
+const MemoItem = () => {
+  const [showActionButtons, setShowActionButtons] = useState(false);
+  return (
+    <Row
+      className="mb-8"
+      onMouseEnter={() => setShowActionButtons(true)}
+      onMouseLeave={() => setShowActionButtons(false)}
+    >
+      <Col span={24} className="mb-2">
+        <Row justify="space-between" align="middle">
+          <Col style={{ height: '24px' }}>
+            <Row align="middle">
+              <span className="memo-date">{'2022-09-01 12:23:56'}</span>
+              <span className="memo-person">
+                <span className="material-symbols-outlined fill-icon icon">person</span>
+                荒木 雄大
+              </span>
+            </Row>
+          </Col>
+          <Col style={{ height: '24px' }}>
+            <Row align="middle">
+              {showActionButtons && (
+                <>
+                  <Button
+                    className="memo-action-button edit-button mr-2"
+                    icon={
+                      <span
+                        className="material-symbols-outlined icon fill-icon"
+                        style={{ color: '#ffffff' }}
+                      >
+                        edit
+                      </span>
+                    }
+                  ></Button>
+                  <Button
+                    className="memo-action-button delete-button"
+                    icon={
+                      <span
+                        className="material-symbols-outlined icon fill-icon"
+                        style={{ color: PRIMARY_COLOR }}
+                      >
+                        delete
+                      </span>
+                    }
+                  ></Button>
+                </>
+              )}
+            </Row>
+          </Col>
+        </Row>
+      </Col>
+      <Col span={24}>
+        <div>
+          {
+            '田中さんの紹介で会社の同僚の鈴木さんという方が寄付を検討してくれているようです。次回のイベントに参加されるということなので声かけをしてみます。次回田中さんにお会いした時にお礼を伝えます。'
+          }
+        </div>
+      </Col>
+    </Row>
   );
 };
 

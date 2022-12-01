@@ -1,8 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import { SupporterPageLayout } from './components/SupporterPage.style';
-import { DescriptionStyle } from './components/BasicInfo.style';
-import { BoldLabel, CopiableText } from './components/Sprites';
-import { Card, Row, Col, Checkbox, Button, Tag, Typography, Radio } from 'antd';
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import { Card, Row, Col, Button, Tag, Radio } from 'antd';
 
 const DetailGrid = () => {
   return (
@@ -316,7 +314,7 @@ const NamingDetail = () => {
   return (
     <>
       {renderPageTitle()}
-      <SupporterPageLayout>
+      <PageLayout>
         {/* タイトル・Title */}
         <div className="item mb-6">
           <Row>
@@ -357,7 +355,7 @@ const NamingDetail = () => {
             </Row>
           </Card>
         </div>
-      </SupporterPageLayout>
+      </PageLayout>
     </>
   );
 };

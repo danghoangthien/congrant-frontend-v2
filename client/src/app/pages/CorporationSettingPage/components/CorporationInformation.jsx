@@ -29,7 +29,7 @@ const GroupInformation = () => {
             </Radio.Group>
             <div style={{ color: TEXT_GRAY_COLOR }}>
               法人格の有無によって利用できる決済機能が異なります。詳しくは
-              <Link to={`/individuals`}>こちら</Link>。
+              <Link to={`/app/individuals`}>こちら</Link>。
             </div>
           </SettingsInputContainer>
         </Row>

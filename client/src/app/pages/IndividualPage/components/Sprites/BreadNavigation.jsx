@@ -20,16 +20,16 @@ const StyledNavigation = styled(Space)`
   }
 `;
 
-const Navigation = ({ setMode }) => {
+const Navigation = ({ setMode, label, identityLabel, id }) => {
   return (
     <StyledNavigation className="mb-8">
       <Button onClick={() => setMode(LIST_MODE)}>{'一覧へ'}</Button>
-      <span className="bread">{'領収書'}</span>
+      <span className="bread">{label}</span>
       <span>{'/'}</span>
       <span>
-        {'領収書No'}
+        {identityLabel}
         {' : '}
-        {'2022-123456'}
+        {id}
       </span>
     </StyledNavigation>
   );

@@ -12,7 +12,8 @@ import {
 
 import './Models/index';
 
-const Step3 = () => {
+const Step4 = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const renderPageTitle = () => {
@@ -94,13 +95,18 @@ const Step3 = () => {
               icon={<span className="material-symbols-outlined">chevron_left</span>}
               onClick={() => {
                 dispatch.registerStep.setActive('1'); //unCompleted
-                dispatch.registerStep.unCompleted('3');
-                dispatch.registerStep.unCompleted('2');
+                //dispatch.registerStep.unCompleted('3');
+                //dispatch.registerStep.unCompleted('2');
               }}
             >
               {'戻る'}
             </Button>
-            <Link to={`/verification/confirmation`}>
+            <Link
+              onClick={() => {
+                dispatch.registerStep.setCompleted('4');
+                history.push(`/app/verification/confirmation`);
+              }}
+            >
               <Button size="large" style={{ fontWeight: '600', width: '100%' }} type="primary">
                 {'保存して次へ'}
               </Button>
@@ -112,4 +118,4 @@ const Step3 = () => {
   );
 };
 
-export default Step3;
+export default Step4;

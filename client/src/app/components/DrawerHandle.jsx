@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // ANTD
-import { Drawer } from 'antd';
+import { Drawer, Space } from 'antd';
 import { sleep } from 'utils/helper';
 // STYLE
 import styled from 'styled-components/macro';
@@ -21,9 +21,9 @@ const DrawerHandle = ({ children, drawerComponent, onDrawerClose, isOpen = false
   };
 
   return (
-    <>
+    <Space onClick={e => e.stopPropagation()}>
       <span
-        onClick={() => {
+        onClick={e => {
           setOpen(true);
         }}
       >
@@ -38,10 +38,11 @@ const DrawerHandle = ({ children, drawerComponent, onDrawerClose, isOpen = false
         placement="right"
         onClose={onClose}
         visible={open}
+        mask={false}
       >
         {React.cloneElement(drawerComponent, { closeDrawer: onClose })}
       </StyledDrawer>
-    </>
+    </Space>
   );
 };
 

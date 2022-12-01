@@ -7,8 +7,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
-import HistoryTable from './HistoryTable';
-import MenuIcon from '@mui/icons-material/Menu';
+import DoneIcon from '@mui/icons-material/Done';
 import './Models/index';
 import styled from 'styled-components/macro';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
@@ -37,12 +36,13 @@ const Create = () => {
   };
 
   const dispatch = useDispatch();
-  const { active } = useSelector(state => state['receiptBulkStep']);
+  const { active, completed } = useSelector(state => state['receiptBulkStep']);
   const TabName = ({ current, active, children }) => {
     const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
+    const isCurrentTabCompleted = completed.includes(current);
     return (
-      <Space>
-        <StyledTag color={color}>{current}</StyledTag>
+      <Space size={16}>
+        <StyledTag color={color}>{isCurrentTabCompleted ? <DoneIcon /> : current}</StyledTag>
         {children}
       </Space>
     );

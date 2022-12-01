@@ -22,6 +22,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutIcon from '@mui/icons-material/Logout';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -59,14 +60,15 @@ const { Sider, Content } = Layout;
 // );
 
 const items = [
-  getItem('ホーム', '/', <HomeIcon />),
-  getItem('プロジェクト', '/projects', <FlagIcon />),
-  getItem('寄付決済', '/donations', <FavoriteIcon />),
-  getItem('継続契約', '/reccurings', <AutorenewIcon />),
-  getItem('領収書', '/receipts', <ReceiptIcon />),
-  getItem('個人サポーター', '/individuals', <PersonIcon />),
-  getItem('法人サポーター', '/corporations', <DomainIcon />),
-  getItem('基本設定', '/settings', <SettingsIcon />),
+  getItem('ホーム', '/app/home', <HomeIcon />),
+  getItem('プロジェクト', '/app/projects', <FlagIcon />),
+  getItem('寄付決済', '/app/donations', <FavoriteIcon />),
+  getItem('継続契約', '/app/reccurings', <AutorenewIcon />),
+  getItem('領収書', '/app/receipts', <ReceiptIcon />),
+  getItem('個人サポーター', '/app/individuals', <PersonIcon />),
+  getItem('法人サポーター', '/app/corporations', <DomainIcon />),
+  getItem('基本設定', '/app/settings', <SettingsIcon />),
+  getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
   // getItem(null, 'sub-menu', null, [
   //   getItem(
   //     <div>
@@ -125,21 +127,21 @@ const items4 = [
     null,
     [
       getItem(
-        <Link className="sub-user-menu-link" to={`/corporation-settings`}>
+        <Link className="sub-user-menu-link" to={`/app/corporation-settings`}>
           <AdminPanelSettingsIcon />
           団体設定
         </Link>,
         '3',
       ),
       getItem(
-        <Link className="sub-user-menu-link" to={`/individuals-settings`}>
+        <Link className="sub-user-menu-link" to={`/app/individuals-settings`}>
           <ManageAccountsIcon />
           個人設定
         </Link>,
         '4',
       ),
       getItem(
-        <Link className="sub-user-menu-link" to={`/logout`}>
+        <Link className="sub-user-menu-link" to={`/app/logout`}>
           <LogoutIcon />
           ログアウト
         </Link>,
@@ -232,7 +234,6 @@ const items4 = [
 // ];
 
 const AppLayout = ({ children }) => {
-  console.count('AppLayout');
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
 
@@ -340,7 +341,7 @@ const AppLayout = ({ children }) => {
 
             <Layout>
               {/* メイン・Main Content */}
-              <Content className="mx-6 my-7">{children}</Content>
+              <Content>{children}</Content>
             </Layout>
           </Layout>
         </SlyledLayout>
