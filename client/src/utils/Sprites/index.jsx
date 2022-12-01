@@ -1,4 +1,4 @@
-import { Col, Space, Image } from 'antd';
+import { Col, Space, Image, Descriptions } from 'antd';
 import {
   StyledRequired,
   StyledLabel,
@@ -12,6 +12,7 @@ import {
   StyledFormLabel,
   StyledFormLabelRequired,
   StyledFormRadio,
+  StyledFormCourseRadio,
   StyledFormRadioGroup,
   StyledFormRadioButton,
   StyledFormRadioButtonGroup,
@@ -117,6 +118,37 @@ const FormRadio = ({ value, label, image, required, fontSize, gap, ...rest }) =>
   </StyledFormRadio>
 );
 
+const FormCourseRadio = ({ value, label, image, required, fontSize, money, stock, ...rest }) => (
+  <StyledFormCourseRadio value={value} {...rest} className={stock === 0 && 'disabled'}>
+    <div className="label" style={{ fontSize: fontSize }}>
+      <Descriptions
+        title={label}
+        colon={false}
+        size="small"
+        labelStyle={{ color: '#737373', fontWeight: '500', fontSize: '13px' }}
+        contentStyle={{ fontWeight: '700', fontSize: '15px' }}
+      >
+        <Descriptions.Item span={1} label="金額">
+          {money}円
+        </Descriptions.Item>
+        <Descriptions.Item span={1} label="在庫">
+          {stock === 0 ? '受付終了' : stock}
+        </Descriptions.Item>
+      </Descriptions>
+      <div className="description">
+        コースの説明文が入ります。コースの説明文が入ります。コースの説明文が入ります。コースの説明文が入ります。コースの説明文が入ります。コースの説明文が入ります。コースの説明文が入ります。コースの説明文が入ります。
+      </div>
+    </div>
+    {image && (
+      <div>
+        <div className="img-cover">
+          <img preview={false} src={image} alt="" />
+        </div>
+      </div>
+    )}
+  </StyledFormCourseRadio>
+);
+
 const FormRadioGroup = ({ children, defaultValue, ...rest }) => (
   <StyledFormRadioGroup defaultValue={defaultValue} {...rest}>
     {children}
@@ -190,6 +222,7 @@ export {
   CustomSegmented,
   FormLabel,
   FormRadio,
+  FormCourseRadio,
   FormInputNumber,
   FormRadioGroup,
   FormRadioButton,

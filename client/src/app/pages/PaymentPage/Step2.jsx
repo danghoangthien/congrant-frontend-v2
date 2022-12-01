@@ -24,12 +24,15 @@ import './Models/index';
 
 const Step2 = () => {
   const [type, setType] = useState('1');
+  const [destination, setDestination] = useState(false);
   const { method } = useSelector(state => state['paymentMethod']);
   const dispatch = useDispatch();
   // プロジェクトのテーマカラー・Project Theme Color
   const onChange = e => {
-    console.log(e.target.value);
     setType(e.target.value);
+  };
+  const handleChangeDestination = e => {
+    setDestination(e.target.checked);
   };
 
   return (
@@ -197,7 +200,7 @@ const Step2 = () => {
         <Col className="mb-7" span={24}>
           <SettingsInputContainer label={<FormLabel label={'広報物への掲載'} />}>
             <Col span={24}>
-              <Checkbox>広報物への氏名掲載を許可する</Checkbox>
+              <Checkbox checked>広報物への氏名掲載を許可する</Checkbox>
             </Col>
           </SettingsInputContainer>
         </Col>
@@ -266,7 +269,17 @@ const Step2 = () => {
                 style={{ width: '100%' }}
                 required
                 size="large"
-                placeholder="日本"
+                defaultValue="日本"
+                options={[
+                  {
+                    value: '日本',
+                    label: '日本',
+                  },
+                  {
+                    value: 'アメリカ',
+                    label: 'アメリカ',
+                  },
+                ]}
               ></FormSelect>
             </Col>
             <Col span={24} className="mb-3">
@@ -296,56 +309,70 @@ const Step2 = () => {
               <FormInput size="large" required placeholder="番地・建物名・部屋番号等" />
             </Col>
             <Col span={24}>
-              <FormCheckbox>郵便物の送付先を別途指定する</FormCheckbox>
+              <FormCheckbox onChange={handleChangeDestination}>
+                郵便物の送付先を別途指定する
+              </FormCheckbox>
             </Col>
           </SettingsInputContainer>
         </Col>
 
         {/* 郵便物の送付先 */}
-        <Col className="mb-7" span={24}>
-          <SettingsInputContainer label={<FormLabel label={'郵便物の送付先'} required />}>
-            <Col span={24} className="mb-3">
-              <FormSelect
-                style={{ width: '100%' }}
-                required
-                size="large"
-                placeholder="日本"
-              ></FormSelect>
-            </Col>
-            <Col span={24} className="mb-3">
-              <Row gutter={10}>
-                <Col span={12}>
-                  <FormInput
-                    size="large"
-                    addonBefore="〒"
-                    placeholder={'0000000'}
-                    style={{ width: '100%' }}
-                  />
-                </Col>
-                <Col span={12}>
-                  <FormInput
-                    size="large"
-                    disabled
-                    placeholder={'都道府県'}
-                    style={{ width: '100%' }}
-                  />
-                </Col>
-              </Row>
-            </Col>
-            <Col span={24} className="mb-3">
-              <FormInput size="large" required placeholder="市区町村" />
-            </Col>
-            <Col span={24} className="mb-3">
-              <FormInput size="large" required placeholder="番地・建物名・部屋番号等" />
-            </Col>
-            <Col span={24} className="mb-3">
-              <FormInput size="large" required placeholder="会社名・所属" />
-            </Col>
-            <Col span={24} className="mb-3">
-              <FormInput size="large" required placeholder="宛名" />
-            </Col>
-          </SettingsInputContainer>
-        </Col>
+        {destination && (
+          <Col className="mb-7" span={24}>
+            <SettingsInputContainer label={<FormLabel label={'郵便物の送付先'} required />}>
+              <Col span={24} className="mb-3">
+                <FormSelect
+                  style={{ width: '100%' }}
+                  required
+                  size="large"
+                  defaultValue="日本"
+                  options={[
+                    {
+                      value: '日本',
+                      label: '日本',
+                    },
+                    {
+                      value: 'アメリカ',
+                      label: 'アメリカ',
+                    },
+                  ]}
+                ></FormSelect>
+              </Col>
+              <Col span={24} className="mb-3">
+                <Row gutter={10}>
+                  <Col span={12}>
+                    <FormInput
+                      size="large"
+                      addonBefore="〒"
+                      placeholder={'0000000'}
+                      style={{ width: '100%' }}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <FormInput
+                      size="large"
+                      disabled
+                      placeholder={'都道府県'}
+                      style={{ width: '100%' }}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+              <Col span={24} className="mb-3">
+                <FormInput size="large" required placeholder="市区町村" />
+              </Col>
+              <Col span={24} className="mb-3">
+                <FormInput size="large" required placeholder="番地・建物名・部屋番号等" />
+              </Col>
+              <Col span={24} className="mb-3">
+                <FormInput size="large" required placeholder="会社名・所属" />
+              </Col>
+              <Col span={24} className="mb-3">
+                <FormInput size="large" required placeholder="宛名" />
+              </Col>
+            </SettingsInputContainer>
+          </Col>
+        )}
 
         {/* お子様のお名前 */}
         <Col className="mb-7" span={24}>

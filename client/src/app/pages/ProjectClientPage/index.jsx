@@ -14,8 +14,17 @@ import ActivityTab from './components/ActivityTab';
 import CommentTab from './components/CommentTab';
 import Media from 'react-media';
 
+// STYLE
+import styled from 'styled-components/macro';
+
 const ProjectClientPage = () => {
   const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
+  const MAIN_COLOR = '#e34855';
+  const ProjectStyle = styled.div`
+    .swiper-slide-thumb-active:after {
+      border: 2px solid ${MAIN_COLOR};
+    }
+  `;
 
   const renderPageTitle = () => {
     return (
@@ -42,7 +51,7 @@ const ProjectClientPage = () => {
   }
 
   return (
-    <>
+    <ProjectStyle>
       {renderPageTitle()}
       <ProjectClientPageLayout>
         <div className={`project-client-container ${project_type}`}>
@@ -50,10 +59,10 @@ const ProjectClientPage = () => {
             <h1 className="project-title">日本こども支援協会をサポーターとして支えてください</h1>
           </Row>
 
-          <Row className="project-content-container" justify="space-between">
-            <Col className="project-content-main" xs={24} lg={params?.id === '1' ? 24 : 16}>
+          <div className={`project-content-container ${params?.id === '1' && 'basic'}`}>
+            <div className={`project-content-main`}>
               {/* スライダー・Slider */}
-              <Row className="mb-5">
+              <Row className="mb-8">
                 <Carousel />
               </Row>
 
@@ -69,7 +78,7 @@ const ProjectClientPage = () => {
               />
 
               {/* 概要文・Description Text */}
-              <Row className="mb-5">
+              <Row className="mb-6">
                 <div className="project-description">
                   虐待を次世代に相続させない最も有効な事は、虐待を受けたこどもに「特定の大人との愛着」を丁寧に時間をかけてしっかり形成し直し、そのこども達がやがて成人して親になれるよう、健全に育つ土壌を整えることです。根本的に虐待が防止できる社会を、一緒に実現しませんか？
                 </div>
@@ -141,7 +150,7 @@ const ProjectClientPage = () => {
                   </Tabs>
                 </Col>
               </Row>
-            </Col>
+            </div>
 
             {params?.id === '1' && (
               <Row span={24}>
@@ -151,7 +160,7 @@ const ProjectClientPage = () => {
 
             {/* サイダー・Sider（クラファンのみ・Crowdfundding only） */}
             {params?.id === '2' || params?.id === '3' ? (
-              <Col xs={24} lg={7}>
+              <div className="project-sider">
                 {/* 寄付情報・ゲージ・Donation Info and Progress bar */}
                 <Media
                   query="(min-width: 992px)"
@@ -164,14 +173,14 @@ const ProjectClientPage = () => {
                 {/* 団体情報・Organization Info */}
                 <OrganizationInfo logo={Logo} />
                 <Media query="(min-width: 992px)" render={() => <CourseInfo />} />
-              </Col>
+              </div>
             ) : (
               ''
             )}
-          </Row>
+          </div>
         </div>
       </ProjectClientPageLayout>
-    </>
+    </ProjectStyle>
   );
 };
 

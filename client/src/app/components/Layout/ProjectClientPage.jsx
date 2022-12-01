@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ProjectClientPageStyle } from './ProjectClientPageLayout.style';
+// ANTD
 import { Layout, Row, Image, Col, Space, Button } from 'antd';
+// STYLE
+import { ProjectClientPageStyle } from './ProjectClientPageLayout.style';
+// MEDIA QUERY
 import Media from 'react-media';
 // IMAGE
 import CongrantLogo from 'styles/assets/logo_congrant_gray.svg';
@@ -11,6 +14,7 @@ const { Header, Footer, Content } = Layout;
 
 const ProjectClientPage = ({ children }) => {
   const params = useParams();
+
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement(
       {

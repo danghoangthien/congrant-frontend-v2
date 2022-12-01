@@ -9,6 +9,7 @@ export const DonationInfoStyle = styled.div`
 
   .donation-info-amount {
     font-weight: 700;
+    line-height: 1.4;
 
     .num {
       font-size: 44px;
@@ -60,7 +61,7 @@ export const DonationInfoStyle = styled.div`
     padding: 10px 7px;
 
     .ant-space-item {
-      line-height: 1;
+      // line-height: 1;
     }
 
     .title {
@@ -78,6 +79,10 @@ export const DonationInfoStyle = styled.div`
   }
 
   .donate-btn {
+    border-radius: 7px;
+    height: 53px;
+    font-weight: 700;
+
     &:hover {
       opacity: 0.9;
     }

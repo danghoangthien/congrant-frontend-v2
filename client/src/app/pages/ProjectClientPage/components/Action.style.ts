@@ -8,7 +8,7 @@ export const ActionButton = styled(Button)`
   box-shadow: none !important;
   display: flex;
   align-items: center;
-  padding: 4px 5px;
+  padding: 4px 7px;
 
   .icon {
     margin-right: 6px;

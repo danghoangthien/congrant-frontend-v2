@@ -25,6 +25,11 @@ export const GlobalStyle = createGlobalStyle`
     // color: rgba(0,0,0,0.85);
   }
 
+  *::selection {
+    background: highlight;
+    color: inherit;
+}
+
   body {
     font-family: system-ui;
   }

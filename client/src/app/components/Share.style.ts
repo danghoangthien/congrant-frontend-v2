@@ -7,7 +7,7 @@ export const ShareButton = styled.span`
   display: inline-block;
   color: #ffffff;
   border-radius: 4px;
-  padding: 0 8px;
+  padding: 0 6px;
   font-size: 12px;
   font-weight: 700;
   transition: all 0.3s ease;

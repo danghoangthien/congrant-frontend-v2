@@ -12,6 +12,8 @@ export const OrganizationInfoStyle = styled.div`
   .organization-description {
     font-size: 14px;
     font-weight: 400;
+    height: 400px;
+    overflow: auto;
   }
 
   .organization-image {
