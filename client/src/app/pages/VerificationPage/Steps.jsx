@@ -18,12 +18,20 @@ const StyledTag = styled(Tag)`
   width: 32px;
   height: 32px;
   border-radius: 24px;
-  line-height: 32px;
   text-align: center;
   color: #ffffff;
   border-color: #d9d9d7;
   font-weight: 600;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.complete {
+    color: ${PRIMARY_COLOR};
+    background: #ffffff !important;
+    border-color: ${PRIMARY_COLOR};
+  }
 `;
 
 const StyledTabs = styled(Tabs)`
@@ -52,8 +60,10 @@ const RegisterStepsPage = () => {
     const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
     const isCurrentTabCompleted = completed.includes(current);
     return (
-      <Space size={16}>
-        <StyledTag color={color}>{isCurrentTabCompleted ? <DoneIcon /> : current}</StyledTag>
+      <Space size={16} style={{ color: isCurrentTabCompleted && PRIMARY_COLOR }}>
+        <StyledTag color={color} className={isCurrentTabCompleted && 'complete'}>
+          {isCurrentTabCompleted ? <DoneIcon /> : current}
+        </StyledTag>
         {children}
       </Space>
     );

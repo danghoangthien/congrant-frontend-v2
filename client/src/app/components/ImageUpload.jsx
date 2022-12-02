@@ -99,7 +99,7 @@ const ImageUpload = ({ onUploadDone = () => {}, width = '100%', maxFiles = 1 }) 
           </Space>
         )}
       </Upload>
-      <Modal visible={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+      <Modal visible={previewOpen} footer={null} onCancel={handleCancel}>
         <img
           alt="example"
           style={{

@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 // ANTD
 import { Row, Col, Space, Divider, Checkbox } from 'antd';
 // COMPONENT
@@ -25,12 +24,8 @@ const Step1 = ({ type }) => {
   // const [method, setMethod] = useState('1');
   const { method } = useSelector(state => state['paymentMethod']);
   const dispatch = useDispatch();
-  const params = useParams();
-  console.log(params);
 
   const onMethodChange = e => {
-    console.log(e.target.value);
-    // setMethod(e.target.value);
     dispatch.paymentMethod.setMethod(e.target.value);
   };
 

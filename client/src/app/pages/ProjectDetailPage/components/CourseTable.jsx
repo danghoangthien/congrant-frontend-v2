@@ -1,9 +1,11 @@
-import { Select, Button, Table, Typography, Badge, Dropdown, Menu } from 'antd';
+import { Select, Button, Typography, Badge, Dropdown, Menu } from 'antd';
 import { EllipsisOutlined, SendOutlined, TagFilled, DeleteFilled } from '@ant-design/icons';
 import { randomOutput } from 'utils/helper';
 import { StyledBadgeDot } from 'styles/global-styles';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from 'app/pages/IndividualPage/components/Detail';
+import Table from 'app/components/Table';
+
 const RECEIPT_STATUSES = {
   0: '受領済み',
   1: '未受領',

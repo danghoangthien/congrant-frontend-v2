@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
 import { Tabs } from 'antd';
 
+import { PLACEHOLDER_COLOR } from 'styles/StyleConstants';
+
 export const StyledBulkCreateTabs = styled(Tabs)`
   .ant-tabs-nav {
     // padding-left: 60px;
@@ -29,6 +31,12 @@ export const StyledBulkCreateTabs = styled(Tabs)`
     .ant-tabs-nav .ant-tabs-tab {
       background: none;
     }
+  }
+
+  .ant-tabs-tab-btn {
+    font-size: 16px;
+    font-weight: 600;
+    color: ${PLACEHOLDER_COLOR};
   }
 `;
 

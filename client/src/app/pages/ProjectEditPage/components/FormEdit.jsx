@@ -79,7 +79,7 @@ const FormEdit = () => {
         <Col span={24}>
           <Space align="center">
             <MenuOutlined />
-            <Input placeholder={'3,000'} />
+            <Input placeholder={'3,000'} suffix={'円'} />
             <Button className="ml-2 icon-btn" type="primary">
               <AddIcon />
               <span>{'追加'}</span>

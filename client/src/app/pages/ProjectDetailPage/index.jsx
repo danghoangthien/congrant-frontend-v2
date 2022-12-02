@@ -1,5 +1,5 @@
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import { Layout, Button, Space } from 'antd';
+import { Layout } from 'antd';
 import Summary from './Summary';
 import Funding from './Funding';
 import Course from './Course';
@@ -8,7 +8,7 @@ import BlogEdit from './BlogEdit';
 import Comment from './Comment';
 import ProjectEditPage from './../ProjectEditPage';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const DetailPage = () => {
   const { path } = useRouteMatch();
