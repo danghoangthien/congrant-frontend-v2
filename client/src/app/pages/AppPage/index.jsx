@@ -118,7 +118,7 @@ const AppPage = () => {
         <Route path={`${path}/individuals-settings`}>
           <IndividualSettingsPage />
         </Route>
-        <Route path={`${path}/payments`}>
+        <Route path={`${path}/payment-details`}>
           <PaymentManagePage />
         </Route>
         <Route path={`${path}/editor`}>

@@ -21,17 +21,19 @@ const Breadcumb = ({ active, data = [], separator = '/', style = null }) => {
   const breadCumdActiveStyle = style === 'button' ? null : { color: 'rgba(0, 0, 0, 0.5)' };
   return (
     <Breadcrumb className={breadCumdClassName} separator={breadCumdSeparator}>
-      {data.map(breadcumb => (
-        <Breadcrumb.Item>
-          {active === breadcumb.id ? (
-            <Space className={breadCumdContentClassName}>{breadcumb.title}</Space>
-          ) : (
-            <Link className={breadCumdContentClassName} to={breadcumb.uri}>
-              <Space style={breadCumdActiveStyle}>{breadcumb.title}</Space>
-            </Link>
-          )}
-        </Breadcrumb.Item>
-      ))}
+      {data
+        .filter(el => el)
+        .map(breadcumb => (
+          <Breadcrumb.Item>
+            {active === breadcumb.id ? (
+              <Space className={breadCumdContentClassName}>{breadcumb.title}</Space>
+            ) : (
+              <Link className={breadCumdContentClassName} to={breadcumb.uri}>
+                <Space style={breadCumdActiveStyle}>{breadcumb.title}</Space>
+              </Link>
+            )}
+          </Breadcrumb.Item>
+        ))}
     </Breadcrumb>
   );
 };

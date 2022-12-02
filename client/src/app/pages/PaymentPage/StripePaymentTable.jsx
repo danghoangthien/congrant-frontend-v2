@@ -1,8 +1,9 @@
 import { Table } from 'antd';
-
+import { useHistory } from 'react-router-dom';
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
-const dataSource = Array.from(Array(5).keys()).map(i => ({
+export const dataSource = Array.from(Array(5).keys()).map(i => ({
+  yyyymm: randomOutput(['202210']),
   dateTime: randomOutput(['2022年10月入金分']),
   number: randomOutput(['1,234件']),
   totalSettlementAmount: randomOutput(['2,000,000円']),
@@ -48,8 +49,22 @@ const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });
 
-const LoginHistoryTable = () => (
-  <Table dataSource={dataSource} columns={columns} pagination={false} />
-);
+const DataTable = () => {
+  const history = useHistory();
+  return (
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      pagination={false}
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: event => {
+            history.push(`stripe/${record.yyyymm}`);
+          }, // click row
+        };
+      }}
+    />
+  );
+};
 
-export default LoginHistoryTable;
+export default DataTable;

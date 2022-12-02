@@ -12,7 +12,7 @@ const PaymentPage = () => {
       <Switch>
         <Route exact path={`${path}/stripe`} component={Stripe} />
         <Route exact path={`${path}/telecom`} component={Telecom} />
-        <Route path={`${path}/stripe/:id`} component={StripeDetail} />
+        <Route path={`${path}/stripe/:yyyymm`} component={StripeDetail} />
       </Switch>
     </>
   );

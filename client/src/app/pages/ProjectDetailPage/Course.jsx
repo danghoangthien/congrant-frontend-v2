@@ -1,31 +1,24 @@
 import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 // Antd Components
-import { Button, Col, Row, Card, Space, Breadcrumb } from 'antd';
+import { Button, Col, Row, Card, Space } from 'antd';
 // Components
 import CourseTable from './components/CourseTable';
+import Breadcumd from 'app/components/Breadcumd';
 // Styles
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // Icons
 import { DownloadOutlined } from '@ant-design/icons';
 import EditIcon from '@mui/icons-material/Edit';
+import { HEADER_BREADCUMD_DATA, SUMMARY_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 
 const CoursePage = () => {
   const params = useParams();
-  const renderPageTitle = () => {
-    return (
-      <>
-        <Helmet>
-          <title>{'プロジェクトトップ'}</title>
-          <meta name="description" content={'...'} />
-        </Helmet>
-      </>
-    );
-  };
 
   return (
     <>
-      {renderPageTitle()}
+      <ProjectDetailHeader
+        Breadcumd={<Breadcumd data={HEADER_BREADCUMD_DATA} active={HEADER_BREADCUMD_DATA[1].id} />}
+      />
       <PageLayout>
         <Row justify="space-between" align="middle" className="item mb-5">
           {/* 左の部分・Left Part */}
@@ -37,23 +30,12 @@ const CoursePage = () => {
                 </span>
               </Col>
               <Col className="mr-2">
-                <Breadcrumb className="bread-crumb" separator="">
-                  <Breadcrumb.Item>
-                    <Link className="bread-crumb-content" to={`summary`}>
-                      サマリー
-                    </Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item>
-                    <Link className="bread-crumb-content" to={`funding`}>
-                      寄付決済
-                    </Link>
-                  </Breadcrumb.Item>
-                  {params?.id === '2' && (
-                    <Breadcrumb.Item>
-                      <span className="bread-crumb-content">コース別</span>
-                    </Breadcrumb.Item>
-                  )}
-                </Breadcrumb>
+                <Breadcumd
+                  style="button"
+                  data={SUMMARY_BREADCUMD_DATA(params?.id)}
+                  active={SUMMARY_BREADCUMD_DATA(params?.id)[2].id}
+                  separator={null}
+                />
               </Col>
             </Row>
           </Col>

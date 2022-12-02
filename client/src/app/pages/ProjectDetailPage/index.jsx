@@ -26,7 +26,7 @@ const DetailPage = () => {
             <Route path={`${path}/blogs`} component={Blog} />
             <Route path={`${path}/comments`} component={Comment} />
             <Route path={`${path}/edit`} component={ProjectEditPage} />
-            <Route path={`/projects/new`} component={ProjectEditPage} />
+            <Route path={`/app/projects/new`} component={ProjectEditPage} />
           </Switch>
         </Content>
       </Layout>
