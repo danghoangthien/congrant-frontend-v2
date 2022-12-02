@@ -75,6 +75,7 @@ const PROJECT_STATUS_CLASSES = {
 };
 
 const PROJECT_TARGETS = {
+  0: '設定しない',
   1: '金額',
   2: 'サポーター数',
 };
@@ -86,8 +87,8 @@ const RECEIPT_STATUSES = {
 };
 
 const RECEIPT_STATUS_COLOR = {
-  0: 'warning',
-  1: 'success',
+  0: [DARK_GRAY],
+  1: [SUCCESS_COLOR],
   2: '',
 };
 

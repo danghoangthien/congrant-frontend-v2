@@ -4,8 +4,9 @@ import { EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 import { StyledBadgeDot } from 'styles/global-styles';
-import { DONATION_STATUS_COLOR, DONATION_STATUSES } from 'utils/consts';
+import { RECEIPT_STATUS_COLOR, RECEIPT_STATUSES } from 'utils/consts';
 import BreadNavigation from './Sprites/BreadNavigation';
+import { randomOutput } from 'utils/helper';
 
 // 操作メニュー・Action Menu
 const action_menu = (
@@ -22,6 +23,8 @@ const action_menu = (
     ]}
   />
 );
+
+const receipt_status = randomOutput([0, 1, 2]);
 
 const Title = ({ mode, setMode }) => {
   return (
@@ -64,7 +67,6 @@ const DescriptionContainer = ({ children, mode, setMode }) => (
 );
 
 const ReceiptDetail = ({ data, mode, setMode }) => {
-  console.log('ReceiptDetail render', true);
   return (
     <>
       <BreadNavigation
@@ -83,9 +85,11 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
           </span>
         </Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="発行ステータス" />}>
-          {' '}
           <StyledBadgeDot>
-            <Badge color={DONATION_STATUS_COLOR['2'][0]} text={DONATION_STATUSES['2']} />
+            <Badge
+              color={RECEIPT_STATUS_COLOR[receipt_status][0]}
+              text={RECEIPT_STATUSES[receipt_status]}
+            />
           </StyledBadgeDot>
         </Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="発行日時" />}>-</Descriptions.Item>

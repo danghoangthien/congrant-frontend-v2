@@ -230,7 +230,7 @@ const DataTable = ({
                   style={{
                     width: 210,
                   }}
-                  value={'その他の一括操作'}
+                  value={'その他の操作'}
                   open={false}
                 />
               </Dropdown>

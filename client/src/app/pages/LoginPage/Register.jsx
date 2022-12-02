@@ -47,7 +47,7 @@ const Register = () => {
           </Col>
           <Col className="mb-6" span={24}>
             <SettingsInputContainer label={<SettingLabel label={'担当者メールアドレス'} />}>
-              <Input size="large" type="password" placeholder="tanaka@congrant.com" />
+              <Input size="large" placeholder="tanaka@congrant.com" />
             </SettingsInputContainer>
           </Col>
           <Col className="mb-6" span={24}>

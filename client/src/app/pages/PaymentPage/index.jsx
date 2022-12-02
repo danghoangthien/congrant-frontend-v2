@@ -2,12 +2,8 @@ import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import StickyBox from 'react-sticky-box';
-
 // ANTD
 import { Steps, Card } from 'antd';
-// MEDIA QUERY
-// import Media from 'react-media';
 // LAYOUT
 import PaymentPageLayout from 'app/components/Layout/PaymentPage';
 // COMPONENT
@@ -19,6 +15,8 @@ import Success from './Success';
 // STYLE
 import styled from 'styled-components/macro';
 import { StyledPaymentSteps } from './PaymentPage.style';
+// UTILS
+import StickyBox from 'react-sticky-box';
 
 const { Step } = Steps;
 
@@ -128,7 +126,6 @@ const Payment = () => {
   };
 
   const params = useParams();
-  console.log(params);
 
   return (
     <FormStyle>

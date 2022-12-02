@@ -54,7 +54,7 @@ export const menuItems = (selectedRowKeys, status) => {
         >
           check_box
         </span>
-        <span>{'発行済に戻す'}</span>
+        <span>{'発行済みにする'}</span>
       </Space>
     );
   }

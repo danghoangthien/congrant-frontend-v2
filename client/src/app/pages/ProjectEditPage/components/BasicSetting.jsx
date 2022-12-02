@@ -175,19 +175,27 @@ const BasicSetting = () => {
               {/* プロジェクトの目標値 */}
               <Col span={24} className="mb-8">
                 <SettingsInputContainer label={<SettingLabel label={'プロジェクトの目標値'} />}>
-                  <Col span={24}>
-                    <SettingSelect
-                      onChange={value => setProjectTarget(value)}
-                      placeholder={'設定しない'}
-                      value={projectTarget}
-                    >
-                      <Select.Option value={1}>{PROJECT_TARGETS[1]}</Select.Option>
-                      <Select.Option value={2}>{PROJECT_TARGETS[2]}</Select.Option>
-                    </SettingSelect>
-                  </Col>
-                  <Col className="mt-5" span={24}>
-                    {projectTarget === 1 && <SettingInput placeholder={'1,000,000'} suffix="円" />}
-                    {projectTarget === 2 && <SettingInput placeholder={'100'} suffix="人" />}
+                  <Col style={{ width: '600px' }}>
+                    <Row gutter={16}>
+                      <Col span={12}>
+                        <SettingSelect
+                          onChange={value => setProjectTarget(value)}
+                          placeholder={'設定しない'}
+                          value={projectTarget}
+                          size="large"
+                        >
+                          <Select.Option value={0}>{PROJECT_TARGETS[0]}</Select.Option>
+                          <Select.Option value={1}>{PROJECT_TARGETS[1]}</Select.Option>
+                          <Select.Option value={2}>{PROJECT_TARGETS[2]}</Select.Option>
+                        </SettingSelect>
+                      </Col>
+                      <Col span={12}>
+                        {projectTarget === 1 && (
+                          <SettingInput size="large" placeholder={'1,000,000'} />
+                        )}
+                        {projectTarget === 2 && <SettingInput size="large" placeholder={'100'} />}
+                      </Col>
+                    </Row>
                   </Col>
                   <Col className="mt-5">
                     <StyledSubtitle>

@@ -10,17 +10,25 @@ import Step4 from './Step4';
 import DoneIcon from '@mui/icons-material/Done';
 import './Models/index';
 import styled from 'styled-components/macro';
-import { PRIMARY_COLOR } from 'styles/StyleConstants';
+import { PRIMARY_COLOR, PLACEHOLDER_COLOR } from 'styles/StyleConstants';
 
 const StyledTag = styled(Tag)`
   width: 32px;
   height: 32px;
   border-radius: 24px;
-  line-height: 32px;
   text-align: center;
   color: #ffffff;
   font-weight: 600;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.complete {
+    color: ${PRIMARY_COLOR};
+    background: #ffffff !important;
+    border-color: ${PRIMARY_COLOR};
+  }
 `;
 
 const Create = () => {
@@ -41,8 +49,10 @@ const Create = () => {
     const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
     const isCurrentTabCompleted = completed.includes(current);
     return (
-      <Space size={16}>
-        <StyledTag color={color}>{isCurrentTabCompleted ? <DoneIcon /> : current}</StyledTag>
+      <Space size={8} style={{ color: isCurrentTabCompleted && PRIMARY_COLOR }}>
+        <StyledTag color={color} className={isCurrentTabCompleted && 'complete'}>
+          {isCurrentTabCompleted ? <span class="material-symbols-outlined">done</span> : current}
+        </StyledTag>
         {children}
       </Space>
     );
