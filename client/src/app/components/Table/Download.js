@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
 import { createCsvDownload } from 'utils/helper';
 
 const Download = ({ model, columnMap, fileName }) => {
@@ -31,7 +30,6 @@ const Download = ({ model, columnMap, fileName }) => {
     }
     return download_items.map(item => {
       const rowData = Object.keys(columnMap).map(columnName => {
-        //console.log(columnMap[columnName].csvOutput);
         if (!columnMap[columnName].csvOutput) {
           return '';
         }

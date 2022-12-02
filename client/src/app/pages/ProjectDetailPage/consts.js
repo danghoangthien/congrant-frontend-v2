@@ -33,12 +33,12 @@ const SUMMARY_BREADCUMD_DATA = id => {
     {
       id: 2,
       title: '寄付決済',
-      uri: 'funding',
+      uri: 'donations',
     },
     parseInt(id) === 2 && {
       id: 3,
       title: 'コース別',
-      uri: 'course',
+      uri: 'courses',
     },
   ];
 };

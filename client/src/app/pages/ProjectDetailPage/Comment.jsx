@@ -1,14 +1,34 @@
-import { Link } from 'react-router-dom';
-import { Row, Col, Card, Button } from 'antd';
-import AddIcon from '@mui/icons-material/Add';
+import { useParams } from 'react-router-dom';
+import { Row, Col, Card } from 'antd';
 // Styles
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // Components
 import CommentTable from './components/CommentTable';
+import Breadcumd from 'app/components/Breadcumd';
+import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 
-const Summary = () => {
+const Comment = () => {
+  const params = useParams();
+  const COMMENT_BREADCUMD_DATA = [
+    HEADER_BREADCUMD_DATA[0],
+    {
+      id: 2,
+      title: 'プロジェクトトップ',
+      uri: `/app/projects/${params.id}/summary`,
+    },
+    {
+      id: 3,
+      title: '応援コメント',
+      uri: `/app/projects/${params.id}/comments`,
+    },
+  ];
   return (
     <>
+      <ProjectDetailHeader
+        Breadcumd={
+          <Breadcumd data={COMMENT_BREADCUMD_DATA} active={COMMENT_BREADCUMD_DATA[2].id} />
+        }
+      />
       <PageLayout>
         {/* Should create a component for this */}
         <Row justify="space-between" align="middle" className="item mb-5">
@@ -35,4 +55,4 @@ const Summary = () => {
   );
 };
 
-export default Summary;
+export default Comment;
