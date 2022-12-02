@@ -103,7 +103,7 @@ const DonationEdit = ({ data, mode, setMode }) => {
       </Row>
 
       {/* カスタム項目 */}
-      <Row className="mb-8">
+      <Row>
         <Col span={24}>
           <ExtraFieldTitle />
         </Col>
@@ -133,21 +133,6 @@ const DonationEdit = ({ data, mode, setMode }) => {
               />
             </Descriptions.Item>
           </DescriptionContainer>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col type="flex" align="right" sm={24} md={24} lg={24}>
-          <Space size={8}>
-            <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
-            <Button
-              className="icon-btn"
-              type="primary"
-              icon={<span className="material-symbols-outlined fill-icon">save</span>}
-            >
-              保存する
-            </Button>
-          </Space>
         </Col>
       </Row>
     </>

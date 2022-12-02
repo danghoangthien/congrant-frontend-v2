@@ -8,13 +8,14 @@
 
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-
+// STYLE
 import { GlobalStyle } from '../styles/global-styles';
-
-import { NotFoundPage } from './pages/NotFoundPage';
+// PAGE
 import AppPage from './pages/AppPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import ProjectClientPage from './pages/ProjectClientPage';
 import PaymentPage from './pages/PaymentPage';
+// OTHER
 import { useTranslation } from 'react-i18next';
 import ScrollToTop from 'app/components/ScrollToTop';
 

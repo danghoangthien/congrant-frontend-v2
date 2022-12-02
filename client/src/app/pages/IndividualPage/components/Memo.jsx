@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Row, Col, Button, Input } from 'antd';
 import { MemoStyle } from './Memo.style';
-import { PRIMARY_COLOR, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+import { PRIMARY_COLOR, TEXT_GRAY_COLOR, DANGER_COLOR } from 'styles/StyleConstants';
 import styled from 'styled-components/macro';
 
 const MemoInput = styled.div`
@@ -131,7 +131,7 @@ const MemoItem = () => {
                     icon={
                       <span
                         className="material-symbols-outlined icon fill-icon"
-                        style={{ color: PRIMARY_COLOR }}
+                        style={{ color: DANGER_COLOR }}
                       >
                         delete
                       </span>

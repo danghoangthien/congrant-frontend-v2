@@ -45,7 +45,7 @@ const projectData = [
   {
     id: 2,
     title: 'NPO法人コングラントへのご支援をお願いします！',
-    type: 1,
+    type: 2,
     status: 4,
     url: 'https://congrant.com/XXXXXXXXXXXXXXXXXXX',
     paymentType: 2,

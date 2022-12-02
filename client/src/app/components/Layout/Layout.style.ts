@@ -1,53 +1,6 @@
 import styled from 'styled-components/macro';
 import { PRIMARY_COLOR, GRAY, TEXT_COLOR } from 'styles/StyleConstants';
 
-export const StyledSidebar = styled.div<{}>`
-  & .ant-layout-has-sider {
-    height: 100%;
-  }
-  & .ant-layout-sider {
-    height: 100%;
-    background-color: #ffffff;
-    border-right: 1px solid ${GRAY};
-  }
-  & .ant-layout-sider-children {
-  }
-  & .display-inline-flex {
-    display: inline-flex;
-  }
-  & .sidebar-link {
-    text-decoration: none;
-    color: #000;
-    display: flex;
-    align-items: center;
-  }
-  & .sidebar-link:hover {
-    cursor: pointer;
-  }
-
-  & .sidebar-wrapper {
-    padding: 16px 24px;
-  }
-  & .ant-menu-title-content {
-    font-size: 16px;
-  }
-  & .ant-menu-item-icon {
-    font-size: 18px;
-  }
-  & .ant-menu-item {
-    display: flex;
-    align-items: center;
-  }
-  & .ant-layout-sider-collapsed {
-    & .ant-menu-item-icon {
-      font-size: 18px !important;
-    }
-    & .ant-menu-item {
-      padding: 0 calc(50% - 9px);
-    }
-  }
-`;
-
 export const SlyledLayout = styled.div<{}>`
   min-height: 100vh;
   & .ant-layout-has-sider {
@@ -68,18 +21,6 @@ export const SlyledLayout = styled.div<{}>`
   & .sidebar-link {
     cursor: pointer;
   }
-  & .logo-wrapper {
-    display: flex;
-    align-items: center;
-
-    .logo-icon {
-      margin-right: 5px;
-    }
-  }
-  & .menu-btn {
-    cursor: pointer;
-    transition: all .3s;
-  }
   & .menu-txt,
   .logo-text {
     opacity: 1;
@@ -97,9 +38,9 @@ export const SlyledLayout = styled.div<{}>`
       display: inline-block;
     }
 
-    & .menu-btn {
-      margin-left: 4px;
-    }
+    // & .menu-btn {
+    //   margin-left: 4px;
+    // }
   }
 
   // & .page-content-wrapper {
@@ -138,8 +79,6 @@ export const SlyledLayout = styled.div<{}>`
   //   height: auto;
   //   border-top: 1px solid ${GRAY};
   // }
-
-  
 
   & .sub-menu-item {
     border-top: 1px solid ${GRAY};
@@ -180,84 +119,84 @@ export const SlyledLayout = styled.div<{}>`
     background: none;
   }
 
-  & .user-box-wrapper {
-    position: absolute;
-    bottom: 0;
-    width: 216px;
-    min-width: 216px;
-    white-space; no-wrap;
-    overflow: hidden;
-    transition: all .1s ease;
+  // & .user-box-wrapper {
+  //   position: absolute;
+  //   bottom: 0;
+  //   width: 216px;
+  //   min-width: 216px;
+  //   white-space; no-wrap;
+  //   overflow: hidden;
+  //   transition: all .1s ease;
 
-    & .sub-menu-link {
-      font-size: 12px;
-      position: relative;
-      display: block;
-      padding-right: 24px;
-      word-break: break-all;
-      white-space: pre-wrap;
-      line-height: 1.83;
-      font-weight: 300;
-      width: 100%;
-      margin: 0;
-      padding: 8px 24px !important;
-      height: auto;
-      border-top: 1px solid ${GRAY};
-      color: ${TEXT_COLOR};
+  //   & .sub-menu-link {
+  //     font-size: 12px;
+  //     position: relative;
+  //     display: block;
+  //     padding-right: 24px;
+  //     word-break: break-all;
+  //     white-space: pre-wrap;
+  //     line-height: 1.83;
+  //     font-weight: 300;
+  //     width: 100%;
+  //     margin: 0;
+  //     padding: 8px 24px !important;
+  //     height: auto;
+  //     border-top: 1px solid ${GRAY};
+  //     color: ${TEXT_COLOR};
 
-      &:hover {
-        color: ${PRIMARY_COLOR};
-      }
+  //     &:hover {
+  //       color: ${PRIMARY_COLOR};
+  //     }
   
-      svg {
-        font-size: 12px;
-        position: absolute;
-        right: 24px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    }
+  //     svg {
+  //       font-size: 12px;
+  //       position: absolute;
+  //       right: 24px;
+  //       top: 50%;
+  //       transform: translateY(-50%);
+  //     }
+  //   }
 
-    & .user-box {
-      padding: 16px 24px;
-      border-top: 1px solid ${GRAY};
+  //   & .user-box {
+  //     padding: 16px 24px;
+  //     border-top: 1px solid ${GRAY};
   
-      .user-name {
-        font-size: 12px;
-        font-weight: 300;
-        margin-bottom: 6px;
-        line-height: 1;
-      }
+  //     .user-name {
+  //       font-size: 12px;
+  //       font-weight: 300;
+  //       margin-bottom: 6px;
+  //       line-height: 1;
+  //     }
   
-      .representative-name {
-        font-size: 14px;
-        font-weight: 300;
-      }
-    }
-  }
+  //     .representative-name {
+  //       font-size: 14px;
+  //       font-weight: 300;
+  //     }
+  //   }
+  // }
 
-  & .ant-layout-sider-collapsed {
-    & .user-box-wrapper {
-      opacity: 0;
-      visibility: hidden;
-      width: 0;
-      min-width: auto;
-    }
-  }
+  // & .ant-layout-sider-collapsed {
+  //   & .user-box-wrapper {
+  //     opacity: 0;
+  //     visibility: hidden;
+  //     width: 0;
+  //     min-width: auto;
+  //   }
+  // }
 
-  & .user-wrapper {
-    & .ant-menu-submenu-title {
-      height: auto;
-      line-height: initial;
-      padding: 0;
-      margin: 0;
-      padding: 0 !important;
-    }
+  // & .user-wrapper {
+  //   & .ant-menu-submenu-title {
+  //     height: auto;
+  //     line-height: initial;
+  //     padding: 0;
+  //     margin: 0;
+  //     padding: 0 !important;
+  //   }
 
-    & .ant-menu {
-      border-right: none;
-    }
-  }
+  //   & .ant-menu {
+  //     border-right: none;
+  //   }
+  // }
 `;
 
 export const SlyledHeader = styled.div<{}>`
