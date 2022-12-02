@@ -127,7 +127,7 @@ const ChangeAdministrator = () => {
             <Row className="mb-6">
               <SettingsInputContainer label={<SettingLabel label={'生年月日'} required />}>
                 <Col sm={24} md={24} lg={24}>
-                  <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
+                  <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
                 </Col>
               </SettingsInputContainer>
             </Row>
@@ -243,26 +243,26 @@ const ChangeAdministrator = () => {
               <div style={{ color: TEXT_GRAY_COLOR }}>
                 有効な身分証明書：
                 <br />
-                日本旅券 (日本国パスポート)
+                ・日本旅券 (日本国パスポート)
                 <br />
-                運転免許証
+                ・運転免許証
                 <br />
-                在留カード・特別永住者証明書
+                ・在留カード・特別永住者証明書
                 <br />
-                マイナンバーカード (顔写真付き)
+                ・マイナンバーカード (顔写真付き)
                 <br />
-                住民票
+                ・住民票
                 <br />
                 <br />
                 ファイル準備の際には、以下の点にご注意ください：
                 <br />
-                ファイル形式が JPG、JPEG または PNG であること
+                ・ファイル形式が JPG、JPEG または PNG であること
                 <br />
-                身分証全体のカラー画像であること
+                ・身分証全体のカラー画像であること
                 <br />
-                ピントが合っていて記載内容が判別できること
+                ・ピントが合っていて記載内容が判別できること
                 <br />
-                撮影時にフラッシュを使用しない
+                ・撮影時にフラッシュを使用しない
               </div>
             </Row>
           </Col>

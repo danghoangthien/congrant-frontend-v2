@@ -360,6 +360,10 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
   }
 
+  .ant-select-selection-item {
+    font-weight: 300;
+  }
+
   // LEFT MENU
   & .sub-user-menu-link {
     font-size: 14px;
