@@ -543,6 +543,15 @@ export const GlobalStyle = createGlobalStyle`
   .ant-space-item {
     display: flex;
   }
+
+  // DRAG DROP TR 
+  tr.drop-over-downward td {
+    border-bottom: 2px dashed #1890ff;
+  }
+  
+  tr.drop-over-upward td {
+    border-top: 2px dashed #1890ff;
+  }
 `;
 
 export const StyledPrimaryIcon = styled.span`

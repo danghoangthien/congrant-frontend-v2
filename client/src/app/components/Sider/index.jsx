@@ -45,6 +45,7 @@ const items = [
   getItem('個人サポーター', '/app/individuals', <PersonIcon />),
   getItem('法人サポーター', '/app/corporations', <DomainIcon />),
   getItem('基本設定', '/app/settings', <SettingsIcon />),
+  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
 ];
 
 const sub_menu = (
@@ -74,7 +75,7 @@ const sub_menu = (
         key: '3',
         title: '',
         label: (
-          <Link className="sub-user-menu-link" to={`/app/payments/stripe`}>
+          <Link className="sub-user-menu-link" to={`/app/payment-details/stripe`}>
             <FormatListBulletedIcon />
             決済明細
           </Link>

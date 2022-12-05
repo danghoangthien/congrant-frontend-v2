@@ -1,14 +1,33 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Row, Col, Card, Button } from 'antd';
 import AddIcon from '@mui/icons-material/Add';
 // Styles
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // Components
 import ActivityTable from './components/Activity/ActivityTable';
+import Breadcumd from 'app/components/Breadcumd';
+import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 
-const Summary = () => {
+const Blog = () => {
+  const params = useParams();
+  const BLOG_BREADCUMD_DATA = [
+    HEADER_BREADCUMD_DATA[0],
+    {
+      id: 2,
+      title: 'プロジェクトトップ',
+      uri: `/app/projects/${params.id}/summary`,
+    },
+    {
+      id: 3,
+      title: '活動報告',
+      uri: `/app/projects/${params.id}/blogs`,
+    },
+  ];
   return (
     <>
+      <ProjectDetailHeader
+        Breadcumd={<Breadcumd data={BLOG_BREADCUMD_DATA} active={BLOG_BREADCUMD_DATA[2].id} />}
+      />
       <PageLayout>
         {/* Should create a component for this */}
         <Row justify="space-between" align="middle" className="item mb-5">
@@ -23,7 +42,7 @@ const Summary = () => {
 
           {/* 右の部分・Right Part */}
           <Col>
-            <Link className="sidebar-link" to={``}>
+            <Link className="sidebar-link" to={`blogs/new-blog`}>
               <Button type="primary" className="icon-btn">
                 <AddIcon style={{ fontSize: '14px' }} className="mr-2" />
                 <span>{'活動報告の作成'}</span>
@@ -42,4 +61,4 @@ const Summary = () => {
   );
 };
 
-export default Summary;
+export default Blog;

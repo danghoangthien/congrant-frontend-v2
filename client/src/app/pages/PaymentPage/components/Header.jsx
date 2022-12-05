@@ -1,8 +1,6 @@
 import { Row, Col } from 'antd';
-import Breadcumd from 'app/components/Breadcumd';
-import { BREADCUMD_DATA } from './../consts';
 
-const Header = ({ activeBreadcumb }) => {
+const Header = ({ breadCumb }) => {
   return (
     <div className="mb-7">
       <Row justify="space-between" align="middle">
@@ -15,9 +13,7 @@ const Header = ({ activeBreadcumb }) => {
                 <span className="ml-2">{'決済明細'}</span>
               </div>
             </Col>
-            <Col className="mr-2">
-              <Breadcumd data={BREADCUMD_DATA} active={activeBreadcumb} style="button" />
-            </Col>
+            <Col className="mr-2">{breadCumb}</Col>
           </Row>
         </Col>
         {/* 右の部分・Right Part */}

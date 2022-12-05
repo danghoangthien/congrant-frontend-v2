@@ -1,46 +1,24 @@
 import { Link, useParams } from 'react-router-dom';
-import { Row, Col, Card, Button, Badge, Space, Breadcrumb } from 'antd';
+import { Row, Col, Card, Button, Badge, Space } from 'antd';
 import EditIcon from '@mui/icons-material/Edit';
 // Styles
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import { Helmet } from 'react-helmet-async';
 // Components
 import Breadcumd from 'app/components/Breadcumd';
 import SummaryTable from './components/SummaryTable';
 import ActivityTable from './components/Activity/ActivityTable';
 import CommentTable from './components/CommentTable';
 // Icons
-import FlagIcon from '@mui/icons-material/Flag';
-
-const BREADCUMD_DATA = [
-  {
-    id: 1,
-    title: (
-      <Space>
-        <FlagIcon style={{ fontSize: '14px' }} />
-        <span>{'プロジェクト一覧'}</span>
-      </Space>
-    ),
-    uri: '/projects',
-  },
-  {
-    id: 2,
-    title: 'プロジェクトトップ',
-    uri: '',
-  },
-];
+import { HEADER_BREADCUMD_DATA, SUMMARY_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 
 const Summary = () => {
   const params = useParams();
 
   return (
     <>
-      <Space className="px-6 py-3" style={{ background: '#ffffff', width: '100%' }}>
-        <Link to="/projects">
-          <Button>{'< 一覧へもどる'}</Button>
-        </Link>
-        <Breadcumd data={BREADCUMD_DATA} active={BREADCUMD_DATA[1].id} style="button" />
-      </Space>
+      <ProjectDetailHeader
+        Breadcumd={<Breadcumd data={HEADER_BREADCUMD_DATA} active={HEADER_BREADCUMD_DATA[1].id} />}
+      />
       <PageLayout>
         {/* Should create a component for this */}
         <Row justify="space-between" align="middle" className="item mb-5">
@@ -51,23 +29,12 @@ const Summary = () => {
                 <div className="sub-page-title">{'プロジェクトトップ'}</div>
               </Col>
               <Col className="mr-2">
-                <Breadcrumb className="bread-crumb" separator="">
-                  <Breadcrumb.Item>
-                    <span className="bread-crumb-content">サマリー</span>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item>
-                    <Link className="bread-crumb-content" to={`funding`}>
-                      寄付決済
-                    </Link>
-                  </Breadcrumb.Item>
-                  {params?.id === '2' && (
-                    <Breadcrumb.Item>
-                      <Link className="bread-crumb-content" to={`course`}>
-                        コース別
-                      </Link>
-                    </Breadcrumb.Item>
-                  )}
-                </Breadcrumb>
+                <Breadcumd
+                  style="button"
+                  data={SUMMARY_BREADCUMD_DATA(params?.id)}
+                  active={SUMMARY_BREADCUMD_DATA(params?.id)[0].id}
+                  separator={null}
+                />
               </Col>
             </Row>
           </Col>
@@ -108,16 +75,17 @@ const Summary = () => {
                 }}
               />
             </Space>
-
-            <Button className="active mr-2" type="primary">
-              {'活動報告の作成'}
-            </Button>
+            <Link className="sidebar-link" to={`blogs/new-blog`}>
+              <Button className="active mr-2" type="primary">
+                {'活動報告の作成'}
+              </Button>
+            </Link>
           </Row>
           <Row>
             <ActivityTable />
           </Row>
           <Row justify="end" className="py-4 px-6">
-            <Link className="sidebar-link" to={`activities`}>
+            <Link className="sidebar-link" to={`blogs`}>
               <Button className="active mr-2" type="secondary">
                 {'一覧'}
               </Button>

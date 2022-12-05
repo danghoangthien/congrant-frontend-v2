@@ -1,16 +1,17 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import Table from 'app/components/Table';
 import Filters from 'app/pages/ProjectDetailPage/components/Filters';
-import { Button, Col, Row, Breadcrumb } from 'antd';
+import { Button, Col, Row } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import * as metaData from 'app/pages/DonationPage/mockDataReceived';
 import 'app/pages/DonationPage/Models/received';
+import Breadcumd from 'app/components/Breadcumd';
 // Icons
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { HEADER_BREADCUMD_DATA, SUMMARY_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 
 const MailButton = ({ selectedRowKeys }) => {
   return (
@@ -29,21 +30,11 @@ const MailButton = ({ selectedRowKeys }) => {
 const DonationPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const params = useParams();
-  console.log('params', params);
-  const renderPageTitle = () => {
-    return (
-      <>
-        <Helmet>
-          <title>{'プロジェクトトップ'}</title>
-          <meta name="description" content={'...'} />
-        </Helmet>
-      </>
-    );
-  };
-
   return (
     <>
-      {renderPageTitle()}
+      <ProjectDetailHeader
+        Breadcumd={<Breadcumd data={HEADER_BREADCUMD_DATA} active={HEADER_BREADCUMD_DATA[1].id} />}
+      />
       <PageLayout>
         {/* Should create a component for this */}
         <Row justify="space-between" align="middle" className="item mb-5">
@@ -54,23 +45,12 @@ const DonationPage = () => {
                 <div className="sub-page-title">{'プロジェクトトップ'}</div>
               </Col>
               <Col className="mr-2">
-                <Breadcrumb className="bread-crumb" separator="">
-                  <Breadcrumb.Item>
-                    <Link className="bread-crumb-content" to={`summary`}>
-                      サマリー
-                    </Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item>
-                    <span className="bread-crumb-content">寄付決済</span>
-                  </Breadcrumb.Item>
-                  {params?.id === '2' && (
-                    <Breadcrumb.Item>
-                      <Link className="bread-crumb-content" to={`course`}>
-                        コース別
-                      </Link>
-                    </Breadcrumb.Item>
-                  )}
-                </Breadcrumb>
+                <Breadcumd
+                  style="button"
+                  data={SUMMARY_BREADCUMD_DATA(params?.id)}
+                  active={SUMMARY_BREADCUMD_DATA(params?.id)[1].id}
+                  separator={null}
+                />
               </Col>
             </Row>
           </Col>

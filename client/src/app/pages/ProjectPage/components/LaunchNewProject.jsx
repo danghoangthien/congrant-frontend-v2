@@ -45,7 +45,9 @@ const LaunchNewProject = () => {
       >
         <Row className="item mb-5" gutter={16}>
           <Col span={8}>
-            <StyledProjectLaunchType onClick={() => history.push(`/app/projects/new?type=1`)}>
+            <StyledProjectLaunchType
+              onClick={() => history.push(`/app/projects/new-project?type=1`)}
+            >
               <StyledProjectLaunchTypeInfo color="#EFF7EB" className="mb-5">
                 {'通常の寄付・会費を集める'}
               </StyledProjectLaunchTypeInfo>

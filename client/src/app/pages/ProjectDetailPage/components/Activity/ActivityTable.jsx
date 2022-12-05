@@ -98,7 +98,7 @@ const columns = [
     align: 'center',
     render: row => (
       <Space>
-        <Link className="sidebar-link" to={`activities/${row.id}`}>
+        <Link className="sidebar-link" to={`blogs/${row.id}/edit`}>
           <Button onClick={() => {}} type="primary">
             {'編集'}
           </Button>

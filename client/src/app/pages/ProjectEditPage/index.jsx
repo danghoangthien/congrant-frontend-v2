@@ -15,6 +15,8 @@ import SaveIcon from '@mui/icons-material/Save';
 import { DownOutlined } from '@ant-design/icons';
 // CONST
 import { PLACEHOLDER_COLOR } from 'styles/StyleConstants';
+import Breadcumd from 'app/components/Breadcumd';
+import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from 'app/pages/ProjectDetailPage/consts';
 
 export const EDIT_KEY_MAP = {
   BASIC_INFO: '1',
@@ -59,19 +61,24 @@ const menu = (
 
 const ProjectEditPage = ({ activeKey }) => {
   const params = useParams();
-  const renderPageTitle = () => {
-    return (
-      <>
-        <Helmet>
-          <title>{'プロジェクト編集'}</title>
-          <meta name="description" content={'プロジェクト編集'} />
-        </Helmet>
-      </>
-    );
-  };
+  const BREADCUMD_DATA = [
+    HEADER_BREADCUMD_DATA[0],
+    {
+      id: 2,
+      title: 'プロジェクトトップ',
+      uri: `/app/projects/${params.id}/summary`,
+    },
+    {
+      id: 3,
+      title: 'プロジェクト編集',
+      uri: null,
+    },
+  ];
   return (
     <>
-      {renderPageTitle()}
+      <ProjectDetailHeader
+        Breadcumd={<Breadcumd data={BREADCUMD_DATA} active={BREADCUMD_DATA[2].id} />}
+      />
       <PageLayout>
         {/* Heading */}
         <Row justify="space-between" align="middle" className="item mb-5">
