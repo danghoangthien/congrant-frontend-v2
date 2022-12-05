@@ -104,7 +104,7 @@ const CustomSider = () => {
       trigger={null}
       collapsed={collapsed}
       collapsible
-      width={217}
+      width={200}
       onCollapse={() => setCollapsed(!collapsed)}
       style={{
         overflow: 'auto',
@@ -139,8 +139,6 @@ const CustomSider = () => {
             mode="inline"
             items={items}
             selectable
-            defaultOpenKeys={['sub-menu']}
-            defaultSelectedKeys={['1']}
             onClick={item => {
               if (item.key !== 'logo') {
                 history.push(item.key);

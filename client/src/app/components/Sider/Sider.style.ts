@@ -62,13 +62,17 @@ export const StyledSidebar = styled(Sider)`
     flex: 1 1 0%;
     overflow: hidden auto;
     // margin-right: -15px;
+
+    .ant-menu-item {
+      font-size: 16px;
+    }
   }
 
   & .user-box-wrapper {
     // position: absolute;
     // bottom: 0;
     width: 100%;
-    min-width: 217px;
+    min-width: 200px;
     white-space: nowrap;
     overflow: hidden;
     transition: all 0.1s ease;

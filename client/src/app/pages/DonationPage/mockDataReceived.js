@@ -4,6 +4,7 @@ import { randomOutput } from 'utils/helper';
 import { StyledBadgeDot } from 'styles/global-styles';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
+import { DANGER_COLOR } from 'styles/StyleConstants';
 
 import {
   RECEIPT_METHODS,
@@ -399,16 +400,19 @@ const pagination = {
 const menuItems = selectedRowKeys => [
   {
     key: '1',
-    className: 'danger',
     label: (
-      <Space onClick={() => {}}>
+      <Space
+        onClick={() => {
+          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+        }}
+      >
         <span
           className="material-symbols-outlined fill-icon"
-          style={{ fontSize: '16px', display: 'flex' }}
+          style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
         >
           delete
         </span>
-        <span>{'削除'}</span>
+        <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
       </Space>
     ),
   },
