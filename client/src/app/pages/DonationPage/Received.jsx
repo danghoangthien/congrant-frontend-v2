@@ -6,7 +6,7 @@ import { Button, Badge, Input, Row, Col, Space, Breadcrumb, Menu, Dropdown } fro
 // Components
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
-import AddFunding from './components/AddFunding';
+import AddDonation from './components/AddDonation';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
 import './Models/received';
 // Styles
@@ -122,7 +122,7 @@ const FundingPage = () => {
             {/* 右の部分・Right Part */}
             <Col>
               <Space>
-                <AddFunding />
+                <AddDonation />
                 <Dropdown overlay={menu} placement="bottomRight" trigger={['hover']}>
                   <Button
                     className="more-menu-btn"

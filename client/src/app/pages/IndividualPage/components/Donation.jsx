@@ -7,7 +7,7 @@ import { DonationStyle } from './Donation.style';
 import AddIcon from '@mui/icons-material/Add';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
-import AddFunding from 'app/pages/DonationPage/components/AddFunding';
+import AddDonation from 'app/pages/DonationPage/components/AddDonation';
 
 const Title = ({ mode, setMode }) => {
   return (
@@ -17,7 +17,7 @@ const Title = ({ mode, setMode }) => {
       </Col>
       <Col>
         <Row align="middle">
-          <AddFunding />
+          <AddDonation />
           <Button className="ml-2 icon-only-btn">
             <MoreHorizIcon />
           </Button>
