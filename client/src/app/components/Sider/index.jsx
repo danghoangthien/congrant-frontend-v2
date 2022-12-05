@@ -45,13 +45,6 @@ const items = [
   getItem('個人サポーター', '/app/individuals', <PersonIcon />),
   getItem('法人サポーター', '/app/corporations', <DomainIcon />),
   getItem('基本設定', '/app/settings', <SettingsIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
 ];
 
 const sub_menu = (
@@ -110,7 +103,7 @@ const CustomSider = () => {
       trigger={null}
       collapsed={collapsed}
       collapsible
-      width={217}
+      width={200}
       onCollapse={() => setCollapsed(!collapsed)}
       style={{
         overflow: 'auto',
@@ -145,8 +138,6 @@ const CustomSider = () => {
             mode="inline"
             items={items}
             selectable
-            defaultOpenKeys={['sub-menu']}
-            defaultSelectedKeys={['1']}
             onClick={item => {
               if (item.key !== 'logo') {
                 history.push(item.key);

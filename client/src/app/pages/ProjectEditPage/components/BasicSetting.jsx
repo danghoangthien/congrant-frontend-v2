@@ -191,9 +191,11 @@ const BasicSetting = () => {
                       </Col>
                       <Col span={12}>
                         {projectTarget === 1 && (
-                          <SettingInput size="large" placeholder={'1,000,000'} />
+                          <SettingInput size="large" placeholder={'1,000,000'} suffix="円" />
                         )}
-                        {projectTarget === 2 && <SettingInput size="large" placeholder={'100'} />}
+                        {projectTarget === 2 && (
+                          <SettingInput size="large" placeholder={'100'} suffix="人" />
+                        )}
                       </Col>
                     </Row>
                   </Col>
