@@ -2,8 +2,10 @@ import { Tabs, Row, Col, Card, Button, Select, Space } from 'antd';
 import { Link, useParams } from 'react-router-dom';
 import BasicSetting from './components/Activity/BasicSetting';
 import PageEdit from './components/Activity/PageEdit';
+import BlogEditConfirm from './components/BlogEditConfirm';
 import SaveIcon from '@mui/icons-material/Save';
 import Breadcumd from 'app/components/Breadcumd';
+
 import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 // Styles
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
@@ -45,7 +47,7 @@ const Edit = ({ activeKey }) => {
           <Col>
             <Row type="flex" align="middle">
               <Col className="mr-6">
-                <div className="sub-page-title">{'活動報告'}</div>
+                <div className="sub-page-title">{'活動報告編集'}</div>
               </Col>
             </Row>
           </Col>
@@ -63,12 +65,11 @@ const Edit = ({ activeKey }) => {
               >
                 <Select.Option value={1}>{'下書き'}</Select.Option>
               </Select>
-              <Link className="sidebar-link" to={``}>
-                <Button type="primary" className="icon-btn">
-                  <SaveIcon style={{ fontSize: '14px' }} className="mr-2" />
-                  <span>{'保存'}</span>
-                </Button>
-              </Link>
+              <Button type="primary" className="icon-btn">
+                <SaveIcon style={{ fontSize: '14px' }} className="mr-2" />
+                <span>{'保存'}</span>
+              </Button>
+              <BlogEditConfirm />
             </Space>
           </Col>
         </Row>

@@ -185,7 +185,8 @@ const DataTable = ({
                   if (e.target.checked) {
                     setSelectedRowKeys(
                       items.map(item => {
-                        return item[columns[0].dataIndex];
+                        console.log('item key', item.key);
+                        return item.key;
                       }),
                     );
                   } else {
@@ -200,7 +201,7 @@ const DataTable = ({
                   if (selectedRowKeys.length !== items.length) {
                     setSelectedRowKeys(
                       items.map(item => {
-                        return item[columns[0].dataIndex];
+                        return item.key;
                       }),
                     );
                   } else {

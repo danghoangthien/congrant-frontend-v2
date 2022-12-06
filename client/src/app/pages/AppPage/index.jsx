@@ -30,8 +30,8 @@ import CkeditorPage from 'app/pages/CkeditorPage';
 import PaymentManagePage from 'app/pages/PaymentPage/PaymentManage';
 
 const AppPage = () => {
-  const { path } = useRouteMatch();
-  console.log('[AppPage] path', path);
+  const { path, ...rest } = useRouteMatch();
+  console.log('[AppPage] path', path, rest);
   return (
     <Switch>
       {/* [FO_003] メールアドレス認証 */}

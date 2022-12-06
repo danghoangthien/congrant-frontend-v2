@@ -1,4 +1,4 @@
-import { Col, Space } from 'antd';
+import { Col, Space, Tooltip } from 'antd';
 import {
   StyledRequired,
   StyledLabel,
@@ -39,12 +39,16 @@ const SettingLabel = ({ label, required, info }) => (
   </StyledLabel>
 );
 
-const SettingInfoLabel = ({ label, required }) => (
+const SettingInfoLabel = ({ label, required, info = null }) => (
   <StyledSettingLabel>
     <SettingLabel
       required={required || false}
       label={label}
-      info={<InfoIcon className="info-icon" />}
+      info={
+        <Tooltip title={info || label}>
+          <InfoIcon className="info-icon" />
+        </Tooltip>
+      }
     />
   </StyledSettingLabel>
 );
