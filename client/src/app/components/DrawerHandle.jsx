@@ -37,10 +37,9 @@ const DrawerHandle = ({
       </span>
 
       <StyledDrawer
-        bodyStyle={bodyStyle || { padding: '24px 32px 54px' }}
+        bodyStyle={bodyStyle || { padding: '32px 32px 54px' }}
         closable={false}
-        width="50%"
-        style={{ minWidth: '640px' }}
+        style={{ width: '640px' }}
         placement="right"
         onClose={onClose}
         visible={open}

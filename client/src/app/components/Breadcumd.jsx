@@ -1,5 +1,6 @@
 import { Breadcrumb, Space } from 'antd';
 import { Link } from 'react-router-dom';
+import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 // Example BREADCUMD_DATA
 // const BREADCUMD_DATA = [
@@ -14,13 +15,22 @@ import { Link } from 'react-router-dom';
 //     uri: '/payments/telecom'
 //   }
 // ]
-const Breadcumb = ({ active, data = [], separator = '/', style = null }) => {
+const Breadcumb = ({
+  active,
+  data = [],
+  separator = <span style={{ verticalAlign: 'text-top', color: TEXT_GRAY_COLOR }}>/</span>,
+  style = null,
+}) => {
   const breadCumdClassName = style === 'button' ? 'bread-crumb' : '';
   const breadCumdContentClassName = style === 'button' ? 'bread-crumb-content' : '';
   const breadCumdSeparator = style === 'button' ? null : separator;
   const breadCumdActiveStyle = style === 'button' ? null : { color: 'rgba(0, 0, 0, 0.5)' };
   return (
-    <Breadcrumb className={breadCumdClassName} separator={breadCumdSeparator}>
+    <Breadcrumb
+      style={{ display: 'flex' }}
+      className={breadCumdClassName}
+      separator={breadCumdSeparator}
+    >
       {data
         .filter(el => el)
         .map(breadcumb => (

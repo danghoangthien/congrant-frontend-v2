@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col, Card, Button, Badge, Space } from 'antd';
 import EditIcon from '@mui/icons-material/Edit';
@@ -14,8 +15,20 @@ import { HEADER_BREADCUMD_DATA, SUMMARY_BREADCUMD_DATA, ProjectDetailHeader } fr
 const Summary = () => {
   const params = useParams();
 
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'プロジェクトトップ'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
     <>
+      {renderPageTitle()}
       <ProjectDetailHeader
         Breadcumd={<Breadcumd data={HEADER_BREADCUMD_DATA} active={HEADER_BREADCUMD_DATA[1].id} />}
       />

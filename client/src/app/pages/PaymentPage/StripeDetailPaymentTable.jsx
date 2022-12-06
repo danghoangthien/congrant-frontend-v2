@@ -25,7 +25,7 @@ const columnMap = {
     dataIndex: 'donationNo',
   },
   donation_type: {
-    width: 80,
+    width: 200,
     title: '寄付タイプ',
     dataIndex: 'donation_type',
     render: donation_type => (
@@ -41,7 +41,6 @@ const columnMap = {
     ),
   },
   supporter: {
-    width: 150,
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
@@ -61,6 +60,14 @@ const columns = Object.keys(columnMap).map(columnName => {
   return columnMap[columnName];
 });
 
-const DataTable = () => <Table dataSource={dataSource} columns={columns} pagination={false} />;
+const DataTable = () => (
+  <Table
+    className="common-table"
+    tableLayout="fixed"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+  />
+);
 
 export default DataTable;

@@ -20,4 +20,8 @@ export const StyledDetail = styled.div`
       padding: 12px 12px;
     }
   }
+
+  & .ant-tabs-tab-btn {
+    font-size: 14px;
+  }
 `;

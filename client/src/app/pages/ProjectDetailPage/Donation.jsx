@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Table from 'app/components/Table';
@@ -30,8 +31,21 @@ const MailButton = ({ selectedRowKeys }) => {
 const DonationPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const params = useParams();
+
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'プロジェクトトップ'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
     <>
+      {renderPageTitle()}
       <ProjectDetailHeader
         Breadcumd={<Breadcumd data={HEADER_BREADCUMD_DATA} active={HEADER_BREADCUMD_DATA[1].id} />}
       />
@@ -89,6 +103,7 @@ const DonationPage = () => {
 
         {/* テーブル・Table */}
         <Table
+          className="clickable-table"
           model="receivedFundingList"
           metaData={metaData}
           contextButtons={[MailButton]}

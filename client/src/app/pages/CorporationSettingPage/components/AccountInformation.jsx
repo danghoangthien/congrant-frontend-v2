@@ -14,7 +14,11 @@ const AccountInformation = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'銀行名'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'例：XX銀行'} />
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：XX銀行'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -23,7 +27,11 @@ const AccountInformation = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'支店名'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'例：XX支店'} />
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：XX支店'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -39,7 +47,11 @@ const AccountInformation = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'口座番号'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'例：1234567'} />
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：1234567'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -48,7 +60,11 @@ const AccountInformation = () => {
         <Row>
           <SettingsInputContainer label={<SettingLabel label={'口座名義'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'例：トクテイヒエイリカツドウホウジンコングラント'} />
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：トクテイヒエイリカツドウホウジンコングラント'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>

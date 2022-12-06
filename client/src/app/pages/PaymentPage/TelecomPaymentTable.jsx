@@ -3,18 +3,17 @@ import { Table, Space, Button } from 'antd';
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = Array.from(Array(5).keys()).map(i => ({
-  dateTime: randomOutput(['2022年10月入金分']),
+  dateTime: <span style={{ fontWeight: 600 }}>{randomOutput(['2022年10月入金分'])}</span>,
 }));
 
 const columnMap = {
   dateTime: {
-    width: 200,
+    width: 180,
     title: '入金日',
     dataIndex: 'dateTime',
   },
   明細書PDF: {
-    width: 200,
-    title: '件数',
+    title: '明細書PDF',
     render: row => (
       <Space>
         <Button
@@ -40,7 +39,13 @@ const columns = Object.keys(columnMap).map(columnName => {
 });
 
 const LoginHistoryTable = () => (
-  <Table dataSource={dataSource} columns={columns} pagination={false} />
+  <Table
+    style={{ width: '100%' }}
+    className="common-table"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+  />
 );
 
 export default LoginHistoryTable;

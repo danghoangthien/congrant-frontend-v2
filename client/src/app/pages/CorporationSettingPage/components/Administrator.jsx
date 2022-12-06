@@ -40,10 +40,12 @@ const Administrator = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'氏名'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingsInputWrapper>
-                <SettingInput placeholder={'例：田中'} style={{ width: '100%' }} />
-                <SettingInput placeholder={'例：太郎'} style={{ width: '100%' }} />
-              </SettingsInputWrapper>
+              <div style={{ width: '100%', maxWidth: 600 }}>
+                <SettingsInputWrapper>
+                  <SettingInput size="large" placeholder={'例：田中'} style={{ width: '100%' }} />
+                  <SettingInput size="large" placeholder={'例：太郎'} style={{ width: '100%' }} />
+                </SettingsInputWrapper>
+              </div>
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -52,10 +54,12 @@ const Administrator = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'氏名（カナ表記)'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingsInputWrapper>
-                <SettingInput placeholder={'例：タナカ'} style={{ width: '100%' }} />
-                <SettingInput placeholder={'例：タロウ'} style={{ width: '100%' }} />
-              </SettingsInputWrapper>
+              <div style={{ width: '100%', maxWidth: 600 }}>
+                <SettingsInputWrapper>
+                  <SettingInput size="large" placeholder={'例：タナカ'} style={{ width: '100%' }} />
+                  <SettingInput size="large" placeholder={'例：タロウ'} style={{ width: '100%' }} />
+                </SettingsInputWrapper>
+              </div>
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -64,7 +68,11 @@ const Administrator = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'生年月日'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
+              <DatePicker
+                size="large"
+                placeholder={'yyyy-mm-dd'}
+                style={{ width: '100%', maxWidth: 600 }}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -73,7 +81,11 @@ const Administrator = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'役職'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'例：事務局長'} />
+              <SettingInput
+                style={{ width: '100%', maxWidth: 600 }}
+                size="large"
+                placeholder={'例：事務局長'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -82,7 +94,11 @@ const Administrator = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput placeholder={'例：03-1234-5678'} />
+              <SettingInput
+                style={{ width: '100%', maxWidth: 600 }}
+                size="large"
+                placeholder={'例：03-1234-5678'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -90,7 +106,11 @@ const Administrator = () => {
         {/* 電話番号 */}
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'電話番号'} required />}>
-            <SettingInput placeholder={'例：03-1234-5678'} />
+            <SettingInput
+              style={{ width: '100%', maxWidth: 600 }}
+              size="large"
+              placeholder={'例：03-1234-5678'}
+            />
           </SettingsInputContainer>
         </Row>
 
@@ -98,26 +118,36 @@ const Administrator = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'住所'} required />}>
             <Col className="mb-4" sm={24} md={24} lg={24}>
-              <SettingsInputWrapper size={16}>
-                <SettingInput
-                  size="large"
-                  addonBefore="〒"
-                  placeholder={'0000000'}
-                  style={{ width: '100%' }}
-                />
-                <SettingInput
-                  size="large"
-                  disabled
-                  placeholder={'都道府県'}
-                  style={{ width: '100%' }}
-                />
-              </SettingsInputWrapper>
+              <div style={{ width: '100%', maxWidth: 600 }}>
+                <SettingsInputWrapper size={16}>
+                  <SettingInput
+                    size="large"
+                    addonBefore="〒"
+                    placeholder={'0000000'}
+                    style={{ width: '100%' }}
+                  />
+                  <SettingInput
+                    size="large"
+                    disabled
+                    placeholder={'都道府県'}
+                    style={{ width: '100%' }}
+                  />
+                </SettingsInputWrapper>
+              </div>
             </Col>
             <Col className="mb-4" sm={24} md={24} lg={24}>
-              <SettingInput size="large" placeholder={'市区町村'} />
+              <SettingInput
+                style={{ width: '100%', maxWidth: 600 }}
+                size="large"
+                placeholder={'市区町村'}
+              />
             </Col>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput size="large" placeholder={'番地・建物名・部屋番号'} />
+              <SettingInput
+                style={{ width: '100%', maxWidth: 600 }}
+                size="large"
+                placeholder={'番地・建物名・部屋番号'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -126,26 +156,36 @@ const Administrator = () => {
         <Row>
           <SettingsInputContainer label={<SettingLabel label={'住所（カナ表記）'} required />}>
             <Col className="mb-4" sm={24} md={24} lg={24}>
-              <SettingsInputWrapper>
-                <SettingInput
-                  size="large"
-                  addonBefore="〒"
-                  placeholder={'0000000'}
-                  style={{ width: '100%' }}
-                />
-                <SettingInput
-                  size="large"
-                  disabled
-                  placeholder={'都道府県'}
-                  style={{ width: '100%' }}
-                />
-              </SettingsInputWrapper>
+              <div style={{ width: '100%', maxWidth: 600 }}>
+                <SettingsInputWrapper>
+                  <SettingInput
+                    size="large"
+                    addonBefore="〒"
+                    placeholder={'0000000'}
+                    style={{ width: '100%' }}
+                  />
+                  <SettingInput
+                    size="large"
+                    disabled
+                    placeholder={'都道府県'}
+                    style={{ width: '100%' }}
+                  />
+                </SettingsInputWrapper>
+              </div>
             </Col>
             <Col className="mb-4" sm={24} md={24} lg={24}>
-              <SettingInput size="large" placeholder={'市区町村（カナ)'} />
+              <SettingInput
+                style={{ width: '100%', maxWidth: 600 }}
+                size="large"
+                placeholder={'市区町村（カナ)'}
+              />
             </Col>
             <Col sm={24} md={24} lg={24}>
-              <SettingInput size="large" placeholder={'番地・建物名・部屋番号（カナ)'} />
+              <SettingInput
+                style={{ width: '100%', maxWidth: 600 }}
+                size="large"
+                placeholder={'番地・建物名・部屋番号（カナ)'}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>

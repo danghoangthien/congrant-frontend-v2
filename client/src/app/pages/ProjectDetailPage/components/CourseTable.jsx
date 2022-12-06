@@ -62,12 +62,12 @@ const dataSource = Array.from(Array(5).keys()).map(i => ({
 
 const columnMap = {
   application_datetime: {
-    width: 150,
+    width: 140,
     title: '申込日時',
     dataIndex: 'application_datetime',
   },
   receipt_status: {
-    width: 130,
+    width: 140,
     title: '受領ステータス',
     dataIndex: 'receipt_status',
     render: receipt_status => (
@@ -80,7 +80,7 @@ const columnMap = {
     ),
   },
   date_of_receipt: {
-    width: 120,
+    width: 130,
     title: '受領日',
     dataIndex: 'date_of_receipt',
   },
@@ -98,7 +98,7 @@ const columnMap = {
     dataIndex: 'receipt_method',
   },
   number_of_words: {
-    width: 60,
+    width: 80,
     title: '口数',
     dataIndex: 'number_of_words',
   },
@@ -108,7 +108,7 @@ const columnMap = {
     dataIndex: 'total_amount',
   },
   return_shipping_status: {
-    width: 160,
+    width: 155,
     title: 'リターン発送状況',
     render: ({ return_shipping_status }) => {
       const statuses = ['未発送', '発送済み'];
@@ -154,6 +154,7 @@ const rowSelection = {
 
 const CourseTable = () => (
   <Table
+    className="common-table -sml"
     tableLayout="fixed"
     dataSource={dataSource}
     columns={columns}

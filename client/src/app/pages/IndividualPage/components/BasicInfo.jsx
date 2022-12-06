@@ -79,7 +79,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
   return (
     <Row justify="space-between" align="middle">
       <Col>
-        <h3 className="supporter-detail-ttl">{'基本情報'}</h3>
+        <div className="sub-page-title -sml">{'基本情報'}</div>
       </Col>
       <Col>{actionByMode(mode)}</Col>
     </Row>
@@ -152,12 +152,9 @@ const ViewModeContent = ({ data, mode, setMode }) => {
           <Tag>ボランティア</Tag>
         </Descriptions.Item>
       </DescriptionContainer>
-      <DescriptionStyle className="mt-10">
-        <Descriptions
-          title={<span className="page-sub-title">{'カスタム項目'}</span>}
-          bordered
-          column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
-        >
+      <DescriptionStyle className="mt-6">
+        <div className="page-sub-title mb-4">{'カスタム項目'}</div>
+        <Descriptions bordered column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}>
           <Descriptions.Item label={<BoldLabel label="お子様のお名前" />}>
             {'田中梨花'}
           </Descriptions.Item>

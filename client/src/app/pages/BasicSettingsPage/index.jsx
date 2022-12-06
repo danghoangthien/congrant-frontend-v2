@@ -1,4 +1,4 @@
-// LAYOTU
+// COMPONENT
 import SettingsPage from 'app/components/Layout/SettingsPage';
 import PublicInfo from './components/PublicInfo';
 import DonationPlan from './components/DonationPlan';
@@ -61,7 +61,11 @@ const Title = () => (
 
 const BasicSettingsPage = () => (
   <>
-    <SettingsPage title={<Title />} settingComponentMap={SETTING_COMPONENT_MAP} />
+    <SettingsPage
+      title={<Title />}
+      meta={SETTING_COMPONENT_MAP.publicInfo.name}
+      settingComponentMap={SETTING_COMPONENT_MAP}
+    />
   </>
 );
 

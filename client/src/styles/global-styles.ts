@@ -299,15 +299,28 @@ export const GlobalStyle = createGlobalStyle`
     .ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
       padding: 17px 24px;
     }
+
+    &.-sml {
+      .ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
+        padding: 17px 12px;
+      }
+
+      .ant-table-selection-col {
+        width: 48px;
+      }
+    }
+  }
+
+  .clickable-table {
+    .ant-table-body .ant-table-row {
+      cursor: pointer;
+    }
   }
 
   // POP-UP MENU
 
   // ANTD INPUT
   .ant-input {
-    font-size: 16px;
-    // padding: 6px 11px;
-
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
       color: ${PLACEHOLDER_COLOR};
     }
@@ -350,9 +363,9 @@ export const GlobalStyle = createGlobalStyle`
     color: ${PLACEHOLDER_COLOR};
   }
 
-  .ant-select {
-    font-size: 16px;
-  }
+  // .ant-select {
+  //   font-size: 16px;
+  // }
 
   .ant-select-clear,
   .ant-select-multiple .ant-select-selection-item-remove {
@@ -419,6 +432,7 @@ export const GlobalStyle = createGlobalStyle`
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     text-shadow: none;
     font-weight: 600;
+    font-size: 14px;
   }
 
   .ant-tabs-card>.ant-tabs-nav .ant-tabs-tab, 
@@ -475,6 +489,16 @@ export const GlobalStyle = createGlobalStyle`
       position: absolute;
       top: 11px;
       left: 8px;
+    }
+
+    &.-sml {
+      font-size: 24px;
+      padding-left: 18px;
+
+      &:before {
+        top: 7px;
+        left: 0;
+      }
     }
   }
 

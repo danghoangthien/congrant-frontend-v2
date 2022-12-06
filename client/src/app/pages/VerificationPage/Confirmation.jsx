@@ -89,7 +89,7 @@ const Confirmation = () => {
             </Col>
           </Row>
 
-          {/* 代表者情報 */}
+          {/* 管理者情報 */}
           <Row className="mb-8">
             <Col span={24}>
               <DescriptionStyle className="no-border">
@@ -97,12 +97,12 @@ const Confirmation = () => {
                   title={
                     <Row justify="space-between" align="middle">
                       <Col>
-                        <div className="page-title">{'代表者情報'}</div>
+                        <div className="page-title">{'管理者情報'}</div>
                       </Col>
                       <Col>
                         <Button
                           onClick={() => {
-                            dispatch.registerStep.setActive('2');
+                            dispatch.registerStep.setActive('3');
                             history.push(`/app/verification/organisation`);
                           }}
                         >
@@ -131,7 +131,7 @@ const Confirmation = () => {
             </Col>
           </Row>
 
-          {/* 管理者情報 */}
+          {/* 代表者情報 */}
           <Row className="mb-8">
             <Col span={24}>
               <DescriptionStyle className="no-border">
@@ -139,12 +139,12 @@ const Confirmation = () => {
                   title={
                     <Row justify="space-between" align="middle">
                       <Col>
-                        <div className="page-title">{'管理者情報'}</div>
+                        <div className="page-title">{'代表者情報'}</div>
                       </Col>
                       <Col>
                         <Button
                           onClick={() => {
-                            dispatch.registerStep.setActive('3');
+                            dispatch.registerStep.setActive('2');
                             history.push(`/app/verification/organisation`);
                           }}
                         >

@@ -123,7 +123,7 @@ export const menuItems = (selectedRowKeys, status) => {
 const Title = ({ title }) => {
   return (
     <Row className="mb-6">
-      <h3 className="supporter-detail-ttl">{title}</h3>
+      <div className="sub-page-title -sml">{title}</div>
     </Row>
   );
 };
@@ -147,7 +147,7 @@ const AnnualListModeContent = ({ data, mode, setMode }) => {
       dataIndex: 'status',
       render: status => (
         <StyledBadgeDot>
-          <Badge status={RECEIPT_STATUS_COLOR[status]} text={RECEIPT_STATUSES[status]} />
+          <Badge color={RECEIPT_STATUS_COLOR[status]} text={RECEIPT_STATUSES[status]} />
         </StyledBadgeDot>
       ),
     },
@@ -224,7 +224,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
       dataIndex: 'status',
       render: status => (
         <StyledBadgeDot>
-          <Badge status={RECEIPT_STATUS_COLOR[status]} text={RECEIPT_STATUSES[status]} />
+          <Badge color={RECEIPT_STATUS_COLOR[status]} text={RECEIPT_STATUSES[status]} />
         </StyledBadgeDot>
       ),
     },
@@ -301,8 +301,8 @@ const Receipt = ({ data }) => {
     <>
       {mode === LIST_MODE && (
         <>
-          <Title title="領収書" />
-          <Row className="mb-8">
+          <div className="sub-page-title mb-6 -sml">領収書</div>
+          <Row className="mb-6">
             <Col span={24}>
               <ReceiptTitle title="合計領収書" />
             </Col>

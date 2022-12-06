@@ -11,7 +11,14 @@ const dataSource = Array.from(Array(3).keys()).map(i => ({
     <StyledStatusTag2 className="public">{'公開'}</StyledStatusTag2>,
     <StyledStatusTag2 className="non-public">{'非公開'}</StyledStatusTag2>,
   ]),
-  name: randomOutput([<Link to="/">田中 太郎</Link>, <Link to="/">Huy Nguyen</Link>]),
+  name: randomOutput([
+    <Link to="/">
+      <span style={{ fontWeight: 600 }}>田中 太郎</span>
+    </Link>,
+    <Link to="/">
+      <span style={{ fontWeight: 600 }}>テスト</span>
+    </Link>,
+  ]),
   comment: '応援しています！',
   reply: 'ありがとうございます！',
 }));

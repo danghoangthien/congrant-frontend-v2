@@ -30,6 +30,7 @@ const ReceiptTemplate = () => {
         <span className="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
+
       <Modal
         title={<StyledModalTitle>{'領収書テンプレート'}</StyledModalTitle>}
         visible={isModalOpen}

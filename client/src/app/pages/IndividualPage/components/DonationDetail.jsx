@@ -36,7 +36,7 @@ const Title = ({ mode, setMode }) => {
       {/* ヘッド */}
       <Row className="mb-6">
         <Col sm={24} md={12} lg={12}>
-          <h3 className="supporter-detail-ttl">{'寄付詳細'}</h3>
+          <div className="sub-page-title -sml">{'寄付詳細'}</div>
         </Col>
         <Col type="flex" align="right" sm={24} md={12} lg={12}>
           <Space size={8}>
@@ -100,7 +100,7 @@ const DonationDetail = ({ data, mode, setMode }) => {
   console.log('DonationDetail render', true);
   return (
     <>
-      <BreadNavigation setMode={setMode} id={'431051'} label="寄付決済" identityLabel="寄付No" />
+      <BreadNavigation setMode={setMode} id={'431051'} label="寄付決済" identityLabel="寄付No." />
       <Title mode={mode} setMode={setMode} />
       <Row className="mb-8">
         <Col span={24}>
