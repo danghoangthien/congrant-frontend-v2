@@ -3,6 +3,7 @@ import {
   SettingsInputContainer,
   SettingInput,
   SettingInfoLabel,
+  SettingLabel,
 } from '../../CorporationSettingPage/components/Sprites';
 import { StyledForm } from '../BasicSettingsPage.style';
 import ImageUpload from 'app/components/ImageUpload';
@@ -17,7 +18,7 @@ const PublicInfo = () => {
       </Row>
 
       <StyledForm>
-        <Row className="mb-14">
+        <Row className="mb-8">
           {/*  団体ロゴ */}
           <Col span={24} className="mb-6">
             <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
@@ -26,47 +27,71 @@ const PublicInfo = () => {
           </Col>
           {/*  団体ホームページ */}
           <Col span={24} className="mb-6">
-            <SettingsInputContainer label={<SettingInfoLabel label={'団体ホームページ'} />}>
-              <SettingInput placeholder={'例：https://hogehoge.com'} />
+            <SettingsInputContainer label={<SettingLabel label={'団体ホームページ'} />}>
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：https://hogehoge.com'}
+              />
             </SettingsInputContainer>
           </Col>
           {/*  Twitterアカウント */}
           <Col span={24} className="mb-6">
-            <SettingsInputContainer label={<SettingInfoLabel label={'Twitterアカウント'} />}>
-              <SettingInput placeholder={'例：https://twitter.com/********'} />
+            <SettingsInputContainer label={<SettingLabel label={'Twitterアカウント'} />}>
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：https://twitter.com/********'}
+              />
             </SettingsInputContainer>
           </Col>
           {/*  Facebookアカウント */}
           <Col span={24} className="mb-6">
-            <SettingsInputContainer label={<SettingInfoLabel label={'Facebookアカウント'} />}>
-              <SettingInput placeholder={'例：https://www.facebook.com/********'} />
+            <SettingsInputContainer label={<SettingLabel label={'Facebookアカウント'} />}>
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：https://www.facebook.com/********'}
+              />
             </SettingsInputContainer>
           </Col>
           {/*  Instagramアカウント */}
           <Col span={24} className="mb-6">
-            <SettingsInputContainer label={<SettingInfoLabel label={'Instagramアカウント'} />}>
-              <SettingInput placeholder={'例：https://www.instagram.com/********'} />
+            <SettingsInputContainer label={<SettingLabel label={'Instagramアカウント'} />}>
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：https://www.instagram.com/********'}
+              />
             </SettingsInputContainer>
           </Col>
           {/*  問い合わせフォーム（もしくはメールアドレス） */}
           <Col span={24} className="mb-6">
             <SettingsInputContainer
-              label={<SettingInfoLabel label={'問い合わせフォーム（もしくはメールアドレス）'} />}
+              label={<SettingLabel label={'問い合わせフォーム（もしくはメールアドレス）'} />}
             >
-              <SettingInput placeholder={'例：https://hogehoge.com/form'} />
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：https://hogehoge.com/form'}
+              />
             </SettingsInputContainer>
           </Col>
           {/*  問い合わせフォーム（もしくはメールアドレス） */}
           <Col span={24} className="mb-6">
-            <SettingsInputContainer label={<SettingInfoLabel label={'問い合わせ先の電話番号'} />}>
-              <SettingInput placeholder={'例：03-1234-5678'} />
+            <SettingsInputContainer label={<SettingLabel label={'問い合わせ先の電話番号'} />}>
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={'例：03-1234-5678'}
+              />
             </SettingsInputContainer>
           </Col>
         </Row>
       </StyledForm>
       <Row>
         <Col sm={24} md={24} lg={24}>
-          <Button className="active" type="primary">
+          <Button size="large" className="active" type="primary">
             <span style={{ fontWeight: '600' }}>{'保存する'}</span>
           </Button>
         </Col>

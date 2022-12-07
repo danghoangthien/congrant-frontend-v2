@@ -1,4 +1,4 @@
-import { DARK_GRAY, SUCCESS_COLOR, WARNING_COLOR, PRIMARY_COLOR } from 'styles/StyleConstants';
+import { DARK_GRAY, SUCCESS_COLOR, WARNING_COLOR } from 'styles/StyleConstants';
 
 export const LIST_MODE = 0;
 export const DETAIL_MODE = 1;
@@ -87,15 +87,21 @@ const RECEIPT_STATUSES = {
 };
 
 const RECEIPT_STATUS_COLOR = {
-  0: [DARK_GRAY],
+  0: [WARNING_COLOR],
   1: [SUCCESS_COLOR],
-  2: '',
+  2: [DARK_GRAY],
 };
 
 const PLANS = {
   0: '-',
   1: 'ゴールドサポーター',
 };
+
+const BASIC_COLOR = '#63B233';
+
+const CROWD_COLOR = '#2878CB';
+
+const MONTHLY_COLOR = '#C72A32';
 
 export {
   PLANS,
@@ -114,4 +120,7 @@ export {
   PROJECT_STATUSES,
   PROJECT_STATUS_CLASSES,
   PROJECT_TARGETS,
+  BASIC_COLOR,
+  CROWD_COLOR,
+  MONTHLY_COLOR,
 };

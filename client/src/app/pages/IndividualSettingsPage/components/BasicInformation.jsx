@@ -16,35 +16,43 @@ const BasicInformation = () => {
       </Col>
 
       {/* ユーザー名 */}
-      <Col span={24} className="item mb-2">
-        <Col span={24}>
+      <Col span={24}>
+        <Col span={24} className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'ユーザー名'} required />}>
-            <SettingInput placeholder={'荒木雄大'} />
+            <SettingInput
+              size="large"
+              style={{ width: '100%', maxWidth: 600 }}
+              placeholder={'荒木雄大'}
+            />
           </SettingsInputContainer>
         </Col>
 
         {/* メールアドレス */}
         <Col span={24}>
-          <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
-            <Row className="mb-2">
-              <SettingInput placeholder={'araki@congrant.com'} disabled />
-            </Row>
-            <Row align="end">
-              <ChangeEmail />
-            </Row>
-          </SettingsInputContainer>
+          <div style={{ width: '100%', maxWidth: 600 }}>
+            <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
+              <Row className="mb-2">
+                <SettingInput size="large" placeholder={'araki@congrant.com'} disabled />
+              </Row>
+              <Row align="end">
+                <ChangeEmail />
+              </Row>
+            </SettingsInputContainer>
+          </div>
         </Col>
 
         {/* パスワード */}
         <Col span={24}>
-          <SettingsInputContainer label={<SettingLabel label={'パスワード'} required />}>
-            <Row className="mb-2">
-              <SettingInputPassword placeholder={'********'} disabled />
-            </Row>
-            <Row align="end">
-              <ChangePassword />
-            </Row>
-          </SettingsInputContainer>
+          <div style={{ width: '100%', maxWidth: 600 }}>
+            <SettingsInputContainer label={<SettingLabel label={'パスワード'} required />}>
+              <Row className="mb-2">
+                <SettingInputPassword size="large" placeholder={'********'} disabled />
+              </Row>
+              <Row align="end">
+                <ChangePassword />
+              </Row>
+            </SettingsInputContainer>
+          </div>
         </Col>
       </Col>
 

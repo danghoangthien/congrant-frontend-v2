@@ -5,6 +5,7 @@ const { Sider } = Layout;
 
 export const StyledSidebar = styled(Sider)`
   background: #ffffff;
+  border-right: 1px solid ${GRAY};
 
   .collapsed-wrapper {
     display: none;
@@ -62,6 +63,10 @@ export const StyledSidebar = styled(Sider)`
     flex: 1 1 0%;
     overflow: hidden auto;
     // margin-right: -15px;
+
+    svg {
+      font-size: 18px;
+    }
 
     .ant-menu-item {
       font-size: 16px;

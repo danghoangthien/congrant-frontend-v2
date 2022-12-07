@@ -8,6 +8,7 @@ import { SketchPicker } from 'react-color';
 class ColorPicker extends React.Component {
   state = {
     displayColorPicker: false,
+    // disableAlpha: true,
     color: {
       r: '4',
       g: '87',
@@ -42,7 +43,6 @@ class ColorPicker extends React.Component {
           padding: '3px',
           display: 'inline-block',
           cursor: 'pointer',
-          marginRight: '8px',
           borderRadius: '4px',
           border: 'solid 1px #d9d9d7',
         },
@@ -61,17 +61,22 @@ class ColorPicker extends React.Component {
     });
 
     return (
-      <div>
+      <>
         <div style={styles.swatch} onClick={this.handleClick}>
           <div style={styles.color} />
         </div>
         {this.state.displayColorPicker ? (
           <div style={styles.popover}>
             <div style={styles.cover} onClick={this.handleClose} />
-            <SketchPicker color={this.state.color} onChange={this.handleChange} />
+            <SketchPicker
+              // disableAlpha={true}
+              presetColors={[]}
+              color={this.state.color}
+              onChange={this.handleChange}
+            />
           </div>
         ) : null}
-      </div>
+      </>
     );
   }
 }

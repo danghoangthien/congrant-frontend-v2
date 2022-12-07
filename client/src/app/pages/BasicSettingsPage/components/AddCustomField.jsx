@@ -73,70 +73,56 @@ const AddCustomField = ({ title }) => {
               </Radio.Group>
             </Col>
           </SettingsInputContainer>
-          <div className="mb-6">
-            <SettingsInputContainer label={<SettingLabel label={'回答選択肢'} required />}>
-              {[1, 2].includes(dataType) && (
-                <div>
-                  <div className="mb-6">
-                    <Row className="item mb-2">
-                      <Draggable
-                        entries={[
-                          <DraggableInputItem
-                            count={88}
-                            InputComponent={<Input value={'こども食堂の活動'} />}
-                          />,
-                          <DraggableInputItem
-                            count={77}
-                            InputComponent={<Input value={'団体の運営費用'} />}
-                          />,
-                          <DraggableInputItem
-                            count={99}
-                            InputComponent={<Input value={'団体に任せる'} />}
-                          />,
-                        ]}
-                      />
+          {[1, 2].includes(dataType) && (
+            <>
+              <div className="mb-6">
+                <SettingsInputContainer label={<SettingLabel label={'回答選択肢'} required />}>
+                  <div>
+                    <div className="mb-6">
+                      <Row className="item mb-2">
+                        <Draggable
+                          entries={[
+                            <DraggableInputItem
+                              count={88}
+                              InputComponent={<Input value={'こども食堂の活動'} />}
+                            />,
+                            <DraggableInputItem
+                              count={77}
+                              InputComponent={<Input value={'団体の運営費用'} />}
+                            />,
+                            <DraggableInputItem
+                              count={99}
+                              InputComponent={<Input value={'団体に任せる'} />}
+                            />,
+                          ]}
+                        />
+                      </Row>
+                    </div>
+                    <Row className="pl-8">
+                      <Col sm={24} md={24} lg={24}>
+                        <Space align="center">
+                          <Input placeholder={'理事'} />
+                          <Button className="icon-btn" type="primary">
+                            <span class="material-symbols-outlined">add</span>
+                            <span>{'追加'}</span>
+                          </Button>
+                        </Space>
+                      </Col>
                     </Row>
                   </div>
-                  <Row className="pl-8">
-                    <Col sm={24} md={24} lg={24}>
-                      <Space align="center">
-                        <Input placeholder={'理事'} />
-                        <Button className="icon-btn" type="primary">
-                          <span class="material-symbols-outlined">add</span>
-                          <span>{'追加'}</span>
-                        </Button>
-                      </Space>
-                    </Col>
-                  </Row>
-                </div>
-              )}
-              {dataType === 3 && (
-                <Row>
-                  <Col sm={24} md={24} lg={24}>
-                    <Space align="center">
-                      <Input placeholder={'理事'} />
-                      <Button className="icon-btn" type="primary">
-                        <span className="material-symbols-outlined">add</span>
-                        <span>{'追加'}</span>
-                      </Button>
-                    </Space>
+                </SettingsInputContainer>
+              </div>
+              <div>
+                <SettingsInputContainer label={<SettingLabel label={'その他'} />}>
+                  <Col className="item mb-5" sm={24} md={24} lg={24}>
+                    <Checkbox checked>
+                      {'その他の回答を受け付ける（自由入力欄が表示されます）'}
+                    </Checkbox>
                   </Col>
-                </Row>
-              )}
-              {dataType === 4 && (
-                <Row>
-                  <Col sm={24} md={24} lg={24}>
-                    <Input.TextArea rows={5} placeholder={'Textarea'} />
-                  </Col>
-                </Row>
-              )}
-            </SettingsInputContainer>
-          </div>
-          <SettingsInputContainer label={<SettingLabel label={'その他'} />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
-              <Checkbox checked>{'その他の回答を受け付ける（自由入力欄が表示されます）'}</Checkbox>
-            </Col>
-          </SettingsInputContainer>
+                </SettingsInputContainer>
+              </div>
+            </>
+          )}
         </Row>
       </Modal>
     </>

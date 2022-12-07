@@ -19,10 +19,12 @@ const Representative = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'代表者名'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingsInputWrapper>
-                <SettingInput placeholder={'例：田中'} style={{ width: '100%' }} />
-                <SettingInput placeholder={'例：太郎'} style={{ width: '100%' }} />
-              </SettingsInputWrapper>
+              <div style={{ width: '100%', maxWidth: 600 }}>
+                <SettingsInputWrapper>
+                  <SettingInput size="large" placeholder={'例：田中'} style={{ width: '100%' }} />
+                  <SettingInput size="large" placeholder={'例：太郎'} style={{ width: '100%' }} />
+                </SettingsInputWrapper>
+              </div>
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -31,10 +33,12 @@ const Representative = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'代表者名（カナ表記)'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <SettingsInputWrapper>
-                <SettingInput placeholder={'例：タナカ'} style={{ width: '100%' }} />
-                <SettingInput placeholder={'例：タロウ'} style={{ width: '100%' }} />
-              </SettingsInputWrapper>
+              <div style={{ width: '100%', maxWidth: 600 }}>
+                <SettingsInputWrapper>
+                  <SettingInput size="large" placeholder={'例：タナカ'} style={{ width: '100%' }} />
+                  <SettingInput size="large" placeholder={'例：タロウ'} style={{ width: '100%' }} />
+                </SettingsInputWrapper>
+              </div>
             </Col>
           </SettingsInputContainer>
         </Row>
@@ -43,7 +47,11 @@ const Representative = () => {
         <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'生年月日'} required />}>
             <Col sm={24} md={24} lg={24}>
-              <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '150px' }} />
+              <DatePicker
+                size="large"
+                placeholder={'yyyy-mm-dd'}
+                style={{ width: '100%', maxWidth: 600 }}
+              />
             </Col>
           </SettingsInputContainer>
         </Row>

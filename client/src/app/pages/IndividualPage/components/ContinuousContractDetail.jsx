@@ -27,7 +27,7 @@ const Title = ({ mode, setMode }) => {
   return (
     <Row>
       <Col sm={24} md={12} lg={12}>
-        <h3 className="supporter-detail-ttl">{'継続契約詳細'}</h3>
+        <div className="sub-page-title -sml">{'継続契約詳細'}</div>
       </Col>
       <Col type="flex" align="right" sm={24} md={12} lg={12}>
         <Dropdown overlay={action_menu} placement="bottomRight">
@@ -61,10 +61,10 @@ const ContinuousContractDetail = ({ data, mode, setMode }) => {
         setMode={setMode}
         id={'1203171'}
         label="継続契約"
-        identityLabel="継続契約No"
+        identityLabel="継続契約No."
       />
       <DescriptionContainer mode={mode} setMode={setMode}>
-        <Descriptions.Item label={<BoldLabel label="継続契約No" />}>
+        <Descriptions.Item label={<BoldLabel label="継続契約No." />}>
           <CopiableText>{'1203171'}</CopiableText>
         </Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="ステータス" />}>

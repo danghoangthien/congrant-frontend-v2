@@ -27,7 +27,7 @@ const SUMMARY_BREADCUMD_DATA = id => {
   return [
     {
       id: 1,
-      title: 'プロジェクト一覧',
+      title: 'サマリー',
       uri: 'summary',
     },
     {

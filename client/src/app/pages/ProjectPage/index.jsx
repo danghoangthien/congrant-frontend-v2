@@ -6,9 +6,7 @@ import { Button, Input, Row, Col, Card, Space, Image, Tag, Divider, Menu, Dropdo
 import LaunchNewProject from './components/LaunchNewProject';
 import {
   PROJECT_TYPES,
-  PROJECT_TYPE_COLORS,
   PROJECT_PAYMENT_TYPES,
-  PROJECT_PAYMENT_TYPE_COLORS,
   PROJECT_STATUSES,
   PROJECT_STATUS_CLASSES,
   DONATION_TYPES,

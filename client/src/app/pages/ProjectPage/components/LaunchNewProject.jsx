@@ -3,6 +3,7 @@ import { Row, Col, Modal, Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
+import { BASIC_COLOR, CROWD_COLOR, MONTHLY_COLOR } from 'utils/consts';
 import {
   StyledProjectLaunchList,
   StyledProjectLaunchTitle,
@@ -32,6 +33,7 @@ const LaunchNewProject = () => {
         <AddIcon style={{ fontSize: '14px' }} className="mr-2" />
         <span>{'プロジェクトの作成'}</span>
       </Button>
+
       <Modal
         title={<StyledModalTitle>{'プロジェクトタイプの選択'}</StyledModalTitle>}
         visible={isModalOpen}
@@ -54,7 +56,7 @@ const LaunchNewProject = () => {
               <StyledProjectLaunchTitle
                 className="mb-5"
                 style={{
-                  color: '#63B233',
+                  color: BASIC_COLOR,
                 }}
               >
                 {'ベーシック'}
@@ -79,7 +81,7 @@ const LaunchNewProject = () => {
               <StyledProjectLaunchTitle
                 className="mb-5"
                 style={{
-                  color: '#2878CB',
+                  color: CROWD_COLOR,
                 }}
               >
                 {'クラウドファンディング'}
@@ -90,7 +92,7 @@ const LaunchNewProject = () => {
                     <strong>{'単発寄付のみ'}</strong>
                     {'を募集できます'}
                   </li>
-                  <li>{'指定する必要があります'}</li>
+                  <li>{'募集期間を指定する必要があります。'}</li>
                   <li>{'目標金額、寄付状況を表示できます'}</li>
                 </ul>
               </StyledProjectLaunchList>
@@ -104,7 +106,7 @@ const LaunchNewProject = () => {
               <StyledProjectLaunchTitle
                 className="mb-5"
                 style={{
-                  color: '#C72A32',
+                  color: MONTHLY_COLOR,
                 }}
               >
                 {'マンスリーファンディング'}

@@ -68,9 +68,15 @@ const FormEdit = () => {
         <Row className="item mb-2">
           <Draggable
             entries={[
-              <DraggableInputItem InputComponent={<Input value={'1000'} suffix={'円'} />} />,
-              <DraggableInputItem InputComponent={<Input value={'3000'} suffix={'円'} />} />,
-              <DraggableInputItem InputComponent={<Input value={'17000'} suffix={'円'} />} />,
+              <DraggableInputItem
+                InputComponent={<Input size="large" value={'1000'} suffix={'円'} />}
+              />,
+              <DraggableInputItem
+                InputComponent={<Input size="large" value={'3000'} suffix={'円'} />}
+              />,
+              <DraggableInputItem
+                InputComponent={<Input size="large" value={'17000'} suffix={'円'} />}
+              />,
             ]}
           />
         </Row>

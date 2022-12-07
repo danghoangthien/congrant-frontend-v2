@@ -39,7 +39,7 @@ const Title = () => {
   return (
     <Row className="mb-6">
       <Col>
-        <h3 className="supporter-detail-ttl">{'内部メモ'}</h3>
+        <div className="sub-page-title -sml">{'内部メモ'}</div>
       </Col>
     </Row>
   );
