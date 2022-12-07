@@ -51,7 +51,13 @@ const columns = Object.keys(columnMap).map(columnName => {
 });
 
 const SummaryTable = () => (
-  <Table dataSource={dataSource} columns={columns} pagination={false} style={{ width: '100%' }} />
+  <Table
+    className="common-table"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+    style={{ width: '100%' }}
+  />
 );
 
 export default SummaryTable;

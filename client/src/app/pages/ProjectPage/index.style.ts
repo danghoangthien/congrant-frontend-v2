@@ -25,7 +25,7 @@ export const ProjectCard = styled.div`
   }
   & .project-card {
     padding: 24px;
-    // cursor: pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
 
     .ant-image-img {

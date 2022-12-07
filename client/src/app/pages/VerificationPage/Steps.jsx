@@ -85,53 +85,58 @@ const RegisterStepsPage = () => {
       {renderPageTitle()}
       <LoginPageLayout>
         <LogoBox />
-
-        <Card className="login-card" bodyStyle={{ padding: '40px' }} style={{ width: '680px' }}>
-          <Row className="usage-wrapper mb-8">
-            <StyledTabs activeKey={active} type="card" moreIcon={null}>
-              <Tabs.TabPane
-                tab={
-                  <TabName current="1" active={active}>
-                    {'団体情報'}
-                  </TabName>
-                }
-                key="1"
-              >
-                <Step1 />
-              </Tabs.TabPane>
-              <Tabs.TabPane
-                tab={
-                  <TabName current="2" active={active}>
-                    {'管理者情報'}
-                  </TabName>
-                }
-                key="2"
-              >
-                <Step2 />
-              </Tabs.TabPane>
-              <Tabs.TabPane
-                tab={
-                  <TabName current="3" active={active}>
-                    {'代表者情報'}
-                  </TabName>
-                }
-                key="3"
-              >
-                <Step3 />
-              </Tabs.TabPane>
-              <Tabs.TabPane
-                tab={
-                  <TabName current="4" active={active}>
-                    {'口座情報'}
-                  </TabName>
-                }
-                key="4"
-              >
-                <Step4 />
-              </Tabs.TabPane>
-            </StyledTabs>
-          </Row>
-          <Row>
+        <div style={{ width: '680px' }}>
+          <Card
+            className="login-card mb-6"
+            style={{ width: '100%' }}
+            bodyStyle={{ padding: '40px' }}
+          >
+            <Row className="usage-wrapper mb-8">
+              <StyledTabs activeKey={active} type="card" moreIcon={null}>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="1" active={active}>
+                      {'団体情報'}
+                    </TabName>
+                  }
+                  key="1"
+                >
+                  <Step1 />
+                </Tabs.TabPane>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="2" active={active}>
+                      {'管理者情報'}
+                    </TabName>
+                  }
+                  key="2"
+                >
+                  <Step2 />
+                </Tabs.TabPane>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="3" active={active}>
+                      {'代表者情報'}
+                    </TabName>
+                  }
+                  key="3"
+                >
+                  <Step3 />
+                </Tabs.TabPane>
+                <Tabs.TabPane
+                  tab={
+                    <TabName current="4" active={active}>
+                      {'口座情報'}
+                    </TabName>
+                  }
+                  key="4"
+                >
+                  <Step4 />
+                </Tabs.TabPane>
+              </StyledTabs>
+            </Row>
+          </Card>
+          <Row justify="end">
             <Button
               className="link-btn"
               type="link"
@@ -141,7 +146,7 @@ const RegisterStepsPage = () => {
               {'まずは管理画面を試したい（審査をスキップ）'}
             </Button>
           </Row>
-        </Card>
+        </div>
       </LoginPageLayout>
     </>
   );

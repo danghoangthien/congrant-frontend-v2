@@ -35,8 +35,8 @@ const action_menu = (
 );
 
 const dateFormat = 'YYYY-MM-DD';
+
 const BasicInfoTitle = ({ mode, setMode }) => {
-  console.log('BasicInfoTitle mode', mode);
   const actionByMode = mode => {
     if (mode === DETAIL_MODE) {
       return (
@@ -75,7 +75,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
   return (
     <Row justify="space-between" align="middle">
       <Col>
-        <h3 className="supporter-detail-ttl">{'基本情報'}</h3>
+        <div className="sub-page-title -sml">{'基本情報'}</div>
       </Col>
       <Col>{actionByMode(mode)}</Col>
     </Row>
@@ -83,7 +83,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
 };
 
 const DescriptionContainer = ({ children, mode, setMode }) => (
-  <DescriptionStyle>
+  <DescriptionStyle className="no-border">
     <Descriptions
       title={<BasicInfoTitle mode={mode} setMode={setMode} />}
       bordered

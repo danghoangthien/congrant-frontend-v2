@@ -13,7 +13,7 @@ const Title = ({ mode, setMode }) => {
   return (
     <Row justify="space-between" align="middle" className="mb-6">
       <Col>
-        <h3 className="supporter-detail-ttl">{'寄付決済'}</h3>
+        <div className="sub-page-title -sml">{'寄付決済'}</div>
       </Col>
       <Col>
         <Row align="middle">
@@ -35,7 +35,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
       dataIndex: 'date_of_receipt',
     },
     donation_id: {
-      title: '寄付No',
+      title: '寄付No.',
       dataIndex: 'donation_id',
     },
     type: {
@@ -96,7 +96,7 @@ const ListModeContent2 = ({ data, mode, setMode }) => {
       dataIndex: 'date_of_receipt',
     },
     donation_id: {
-      title: '寄付No',
+      title: '寄付No.',
       dataIndex: 'donation_id',
     },
     type: {
@@ -165,18 +165,18 @@ const Donation = ({ data }) => {
               </Col>
             </Row>
             {/* テーブル */}
-            <Row className="mb-5">
+            <Row className="mb-6">
               <Col sm={24} md={24} lg={24}>
                 <ListModeContent {...{ data, mode, setMode }} />
               </Col>
             </Row>
-            <Row className="mb-5">
+            <Row className="mb-4">
               <Col sm={24} md={24} lg={24}>
                 <span className="page-sub-title">{'未受領'}</span>
               </Col>
             </Row>
             {/* テーブル */}
-            <Row className="mb-5">
+            <Row>
               <Col sm={24} md={24} lg={24}>
                 <ListModeContent2 {...{ data, mode, setMode }} />
               </Col>

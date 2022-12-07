@@ -41,22 +41,22 @@ const AddEmailTemplate = () => {
         cancelText="キャンセル"
         okText="登録する"
       >
-        <Row className="item mb-2">
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'テンプレート名'} required />}>
             <SettingInput placeholder={'領収書メールテンプレ'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'CC:'} />}>
             <SettingInput placeholder={'info@*******.com'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+        <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'件名'} required />}>
             <SettingInput placeholder={'ご支援ありがとうございました'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-2">
+        <Row className="item">
           <SettingsInputContainer label={<SettingLabel label={'本文'} required />}>
             <SettingSelect
               className="mb-2"
@@ -64,7 +64,7 @@ const AddEmailTemplate = () => {
               defaultValue={'1'}
               style={{ width: '40%' }}
             >
-              <Select.Option value="1">{'保存されたフィルタ'}</Select.Option>
+              <Select.Option value="1">{'差込タグ'}</Select.Option>
             </SettingSelect>
             <SettingTextarea rows="10" placeholder={''} />
           </SettingsInputContainer>

@@ -15,7 +15,7 @@ const Title = () => {
   return (
     <Row className="mb-6">
       <Col>
-        <h3 className="supporter-detail-ttl">{'継続契約'}</h3>
+        <div className="sub-page-title -sml">{'継続契約'}</div>
       </Col>
     </Row>
   );

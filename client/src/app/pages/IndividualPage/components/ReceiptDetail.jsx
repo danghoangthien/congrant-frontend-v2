@@ -30,7 +30,7 @@ const Title = ({ mode, setMode }) => {
   return (
     <Row>
       <Col sm={24} md={12} lg={12}>
-        <h3 className="supporter-detail-ttl">{'領収書詳細'}</h3>
+        <div className="sub-page-title -sml">{'領収書詳細'}</div>
       </Col>
       <Col type="flex" align="right" sm={24} md={12} lg={12}>
         <Space size={8}>
@@ -73,13 +73,14 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
         setMode={setMode}
         id={'2022-123456'}
         label="領収書"
-        identityLabel="領収書No"
+        identityLabel="領収書No."
       />
+
       <DescriptionContainer mode={mode} setMode={setMode}>
-        <Descriptions.Item label={<BoldLabel label="領収書No" />}>
+        <Descriptions.Item label={<BoldLabel label="領収書No." />}>
           <CopiableText>{'2022-123456'}</CopiableText>
         </Descriptions.Item>
-        <Descriptions.Item label={<BoldLabel label="寄付No" />}>
+        <Descriptions.Item label={<BoldLabel label="寄付No." />}>
           <span style={{ color: PRIMARY_COLOR, fontWeight: '600' }}>
             431051・431052・431053・431054
           </span>

@@ -45,9 +45,15 @@ export const StyledProjectLaunchTypeInfo = styled(Tag)`
 `;
 
 export const StyledProjectLaunchType = styled.div`
+  cursor: pointer;
   height: 100%;
   box-sizing: border-box;
   padding: 24px 16px;
   border: 1px solid #d9d9d7;
   border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 0 10px rgba(0, 0, 0, 0.16);
+  }
 `;

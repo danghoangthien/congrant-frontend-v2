@@ -1,17 +1,6 @@
-import {
-  Descriptions,
-  Row,
-  Col,
-  Button,
-  Input,
-  Select,
-  Dropdown,
-  Menu,
-  Space,
-  DatePicker,
-} from 'antd';
+import { Descriptions, Row, Col, Button, Input, Select, Space, DatePicker } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
-import { LIST_MODE, EDIT_MODE, DETAIL_MODE } from '../consts';
+import { DETAIL_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 import BreadNavigation from './Sprites/BreadNavigation';
@@ -20,11 +9,13 @@ const Title = ({ mode, setMode }) => {
   return (
     <Row>
       <Col sm={24} md={12} lg={12}>
-        <h3 className="supporter-detail-ttl">{'領収書詳細'}</h3>
+        <div className="sub-page-title -sml">{'領収書詳細'}</div>
       </Col>
       <Col type="flex" align="right" sm={24} md={12} lg={12}>
         <Space size={8}>
-          <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
+          <Button className="less-shadow-btn" onClick={() => setMode(DETAIL_MODE)}>
+            {'キャンセル'}
+          </Button>
           <Button
             className="icon-btn"
             type="primary"
@@ -58,16 +49,16 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
         setMode={setMode}
         id={'2022-123456'}
         label="領収書"
-        identityLabel="領収書No"
+        identityLabel="領収書No."
       />
       <DescriptionContainer mode={mode} setMode={setMode}>
         {/* 領収書No */}
-        <Descriptions.Item label={<BoldLabel label="領収書No" />}>
+        <Descriptions.Item label={<BoldLabel label="領収書No." />}>
           <CopiableText>{'2022-123456'}</CopiableText>
         </Descriptions.Item>
 
         {/* 寄付No */}
-        <Descriptions.Item label={<BoldLabel label="寄付No" />}>
+        <Descriptions.Item label={<BoldLabel label="寄付No." />}>
           <span style={{ color: PRIMARY_COLOR, fontWeight: '600' }}>
             431051・431052・431053・431054
           </span>
@@ -82,7 +73,6 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
 
         {/* 発行日時 */}
         <Descriptions.Item label={<BoldLabel label="発行日時" />}>
-          {' '}
           <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
         </Descriptions.Item>
 
@@ -93,7 +83,6 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
 
         {/* 宛名 */}
         <Descriptions.Item label={<BoldLabel label="宛名" />}>
-          {' '}
           <Input value={'田中太郎'} />
         </Descriptions.Item>
 
@@ -130,7 +119,6 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
         {/* テンプレート */}
         <Descriptions.Item label={<BoldLabel label="テンプレート" />}>
           <CopiableText>
-            {' '}
             <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
               <Select.Option value={1}>{'標準領収書'}</Select.Option>
             </Select>

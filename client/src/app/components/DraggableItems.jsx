@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import { List } from 'antd';
 import ReactDragListView from 'react-drag-listview';
+import styled from 'styled-components/macro';
+
+const StyledList = styled(List)`
+  .ant-list-item {
+    padding: 4px 0;
+  }
+`;
 
 const Draggable = ({ entries = [], onDragEnded }) => {
   const [data, setData] = useState(entries);
@@ -18,7 +24,8 @@ const Draggable = ({ entries = [], onDragEnded }) => {
   return (
     <div>
       <ReactDragListView nodeSelector=".ant-list-item.draggble" onDragEnd={onDragEnd}>
-        <List
+        <StyledList
+          size="small"
           split={false}
           dataSource={data}
           renderItem={item => {

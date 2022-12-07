@@ -46,7 +46,7 @@ const Step4 = () => {
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'銀行名'} required />}>
           <Col sm={24} md={24} lg={24}>
-            <SettingInput placeholder={'例：XX銀行'} />
+            <SettingInput size="large" placeholder={'例：XX銀行'} />
           </Col>
         </SettingsInputContainer>
       </Row>
@@ -55,7 +55,7 @@ const Step4 = () => {
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'支店名'} required />}>
           <Col sm={24} md={24} lg={24}>
-            <SettingInput placeholder={'例：XX支店'} />
+            <SettingInput size="large" placeholder={'例：XX支店'} />
           </Col>
         </SettingsInputContainer>
       </Row>
@@ -71,7 +71,7 @@ const Step4 = () => {
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'口座番号'} required />}>
           <Col sm={24} md={24} lg={24}>
-            <SettingInput placeholder={'例：1234567'} />
+            <SettingInput size="large" placeholder={'例：1234567'} />
           </Col>
         </SettingsInputContainer>
       </Row>
@@ -80,7 +80,10 @@ const Step4 = () => {
       <Row>
         <SettingsInputContainer label={<SettingLabel label={'口座名義'} required />}>
           <Col sm={24} md={24} lg={24}>
-            <SettingInput placeholder={'例：トクテイヒエイリカツドウホウジンコングラント'} />
+            <SettingInput
+              size="large"
+              placeholder={'例：トクテイヒエイリカツドウホウジンコングラント'}
+            />
           </Col>
         </SettingsInputContainer>
       </Row>
@@ -94,23 +97,24 @@ const Step4 = () => {
               className="icon-btn"
               icon={<span className="material-symbols-outlined">chevron_left</span>}
               onClick={() => {
-                dispatch.registerStep.setActive('1'); //unCompleted
+                dispatch.registerStep.setActive('3'); //unCompleted
                 //dispatch.registerStep.unCompleted('3');
                 //dispatch.registerStep.unCompleted('2');
               }}
             >
               {'戻る'}
             </Button>
-            <Link
+            <Button
+              size="large"
+              style={{ width: '100%', fontWeight: 600 }}
+              type="primary"
               onClick={() => {
                 dispatch.registerStep.setCompleted('4');
                 history.push(`/app/verification/confirmation`);
               }}
             >
-              <Button size="large" style={{ fontWeight: '600', width: '100%' }} type="primary">
-                {'保存して次へ'}
-              </Button>
-            </Link>
+              {'保存して次へ'}
+            </Button>
           </SettingsInputWrapper>
         </Col>
       </Row>

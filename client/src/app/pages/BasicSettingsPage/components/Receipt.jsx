@@ -118,13 +118,21 @@ const Receipt = () => {
           {/*  認定通知書番号 */}
           <Col span={24} className="mb-6">
             <SettingsInputContainer label={<SettingInfoLabel label={'認定通知書番号'} />}>
-              <SettingInput placeholder={''} />
+              <SettingInput
+                size="large"
+                style={{ width: '100%', maxWidth: 600 }}
+                placeholder={''}
+              />
             </SettingsInputContainer>
           </Col>
           {/*  認定年月日 */}
           <Col span={24} className="mb-6">
             <SettingsInputContainer label={<SettingInfoLabel label={'認定年月日'} />}>
-              <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '160px' }} />
+              <DatePicker
+                size="large"
+                placeholder={'yyyy-mm-dd'}
+                style={{ width: '100%', maxWidth: 600 }}
+              />
             </SettingsInputContainer>
           </Col>
         </Row>
@@ -152,7 +160,7 @@ const Receipt = () => {
       </Row>
       <Row className="mb-5">
         <Col className="mb-2" sm={24} md={24} lg={24}>
-          <Checkbox.Group defaultValue={[1]}>
+          <Checkbox.Group>
             <Space direction="vertical" align="center">
               <Checkbox value={1}>{'「単発寄付」の領収書を自動送付する'}</Checkbox>
               <Checkbox value={2}>{'「毎月寄付」の領収書を自動送付する'}</Checkbox>
@@ -163,7 +171,7 @@ const Receipt = () => {
       </Row>
       <Row>
         <Col sm={24} md={24} lg={24}>
-          <Button className="active" type="primary">
+          <Button size="large" className="active" type="primary">
             <span style={{ fontWeight: '600' }}>{'保存する'}</span>
           </Button>
         </Col>

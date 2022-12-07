@@ -89,7 +89,7 @@ export const menuItems = selectedRowKeys => [
 const dataSource = Array.from(Array(10).keys()).map(i => ({
   key: `${i}`,
   receipt_no: `${'20220730' + i}`,
-  receipt_status: randomOutput([0, 1, 2]),
+  receipt_status: randomOutput(['0', '1', '2']),
   issuing_date: randomOutput(['2023-04-01', '2023-11-05', '2023-03-05']),
   template: randomOutput(['標準領収書']),
   amount: randomOutput(['3,000円', '24,000円']),
@@ -109,7 +109,7 @@ const columnMap = {
     render: receipt_status => (
       <StyledBadgeDot>
         <Badge
-          status={RECEIPT_STATUS_COLOR[receipt_status]}
+          color={RECEIPT_STATUS_COLOR[receipt_status][0]}
           text={RECEIPT_STATUSES[receipt_status]}
         />
       </StyledBadgeDot>

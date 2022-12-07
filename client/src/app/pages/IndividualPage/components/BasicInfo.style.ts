@@ -17,6 +17,7 @@ export const DescriptionStyle = styled.div`
   & .ant-descriptions-bordered .ant-descriptions-item-content,
   .ant-descriptions-bordered .ant-descriptions-item-label {
     padding: 12px;
+    border-left: none;
   }
 
   &.no-border {
@@ -34,7 +35,9 @@ export const DescriptionStyle = styled.div`
     }
 
     .ant-descriptions-bordered .ant-descriptions-view {
-      border: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
     }
 
     .ant-descriptions-bordered .ant-descriptions-row:last-child {

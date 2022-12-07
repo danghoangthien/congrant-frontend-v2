@@ -125,7 +125,7 @@ const Step3 = () => {
             </Button>
             <Button
               size="large"
-              style={{ width: '100%' }}
+              style={{ width: '100%', fontWeight: 600 }}
               type="primary"
               onClick={() => {
                 dispatch.registerStep.setCompleted('3');

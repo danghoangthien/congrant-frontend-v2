@@ -22,7 +22,7 @@ const SupporterInfo = ({ closeDrawer }) => {
               </div>
             </Col>
             <Col>
-              <Space size={16}>
+              <Space size={16} align="middle">
                 <Button
                   className="icon-btn less-shadow-btn"
                   icon={<span className="material-symbols-outlined fill-icon">mail</span>}
@@ -36,7 +36,7 @@ const SupporterInfo = ({ closeDrawer }) => {
                   icon={
                     <span
                       className="material-symbols-outlined"
-                      style={{ color: TEXT_GRAY_COLOR, fontSize: '30px' }}
+                      style={{ color: TEXT_GRAY_COLOR, fontSize: '30px', padding: 0 }}
                     >
                       close
                     </span>

@@ -29,12 +29,20 @@ const AccessAnalysis = () => {
       <Row className="mb-2">
         <Col className="mb-6" span={24}>
           <SettingsInputContainer label={<SettingInfoLabel label={'Google アナリティクス'} />}>
-            <SettingInput placeholder={'G-XXXXXXXXX'} />
+            <SettingInput
+              size="large"
+              style={{ width: '100%', maxWidth: 600 }}
+              placeholder={'G-XXXXXXXXX'}
+            />
           </SettingsInputContainer>
         </Col>
         <Col span={24}>
           <SettingsInputContainer label={<SettingInfoLabel label={'Google タグマネージャー'} />}>
-            <SettingInput placeholder={'G-XXXXXXXXX'} />
+            <SettingInput
+              size="large"
+              style={{ width: '100%', maxWidth: 600 }}
+              placeholder={'G-XXXXXXXXX'}
+            />
           </SettingsInputContainer>
         </Col>
       </Row>

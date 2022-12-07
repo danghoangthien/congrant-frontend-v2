@@ -1,4 +1,5 @@
-import { Row, Col, Card, Space } from 'antd';
+import { Row, Col, Card } from 'antd';
+import { Helmet } from 'react-helmet-async';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import Breadcumd from 'app/components/Breadcumd';
 import Header from './components/Header';
@@ -6,8 +7,20 @@ import { BREADCUMD_DATA } from './consts';
 import TelecomPaymentTable from './TelecomPaymentTable';
 
 const Telecom = () => {
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'テレコム決済'}</title>
+          <meta name="description" content={'...'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
     <>
+      {renderPageTitle()}
       <PageLayout>
         <Header
           breadCumb={
@@ -15,15 +28,15 @@ const Telecom = () => {
           }
         />
         {/* メインコンテンツ・Main Content */}
-        <Card bodyStyle={{ padding: 0 }}>
-          <Row className="py-4 px-4" justify="space-between">
-            <Col>
-              <Space size={24}>
-                <span className="table-title">{'テレコム決済明細一覧'}</span>
-              </Space>
+        <Card className="table-card" bodyStyle={{ padding: 0 }}>
+          <Row className="px-6 py-5" justify="space-between">
+            <Col span={24}>
+              <span className="table-title">{'テレコム決済明細一覧'}</span>
             </Col>
           </Row>
-          <TelecomPaymentTable />
+          <Row>
+            <TelecomPaymentTable />
+          </Row>
         </Card>
       </PageLayout>
     </>

@@ -62,10 +62,12 @@ const menu = (
         key: '1',
         label: (
           <Link to="/app/individuals-bulk-upload">
-            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
-              upload
-            </span>
-            <span className="ml-2">{'一括アップロード'}</span>
+            <Space>
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
+                upload
+              </span>
+              <span>{'一括アップロード'}</span>
+            </Space>
           </Link>
         ),
       },
