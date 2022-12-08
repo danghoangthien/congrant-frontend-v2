@@ -576,6 +576,36 @@ export const GlobalStyle = createGlobalStyle`
   tr.drop-over-upward td {
     border-top: 2px dashed #1890ff;
   }
+
+  // NOTIFICATION
+  .custom-nofitication {
+    .ant-notification-notice-message {
+      font-weight: 600;
+    }
+
+    .ant-notification-notice-icon {
+      line-height: 28px;
+    }
+
+    .ant-notification-notice-with-icon .ant-notification-notice-message,
+    .ant-notification-notice-with-icon .ant-notification-notice-description {
+      margin-left: 36px;
+    }
+  }
+
+  // MESSAGE
+  .ant-message .anticon {
+    vertical-align: text-top;
+  }
+
+  .ant-message-custom-content.ant-message-info {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      margin-right: 8px;
+    }
+  }
 `;
 
 export const StyledPrimaryIcon = styled.span`

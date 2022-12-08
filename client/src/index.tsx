@@ -25,6 +25,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import reportWebVitals from 'reportWebVitals';
 import { ConfigProvider } from 'antd';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
+import { notification } from 'antd';
 // import moment from 'moment';
 import 'moment/locale/ja';
 import jaJp from 'antd/es/locale/ja_JP';
@@ -57,6 +58,10 @@ ConfigProvider.config({
   theme: {
     primaryColor: PRIMARY_COLOR,
   },
+});
+
+notification.config({
+  closeIcon: <></>,
 });
 
 ReactDOM.render(

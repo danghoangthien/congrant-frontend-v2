@@ -101,6 +101,7 @@ const CustomSider = () => {
   const { pathname } = useLocation();
   return (
     <StyledSidebar
+      breakpoint="xl"
       trigger={null}
       collapsed={collapsed}
       collapsible

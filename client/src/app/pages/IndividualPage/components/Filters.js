@@ -1,7 +1,9 @@
+// STYLE
 import { StyledFilter } from 'styles/Filter.style';
-
+// ANTD
 import { Card, Row, Col, Button, Select, Form, Input, DatePicker } from 'antd';
-
+// COMPONENT
+import SaveFilter from 'app/components/Modal/SaveFilter';
 const { RangePicker } = DatePicker;
 
 const Filters = ({ open }) => {
@@ -9,7 +11,7 @@ const Filters = ({ open }) => {
   if (!open) return <></>;
   return (
     <StyledFilter>
-      <Card className="mb-6">
+      <Card className="mb-6" bodyStyle={{ padding: '24px 24px 0' }}>
         {/* フィルターヘッダー・Filter Header */}
         <Row className="mb-6" justify="space-between">
           <Col>
@@ -32,7 +34,7 @@ const Filters = ({ open }) => {
                   <Select.Option value="1">{'保存されたフィルタ'}</Select.Option>
                 </Select>
               </Col>
-              <Button size="small">{'保存'}</Button>
+              <SaveFilter />
             </Row>
           </Col>
         </Row>
@@ -42,74 +44,74 @@ const Filters = ({ open }) => {
           <Col span={24}>
             <Form form={form} layout={'vertical'}>
               <Row gutter={24}>
-                <Col span={6} key={'a'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
                   <Form.Item name={`field-a`} label={`属性`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'b'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'b'}>
                   <Form.Item name={`field-b`} label={`年齢`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'c'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
                   <Form.Item name={`field-c`} label={`性別`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'d'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
                   <Form.Item name={`field-d`} label={`エリア`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                   <Form.Item name={`field-c`} label={`広報物への掲載可否`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                   <Form.Item name={`field-c`} label={`郵送物の送付可否`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                   <Form.Item name={`field-c`} label={`寄付タイプ`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                   <Form.Item name={`field-c`} label={`寄付プラン`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
-                  <Form.Item className="mb-0" name={`field-a`} label={`初回決済日`}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
+                  <Form.Item name={`field-a`} label={`初回決済日`}>
                     <RangePicker style={{ width: '100%' }} placeholder={['開始日', '終了日']} />
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
-                  <Form.Item className="mb-0" name={`field-a`} label={`直近の決済日`}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
+                  <Form.Item name={`field-a`} label={`直近の決済日`}>
                     <RangePicker style={{ width: '100%' }} placeholder={['開始日', '終了日']} />
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
-                  <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
+                  <Form.Item name={`field-d`} label={`金額`}>
                     <Input.Group compact className="num-range-input">
                       <Input style={{ width: 'calc(50% - 15px)' }} placeholder="3,000" />
                       <Input
