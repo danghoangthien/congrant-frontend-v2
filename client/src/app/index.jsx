@@ -42,11 +42,9 @@ export function App() {
             <Route exact path={process.env.PUBLIC_URL + '/payment/:id'}>
               <PaymentPage />
             </Route>
-            {/**
-             <Route path={process.env.PUBLIC_URL + '/app'}>
+            <Route path={process.env.PUBLIC_URL + '/app'}>
               <AppPage />
             </Route>
-             */}
             <Route component={NotFoundPage} />
           </Switch>
         </ScrollToTop>
