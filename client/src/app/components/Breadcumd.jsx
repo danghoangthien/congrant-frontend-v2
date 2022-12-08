@@ -18,7 +18,7 @@ import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 const Breadcumb = ({
   active,
   data = [],
-  separator = <span style={{ verticalAlign: 'text-top', color: TEXT_GRAY_COLOR }}>/</span>,
+  separator = <span style={{ verticalAlign: 'top', color: TEXT_GRAY_COLOR }}>/</span>,
   style = null,
 }) => {
   const breadCumdClassName = style === 'button' ? 'bread-crumb' : '';

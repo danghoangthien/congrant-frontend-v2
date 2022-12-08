@@ -48,7 +48,7 @@ const AddAttribute = () => {
     <>
       <Space onClick={() => showModal()}>
         <span
-          class="material-symbols-outlined fill-icon"
+          className="material-symbols-outlined fill-icon"
           style={{ fontSize: '16px', display: 'flex' }}
         >
           sell

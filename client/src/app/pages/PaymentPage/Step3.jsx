@@ -83,7 +83,10 @@ const Step3 = () => {
           <Col className="mb-3">
             <StyledNotice>
               <Space align="center">
-                <span class="material-symbols-outlined fill-icon icon" style={{ fontSize: '16px' }}>
+                <span
+                  className="material-symbols-outlined fill-icon icon"
+                  style={{ fontSize: '16px' }}
+                >
                   lock
                 </span>
                 <span>カード情報は暗号化され、安全に管理されます。</span>
@@ -156,7 +159,7 @@ const Step3 = () => {
                 dispatch.paymentStep.setActive('2');
               }}
             >
-              <span class="material-symbols-outlined icon">arrow_back_ios</span>申込内容を修正
+              <span className="material-symbols-outlined icon">arrow_back_ios</span>申込内容を修正
             </StyledBackButton>
             <StyledButton
               className="back-btn"

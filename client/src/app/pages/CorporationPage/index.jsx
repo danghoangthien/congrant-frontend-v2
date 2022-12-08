@@ -112,20 +112,20 @@ const CorporationPage = () => {
                   </div>
                 </Col>
                 <Col className="mr-2">
-                  <Input
-                    className="free-search"
-                    placeholder="フリー検索"
-                    prefix={<span className="material-symbols-outlined">search</span>}
-                  />
-                </Col>
-                <Col>
-                  <Button
-                    className="filter-button"
-                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
-                    onClick={() => setFilterOpen(!filterOpen)}
-                  >
-                    {'フィルタ'}
-                  </Button>
+                  <Space>
+                    <Input
+                      className="free-search"
+                      placeholder="フリー検索"
+                      prefix={<span className="material-symbols-outlined">search</span>}
+                    />
+                    <Button
+                      className="filter-button"
+                      icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
+                      onClick={() => setFilterOpen(!filterOpen)}
+                    >
+                      {'フィルタ'}
+                    </Button>
+                  </Space>
                 </Col>
               </Row>
             </Col>

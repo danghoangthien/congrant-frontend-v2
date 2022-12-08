@@ -38,16 +38,18 @@ const OrganizationInfo = ({ logo }) => {
             <Col span={24}>
               <Descriptions>
                 <Descriptions.Item
-                  label={<span class="material-symbols-outlined fill-icon icon">mail</span>}
+                  label={<span className="material-symbols-outlined fill-icon icon">mail</span>}
                 >
                   info@congrant.com
                 </Descriptions.Item>
                 <Descriptions.Item
-                  label={<span class="material-symbols-outlined fill-icon icon">phone</span>}
+                  label={<span className="material-symbols-outlined fill-icon icon">phone</span>}
                 >
                   00 0000 0000
                 </Descriptions.Item>
-                <Descriptions.Item label={<span class="material-symbols-outlined icon">link</span>}>
+                <Descriptions.Item
+                  label={<span className="material-symbols-outlined icon">link</span>}
+                >
                   <a
                     className="organization-link"
                     href={`https://npojcsa.com/`}

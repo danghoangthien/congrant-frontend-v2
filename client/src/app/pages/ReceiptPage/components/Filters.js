@@ -1,13 +1,18 @@
+// STYLE
 import { StyledFilter } from './Filter.style';
-
-import { Card, Row, Col, Button, Select, Form } from 'antd';
+// COMPONENT
+import SaveFilter from 'app/components/Modal/SaveFilter';
+// ANTD
+import { Card, Row, Col, Select, Form } from 'antd';
 
 const Filters = ({ open }) => {
   const [form] = Form.useForm();
+
   if (!open) return <></>;
+
   return (
     <StyledFilter>
-      <Card className="mb-6">
+      <Card className="mb-6" bodyStyle={{ padding: '24px 24px 0' }}>
         {/* フィルターヘッダー・Filter Header */}
         <Row className="mb-5" justify="space-between">
           <Col>
@@ -30,7 +35,7 @@ const Filters = ({ open }) => {
                   <Select.Option value="1">{'保存されたフィルタ'}</Select.Option>
                 </Select>
               </Col>
-              <Button size="small">{'保存'}</Button>
+              <SaveFilter />
             </Row>
           </Col>
         </Row>
@@ -40,29 +45,29 @@ const Filters = ({ open }) => {
           <Col span={24}>
             <Form form={form} layout={'vertical'}>
               <Row gutter={24}>
-                <Col span={6} key={'a'}>
-                  <Form.Item className="mb-0" name={`field-a`} label={`領収書タイプ`}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 12 }} key={'a'}>
+                  <Form.Item name={`field-a`} label={`領収書タイプ`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'b'}>
-                  <Form.Item className="mb-0" name={`field-b`} label={`発行ステータス`}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 12 }} key={'b'}>
+                  <Form.Item name={`field-b`} label={`発行ステータス`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'c'}>
-                  <Form.Item className="mb-0" name={`field-c`} label={`発行日`}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 12 }} key={'c'}>
+                  <Form.Item name={`field-c`} label={`発行日`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'d'}>
-                  <Form.Item className="mb-0" name={`field-d`} label={`テンプレート`}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 12 }} key={'d'}>
+                  <Form.Item name={`field-d`} label={`テンプレート`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>

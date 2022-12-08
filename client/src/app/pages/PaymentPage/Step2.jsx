@@ -442,7 +442,7 @@ const Step2 = () => {
                   dispatch.paymentStep.setActive('2');
                 }}
               >
-                <span class="material-symbols-outlined icon">arrow_back_ios</span>申込内容を修正
+                <span className="material-symbols-outlined icon">arrow_back_ios</span>申込内容を修正
               </StyledBackButton>
               <StyledButton
                 className="back-btn"
@@ -467,7 +467,7 @@ const Step2 = () => {
                 dispatch.paymentStep.setActive('1');
               }}
             >
-              <span class="material-symbols-outlined icon">arrow_back_ios</span>申込内容を修正
+              <span className="material-symbols-outlined icon">arrow_back_ios</span>申込内容を修正
             </StyledBackButton>
             <StyledButton
               className="back-btn"

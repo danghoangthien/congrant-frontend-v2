@@ -50,7 +50,7 @@ const Create = () => {
     return (
       <Space size={8} style={{ color: isCurrentTabCompleted && PRIMARY_COLOR }}>
         <StyledTag color={color} className={isCurrentTabCompleted && 'complete'}>
-          {isCurrentTabCompleted ? <span class="material-symbols-outlined">done</span> : current}
+          {isCurrentTabCompleted ? <span className="material-symbols-outlined">done</span> : current}
         </StyledTag>
         {children}
       </Space>
@@ -69,7 +69,7 @@ const Create = () => {
           </Row>
 
           {/* メインコンテンツ・Card */}
-          <Card bodyStyle={{ padding: '46px 40px' }}>
+          <Card style={{ maxWidth: 680 }} bodyStyle={{ padding: '46px 40px' }}>
             {active === '4' && <Step4 />}
             {['1', '2', '3'].includes(active) && (
               <StyledBulkCreateTabs activeKey={active} type="card" tabBarGutter={6}>

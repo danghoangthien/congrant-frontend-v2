@@ -120,7 +120,7 @@ const Step1 = ({ type }) => {
             <Space size={14}>
               <StyledChangeButton className="change-amount-button">
                 <span
-                  class="material-symbols-outlined fill-icon icon"
+                  className="material-symbols-outlined fill-icon icon"
                   style={{ color: 'rgba(34, 34, 34, 0.4)' }}
                 >
                   do_not_disturb_on
@@ -140,7 +140,7 @@ const Step1 = ({ type }) => {
                 suffix="口"
               ></FormInput>
               <StyledChangeButton className="change-amount-button">
-                <span class="material-symbols-outlined fill-icon icon">add_circle</span>
+                <span className="material-symbols-outlined fill-icon icon">add_circle</span>
               </StyledChangeButton>
             </Space>
           </SettingsInputContainer>

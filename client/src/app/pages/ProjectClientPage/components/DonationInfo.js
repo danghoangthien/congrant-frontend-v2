@@ -49,7 +49,7 @@ const DonationInfo = () => {
             <Col span={24}>
               <Row justify="space-between" className="statistic">
                 <Space align="center">
-                  <span class="material-symbols-outlined icon">account_circle</span>
+                  <span className="material-symbols-outlined icon">account_circle</span>
                   <span className="title">サポーター</span>
                 </Space>
                 <div>
@@ -61,7 +61,7 @@ const DonationInfo = () => {
             <Col span={24}>
               <Row justify="space-between" className="statistic">
                 <Space align="center">
-                  <span class="material-symbols-outlined icon">calendar_month</span>
+                  <span className="material-symbols-outlined icon">calendar_month</span>
                   <span className="title">残り</span>
                 </Space>
                 <div>
@@ -78,7 +78,7 @@ const DonationInfo = () => {
             <Col span={24}>
               <Row justify="space-between" className="statistic">
                 <Space align="center">
-                  <span class="material-symbols-outlined icon">paid</span>
+                  <span className="material-symbols-outlined icon">paid</span>
                   <span className="title">支援金額</span>
                 </Space>
                 <div>

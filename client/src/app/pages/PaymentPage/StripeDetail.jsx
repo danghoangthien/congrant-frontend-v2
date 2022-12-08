@@ -60,7 +60,7 @@ const Stripe = () => {
   return (
     <>
       {renderPageTitle()}
-      <Space className="px-6 py-3" style={{ background: '#ffffff', width: '100%' }}>
+      <Space className="px-6 py-3" style={{ background: '#ffffff', width: '100%' }} size={16}>
         <Link to="/app/payment-details/stripe">
           <Button
             className="icon-btn less-shadow-btn"
@@ -71,6 +71,7 @@ const Stripe = () => {
         </Link>
         <Breadcumd data={BREADCUMD_DATA} active={BREADCUMD_DATA[1].id} />
       </Space>
+
       <PageLayout>
         <Header breadCumb={null} />
         {/* メインコンテンツ・Main Content */}

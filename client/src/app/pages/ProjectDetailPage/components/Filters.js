@@ -1,15 +1,17 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+// COMPONENT
+import SaveFilter from 'app/components/Modal/SaveFilter';
+// STYLE
 import { StyledFilter } from './Filter.style';
-
-import { Card, Row, Col, Button, Select, Form, Input, DatePicker } from 'antd';
+// ANTD
+import { Card, Row, Col, Select, Form, Input, DatePicker } from 'antd';
 
 const { RangePicker } = DatePicker;
 
 const Filters = ({ open }) => {
   const [form] = Form.useForm();
+
   if (!open) return <></>;
+
   return (
     <StyledFilter>
       <Card className="mb-6">
@@ -35,7 +37,7 @@ const Filters = ({ open }) => {
                   <Select.Option value="1">{'保存されたフィルタ'}</Select.Option>
                 </Select>
               </Col>
-              <Button size="small">{'保存'}</Button>
+              <SaveFilter />
             </Row>
           </Col>
         </Row>

@@ -74,7 +74,7 @@ const ContinuousContractPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Space align="baseline" size={8}>
+              <Space align="center" size={8}>
                 <Badge
                   style={{ backgroundColor: '#C72A32' }}
                   className="roboto-mono"
