@@ -143,7 +143,7 @@ const DataTable = ({
                 sticky={true}
                 key={Math.random()}
                 columns={columns}
-                rowKey={columns[0].dataIndex} /** must be unique, ex: ID or seq */
+                rowKey={'key'} /** must be unique, ex: ID or seq */
                 rowSelection={{ ...rowSelection }}
                 loading={loading}
                 dataSource={items}
@@ -186,7 +186,6 @@ const DataTable = ({
                   if (e.target.checked) {
                     setSelectedRowKeys(
                       items.map(item => {
-                        console.log('item key', item.key);
                         return item.key;
                       }),
                     );
@@ -199,6 +198,7 @@ const DataTable = ({
               <span
                 className="check-all-btn mr-8"
                 onClick={e => {
+                  console.log('DEBUG', selectedRowKeys.length, items.length);
                   if (selectedRowKeys.length !== items.length) {
                     setSelectedRowKeys(
                       items.map(item => {
