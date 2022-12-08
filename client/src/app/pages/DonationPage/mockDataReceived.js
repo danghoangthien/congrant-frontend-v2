@@ -294,11 +294,24 @@ const dataSource = [
 ];
 
 const columnMap = {
+  donation_number: {
+    title: '寄付No',
+    render: row => <>{'寄付No'}</>,
+    csvOutput: row => <>{'寄付No'}</>,
+    defaultVisible: false,
+  },
   date_of_receipt: {
     width: 140,
     title: '受領日',
     dataIndex: 'date_of_receipt',
     csvOutput: ({ date_of_receipt }) => date_of_receipt,
+    defaultVisible: true,
+  },
+  date_of_pament: {
+    title: '入金日',
+    render: row => <>{'入金日'}</>,
+    csvOutput: row => <>{'入金日'}</>,
+    defaultVisible: false,
   },
   supporter: {
     title: 'サポーター',
@@ -308,17 +321,20 @@ const columnMap = {
       </DrawerHandle>
     ),
     csvOutput: ({ supporter }) => supporter,
+    defaultVisible: true,
   },
   project: {
     title: 'プロジェクト',
     dataIndex: 'project',
     csvOutput: ({ project }) => project,
+    defaultVisible: true,
   },
   receipt_method: {
     title: '受領方法',
     dataIndex: 'receipt_method',
     render: receipt_method => RECEIPT_METHODS[receipt_method] || '',
     csvOutput: ({ receipt_method }) => RECEIPT_METHODS[receipt_method] || '',
+    defaultVisible: true,
   },
   donation_type: {
     title: '寄付タイプ',
@@ -335,6 +351,7 @@ const columnMap = {
       </Tag>
     ),
     csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
+    defaultVisible: true,
   },
   plan_and_amount: {
     title: 'プラン・金額',
@@ -358,6 +375,13 @@ const columnMap = {
       );
     },
     csvOutput: ({ plan, amount }) => `${PLANS[plan] || ''} ${amount}`,
+    defaultVisible: true,
+  },
+  remarks: {
+    title: '備考欄',
+    render: row => <>{'備考欄'}</>,
+    csvOutput: row => <>{'備考欄'}</>,
+    defaultVisible: false,
   },
   receipt_status: {
     title: '領収書',
@@ -372,19 +396,50 @@ const columnMap = {
     ),
     csvOutput: ({ receipt_status }) => RECEIPT_STATUSES[receipt_status] || '',
   },
+  cognitive_pathway: {
+    title: '認知経路',
+    render: row => <>{'認知経路'}</>,
+    csvOutput: row => <>{'認知経路'}</>,
+    defaultVisible: false,
+  },
+  donation_usage: {
+    title: '寄付の使用用途',
+    render: row => <>{'寄付の使用用途'}</>,
+    csvOutput: row => <>{'寄付の使用用途'}</>,
+    defaultVisible: false,
+  },
+  support_exp: {
+    title: '支援経験',
+    render: row => <>{'支援経験'}</>,
+    csvOutput: row => <>{'支援経験'}</>,
+    defaultVisible: false,
+  },
+  reason: {
+    title: '寄付理由',
+    render: row => <>{'寄付理由'}</>,
+    csvOutput: row => <>{'寄付理由'}</>,
+    defaultVisible: false,
+  },
 };
 
 const COLUMN_SETTING_LOCALSTORAGE = 'received_funding_column_setting';
 
 const getRenderColumns = () => {
-  let visibleColumns = Object.keys(columnMap);
+  //let visibleColumns = Object.keys(columnMap);
+  let _visibleColumns = Object.entries(columnMap).filter(([key, value]) => {
+    console.log('entry value', value);
+    return value.defaultVisible === true;
+  });
+  console.log('_visibleColumns', _visibleColumns);
+  let visibleColumns = Object.fromEntries(_visibleColumns);
+  let visibleColumnKeys = Object.keys(visibleColumns);
   const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
   if (columnsInSetting) {
-    visibleColumns = visibleColumns.filter(columnName => {
+    visibleColumnKeys = visibleColumnKeys.filter(columnName => {
       return columnsInSetting.includes(columnName);
     });
   }
-  const renderColumns = visibleColumns.map(columnName => {
+  const renderColumns = visibleColumnKeys.map(columnName => {
     return columnMap[columnName];
   });
   return renderColumns;

@@ -1,4 +1,4 @@
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import React, { useState } from 'react';
 // ANTD
 import { Row, Col, Menu, Dropdown } from 'antd';
@@ -98,7 +98,7 @@ const sub_menu = (
 const CustomSider = () => {
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
-
+  const { pathname } = useLocation();
   return (
     <StyledSidebar
       trigger={null}
@@ -139,6 +139,7 @@ const CustomSider = () => {
             mode="inline"
             items={items}
             selectable
+            selectedKeys={[pathname]}
             onClick={item => {
               if (item.key !== 'logo') {
                 history.push(item.key);

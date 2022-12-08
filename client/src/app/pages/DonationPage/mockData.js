@@ -10,24 +10,20 @@ import { DANGER_COLOR } from 'styles/StyleConstants';
 import { PLANS } from './consts';
 import ChangeAmount from './components/ChangeAmount';
 
-const menuItems = (
-  <Menu
-    items={[
-      {
-        key: '1',
-        label: <ChangeAmount />,
-      },
-      {
-        key: '2',
-        label: '非表示',
-      },
-      {
-        key: '3',
-        label: <span style={{ color: DANGER_COLOR }}>{'削除'}</span>,
-      },
-    ]}
-  />
-);
+const menuItems = selectedRowKeys => [
+  {
+    key: '1',
+    label: <ChangeAmount />,
+  },
+  {
+    key: '2',
+    label: '非表示',
+  },
+  {
+    key: '3',
+    label: <span style={{ color: DANGER_COLOR }}>{'削除'}</span>,
+  },
+];
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   application_date: `2022-07-30`,
@@ -85,7 +81,7 @@ const columnMap = {
     render: row => (
       <Space>
         <Button type="primary">{'入金消込'}</Button>
-        <Dropdown overlay={menuItems} placement="bottomRight">
+        <Dropdown overlay={<Menu items={menuItems()} />} placement="bottomRight">
           <Button
             className="more-menu-btn"
             icon={<span className="material-symbols-outlined">more_horiz</span>}
@@ -119,4 +115,11 @@ const pagination = {
   total_page: Math.ceil(Object.keys(dataSource).length / 10),
 };
 
-export { getRenderColumns, dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap };
+export {
+  getRenderColumns,
+  dataSource,
+  pagination,
+  COLUMN_SETTING_LOCALSTORAGE,
+  columnMap,
+  menuItems,
+};
