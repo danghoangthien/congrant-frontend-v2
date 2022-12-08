@@ -50,7 +50,11 @@ const Create = () => {
     return (
       <Space size={8} style={{ color: isCurrentTabCompleted && PRIMARY_COLOR }}>
         <StyledTag color={color} className={isCurrentTabCompleted && 'complete'}>
-          {isCurrentTabCompleted ? <span className="material-symbols-outlined">done</span> : current}
+          {isCurrentTabCompleted ? (
+            <span className="material-symbols-outlined">done</span>
+          ) : (
+            current
+          )}
         </StyledTag>
         {children}
       </Space>
