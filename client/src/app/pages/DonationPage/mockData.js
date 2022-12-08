@@ -26,6 +26,7 @@ const menuItems = selectedRowKeys => [
 ];
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
+  key: `${i}`,
   application_date: `2022-07-30`,
   supporter: `荒木 雄大 ${i}`,
   project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -79,7 +80,7 @@ const columnMap = {
     width: 150,
     title: 'アクション',
     render: row => (
-      <Space>
+      <Space onClick={e => e.stopPropagation()}>
         <Button type="primary">{'入金消込'}</Button>
         <Dropdown overlay={<Menu items={menuItems()} />} placement="bottomRight">
           <Button

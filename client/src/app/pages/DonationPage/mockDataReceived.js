@@ -17,6 +17,17 @@ import {
 
 const dataSource = [
   {
+    key: '0',
+    date_of_receipt: '2022-07-30',
+    supporter: '荒木 雄大',
+    project: 'NPO法人コングラントへのご支援をお願いします！',
+    receipt_method: '1',
+    donation_type: '1',
+    plan: '0',
+    amount: '3,000円',
+    receipt_status: 2,
+  },
+  {
     key: '1',
     date_of_receipt: '2022-07-30',
     supporter: '荒木 雄大',
@@ -73,7 +84,7 @@ const dataSource = [
   },
   {
     key: '6',
-    date_of_receipt: '2022-07-26',
+    date_of_receipt: '2018-07-22',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
     receipt_method: '1',
@@ -280,17 +291,6 @@ const dataSource = [
     amount: '3,000円',
     receipt_status: '1',
   },
-  {
-    key: '25',
-    date_of_receipt: '2021-07-11',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
 ];
 
 const columnMap = {
@@ -427,21 +427,22 @@ const COLUMN_SETTING_LOCALSTORAGE = 'received_funding_column_setting';
 const getRenderColumns = () => {
   //let visibleColumns = Object.keys(columnMap);
   let _visibleColumns = Object.entries(columnMap).filter(([key, value]) => {
-    console.log('entry value', value);
-    return value.defaultVisible === true;
+    //console.log('entry value', value);
+    return value?.defaultVisible !== false;
   });
   console.log('_visibleColumns', _visibleColumns);
   let visibleColumns = Object.fromEntries(_visibleColumns);
   let visibleColumnKeys = Object.keys(visibleColumns);
   const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
   if (columnsInSetting) {
-    visibleColumnKeys = visibleColumnKeys.filter(columnName => {
+    visibleColumnKeys = Object.keys(columnMap).filter(columnName => {
       return columnsInSetting.includes(columnName);
     });
   }
   const renderColumns = visibleColumnKeys.map(columnName => {
     return columnMap[columnName];
   });
+  console.log('getRenderColumns', renderColumns);
   return renderColumns;
 };
 
