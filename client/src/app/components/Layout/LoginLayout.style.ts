@@ -19,7 +19,6 @@ export const LoginPageLayout = styled.div`
   & .link-btn {
     padding: 0;
     margin: 0;
-    font-weight: 300;
 
     &:hover {
       text-decoration: underline;

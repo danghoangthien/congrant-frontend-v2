@@ -47,7 +47,7 @@ const DataTable = () => {
   const history = useHistory();
   return (
     <Table
-      className="common-table"
+      className="common-table clickable-table"
       dataSource={dataSource}
       columns={columns}
       pagination={false}

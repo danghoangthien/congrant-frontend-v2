@@ -36,7 +36,7 @@ const Naming = () => {
   const columnMap = {
     personal_id: {
       width: 120,
-      title: '個人ID',
+      title: '個人No.',
       dataIndex: 'personal_id',
       csvOutput: ({ personal_id }) => personal_id,
     },

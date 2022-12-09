@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 // ANTD
 import { Tabs, Card, Row, Col, Button, Dropdown, Menu } from 'antd';
 // STYLE

@@ -102,7 +102,7 @@ const Confirmation = () => {
                       <Col>
                         <Button
                           onClick={() => {
-                            dispatch.registerStep.setActive('3');
+                            dispatch.registerStep.setActive('2');
                             history.push(`/app/verification/organisation`);
                           }}
                         >
@@ -144,7 +144,7 @@ const Confirmation = () => {
                       <Col>
                         <Button
                           onClick={() => {
-                            dispatch.registerStep.setActive('2');
+                            dispatch.registerStep.setActive('3');
                             history.push(`/app/verification/organisation`);
                           }}
                         >

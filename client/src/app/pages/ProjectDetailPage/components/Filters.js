@@ -47,61 +47,61 @@ const Filters = ({ open }) => {
           <Col span={24}>
             <Form form={form} layout={'vertical'}>
               <Row gutter={24}>
-                <Col span={6} key={'a'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
                   <Form.Item name={`field-a`} label={`受領日`}>
                     <RangePicker placeholder={['開始日', '終了日']} />
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'b'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'b'}>
                   <Form.Item name={`field-b`} label={`プロジェクト`}>
                     <Select placeholder={'発行ステータス'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'c'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
                   <Form.Item name={`field-c`} label={`受領方法`}>
                     <Select placeholder={'発行日'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'d'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
                   <Form.Item name={`field-d`} label={`寄付タイプ`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'d'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
                   <Form.Item name={`field-d`} label={`プラン`}>
                     <Select placeholder={'選択してください'} onChange={() => {}}>
                       <Select.Option value="1">{'---'}</Select.Option>
                     </Select>
                   </Form.Item>
                 </Col>
-                <Col span={6} key={'e'}>
+                <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                   <Form.Item className="mb-0" name={`field-d`} label={`金額`}>
                     <Input.Group compact>
                       <Input
-                        style={{ width: '120px', textAlign: 'center' }}
+                        style={{ width: 'calc(50% - 15px)', textAlign: 'center' }}
                         placeholder="3,000円"
                       />
                       <Input
                         className="site-input-split"
                         style={{
-                          width: '47.5px',
+                          width: '30px',
                           borderLeft: 0,
                           borderRight: 0,
                           pointerEvents: 'none',
                         }}
-                        placeholder="->"
+                        placeholder="~"
                       />
                       <Input
                         className="site-input-right"
                         style={{
                           borderLeft: 0,
-                          width: '120px',
+                          width: 'calc(50% - 15px)',
                           textAlign: 'center',
                         }}
                         placeholder="6,000円"

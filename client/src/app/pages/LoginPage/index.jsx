@@ -20,7 +20,7 @@ const LoginPage = () => {
     }
   };
 
-  const activeKey = path === '/login' ? '1' : '2';
+  const activeKey = path === '/app/login' ? '1' : '2';
 
   return (
     <>

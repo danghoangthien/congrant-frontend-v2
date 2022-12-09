@@ -34,10 +34,7 @@ const BulkUpload = () => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <div className="page-title">
-                    <span className="material-symbols-outlined icon fill-icon">person</span>
-                    <span className="ml-2">{'一括アップロード（寄付決済）'}</span>
-                  </div>
+                  <div className="sub-page-title">{'一括アップロード（寄付決済）'}</div>
                 </Col>
               </Row>
             </Col>
@@ -45,21 +42,25 @@ const BulkUpload = () => {
             <Col />
           </Row>
         </div>
-        <Card className="px-1">
+
+        <Card bodyStyle={{ padding: '48px 32px' }}>
           <div className="item">
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
-                <span className="page-title">{'アップロードするファイル'}</span>
+                <div className="page-title">{'アップロードするファイル'}</div>
               </Col>
             </Row>
             <Row className="item mb-6">
-              <Button icon={<DownloadIcon />}>
+              <Button
+                className="icon-btn less-shadow-btn"
+                icon={<span class="material-symbols-outlined">download</span>}
+              >
                 {'サンプルファイル（寄付決済用）をダウンロード'}
               </Button>
             </Row>
-            <Row className="item mb-6">
+            <Row className="item mb-14">
               <SettingsInputContainer label={<SettingLabel label={'ファイルアップロード'} />}>
-                <DraggerUpload style="" />
+                <DraggerUpload style={{ width: '100%', maxWidth: 695 }} />
               </SettingsInputContainer>
             </Row>
             <Row className="mb-5">
@@ -83,7 +84,11 @@ const BulkUpload = () => {
               <SettingsInputContainer
                 label={<SettingLabel label={'レコードIDを記載した列の項目名'} required />}
               >
-                <SettingSelect size="large" placeholder={'選択してください'} />
+                <SettingSelect
+                  style={{ width: '100%', maxWidth: 210 }}
+                  size="large"
+                  placeholder={'選択してください'}
+                />
               </SettingsInputContainer>
               <p
                 style={{
@@ -107,8 +112,8 @@ const BulkUpload = () => {
             </Row>
             <Row className="mt-15">
               <Col sm={24} md={24} lg={24} type="flex" align="center">
-                <Button type="primary">
-                  <span style={{ fontWeight: '600' }}>{'アップロード'}</span>
+                <Button type="primary" style={{ fontWeight: 600 }} size="large">
+                  {'アップロード'}
                 </Button>
               </Col>
             </Row>

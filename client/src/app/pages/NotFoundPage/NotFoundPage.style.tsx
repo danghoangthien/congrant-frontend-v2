@@ -29,7 +29,6 @@ export const PageNotFoundLayout = styled.div`
 
   .notFound-div-1 {
     font-style: normal;
-    font-weight: 300;
     font-size: 46px;
     line-height: 63px;
     text-align: center;

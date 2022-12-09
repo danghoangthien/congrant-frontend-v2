@@ -1,4 +1,4 @@
-import { Row, Col, Input, Space, Radio, Tag, Checkbox } from 'antd';
+import { Row, Col, Input, Space, Tooltip, Tag, Checkbox } from 'antd';
 import InfoIcon from '@mui/icons-material/Info';
 import {
   SettingsInputContainer,
@@ -151,11 +151,15 @@ const AdvanceSetting = () => {
           <SettingsInputContainer>
             <Row className="mb-2">
               <Checkbox checked>{'プロジェクトを限定公開にする'}</Checkbox>
-              <InfoIcon style={{ width: '16px' }} />
+              <Tooltip title="プロジェクトを限定公開にする">
+                <InfoIcon style={{ width: '16px' }} />
+              </Tooltip>
             </Row>
             <Row className="mb-2">
               <Checkbox checked>{'プロジェクトに閲覧パスワードを設定する'}</Checkbox>
-              <InfoIcon style={{ width: '16px' }} />
+              <Tooltip title="プロジェクトに閲覧パスワードを設定する">
+                <InfoIcon style={{ width: '16px' }} />
+              </Tooltip>
             </Row>
             <Row>
               <Space size={16}>

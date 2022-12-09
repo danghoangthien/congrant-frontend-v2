@@ -29,6 +29,7 @@ const Title = ({ mode, setMode }) => {
 
 const ListModeContent = ({ data, mode, setMode }) => {
   console.log('ViewModeContent', true);
+
   const columnMap = {
     date_of_receipt: {
       title: '受領日',
@@ -73,6 +74,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
   return (
     <>
       <Table
+        className="clickable-table"
         dataSource={dataSource}
         columns={columns}
         pagination={false}
@@ -90,6 +92,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
 
 const ListModeContent2 = ({ data, mode, setMode }) => {
   console.log('ViewModeContent', true);
+
   const columnMap = {
     date_of_receipt: {
       title: '申込日',
@@ -134,6 +137,7 @@ const ListModeContent2 = ({ data, mode, setMode }) => {
   return (
     <>
       <Table
+        className="clickable-table"
         dataSource={dataSource}
         columns={columns}
         pagination={false}

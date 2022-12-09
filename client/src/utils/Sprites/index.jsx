@@ -1,4 +1,4 @@
-import { Col, Space, Image, Descriptions } from 'antd';
+import { Col, Space, Image, Descriptions, Tooltip } from 'antd';
 import {
   StyledRequired,
   StyledLabel,
@@ -25,9 +25,20 @@ import {
   StyledFormRadioGroupHorizontal,
 } from 'styles/FormElement.style';
 
+import { TEXT_COLOR } from 'styles/StyleConstants';
+
 import { StyledSegmented } from 'styles/Element.style';
 
-import InfoIcon from '@mui/icons-material/Info';
+// import InfoIcon from '@mui/icons-material/Info';
+
+const InfoIcon = () => (
+  <span
+    class="material-symbols-outlined fill-icon"
+    style={{ fontSize: 13, display: 'flex', color: TEXT_COLOR }}
+  >
+    info
+  </span>
+);
 
 const SettingsInputContainer = ({ children, label }) => {
   return (
@@ -58,12 +69,18 @@ const SettingLabel = ({ label, required, info }) => (
   </StyledLabel>
 );
 
-const SettingInfoLabel = ({ label, required }) => (
+const SettingInfoLabel = ({ label, required, info = null }) => (
   <StyledSettingLabel>
     <SettingLabel
       required={required || false}
       label={label}
-      info={<InfoIcon className="info-icon" />}
+      info={
+        <Tooltip title={info || label}>
+          <div>
+            <InfoIcon />
+          </div>
+        </Tooltip>
+      }
     />
   </StyledSettingLabel>
 );

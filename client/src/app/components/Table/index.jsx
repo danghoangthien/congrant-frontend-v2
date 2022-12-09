@@ -181,7 +181,7 @@ const DataTable = ({
             <Row align="middle" className="selected-status-ops py-3 px-6">
               <Checkbox
                 style={{ fontSize: '16px', fontWeight: '600' }}
-                checked={selectedRowKeys.length === items.length}
+                checked={selectedRowKeys.length}
                 onChange={e => {
                   if (e.target.checked) {
                     setSelectedRowKeys(
@@ -210,7 +210,7 @@ const DataTable = ({
                   }
                 }}
               >
-                {hasSelected && selectedRowKeys.length === items.length ? `クリア` : '全件選択'}
+                {hasSelected && selectedRowKeys.length === items.length ? '' : '全件選択'}
               </span>
               {contextButtons.map(Component => {
                 return <Component selectedRowKeys={selectedRowKeys} />;

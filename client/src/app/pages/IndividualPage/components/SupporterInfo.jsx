@@ -49,7 +49,7 @@ const SupporterInfo = ({ closeDrawer }) => {
           {/* 属性・Supporter Attributes */}
           <Row className="mb-3">
             <DynamicTags
-              tagList={['理事', 'ボランティア']}
+              // tagList={['理事', 'ボランティア']}
               availableTagList={[
                 '理事',
                 'ボランティア',

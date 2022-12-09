@@ -4,8 +4,8 @@ const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = [
   {
-    congrant_item: '個人ID',
-    file_item: '個人ID',
+    congrant_item: '個人No.',
+    file_item: '個人No.',
     registration_example: '123456',
   },
   {
@@ -83,7 +83,6 @@ const columnMap = {
     render: file_item => (
       <SettingSelect
         {...{
-          size: 'large',
           placeholder: '選択してください',
           ...(file_item ? { value: file_item } : {}),
         }}
