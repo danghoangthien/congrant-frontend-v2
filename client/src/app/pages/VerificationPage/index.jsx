@@ -112,7 +112,9 @@ const RegisterPage = () => {
             </Row>
           </Card>
           <Row justify="end" style={{ width: '100%' }}>
-            <Link to={`/`}>{'まずは管理画面を試したい（審査をスキップ）'}</Link>
+            <Link style={{ fontSize: 14 }} to={`/`}>
+              {'まずは管理画面を試したい（審査をスキップ）'}
+            </Link>
           </Row>
         </div>
       </LoginPageLayout>

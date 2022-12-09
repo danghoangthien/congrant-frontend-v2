@@ -178,7 +178,7 @@ const ViewModeContent = ({ data, mode, setMode }) => {
 const EditModeContent = ({ data, mode, setMode }) => (
   <>
     <DescriptionContainer mode={mode} setMode={setMode}>
-      <Descriptions.Item label={<BoldLabel label="個人ID" />}>
+      <Descriptions.Item label={<BoldLabel label="個人No." />}>
         <CopiableText>{'123456'}</CopiableText>
       </Descriptions.Item>
       <Descriptions.Item label={<BoldLabel label="氏名" />}>

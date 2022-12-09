@@ -21,14 +21,12 @@ export const StyledSidebar = styled(Sider)`
 
     .user-name {
       font-size: 12px;
-      font-weight: 300;
       margin-bottom: 6px;
       line-height: 1;
     }
 
     .representative-name {
       font-size: 14px;
-      font-weight: 300;
     }
   }
 
@@ -94,7 +92,6 @@ export const StyledSidebar = styled(Sider)`
       word-break: break-all;
       white-space: pre-wrap;
       line-height: 1.83;
-      font-weight: 300;
       width: 100%;
       margin: 0;
       padding: 8px 24px !important;

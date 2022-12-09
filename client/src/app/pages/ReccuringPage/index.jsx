@@ -97,6 +97,7 @@ const ContinuousContractPage = () => {
         {/* ページコンテンツ・Page Content */}
         <div className="item">
           <Table
+            className="clickable-table"
             tableLayout="fixed"
             TableName="継続契約一覧"
             model="continuousContractList"

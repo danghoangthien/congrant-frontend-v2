@@ -27,7 +27,7 @@ const PublicInfo = () => {
           </Col>
           {/*  団体ホームページ */}
           <Col span={24} className="mb-6">
-            <SettingsInputContainer label={<SettingLabel label={'団体ホームページ'} />}>
+            <SettingsInputContainer label={<SettingLabel label={'団体ホームページ'} required />}>
               <SettingInput
                 size="large"
                 style={{ width: '100%', maxWidth: 600 }}
@@ -68,7 +68,9 @@ const PublicInfo = () => {
           {/*  問い合わせフォーム（もしくはメールアドレス） */}
           <Col span={24} className="mb-6">
             <SettingsInputContainer
-              label={<SettingLabel label={'問い合わせフォーム（もしくはメールアドレス）'} />}
+              label={
+                <SettingLabel label={'問い合わせフォーム（もしくはメールアドレス）'} required />
+              }
             >
               <SettingInput
                 size="large"

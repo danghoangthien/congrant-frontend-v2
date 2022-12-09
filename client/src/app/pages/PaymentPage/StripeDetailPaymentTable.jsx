@@ -62,7 +62,7 @@ const columns = Object.keys(columnMap).map(columnName => {
 
 const DataTable = () => (
   <Table
-    className="common-table"
+    className="common-table clickable-table"
     tableLayout="fixed"
     dataSource={dataSource}
     columns={columns}

@@ -14,7 +14,7 @@ export const DraggableInputItem = ({ count, InputComponent }) => (
     /> */}
     <span
       className="material-symbols-outlined fill-icon"
-      style={{ color: DANGER_COLOR, fontSize: '18px', display: 'flex' }}
+      style={{ color: DANGER_COLOR, fontSize: '20px', display: 'flex' }}
     >
       delete
     </span>

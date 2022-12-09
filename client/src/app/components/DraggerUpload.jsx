@@ -2,6 +2,7 @@ import React from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 const { Dragger } = Upload;
+
 const props = {
   name: 'file',
   multiple: true,
@@ -21,8 +22,9 @@ const props = {
     console.log('Dropped files', e.dataTransfer.files);
   },
 };
-const App = () => (
-  <Dragger {...props}>
+
+const App = ({ ...rest }) => (
+  <Dragger {...props} {...rest}>
     <p className="ant-upload-drag-icon">
       <InboxOutlined />
     </p>

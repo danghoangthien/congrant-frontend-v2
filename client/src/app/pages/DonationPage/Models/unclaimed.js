@@ -28,7 +28,6 @@ const unclaimedFundingList = {
       // });
 
       const { page } = queries;
-
       const currentPage = page || 1;
       const startSlice = (currentPage - 1) * pagination.limit;
       const endslice = startSlice + pagination.limit;

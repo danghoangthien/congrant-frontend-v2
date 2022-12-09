@@ -37,9 +37,7 @@ const CoursePage = () => {
           <Col>
             <Row type="flex" align="middle">
               <Col className="mr-6">
-                <span className="page-title">
-                  <span className="sub-page-title">{'プロジェクトトップ'}</span>
-                </span>
+                <div className="sub-page-title">{'プロジェクトトップ'}</div>
               </Col>
               <Col className="mr-2">
                 <Breadcumd
