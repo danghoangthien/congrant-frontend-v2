@@ -18,6 +18,7 @@ import {
 import Table from 'app/components/Table';
 import Swap from './components/Swap';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
+import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
 
 // Styles
 // import { FundingPageLayout } from './FundingPage.style';
@@ -135,7 +136,13 @@ const FundingPage = () => {
             model="unclaimedFundingList"
             metaData={metaData}
             contextButtons={[MailButton]}
-            Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />}
+            Detail={
+              <Detail
+                activeKey={DETAIL_KEY_MAP.DONATION}
+                data={{ donation_id: 1 }}
+                viewMode={DETAIL_MODE}
+              />
+            } // 詳細ページ
             TableName={'未受領の寄付一覧'}
             showDownLoad={false}
             ExtraTitle={<Swap />}

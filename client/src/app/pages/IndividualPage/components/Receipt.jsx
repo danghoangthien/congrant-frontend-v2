@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Badge, Row, Col, Button, Table, Dropdown, Menu, Space } from 'antd';
+import { useMountEffect } from 'hook/useMountEffect';
 import { StyledBadgeDot } from 'styles/global-styles';
 import { DANGER_COLOR } from 'styles/StyleConstants';
 import ReceiptDetail from './ReceiptDetail';
@@ -292,11 +293,16 @@ const ListModeContent = ({ data, mode, setMode }) => {
   );
 };
 
-const Receipt = ({ data }) => {
-  console.log('Donation');
-  const [mode, setMode] = useState(LIST_MODE);
-  console.log('Donation mode', mode);
-
+const Receipt = ({ data, viewMode }) => {
+  console.log('Receipt viewMode', viewMode);
+  const [mode, setMode] = useState(null);
+  useMountEffect(() => {
+    if (data?.receipt_id && viewMode === DETAIL_MODE) {
+      setMode(viewMode);
+    } else {
+      setMode(LIST_MODE);
+    }
+  });
   return (
     <>
       {mode === LIST_MODE && (

@@ -8,6 +8,7 @@ import Donation from './Donation';
 import ContinuousContract from './ContinuousContract';
 import Receipt from './Receipt';
 import { randomOutput } from 'utils/helper';
+import { LIST_MODE } from '../consts';
 
 export const DETAIL_KEY_MAP = {
   BASIC_INFO: '1',
@@ -17,7 +18,7 @@ export const DETAIL_KEY_MAP = {
   RECEIPT: '5',
 };
 
-const Detail = ({ data, closeDrawer, activeKey }) => {
+const Detail = ({ data, closeDrawer, activeKey, viewMode = LIST_MODE }) => {
   console.log('Detail data', data);
   const { supporterType = randomOutput([1, 2]) } = data;
   return (
@@ -31,13 +32,13 @@ const Detail = ({ data, closeDrawer, activeKey }) => {
           <Memo />
         </Tabs.TabPane>
         <Tabs.TabPane tab="寄付決済" key="3">
-          <Donation />
+          <Donation viewMode={viewMode} data={data} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="継続契約" key="4">
-          <ContinuousContract />
+          <ContinuousContract viewMode={viewMode} data={data} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="領収書" key="5">
-          <Receipt />
+          <Receipt viewMode={viewMode} data={data} />
         </Tabs.TabPane>
       </Tabs>
     </StyledDetail>

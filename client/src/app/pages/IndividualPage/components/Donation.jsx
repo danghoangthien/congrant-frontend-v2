@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Row, Col, Button, Table } from 'antd';
+import { useMountEffect } from 'hook/useMountEffect';
 import DonationDetail from './DonationDetail';
 import DonationEdit from './DonationEdit';
 import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
 import { DonationStyle } from './Donation.style';
-import AddIcon from '@mui/icons-material/Add';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 import AddDonation from 'app/pages/DonationPage/components/AddDonation';
@@ -149,12 +149,19 @@ const ListModeContent2 = ({ data, mode, setMode }) => {
   );
 };
 
-const Donation = ({ data }) => {
-  console.log('Donation');
-  const [mode, setMode] = useState(LIST_MODE);
-  console.log('Donation mode', mode);
+/// data : { supporter_id, donation_id }
+const Donation = ({ data, viewMode }) => {
+  const [mode, setMode] = useState(null);
+  useMountEffect(() => {
+    if (data?.donation_id && viewMode === DETAIL_MODE) {
+      setMode(viewMode);
+    } else {
+      setMode(LIST_MODE);
+    }
+  });
   return (
     <>
+      {/** get donation list by supplied supporter_id */}
       {mode === LIST_MODE && (
         <>
           <DonationStyle>
@@ -184,6 +191,7 @@ const Donation = ({ data }) => {
           </DonationStyle>
         </>
       )}
+      {/** get donation detail by supplied donation_id */}
       {mode === DETAIL_MODE && <DonationDetail {...{ data, mode, setMode }} />}
       {mode === EDIT_MODE && <DonationEdit {...{ data, mode, setMode }} />}
     </>

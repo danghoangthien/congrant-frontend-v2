@@ -88,6 +88,7 @@ export const menuItems = selectedRowKeys => [
 
 const dataSource = Array.from(Array(10).keys()).map(i => ({
   key: `${i}`,
+  receipt_id: `${i + 1}`,
   receipt_no: `${'20220730' + i}`,
   receipt_status: randomOutput(['0', '1', '2']),
   issuing_date: randomOutput(['2023-04-01', '2023-11-05', '2023-03-05']),

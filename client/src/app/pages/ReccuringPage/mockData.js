@@ -63,6 +63,7 @@ const menu = (
 const dataSource = [
   {
     key: '1',
+    recurring_id: '1',
     status: '1',
     supporter: '山田 花子',
     donation_type: '1',
@@ -75,6 +76,7 @@ const dataSource = [
   },
   {
     key: '2',
+    recurring_id: '2',
     status: '2',
     supporter: '山田 花子',
     donation_type: '2',
@@ -87,6 +89,7 @@ const dataSource = [
   },
   {
     key: '3',
+    recurring_id: '3',
     status: '3',
     supporter: '山田 花子',
     donation_type: '1',

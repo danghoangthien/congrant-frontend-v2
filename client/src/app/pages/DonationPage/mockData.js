@@ -27,6 +27,7 @@ const menuItems = selectedRowKeys => [
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
+  donation_id: `${i + 1}`,
   application_date: `2022-07-30`,
   supporter: `荒木 雄大 ${i}`,
   project: 'NPO法人コングラントへのご支援をお願いします！',

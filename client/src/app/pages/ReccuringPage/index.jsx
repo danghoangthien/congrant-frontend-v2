@@ -4,6 +4,7 @@ import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
+import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
 import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
@@ -101,7 +102,13 @@ const ContinuousContractPage = () => {
             TableName="継続契約一覧"
             model="continuousContractList"
             metaData={metaData}
-            Detail={<Detail activeKey={DETAIL_KEY_MAP.RECURRING} />}
+            Detail={
+              <Detail
+                activeKey={DETAIL_KEY_MAP.RECURRING}
+                data={{ recurring_id: 1 }}
+                viewMode={DETAIL_MODE}
+              />
+            }
             contextButtons={[MailButton]}
             contextDropdownItems={contextDropdownItems}
           />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Badge, Row, Col, Table, Tag } from 'antd';
+import { useMountEffect } from 'hook/useMountEffect';
 import { StyledBadgeDot } from 'styles/global-styles';
 import ContinuousContractDetail from './ContinuousContractDetail';
 import { LIST_MODE, DETAIL_MODE } from '../consts';
@@ -103,10 +104,15 @@ const ListModeContent = ({ data, mode, setMode }) => {
   );
 };
 
-const ContinuousContract = ({ data }) => {
-  console.log('ContinuousContract');
-  const [mode, setMode] = useState(LIST_MODE);
-  console.log('ContinuousContract mode', mode);
+const ContinuousContract = ({ data, viewMode }) => {
+  const [mode, setMode] = useState(null);
+  useMountEffect(() => {
+    if (data?.recurring_id && viewMode === DETAIL_MODE) {
+      setMode(viewMode);
+    } else {
+      setMode(LIST_MODE);
+    }
+  });
   return (
     <>
       {mode == LIST_MODE && (
