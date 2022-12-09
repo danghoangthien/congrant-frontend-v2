@@ -6,6 +6,7 @@ import styled from 'styled-components/macro';
 const StyledList = styled(List)`
   .ant-list-item {
     padding: 4px 0;
+    cursor: move;
   }
 `;
 

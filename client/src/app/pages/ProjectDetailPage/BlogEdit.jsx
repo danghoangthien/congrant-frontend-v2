@@ -65,10 +65,6 @@ const Edit = ({ activeKey }) => {
               >
                 <Select.Option value={1}>{'下書き'}</Select.Option>
               </Select>
-              <Button type="primary" className="icon-btn">
-                <SaveIcon style={{ fontSize: '14px' }} className="mr-2" />
-                <span>{'保存'}</span>
-              </Button>
               <BlogEditConfirm />
             </Space>
           </Col>

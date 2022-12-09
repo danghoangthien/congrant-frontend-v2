@@ -89,6 +89,7 @@ const ListModeContent = ({ data, mode, setMode }) => {
 
   return (
     <Table
+      className="clickable-table"
       dataSource={dataSource}
       columns={columns}
       pagination={false}

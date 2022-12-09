@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     // line-height: 1.5;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400;
     // color: rgba(0,0,0,0.85);
   }
 
@@ -153,7 +153,6 @@ export const GlobalStyle = createGlobalStyle`
 
   // BUTTON
   .ant-btn {
-    font-weight: 300;
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
   }
 
@@ -312,7 +311,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .clickable-table {
-    .ant-table-body .ant-table-row {
+    .ant-table-row {
       cursor: pointer;
     }
   }
@@ -342,7 +341,6 @@ export const GlobalStyle = createGlobalStyle`
 
   .site-input-split {
     font-size: 14px;
-    font-weight: 300;
   }
 
   .num-range-input {
@@ -373,14 +371,9 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
   }
 
-  .ant-select-selection-item {
-    font-weight: 300;
-  }
-
   // LEFT MENU
   & .sub-user-menu-link {
     font-size: 14px;
-    font-weight: 300;
     display: flex;
     align-items: center;
 
@@ -398,6 +391,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .info-icon {
     color: ${TEXT_COLOR};
+    width: 13px;
   }
 
   // ACTION MENU
@@ -410,8 +404,6 @@ export const GlobalStyle = createGlobalStyle`
 
   .ant-dropdown-menu-item,
   .ant-dropdown-menu-submenu-title {
-    font-weight: 300;
-
     &.danger {
       background: ${DANGER_COLOR};
       color: #fff;
@@ -419,11 +411,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // PAGINATION
-  .ant-pagination-item,
-  .ant-pagination-total-text {
-    font-weight: 300;
-  }
-
   .ant-pagination-total-text {
     margin-right: 16px;
   }
@@ -469,7 +456,6 @@ export const GlobalStyle = createGlobalStyle`
 
     .icon {
       font-size: 30px;
-      font-weight: 300;
     }
   }
 
@@ -551,7 +537,6 @@ export const GlobalStyle = createGlobalStyle`
   // UPLOAD TITLE
   .upload-picture-title {
     font-style: normal;
-    font-weight: 300;
     font-size: 14px;
     line-height: 22px;
     /* identical to box height, or 157% */

@@ -87,7 +87,6 @@ export const StyledUploadPicture = styled.div`
     }
     .upload-picture-title {
       font-style: normal;
-      font-weight: 300;
       font-size: 14px;
       line-height: 22px;
       /* identical to box height, or 157% */
@@ -137,11 +136,10 @@ export const StyledSettingLabel = styled.div`
 `;
 
 export const StyledInput = styled(Input)`
-  font-weight: 300;
+  // font-weight: 300;
 `;
 
 export const StyledInputPassword = styled(Input.Password)`
-  font-weight: 300;
   padding: 5px 11px;
 `;
 
@@ -150,7 +148,7 @@ export const StyledTextarea = styled(TextArea)`
 `;
 
 export const StyledTextareaMedium = styled(TextArea)`
-  font-weight: 300;
+  // font-weight: 300;
 `;
 
 export const StyledSelect = styled(Select)`
@@ -158,7 +156,6 @@ export const StyledSelect = styled(Select)`
 `;
 
 export const StyledSubtitle = styled.div`
-  font-weight: 300;
   font-size: 14px;
   color: ${TEXT_GRAY_COLOR};
 `;
@@ -177,5 +174,4 @@ export const StyledInputWrapper = styled(Space)`
 
 export const StyledHelper = styled.div`
   color: ${TEXT_GRAY_COLOR};
-  font-weight: 300;
 `;

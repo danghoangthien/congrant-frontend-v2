@@ -91,7 +91,6 @@ export const StyledUploadPicture = styled.div`
     }
     .upload-picture-title {
       font-style: normal;
-      font-weight: 300;
       font-size: 14px;
       line-height: 22px;
       /* identical to box height, or 157% */
@@ -141,15 +140,12 @@ export const StyledSettingLabel = styled.div`
 `;
 
 export const StyledInput = styled(Input)`
-  font-weight: 300;
-
   &.required {
     background: ${REQUIRED_COLOR};
   }
 `;
 
 export const StyledInputPassword = styled(Input.Password)`
-  font-weight: 300;
   padding: 5px 11px;
 
   &.required {
@@ -166,8 +162,6 @@ export const StyledTextarea = styled(TextArea)`
 `;
 
 export const StyledTextareaMedium = styled(TextArea)`
-  font-weight: 300;
-
   &.required {
     background: ${REQUIRED_COLOR};
   }
@@ -184,7 +178,6 @@ export const StyledSelect = styled(Select)`
 `;
 
 export const StyledSubtitle = styled.div`
-  font-weight: 300;
   font-size: 14px;
   color: ${TEXT_GRAY_COLOR};
 `;
@@ -203,7 +196,6 @@ export const StyledInputWrapper = styled(Space)`
 
 export const StyledHelper = styled.div`
   color: ${TEXT_GRAY_COLOR};
-  font-weight: 300;
 `;
 
 // 申し込みフォーム用・Payment Page
@@ -391,8 +383,6 @@ export const StyledFormRadioButtonGroup = styled(Radio.Group)`
 `;
 
 export const StyledFormInputNumber = styled(InputNumber)`
-  font-weight: 300;
-
   &.required {
     background: ${REQUIRED_COLOR};
   }

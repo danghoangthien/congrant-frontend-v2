@@ -24,10 +24,10 @@ const DetailGrid = () => {
         </Col>
         {/* LOOP PART END */}
       </Row>
-      {/* 個人ID */}
+      {/* 個人No. */}
       <Row className="mb-3">
         <Col sm={4} md={4} lg={4}>
-          <span className="bold">{'個人ID'}</span>
+          <span className="bold">{'個人No.'}</span>
         </Col>
         <Col sm={5} md={5} lg={5}>
           <span className="bold">{'123974'}</span>

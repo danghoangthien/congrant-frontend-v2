@@ -52,7 +52,7 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
         identityLabel="領収書No."
       />
       <DescriptionContainer mode={mode} setMode={setMode}>
-        {/* 領収書No */}
+        {/* 領収書No. */}
         <Descriptions.Item label={<BoldLabel label="領収書No." />}>
           <CopiableText>{'2022-123456'}</CopiableText>
         </Descriptions.Item>

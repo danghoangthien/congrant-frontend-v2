@@ -101,12 +101,8 @@ const Stripe = () => {
               </Button>
             </Col>
           </Row>
-          <Row className="px-6 pb-6" justify="space-between" gutter={16}>
-            <Col
-              style={{
-                width: '25%',
-              }}
-            >
+          <Row className="px-6 pb-2" justify="space-between" gutter={16}>
+            <Col className="mb-4" md={{ span: 12 }} lg={{ span: 6 }}>
               <SummaryInfo className="pa-2" align="center" direction="vertical">
                 <SummaryLabel style={{ color: TEXT_GRAY_COLOR, fontWeight: 600 }}>
                   {'件数'}
@@ -114,11 +110,7 @@ const Stripe = () => {
                 <SummaryValue>{'1,234件'}</SummaryValue>
               </SummaryInfo>
             </Col>
-            <Col
-              style={{
-                width: '25%',
-              }}
-            >
+            <Col className="mb-4" md={{ span: 12 }} lg={{ span: 6 }}>
               <SummaryInfo className="pa-2" align="center" direction="vertical">
                 <SummaryLabel style={{ color: TEXT_GRAY_COLOR, fontWeight: 600 }}>
                   {'①決済金額合計'}
@@ -126,11 +118,7 @@ const Stripe = () => {
                 <SummaryValue>{'2,000,000円'}</SummaryValue>
               </SummaryInfo>
             </Col>
-            <Col
-              style={{
-                width: '25%',
-              }}
-            >
+            <Col className="mb-4" md={{ span: 12 }} lg={{ span: 6 }}>
               <SummaryInfo className="pa-2" align="center" direction="vertical">
                 <SummaryLabel style={{ color: TEXT_GRAY_COLOR, fontWeight: 600 }}>
                   {'②決済手数料+入金事務手数料'}
@@ -138,11 +126,7 @@ const Stripe = () => {
                 <SummaryValue>{'68,000円 + 440円'}</SummaryValue>
               </SummaryInfo>
             </Col>
-            <Col
-              style={{
-                width: '25%',
-              }}
-            >
+            <Col className="mb-4" md={{ span: 12 }} lg={{ span: 6 }}>
               <SummaryInfo className="pa-2" align="center" direction="vertical">
                 <SummaryLabel style={{ color: TEXT_GRAY_COLOR, fontWeight: 600 }}>
                   {'入金金額（①-②）'}

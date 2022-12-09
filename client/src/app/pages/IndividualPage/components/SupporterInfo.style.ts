@@ -7,7 +7,6 @@ export const SupporterInfoStyle = styled.div`
 
     .supporter-detail-number {
       font-size: 12px;
-      font-weight: 300;
     }
     .supporter-detail-name {
       font-size: 16px;

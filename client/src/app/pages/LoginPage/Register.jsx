@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Row, Col, Input, Space, Checkbox, Button } from 'antd';
 
@@ -8,6 +9,8 @@ import {
 } from 'app/pages/CorporationSettingPage/components/Sprites';
 
 const Register = () => {
+  const history = useHistory();
+
   const renderPageTitle = () => {
     return (
       <>
@@ -65,7 +68,14 @@ const Register = () => {
           </Col>
         </Row>
 
-        <Button type="primary" size="large" style={{ width: '100%' }} onClick={() => {}}>
+        <Button
+          type="primary"
+          size="large"
+          style={{ width: '100%' }}
+          onClick={() => {
+            history.push('/app/register/verify_email');
+          }}
+        >
           {'お試し登録'}
         </Button>
       </div>

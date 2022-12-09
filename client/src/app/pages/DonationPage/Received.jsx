@@ -144,6 +144,7 @@ const FundingPage = () => {
         {/* メインコンテンツ・Main Content */}
         <div className="item">
           <Table
+            className="clickable-table"
             tableLayout="fixed"
             model="receivedFundingList"
             metaData={metaData} // テーブル中身

@@ -99,7 +99,7 @@ const dataSource = Array.from(Array(10).keys()).map(i => ({
 const columnMap = {
   receipt_no: {
     width: 120,
-    title: '領収書No',
+    title: '領収書No.',
     dataIndex: 'receipt_no',
     csvOutput: ({ receipt_no }) => receipt_no,
   },

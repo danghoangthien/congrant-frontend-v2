@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Select, Tag, Space } from 'antd';
+import { Select, Tag, Space, Tooltip } from 'antd';
 import { DynamicTagsStyle } from './DynamicTags.style';
 
 const DynamicTags = ({ tagList = [], availableTagList = [], onSuccess, addMoreLabel }) => {
   const [open, setOpen] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [tags, setTags] = useState(tagList);
-  const [inputVisible, setInputVisible] = useState(false);
+  const [inputVisible, setInputVisible] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [editInputIndex, setEditInputIndex] = useState(-1);
   const [editInputValue, setEditInputValue] = useState('');
@@ -111,20 +111,33 @@ const DynamicTags = ({ tagList = [], availableTagList = [], onSuccess, addMoreLa
         disabled={disabled}
         onChange={setTags}
         style={{ width: '100%' }}
+        clearIcon={<>AA</>}
         // showSearch={false}
         allowClear={false}
         options={availableTagList.map(item => ({
           value: item,
-          label: item,
+          label: (
+            <Tooltip title="属性編集">
+              <span
+                onClick={() => {
+                  setDisabled(false);
+                  setOpen(true);
+                }}
+              >
+                {item}
+              </span>
+            </Tooltip>
+          ),
         }))}
         onDropdownVisibleChange={() => {
           setOpen(open ? !open : open);
           setDisabled(true);
+          setInputVisible(!inputVisible);
         }}
         // onBlur={() => setInputVisible(false)}
       />
 
-      {!open && (
+      {tags.length === 0 && !open && (
         <Tag
           className="site-tag-plus"
           style={{
@@ -135,6 +148,7 @@ const DynamicTags = ({ tagList = [], availableTagList = [], onSuccess, addMoreLa
           onClick={() => {
             setDisabled(false);
             setOpen(true);
+            setInputVisible(false);
           }}
         >
           <Space size={3}>

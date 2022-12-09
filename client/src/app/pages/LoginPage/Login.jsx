@@ -31,24 +31,20 @@ const Login = () => {
           </Col>
         </Row>
 
-        <Space
-          className="mb-10"
-          direction="vertical"
-          align="center"
-          size={24}
-          style={{ display: 'flex' }}
-        >
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} />}>
-            <Input size="large" placeholder="tanaka@congrant.com" style={{ width: '400px' }} />
+            <Input size="large" placeholder="tanaka@congrant.com" style={{ width: '100%' }} />
           </SettingsInputContainer>
+        </Row>
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'パスワード'} />}>
             <Input.Password
               size="large"
               placeholder="＊＊＊＊＊＊＊＊＊＊"
-              style={{ width: '400px' }}
+              style={{ width: '100%' }}
             />
           </SettingsInputContainer>
-        </Space>
+        </Row>
 
         <Row className="mb-8">
           <Button

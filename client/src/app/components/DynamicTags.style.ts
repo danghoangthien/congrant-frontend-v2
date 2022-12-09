@@ -3,8 +3,14 @@ import { TEXT_COLOR } from 'styles/StyleConstants';
 
 export const DynamicTagsStyle = styled.div`
   width: 100%;
+  position: relative;
 
-  & .ant-select-selector {
+  .ant-select-selection-overflow,
+  .ant-select-disabled.ant-select-multiple .ant-select-selection-item {
+    cursor: pointer;
+  }
+
+  & .ant-select-disabled .ant-select-selector {
     padding: 0 !important;
     border: none !important;
     background: none !important;
@@ -13,13 +19,14 @@ export const DynamicTagsStyle = styled.div`
 
   & .ant-select {
     // padding-right: 100px;
+    clear: both;
   }
 
   & .site-tag-plus {
-    margin-top: 8px;
-    // position: absolute;
-    // right: 0;
-    // top: 4px;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   & .ant-select-multiple .ant-select-selection-item {
