@@ -14,36 +14,44 @@ import {
 } from './consts';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
-export const menuItems = selectedRowKeys => [
-  {
-    key: '1',
-    label: (
-      <Space onClick={() => {}}>
-        <span
-          className="material-symbols-outlined fill-icon"
-          style={{ fontSize: '16px', verticalAlign: 'middle' }}
-        >
-          send
-        </span>
-        <span className="ml-2">{'再決済フォームを送る'}</span>
-      </Space>
-    ),
-  },
-  {
-    key: '2',
-    label: (
-      <Space onClick={() => {}}>
-        <span
-          className="material-symbols-outlined fill-icon"
-          style={{ fontSize: '16px', verticalAlign: 'middle' }}
-        >
-          send
-        </span>
-        <span className="ml-2">{'解約フォームを送る'}</span>
-      </Space>
-    ),
-  },
-];
+export const menuItems = status => {
+  return [
+    {
+      key: '1',
+      label: (
+        <Space onClick={() => {}}>
+          <span
+            className="material-symbols-outlined fill-icon"
+            style={{ fontSize: '16px', verticalAlign: 'middle' }}
+          >
+            send
+          </span>
+          <span className="ml-2">
+            {status}
+            {'フォームを送る'}
+          </span>
+        </Space>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <Space onClick={() => {}}>
+          <span
+            className="material-symbols-outlined fill-icon"
+            style={{ fontSize: '16px', verticalAlign: 'middle' }}
+          >
+            send
+          </span>
+          <span className="ml-2">
+            {status}
+            {'フォームのURLをコピー'}
+          </span>
+        </Space>
+      ),
+    },
+  ];
+};
 
 // レコードアクションメニュー・Record Action Menu
 const menu = (
@@ -227,7 +235,10 @@ const columnMap = {
     title: 'アクション',
     render: row => (
       <Space>
-        <Dropdown overlay={menu} placement="bottomRight">
+        <Dropdown
+          overlay={<Menu items={menuItems(DONATION_STATUSES[row.status])} />}
+          placement="bottomRight"
+        >
           <Button
             className="more-menu-btn"
             icon={<span className="material-symbols-outlined">more_horiz</span>}

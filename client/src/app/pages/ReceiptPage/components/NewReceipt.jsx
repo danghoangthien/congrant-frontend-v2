@@ -38,7 +38,7 @@ const NewReceipt = ({ title }) => {
         type="primary"
       >
         <PlusOutlined className="display-inline-flex" />
-        <span>{'領収書の一括作成'}</span>
+        <span>{'作成する'}</span>
       </Button>
       <Modal
         title={<StyledModalTitle>{'領収書の新規作成'}</StyledModalTitle>}

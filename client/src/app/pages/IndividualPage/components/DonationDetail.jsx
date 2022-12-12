@@ -1,6 +1,7 @@
 import { Descriptions, Row, Col, Button, Dropdown, Space, Menu } from 'antd';
 import { BoldLabel, CopiableText } from './Sprites';
 import BreadNavigation from './Sprites/BreadNavigation';
+import NewReceipt from 'app/pages/ReceiptPage/components/NewReceipt';
 import { EDIT_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
@@ -184,7 +185,7 @@ const DonationDetail = ({ data, mode, setMode }) => {
       <Row>
         <ReceiptTitle />
         <Col span={24}>
-          <Button type="primary">作成する</Button>
+          <NewReceipt />
         </Col>
       </Row>
     </>

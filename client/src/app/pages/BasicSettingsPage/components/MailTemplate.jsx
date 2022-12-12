@@ -1,6 +1,7 @@
 import { Row, Col, Tag, Button, Dropdown, Menu, Space } from 'antd';
 import DraggableTable from 'app/components/DraggableTable';
 import AddEmailTemplate from './AddEmailTemplate';
+import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const dataSource = [
   {
@@ -30,6 +31,15 @@ const menu = (
 );
 
 const columnMap = {
+  empty: {
+    width: 50,
+    title: '',
+    render: row => (
+      <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+        menu
+      </span>
+    ),
+  },
   template_name: {
     title: 'テンプレート名',
     dataIndex: 'template_name',
