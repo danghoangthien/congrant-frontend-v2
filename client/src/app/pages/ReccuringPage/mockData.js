@@ -259,7 +259,7 @@ const columnMap = {
   operate: {
     width: 120,
     title: 'アクション',
-    render: () => (
+    render: row => (
       <Row justify="center">
         <Dropdown
           overlay={<Menu items={menuItems(DONATION_STATUSES[row.status])} />}

@@ -1,6 +1,5 @@
 import { Descriptions, Row, Col, Button, Dropdown, Space, Menu } from 'antd';
 import NewReceipt from 'app/pages/ReceiptPage/components/NewReceipt';
-import { EDIT_MODE } from '../consts';
 import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
 import { EDIT_MODE, LIST_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
