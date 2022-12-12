@@ -1,5 +1,5 @@
 // ANTD
-import { Row, Col, Button, DatePicker, Space, Card } from 'antd';
+import { Row, Col, Button, DatePicker, Card } from 'antd';
 // STYLE
 import styled from 'styled-components/macro';
 // CONTS
@@ -10,7 +10,7 @@ import {
   SettingLabel,
   SettingInput,
   SettingsInputWrapper,
-} from './Sprites';
+} from 'utils/Sprites';
 // MODAL
 import ChangeAdministrator from './ChangeAdministrator';
 

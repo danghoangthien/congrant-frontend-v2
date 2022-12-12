@@ -5,7 +5,7 @@ import {
   SettingLabel,
   SettingInput,
   SettingsInputWrapper,
-} from './Sprites';
+} from 'utils/Sprites';
 
 const Representative = () => {
   return (

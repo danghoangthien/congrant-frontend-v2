@@ -1,14 +1,14 @@
+// ANTD
 import { Button, DatePicker, Dropdown, Menu, Space } from 'antd';
-import moment from 'moment';
-
+// COMPONENT
 import DrawerHandle from 'app/components/DrawerHandle';
-import { getWithExpiry } from 'utils/localStorageHandler';
 import Detail from '../IndividualPage/components/Detail';
-
-import { DANGER_COLOR } from 'styles/StyleConstants';
-
-import { PLANS } from './consts';
 import ChangeAmount from './components/ChangeAmount';
+// UTILS
+import { getWithExpiry } from 'utils/localStorageHandler';
+// CONST
+import { DANGER_COLOR } from 'styles/StyleConstants';
+import { PLANS } from 'utils/consts';
 
 const menuItems = selectedRowKeys => [
   {
@@ -37,14 +37,17 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 }));
 
 const columnMap = {
+  // 申込日
   application_date: {
-    width: 150,
+    fixed: 'left',
+    width: 120,
     title: '申込日',
     dataIndex: 'application_date',
     csvOutput: ({ application_date }) => application_date,
   },
+  // サポーター
   supporter: {
-    width: 150,
+    width: 160,
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
@@ -53,11 +56,14 @@ const columnMap = {
     ),
     csvOutput: ({ supporter }) => supporter,
   },
+  // プロジェクト
   project: {
+    width: 240,
     title: 'プロジェクト',
     dataIndex: 'project',
     csvOutput: ({ project }) => project,
   },
+  // プラン・金額
   plan_and_amount: {
     width: 150,
     title: 'プラン・金額',
@@ -70,6 +76,7 @@ const columnMap = {
     ),
     csvOutput: ({ plan, amount }) => `${PLANS[plan] || ''} ${amount}`,
   },
+  // 入金日
   date_of_receipt: {
     width: 150,
     title: '入金日',
@@ -79,6 +86,7 @@ const columnMap = {
     ),
     csvOutput: ({ date_of_receipt }) => date_of_receipt,
   },
+  // アクション
   operate: {
     width: 150,
     title: 'アクション',

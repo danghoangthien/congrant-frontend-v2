@@ -1,10 +1,6 @@
+// ANTD
 import { Row, Col, Input, Space, Tooltip, Tag, Checkbox } from 'antd';
-import InfoIcon from '@mui/icons-material/Info';
-import {
-  SettingsInputContainer,
-  SettingInfoLabel,
-  SettingTextarea,
-} from '../../CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingInfoLabel, SettingTextarea, InfoIcon } from 'utils/Sprites';
 
 import styled from 'styled-components/macro';
 
@@ -35,6 +31,7 @@ const AdvanceSetting = () => {
             </Col>
             <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
+                style={{ widht: '100%', maxWidth: 600 }}
                 placeholder={
                   '私たちの活動にご関心を寄せてくださり誠にありがとうございます。ぜひ、温かいご支援をお願いいたします。'
                 }
@@ -55,6 +52,8 @@ const AdvanceSetting = () => {
             </Col>
             <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
+                style={{ widht: '100%', maxWidth: 600 }}
+                rows={3}
                 placeholder={
                   'ご支援のお申し込み、誠にありがとうございました\nご登録いただいたメールアドレス宛に申し込み完了のメールが送信されておりますのでご確認お願いします。'
                 }
@@ -82,6 +81,7 @@ const AdvanceSetting = () => {
             </Col>
             <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
+                style={{ widht: '100%', maxWidth: 600 }}
                 rows="3"
                 placeholder={
                   'NPO法人XXXです\n当団体をご支援くださり誠にありがとうございました\n今後とも応援いただけますと幸いです。'
@@ -111,6 +111,7 @@ const AdvanceSetting = () => {
             </Col>
             <Col className="item" sm={24} md={24} lg={24}>
               <SettingTextarea
+                style={{ widht: '100%', maxWidth: 600 }}
                 rows="6"
                 placeholder={
                   '下記口座に1週間以内にお振込ください。\n\n金融機関名：\n支店名　　：\n口座番号　：\n口座名義　：'
@@ -152,19 +153,23 @@ const AdvanceSetting = () => {
             <Row className="mb-2">
               <Checkbox checked>{'プロジェクトを限定公開にする'}</Checkbox>
               <Tooltip title="プロジェクトを限定公開にする">
-                <InfoIcon style={{ width: '16px' }} />
+                <Row>
+                  <InfoIcon />
+                </Row>
               </Tooltip>
             </Row>
             <Row className="mb-2">
               <Checkbox checked>{'プロジェクトに閲覧パスワードを設定する'}</Checkbox>
               <Tooltip title="プロジェクトに閲覧パスワードを設定する">
-                <InfoIcon style={{ width: '16px' }} />
+                <Row>
+                  <InfoIcon />
+                </Row>
               </Tooltip>
             </Row>
             <Row>
               <Space size={16}>
                 <span style={{ fontSize: '16px' }}>{'パスワード'}</span>
-                <Input placeholder="abcd1234" style={{ width: '200px' }} />
+                <Input size="large" placeholder="abcd1234" style={{ width: '200px' }} />
               </Space>
             </Row>
           </SettingsInputContainer>

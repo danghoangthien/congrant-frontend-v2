@@ -1,11 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Row, Col, Input, Space, Button } from 'antd';
+import { Row, Col, Input, Button } from 'antd';
 
-import {
-  SettingsInputContainer,
-  SettingLabel,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 
 const Login = () => {
   const renderPageTitle = () => {

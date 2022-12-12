@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// ANTD
 import { Row, Modal, Button, Select } from 'antd';
+// SPRITE
 import {
   SettingsInputContainer,
   SettingLabel,
   SettingInput,
   SettingSelect,
   SettingTextarea,
-} from '../../CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
+// STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const AddEmailTemplate = () => {
@@ -26,11 +29,13 @@ const AddEmailTemplate = () => {
 
   return (
     <>
+      {/* モーダル起動ボタン・Modal Open Button */}
       <Button className="icon-btn" onClick={showModal} type="primary">
         <span className="material-symbols-outlined fill-icon">add</span>
         <span>{'追加'}</span>
       </Button>
 
+      {/* モーダル・Modal */}
       <Modal
         title={<StyledModalTitle>{'メールテンプレート登録'}</StyledModalTitle>}
         visible={isModalOpen}

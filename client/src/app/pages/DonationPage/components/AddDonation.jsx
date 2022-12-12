@@ -8,7 +8,7 @@ import {
   SettingInput,
   SettingSelect,
   SettingTextarea,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
 // STYLE
 import { PRIMARY_COLOR, WHITE_COLOR } from 'styles/StyleConstants';
 import styled from 'styled-components/macro';

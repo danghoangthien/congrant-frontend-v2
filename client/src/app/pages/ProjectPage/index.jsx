@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useHistory } from 'react-router-dom';
 import Filters from './components/Filters';
-import { Button, Input, Row, Col, Card, Space, Image, Tag, Divider, Menu, Dropdown } from 'antd';
+import { Button, Input, Row, Col, Card, Space, Image, Divider, Menu, Dropdown } from 'antd';
 import LaunchNewProject from './components/LaunchNewProject';
+// MEDIA QUERY
+import Media from 'react-media';
 import {
   PROJECT_TYPES,
   PROJECT_PAYMENT_TYPES,
@@ -196,16 +198,24 @@ const ProjectPage = () => {
           >
             {projectData.map(item => (
               <div className="project-card">
-                <Row onClick={() => history.push(`/app/projects/${item.id}/summary`)}>
-                  <Col flex="160px">
-                    <div className="thumb-image" style={{ height: '104px' }}>
-                      <Image
-                        preview={false}
-                        src="https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
-                      />
-                    </div>
-                  </Col>
-                  <Col flex="calc(100% - 200px)" className="px-6">
+                <Row
+                  onClick={() => history.push(`/app/projects/${item.id}/summary`)}
+                  justify="space-between"
+                >
+                  <Media
+                    query="(min-width: 992px)"
+                    render={() => (
+                      <Col flex="160px" className="mr-6">
+                        <div className="thumb-image" style={{ height: '104px' }}>
+                          <Image
+                            preview={false}
+                            src="https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
+                          />
+                        </div>
+                      </Col>
+                    )}
+                  />
+                  <Col flex="1">
                     <div className="project-head">
                       <Space style={{ width: '100%' }}>
                         <StyledStatusTag className={PROJECT_STATUS_CLASSES[item.status]}>
@@ -215,6 +225,17 @@ const ProjectPage = () => {
                           <div>{item.title}</div>
                         </StyledProjectTitle>
                       </Space>
+                      <Dropdown
+                        overlay={menu}
+                        placement="bottomRight"
+                        trigger={['hover']}
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <Button
+                          icon={<span className="material-symbols-outlined">more_horiz</span>}
+                          className="more-menu-btn"
+                        />
+                      </Dropdown>
                     </div>
                     <div onClick={e => e.stopPropagation()}>
                       <StyledProjectUrl>
@@ -261,14 +282,6 @@ const ProjectPage = () => {
                         {'件'}
                       </span>
                     </div>
-                  </Col>
-                  <Col flex="40px" onClick={e => e.stopPropagation()}>
-                    <Dropdown overlay={menu} placement="bottomRight" trigger={['hover']}>
-                      <Button
-                        icon={<span className="material-symbols-outlined">more_horiz</span>}
-                        className="more-menu-btn"
-                      />
-                    </Dropdown>
                   </Col>
                 </Row>
               </div>

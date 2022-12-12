@@ -1,11 +1,11 @@
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-
+// PAGE
 import Received from './Received';
 import Unclaimed from './Unclaimed';
 
 const DonationPage = () => {
   const { path } = useRouteMatch();
-  console.log('path', path);
+
   return (
     <>
       <Switch>

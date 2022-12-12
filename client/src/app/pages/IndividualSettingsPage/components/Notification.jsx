@@ -1,5 +1,5 @@
 import { Row, Col, Button, Space, Checkbox } from 'antd';
-import { SettingsInputContainer, SettingLabel } from './Sprites';
+import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 
 const Notification = () => {
   return (

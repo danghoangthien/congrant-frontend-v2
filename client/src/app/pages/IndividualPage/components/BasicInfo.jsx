@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import moment from 'moment';
 import {
   Descriptions,
@@ -16,7 +16,7 @@ import {
   Dropdown,
 } from 'antd';
 import { DescriptionStyle } from './BasicInfo.style';
-import { BoldLabel, CopiableText } from './Sprites';
+import { BoldLabel, CopiableText } from 'utils/Sprites';
 import { DETAIL_MODE, EDIT_MODE } from '../consts';
 
 // 操作メニュー・Action Menu

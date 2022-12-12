@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// ANTD
 import { Row, Col, Modal, Button, Radio, Space } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-} from '../../CorporationSettingPage/components/Sprites';
+// SPRITE
+import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
+// STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const AddDonationPlan = () => {
@@ -24,11 +23,13 @@ const AddDonationPlan = () => {
 
   return (
     <>
+      {/* モーダル起動ボタン・Modal Open Button */}
       <Button className="icon-btn" onClick={showModal} type="primary">
         <span className="material-symbols-outlined fill-icon">add</span>
         <span>{'追加'}</span>
       </Button>
 
+      {/* モーダル・Modal */}
       <Modal
         title={<StyledModalTitle>{'プラン登録'}</StyledModalTitle>}
         visible={isModalOpen}

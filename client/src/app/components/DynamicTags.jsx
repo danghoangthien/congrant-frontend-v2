@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+// ANTD
 import { Select, Tag, Space, Tooltip } from 'antd';
+// STYLE
 import { DynamicTagsStyle } from './DynamicTags.style';
 
 const DynamicTags = ({ tagList = [], availableTagList = [], onSuccess, addMoreLabel }) => {
@@ -10,7 +12,7 @@ const DynamicTags = ({ tagList = [], availableTagList = [], onSuccess, addMoreLa
   const [inputValue, setInputValue] = useState('');
   const [editInputIndex, setEditInputIndex] = useState(-1);
   const [editInputValue, setEditInputValue] = useState('');
-  const [selectedItems, setSelectedItems] = useState(tagList);
+  // const [selectedItems, setSelectedItems] = useState(tagList);
   const inputRef = useRef(null);
   const editInputRef = useRef(null);
 

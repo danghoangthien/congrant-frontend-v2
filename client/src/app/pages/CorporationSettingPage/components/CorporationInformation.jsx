@@ -6,7 +6,7 @@ import {
   SettingInput,
   SettingSelect,
   SettingsInputWrapper,
-} from './Sprites';
+} from 'utils/Sprites';
 
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 

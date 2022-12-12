@@ -1,10 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Row, Col, Button, Space, Table, Radio, Checkbox, DatePicker, Dropdown, Menu } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingInput,
-  SettingInfoLabel,
-} from '../../CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingInput, SettingInfoLabel } from 'utils/Sprites';
 import { StyledForm } from '../BasicSettingsPage.style';
 import ReceiptTemplate from './ReceiptTemplate';
 import ImageUpload from 'app/components/ImageUpload';

@@ -1,6 +1,6 @@
 import { Row, Col, Button, DatePicker, Space, Radio } from 'antd';
 
-import { SettingsInputContainer, SettingLabel, SettingInput } from './Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
 
 const AccountInformation = () => {
   return (

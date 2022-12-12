@@ -1,32 +1,20 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-// Antd
-import {
-  Typography,
-  Button,
-  Badge,
-  Input,
-  Row,
-  Col,
-  Space,
-  Breadcrumb,
-  Menu,
-  Dropdown,
-} from 'antd';
-// Components
+// ANTD
+import { Button, Badge, Input, Row, Col, Space, Breadcrumb, Menu, Dropdown } from 'antd';
+// COMPONENT
 import Table from 'app/components/Table';
 import Swap from './components/Swap';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
-import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
-
-// Styles
-// import { FundingPageLayout } from './FundingPage.style';
-import { PageLayout } from 'app/components/Layout/PageLayout.style';
+// CONST
+import { DETAIL_MODE } from 'utils/consts';
 import { RED_COLOR } from 'styles/StyleConstants';
-// Meta
+// STYLE
+import { PageLayout } from 'app/components/Layout/PageLayout.style';
+// DATA
 import * as metaData from './mockData';
-// Model
+// MODEL
 import './Models/unclaimed';
 
 const MailButton = ({ selectedRowKeys }) => {
@@ -132,6 +120,7 @@ const FundingPage = () => {
         {/* メインコンテンツ・Main Content */}
         <div className="item">
           <Table
+            className="clickable-table"
             tableLayout="fixed"
             model="unclaimedFundingList"
             metaData={metaData}

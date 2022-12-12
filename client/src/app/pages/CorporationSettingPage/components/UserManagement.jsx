@@ -1,5 +1,4 @@
 import { Row, Col, Tag, Button, Table } from 'antd';
-import DeleteIcon from '@mui/icons-material/Delete';
 import InviteUser from './InviteUser';
 
 const dataSource = Array.from(Array(3).keys()).map(i => ({

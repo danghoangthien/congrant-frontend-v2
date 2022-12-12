@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// ANTD
 import { List } from 'antd';
+// REACT DRAG
 import ReactDragListView from 'react-drag-listview';
+// STYLE
 import styled from 'styled-components/macro';
 
 const StyledList = styled(List)`

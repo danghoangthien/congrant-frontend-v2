@@ -1,6 +1,6 @@
 import { getWithExpiry } from 'utils/localStorageHandler';
 // ANTD
-import { Dropdown, Button, Menu, Badge, Space } from 'antd';
+import { Dropdown, Button, Menu, Badge, Space, Tooltip } from 'antd';
 // STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
 import { DANGER_COLOR } from 'styles/StyleConstants';
@@ -9,6 +9,8 @@ import { RECEIPT_STATUSES, RECEIPT_STATUS_COLOR } from 'utils/consts';
 import DrawerHandle from '../../components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
 import SubjectIcon from '@mui/icons-material/Subject';
+// IMAGE
+import noteIclon from 'styles/assets/note.svg';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -89,17 +91,19 @@ export const menuItems = selectedRowKeys => [
 
 const dataSource = Array.from(Array(10).keys()).map(i => ({
   key: `${i}`,
-  receipt_id: `${i + 1}`,
   receipt_no: `${'20220730' + i}`,
+  supporter: randomOutput(['田中 太郎', '山田 花子']),
   receipt_status: randomOutput(['0', '1', '2']),
   issuing_date: randomOutput(['2023-04-01', '2023-11-05', '2023-03-05']),
   template: randomOutput(['標準領収書']),
   amount: randomOutput(['3,000円', '24,000円']),
-  supporter: randomOutput(['田中 太郎', '山田 花子']),
+  memo: 'テキスト',
 }));
 
 const columnMap = {
+  // 領収書No.
   receipt_no: {
+    fixed: 'left',
     width: 120,
     title: '領収書No.',
     dataIndex: 'receipt_no',
@@ -107,6 +111,7 @@ const columnMap = {
   },
   // サポーター
   supporter: {
+    width: 160,
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle={row.supporter} drawerComponent={<Detail data={row} />}>
@@ -115,7 +120,9 @@ const columnMap = {
     ),
     csvOutput: ({ supporter }) => supporter,
   },
+  // 発行ステータス
   receipt_status: {
+    width: 160,
     title: '発行ステータス',
     dataIndex: 'receipt_status',
     render: receipt_status => (
@@ -128,25 +135,39 @@ const columnMap = {
     ),
     csvOutput: ({ receipt_status }) => RECEIPT_STATUSES[receipt_status] || '',
   },
+  // 発行日時
   issuing_date: {
+    width: 120,
     title: '発行日時',
     render: ({ issuing_date }) => issuing_date,
     csvOutput: ({ issuing_date }) => issuing_date,
   },
+  // テンプレート
   template: {
+    width: 200,
     title: 'テンプレート',
     dataIndex: 'template',
     csvOutput: ({ template }) => template,
   },
+  // 金額
   amount: {
+    width: 120,
     title: '金額',
     dataIndex: 'amount',
   },
   // メモ
-  date_and_reason: {
+  memo: {
+    width: 80,
     title: 'メモ',
-    render: () => <SubjectIcon />,
+    render: ({ memo }) => (
+      <div style={{ textAlign: 'center' }}>
+        <Tooltip title={memo}>
+          <img src={noteIclon} alt="" />
+        </Tooltip>
+      </div>
+    ),
   },
+  // アクション
   action: {
     width: 120,
     title: 'アクション',

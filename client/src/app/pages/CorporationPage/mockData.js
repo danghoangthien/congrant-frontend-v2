@@ -1,10 +1,12 @@
 import { getWithExpiry } from 'utils/localStorageHandler';
 // ANTD
-import { Menu, Dropdown, Tag, Button, Space } from 'antd';
+import { Menu, Dropdown, Tag, Button, Space, Row, Tooltip } from 'antd';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
+// UTILS
 import { randomOutput } from 'utils/helper';
-import SubjectIcon from '@mui/icons-material/Subject';
+// IMAGE
+import noteIclon from 'styles/assets/note.svg';
 
 const menu = (
   <Menu
@@ -57,119 +59,155 @@ const menu = (
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
-  supporterType: '2',
   group_id: `${'10000' + i}`,
   group_name: 'コングラント株式会社',
-  group_name_furagana: randomOutput(['たなか たろう', 'やまだ はなこ']),
+  group_name_furagana: 'りたわーくすかぶしきがいしゃ',
+  materials: randomOutput(['許可', '']),
+  department_in_charge: randomOutput(['営業部 部長', 'CSR部']),
   manager: 'CSR部 課長  鈴木 一郎',
   manager_furagana: randomOutput(['たなか たろう', 'やまだ はなこ']),
   attributes: ['属性', '属性2'],
   email: `danghoangthien+${i}@gmail.com`,
-  recent_donation_date: '2022-07-15',
-  recent_donation: '3,000円',
-  cumulative_donation: '12,000円',
-  cumulative_donation_times: '4回',
+  phone: randomOutput(['08012345678', '08012345678']),
+  address: randomOutput(['熊本県熊本市…', '大阪府大阪市…']),
+  custom_field: randomOutput(['テキスト', '']),
+  custom_field_multiple_lines: 'カスタム項目（複数行の場合）',
+  recent_donation: 3000,
+  cumulative_donation: 12000,
+  supporterType: '2',
 }));
 
 const columnMap = {
+  // 法人No.
   group_id: {
-    width: 100,
+    fixed: 'left',
+    width: 120,
     title: '法人No.',
     render: row => row.group_id,
     csvOutput: ({ group_id }) => group_id,
   },
+  // 法人名
   group_name: {
+    width: 160,
     title: '法人名',
     dataIndex: 'group_name',
     csvOutput: ({ group_name }) => group_name,
   },
+  // 法人名（ふりがな）
   group_name_furagana: {
-    title: '法人名',
+    width: 160,
+    title: '法人名（ふりがな）',
     dataIndex: 'group_name_furagana',
     csvOutput: ({ group_name_furagana }) => group_name_furagana,
   },
   // 広報物への掲載
   materials: {
+    width: 160,
     title: '広報物への掲載',
-    render: () => randomOutput(['許可', '']),
-    csvOutput: () => randomOutput(['許可', '']),
+    dataIndex: 'materials',
+    csvOutput: ({ materials }) => materials,
   },
   // 担当者部署・肩書き
   department_in_charge: {
+    width: 160,
     title: '担当者部署・肩書き',
-    render: () => randomOutput(['営業部 部長', 'CSR部']),
-    csvOutput: () => randomOutput(['営業部 部長', 'CSR部']),
+    dataIndex: 'department_in_charge',
+    csvOutput: ({ department_in_charge }) => department_in_charge,
   },
   manager: {
+    width: 160,
     title: '担当者',
     dataIndex: 'manager',
     csvOutput: ({ manager }) => manager,
   },
   manager_furagana: {
+    width: 160,
     title: '担当者',
     dataIndex: 'manager_furagana',
     csvOutput: ({ manager_furagana }) => manager_furagana,
   },
   email: {
+    width: 200,
     title: 'メールアドレス',
     dataIndex: 'email',
     csvOutput: email => email,
   },
   // 電話番号
   phone: {
+    width: 160,
     title: '電話番号',
-    render: () => randomOutput(['08012345678', '08012345678']),
-    csvOutput: () => randomOutput(['男性', '女性']),
+    dataIndex: 'phone',
+    csvOutput: ({ phone }) => phone,
   },
   // 住所
   address: {
+    width: 160,
     title: '住所',
-    render: () => randomOutput(['熊本県熊本市…', '大阪府大阪市…']),
-    csvOutput: () => randomOutput(['熊本県熊本市…', '大阪府大阪市…']),
+    dataIndex: 'address',
+    csvOutput: ({ address }) => address,
   },
   attributes: {
+    width: 240,
     title: '属性',
     render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
     csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
   },
   // カスタム項目
   custom_field: {
+    width: 160,
     title: 'カスタム項目',
-    render: () => randomOutput(['text', 'another text']),
-    csvOutput: () => randomOutput(['text', 'another text']),
+    dataIndex: 'custom_field',
+    csvOutput: custom_field => custom_field,
   },
   // カスタム項目（複数行の場合）
   custom_field_multiple_lines: {
-    title: 'カスタム項目（複数行の場合）',
-    render: () => <SubjectIcon />,
-    csvOutput: () => randomOutput(['...', 'another text']),
+    width: 160,
+    title: 'カスタム項目',
+    render: ({ custom_field_multiple_lines }) => {
+      return (
+        <div style={{ textAlign: 'center' }}>
+          <Tooltip title={custom_field_multiple_lines}>
+            <img src={noteIclon} alt="" />
+          </Tooltip>
+        </div>
+      );
+    },
+    csvOutput: custom_field_multiple_lines => custom_field_multiple_lines,
   },
+  // 直近の寄付
   recent_donation: {
+    width: 120,
     title: '直近の寄付',
-    render: ({ recent_donation, recent_donation_date }) => (
+    dataIndex: 'recent_donation',
+    render: recent_donation => (
       <>
-        {recent_donation_date}
+        <span>{'2022-07-05'}</span>
         <br />
-        {recent_donation}
+        <span>{recent_donation.toLocaleString()}円</span>
       </>
     ),
-    csvOutput: recent_donation => recent_donation,
+    csvOutput: recent_donation => `${recent_donation.toLocaleString()}円`,
   },
+  // 累計寄付
   cumulative_donation: {
+    width: 120,
     title: '累計寄付金額',
-    render: ({ cumulative_donation }) => <>{cumulative_donation}</>,
-    csvOutput: cumulative_donation => cumulative_donation,
+    dataIndex: 'cumulative_donation',
+    render: cumulative_donation => <span>{cumulative_donation.toLocaleString()}円</span>,
+    csvOutput: cumulative_donation => <span>{cumulative_donation.toLocaleString()}円</span>,
   },
   action: {
     width: 120,
     title: 'アクション',
     render: row => (
-      <Dropdown overlay={menu} placement="bottomRight">
-        <Button
-          className="more-menu-btn"
-          icon={<span className="material-symbols-outlined">more_horiz</span>}
-        />
-      </Dropdown>
+      <Row justify="center">
+        <Dropdown overlay={menu} placement="bottomRight">
+          <Button
+            className="more-menu-btn"
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
+          />
+        </Dropdown>
+      </Row>
     ),
   },
 };
