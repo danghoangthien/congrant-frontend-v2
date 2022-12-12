@@ -4,7 +4,6 @@ import {
   pagination,
   COLUMN_SETTING_LOCALSTORAGE,
   columnMap,
-  getRenderColumns,
 } from '../mockDataReceived';
 import { getWithExpiry } from 'utils/localStorageHandler';
 

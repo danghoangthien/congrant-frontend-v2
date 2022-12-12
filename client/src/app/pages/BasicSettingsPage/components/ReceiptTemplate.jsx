@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Row, Col, Modal, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-} from '../../CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import TextArea from 'antd/lib/input/TextArea';
 

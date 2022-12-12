@@ -1,14 +1,13 @@
 import { Helmet } from 'react-helmet-async';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Row, Col, Button } from 'antd';
-import { InfoCircleFilled } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import {
   SettingsInputContainer,
   SettingInput,
   SettingsInputWrapper,
   SettingLabel,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
 
 import './Models/index';
 

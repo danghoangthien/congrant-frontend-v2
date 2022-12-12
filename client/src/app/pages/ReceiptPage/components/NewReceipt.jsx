@@ -7,7 +7,7 @@ import {
   SettingInput,
   SettingTextarea,
   SettingSelect,
-} from '../../CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { PlusOutlined } from '@ant-design/icons';
 

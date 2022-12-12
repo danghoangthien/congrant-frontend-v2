@@ -1,18 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // ANTD
 import { Row, Col, Button, Radio, Checkbox, Space, DatePicker } from 'antd';
 // COMPONENT
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-  SettingSelect,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
-import DrawerHandle from 'app/components/DrawerHandle';
+import { SettingsInputContainer, SettingLabel, SettingInput, SettingSelect } from 'utils/Sprites';
 // STYLE
 import { PRIMARY_COLOR, WHITE_COLOR } from 'styles/StyleConstants';
 import styled from 'styled-components/macro';
+import DrawerHandle from 'app/components/DrawerHandle';
 
 const StyledDrawerHeader = styled.div`
   background: ${PRIMARY_COLOR};
@@ -22,6 +16,7 @@ const StyledDrawerHeader = styled.div`
   font-size: 24px;
   font-weight: 600;
 `;
+
 const StyledForm = styled.div`
   padding: 22px 32px;
 `;

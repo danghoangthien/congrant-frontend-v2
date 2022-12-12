@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// ANTD
 import { Row, Col, Modal, Button, Radio, Space, Input, Checkbox } from 'antd';
+// SPRITE
 import {
   SettingsInputContainer,
   SettingLabel,
   SettingInput,
   SettingInfoLabel,
-} from '../../CorporationSettingPage/components/Sprites';
-import { DraggableInputItem } from './Sprites';
+  DraggableInputItem,
+} from 'utils/Sprites';
+// COMPONENT
 import Draggable from 'app/components/DraggableItems';
+// STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const { TextArea } = Input;
 
 const AddCustomField = ({ title }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [dataType, setDataType] = useState(1);
+
   const onDataTypeChange = e => {
     console.log('radio checked', e.target.value);
     setDataType(e.target.value);
@@ -35,11 +39,13 @@ const AddCustomField = ({ title }) => {
 
   return (
     <>
+      {/* モーダル起動ボタン・Modal Open Button */}
       <Button className="icon-btn" onClick={showModal} type="primary">
         <span className="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
       </Button>
 
+      {/* モーダル・Modal */}
       <Modal
         title={<StyledModalTitle>{title}</StyledModalTitle>}
         visible={isModalOpen}

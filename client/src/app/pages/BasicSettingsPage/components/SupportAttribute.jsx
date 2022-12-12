@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet-async';
-import { Space, Row, Col, Input, Badge, Button } from 'antd';
-import { TEXT_GRAY_COLOR, DANGER_COLOR, LIGHT_GRAY } from 'styles/StyleConstants';
+import { Space, Row, Col, Input, Button } from 'antd';
 import Draggable from 'app/components/DraggableItems';
-import { DraggableInputItem } from './Sprites';
+import { DraggableInputItem } from 'utils/Sprites';
 
 const renderPageTitle = () => {
   return (

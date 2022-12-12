@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-// Antd
+// ANTD
 import { Button, Badge, Input, Row, Col, Space, Breadcrumb, Menu, Dropdown } from 'antd';
-// Components
+// COMPONENT
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import AddDonation from './components/AddDonation';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
 import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
 import './Models/received';
-// Styles
-// import { FundingPageLayout } from './FundingPage.style';
+// STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
+// COLNST
 import { RED_COLOR } from 'styles/StyleConstants';
-// Meta
+// DATA
 import * as metaData from './mockDataReceived';
 
 // メッセージを送るボタン
@@ -138,12 +138,12 @@ const FundingPage = () => {
         </div>
 
         {/* フィルタ・Filter */}
-        <div className="item">
+        <div>
           <Filters open={filterOpen} />
         </div>
 
         {/* メインコンテンツ・Main Content */}
-        <div className="item">
+        <div>
           <Table
             className="clickable-table"
             tableLayout="fixed"

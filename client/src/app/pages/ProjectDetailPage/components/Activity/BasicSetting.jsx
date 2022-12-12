@@ -1,11 +1,6 @@
 import React from 'react';
 import { Row, Col, Radio, DatePicker } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingTextarea,
-  SettingHepler,
-} from 'utils/Sprites';
+import { SettingsInputContainer, SettingLabel, SettingTextarea } from 'utils/Sprites';
 import styled from 'styled-components/macro';
 import ImageUpload from 'app/components/ImageUpload';
 

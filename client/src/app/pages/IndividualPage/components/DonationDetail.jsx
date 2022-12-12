@@ -1,8 +1,8 @@
 import { Descriptions, Row, Col, Button, Dropdown, Space, Menu } from 'antd';
-import { BoldLabel, CopiableText } from './Sprites';
-import BreadNavigation from './Sprites/BreadNavigation';
 import NewReceipt from 'app/pages/ReceiptPage/components/NewReceipt';
 import { EDIT_MODE } from '../consts';
+import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
+import { EDIT_MODE, LIST_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 import { LIGHT_GRAY } from 'styles/StyleConstants';
@@ -101,7 +101,13 @@ const DonationDetail = ({ data, mode, setMode }) => {
   console.log('DonationDetail render', true);
   return (
     <>
-      <BreadNavigation setMode={setMode} id={'431051'} label="寄付決済" identityLabel="寄付No." />
+      <Navigation
+        setMode={setMode}
+        listMode={LIST_MODE}
+        id={'431051'}
+        label="寄付決済"
+        identityLabel="寄付No."
+      />
       <Title mode={mode} setMode={setMode} />
       <Row className="mb-8">
         <Col span={24}>

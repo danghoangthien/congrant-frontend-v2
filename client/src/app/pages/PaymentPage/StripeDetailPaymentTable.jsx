@@ -2,7 +2,7 @@ import { Table, Tag } from 'antd';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from 'app/pages/IndividualPage/components/Detail';
 import { randomOutput } from 'utils/helper';
-import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'app/pages/DonationPage/consts';
+import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'utils/consts';
 
 export const dataSource = Array.from(Array(5).keys()).map(i => ({
   dateTime: randomOutput(['2022-10-15', '2022-10-10', '2022-10-26', '2022-10-03']),

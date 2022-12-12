@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 // ANTD
 import { Row, Col, Modal, Button, DatePicker, Upload, message } from 'antd';
 // ICON
@@ -9,7 +9,7 @@ import {
   SettingLabel,
   SettingInput,
   SettingsInputWrapper,
-} from './Sprites';
+} from 'utils/Sprites';
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 // CONTS

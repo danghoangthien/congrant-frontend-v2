@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 // ANTD
-import { Input, Row, Col, Button, Space, Radio, Tag, Checkbox, Tooltip } from 'antd';
+import { Input, Row, Col, Button, Space, Radio, Checkbox, Tooltip } from 'antd';
 // STYLE
 import styled from 'styled-components/macro';
 // COMPONENT
@@ -9,32 +9,18 @@ import {
   SettingsInputContainer,
   SettingLabel,
   SettingInfoLabel,
-} from '../../CorporationSettingPage/components/Sprites';
+  VerticalCheckboxContainer,
+  DraggableInputItem,
+  InfoIcon,
+} from 'utils/Sprites';
 import Draggable from 'app/components/DraggableItems';
-import { DraggableInputItem } from 'app/pages/BasicSettingsPage/components/Sprites';
-import AddIcon from '@mui/icons-material/Add';
-import InfoIcon from '@mui/icons-material/Info';
 // TABLE
 import IndividualItemTable from './IndividualItemTable';
 import CorporationItemTable from './CorporationItemTable';
 // CONST
 import { EXTRA_LIGHT_GRAY, PRIMARY_COLOR } from 'styles/StyleConstants';
 
-export const StyledTag = styled(Tag)`
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-`;
-
-export const StyledCheckboxes = styled(Checkbox.Group)`
-  display: flex;
-  flex-direction: column;
-
-  .ant-checkbox-wrapper {
-    margin: 2px 0;
-  }
-`;
-
+// コース選択の通知枠
 export const CourseNoteBox = styled.div`
   text-align: center;
   background: ${EXTRA_LIGHT_GRAY};
@@ -60,7 +46,8 @@ const FormEdit = () => {
     console.log('checked = ', checkedValues);
   };
 
-  const planOptions = [
+  // コースの選択肢・Course Options
+  const courseOptions = [
     { label: 'ブロンズサポーター（1,000円/月）', value: 'ブロンズサポーター（1,000円/月）' },
     { label: 'シルバーサポーター（3,000円/月）', value: 'シルバーサポーター（3,000円/月）' },
     { label: 'ゴールドサポーター（5,000円/月）', value: 'ゴールドサポーター（5,000円/月）' },
@@ -140,7 +127,7 @@ const FormEdit = () => {
                   <Space align="center">
                     <Input size="large" placeholder={'3,000'} suffix={'円'} />
                     <Button className="ml-2 icon-btn" type="primary">
-                      <AddIcon />
+                      <span class="material-symbols-outlined">add</span>
                       <span>{'追加'}</span>
                     </Button>
                   </Space>
@@ -165,7 +152,9 @@ const FormEdit = () => {
                           {'参考金額'}
                         </span>
                         <Tooltip title="下限金額">
-                          <InfoIcon className="info-icon" style={{ width: 13 }} />
+                          <Row>
+                            <InfoIcon />
+                          </Row>
                         </Tooltip>
                       </Space>
                       <Input
@@ -192,7 +181,9 @@ const FormEdit = () => {
                     {'参考金額'}
                   </span>
                   <Tooltip title="下限金額">
-                    <InfoIcon className="info-icon" style={{ width: 13 }} />
+                    <Row>
+                      <InfoIcon />
+                    </Row>
                   </Tooltip>
                 </Space>
                 <Input size="large" placeholder="3,000" suffix={'円'} style={{ width: '160px' }} />
@@ -203,9 +194,9 @@ const FormEdit = () => {
           {/* プラン選択 */}
           {params?.id === '1' && donateType === 3 && (
             <>
-              <StyledCheckboxes
+              <VerticalCheckboxContainer
                 className="pl-6 mb-6"
-                options={planOptions}
+                options={courseOptions}
                 defaultValue={['Apple']}
                 onChange={onChange}
               />

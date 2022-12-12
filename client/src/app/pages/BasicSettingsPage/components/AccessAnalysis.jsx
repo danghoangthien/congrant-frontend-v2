@@ -1,10 +1,9 @@
+// META情報
 import { Helmet } from 'react-helmet-async';
+// ANTD
 import { Row, Col, Button } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingInput,
-  SettingInfoLabel,
-} from '../../CorporationSettingPage/components/Sprites';
+// SPRITE
+import { SettingsInputContainer, SettingInput, SettingInfoLabel } from 'utils/Sprites';
 
 const renderPageTitle = () => {
   return (
@@ -26,6 +25,7 @@ const AccessAnalysis = () => {
           <span className="page-title01">{'アクセス分析'}</span>
         </Col>
       </Row>
+
       <Row className="mb-2">
         <Col className="mb-6" span={24}>
           <SettingsInputContainer label={<SettingInfoLabel label={'Google アナリティクス'} />}>
@@ -46,6 +46,7 @@ const AccessAnalysis = () => {
           </SettingsInputContainer>
         </Col>
       </Row>
+
       <Row className="mt-10">
         <Col sm={24} md={24} lg={24}>
           <Button size="large" type="primary">

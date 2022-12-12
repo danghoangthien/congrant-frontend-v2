@@ -6,7 +6,7 @@ import {
   SettingInput,
   SettingsInputWrapper,
   SettingLabel,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
 
 import './Models/index';
 

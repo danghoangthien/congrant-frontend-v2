@@ -1,8 +1,12 @@
+// META情報
 import { Helmet } from 'react-helmet-async';
-import { Row, Col, Tag, Button, Table, Dropdown, Menu, Space } from 'antd';
+// ANTD
+import { Row, Col, Tag, Button, Dropdown, Menu, Space } from 'antd';
+// COMPONENT
 import AddDonationPlan from './AddDonationPlan';
 import DraggableTable from 'app/components/DraggableTable';
-import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'app/pages/DonationPage/consts';
+// CONST
+import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'utils/consts';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const renderPageTitle = () => {

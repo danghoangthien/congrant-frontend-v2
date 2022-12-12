@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { TEXT_GRAY_COLOR, RED_COLOR, GRAY } from 'styles/StyleConstants';
+import { TEXT_GRAY_COLOR, RED_COLOR, GRAY, LIGHT_GRAY } from 'styles/StyleConstants';
 import { Input, Select, DatePicker, Space, Radio, InputNumber, Checkbox } from 'antd';
 
 import { ScreenSizes } from 'styles/StyleConstants';
@@ -454,4 +454,20 @@ export const StyledFormSelect = styled(Select)`
       background: ${REQUIRED_COLOR};
     }
   }
+`;
+
+export const StyledCheckboxContainer = styled(Checkbox.Group)`
+  display: flex;
+  flex-direction: column;
+
+  .ant-checkbox-wrapper {
+    margin: 2px 0;
+  }
+`;
+
+export const StyledNavigation = styled(Space)`
+  width: 100%;
+  padding: 8px 16px;
+  background: ${LIGHT_GRAY};
+  border-radius: 4px;
 `;

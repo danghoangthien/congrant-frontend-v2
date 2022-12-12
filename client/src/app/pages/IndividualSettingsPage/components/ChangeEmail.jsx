@@ -5,7 +5,7 @@ import {
   SettingLabel,
   SettingInput,
   SettingInputPassword,
-} from './Sprites';
+} from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const ChangeEmail = () => {

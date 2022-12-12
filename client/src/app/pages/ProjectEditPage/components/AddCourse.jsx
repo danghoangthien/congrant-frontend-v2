@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Radio, Space, Input, Checkbox } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+// ANTD
+import { Row, Col, Modal, Button, Input, Checkbox } from 'antd';
+// SPRITE
 import {
   SettingsInputContainer,
   SettingLabel,
   SettingInput,
   SettingInfoLabel,
   SettingTextarea,
-} from '../../CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
+// COMPONENT
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import ImageUpload from 'app/components/ImageUpload';
 
-const { TextArea } = Input;
-
-const AddCourse = ({ title }) => {
+const AddCourse = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -30,6 +30,7 @@ const AddCourse = ({ title }) => {
 
   return (
     <>
+      {/* ボタン・Add course button */}
       <Button onClick={showModal} type="primary" className="icon-btn">
         <span className="material-symbols-outlined">add</span>
         <span>{'追加'}</span>
@@ -46,35 +47,44 @@ const AddCourse = ({ title }) => {
         cancelText="キャンセル"
         okText="登録する"
       >
-        <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'名称'} required />}>
-            <SettingInput placeholder={'example'} />
-          </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingInfoLabel label={'金額'} required />}>
-            <SettingInput placeholder={'3,000'} suffix="円" />
-          </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'コース詳細'} required />}>
-            <SettingTextarea
-              rows={3}
-              placeholder={
-                '限定10個のコースです\n・代表直筆のお礼の手紙をお送りします\n・活動報告会へご招待させていただきます'
-              }
-            />
-          </SettingsInputContainer>
-
-          <SettingsInputContainer label={<SettingInfoLabel label={'イメージ画像'} />}>
-            <ImageUpload width="600px" />
-          </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingInfoLabel label={'個数制限'} />}>
-            <Row>
-              <Col sm={24} md={12} lg={12}>
-                <Checkbox checked>{'個数制限を設ける'}</Checkbox>
-              </Col>
-              <Col sm={24} md={12} lg={12}>
-                <Input placeholder={'30'} suffix="個" />
-              </Col>
-            </Row>
-          </SettingsInputContainer>
+        <Row>
+          <Col className="mb-6" span={24}>
+            <SettingsInputContainer label={<SettingLabel label={'名称'} required />}>
+              <SettingInput placeholder={'example'} />
+            </SettingsInputContainer>
+          </Col>
+          <Col className="mb-6" span={24}>
+            <SettingsInputContainer label={<SettingLabel label={'金額'} required />}>
+              <SettingInput placeholder={'3,000'} suffix="円" />
+            </SettingsInputContainer>
+          </Col>
+          <Col className="mb-6" span={24}>
+            <SettingsInputContainer label={<SettingLabel label={'コース詳細'} />}>
+              <SettingTextarea
+                rows={3}
+                placeholder={
+                  '限定10個のコースです\n・代表直筆のお礼の手紙をお送りします\n・活動報告会へご招待させていただきます'
+                }
+              />
+            </SettingsInputContainer>
+          </Col>
+          <Col className="mb-6" span={24}>
+            <SettingsInputContainer label={<SettingInfoLabel label={'イメージ画像'} />}>
+              <ImageUpload width="600px" />
+            </SettingsInputContainer>
+          </Col>
+          <Col span={24}>
+            <SettingsInputContainer label={<SettingLabel label={'個数制限'} />}>
+              <Row align="middle" justify="space-between">
+                <Col>
+                  <Checkbox checked>{'個数制限を設ける'}</Checkbox>
+                </Col>
+                <Col>
+                  <Input style={{ width: 254 }} placeholder={'30'} suffix="個" />
+                </Col>
+              </Row>
+            </SettingsInputContainer>
+          </Col>
         </Row>
       </Modal>
     </>

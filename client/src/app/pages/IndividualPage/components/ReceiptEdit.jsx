@@ -1,9 +1,8 @@
 import { Descriptions, Row, Col, Button, Input, Select, Space, DatePicker } from 'antd';
-import { BoldLabel, CopiableText } from './Sprites';
-import { DETAIL_MODE } from '../consts';
+import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
+import { DETAIL_MODE, LIST_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
-import BreadNavigation from './Sprites/BreadNavigation';
 
 const Title = ({ mode, setMode }) => {
   return (
@@ -45,11 +44,12 @@ const ReceiptDetail = ({ data, mode, setMode }) => {
   console.log('ReceiptDetail render', true);
   return (
     <>
-      <BreadNavigation
+      <Navigation
         setMode={setMode}
         id={'2022-123456'}
         label="領収書"
         identityLabel="領収書No."
+        listMode={LIST_MODE}
       />
       <DescriptionContainer mode={mode} setMode={setMode}>
         {/* 領収書No. */}

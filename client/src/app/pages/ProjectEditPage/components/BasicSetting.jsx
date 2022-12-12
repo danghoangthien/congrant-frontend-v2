@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 // ANTD
 import { Row, Col, DatePicker, Space, Tag, Button, Select } from 'antd';
-// HELPERS
-import { hexToRgbA } from 'utils/helper';
-// COMPONENTS
+// SPRITE
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -13,21 +11,25 @@ import {
   SettingTextarea,
   SettingSelect,
   SettingRangePicker,
-} from '../../CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
 import ImageUpload from 'app/components/ImageUpload';
 // STYLING
 import { StyledSubtitle } from 'app/components/Layout/SettingsLayout.style';
 import styled from 'styled-components/macro';
-import { PRIMARY_COLOR } from 'styles/StyleConstants';
+// COMPONENT
 import ColorPicker from 'app/components/ColorPicker';
+// CONTS
 import { PROJECT_TARGETS } from 'utils/consts';
+import { PRIMARY_COLOR } from 'styles/StyleConstants';
 
+// テーマカラー選択アイコン・Theme tag
 const StyledTag = styled(Tag)`
   width: 32px;
   height: 32px;
   border-radius: 50%;
 `;
 
+// テーマカラーのプレビュー・Theme color preview
 const StyledTemplatePreview = styled.div`
   width: 100%;
   height: 80px;
@@ -39,6 +41,7 @@ const StyledTemplatePreview = styled.div`
   justify-content: center;
 `;
 
+// テーマカラーのプレビュー・Theme color preview button
 const StyledTemplatePreviewButton = styled(Button)`
   width: 160px;
   height: 40px;
@@ -55,6 +58,7 @@ const StyledTemplatePreviewButton = styled(Button)`
   }
 `;
 
+// テーマカラーのプレビュー・Theme color preview text
 const StyledTemplatePreviewText = styled.div`
   padding-left: 16px;
   width: 160px;
@@ -65,14 +69,12 @@ const StyledTemplatePreviewText = styled.div`
   border-radius: 1px;
   border-left: solid 3px ${props => props.selectedcolor || PRIMARY_COLOR};
   color: ${props => props.selectedcolor || PRIMARY_COLOR};
-  ${'' /* background-color: ${props => hexToRgbA(props.selectedcolor, 0.05) || PRIMARY_COLOR}; */}
 `;
 
 const BasicSetting = () => {
   const params = useParams();
   const [selectedColor, setSelectedColor] = useState(null);
   const [projectTarget, setProjectTarget] = useState(null);
-  console.log(selectedColor);
 
   return (
     <>
@@ -83,24 +85,26 @@ const BasicSetting = () => {
           </Col>
         </Row>
 
-        {/* ページタイトル（最大50文字） */}
-        <Row className="item mb-2">
-          <SettingsInputContainer
-            label={<SettingLabel label={'ページタイトル（最大50文字）'} required />}
-          >
-            <Col className="item mb-8" span={24}>
+        <Row className="mb-2">
+          {/* ページタイトル（最大50文字） */}
+          <Col className="mb-8" span={24}>
+            <SettingsInputContainer
+              label={<SettingLabel label={'ページタイトル（最大50文字）'} required />}
+            >
               <SettingTextarea
                 style={{ maxWidth: 600, width: '100%' }}
                 placeholder={
                   '子どもたちの未来を守るため、NPO法人コングラントへのご寄付をお願いします'
                 }
               />
-            </Col>
-          </SettingsInputContainer>
+            </SettingsInputContainer>
+          </Col>
 
           {/* 概要文（最大400文字） */}
-          <SettingsInputContainer label={<SettingLabel label={'概要文（最大400文字）'} required />}>
-            <Col className="item mb-8" span={24}>
+          <Col className="mb-8" span={24}>
+            <SettingsInputContainer
+              label={<SettingLabel label={'概要文（最大400文字）'} required />}
+            >
               <SettingTextarea
                 style={{ maxWidth: 600, width: '100%' }}
                 rows={4}
@@ -108,22 +112,22 @@ const BasicSetting = () => {
                   'NPO法人コングラントは、XXX県XX市でこども食堂を毎週金曜日に開催しています。地元の食材を使って、こどもたちに暖かくておいしい食事をお腹いっぱいに食べてもらいたい！そのためには皆さまからのご支援が必要です。子どもたちのために、食堂の運営資金のサポートをしていただけませんか？'
                 }
               />
-            </Col>
-          </SettingsInputContainer>
+            </SettingsInputContainer>
+          </Col>
 
           {/* ボタンテキスト */}
-          <SettingsInputContainer label={<SettingInfoLabel label={'ボタンテキスト'} required />}>
-            <Col className="item mb-8" span={24}>
+          <Col className="mb-8" span={24}>
+            <SettingsInputContainer label={<SettingInfoLabel label={'ボタンテキスト'} required />}>
               <SettingInput
                 size="large"
                 style={{ maxWidth: 600, width: '100%' }}
                 placeholder={'寄付をする'}
               />
-            </Col>
-          </SettingsInputContainer>
+            </SettingsInputContainer>
+          </Col>
 
           {/* トップ画像 */}
-          <div className="mb-8">
+          <Col className="mb-8" span={24}>
             <SettingsInputContainer label={<SettingLabel label={'トップ画像'} required />}>
               <Row>
                 <ImageUpload maxFiles={3} />
@@ -132,52 +136,54 @@ const BasicSetting = () => {
                 <StyledSubtitle>{'画像は3枚まで設定できます。'}</StyledSubtitle>
               </Row>
             </SettingsInputContainer>
-          </div>
+          </Col>
 
           {/* テーマカラー */}
-          <SettingsInputContainer label={<SettingLabel label={'テーマカラー'} required />}>
-            <Col className="item mb-5" span={24}>
-              <Space size={24} align="center">
-                <ColorPicker onColorPickerChange={color => setSelectedColor(color)} />
-                <Row>
-                  {[
-                    '#0457C9',
-                    '#0094CB',
-                    '#449A5F',
-                    '#35A0A0',
-                    '#D70017',
-                    '#DE6741',
-                    '#DE478D',
-                    '#A64A97',
-                    '#FCB731',
-                    '#7D5124',
-                  ].map(color => (
-                    <StyledTag
-                      onClick={() => setSelectedColor(color)}
-                      style={{
-                        cursor: 'pointer',
-                      }}
-                      color={color}
-                    />
-                  ))}
-                </Row>
-              </Space>
-            </Col>
-            <Col className="item mb-5" span={24}>
-              {selectedColor && (
-                <StyledTemplatePreview>
-                  <Space size={24}>
-                    <StyledTemplatePreviewButton selectedcolor={selectedColor}>
-                      {'ボタンサンプル'}
-                    </StyledTemplatePreviewButton>
-                    <StyledTemplatePreviewText selectedcolor={selectedColor}>
-                      {'見出しサンプル'}
-                    </StyledTemplatePreviewText>
-                  </Space>
-                </StyledTemplatePreview>
-              )}
-            </Col>
-          </SettingsInputContainer>
+          <Col className="mb-8">
+            <SettingsInputContainer label={<SettingLabel label={'テーマカラー'} required />}>
+              <Col className="mb-6" span={24}>
+                <Space size={24} align="center">
+                  <ColorPicker onColorPickerChange={color => setSelectedColor(color)} />
+                  <Row>
+                    {[
+                      '#0457C9',
+                      '#0094CB',
+                      '#449A5F',
+                      '#35A0A0',
+                      '#D70017',
+                      '#DE6741',
+                      '#DE478D',
+                      '#A64A97',
+                      '#FCB731',
+                      '#7D5124',
+                    ].map(color => (
+                      <StyledTag
+                        onClick={() => setSelectedColor(color)}
+                        style={{
+                          cursor: 'pointer',
+                        }}
+                        color={color}
+                      />
+                    ))}
+                  </Row>
+                </Space>
+              </Col>
+              <Col span={24}>
+                {selectedColor && (
+                  <StyledTemplatePreview>
+                    <Space size={24}>
+                      <StyledTemplatePreviewButton selectedcolor={selectedColor}>
+                        {'ボタンサンプル'}
+                      </StyledTemplatePreviewButton>
+                      <StyledTemplatePreviewText selectedcolor={selectedColor}>
+                        {'見出しサンプル'}
+                      </StyledTemplatePreviewText>
+                    </Space>
+                  </StyledTemplatePreview>
+                )}
+              </Col>
+            </SettingsInputContainer>
+          </Col>
 
           {/* 目標金額 */}
           {params?.id !== '2' ? (
@@ -232,7 +238,7 @@ const BasicSetting = () => {
                       style={{ maxWidth: 600, width: '100%' }}
                     />
                   </Col>
-                  <Col>
+                  <Col span={24}>
                     <StyledSubtitle>
                       <div>
                         受付開始日時を指定すると、その日時まで寄付ボタンが押せなくなります。
@@ -251,12 +257,13 @@ const BasicSetting = () => {
                 <SettingsInputContainer label={<SettingLabel label={'目標金額'} required />}>
                   <Col span={24}>
                     <SettingInput
+                      size="large"
                       style={{ maxWidth: 600, width: '100%' }}
                       placeholder={'1,000,000'}
                       suffix="円"
                     />
                   </Col>
-                  <Col>
+                  <Col span={24}>
                     <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
                   </Col>
                 </SettingsInputContainer>
@@ -267,6 +274,7 @@ const BasicSetting = () => {
                 <SettingsInputContainer label={<SettingLabel label={'ネクストゴール'} />}>
                   <Col span={24}>
                     <SettingInput
+                      size="large"
                       style={{ maxWidth: 600, width: '100%' }}
                       placeholder={'2,000,000'}
                       suffix="円"
@@ -281,13 +289,13 @@ const BasicSetting = () => {
               {/* 受付期間 */}
               <Col span={24}>
                 <SettingsInputContainer label={<SettingLabel label={'受付期間'} required />}>
-                  <Col>
+                  <Col span={24}>
                     <SettingRangePicker
                       style={{ maxWidth: 600, width: '100%' }}
                       placeholder={['開始日', '終了日']}
                     />
                   </Col>
-                  <Col>
+                  <Col span={24}>
                     <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
                   </Col>
                 </SettingsInputContainer>

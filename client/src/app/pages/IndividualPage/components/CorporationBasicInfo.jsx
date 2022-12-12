@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import moment from 'moment';
 import {
   Descriptions,
@@ -16,8 +16,8 @@ import {
   Menu,
 } from 'antd';
 import { DescriptionStyle } from './BasicInfo.style';
-import { BoldLabel, CopiableText } from './Sprites';
-import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import { BoldLabel, CopiableText } from 'utils/Sprites';
+import { DETAIL_MODE, EDIT_MODE } from '../consts';
 
 const action_menu = (
   <Menu
