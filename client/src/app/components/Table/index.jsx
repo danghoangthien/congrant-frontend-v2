@@ -143,6 +143,11 @@ const DataTable = ({
                 sticky={true}
                 key={Math.random()}
                 columns={columns}
+                scroll={{
+                  // x: '100vw',
+                  x: 1200,
+                  // y: '100vh',
+                }}
                 rowKey={'key'} /** must be unique, ex: ID or seq */
                 rowSelection={{ ...rowSelection }}
                 loading={loading}

@@ -1,11 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
 import { Row, Space, Button, Card, Col } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
 
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Row, Col, Modal, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import { SettingsInputContainer, SettingLabel, SettingInput } from './Sprites';
+import { useState } from 'react';
+import { Row, Modal, Button } from 'antd';
+import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const InviteUser = () => {

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Space, Button } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { Row, Modal, Space, Button } from 'antd';
+import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { StyledFormCheckbox } from 'styles/FormElement.style';
 import SaveIcon from '@mui/icons-material/Save';

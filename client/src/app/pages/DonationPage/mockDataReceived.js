@@ -1,11 +1,15 @@
-import { Tag, Badge, Space } from 'antd';
+// ANTD
+import { Tag, Badge, Space, Tooltip } from 'antd';
+// UTILS
 import { getWithExpiry } from 'utils/localStorageHandler';
 import { randomOutput } from 'utils/helper';
+// STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
+// COMPONENT
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
+// CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-
 import {
   RECEIPT_METHODS,
   DONATION_TYPES,
@@ -13,332 +17,41 @@ import {
   RECEIPT_STATUSES,
   RECEIPT_STATUS_COLOR,
   DONATION_TYPE_COLORS,
-} from './consts';
+  REGISTER_ROUTES,
+} from 'utils/consts';
+// IMAGE
+import noteIclon from 'styles/assets/note.svg';
 
-const dataSource = [
-  {
-    key: '0',
-    donation_id: '1',
-    date_of_receipt: '2022-07-30',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: 2,
-  },
-  {
-    key: '1',
-    donation_id: '2',
-    date_of_receipt: '2022-07-30',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: 2,
-  },
-  {
-    key: '2',
-    donation_id: '3',
-    date_of_receipt: '2022-07-31',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '2',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: 1,
-  },
-  {
-    key: '3',
-    donation_id: '4',
-    date_of_receipt: '2022-07-29',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: 0,
-  },
-  {
-    key: '4',
-    donation_id: '5',
-    date_of_receipt: '2022-07-28',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '5',
-    donation_id: '6',
-    date_of_receipt: '2022-07-27',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '3',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '6',
-    donation_id: '7',
-    date_of_receipt: '2018-07-22',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '7',
-    donation_id: '8',
-    date_of_receipt: '2022-07-25',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '8',
-    donation_id: '9',
-    date_of_receipt: '2022-07-24',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '9',
-    donation_id: '10',
-    date_of_receipt: '2022-07-23',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '10',
-    donation_id: '11',
-    date_of_receipt: '2022-07-22',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '11',
-    donation_id: '12',
-    date_of_receipt: '2021-07-25',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '12',
-    donation_id: '13',
-    date_of_receipt: '2021-07-24',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '13',
-    donation_id: '14',
-    date_of_receipt: '2021-07-23',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '14',
-    donation_id: '15',
-    date_of_receipt: '2021-07-22',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '15',
-    donation_id: '16',
-    date_of_receipt: '2021-07-21',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '16',
-    donation_id: '17',
-    date_of_receipt: '2021-07-20',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '17',
-    donation_id: '18',
-    date_of_receipt: '2021-07-19',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '18',
-    donation_id: '19',
-    date_of_receipt: '2021-07-18',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '19',
-    donation_id: '20',
-    date_of_receipt: '2021-07-17',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '20',
-    donation_id: '21',
-    date_of_receipt: '2021-07-16',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '21',
-    donation_id: '22',
-    date_of_receipt: '2021-07-15',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '22',
-    donation_id: '23',
-    date_of_receipt: '2021-07-14',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-  {
-    key: '23',
-    donation_id: '24',
-    date_of_receipt: '2021-07-13',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt: '1',
-  },
-  {
-    key: '24',
-    donation_id: '25',
-    date_of_receipt: '2021-07-12',
-    supporter: '荒木 雄大',
-    project: 'NPO法人コングラントへのご支援をお願いします！',
-    receipt_method: '1',
-    donation_type: '1',
-    plan: '0',
-    amount: '3,000円',
-    receipt_status: '1',
-  },
-];
+const dataSource = Array.from(Array(500).keys()).map(i => ({
+  key: `${i}`,
+  donation_number: `${i + 1234567}`,
+  supporter: '荒木 雄大',
+  date_of_receipt: '2022-07-30',
+  project: 'NPO法人コングラントへのご支援をお願いします！',
+  donation_type: randomOutput([1, 2, 3]),
+  plan: randomOutput([1, 2, 3, 4, '']),
+  money: 30000000,
+  quantity: 1,
+  custom_column: 'テキスト',
+  custom_column2: '複数行のカスタム項目の場合はアイコンのみを表示し内容はツールチップで表示',
+  receipt_method: randomOutput([1, 2, 3]),
+  register_route: randomOutput([1, 2, 3]),
+  receipt_status: 2,
+}));
 
 const columnMap = {
+  // 寄付No.
   donation_number: {
-    title: '寄付No',
-    render: row => <>{'寄付No'}</>,
-    csvOutput: row => <>{'寄付No'}</>,
+    fixed: 'left',
+    width: 120,
+    title: '寄付No.',
+    dataIndex: 'donation_number',
+    csvOutput: ({ donation_number }) => donation_number,
     defaultVisible: false,
   },
-  date_of_receipt: {
-    width: 140,
-    title: '受領日',
-    dataIndex: 'date_of_receipt',
-    csvOutput: ({ date_of_receipt }) => date_of_receipt,
-    defaultVisible: true,
-  },
-  date_of_pament: {
-    title: '入金日',
-    render: row => <>{'入金日'}</>,
-    csvOutput: row => <>{'入金日'}</>,
-    defaultVisible: false,
-  },
+  // サポーター
   supporter: {
+    width: 160,
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
@@ -348,20 +61,25 @@ const columnMap = {
     csvOutput: ({ supporter }) => supporter,
     defaultVisible: true,
   },
+  // 受領日
+  date_of_receipt: {
+    width: 120,
+    title: '受領日',
+    dataIndex: 'date_of_receipt',
+    csvOutput: ({ date_of_receipt }) => date_of_receipt,
+    defaultVisible: true,
+  },
+  // プロジェクト
   project: {
+    width: 240,
     title: 'プロジェクト',
     dataIndex: 'project',
     csvOutput: ({ project }) => project,
     defaultVisible: true,
   },
-  receipt_method: {
-    title: '受領方法',
-    dataIndex: 'receipt_method',
-    render: receipt_method => RECEIPT_METHODS[receipt_method] || '',
-    csvOutput: ({ receipt_method }) => RECEIPT_METHODS[receipt_method] || '',
-    defaultVisible: true,
-  },
+  // 寄付タイプ
   donation_type: {
+    width: 120,
     title: '寄付タイプ',
     dataIndex: 'donation_type',
     render: donation_type => (
@@ -378,37 +96,88 @@ const columnMap = {
     csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
     defaultVisible: true,
   },
-  plan_and_amount: {
-    title: 'プラン・金額',
-    render: ({ amount }) => {
-      const plan = randomOutput([
-        'シルバーサポーター',
-        '賛助会員（都度更新）',
-        '正会員（自動更新）',
-        '',
-      ]);
+  // プラン
+  plan: {
+    width: 160,
+    title: 'プラン',
+    render: ({ plan }) => <>{PLANS[plan] || ''}</>,
+    csvOutput: row => <>{'プラン'}</>,
+    defaultVisible: false,
+  },
+  // 単価・口数
+  money_and_quantity: {
+    width: 120,
+    title: '単価・口数',
+    render: ({ money, quantity }) => {
       return (
         <>
-          {plan && (
+          {money && (
             <>
-              {plan}
+              {money.toLocaleString()}円
               <br />
             </>
           )}
-          {amount}
+          {quantity}口
         </>
       );
     },
-    csvOutput: ({ plan, amount }) => `${PLANS[plan] || ''} ${amount}`,
+    csvOutput: ({ money, quantity }) => `${money.toLocaleString()} ${quantity}口`,
     defaultVisible: true,
   },
-  remarks: {
-    title: '備考欄',
-    render: row => <>{'備考欄'}</>,
-    csvOutput: row => <>{'備考欄'}</>,
+  // 金額
+  amount: {
+    width: 120,
+    title: '金額',
+    render: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
+    csvOutput: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
+    defaultVisible: true,
+  },
+  // 受領方法
+  receipt_method: {
+    width: 120,
+    title: '受領方法',
+    render: ({ receipt_method }) => <>{RECEIPT_METHODS[receipt_method] || ''}</>,
+    csvOutput: ({ receipt_method }) => receipt_method,
     defaultVisible: false,
   },
+  // 登録経路
+  register_route: {
+    width: 160,
+    title: '登録経路',
+    dataIndex: 'register_route',
+    render: ({ register_route }) => <>{REGISTER_ROUTES[register_route] || ''}</>,
+    csvOutput: ({ register_route }) => register_route,
+    defaultVisible: false,
+  },
+  // カスタム項目
+  custom_column: {
+    width: 160,
+    title: 'カスタム項目',
+    render: ({ custom_column }) => (
+      <>
+        <span>{custom_column}</span>
+      </>
+    ),
+    csvOutput: ({ custom_column }) => custom_column,
+    defaultVisible: false,
+  },
+  // カスタム項目
+  custom_column2: {
+    width: 160,
+    title: 'カスタム項目',
+    render: ({ custom_column2 }) => (
+      <div style={{ textAlign: 'center' }}>
+        <Tooltip title={custom_column2}>
+          <img src={noteIclon} alt="" />
+        </Tooltip>
+      </div>
+    ),
+    csvOutput: ({ custom_column2 }) => custom_column2,
+    defaultVisible: false,
+  },
+  // 領収書
   receipt_status: {
+    width: 120,
     title: '領収書',
     dataIndex: 'receipt_status',
     render: receipt_status => (
@@ -421,55 +190,31 @@ const columnMap = {
     ),
     csvOutput: ({ receipt_status }) => RECEIPT_STATUSES[receipt_status] || '',
   },
-  cognitive_pathway: {
-    title: '認知経路',
-    render: row => <>{'認知経路'}</>,
-    csvOutput: row => <>{'認知経路'}</>,
-    defaultVisible: false,
-  },
-  donation_usage: {
-    title: '寄付の使用用途',
-    render: row => <>{'寄付の使用用途'}</>,
-    csvOutput: row => <>{'寄付の使用用途'}</>,
-    defaultVisible: false,
-  },
-  support_exp: {
-    title: '支援経験',
-    render: row => <>{'支援経験'}</>,
-    csvOutput: row => <>{'支援経験'}</>,
-    defaultVisible: false,
-  },
-  reason: {
-    title: '寄付理由',
-    render: row => <>{'寄付理由'}</>,
-    csvOutput: row => <>{'寄付理由'}</>,
-    defaultVisible: false,
-  },
 };
 
 const COLUMN_SETTING_LOCALSTORAGE = 'received_funding_column_setting';
 
-const _getRenderColumns = () => {
-  //let visibleColumns = Object.keys(columnMap);
-  let _visibleColumns = Object.entries(columnMap).filter(([key, value]) => {
-    //console.log('entry value', value);
-    return value?.defaultVisible !== false;
-  });
-  console.log('_visibleColumns', _visibleColumns);
-  let visibleColumns = Object.fromEntries(_visibleColumns);
-  let visibleColumnKeys = Object.keys(visibleColumns);
-  const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
-  if (columnsInSetting) {
-    visibleColumnKeys = Object.keys(columnMap).filter(columnName => {
-      return columnsInSetting.includes(columnName);
-    });
-  }
-  const renderColumns = visibleColumnKeys.map(columnName => {
-    return columnMap[columnName];
-  });
-  console.log('getRenderColumns', renderColumns);
-  return renderColumns;
-};
+// const _getRenderColumns = () => {
+//   //let visibleColumns = Object.keys(columnMap);
+//   let _visibleColumns = Object.entries(columnMap).filter(([key, value]) => {
+//     //console.log('entry value', value);
+//     return value?.defaultVisible !== false;
+//   });
+//   console.log('_visibleColumns', _visibleColumns);
+//   let visibleColumns = Object.fromEntries(_visibleColumns);
+//   let visibleColumnKeys = Object.keys(visibleColumns);
+//   const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
+//   if (columnsInSetting) {
+//     visibleColumnKeys = Object.keys(columnMap).filter(columnName => {
+//       return columnsInSetting.includes(columnName);
+//     });
+//   }
+//   const renderColumns = visibleColumnKeys.map(columnName => {
+//     return columnMap[columnName];
+//   });
+//   console.log('getRenderColumns', renderColumns);
+//   return renderColumns;
+// };
 
 const getRenderColumns = () => {
   let visibleColumns = Object.keys(columnMap);

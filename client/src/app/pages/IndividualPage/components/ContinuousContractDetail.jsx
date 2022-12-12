@@ -1,7 +1,6 @@
 import { Descriptions, Row, Col, Button, Dropdown, Badge, Menu } from 'antd';
-import { BoldLabel, CopiableText } from './Sprites';
-import BreadNavigation from './Sprites/BreadNavigation';
-// import { LIST_MODE, EDIT_MODE } from '../consts';
+import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
+import { LIST_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 import { StyledBadgeDot } from 'styles/global-styles';
@@ -57,11 +56,12 @@ const ContinuousContractDetail = ({ data, mode, setMode }) => {
   console.log('ContinuousContractDetail render', true);
   return (
     <>
-      <BreadNavigation
+      <Navigation
         setMode={setMode}
         id={'1203171'}
         label="継続契約"
         identityLabel="継続契約No."
+        listMode={LIST_MODE}
       />
       <DescriptionContainer mode={mode} setMode={setMode}>
         <Descriptions.Item label={<BoldLabel label="継続契約No." />}>

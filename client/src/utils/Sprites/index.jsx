@@ -1,4 +1,5 @@
-import { Col, Space, Image, Descriptions, Tooltip } from 'antd';
+// ANTD
+import { Col, Space, Image, Descriptions, Tooltip, Row, Button } from 'antd';
 import {
   StyledRequired,
   StyledLabel,
@@ -23,18 +24,18 @@ import {
   StyledFormHelper,
   StyledFormElementContainer,
   StyledFormRadioGroupHorizontal,
+  StyledCheckboxContainer,
+  StyledInputPassword,
+  StyledNavigation,
 } from 'styles/FormElement.style';
-
-import { TEXT_COLOR } from 'styles/StyleConstants';
-
 import { StyledSegmented } from 'styles/Element.style';
-
-// import InfoIcon from '@mui/icons-material/Info';
+// CONST
+import { TEXT_COLOR, TEXT_GRAY_COLOR, DANGER_COLOR } from 'styles/StyleConstants';
 
 const InfoIcon = () => (
   <span
     class="material-symbols-outlined fill-icon"
-    style={{ fontSize: 13, display: 'flex', color: TEXT_COLOR }}
+    style={{ fontSize: 13, display: 'flex', color: TEXT_COLOR, alignItems: 'center' }}
   >
     info
   </span>
@@ -76,9 +77,9 @@ const SettingInfoLabel = ({ label, required, info = null }) => (
       label={label}
       info={
         <Tooltip title={info || label}>
-          <div>
+          <Row>
             <InfoIcon />
-          </div>
+          </Row>
         </Tooltip>
       }
     />
@@ -204,6 +205,10 @@ const FormCheckbox = ({ placeholder, required, ...rest }) => (
   <StyledFormCheckbox className={required && 'required'} placeholder={placeholder} {...rest} />
 );
 
+const VerticalCheckboxContainer = ({ placeholder, required, ...rest }) => (
+  <StyledCheckboxContainer className={required && 'required'} placeholder={placeholder} {...rest} />
+);
+
 const FormHepler = ({ placeholder, ...rest }) => (
   <StyledFormHelper placeholder={placeholder} {...rest} />
 );
@@ -222,6 +227,70 @@ const HorizontalInputContainer = ({ children, label }) => {
         {children}
       </Col>
     </>
+  );
+};
+
+const DraggableInputItem = ({ count, InputComponent }) => (
+  <Space align="center">
+    <span className="material-symbols-outlined" style={{ color: TEXT_GRAY_COLOR }}>
+      menu
+    </span>
+    {InputComponent}
+    {/* <Badge
+      count={'99'}
+      className="roboto-mono"
+      style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
+    /> */}
+    <span
+      className="material-symbols-outlined fill-icon"
+      style={{ color: DANGER_COLOR, fontSize: '20px', display: 'flex' }}
+    >
+      delete
+    </span>
+  </Space>
+);
+
+const CopiableText = ({ children }) => {
+  return (
+    <Row>
+      <Col sm={24} md={24} lg={24}>
+        {children}
+      </Col>
+      {/* <Col type="flex" align="right" sm={24} md={12} lg={12}>
+        <CopyOutlined
+          className="display-inline-flex"
+          style={{ color: '#c0c0c0' }}
+          onClick={() => {}}
+        />
+      </Col> */}
+    </Row>
+  );
+};
+
+const SettingInputPassword = ({ placeholder, ...rest }) => (
+  <StyledInputPassword placeholder={placeholder} {...rest} />
+);
+
+const Navigation = ({ setMode, label, identityLabel, id, listMode }) => {
+  return (
+    <StyledNavigation className="mb-8" size={24}>
+      <Button
+        className="icon-btn less-shadow-btn"
+        icon={<span className="material-symbols-outlined fill-icon">chevron_left</span>}
+        onClick={() => setMode(listMode)}
+      >
+        {'一覧へ'}
+      </Button>
+      <Row align="middle">
+        <span style={{ color: TEXT_GRAY_COLOR }}>{label}</span>
+        <span className="mx-2">{'/'}</span>
+        <span>
+          {identityLabel}
+          {' : '}
+          {id}
+        </span>
+      </Row>
+    </StyledNavigation>
   );
 };
 
@@ -251,4 +320,10 @@ export {
   FormElementContainer,
   FormRadioGroupHorizontal,
   HorizontalInputContainer,
+  InfoIcon,
+  VerticalCheckboxContainer,
+  DraggableInputItem,
+  CopiableText,
+  SettingInputPassword,
+  Navigation,
 };

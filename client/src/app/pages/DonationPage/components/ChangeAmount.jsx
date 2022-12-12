@@ -2,15 +2,9 @@ import React, { useState } from 'react';
 import { Row, Col, Space, Modal, DatePicker } from 'antd';
 import moment from 'moment';
 // COMPONENTS
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-  SettingSelect,
-  SettingTextarea,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInput, SettingSelect } from 'utils/Sprites';
 // STYLE
-import { StyledModalTitle, StyledModal } from 'styles/Modal.style';
+import { StyledModalTitle } from 'styles/Modal.style';
 
 const ChangeAmount = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

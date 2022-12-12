@@ -1,10 +1,12 @@
+// ANTD
 import { Row, Col, Button } from 'antd';
+// SPRITE
 import {
   SettingsInputContainer,
   SettingInput,
   SettingInfoLabel,
   SettingLabel,
-} from '../../CorporationSettingPage/components/Sprites';
+} from 'utils/Sprites';
 import { StyledForm } from '../BasicSettingsPage.style';
 import ImageUpload from 'app/components/ImageUpload';
 

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Space, Row, Col, Input, Button } from 'antd';
 import Draggable from 'app/components/DraggableItems';
-import { DraggableInputItem } from './Sprites';
+import { DraggableInputItem } from 'utils/Sprites';
 
 const renderPageTitle = () => {
   return (

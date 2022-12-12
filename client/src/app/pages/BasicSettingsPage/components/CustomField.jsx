@@ -1,10 +1,14 @@
+// META情報
 import { Helmet } from 'react-helmet-async';
-import { Row, Col, Button, Table, Space, Dropdown, Menu } from 'antd';
+// ANTD
+import { Row, Col, Button, Space, Dropdown, Menu } from 'antd';
+// CONST
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 // COMPONENT
 import DraggableTable from 'app/components/DraggableTable';
 import AddCustomField from './AddCustomField';
 
+// META情報
 const renderPageTitle = () => {
   return (
     <>

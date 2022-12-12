@@ -131,7 +131,9 @@ const ReceiptPage = () => {
         {/* ページコンテンツ・Page Content */}
         <div className="item">
           <Table
+            className="clickable-table"
             TableName="領収書一覧"
+            tableLayout="fixed"
             model="receiptList"
             metaData={metaData}
             Detail={

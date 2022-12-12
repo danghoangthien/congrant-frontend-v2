@@ -3,10 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Row, Col, Input, Space, Checkbox, Button } from 'antd';
 
-import {
-  SettingsInputContainer,
-  SettingLabel,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 
 const Register = () => {
   const history = useHistory();

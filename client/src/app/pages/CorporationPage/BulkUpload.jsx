@@ -1,11 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Row, Col, Button, Card, Space, Radio } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingSelect,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingLabel, SettingSelect } from 'utils/Sprites';
 import ItemAssociation from './components/ItemAssociation';
 import DownloadIcon from '@mui/icons-material/Download';
 import DraggerUpload from 'app/components/DraggerUpload';

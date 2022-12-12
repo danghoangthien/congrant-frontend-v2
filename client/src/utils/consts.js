@@ -6,6 +6,8 @@ export const EDIT_MODE = 2;
 
 const RECEIPT_METHODS = {
   1: 'カード決済',
+  2: '銀行振込',
+  3: '手渡し',
 };
 
 const DONATION_TYPES = {
@@ -95,6 +97,15 @@ const RECEIPT_STATUS_COLOR = {
 const PLANS = {
   0: '-',
   1: 'ゴールドサポーター',
+  2: 'シルバーサポーター',
+  3: '賛助会員（都度更新）',
+  4: '正会員（自動更新）',
+};
+
+const REGISTER_ROUTES = {
+  1: 'コングラント経由',
+  2: '手動入力',
+  3: 'インポート',
 };
 
 const BASIC_COLOR = '#63B233';
@@ -123,4 +134,5 @@ export {
   BASIC_COLOR,
   CROWD_COLOR,
   MONTHLY_COLOR,
+  REGISTER_ROUTES,
 };

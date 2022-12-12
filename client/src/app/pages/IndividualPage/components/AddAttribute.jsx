@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Row, Col, Modal, Space, Select } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { StyledRadioGroup } from 'styles/Element.style';
 

@@ -2,11 +2,7 @@ import { useDispatch } from 'react-redux';
 // ANTD
 import { Row, Col, Space, Radio, Button } from 'antd';
 // COMPONENT
-import {
-  SettingsInputContainer,
-  SettingInfoLabel,
-  SettingSelect,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingInfoLabel, SettingSelect } from 'utils/Sprites';
 
 import './Models/index';
 

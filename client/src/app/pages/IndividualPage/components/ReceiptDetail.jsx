@@ -1,11 +1,10 @@
-import { Descriptions, Row, Col, Button, Tag, Space, Dropdown, Menu, Badge } from 'antd';
-import { BoldLabel, CopiableText } from './Sprites';
-import { EDIT_MODE } from '../consts';
+import { Descriptions, Row, Col, Button, Space, Dropdown, Menu, Badge } from 'antd';
+import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
+import { EDIT_MODE, LIST_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 import { StyledBadgeDot } from 'styles/global-styles';
 import { RECEIPT_STATUS_COLOR, RECEIPT_STATUSES } from 'utils/consts';
-import BreadNavigation from './Sprites/BreadNavigation';
 import { randomOutput } from 'utils/helper';
 
 // 操作メニュー・Action Menu
@@ -69,11 +68,12 @@ const DescriptionContainer = ({ children, mode, setMode }) => (
 const ReceiptDetail = ({ data, mode, setMode }) => {
   return (
     <>
-      <BreadNavigation
+      <Navigation
         setMode={setMode}
         id={'2022-123456'}
         label="領収書"
         identityLabel="領収書No."
+        listMode={LIST_MODE}
       />
 
       <DescriptionContainer mode={mode} setMode={setMode}>

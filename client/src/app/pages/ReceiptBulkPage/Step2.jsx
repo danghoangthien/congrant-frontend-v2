@@ -1,10 +1,6 @@
 import { Row, Col, Space, Checkbox, DatePicker, Button } from 'antd';
 import { useDispatch } from 'react-redux';
-import {
-  SettingsInputContainer,
-  SettingInfoLabel,
-  SettingLabel,
-} from 'app/pages/CorporationSettingPage/components/Sprites';
+import { SettingsInputContainer, SettingInfoLabel, SettingLabel } from 'utils/Sprites';
 
 import './Models/index';
 const { RangePicker } = DatePicker;

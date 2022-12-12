@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Button } from 'antd';
-import { SettingsInputContainer, SettingLabel, SettingInputPassword } from './Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInputPassword } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const ChangePassword = () => {

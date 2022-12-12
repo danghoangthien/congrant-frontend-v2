@@ -1,17 +1,22 @@
-import { Tag, Badge, Space, Button, Dropdown, Menu } from 'antd';
+// ANTD
+import { Tag, Badge, Space, Button, Dropdown, Menu, Tooltip, Row } from 'antd';
 import { getWithExpiry } from 'utils/localStorageHandler';
+// STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
+// COMPONENT
 import DrawerHandle from '../../components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
+// UTILS
 import { randomOutput } from 'utils/helper';
-import SubjectIcon from '@mui/icons-material/Subject';
-
+// CONST
 import {
   DONATION_TYPES,
   DONATION_TYPE_COLORS,
   DONATION_STATUS_COLOR,
   DONATION_STATUSES,
 } from './consts';
+// IMAGE
+import noteIclon from 'styles/assets/note.svg';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = selectedRowKeys => [
@@ -63,7 +68,7 @@ const menu = (
 
 const dataSource = [
   {
-    no: '12345678',
+    donation_no: '12345678',
     key: '1',
     recurring_id: '1',
     status: '1',
@@ -75,9 +80,10 @@ const dataSource = [
     last_payment_date: '2023-04-15',
     money: '24,000円',
     times: '8回',
+    date_and_reason: '解約日・理由',
   },
   {
-    no: '12345678',
+    donation_no: '12345678',
     key: '2',
     recurring_id: '2',
     status: '2',
@@ -89,9 +95,10 @@ const dataSource = [
     last_payment_date: '2023-04-15',
     money: '24,000円',
     times: '8回',
+    date_and_reason: '解約日・理由',
   },
   {
-    no: '12345678',
+    donation_no: '12345678',
     key: '3',
     recurring_id: '3',
     status: '3',
@@ -103,17 +110,21 @@ const dataSource = [
     last_payment_date: '2023-04-15',
     money: '24,000円',
     times: '8回',
+    date_and_reason: '解約日・理由',
   },
 ];
 
 const columnMap = {
   // 継続契約No.
-  no: {
+  donation_no: {
+    fixed: 'left',
+    width: 120,
     title: '継続契約No.',
-    dataIndex: 'no',
+    dataIndex: 'donation_no',
   },
   // サポーター
   supporter: {
+    width: 160,
     title: 'サポーター',
     render: row => (
       <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
@@ -123,6 +134,7 @@ const columnMap = {
   },
   // ステータス
   status: {
+    width: 120,
     title: 'ステータス',
     dataIndex: 'status',
     render: status => (
@@ -133,6 +145,7 @@ const columnMap = {
   },
   // 寄付タイプ
   donation_type: {
+    width: 120,
     title: '寄付タイプ',
     dataIndex: 'donation_type',
     render: donation_type => (
@@ -149,6 +162,7 @@ const columnMap = {
   },
   // プラン
   plan: {
+    width: 160,
     title: 'プラン',
     render: () => {
       const plan = randomOutput([
@@ -161,23 +175,26 @@ const columnMap = {
   },
   // 初回決済日
   unit_price_number_of_unit: {
+    width: 120,
     title: '単価・口数',
     render: () => {
       const unit_price = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
       const number_of_unit = randomOutput(['3', '6', '9']);
       return (
-        <Space direction="vertical">
+        <>
           <span>{unit_price}</span>
+          <br />
           <span>
             {number_of_unit}
             {'口'}
           </span>
-        </Space>
+        </>
       );
     },
   },
   // 金額
   amount: {
+    width: 120,
     title: '金額',
     render: () => {
       const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
@@ -186,16 +203,19 @@ const columnMap = {
   },
   // 初回決済日
   first_payment_date: {
+    width: 120,
     title: '初回決済日',
     dataIndex: 'first_payment_date',
   },
   // 最終決済日
   last_payment_date: {
+    width: 120,
     title: '最終決済日',
     dataIndex: 'last_payment_date',
   },
   // 累計寄付回数
   cumulative_amount: {
+    width: 120,
     title: '累計寄付金額',
     render: () => {
       const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
@@ -204,6 +224,7 @@ const columnMap = {
   },
   // 累計寄付回数
   cumulative_times: {
+    width: 120,
     title: '累計寄付回数',
     render: ({ times }) => {
       return <>{times}</>;
@@ -211,12 +232,17 @@ const columnMap = {
   },
   // 解約日・理由
   date_and_reason: {
+    width: 160,
     title: '解約日・理由',
-    render: () => {
+    render: ({ date_and_reason }) => {
       return (
         <Space>
           <span>{'2022-04-01'}</span>
-          <SubjectIcon />
+          <div style={{ textAlign: 'center' }}>
+            <Tooltip title={date_and_reason}>
+              <img src={noteIclon} alt="" />
+            </Tooltip>
+          </div>
         </Space>
       );
     },
@@ -225,15 +251,15 @@ const columnMap = {
   operate: {
     width: 120,
     title: 'アクション',
-    render: row => (
-      <Space>
+    render: () => (
+      <Row justify="center">
         <Dropdown overlay={menu} placement="bottomRight">
           <Button
             className="more-menu-btn"
             icon={<span className="material-symbols-outlined">more_horiz</span>}
           />
         </Dropdown>
-      </Space>
+      </Row>
     ),
   },
 };

@@ -1,12 +1,6 @@
-import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Radio, Space, Input, Checkbox } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-  SettingInfoLabel,
-  SettingTextarea,
-} from '../../CorporationSettingPage/components/Sprites';
+import { useState } from 'react';
+import { Row, Col, Modal, Button } from 'antd';
+import { SettingsInputContainer, SettingLabel, SettingInput, SettingTextarea } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const ExportPDF = ({ title }) => {
@@ -35,6 +29,7 @@ const ExportPDF = ({ title }) => {
       >
         <span>{'PDF'}</span>
       </Button>
+
       <Modal
         title={<StyledModalTitle>{'領収書ダウンロードURLの送信'}</StyledModalTitle>}
         visible={isModalOpen}

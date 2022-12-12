@@ -4,7 +4,7 @@ import {
   SettingLabel,
   SettingInput,
   SettingInputPassword,
-} from './Sprites';
+} from 'utils/Sprites';
 import ChangeEmail from './ChangeEmail';
 import ChangePassword from './ChangePassword';
 

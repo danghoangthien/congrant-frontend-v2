@@ -1,6 +1,5 @@
 import { Table } from 'antd';
-import { SettingSelect } from 'app/pages/CorporationSettingPage/components/Sprites';
-const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
+import { SettingSelect } from 'utils/Sprites';
 
 const dataSource = [
   {

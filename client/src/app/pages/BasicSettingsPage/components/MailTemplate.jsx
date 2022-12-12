@@ -1,4 +1,6 @@
-import { Row, Col, Tag, Button, Dropdown, Menu, Space } from 'antd';
+// ANTD
+import { Row, Col, Button, Dropdown, Menu, Space } from 'antd';
+// COMPONENT
 import DraggableTable from 'app/components/DraggableTable';
 import AddEmailTemplate from './AddEmailTemplate';
 
