@@ -121,6 +121,10 @@ const ActivityTable = () => (
     dataSource={dataSource}
     columns={columns}
     pagination={false}
+    rowClassName={record => {
+      console.log('record', record);
+      //index % 2 === 0 ? 'table-row-light' :  'table-row-dark'
+    }}
   />
 );
 
