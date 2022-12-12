@@ -449,7 +449,7 @@ const columnMap = {
 
 const COLUMN_SETTING_LOCALSTORAGE = 'received_funding_column_setting';
 
-const getRenderColumns = () => {
+const _getRenderColumns = () => {
   //let visibleColumns = Object.keys(columnMap);
   let _visibleColumns = Object.entries(columnMap).filter(([key, value]) => {
     //console.log('entry value', value);
@@ -468,6 +468,20 @@ const getRenderColumns = () => {
     return columnMap[columnName];
   });
   console.log('getRenderColumns', renderColumns);
+  return renderColumns;
+};
+
+const getRenderColumns = () => {
+  let visibleColumns = Object.keys(columnMap);
+  const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
+  if (columnsInSetting) {
+    visibleColumns = visibleColumns.filter(columnName => {
+      return columnsInSetting.includes(columnName);
+    });
+  }
+  const renderColumns = visibleColumns.map(columnName => {
+    return columnMap[columnName];
+  });
   return renderColumns;
 };
 

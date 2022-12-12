@@ -3,6 +3,8 @@ import { CopyOutlined } from '@ant-design/icons';
 import DrawerHandle from '../../components/DrawerHandle';
 import { getWithExpiry } from 'utils/localStorageHandler';
 import Detail from './components/Detail';
+import { randomOutput } from 'utils/helper';
+import SubjectIcon from '@mui/icons-material/Subject';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
 
@@ -59,7 +61,8 @@ const menu = (
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
   personal_id: `${'20220730' + i}`,
-  full_name: '荒木 雄大',
+  full_name: randomOutput(['荒木 雄大', '田中 太郎', '山田 花子']),
+  full_name_furagana: randomOutput(['たなか たろう', 'やまだ はなこ']),
   attributes: ['理事', 'ボランティア'],
   email: `danghoangthien+${i}@gmail.com`,
   recent_donation: '3,000円',
@@ -84,11 +87,34 @@ const columnMap = {
     dataIndex: 'full_name',
     csvOutput: full_name => full_name,
   },
-  // 属性
-  attributes: {
-    title: '属性',
-    render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
-    csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
+  // ふりがな
+  full_name_furagana: {
+    title: '氏名',
+    dataIndex: 'full_name_furagana',
+    csvOutput: full_name => full_name,
+  },
+  // 広報物への掲載
+  materials: {
+    title: '広報物への掲載',
+    render: () => randomOutput(['許可', '']),
+    csvOutput: () => randomOutput(['許可', '']),
+  },
+  // 性別
+  gender: {
+    title: '性別',
+    render: () => randomOutput(['男性', '女性']),
+    csvOutput: () => randomOutput(['男性', '女性']),
+  },
+  // 生年月日
+  birthday: {
+    title: '生年月日',
+    render: () => (
+      <Space direction="vertical">
+        <span>{'1991-01-01'}</span>
+        <span>{'（31歳）'}</span>
+      </Space>
+    ),
+    csvOutput: () => randomOutput(['1991-01-01 （31歳）', '']),
   },
   // メールアドレス
   email: {
@@ -110,6 +136,36 @@ const columnMap = {
     ),
     csvOutput: ({ email }) => email,
   },
+  // 電話番号
+  phone: {
+    title: '電話番号',
+    render: () => randomOutput(['08012345678', '08012345678']),
+    csvOutput: () => randomOutput(['男性', '女性']),
+  },
+  // 住所
+  address: {
+    title: '住所',
+    render: () => randomOutput(['熊本県熊本市…', '大阪府大阪市…']),
+    csvOutput: () => randomOutput(['熊本県熊本市…', '大阪府大阪市…']),
+  },
+  // 属性
+  attributes: {
+    title: '属性',
+    render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
+    csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
+  },
+  // カスタム項目
+  custom_field: {
+    title: 'カスタム項目',
+    render: () => randomOutput(['text', 'another text']),
+    csvOutput: () => randomOutput(['text', 'another text']),
+  },
+  // カスタム項目（複数行の場合）
+  custom_field_multiple_lines: {
+    title: 'カスタム項目（複数行の場合）',
+    render: () => <SubjectIcon />,
+    csvOutput: () => randomOutput(['...', 'another text']),
+  },
   // 直近の寄付
   recent_donation: {
     title: '直近の寄付',
@@ -124,14 +180,9 @@ const columnMap = {
   },
   // 累計寄付
   cumulative_donation: {
-    title: '累計寄付',
+    title: '累計寄付金額',
     dataIndex: 'cumulative_donation',
-    render: cumulative_donation => (
-      <Space direction="vertical">
-        <span>{cumulative_donation}</span>
-        <span>{'8回'}</span>
-      </Space>
-    ),
+    render: cumulative_donation => <span>{cumulative_donation}</span>,
     csvOutput: cumulative_donation => cumulative_donation,
   },
   action: {

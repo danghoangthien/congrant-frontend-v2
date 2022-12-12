@@ -4,6 +4,7 @@ import { StyledBadgeDot } from 'styles/global-styles';
 import DrawerHandle from '../../components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
 import { randomOutput } from 'utils/helper';
+import SubjectIcon from '@mui/icons-material/Subject';
 
 import {
   DONATION_TYPES,
@@ -62,6 +63,7 @@ const menu = (
 
 const dataSource = [
   {
+    no: '12345678',
     key: '1',
     recurring_id: '1',
     status: '1',
@@ -75,6 +77,7 @@ const dataSource = [
     times: '8回',
   },
   {
+    no: '12345678',
     key: '2',
     recurring_id: '2',
     status: '2',
@@ -88,6 +91,7 @@ const dataSource = [
     times: '8回',
   },
   {
+    no: '12345678',
     key: '3',
     recurring_id: '3',
     status: '3',
@@ -103,6 +107,20 @@ const dataSource = [
 ];
 
 const columnMap = {
+  // 継続契約No.
+  no: {
+    title: '継続契約No.',
+    dataIndex: 'no',
+  },
+  // サポーター
+  supporter: {
+    title: 'サポーター',
+    render: row => (
+      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
+        <span className="supporter-link">{row.supporter}</span>
+      </DrawerHandle>
+    ),
+  },
   // ステータス
   status: {
     title: 'ステータス',
@@ -113,20 +131,9 @@ const columnMap = {
       </StyledBadgeDot>
     ),
   },
-
-  // サポーター
-  supporter: {
-    title: 'サポーター',
-    render: row => (
-      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
-        <span className="supporter-link">{row.supporter}</span>
-      </DrawerHandle>
-    ),
-  },
-
-  // 頻度
+  // 寄付タイプ
   donation_type: {
-    title: '頻度',
+    title: '寄付タイプ',
     dataIndex: 'donation_type',
     render: donation_type => (
       <Tag
@@ -140,61 +147,80 @@ const columnMap = {
       </Tag>
     ),
   },
-
-  // プラン・金額
-  plan_and_amount: {
-    title: 'プラン・金額',
-    render: ({ amount }) => {
+  // プラン
+  plan: {
+    title: 'プラン',
+    render: () => {
       const plan = randomOutput([
         'シルバーサポーター',
         '賛助会員（都度更新）',
         '正会員（自動更新）',
-        '',
       ]);
+      return <>{plan}</>;
+    },
+  },
+  // 初回決済日
+  unit_price_number_of_unit: {
+    title: '単価・口数',
+    render: () => {
+      const unit_price = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
+      const number_of_unit = randomOutput(['3', '6', '9']);
       return (
-        <>
-          {plan && (
-            <>
-              {plan}
-              <br />
-            </>
-          )}
-          {amount}
-        </>
+        <Space direction="vertical">
+          <span>{unit_price}</span>
+          <span>
+            {number_of_unit}
+            {'口'}
+          </span>
+        </Space>
       );
     },
   },
-
+  // 金額
+  amount: {
+    title: '金額',
+    render: () => {
+      const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
+      return amount;
+    },
+  },
   // 初回決済日
   first_payment_date: {
     title: '初回決済日',
     dataIndex: 'first_payment_date',
   },
-
   // 最終決済日
   last_payment_date: {
     title: '最終決済日',
     dataIndex: 'last_payment_date',
   },
-
-  // 累計金額・回数
-  money_and_times: {
-    title: '累計金額・回数',
-    render: ({ money, times }) => {
+  // 累計寄付回数
+  cumulative_amount: {
+    title: '累計寄付金額',
+    render: () => {
+      const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
+      return amount;
+    },
+  },
+  // 累計寄付回数
+  cumulative_times: {
+    title: '累計寄付回数',
+    render: ({ times }) => {
+      return <>{times}</>;
+    },
+  },
+  // 解約日・理由
+  date_and_reason: {
+    title: '解約日・理由',
+    render: () => {
       return (
-        <>
-          {money && (
-            <>
-              {money}
-              <br />
-            </>
-          )}
-          {times}
-        </>
+        <Space>
+          <span>{'2022-04-01'}</span>
+          <SubjectIcon />
+        </Space>
       );
     },
   },
-
   // アクション
   operate: {
     width: 120,
