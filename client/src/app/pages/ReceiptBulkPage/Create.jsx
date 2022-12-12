@@ -10,6 +10,8 @@ import Step4 from './Step4';
 import './Models/index';
 import styled from 'styled-components/macro';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
+import Breadcumd from 'app/components/Breadcumd';
+import { HEADER_BREADCUMD_DATA_STEPS, HeaderWithBreadcumd } from './consts';
 
 const StyledTag = styled(Tag)`
   width: 32px;
@@ -31,18 +33,6 @@ const StyledTag = styled(Tag)`
 `;
 
 const Create = () => {
-  const renderPageTitle = () => {
-    return (
-      <>
-        <Helmet>
-          <title>{'領収書一括作成'}</title>
-          <meta name="description" content={'...'} />
-        </Helmet>
-      </>
-    );
-  };
-
-  const dispatch = useDispatch();
   const { active, completed } = useSelector(state => state['receiptBulkStep']);
   const TabName = ({ current, active, children }) => {
     const color = current === active ? PRIMARY_COLOR : '#D9D9D7';
@@ -63,7 +53,14 @@ const Create = () => {
 
   return (
     <>
-      {renderPageTitle()}
+      <HeaderWithBreadcumd
+        Breadcumd={
+          <Breadcumd
+            data={HEADER_BREADCUMD_DATA_STEPS}
+            active={HEADER_BREADCUMD_DATA_STEPS[1].id}
+          />
+        }
+      />
       <PageLayout>
         <>
           <Row className="mb-5">

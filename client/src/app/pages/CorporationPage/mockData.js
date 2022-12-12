@@ -3,6 +3,8 @@ import { getWithExpiry } from 'utils/localStorageHandler';
 import { Menu, Dropdown, Tag, Button, Space } from 'antd';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
+import { randomOutput } from 'utils/helper';
+import SubjectIcon from '@mui/icons-material/Subject';
 
 const menu = (
   <Menu
@@ -58,7 +60,9 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
   supporterType: '2',
   group_id: `${'10000' + i}`,
   group_name: 'コングラント株式会社',
+  group_name_furagana: randomOutput(['たなか たろう', 'やまだ はなこ']),
   manager: 'CSR部 課長  鈴木 一郎',
+  manager_furagana: randomOutput(['たなか たろう', 'やまだ はなこ']),
   attributes: ['属性', '属性2'],
   email: `danghoangthien+${i}@gmail.com`,
   recent_donation_date: '2022-07-15',
@@ -79,20 +83,66 @@ const columnMap = {
     dataIndex: 'group_name',
     csvOutput: ({ group_name }) => group_name,
   },
+  group_name_furagana: {
+    title: '法人名',
+    dataIndex: 'group_name_furagana',
+    csvOutput: ({ group_name_furagana }) => group_name_furagana,
+  },
+  // 広報物への掲載
+  materials: {
+    title: '広報物への掲載',
+    render: () => randomOutput(['許可', '']),
+    csvOutput: () => randomOutput(['許可', '']),
+  },
+  // 担当者部署・肩書き
+  department_in_charge: {
+    title: '担当者部署・肩書き',
+    render: () => randomOutput(['営業部 部長', 'CSR部']),
+    csvOutput: () => randomOutput(['営業部 部長', 'CSR部']),
+  },
   manager: {
     title: '担当者',
     dataIndex: 'manager',
     csvOutput: ({ manager }) => manager,
+  },
+  manager_furagana: {
+    title: '担当者',
+    dataIndex: 'manager_furagana',
+    csvOutput: ({ manager_furagana }) => manager_furagana,
+  },
+  email: {
+    title: 'メールアドレス',
+    dataIndex: 'email',
+    csvOutput: email => email,
+  },
+  // 電話番号
+  phone: {
+    title: '電話番号',
+    render: () => randomOutput(['08012345678', '08012345678']),
+    csvOutput: () => randomOutput(['男性', '女性']),
+  },
+  // 住所
+  address: {
+    title: '住所',
+    render: () => randomOutput(['熊本県熊本市…', '大阪府大阪市…']),
+    csvOutput: () => randomOutput(['熊本県熊本市…', '大阪府大阪市…']),
   },
   attributes: {
     title: '属性',
     render: ({ attributes }) => attributes.map(attribute => <Tag>{attribute}</Tag>),
     csvOutput: ({ attributes }) => attributes.map(attribute => attribute),
   },
-  email: {
-    title: 'メールアドレス',
-    dataIndex: 'email',
-    csvOutput: email => email,
+  // カスタム項目
+  custom_field: {
+    title: 'カスタム項目',
+    render: () => randomOutput(['text', 'another text']),
+    csvOutput: () => randomOutput(['text', 'another text']),
+  },
+  // カスタム項目（複数行の場合）
+  custom_field_multiple_lines: {
+    title: 'カスタム項目（複数行の場合）',
+    render: () => <SubjectIcon />,
+    csvOutput: () => randomOutput(['...', 'another text']),
   },
   recent_donation: {
     title: '直近の寄付',
@@ -106,14 +156,8 @@ const columnMap = {
     csvOutput: recent_donation => recent_donation,
   },
   cumulative_donation: {
-    title: '累計寄付',
-    render: ({ cumulative_donation, cumulative_donation_times }) => (
-      <>
-        {cumulative_donation}
-        <br />
-        {cumulative_donation_times}
-      </>
-    ),
+    title: '累計寄付金額',
+    render: ({ cumulative_donation }) => <>{cumulative_donation}</>,
     csvOutput: cumulative_donation => cumulative_donation,
   },
   action: {

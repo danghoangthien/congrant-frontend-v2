@@ -8,6 +8,7 @@ import { DANGER_COLOR } from 'styles/StyleConstants';
 import { RECEIPT_STATUSES, RECEIPT_STATUS_COLOR } from 'utils/consts';
 import DrawerHandle from '../../components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
+import SubjectIcon from '@mui/icons-material/Subject';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -88,6 +89,7 @@ export const menuItems = selectedRowKeys => [
 
 const dataSource = Array.from(Array(10).keys()).map(i => ({
   key: `${i}`,
+  receipt_id: `${i + 1}`,
   receipt_no: `${'20220730' + i}`,
   receipt_status: randomOutput(['0', '1', '2']),
   issuing_date: randomOutput(['2023-04-01', '2023-11-05', '2023-03-05']),
@@ -103,6 +105,16 @@ const columnMap = {
     dataIndex: 'receipt_no',
     csvOutput: ({ receipt_no }) => receipt_no,
   },
+  // サポーター
+  supporter: {
+    title: 'サポーター',
+    render: row => (
+      <DrawerHandle drawerTitle={row.supporter} drawerComponent={<Detail data={row} />}>
+        <span className="supporter-link">{row.supporter}</span>
+      </DrawerHandle>
+    ),
+    csvOutput: ({ supporter }) => supporter,
+  },
   receipt_status: {
     title: '発行ステータス',
     dataIndex: 'receipt_status',
@@ -117,7 +129,7 @@ const columnMap = {
     csvOutput: ({ receipt_status }) => RECEIPT_STATUSES[receipt_status] || '',
   },
   issuing_date: {
-    title: '発行日',
+    title: '発行日時',
     render: ({ issuing_date }) => issuing_date,
     csvOutput: ({ issuing_date }) => issuing_date,
   },
@@ -126,18 +138,14 @@ const columnMap = {
     dataIndex: 'template',
     csvOutput: ({ template }) => template,
   },
-  supporter: {
-    title: 'サポーター',
-    render: row => (
-      <DrawerHandle drawerTitle={row.supporter} drawerComponent={<Detail data={row} />}>
-        <span className="supporter-link">{row.supporter}</span>
-      </DrawerHandle>
-    ),
-    csvOutput: ({ supporter }) => supporter,
-  },
   amount: {
     title: '金額',
     dataIndex: 'amount',
+  },
+  // メモ
+  date_and_reason: {
+    title: 'メモ',
+    render: () => <SubjectIcon />,
   },
   action: {
     width: 120,

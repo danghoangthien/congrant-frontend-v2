@@ -591,6 +591,13 @@ export const GlobalStyle = createGlobalStyle`
       margin-right: 8px;
     }
   }
+
+  .table-row-light {
+    background-color: #ffffff;
+  }
+  .table-row-dark {
+      background-color: #fbfbfb;
+  }
 `;
 
 export const StyledPrimaryIcon = styled.span`

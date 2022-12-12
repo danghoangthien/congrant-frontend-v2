@@ -8,45 +8,41 @@ import {
   SettingInput,
   SettingSelect,
 } from 'app/pages/CorporationSettingPage/components/Sprites';
+import DrawerHandle from 'app/components/DrawerHandle';
 // STYLE
-import { StyledModalTitle, StyledModal } from 'styles/Modal.style';
+import { PRIMARY_COLOR, WHITE_COLOR } from 'styles/StyleConstants';
+import styled from 'styled-components/macro';
 
-const AddSupporter = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const StyledDrawerHeader = styled.div`
+  background: ${PRIMARY_COLOR};
+  color: ${WHITE_COLOR};
+  border-radius: 0;
+  padding: 16px 32px;
+  font-size: 24px;
+  font-weight: 600;
+`;
+const StyledForm = styled.div`
+  padding: 22px 32px;
+`;
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
+const Form = ({ closeDrawer }) => {
   return (
     <>
-      {/* 個人サポーターの登録ボタン・Add Supporter Button */}
-      <Button onClick={showModal} className="active icon-btn" type="primary">
-        <span className="material-symbols-outlined">add</span>
-        <span>{'法人サポーターの登録'}</span>
-      </Button>
-
-      {/* 個人サポーターの新規登録モーダル・Add Supporter Modal */}
-      <StyledModal
-        title={
-          <StyledModalTitle className="modal-title">{'法人サポーターの新規登録'}</StyledModalTitle>
-        }
-        visible={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        width={480}
-        className="modalStyle"
-        footer={null}
-        closeIcon={<span className="material-symbols-outlined">close</span>}
-      >
+      <StyledDrawerHeader>
+        <Row justify="space-between" align="middle">
+          <Col>{'法人サポーターの登録'}</Col>
+          <Col>
+            <span
+              className="material-symbols-outlined"
+              style={{ display: 'flex', cursor: 'pointer' }}
+              onClick={() => closeDrawer()}
+            >
+              close
+            </span>
+          </Col>
+        </Row>
+      </StyledDrawerHeader>
+      <StyledForm>
         <Row className="item mb-6">
           <span>
             {'一括アップロードは'}
@@ -163,7 +159,40 @@ const AddSupporter = () => {
             </Button>
           </Col>
         </Row>
-      </StyledModal>
+      </StyledForm>
+    </>
+  );
+};
+const AddSupporter = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      <DrawerHandle
+        key="111"
+        drawerComponent={<Form />}
+        bodyStyle={{
+          padding: '0',
+        }}
+      >
+        {/* 個人サポーターの登録ボタン・Add Supporter Button */}
+        <Button className="active icon-btn" type="primary">
+          <span className="material-symbols-outlined">add</span>
+          <span>{'法人サポーターの登録'}</span>
+        </Button>
+      </DrawerHandle>
     </>
   );
 };

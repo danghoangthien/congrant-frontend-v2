@@ -18,6 +18,7 @@ import {
 const dataSource = [
   {
     key: '0',
+    donation_id: '1',
     date_of_receipt: '2022-07-30',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -29,6 +30,7 @@ const dataSource = [
   },
   {
     key: '1',
+    donation_id: '2',
     date_of_receipt: '2022-07-30',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -40,6 +42,7 @@ const dataSource = [
   },
   {
     key: '2',
+    donation_id: '3',
     date_of_receipt: '2022-07-31',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -51,6 +54,7 @@ const dataSource = [
   },
   {
     key: '3',
+    donation_id: '4',
     date_of_receipt: '2022-07-29',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -62,6 +66,7 @@ const dataSource = [
   },
   {
     key: '4',
+    donation_id: '5',
     date_of_receipt: '2022-07-28',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -73,6 +78,7 @@ const dataSource = [
   },
   {
     key: '5',
+    donation_id: '6',
     date_of_receipt: '2022-07-27',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -84,6 +90,7 @@ const dataSource = [
   },
   {
     key: '6',
+    donation_id: '7',
     date_of_receipt: '2018-07-22',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -95,6 +102,7 @@ const dataSource = [
   },
   {
     key: '7',
+    donation_id: '8',
     date_of_receipt: '2022-07-25',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -106,6 +114,7 @@ const dataSource = [
   },
   {
     key: '8',
+    donation_id: '9',
     date_of_receipt: '2022-07-24',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -117,6 +126,7 @@ const dataSource = [
   },
   {
     key: '9',
+    donation_id: '10',
     date_of_receipt: '2022-07-23',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -128,6 +138,7 @@ const dataSource = [
   },
   {
     key: '10',
+    donation_id: '11',
     date_of_receipt: '2022-07-22',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -139,6 +150,7 @@ const dataSource = [
   },
   {
     key: '11',
+    donation_id: '12',
     date_of_receipt: '2021-07-25',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -150,6 +162,7 @@ const dataSource = [
   },
   {
     key: '12',
+    donation_id: '13',
     date_of_receipt: '2021-07-24',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -161,6 +174,7 @@ const dataSource = [
   },
   {
     key: '13',
+    donation_id: '14',
     date_of_receipt: '2021-07-23',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -172,6 +186,7 @@ const dataSource = [
   },
   {
     key: '14',
+    donation_id: '15',
     date_of_receipt: '2021-07-22',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -183,6 +198,7 @@ const dataSource = [
   },
   {
     key: '15',
+    donation_id: '16',
     date_of_receipt: '2021-07-21',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -194,6 +210,7 @@ const dataSource = [
   },
   {
     key: '16',
+    donation_id: '17',
     date_of_receipt: '2021-07-20',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -205,6 +222,7 @@ const dataSource = [
   },
   {
     key: '17',
+    donation_id: '18',
     date_of_receipt: '2021-07-19',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -216,6 +234,7 @@ const dataSource = [
   },
   {
     key: '18',
+    donation_id: '19',
     date_of_receipt: '2021-07-18',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -227,6 +246,7 @@ const dataSource = [
   },
   {
     key: '19',
+    donation_id: '20',
     date_of_receipt: '2021-07-17',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -238,6 +258,7 @@ const dataSource = [
   },
   {
     key: '20',
+    donation_id: '21',
     date_of_receipt: '2021-07-16',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -249,6 +270,7 @@ const dataSource = [
   },
   {
     key: '21',
+    donation_id: '22',
     date_of_receipt: '2021-07-15',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -260,6 +282,7 @@ const dataSource = [
   },
   {
     key: '22',
+    donation_id: '23',
     date_of_receipt: '2021-07-14',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -271,6 +294,7 @@ const dataSource = [
   },
   {
     key: '23',
+    donation_id: '24',
     date_of_receipt: '2021-07-13',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -282,6 +306,7 @@ const dataSource = [
   },
   {
     key: '24',
+    donation_id: '25',
     date_of_receipt: '2021-07-12',
     supporter: '荒木 雄大',
     project: 'NPO法人コングラントへのご支援をお願いします！',
@@ -424,7 +449,7 @@ const columnMap = {
 
 const COLUMN_SETTING_LOCALSTORAGE = 'received_funding_column_setting';
 
-const getRenderColumns = () => {
+const _getRenderColumns = () => {
   //let visibleColumns = Object.keys(columnMap);
   let _visibleColumns = Object.entries(columnMap).filter(([key, value]) => {
     //console.log('entry value', value);
@@ -443,6 +468,20 @@ const getRenderColumns = () => {
     return columnMap[columnName];
   });
   console.log('getRenderColumns', renderColumns);
+  return renderColumns;
+};
+
+const getRenderColumns = () => {
+  let visibleColumns = Object.keys(columnMap);
+  const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
+  if (columnsInSetting) {
+    visibleColumns = visibleColumns.filter(columnName => {
+      return columnsInSetting.includes(columnName);
+    });
+  }
+  const renderColumns = visibleColumns.map(columnName => {
+    return columnMap[columnName];
+  });
   return renderColumns;
 };
 

@@ -8,6 +8,7 @@ import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import AddDonation from './components/AddDonation';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
+import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
 import './Models/received';
 // Styles
 // import { FundingPageLayout } from './FundingPage.style';
@@ -149,7 +150,13 @@ const FundingPage = () => {
             model="receivedFundingList"
             metaData={metaData} // テーブル中身
             contextButtons={[MailButton]} // メッセージを送るボタン
-            Detail={<Detail activeKey={DETAIL_KEY_MAP.DONATION} />} // 詳細ページ
+            Detail={
+              <Detail
+                activeKey={DETAIL_KEY_MAP.DONATION}
+                data={{ donation_id: 1 }}
+                viewMode={DETAIL_MODE}
+              />
+            } // 詳細ページ
             TableName={'受領済みの寄付一覧'} // テーブルタイトル
             contextDropdownItems={metaData.menuItems} //　選択時のメニュー
             hasTableSetting // テーブル表示設定

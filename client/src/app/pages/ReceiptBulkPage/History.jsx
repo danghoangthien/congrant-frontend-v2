@@ -7,7 +7,8 @@ import styled from 'styled-components/macro';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // TABLE
 import HistoryTable from './HistoryTable';
-
+import Breadcumd from 'app/components/Breadcumd';
+import { HEADER_BREADCUMD_DATA, HeaderWithBreadcumd } from './consts';
 export const StyledTag = styled(Tag)`
   width: 40px;
   height: 40px;
@@ -15,20 +16,11 @@ export const StyledTag = styled(Tag)`
 `;
 
 const History = () => {
-  const renderPageTitle = () => {
-    return (
-      <>
-        <Helmet>
-          <title>{'領収書一括作成履歴'}</title>
-          <meta name="description" content={'...'} />
-        </Helmet>
-      </>
-    );
-  };
-
   return (
     <>
-      {renderPageTitle()}
+      <HeaderWithBreadcumd
+        Breadcumd={<Breadcumd data={HEADER_BREADCUMD_DATA} active={HEADER_BREADCUMD_DATA[1].id} />}
+      />
       <PageLayout>
         <Row className="mb-6">
           <Col span={24}>
