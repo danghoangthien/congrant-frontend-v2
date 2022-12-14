@@ -2,19 +2,15 @@ import { Table, Dropdown, Button, Menu, Space, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import { DANGER_COLOR } from 'styles/StyleConstants';
 import Reply from './Reply';
+import DrawerHandle from 'app/components/DrawerHandle';
+import Detail from 'app/pages/IndividualPage/components/Detail';
+
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = Array.from(Array(10).keys()).map(i => ({
   pub_date: '2023-04-01',
   status: randomOutput([1, 2, 3]),
-  name: randomOutput([
-    <Link to="/">
-      <span style={{ fontWeight: 600 }}>田中 太郎</span>
-    </Link>,
-    <Link to="/">
-      <span style={{ fontWeight: 600 }}>テスト</span>
-    </Link>,
-  ]),
+  name: randomOutput(['田中 太郎', 'テスト']),
   comment: '応援しています！',
   reply: 'ありがとうございます！',
 }));
@@ -65,8 +61,11 @@ const columns = [
   {
     width: 150,
     title: 'お名前',
-    dataIndex: 'name',
-    render: name => name,
+    render: row => (
+      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
+        <span className="supporter-link">{row.name}</span>
+      </DrawerHandle>
+    ),
   },
   {
     width: 150,

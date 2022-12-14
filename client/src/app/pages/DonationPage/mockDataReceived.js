@@ -24,6 +24,7 @@ import noteIclon from 'styles/assets/note.svg';
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
+  donation_id: `${i + 1}`,
   donation_number: `${i + 1234567}`,
   supporter: '荒木 雄大',
   date_of_receipt: '2022-07-30',

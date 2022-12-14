@@ -98,7 +98,7 @@ const ViewModeContent = ({ data, mode, setMode }) => {
   return (
     <>
       <DescriptionContainer mode={mode} setMode={setMode}>
-        <Descriptions.Item label={<BoldLabel label="法人No" />}>
+        <Descriptions.Item label={<BoldLabel label="法人No." />}>
           <CopiableText>{'123456'}</CopiableText>
         </Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="法人名" />}>
