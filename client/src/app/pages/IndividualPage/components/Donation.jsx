@@ -157,6 +157,7 @@ const ListModeContent2 = ({ data, mode, setMode }) => {
 const Donation = ({ data, viewMode }) => {
   const [mode, setMode] = useState(null);
   useMountEffect(() => {
+    console.log('Donation useMountEffect', data?.donation_id, viewMode);
     if (data?.donation_id && viewMode === DETAIL_MODE) {
       setMode(viewMode);
     } else {

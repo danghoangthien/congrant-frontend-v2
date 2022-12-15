@@ -20,6 +20,7 @@ export const DETAIL_KEY_MAP = {
 
 const Detail = ({ data, closeDrawer, activeKey, viewMode = LIST_MODE }) => {
   console.log('Detail data', data);
+  console.log('Detail activeKey', activeKey);
   const { supporterType = randomOutput([1, 2]) } = data;
   return (
     <StyledDetail>

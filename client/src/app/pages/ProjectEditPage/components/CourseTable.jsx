@@ -1,5 +1,5 @@
 import { Button, Table, Image, Space, Dropdown, Menu } from 'antd';
-
+import DraggableTable from 'app/components/DraggableTable';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
@@ -89,7 +89,12 @@ const columns = Object.keys(columnMap).map(columnName => {
 });
 
 const CourseTable = () => (
-  <Table tableLayout="fixed" dataSource={dataSource} columns={columns} pagination={false} />
+  <DraggableTable
+    tableLayout="fixed"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+  />
 );
 
 export default CourseTable;

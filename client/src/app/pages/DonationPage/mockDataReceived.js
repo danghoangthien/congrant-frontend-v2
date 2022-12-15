@@ -1,5 +1,5 @@
 // ANTD
-import { Tag, Badge, Space, Tooltip } from 'antd';
+import { Tag, Badge, Space, Tooltip, Typography } from 'antd';
 // UTILS
 import { getWithExpiry } from 'utils/localStorageHandler';
 import { randomOutput } from 'utils/helper';
@@ -21,13 +21,16 @@ import {
 } from 'utils/consts';
 // IMAGE
 import noteIclon from 'styles/assets/note.svg';
+const { Paragraph } = Typography;
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
+  donation_id: `${i + 1}`,
   donation_number: `${i + 1234567}`,
   supporter: '荒木 雄大',
   date_of_receipt: '2022-07-30',
-  project: 'NPO法人コングラントへのご支援をお願いします！',
+  project:
+    'テキストが長い場合3行以上にせず文章を区切ってTooltipで表示テキストが長い場合3行以上にせず文章を区切ってTooltipで表示テキストが長い場合3行以上にせず文章を区切ってTooltipで表示',
   donation_type: randomOutput([1, 2, 3]),
   plan: randomOutput([1, 2, 3, 4, '']),
   money: 30000000,
@@ -74,6 +77,7 @@ const columnMap = {
     width: 240,
     title: 'プロジェクト',
     dataIndex: 'project',
+    render: project => <Paragraph ellipsis={{ rows: 2, tooltip: project }}>{project}</Paragraph>,
     csvOutput: ({ project }) => project,
     defaultVisible: true,
   },

@@ -46,7 +46,7 @@ const HEADER_BREADCUMD_DATA_STEPS = [
   },
   {
     id: 2,
-    title: '一括作成履歴',
+    title: '領収書の一括作成',
     uri: '',
   },
 ];
