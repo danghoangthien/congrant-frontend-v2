@@ -27,7 +27,7 @@ const DrawerHandle = ({
   };
 
   return (
-    <div onClick={e => e.stopPropagation()}>
+    <span onClick={e => e.stopPropagation()}>
       <span
         onClick={e => {
           setOpen(true);
@@ -39,15 +39,14 @@ const DrawerHandle = ({
       <StyledDrawer
         bodyStyle={bodyStyle || { padding: '32px 32px 54px' }}
         closable={false}
-        style={{ width: '640px' }}
         placement="right"
         onClose={onClose}
         visible={open}
-        mask={false}
+        mask={true}
       >
         {React.cloneElement(drawerComponent, { closeDrawer: onClose })}
       </StyledDrawer>
-    </div>
+    </span>
   );
 };
 
