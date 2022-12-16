@@ -177,7 +177,7 @@ const Donation = ({ data, viewMode }) => {
               </Col>
             </Row>
             {/* テーブル */}
-            <Row className="mb-6">
+            <Row className="mb-4">
               <Col sm={24} md={24} lg={24}>
                 <ListModeContent {...{ data, mode, setMode }} />
               </Col>

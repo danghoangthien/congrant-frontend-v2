@@ -32,7 +32,7 @@ const ChangeAmount = () => {
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={480}
+        width={572}
         cancelText="キャンセル"
         okText="変更"
         closeIcon={<span className="material-symbols-outlined">close</span>}

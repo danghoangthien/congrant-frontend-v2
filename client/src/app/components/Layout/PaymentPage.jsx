@@ -36,7 +36,12 @@ const PaymentPage = ({ children }) => {
       <PaymentPageStyle>
         {/* ヘッダー・Header */}
         <Header className="project-client-header">
-          <Row justify="space-between" align="middle" style={{ width: '100%' }}>
+          <Row
+            className="header-wrapper"
+            justify="space-between"
+            align="middle"
+            style={{ width: '100%' }}
+          >
             <Col span={24}>
               <Row justify="space-between" ali>
                 <Col span={24}>

@@ -77,7 +77,7 @@ export const OrganizationInfoStyle = styled.div`
   .ant-descriptions-row > td {
     width: 100%;
     display: block;
-    padding-bottom: 4px;
+    padding-bottom: 1px;
   }
 
   .sns-link {
@@ -117,7 +117,7 @@ export const OrganizationInfoStyle = styled.div`
     }
 
     .organization-logo {
-      margin-right: 56px;
+      margin-right: 20px;
       width: 264px;
       margin-bottom: 0;
 

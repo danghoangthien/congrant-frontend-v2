@@ -1,9 +1,25 @@
 import { CourseBox } from './CourseInfo.style';
-import { Card, Row, Col, Image, Descriptions, Button } from 'antd';
+import { Row, Col, Image, Descriptions, Button } from 'antd';
+import styled from 'styled-components/macro';
 
 const CourseInfo = () => {
+  const MAIN_COLOR = '#e34855';
+
+  const CourseStyle = styled.div`
+    .course-btn {
+      width: 100%;
+      border-color: ${MAIN_COLOR};
+      background: ${`linear-gradient(95.98deg, ${MAIN_COLOR} 14.71%, #F11628 91.59%)`};
+      transition: all 0.3s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  `;
+
   return (
-    <>
+    <CourseStyle>
       <Row>
         <Col span={24}>
           <CourseBox style={{ width: '100%' }} bodyStyle={{ padding: '18px' }}>
@@ -39,15 +55,7 @@ const CourseInfo = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <Button
-                  size="large"
-                  className="course-btn"
-                  type="primary"
-                  style={{
-                    width: '100%',
-                    backgroundColor: 'linear-gradient(95.98deg, #E34855 14.71%, #F11628 91.59%);',
-                  }}
-                >
+                <Button size="large" className="course-btn" type="primary">
                   このコースで支援する
                 </Button>
               </Col>
@@ -88,15 +96,7 @@ const CourseInfo = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <Button
-                  size="large"
-                  className="course-btn"
-                  type="primary"
-                  style={{
-                    width: '100%',
-                    backgroundColor: 'linear-gradient(95.98deg, #E34855 14.71%, #F11628 91.59%);',
-                  }}
-                >
+                <Button size="large" className="course-btn" type="primary">
                   このコースで支援する
                 </Button>
               </Col>
@@ -137,15 +137,7 @@ const CourseInfo = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <Button
-                  size="large"
-                  className="course-btn"
-                  type="primary"
-                  style={{
-                    width: '100%',
-                    backgroundColor: 'linear-gradient(95.98deg, #E34855 14.71%, #F11628 91.59%);',
-                  }}
-                >
+                <Button size="large" className="course-btn" type="primary">
                   このコースで支援する
                 </Button>
               </Col>
@@ -193,7 +185,7 @@ const CourseInfo = () => {
           </CourseBox>
         </Col>
       </Row>
-    </>
+    </CourseStyle>
   );
 };
 

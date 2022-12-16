@@ -15,7 +15,7 @@ const OrganizationInfo = ({ logo }) => {
   return (
     <OrganizationInfoStyle>
       <Card
-        bodyStyle={{ padding: '24px 18px' }}
+        bodyStyle={{ padding: '28px 18px' }}
         style={{ width: '100%' }}
         className="organization-info-box"
       >
@@ -34,7 +34,7 @@ const OrganizationInfo = ({ logo }) => {
         {/* 団体情報・Organization Info */}
         <div className="organization-info-wrapper">
           <div className="organization-name">特定非営利活動法人 日本こども支援協会</div>
-          <Row className="mb-1">
+          <Row className="mb-2">
             <Col span={24}>
               <Descriptions>
                 <Descriptions.Item
