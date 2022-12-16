@@ -57,7 +57,7 @@ const BasicSetting = () => {
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'公開日時'} required />}>
           <Col sm={24} md={24} lg={24}>
-            <DatePicker placeholder={'yyyy-mm-dd'} style={{ width: '256px' }} />
+            <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '256px' }} />
           </Col>
         </SettingsInputContainer>
       </Row>

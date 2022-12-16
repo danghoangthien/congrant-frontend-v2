@@ -11,6 +11,7 @@ import CongrantLogo from 'styles/assets/logo_congrant_gray.svg';
 const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
 
 const { Header, Footer, Content } = Layout;
+const MAIN_COLOR = '#e34855';
 
 const ProjectClientPage = ({ children }) => {
   const params = useParams();
@@ -43,13 +44,18 @@ const ProjectClientPage = ({ children }) => {
       <ProjectClientPageStyle>
         {/* ヘッダー・Header */}
         <Header className="project-client-header">
-          <Row justify="space-between" align="middle" style={{ width: '100%' }}>
+          <Row
+            className="header-wrapper"
+            justify="space-between"
+            align="middle"
+            style={{ width: '100%' }}
+          >
             <Col span={24}>
               <Row justify="space-between" ali>
                 <Col lg={{ span: 24 }}>
                   <Row align="middle" justify="space-between">
                     <Col>
-                      <Space size={20}>
+                      <div className="logo-wrapper">
                         <div className="organization-logo">
                           <Image
                             preview={false}
@@ -65,36 +71,29 @@ const ProjectClientPage = ({ children }) => {
                             </div>
                           )}
                         />
-                      </Space>
+                      </div>
                     </Col>
                     <Col style={{ display: 'flex' }}>
-                      {params?.id === '1' ? (
-                        <Media
-                          query="(min-width: 992px)"
-                          render={() => (
-                            <Space size={20} type="flex" align="center">
-                              <div id="google_translate_element"></div>
-                              <Button
-                                size="large"
-                                className="course-btn"
-                                type="primary"
-                                style={{
-                                  width: '148px',
-                                  backgroundColor:
-                                    'linear-gradient(95.98deg, #E34855 14.71%, #F11628 91.59%);',
-                                }}
-                              >
-                                寄付する
-                              </Button>
-                            </Space>
-                          )}
-                        />
-                      ) : (
-                        <Media
-                          query="(min-width: 992px)"
-                          render={() => <div id="google_translate_element"></div>}
-                        />
-                      )}
+                      <Media
+                        query="(min-width: 992px)"
+                        render={() => (
+                          <Space size={20} type="flex" align="center">
+                            <div id="google_translate_element"></div>
+                            <Button
+                              size="large"
+                              type="primary"
+                              className="h-btn"
+                              style={{
+                                width: '148px',
+                                borderColor: MAIN_COLOR,
+                                background: `linear-gradient(95.98deg, ${MAIN_COLOR} 14.71%, #F11628 91.59%)`,
+                              }}
+                            >
+                              寄付する
+                            </Button>
+                          </Space>
+                        )}
+                      />
                     </Col>
                   </Row>
                 </Col>
@@ -104,12 +103,12 @@ const ProjectClientPage = ({ children }) => {
                     <Col>
                       <Button
                         size="large"
-                        className="course-btn"
+                        className="h-btn"
                         type="primary"
                         style={{
-                          width: '100%',
-                          backgroundColor:
-                            'linear-gradient(95.98deg, #E34855 14.71%, #F11628 91.59%);',
+                          width: 120,
+                          borderColor: MAIN_COLOR,
+                          background: `linear-gradient(95.98deg, ${MAIN_COLOR} 14.71%, #F11628 91.59%)`,
                         }}
                       >
                         寄付する
@@ -149,7 +148,16 @@ const ProjectClientPage = ({ children }) => {
                       </span>
                     ) : (
                       <span>
-                        このページは寄付・会費決済サービス「コングラント」で作成されています。
+                        このページは寄付・会費決済サービス「
+                        <a
+                          className="external-link"
+                          href="http://congrant.com/jp/"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          コングラント
+                        </a>
+                        」で作成されています。
                       </span>
                     )
                   }

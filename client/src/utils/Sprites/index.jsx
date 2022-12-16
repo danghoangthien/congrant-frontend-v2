@@ -193,8 +193,12 @@ const FormInputNumber = ({ placeholder, required, ...rest }) => (
   <StyledFormInputNumber className={required && 'required'} placeholder={placeholder} {...rest} />
 );
 
-const FormInput = ({ placeholder, required, ...rest }) => (
-  <StyledFormInput className={required && 'required'} placeholder={placeholder} {...rest} />
+const FormInput = ({ placeholder, required, center, ...rest }) => (
+  <StyledFormInput
+    className={`${required && 'required'} ${center && 'center'}`}
+    placeholder={placeholder}
+    {...rest}
+  />
 );
 
 const FormSelect = ({ placeholder, required, ...rest }) => (
@@ -273,7 +277,7 @@ const SettingInputPassword = ({ placeholder, ...rest }) => (
 
 const Navigation = ({ setMode, label, identityLabel, id, listMode }) => {
   return (
-    <StyledNavigation className="mb-8" size={24}>
+    <StyledNavigation className="mb-6" size={24}>
       <Button
         className="icon-btn less-shadow-btn"
         icon={<span className="material-symbols-outlined fill-icon">chevron_left</span>}

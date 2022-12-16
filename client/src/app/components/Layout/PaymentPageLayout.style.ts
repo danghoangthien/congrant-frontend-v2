@@ -8,6 +8,7 @@ export const PaymentPageStyle = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.7;
+  padding-top: 64px;
 
   .ant-divider {
     border-top-color: #222222;
@@ -44,13 +45,22 @@ export const PaymentPageStyle = styled.div`
   }
 
   & .project-client-header {
+    border-bottom: 1px solid #e7e7e7;
     background: #ffffff;
     width: 100%;
-    max-width: 1080px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
     padding: 0 20px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
+
+    .header-wrapper {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
 
     & .organization-logo {
       // margin-right: 20px;
@@ -91,7 +101,6 @@ export const PaymentPageStyle = styled.div`
 
   & main {
     min-height: 100%;
-    border-top: 1px solid #e7e7e7;
     padding: 40px 20px;
     background: #f5f5f3;
 

@@ -7,43 +7,50 @@ import { Row, Col, Space, Card, Button } from 'antd';
 import Logo from 'styles/assets/logo_congrant.svg';
 
 // Number of input fields that make up SSN
-const numOfFields = 4;
+// const numOfFields = 4;
 
-const useSSNFields = () => {
-  const [ssnValues, setValue] = React.useState({
-    ssn1: '',
-    ssn2: '',
-    ssn3: '',
-  });
+// const useSSNFields = () => {
+//   const [ssnValues, setValue] = React.useState({
+//     ssn1: '',
+//     ssn2: '',
+//     ssn3: '',
+//   });
 
-  return {
-    handleChange: e => {
-      const { maxLength, value, name } = e.target;
-      const [fieldIndex] = name.split('-');
+//   return {
+//     handleChange: e => {
+//       console.log('handleChange');
+//       const { maxLength, value, name } = e.target;
+//       const [fieldIndex] = name.split('-');
+//       console.log(fieldIndex);
 
-      // Check if they hit the max character length
-      if (value.length >= maxLength) {
-        // Check if it's not the last input field
-        if (parseInt(fieldIndex, 10) < numOfFields) {
-          // Get the next input field
-          const nextSibling = document.querySelector(
-            `input[name=ssn-${parseInt(fieldIndex, 10) + 1}]`,
-          );
+//       // Check if they hit the max character length
+//       if (value.length >= maxLength) {
+//         console.log('11111');
+//         console.log(parseInt(fieldIndex, 10));
+//         // Check if it's not the last input field
+//         if (parseInt(fieldIndex, 10) < numOfFields) {
+//           console.log('22222');
+//           // Get the next input field
+//           const nextSibling = document.querySelector(
+//             `input[name=ssn-${parseInt(fieldIndex, 10) + 1}]`,
+//           );
+//           console.log(nextSibling);
 
-          // If found, focus the next field
-          if (nextSibling !== null) {
-            nextSibling.focus();
-          }
-        }
-      }
+//           // If found, focus the next field
+//           if (nextSibling !== null) {
+//             console.log('aaaaa');
+//             nextSibling.focus();
+//           }
+//         }
+//       }
 
-      setValue({
-        ...value,
-        [`ssn${fieldIndex}`]: value,
-      });
-    },
-  };
-};
+//       setValue({
+//         ...value,
+//         [`ssn${fieldIndex}`]: value,
+//       });
+//     },
+//   };
+// };
 
 const SettingInput = ({ placeholder, ...rest }) => (
   <StyledVericationBox placeholder={placeholder} {...rest} />
@@ -51,7 +58,28 @@ const SettingInput = ({ placeholder, ...rest }) => (
 
 const EmailVerify = () => {
   const history = useHistory();
-  const { handleChange } = useSSNFields();
+  // const { handleChange } = useSSNFields();
+  const handleChange = e => {
+    const { maxLength, value, name } = e.target;
+    const [fieldName, fieldIndex] = name.split('-');
+    console.log(fieldName);
+    let fieldIntIndex = parseInt(fieldIndex, 10);
+    console.log(fieldIntIndex);
+
+    // Check if no of char in field == maxlength
+    if (value.length >= maxLength) {
+      // It should not be last input field
+      if (fieldIntIndex < 5) {
+        // Get the next input field using it's name
+        const nextfield = document.querySelector(`input[name=field-${fieldIntIndex + 1}]`);
+
+        // If found, focus the next field
+        if (nextfield !== null) {
+          nextfield.focus();
+        }
+      }
+    }
+  };
 
   const renderPageTitle = () => {
     return (
@@ -92,26 +120,30 @@ const EmailVerify = () => {
               <Space className="mb-6" size={16}>
                 <SettingInput
                   placeholder={'0'}
-                  name="ssn-1"
                   maxLength={1}
+                  name="field-1"
+                  length="1"
                   onChange={handleChange}
                 />
                 <SettingInput
                   placeholder={'0'}
-                  name="ssn-2"
                   maxLength={1}
+                  name="field-2"
+                  length="1"
                   onChange={handleChange}
                 />
                 <SettingInput
                   placeholder={'0'}
-                  name="ssn-3"
                   maxLength={1}
+                  name="field-3"
+                  length="1"
                   onChange={handleChange}
                 />
                 <SettingInput
                   placeholder={'0'}
-                  name="ssn-4"
                   maxLength={1}
+                  name="field-4"
+                  length="1"
                   onChange={handleChange}
                 />
               </Space>
