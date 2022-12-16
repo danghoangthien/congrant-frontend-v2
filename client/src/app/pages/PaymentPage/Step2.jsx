@@ -17,8 +17,14 @@ import {
   FormSelect,
   HorizontalInputContainer,
 } from 'utils/Sprites';
+import NoticeModal from 'app/components/Modal/NoticeModal';
 // STYLE
-import { StyledButton, StyledBackButton } from './PaymentPage.style';
+import {
+  StyledButton,
+  StyledBackButton,
+  StyledPrivacyCard,
+  StyledNoticeList,
+} from './PaymentPage.style';
 // MODEL
 import './Models/index';
 
@@ -433,13 +439,76 @@ const Step2 = () => {
             <Divider />
           </Col>
 
+          {/* 同意事項・Agreement */}
+          <Col span={24} className="mb-4">
+            <Checkbox>
+              決済サービスの
+              <a
+                className="external-link"
+                href="https://www.google.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                利用規約
+              </a>
+              ・
+              <a
+                className="external-link"
+                href="https://www.google.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                プライバシーポリシー
+              </a>
+              に同意します
+            </Checkbox>
+          </Col>
+          <Col span={24} className="mb-6">
+            <StyledNoticeList>
+              <li>
+                <NoticeModal
+                  text="寄付決済サービスについて"
+                  title="寄付決済サービスについて"
+                  content="本ページはコングラント株式会社が提供する寄付決済・管理サービス「コングラント」を利用して作成されています。「コングラント」は利用団体に提供されるシステムであり、コングラント株式会社は利用団体の寄付募集の実行には関与しておりません。"
+                />
+              </li>
+              <li>
+                <NoticeModal
+                  text="クレジットカード決済について"
+                  title="クレジットカード決済について"
+                  content="決済者のクレジットカード情報はコングラントが提携する決済代行会社が適切に管理します。"
+                />
+              </li>
+              <li>
+                <NoticeModal
+                  text="決済のキャンセル・返金について"
+                  title="決済のキャンセル・返金について"
+                  content="お客様の事情による決済後のキャンセル・返金はお受けできません。あらかじめご了承ください。"
+                />
+              </li>
+            </StyledNoticeList>
+          </Col>
+          <Col span={24} className="mb-4">
+            <Checkbox>支援先からの確認事項に同意します</Checkbox>
+          </Col>
+          <Col span={24} className="mb-8">
+            <StyledPrivacyCard>
+              <div className="title">同意事項</div>
+              <div className="content">
+                ・団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。
+                <br />
+                ・団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。
+              </div>
+            </StyledPrivacyCard>
+          </Col>
+
           {/* ボタン */}
           <Col span={24}>
             <Row justify="space-between">
               <StyledBackButton
                 size="large"
                 onClick={() => {
-                  dispatch.paymentStep.setActive('2');
+                  dispatch.paymentStep.setActive('1');
                 }}
               >
                 <span className="material-symbols-outlined icon">arrow_back_ios</span>申込内容を修正

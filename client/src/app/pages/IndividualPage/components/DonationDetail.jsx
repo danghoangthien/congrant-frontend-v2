@@ -111,7 +111,7 @@ const DonationDetail = ({ data, mode, setMode }) => {
       <Row className="mb-8">
         <Col span={24}>
           <DescriptionContainer>
-            <Descriptions.Item label={<BoldLabel label="寄付ID" />}>
+            <Descriptions.Item label={<BoldLabel label="寄付No." />}>
               <CopiableText>{'431051'}</CopiableText>
             </Descriptions.Item>
             <Descriptions.Item label={<BoldLabel label="受領日" />}>

@@ -410,6 +410,12 @@ export const StyledFormInput = styled(Input)`
       background: ${REQUIRED_COLOR};
     }
   }
+
+  &.center {
+    .ant-input {
+      text-align: center;
+    }
+  }
 `;
 
 export const StyledFormCheckbox = styled(Checkbox)`

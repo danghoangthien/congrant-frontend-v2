@@ -22,7 +22,7 @@ export const StyledPaymentSteps = styled(Steps)`
     justify-content: center;
     font-size: 16px;
     font-weight: 700;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Roboto', 'Noto Sans JP', sans-serif;
   }
 
   &.ant-steps-label-vertical .ant-steps-item-icon {
@@ -154,6 +154,31 @@ export const StyledButton = styled(Button)`
 
   &:hover {
     opacity: 0.8;
+  }
+`;
+
+export const StyledNoticeList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    color: #737373;
+    font-size: 14px;
+
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+
+    > span {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon {
+      margin-left: 8px;
+      font-size: 16px;
+    }
   }
 `;
 

@@ -14,7 +14,7 @@ import {
   FormInput,
 } from 'utils/Sprites';
 // STYLE
-import { StyledChangeButton, StyledPrivacyCard, StyledButton } from './PaymentPage.style';
+import { StyledChangeButton, StyledButton } from './PaymentPage.style';
 // IMAGE
 import PaymentImage from 'styles/assets/icon_payment.svg';
 // MODEL
@@ -41,8 +41,13 @@ const Step1 = ({ type }) => {
               style={{ width: '100%' }}
               onChange={onMethodChange}
             >
-              <FormRadio value="1" label="クレジットカード / ウォレット" image={PaymentImage} />
-              <FormRadio value="2" label="銀行振込" />
+              <FormRadio
+                style={{ width: '100%' }}
+                value="1"
+                label="クレジットカード / ウォレット"
+                image={PaymentImage}
+              />
+              <FormRadio style={{ width: '100%' }} value="2" label="銀行振込" />
             </FormRadioGroup>
           </SettingsInputContainer>
         </Col>
@@ -128,12 +133,10 @@ const Step1 = ({ type }) => {
               </StyledChangeButton>
               <FormInput
                 required
+                center
                 style={{
                   width: 80,
-                  // display: 'flex',
-                  // flexDirection: 'row-reverse',
-                  // paddingLeft: 0,
-                  // paddingRight: 11,
+                  textAlign: 'center',
                 }}
                 size="large"
                 defaultValue={1}
@@ -152,29 +155,6 @@ const Step1 = ({ type }) => {
             <span className="total-money-amount">3,000円</span>
           </Row>
           <Divider />
-        </Col>
-        {/* ポリシー・Policy */}
-        <Col span={24} className="mb-4">
-          <Checkbox>
-            <a href="/" target="_blank">
-              利用規約・プライバシーポリシー
-            </a>
-            に同意します
-          </Checkbox>
-        </Col>
-        {/* 同意事項・Agreement */}
-        <Col span={24} className="mb-8">
-          <Checkbox>以下の同意事項に同意します</Checkbox>
-        </Col>
-        <Col span={24} className="mb-8">
-          <StyledPrivacyCard>
-            <div className="title">同意事項</div>
-            <div className="content">
-              ・団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。
-              <br />
-              ・団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。団体が設定した同意事項が入ります。
-            </div>
-          </StyledPrivacyCard>
         </Col>
         {/* 送信ボタン・Next Button */}
         <Col span={24}>

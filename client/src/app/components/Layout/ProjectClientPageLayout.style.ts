@@ -1,10 +1,13 @@
 import styled from 'styled-components/macro';
-import { PRIMARY_COLOR, ScreenSizes } from 'styles/StyleConstants';
+import { ScreenSizes } from 'styles/StyleConstants';
 
 export const ProjectClientPageStyle = styled.div`
   height: 100%;
   color: #222222;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+  padding-top: 64px;
+  overflow: hidden;
+  line-height: 1.7;
 
   & .share-container {
     margin-right: 12px;
@@ -33,8 +36,9 @@ export const ProjectClientPageStyle = styled.div`
   & .project-title {
     font-size: 30px;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     line-height: 1.4;
+    text-align: center;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       font-size: 22px;
@@ -45,12 +49,20 @@ export const ProjectClientPageStyle = styled.div`
     font-size: 13px;
     font-weight: 400;
     color: #666666;
+
+    .external-link {
+      font-weight: 700;
+      color: #2952a2;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   & main {
     min-height: 100%;
-    border-top: 1px solid #e7e7e7;
-    padding: 30px 20px 100px;
+    padding: 50px 20px 100px;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       padding: 25px 20px 30px;
@@ -63,13 +75,32 @@ export const ProjectClientPageStyle = styled.div`
   }
 
   & .project-client-header {
-    background: none;
+    border-bottom: 1px solid #e7e7e7;
+    background: #ffffff;
     width: 100%;
-    max-width: 1100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
     padding: 0 20px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
+
+    .header-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .h-btn {
+      font-weight: 700;
+      border-radius: 7px;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+    }
 
     & .organization-logo {
       // margin-right: 20px;
@@ -81,6 +112,7 @@ export const ProjectClientPageStyle = styled.div`
       .ant-image {
         height: 42px;
         line-height: 1;
+        margin-right: 20px;
 
         img {
           width: 100%;
@@ -130,16 +162,14 @@ export const ProjectClientPageStyle = styled.div`
       margin-bottom: 32px;
     }
 
-    .ant-tabs-tab-btn {
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
       font-size: 16px;
       font-weight: 700;
-      color: #929292;
     }
 
-    .ant-tabs-tab-active {
-      .ant-tabs-tab-btn {
-        color: ${PRIMARY_COLOR};
-      }
+    .ant-tabs-tab-btn {
+      font-size: 16px;
+      color: #929292;
     }
 
     .ant-tabs-tab {
@@ -203,7 +233,7 @@ export const ProjectClientPageStyle = styled.div`
   }
 
   .project-sider {
-    width: 28.3%;
+    width: 30.2%;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       width: 100%;

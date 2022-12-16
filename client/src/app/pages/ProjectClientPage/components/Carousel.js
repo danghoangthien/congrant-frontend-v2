@@ -19,12 +19,13 @@ const Carousel = () => {
           <Swiper
             spaceBetween={10}
             effect={'fade'}
-            navigation={false}
+            navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
             modules={[Autoplay, EffectFade, Thumbs]}
+            speed={2000}
             autoplay={{
               delay: 2500,
-              disableOnInteraction: true,
+              // disableOnInteraction: false,
             }}
             className="main-slider"
           >

@@ -35,7 +35,7 @@ export const StyledModal = styled(Modal)`
   }
 
   & .ant-modal-body {
-    padding: 24px 32px;
+    // padding: 24px 32px;
   }
 
   & .ant-modal-content {

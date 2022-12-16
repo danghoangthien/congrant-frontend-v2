@@ -9,84 +9,83 @@ import {
   SettingTextarea,
 } from 'utils/Sprites';
 // STYLE
-import styled from 'styled-components/macro';
 import { StyledModalTitle, StyledModal } from 'styles/Modal.style';
-
-const StyledForm = styled.div`
-  padding: 22px 32px;
-`;
 
 const Form = () => {
   return (
-    <StyledForm>
+    <>
       {/* サポーター */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'サポーター'} />}>
           <SettingInput placeholder={'氏名・法人名などを入力してください'} />
         </SettingsInputContainer>
       </Row>
 
       {/* 受領日 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'受領日'} required />}>
           <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
         </SettingsInputContainer>
       </Row>
 
       {/* 入金日 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'入金日'} required />}>
           <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
         </SettingsInputContainer>
       </Row>
 
       {/* 寄付タイプ */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'寄付タイプ'} />}>
           <SettingSelect size="large" value={'単発'} disabled />
         </SettingsInputContainer>
       </Row>
 
       {/* プロジェクト */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'プロジェクト'} />}>
           <SettingSelect size="large" placeholder={'選択してください'} />
         </SettingsInputContainer>
       </Row>
 
       {/* プラン */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'プラン'} />}>
           <SettingSelect size="large" placeholder={'選択してください'} />
         </SettingsInputContainer>
       </Row>
 
       {/* 単価・口数 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'単価・口数'} required />}>
-          <Space size={16}>
-            <SettingInput placeholder="3,000" suffix="円" />
-            <SettingInput placeholder="1" suffix="口" />
-          </Space>
+          <Row gutter={16}>
+            <Col span={12}>
+              <SettingInput size="large" placeholder="3,000" suffix="円" />
+            </Col>
+            <Col span={12}>
+              <SettingInput size="large" placeholder="1" suffix="口" />
+            </Col>
+          </Row>
         </SettingsInputContainer>
       </Row>
 
       {/* 金額 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'金額'} />}>
-          <SettingInput placeholder="3,000" suffix="円" />
+          <SettingInput size="large" placeholder="3,000" suffix="円" />
         </SettingsInputContainer>
       </Row>
 
       {/* 受領方法 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'受領方法'} />}>
           <SettingSelect size="large" placeholder={'選択してください'} />
         </SettingsInputContainer>
       </Row>
 
       {/* 備考欄 */}
-      <Row className="item mb-10">
+      <Row className="mb-10">
         <SettingsInputContainer label={<SettingLabel label={'備考欄'} />}>
           <SettingTextarea rows="2" placeholder={'備考を入力してください'} />
         </SettingsInputContainer>
@@ -100,28 +99,28 @@ const Form = () => {
       </Row>
 
       {/* 認知経路 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'認知経路'} />}>
           <SettingSelect size="large" placeholder={'選択してください'} />
         </SettingsInputContainer>
       </Row>
 
       {/* 寄付の使用用途 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'寄付の使用用途'} />}>
           <SettingSelect size="large" placeholder={'選択してください'} />
         </SettingsInputContainer>
       </Row>
 
       {/* 支援経験 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'支援経験'} />}>
           <SettingSelect size="large" placeholder={'選択してください'} />
         </SettingsInputContainer>
       </Row>
 
       {/* 寄付理由 */}
-      <Row className="item mb-6">
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'寄付理由'} />}>
           <SettingTextarea rows="2" />
         </SettingsInputContainer>
@@ -134,9 +133,10 @@ const Form = () => {
           </Button>
         </Col>
       </Row>
-    </StyledForm>
+    </>
   );
 };
+
 const AddDonation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -164,6 +164,7 @@ const AddDonation = () => {
         <span className="material-symbols-outlined">add</span>
         {'寄付の登録'}
       </Button>
+
       <StyledModal
         title={<StyledModalTitle className="modal-title">{'寄付決済の新規登録'}</StyledModalTitle>}
         visible={isModalOpen}
@@ -171,6 +172,7 @@ const AddDonation = () => {
         onCancel={handleCancel}
         width={480}
         footer={null}
+        bodyStyle={{ padding: '24px 32px' }}
         closeIcon={<span className="material-symbols-outlined">close</span>}
       >
         <Form />

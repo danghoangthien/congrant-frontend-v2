@@ -25,7 +25,7 @@ const Detail = ({ data, closeDrawer, activeKey, viewMode = LIST_MODE }) => {
   return (
     <StyledDetail>
       <SupporterInfo closeDrawer={closeDrawer} />
-      <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-3">
+      <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-2">
         <Tabs.TabPane tab="基本情報" key="1">
           {supporterType === 1 ? <BasicInfo data={data} /> : <CorporationBasicInfo data={data} />}
         </Tabs.TabPane>
