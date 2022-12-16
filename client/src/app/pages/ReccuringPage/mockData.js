@@ -1,6 +1,5 @@
 // ANTD
 import { Tag, Badge, Space, Button, Dropdown, Menu, Tooltip, Row } from 'antd';
-import { getWithExpiry } from 'utils/localStorageHandler';
 // STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
 // COMPONENT
@@ -8,7 +7,9 @@ import DrawerHandle from '../../components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
 // UTILS
 import { randomOutput } from 'utils/helper';
+import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
+import { DANGER_COLOR } from 'styles/StyleConstants';
 import {
   DONATION_TYPES,
   DONATION_TYPE_COLORS,
@@ -20,42 +21,73 @@ import noteIclon from 'styles/assets/note.svg';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
-  return [
-    {
-      key: '1',
-      label: (
-        <Space onClick={() => {}}>
-          <span
-            className="material-symbols-outlined fill-icon"
-            style={{ fontSize: '16px', verticalAlign: 'middle' }}
-          >
-            send
-          </span>
-          <span className="ml-2">
-            {status}
-            {'フォームを送る'}
-          </span>
-        </Space>
-      ),
-    },
-    {
-      key: '2',
-      label: (
-        <Space onClick={() => {}}>
-          <span
-            className="material-symbols-outlined fill-icon"
-            style={{ fontSize: '16px', verticalAlign: 'middle' }}
-          >
-            send
-          </span>
-          <span className="ml-2">
-            {status}
-            {'フォームのURLをコピー'}
-          </span>
-        </Space>
-      ),
-    },
-  ];
+  if (status === 1) {
+    return [
+      {
+        key: '1',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              send
+            </span>
+            <span className="ml-2">{'再決済フォームを送る'}</span>
+          </Space>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              send
+            </span>
+            <span className="ml-2">{'再決済フォームのURLをコピー'}</span>
+          </Space>
+        ),
+      },
+    ];
+  } else if (status === 2) {
+    return [
+      {
+        key: '1',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              cached
+            </span>
+            <span className="ml-2">{'金額変更'}</span>
+          </Space>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              do_disturb
+            </span>
+            <span className="ml-2" style={{ color: DANGER_COLOR }}>
+              {'解約'}
+            </span>
+          </Space>
+        ),
+      },
+    ];
+  } else {
+    return null;
+  }
 };
 
 // レコードアクションメニュー・Record Action Menu
@@ -79,7 +111,7 @@ const dataSource = [
     donation_no: '12345678',
     key: '1',
     recurring_id: '1',
-    status: '1',
+    status: 1,
     supporter: '山田 花子',
     donation_type: '1',
     plan: 'ゴールドサポーター',
@@ -94,7 +126,7 @@ const dataSource = [
     donation_no: '12345678',
     key: '2',
     recurring_id: '2',
-    status: '2',
+    status: 2,
     supporter: '山田 花子',
     donation_type: '2',
     plan: 'ゴールドサポーター',
@@ -109,7 +141,7 @@ const dataSource = [
     donation_no: '12345678',
     key: '3',
     recurring_id: '3',
-    status: '3',
+    status: 3,
     supporter: '山田 花子',
     donation_type: '1',
     plan: 'ゴールドサポーター',
@@ -262,7 +294,7 @@ const columnMap = {
     render: row => (
       <Row justify="center">
         <Dropdown
-          overlay={<Menu items={menuItems(DONATION_STATUSES[row.status])} />}
+          overlay={[1, 2].includes(row.status) ? <Menu items={menuItems(row.status)} /> : <></>}
           placement="bottomRight"
         >
           <Button

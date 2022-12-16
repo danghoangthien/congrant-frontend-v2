@@ -82,7 +82,9 @@ const columnMap = {
     title: '入金日',
     dataIndex: 'date_of_receipt',
     render: date_of_receipt => (
-      <DatePicker onClick={e => e.stopPropagation()} format={'YYYY-MM-DD'} />
+      <Space onClick={e => e.stopPropagation()}>
+        <DatePicker format={'YYYY-MM-DD'} />
+      </Space>
     ),
     csvOutput: ({ date_of_receipt }) => date_of_receipt,
   },

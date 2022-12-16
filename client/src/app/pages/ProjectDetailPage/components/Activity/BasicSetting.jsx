@@ -26,8 +26,10 @@ const BasicSetting = () => {
           label={<SettingLabel label={'記事タイトル（最大50文字）'} required />}
         >
           <SettingTextarea
-            style={{ width: '600px' }}
+            showCount
+            maxLength={50}
             rows={2}
+            style={{ width: '600px' }}
             placeholder={'子どもたちの未来を守るため、NPO法人コングラントへのご寄付をお願いします'}
           />
         </SettingsInputContainer>
