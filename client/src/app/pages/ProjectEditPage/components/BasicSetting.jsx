@@ -93,6 +93,8 @@ const BasicSetting = () => {
             >
               <SettingTextarea
                 style={{ maxWidth: 600, width: '100%' }}
+                showCount
+                maxLength={50}
                 placeholder={
                   '子どもたちの未来を守るため、NPO法人コングラントへのご寄付をお願いします'
                 }

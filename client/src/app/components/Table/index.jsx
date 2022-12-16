@@ -182,7 +182,7 @@ const DataTable = ({
 
         {/* 選択時の操作バー・Selected Tool Bar */}
         {hasSelected && (
-          <div className="index-table-toolbar">
+          <div className="index-table-toolbar" style={{ zIndex: '900' }}>
             <Row align="middle" className="selected-status-ops py-3 px-6">
               <Checkbox
                 style={{ fontSize: '16px', fontWeight: '600' }}

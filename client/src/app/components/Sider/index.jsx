@@ -25,6 +25,7 @@ import userImage from 'styles/assets/icon_avatar.svg';
 
 // STYLE
 import { StyledSidebar } from './Sider.style';
+import { menuItems } from 'app/pages/IndividualPage/components/Receipt';
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -36,17 +37,50 @@ function getItem(label, key, icon, children, type) {
   };
 }
 
-const items = [
-  getItem('ホーム', '/app/home', <HomeIcon />),
-  getItem('プロジェクト', '/app/projects', <FlagIcon />),
-  getItem('寄付決済', '/app/donations', <FavoriteIcon />),
-  getItem('継続契約', '/app/reccurings', <AutorenewIcon />),
-  getItem('領収書', '/app/receipts', <ReceiptIcon />),
-  getItem('個人サポーター', '/app/individuals', <PersonIcon />),
-  getItem('法人サポーター', '/app/corporations', <DomainIcon />),
-  getItem('基本設定', '/app/settings', <SettingsIcon />),
-  // getItem('決済明細', '/app/payments/stripe', <FormatListBulletedIcon />),
+const menuData = [
+  {
+    label: 'ホーム',
+    key: '/app/home',
+    icon: <HomeIcon />,
+  },
+  {
+    label: 'プロジェクト',
+    key: '/app/projects',
+    icon: <FlagIcon />,
+  },
+  {
+    label: '寄付決済',
+    key: '/app/donations',
+    icon: <FavoriteIcon />,
+  },
+  {
+    label: '継続契約',
+    key: '/app/reccurings',
+    icon: <AutorenewIcon />,
+  },
+  {
+    label: '領収書',
+    key: '/app/receipts',
+    icon: <ReceiptIcon />,
+  },
+  {
+    label: '個人サポーター',
+    key: '/app/individuals',
+    icon: <PersonIcon />,
+  },
+  {
+    label: '法人サポーター',
+    key: '/app/corporations',
+    icon: <DomainIcon />,
+  },
+  {
+    label: '基本設定',
+    key: '/app/settings',
+    icon: <SettingsIcon />,
+  },
 ];
+
+const items = menuData.map(({ label, key, icon }) => getItem(label, key, icon));
 
 const sub_menu = (
   <Menu
@@ -99,6 +133,9 @@ const CustomSider = () => {
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
   const { pathname } = useLocation();
+  const selectedItem = menuData
+    .filter(({ key }) => pathname.indexOf(key) === 0)
+    .map(({ key }) => key);
   return (
     <StyledSidebar
       breakpoint="xl"
@@ -140,7 +177,7 @@ const CustomSider = () => {
             mode="inline"
             items={items}
             selectable
-            selectedKeys={[pathname]}
+            selectedKeys={selectedItem}
             onClick={item => {
               if (item.key !== 'logo') {
                 history.push(item.key);
