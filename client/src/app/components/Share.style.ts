@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const ShareButton = styled.span`
   height: 24px;
-  line-height: 22px;
+  line-height: 24px;
   background: red;
   display: inline-block;
   color: #ffffff;
