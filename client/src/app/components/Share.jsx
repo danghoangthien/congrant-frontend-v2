@@ -7,7 +7,7 @@ import IconLine from 'styles/assets/icon_line.png';
 
 const Share = ({ twitter, facebook, line }) => {
   return (
-    <Row justify="center" gutter={15} align="middle">
+    <Row gutter={15} align="middle">
       {/* Twitter */}
       {twitter && (
         <Col>

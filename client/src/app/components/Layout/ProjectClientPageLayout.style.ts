@@ -159,7 +159,7 @@ export const ProjectClientPageStyle = styled.div`
 
   & .content-tabs {
     .ant-tabs-nav {
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
