@@ -11,6 +11,7 @@ import Action from './components/Action';
 import ProjectClientPageLayout from 'app/components/Layout/ProjectClientPage';
 import HomeTab from './components/HomeTab';
 import ActivityTab from './components/ActivityTab';
+import ActivityDetail from './components/ActivityDetail';
 import CommentTab from './components/CommentTab';
 import Media from 'react-media';
 
@@ -36,6 +37,11 @@ const ProjectClientPage = () => {
         .ant-tabs-tab-btn {
           color: ${MAIN_COLOR};
         }
+
+        .ant-badge-count {
+          background-color: ${MAIN_COLOR} !important;
+          color: #ffffff !important;
+        }
       }
     }
   `;
@@ -44,6 +50,7 @@ const ProjectClientPage = () => {
     position: absolute;
     left: 0;
     top: 0;
+    z-index: -1;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       display: none;
@@ -54,6 +61,7 @@ const ProjectClientPage = () => {
     position: absolute;
     right: 0;
     top: 0;
+    z-index: -1;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       display: none;
@@ -182,7 +190,7 @@ const ProjectClientPage = () => {
                 </Col>
                 {/* 操作ボタン・Action Buttons */}
                 <Col className="action-container">
-                  <Action />
+                  <Action mainColor={MAIN_COLOR} />
                 </Col>
               </Row>
 
@@ -212,7 +220,8 @@ const ProjectClientPage = () => {
                       }
                       key="2"
                     >
-                      <ActivityTab />
+                      {/* <ActivityTab mainColor={MAIN_COLOR} /> */}
+                      <ActivityDetail />
                     </Tabs.TabPane>
                     {/* 応援コメント・Comment */}
                     <Tabs.TabPane
