@@ -87,7 +87,9 @@ export const StyledSidebar = styled(Sider)`
     & .sub-menu-link {
       font-size: 12px;
       position: relative;
-      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding-right: 24px;
       word-break: break-all;
       white-space: pre-wrap;
@@ -98,6 +100,11 @@ export const StyledSidebar = styled(Sider)`
       height: auto;
       border-top: 1px solid ${GRAY};
       color: ${TEXT_COLOR};
+
+      .icon {
+        font-size: 16px;
+        margin-left: 15px;
+      }
 
       &:hover {
         color: ${PRIMARY_COLOR};

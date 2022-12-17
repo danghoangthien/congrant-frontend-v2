@@ -129,6 +129,36 @@ const sub_menu = (
   />
 );
 
+const sub_menu2 = (
+  <Menu
+    items={[
+      {
+        key: '1',
+        title: '',
+        label: (
+          <a
+            href="https://congrant.com/jp/fundraisingtips/index.html"
+            className="sub-user-menu-link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ファンドレイジングのコツ100選
+          </a>
+        ),
+      },
+      {
+        key: '2',
+        title: '',
+        label: (
+          <a target="blank" className="sub-user-menu-link" href={`/app/learning`}>
+            動画で学ぶファンドレイジング
+          </a>
+        ),
+      },
+    ]}
+  />
+);
+
 const CustomSider = () => {
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
@@ -202,19 +232,21 @@ const CustomSider = () => {
             <Col className="user-box-item will-collapsed-item" span={24}>
               <Link className="sub-menu-link" to={`test1`}>
                 割引プラン
-                <MoreHorizIcon />
+                <span class="material-symbols-outlined icon fill-icon">redeem</span>
               </Link>
             </Col>
             <Col className="user-box-item will-collapsed-item" span={24}>
-              <Link className="sub-menu-link" to={`test2`}>
-                ファンドレイジングを学ぶ
-                <MoreHorizIcon />
-              </Link>
+              <Dropdown overlay={sub_menu2} placement="top" arrow={false}>
+                <span className="sub-menu-link">
+                  ファンドレイジングを学ぶ
+                  <span class="material-symbols-outlined icon fill-icon">school</span>
+                </span>
+              </Dropdown>
             </Col>
             <Col className="user-box-item will-collapsed-item" span={24}>
               <Link className="sub-menu-link" to={`test3`} target="_blank">
                 ヘルプ＆サポート
-                <OpenInNewIcon />
+                <span class="material-symbols-outlined icon fill-icon">help</span>
               </Link>
             </Col>
             <Col className="user-box-item" span={24}>

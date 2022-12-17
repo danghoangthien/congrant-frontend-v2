@@ -28,6 +28,7 @@ import ReceiptBulkPage from 'app/pages/ReceiptBulkPage';
 import ReccuringPage from 'app/pages/ReccuringPage';
 import CkeditorPage from 'app/pages/CkeditorPage';
 import PaymentManagePage from 'app/pages/PaymentPage/PaymentManage';
+import LearningPage from 'app/pages/LearningPage';
 
 const AppPage = () => {
   const { path, ...rest } = useRouteMatch();
@@ -65,6 +66,9 @@ const AppPage = () => {
       {/* [FO_002] お試し登録 */}
       <Route path={`${path}/register`}>
         <LoginPage />
+      </Route>
+      <Route path={`${path}/learning`}>
+        <LearningPage />
       </Route>
       <AppLayout>
         <Route path={`${path}/home`}>
