@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Table from 'app/components/Table';
+import SendMail from 'app/components/SendMail';
 import Filters from 'app/pages/ProjectDetailPage/components/Filters';
 import { Button, Col, Row } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
@@ -16,19 +17,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { HEADER_BREADCUMD_DATA, SUMMARY_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 
-const MailButton = ({ selectedRowKeys }) => {
-  return (
-    <Button
-      className="icon-btn"
-      icon={<span className="material-symbols-outlined fill-icon">send</span>}
-      onClick={() => {
-        console.log('selectedRowKeys', selectedRowKeys);
-      }}
-    >
-      {'メッセージを送る'}
-    </Button>
-  );
-};
+const MailButton = ({ selectedRowKeys }) => <SendMail />;
 
 const DonationPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);

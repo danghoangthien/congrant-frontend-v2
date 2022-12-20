@@ -5,6 +5,7 @@ import DonationPlan from './components/DonationPlan';
 import SupportAttribute from './components/SupportAttribute';
 import ReceiptMethod from './components/ReceiptMethod';
 import CustomField from './components/CustomField';
+import Recurring from './components/Recurring';
 import AccessAnalysis from './components/AccessAnalysis';
 import Receipt from './components/Receipt';
 import MailTemplate from './components/MailTemplate';
@@ -35,18 +36,23 @@ const SETTING_COMPONENT_MAP = {
     name: 'カスタム項目',
     Component: CustomField,
   },
-  accessAnalysis: {
+  recurring: {
     id: 6,
+    name: '継続決済',
+    Component: Recurring,
+  },
+  accessAnalysis: {
+    id: 7,
     name: 'アクセス解析',
     Component: AccessAnalysis,
   },
   receipt: {
-    id: 7,
+    id: 8,
     name: '領収書',
     Component: Receipt,
   },
   mailTemplate: {
-    id: 7,
+    id: 9,
     name: 'メールテンプレート',
     Component: MailTemplate,
   },

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 // ANTD
 import { Row, Col, Tabs, Badge, Space } from 'antd';
 import DonationInfo from './components/DonationInfo';
@@ -7,7 +7,7 @@ import OrganizationInfo from './components/OrganizationInfo';
 import CourseInfo from './components/CourseInfo';
 import Carousel from './components/Carousel';
 import Share from 'app/components/Share';
-import Action from './components/Action';
+import Action from './components/Action/Action';
 import ProjectClientPageLayout from 'app/components/Layout/ProjectClientPage';
 import HomeTab from './components/HomeTab';
 import ActivityTab from './components/ActivityTab';
@@ -21,6 +21,9 @@ import styled from 'styled-components/macro';
 import { ScreenSizes } from 'styles/StyleConstants';
 
 const ProjectClientPage = () => {
+  const history = useHistory();
+  const usp = new URLSearchParams(window.location.search);
+  const activity_id = usp.get('activity_id');
   const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
   const MAIN_COLOR = '#e34855';
 
@@ -197,7 +200,12 @@ const ProjectClientPage = () => {
               {/* メインコンテンツ・Main Content */}
               <Row>
                 <Col span={24}>
-                  <Tabs defaultActiveKey="1" className="content-tabs" tabBarGutter={28}>
+                  <Tabs
+                    defaultActiveKey={params?.tabId || '1'}
+                    className="content-tabs"
+                    tabBarGutter={28}
+                    onTabClick={key => history.push(`/project/client_name/${params?.id}/${key}`)}
+                  >
                     {/* ホーム・Home */}
                     <Tabs.TabPane tab="HOME" key="1">
                       <HomeTab />
@@ -220,8 +228,7 @@ const ProjectClientPage = () => {
                       }
                       key="2"
                     >
-                      {/* <ActivityTab mainColor={MAIN_COLOR} /> */}
-                      <ActivityDetail />
+                      {activity_id ? <ActivityDetail /> : <ActivityTab mainColor={MAIN_COLOR} />}
                     </Tabs.TabPane>
                     {/* 応援コメント・Comment */}
                     <Tabs.TabPane

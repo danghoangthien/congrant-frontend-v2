@@ -12,12 +12,13 @@ const DrawerHandle = ({
   isOpen = false,
   bodyStyle = null,
 }) => {
+  console.log('bodyStyle', bodyStyle);
   const [open, setOpen] = useState(isOpen);
-  const StyledDrawer = styled(Drawer)`
-    & .ant-drawer-content-wrapper {
-      ${open && `min-width: 640px;`}
-    }
-  `;
+  // const StyledDrawer = styled(Drawer)`
+  //   & .ant-drawer-content-wrapper {
+  //     ${`min-width: 640px;`}
+  //   }
+  // `;
   // CLOSE・閉じる時の処理
   const onClose = async () => {
     setOpen(false);
@@ -36,16 +37,17 @@ const DrawerHandle = ({
         {children}
       </span>
 
-      <StyledDrawer
+      <Drawer
         bodyStyle={bodyStyle || { padding: '32px 32px 54px' }}
         closable={false}
         placement="right"
         onClose={onClose}
         visible={open}
         mask={true}
+        width={640}
       >
         {React.cloneElement(drawerComponent, { closeDrawer: onClose })}
-      </StyledDrawer>
+      </Drawer>
     </span>
   );
 };

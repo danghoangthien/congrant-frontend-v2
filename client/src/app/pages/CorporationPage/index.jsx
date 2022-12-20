@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Table from 'app/components/Table';
+import SendMail from 'app/components/SendMail';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 
@@ -17,19 +18,7 @@ import './Models/index';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
 
-const MailButton = ({ selectedRowKeys }) => {
-  return (
-    <Button
-      className="icon-btn"
-      icon={<span className="material-symbols-outlined fill-icon">send</span>}
-      onClick={() => {
-        console.log('selectedRowKeys', selectedRowKeys);
-      }}
-    >
-      {'メッセージを送る'}
-    </Button>
-  );
-};
+const MailButton = ({ selectedRowKeys }) => <SendMail />;
 
 // アクション・Action Menu
 const menu = (

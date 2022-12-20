@@ -27,19 +27,21 @@ const DataTable = ({
 }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
+  const [isAllRecordsSelected, setIsAllRecordsSelected] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  console.log('selectedRowKeys', selectedRowKeys);
   const { items, pagination, column_setting } = useSelector(state => state[model]);
   let columns = metaData.getRenderColumns();
   const {
     location: { query, pathname, search },
   } = useSelector(state => state.router);
   const loading = useSelector(state => state.loading.models[model]);
-  const usp = new URLSearchParams(search);
+  const usp = new URLSearchParams(window.location.search);
   const hasSelected = selectedRowKeys.length > 0;
 
   const onSelectChange = newSelectedRowKeys => {
-    console.log('newSelectedRowKeys', newSelectedRowKeys);
+    if (newSelectedRowKeys.length < selectedRowKeys.length) {
+      setIsAllRecordsSelected(false);
+    }
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
@@ -82,7 +84,7 @@ const DataTable = ({
 
   function onPageChange(page) {
     setSelectedRowKeys([]);
-    const usp = new URLSearchParams(search);
+    const usp = new URLSearchParams(window.location.search);
     if (page) {
       usp.set('page', page);
     } else {
@@ -93,7 +95,7 @@ const DataTable = ({
   }
 
   function onShowSizeChange(_, size) {
-    const usp = new URLSearchParams(search);
+    const usp = new URLSearchParams(window.location.search);
     if (size) {
       usp.set('limit', size);
     } else {
@@ -196,26 +198,38 @@ const DataTable = ({
                     );
                   } else {
                     setSelectedRowKeys([]);
+                    setIsAllRecordsSelected(false);
                   }
                 }}
               ></Checkbox>
-              <span className="mx-4">{hasSelected ? `${selectedRowKeys.length}件選択中` : ''}</span>
+              <span className="mx-4">
+                {hasSelected
+                  ? `${
+                      isAllRecordsSelected ? pagination.total_items : selectedRowKeys.length
+                    }件選択中`
+                  : ''}
+              </span>
               <span
                 className="check-all-btn mr-8"
                 onClick={e => {
                   console.log('DEBUG', selectedRowKeys.length, items.length);
-                  if (selectedRowKeys.length !== items.length) {
+                  if (selectedRowKeys.length) {
                     setSelectedRowKeys(
                       items.map(item => {
                         return item.key;
                       }),
                     );
+                    setIsAllRecordsSelected(true);
+                    /**
+                     * TODO - Implement <select all record in dataset> logic here
+                     * - select all from items then store into state
+                     */
                   } else {
                     setSelectedRowKeys([]);
                   }
                 }}
               >
-                {hasSelected && selectedRowKeys.length === items.length ? '' : '全件選択'}
+                {isAllRecordsSelected ? '' : '全件選択'}
               </span>
               {contextButtons.map(Component => {
                 return <Component selectedRowKeys={selectedRowKeys} />;

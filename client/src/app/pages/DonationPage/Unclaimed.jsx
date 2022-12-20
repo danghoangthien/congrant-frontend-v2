@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button, Badge, Input, Row, Col, Space, Breadcrumb, Menu, Dropdown } from 'antd';
 // COMPONENT
 import Table from 'app/components/Table';
+import SendMail from 'app/components/SendMail';
 import Swap from './components/Swap';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
 // CONST
@@ -17,19 +18,7 @@ import * as metaData from './mockData';
 // MODEL
 import './Models/unclaimed';
 
-const MailButton = ({ selectedRowKeys }) => {
-  return (
-    <Button
-      className="icon-btn"
-      icon={<span className="material-symbols-outlined fill-icon">send</span>}
-      onClick={() => {
-        console.log('selectedRowKeys', selectedRowKeys);
-      }}
-    >
-      {'メッセージを送る'}
-    </Button>
-  );
-};
+const MailButton = ({ selectedRowKeys }) => <SendMail />;
 
 // アクション・Action Menu
 const menu = (
@@ -47,7 +36,6 @@ const menu = (
     ]}
   />
 );
-
 const renderPageTitle = () => {
   return (
     <>
