@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { List, Button, Skeleton, Image, Row, Col, Card } from 'antd';
 import Share from 'app/components/Share';
 // STYLE
@@ -23,6 +24,7 @@ const ActivityDetailStyle = styled.div`
 `;
 
 const ActivityDetail = ({ mainColor }) => {
+  const params = useParams();
   return (
     <ActivityDetailStyle>
       <div className="date mb-2">2022/12/09</div>
@@ -48,14 +50,16 @@ const ActivityDetail = ({ mainColor }) => {
         />
       </div>
       <div>
-        <Button
-          size="large"
-          className="icon-btn"
-          icon={<span class="material-symbols-outlined">chevron_left</span>}
-          style={{ color: '#666666', boxShadow: 'none' }}
-        >
-          活動報告一覧に戻る
-        </Button>
+        <Link to={`/project/client_name/${params.id}/2`}>
+          <Button
+            size="large"
+            className="icon-btn"
+            icon={<span class="material-symbols-outlined">chevron_left</span>}
+            style={{ color: '#666666', boxShadow: 'none' }}
+          >
+            活動報告一覧に戻る
+          </Button>
+        </Link>
       </div>
     </ActivityDetailStyle>
   );

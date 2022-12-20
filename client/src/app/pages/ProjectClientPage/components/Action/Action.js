@@ -3,15 +3,24 @@ import { useState } from 'react';
 import { ActionButton } from './Action.style';
 import { ActionModal } from './ActionModal.style';
 // ANTD
-import { Space, Button, Row, Col, Input } from 'antd';
+import { Space, Button, Row, Col, Input, Tooltip } from 'antd';
 // QR CODE
 import { QRCode } from 'react-qrcode-logo';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { sleep } from 'utils/helper';
+import IframeBox from './IframeBox';
 
 const { TextArea } = Input;
+const APP_URL = process.env.REACT_APP_APP_URL;
+const iframeValue = `<iframe src="${APP_URL}" frameborder="0" width="300" height="380"></iframe>`;
 
 const Action = ({ mainColor }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
+  const [iframeCopied, setIframeCopied] = useState(false);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
+  const linkCopiedTitle = linkCopied ? 'コピーしました' : null;
+  const iframeCopiedTitle = iframeCopied ? 'コピーしました' : null;
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -26,12 +35,35 @@ const Action = ({ mainColor }) => {
     setIsEmbedModalOpen(false);
   };
 
+  const downloadQRCode = () => {
+    // Generate download with use canvas and stream
+    const canvas = document.getElementById('qr-gen');
+    const pngUrl = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+    let downloadLink = document.createElement('a');
+    downloadLink.href = pngUrl;
+    downloadLink.download = `qr-code.png`;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  };
+
   return (
     <>
       <Space size={2}>
         <ActionButton type="text">
           <span className="material-symbols-outlined icon">link</span>
-          <span>リンクをコピー</span>
+          <CopyToClipboard
+            text={window.location}
+            onCopy={async () => {
+              setLinkCopied(true);
+              await sleep(2000);
+              setLinkCopied(false);
+            }}
+          >
+            <Tooltip title={linkCopiedTitle} visible={!!linkCopied}>
+              <span>{'リンクをコピー'}</span>
+            </Tooltip>
+          </CopyToClipboard>
         </ActionButton>
         <ActionButton type="text" onClick={showModal}>
           <span className="material-symbols-outlined icon">qr_code</span>
@@ -58,10 +90,11 @@ const Action = ({ mainColor }) => {
         <div className="modal-title">QRコード</div>
         <div className="modal-content">
           <Row justify="center" className="mb-3">
-            <QRCode value="https://github.com/gcoro/react-qrcode-logo" size={200} />
+            <QRCode id="qr-gen" value={window.location} size={200} />
           </Row>
           <Row justify="center">
             <Button
+              onClick={downloadQRCode}
               type="primary"
               size="large"
               style={{
@@ -94,35 +127,7 @@ const Action = ({ mainColor }) => {
         <div className="modal-content">
           <Row wrap={false}>
             <Col flex="200px">
-              <div className="iframe-box">
-                <div className="iframe-img">
-                  <img
-                    src="https://images.unsplash.com/photo-1598128558393-70ff21433be0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1089&q=80"
-                    alt=""
-                  />
-                </div>
-                <div className="iframe-title">
-                  「わたし、きょうもいきたよ」1歳のあおちゃんに心臓移植を
-                </div>
-                <Row>
-                  <Row justify="center">
-                    <Button
-                      type="primary"
-                      size="large"
-                      style={{
-                        fontSize: 14,
-                        fontWeight: 700,
-                        width: 200,
-                        borderRadius: 7,
-                        backgroundColor: mainColor,
-                        borderColor: mainColor,
-                      }}
-                    >
-                      詳細を見る
-                    </Button>
-                  </Row>
-                </Row>
-              </div>
+              <IframeBox mainColor={mainColor} />
             </Col>
             <Col flex="auto" style={{ paddingLeft: 22 }}>
               <div style={{ fontSize: 12 }} className="mb-3">
@@ -130,27 +135,38 @@ const Action = ({ mainColor }) => {
               </div>
               <div className="iframe-copy-box mb-5">
                 <TextArea
-                  value={`<iframe src="https://congrant.com/project_iframe/aosukuukai/5423" frameborder="0" width="300" height="380"></iframe>`}
+                  value={iframeValue}
                   // onChange={e => setValue(e.target.value)}
                   placeholder="Controlled autosize"
                   autoSize={{ minRows: 3, maxRows: 5 }}
                 />
               </div>
               <div>
-                <Button
-                  className="icon-btn"
-                  size="large"
-                  style={{
-                    fontSize: 14,
-                    width: '100%',
-                    color: '#666666',
-                    boxShadow: 'none',
-                    justifyContent: 'center',
+                <CopyToClipboard
+                  text={iframeValue}
+                  onCopy={async () => {
+                    setIframeCopied(true);
+                    await sleep(2000);
+                    setIframeCopied(false);
                   }}
                 >
-                  <span class="material-symbols-outlined fill-icon icon">content_copy</span>
-                  埋め込みコードをコピー
-                </Button>
+                  <Tooltip title={iframeCopiedTitle} visible={!!iframeCopied}>
+                    <Button
+                      className="icon-btn"
+                      size="large"
+                      style={{
+                        fontSize: 14,
+                        width: '100%',
+                        color: '#666666',
+                        boxShadow: 'none',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <span className="material-symbols-outlined fill-icon icon">content_copy</span>
+                      埋め込みコードをコピー
+                    </Button>
+                  </Tooltip>
+                </CopyToClipboard>
               </div>
             </Col>
           </Row>

@@ -18,6 +18,7 @@ import PaymentPage from './pages/PaymentPage';
 // OTHER
 import { useTranslation } from 'react-i18next';
 import ScrollToTop from 'app/components/ScrollToTop';
+import IframeBoxPage from './pages/ProjectClientPage/IframeBoxPage';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -36,8 +37,11 @@ export function App() {
 
         <ScrollToTop>
           <Switch>
-            <Route exact path={process.env.PUBLIC_URL + '/project/client_name/:id'}>
+            <Route path={process.env.PUBLIC_URL + '/project/client_name/:id/:tabId'}>
               <ProjectClientPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/project_iframe/client_name/:id'}>
+              <IframeBoxPage />
             </Route>
             <Route exact path={process.env.PUBLIC_URL + '/payment/:id'}>
               <PaymentPage />

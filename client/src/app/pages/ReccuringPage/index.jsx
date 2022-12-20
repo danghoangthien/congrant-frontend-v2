@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Table from 'app/components/Table';
+import SendMail from 'app/components/SendMail';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
@@ -10,19 +11,7 @@ import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
 import './Models/index';
 
-const MailButton = ({ selectedRowKeys }) => {
-  return (
-    <Button
-      className="icon-btn"
-      icon={<span className="material-symbols-outlined fill-icon">send</span>}
-      onClick={() => {
-        console.log('selectedRowKeys', selectedRowKeys);
-      }}
-    >
-      {'メッセージを送る'}
-    </Button>
-  );
-};
+const MailButton = ({ selectedRowKeys }) => <SendMail />;
 
 const contextDropdownItems = metaData.menuItems;
 

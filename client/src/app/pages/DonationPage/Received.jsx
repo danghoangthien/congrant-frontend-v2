@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button, Badge, Input, Row, Col, Space, Breadcrumb, Menu, Dropdown } from 'antd';
 // COMPONENT
 import Table from 'app/components/Table';
+import SendMail from 'app/components/SendMail';
 import Filters from './components/Filters';
 import AddDonation from './components/AddDonation';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
@@ -18,19 +19,7 @@ import { RED_COLOR } from 'styles/StyleConstants';
 import * as metaData from './mockDataReceived';
 
 // メッセージを送るボタン
-const MailButton = ({ selectedRowKeys }) => {
-  return (
-    <Button
-      className="icon-btn"
-      icon={<span className="material-symbols-outlined fill-icon">send</span>}
-      onClick={() => {
-        console.log('selectedRowKeys', selectedRowKeys);
-      }}
-    >
-      {'メッセージを送る'}
-    </Button>
-  );
-};
+const MailButton = ({ selectedRowKeys }) => <SendMail />;
 
 // アクション・Action Menu
 const menu = (

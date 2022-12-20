@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Table from 'app/components/Table';
+import SendMail from 'app/components/SendMail';
 import Filters from './components/Filters';
 import * as metaData from './mockData';
 import Detail, { DETAIL_KEY_MAP } from './components/Detail';
@@ -13,19 +14,7 @@ import './Models/index';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { DANGER_COLOR } from 'styles/StyleConstants';
 
-const MailButton = ({ selectedRowKeys }) => {
-  return (
-    <Button
-      className="icon-btn"
-      icon={<span className="material-symbols-outlined fill-icon">send</span>}
-      onClick={() => {
-        console.log('selectedRowKeys', selectedRowKeys);
-      }}
-    >
-      {'メッセージを送る'}
-    </Button>
-  );
-};
+const MailButton = ({ selectedRowKeys }) => <SendMail />;
 
 // 複数選択した時の操作バー
 const contextDropdownItems = selectedRowKeys => [

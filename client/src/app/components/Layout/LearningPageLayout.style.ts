@@ -1,6 +1,12 @@
 import styled from 'styled-components/macro';
 // CONST
-import { WARNING_COLOR, EXTRA_DARK_GRAY, PRIMARY_COLOR, LIGHT_GRAY, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+import {
+  WARNING_COLOR,
+  EXTRA_DARK_GRAY,
+  PRIMARY_COLOR,
+  LIGHT_GRAY,
+  TEXT_GRAY_COLOR,
+} from 'styles/StyleConstants';
 // ANTD
 import { Modal } from 'antd';
 
