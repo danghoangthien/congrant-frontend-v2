@@ -255,6 +255,12 @@ const HomePage = () => {
             </Col>
           </Row>
         </Card>
+        <iframe
+          title="test"
+          src={process.env.PUBLIC_URL + '/project_iframe/client_name/1'}
+          // frameborder="0"
+          width="200"
+        ></iframe>
       </PageLayout>
     </>
   );

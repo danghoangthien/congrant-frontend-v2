@@ -34,14 +34,13 @@ export function App() {
         >
           <meta name="description" content="A Congrant application." />
         </Helmet>
-
         <ScrollToTop>
           <Switch>
-            <Route path={process.env.PUBLIC_URL + '/project/client_name/:id/:tabId'}>
-              <ProjectClientPage />
-            </Route>
             <Route path={process.env.PUBLIC_URL + '/project_iframe/client_name/:id'}>
               <IframeBoxPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/project/client_name/:id/:tabId'}>
+              <ProjectClientPage />
             </Route>
             <Route exact path={process.env.PUBLIC_URL + '/payment/:id'}>
               <PaymentPage />

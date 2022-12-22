@@ -161,4 +161,8 @@ export const StyledVericationBox = styled(Input)`
   font-size: 32px !important;
   font-weight: 600;
   text-align: center;
+
+  &:focus::placeholder {
+    color: transparent;
+  }
 `;

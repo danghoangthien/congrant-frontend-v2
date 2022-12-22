@@ -138,7 +138,7 @@ const Action = ({ mainColor }) => {
                   value={iframeValue}
                   // onChange={e => setValue(e.target.value)}
                   placeholder="Controlled autosize"
-                  autoSize={{ minRows: 3, maxRows: 5 }}
+                  autoSize={{ minRows: 5, maxRows: 5 }}
                 />
               </div>
               <div>
@@ -162,7 +162,12 @@ const Action = ({ mainColor }) => {
                         justifyContent: 'center',
                       }}
                     >
-                      <span className="material-symbols-outlined fill-icon icon">content_copy</span>
+                      <span
+                        className="material-symbols-outlined fill-icon icon"
+                        style={{ color: '#929292' }}
+                      >
+                        content_copy
+                      </span>
                       埋め込みコードをコピー
                     </Button>
                   </Tooltip>
