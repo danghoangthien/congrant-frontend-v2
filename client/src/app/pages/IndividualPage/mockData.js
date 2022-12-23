@@ -223,14 +223,12 @@ const columnMap = {
     width: 120,
     title: 'アクション',
     render: () => (
-      <Row justify="center">
-        <Dropdown overlay={menu} placement="bottomRight">
-          <Button
-            className="more-menu-btn"
-            icon={<span className="material-symbols-outlined">more_horiz</span>}
-          />
-        </Dropdown>
-      </Row>
+      <Dropdown overlay={menu} placement="bottomRight">
+        <Button
+          className="more-menu-btn"
+          icon={<span className="material-symbols-outlined">more_horiz</span>}
+        />
+      </Dropdown>
     ),
   },
 };

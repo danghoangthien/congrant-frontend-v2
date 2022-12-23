@@ -12,7 +12,7 @@ const Form = () => (
     <Row className="mb-6">
       <span>
         {'一括アップロードは'}
-        <Link to={'test'}>{'こちら'}</Link>
+        <Link to={'/app/individuals-bulk-upload'}>{'こちら'}</Link>
         {'から'}
       </span>
     </Row>

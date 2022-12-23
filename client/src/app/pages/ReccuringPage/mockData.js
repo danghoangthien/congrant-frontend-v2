@@ -21,7 +21,8 @@ import noteIclon from 'styles/assets/note.svg';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
-  if (status === 1) {
+  // 継続中（ongoing contract）
+  if (status === 2) {
     return [
       {
         key: '1',
@@ -33,7 +34,7 @@ export const menuItems = status => {
             >
               send
             </span>
-            <span className="ml-2">{'再決済フォームを送る'}</span>
+            <span>{'再決済フォームを送る'}</span>
           </Space>
         ),
       },
@@ -45,14 +46,16 @@ export const menuItems = status => {
               className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle' }}
             >
-              send
+              content_copy
             </span>
-            <span className="ml-2">{'再決済フォームのURLをコピー'}</span>
+            <span>{'再決済フォームのURLをコピー'}</span>
           </Space>
         ),
       },
     ];
-  } else if (status === 2) {
+  }
+  // 際決済待ち（waiting for re-payment）
+  else if (status === 1) {
     return [
       {
         key: '1',
@@ -62,9 +65,9 @@ export const menuItems = status => {
               className="material-symbols-outlined fill-icon"
               style={{ fontSize: '16px', verticalAlign: 'middle' }}
             >
-              cached
+              autorenew
             </span>
-            <span className="ml-2">{'金額変更'}</span>
+            <span>{'金額変更'}</span>
           </Space>
         ),
       },
@@ -78,9 +81,7 @@ export const menuItems = status => {
             >
               do_disturb
             </span>
-            <span className="ml-2" style={{ color: DANGER_COLOR }}>
-              {'解約'}
-            </span>
+            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
           </Space>
         ),
       },
@@ -89,22 +90,6 @@ export const menuItems = status => {
     return null;
   }
 };
-
-// レコードアクションメニュー・Record Action Menu
-const menu = (
-  <Menu
-    items={[
-      {
-        key: '1',
-        label: 'アクション1',
-      },
-      {
-        key: '2',
-        label: 'アクション2',
-      },
-    ]}
-  />
-);
 
 const dataSource = [
   {
@@ -292,17 +277,16 @@ const columnMap = {
     width: 120,
     title: 'アクション',
     render: row => (
-      <Row justify="center">
-        <Dropdown
-          overlay={[1, 2].includes(row.status) ? <Menu items={menuItems(row.status)} /> : <></>}
-          placement="bottomRight"
-        >
-          <Button
-            className="more-menu-btn"
-            icon={<span className="material-symbols-outlined">more_horiz</span>}
-          />
-        </Dropdown>
-      </Row>
+      <Dropdown
+        overlay={[1, 2].includes(row.status) ? <Menu items={menuItems(row.status)} /> : <></>}
+        placement="bottomRight"
+      >
+        <Button
+          className="more-menu-btn"
+          style={{ display: [1, 2].includes(row.status) ? 'flex' : 'none' }}
+          icon={<span className="material-symbols-outlined">more_horiz</span>}
+        />
+      </Dropdown>
     ),
   },
 };

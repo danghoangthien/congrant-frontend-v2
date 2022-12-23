@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Row, Col, Modal, Button } from 'antd';
-import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
+import { SettingsInputContainer, SettingLabel, SettingInput, SettingHepler } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import TextArea from 'antd/lib/input/TextArea';
 
@@ -47,7 +47,7 @@ const ReceiptTemplate = () => {
               <SettingInput placeholder={'寄付金受領証明書'} />
             </Col>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'挨拶文'} required />}>
+          <SettingsInputContainer label={<SettingLabel label={'挨拶文'} />}>
             <Col className="item mb-6" sm={24} md={24} lg={24}>
               <TextArea
                 rows={3}
@@ -57,11 +57,17 @@ const ReceiptTemplate = () => {
                   '今後とも、当団体の応援をよろしくお願い申し上げます。'
                 }
               />
+              <SettingHepler>
+                挨拶文は「都度領収書」にのみ表示されます。「合計領収書」の場合は表示されませんのでご注意ください。
+              </SettingHepler>
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'備考欄'} />}>
             <Col sm={24} md={24} lg={24}>
               <TextArea rows={3} />
+              <SettingHepler>
+                文字数や改行が多いと、領収書が1枚に入りきらず2枚になる場合があります。必ず発行前にご確認ください。
+              </SettingHepler>
             </Col>
           </SettingsInputContainer>
         </Row>

@@ -62,6 +62,7 @@ ConfigProvider.config({
 
 notification.config({
   closeIcon: <></>,
+  placement: 'top'
 });
 
 ReactDOM.render(

@@ -47,9 +47,11 @@ const ChangeAmount = () => {
         {/* 単価・口数 */}
         <Row className="item mb-6">
           <SettingsInputContainer label={<SettingLabel label={'単価・口数'} required />}>
-            <Space>
-              <SettingInput placeholder="3,000" suffix={'円'} style={{ width: '160px' }} />
-              <SettingInput placeholder="1" suffix="口" style={{ width: '160px' }} />
+            <Row align="middle" justify="space-between">
+              <Space>
+                <SettingInput placeholder="3,000" suffix={'円'} style={{ width: '160px' }} />
+                <SettingInput placeholder="1" suffix="口" style={{ width: '160px' }} />
+              </Space>
               <span
                 style={{
                   fontWeight: '600',
@@ -57,7 +59,7 @@ const ChangeAmount = () => {
               >
                 {'合計 3,000円'}
               </span>
-            </Space>
+            </Row>
           </SettingsInputContainer>
         </Row>
 

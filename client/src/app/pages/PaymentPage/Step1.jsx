@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 // ANTD
-import { Row, Col, Space, Divider, Checkbox } from 'antd';
+import { Row, Col, Space, Divider, Card } from 'antd';
 // COMPONENT
 import {
   SettingsInputContainer,
@@ -20,10 +20,11 @@ import PaymentImage from 'styles/assets/icon_payment.svg';
 // MODEL
 import './Models/index';
 
-const Step1 = ({ type }) => {
+const Step1 = ({ project_type }) => {
   // const [method, setMethod] = useState('1');
   const { method } = useSelector(state => state['paymentMethod']);
   const dispatch = useDispatch();
+  console.log(project_type);
 
   const onMethodChange = e => {
     dispatch.paymentMethod.setMethod(e.target.value);
@@ -31,8 +32,11 @@ const Step1 = ({ type }) => {
 
   return (
     <>
-      <div className="payment-form-title">申込内容</div>
-      <Row>
+      <Row className="box-wrapper">
+        <Col span={24}>
+          <div className="payment-form-title">申込内容</div>
+        </Col>
+
         {/* 決済方法・Payment Method */}
         <Col className="mb-7" span={24}>
           <SettingsInputContainer label={<FormLabel required label={'決済方法'} />}>
@@ -51,10 +55,11 @@ const Step1 = ({ type }) => {
             </FormRadioGroup>
           </SettingsInputContainer>
         </Col>
+
         {/* 決済の頻度・Payment Frequency */}
         <Col className="mb-7" span={24}>
           <SettingsInputContainer label={<FormLabel required label={'決済の頻度'} />}>
-            {type === '1' ? (
+            {project_type === 'crowdfunding' ? (
               <FormRadioButtonGroup defaultValue="1">
                 <FormRadioButton value="1" label="今回のみ" />
               </FormRadioButtonGroup>
@@ -73,7 +78,7 @@ const Step1 = ({ type }) => {
         </Col>
 
         {/* 金額・Money Amount */}
-        {type === '1' ? (
+        {project_type === 'crowdfunding' ? (
           <Col className="mb-7" span={24}>
             <SettingsInputContainer label={<FormLabel required label={'コース'} />}>
               <FormRadioGroup
@@ -111,7 +116,7 @@ const Step1 = ({ type }) => {
             <SettingsInputContainer label={<FormLabel required label={'金額'} />}>
               <FormSelect
                 required
-                style={{ width: 300 }}
+                style={{ width: '100%' }}
                 size="large"
                 placeholder="選択してください"
               ></FormSelect>
@@ -148,30 +153,39 @@ const Step1 = ({ type }) => {
             </Space>
           </SettingsInputContainer>
         </Col>
+
         {/* 合計金額・Sum Money */}
-        <Col span={24} className="mb-2">
-          <Row align="middle" justify="space-between">
-            <span className="total-money-title">合計金額</span>
-            <span className="total-money-amount">3,000円</span>
-          </Row>
-          <Divider />
-        </Col>
-        {/* 送信ボタン・Next Button */}
         <Col span={24}>
-          <Row justify="end">
-            <StyledButton
-              type="primary"
-              size="large"
-              style={{ width: '112px' }}
-              onClick={() => {
-                dispatch.paymentStep.setActive('2');
-              }}
-            >
-              次へ
-            </StyledButton>
+          <Row align="middle" justify="space-between">
+            <Col span={24} className="mb-3">
+              <div className="total-money-title">合計金額</div>
+            </Col>
+            <Col span={24}>
+              <div className="total-money-box">3,000円</div>
+            </Col>
           </Row>
         </Col>
       </Row>
+
+      {project_type !== 'monthly' && (
+        <Row>
+          {/* 送信ボタン・Next Button */}
+          <Col span={24}>
+            <Row justify="end">
+              <StyledButton
+                type="primary"
+                size="large"
+                style={{ width: '112px' }}
+                onClick={() => {
+                  dispatch.paymentStep.setActive('2');
+                }}
+              >
+                次へ
+              </StyledButton>
+            </Row>
+          </Col>
+        </Row>
+      )}
     </>
   );
 };

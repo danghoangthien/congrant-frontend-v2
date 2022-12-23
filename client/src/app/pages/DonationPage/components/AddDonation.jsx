@@ -28,13 +28,6 @@ const Form = () => {
         </SettingsInputContainer>
       </Row>
 
-      {/* 入金日 */}
-      <Row className="mb-6">
-        <SettingsInputContainer label={<SettingLabel label={'入金日'} required />}>
-          <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '100%' }} />
-        </SettingsInputContainer>
-      </Row>
-
       {/* 寄付タイプ */}
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'寄付タイプ'} />}>
