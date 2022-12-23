@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { ScreenSizes } from 'styles/StyleConstants';
+import { EXTRA_LIGHT_GRAY } from 'styles/StyleConstants';
 
 export const PaymentPageStyle = styled.div`
   height: 100%;
@@ -9,6 +10,10 @@ export const PaymentPageStyle = styled.div`
   font-weight: 400;
   line-height: 1.7;
   padding-top: 64px;
+
+  .box-wrapper {
+    margin-bottom: 50px;
+  }
 
   .ant-divider {
     border-top-color: #222222;
@@ -135,6 +140,29 @@ export const PaymentPageStyle = styled.div`
     @media screen and (max-width: ${ScreenSizes.medium}) {
       display: block;
     }
+
+    &.monthly {
+      flex-direction: column;
+      align-items: center;
+      max-width: 582px;
+      background: #ffffff;
+      padding: 40px;
+
+      .organization-info-wrapper,
+      .payment-form-wrapper {
+        width: 100%;
+      }
+
+      .organization-info-wrapper {
+        margin-bottom: 50px;
+      }
+
+      .payment-form-wrapper {
+        > .ant-card > .ant-card-body {
+          padding: 0;
+        }
+      }
+    }
   }
 
   & #google_translate_element {
@@ -145,6 +173,7 @@ export const PaymentPageStyle = styled.div`
     background: #ffffff;
     border: none;
     border-radius: 0;
+    margin-bottom: 50px;
 
     > .ant-card-body {
       padding: 40px;
@@ -174,6 +203,16 @@ export const PaymentPageStyle = styled.div`
     @media screen and (max-width: ${ScreenSizes.medium}) {
       font-size: 15px;
     }
+  }
+
+  .total-money-box {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    background: ${EXTRA_LIGHT_GRAY};
+    padding: 13px 60px;
+    border-radius: 4px;
+    position: relative;
   }
 
   .total-money-amount {

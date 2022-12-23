@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// ANTD
 import { Row, Modal, Button, Space } from 'antd';
+// SPRITE
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -7,20 +9,29 @@ import {
   SettingTextarea,
   SettingSelect,
 } from 'utils/Sprites';
+// STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import styled from 'styled-components/macro';
+import { EXTRA_LIGHT_GRAY, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+
 export const StyledReceivers = styled(Space)`
-  background: #fafaf8;
+  background: ${EXTRA_LIGHT_GRAY};
   border-radius: 4px;
   font-size: 12px;
-  line-height: 22px;
   padding: 16px;
   gap: 8px;
   width: 100%;
+
+  span:before {
+    content: '・';
+    display: inline-block;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
 `;
 
 export const StyledDehighlightText = styled.span`
-  color: rgba(0, 0, 0, 0.5);
+  color: ${TEXT_GRAY_COLOR};
 `;
 
 const SendMail = ({ selectedRowKeys }) => {
@@ -50,19 +61,21 @@ const SendMail = ({ selectedRowKeys }) => {
       >
         {'メッセージを送る'}
       </Button>
+
       <Modal
         title={<StyledModalTitle>{'メッセージを送る'}</StyledModalTitle>}
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={650}
+        width={572}
         className="modalStyle"
         cancelText="キャンセル"
         okText="送信する"
       >
-        <Row className="item mb-4">
+        {/* 送信先 */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'送信先（12件）'} />}>
-            <StyledReceivers direction="vertical">
+            <StyledReceivers direction="vertical" size={3}>
               <span>{'araki@gmai.com（荒木 雄大）'}</span>
               <span>{'yamada@gmail.com（山田 花子）'}</span>
               <span>{'tanaka@gmail.com（田中 太郎）'}</span>
@@ -71,40 +84,49 @@ const SendMail = ({ selectedRowKeys }) => {
             </StyledReceivers>
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-4">
+        {/* テンプレート */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'テンプレート'} />}>
             <SettingSelect value={'選択してください'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-4">
-          <SettingsInputContainer label={<SettingLabel label={'FROM'} />}>
+        {/* FROM: */}
+        <Row className="mb-6">
+          <SettingsInputContainer label={<SettingLabel label={'FROM:'} />}>
             <span>{'noreply@congrant.com（寄付会費決済サービス「コングラント」）'}</span>
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-4">
+        {/* CC: */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'CC:'} />}>
             <SettingInput placeholder={'info@*******.com'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-4">
+        {/* 件名 */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'件名'} required />}>
             <SettingInput placeholder={'ご支援ありがとうございました'} />
           </SettingsInputContainer>
         </Row>
-        <Row className="item mb-4">
+        {/* 本文 */}
+        <Row className="mb-6">
           <SettingsInputContainer label={<SettingLabel label={'本文'} required />}>
             <Space direction="vertical" style={{ width: '100%' }}>
-              <StyledDehighlightText>{'XXXX様'}</StyledDehighlightText>
-              &nbsp;
               <StyledDehighlightText>
-                {'NPO法人コングラントからメッセージが届きました。'}
+                XXXX様
+                <br />
+                <br />
+                NPO法人コングラントからメッセージが届きました。
+                <br />
+                --------------------------------------------------------
               </StyledDehighlightText>
-              <StyledDehighlightText>
-                {'--------------------------------------------------------'}
-              </StyledDehighlightText>
-              <SettingSelect value={'差込タグ'} style={{ width: '50%' }} />
-              <SettingTextarea rows="10" />
             </Space>
+          </SettingsInputContainer>
+        </Row>
+        <Row>
+          <SettingsInputContainer label={<SettingLabel label={'本文'} required />}>
+            <SettingSelect className="mb-1" value={'差込タグ'} style={{ width: 216 }} />
+            <SettingTextarea rows="10" />
           </SettingsInputContainer>
         </Row>
       </Modal>

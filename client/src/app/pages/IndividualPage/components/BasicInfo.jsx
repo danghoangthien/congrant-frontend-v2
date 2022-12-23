@@ -87,7 +87,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
 };
 
 const DescriptionContainer = ({ children, mode, setMode }) => (
-  <DescriptionStyle>
+  <DescriptionStyle className="no-border">
     <Descriptions
       title={<BasicInfoTitle mode={mode} setMode={setMode} />}
       bordered

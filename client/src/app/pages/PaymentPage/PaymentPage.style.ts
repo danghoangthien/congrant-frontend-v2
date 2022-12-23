@@ -9,7 +9,7 @@ const TEXT_COLOR = '#929292';
 export const StyledPaymentSteps = styled(Steps)`
   // padding: 0 50px;
   max-width: 300px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
   justify-content: center;
 
   @media screen and (max-width: ${ScreenSizes.medium}) {
@@ -136,6 +136,7 @@ export const StyledPrivacyCard = styled(Card)`
   .title {
     font-size: 18px;
     font-weight: 700;
+    margin-bottom: 10px;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
       font-size: 17px;
@@ -255,5 +256,26 @@ export const StyledBankBox = styled.div`
 
   @media screen and (max-width: ${ScreenSizes.medium}) {
     padding: 10px 10px 15px;
+  }
+`;
+
+export const StyledCheckboxWrapper = styled.div`
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  padding: 24px;
+`;
+
+export const StyledMoneyBackButton = styled(Button)`
+  display: inline-block;
+  padding: 0;
+  border: none;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+
+  &:hover {
+    background: none;
   }
 `;

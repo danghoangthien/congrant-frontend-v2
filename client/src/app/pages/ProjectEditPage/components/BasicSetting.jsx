@@ -237,7 +237,10 @@ const BasicSetting = () => {
                       showTime
                       size="large"
                       placeholder={'yyyy-mm-dd hh:mm'}
+                      format="YYYY-MM-DD HH:mm"
                       style={{ maxWidth: 600, width: '100%' }}
+                      // showTime={{ minuteStep: '30' }}
+                      minuteStep={30}
                     />
                   </Col>
                   <Col span={24}>

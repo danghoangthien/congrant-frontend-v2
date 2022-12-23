@@ -23,7 +23,7 @@ import { hexToRgbA } from 'utils/helper';
 const { Step } = Steps;
 
 const Payment = () => {
-  const MAIN_COLOR = '#0000FF';
+  const MAIN_COLOR = '#E34855';
   const { active } = useSelector(state => state['paymentStep']);
   const { method } = useSelector(state => state['paymentMethod']);
 
@@ -129,11 +129,16 @@ const Payment = () => {
     .ant-btn:hover,
     .ant-btn:focus {
       border-color: ${MAIN_COLOR};
-      color: ${MAIN_COLOR};
     }
 
     .bank-box {
       background: ${RGBA_MAIN_COLOR};
+    }
+
+    .total-money-box {
+      button {
+        color: ${MAIN_COLOR};
+      }
     }
   `;
 
@@ -150,6 +155,9 @@ const Payment = () => {
   };
 
   const params = useParams();
+  const searchParam = new URLSearchParams(window.location.search);
+  const project_type = searchParam.get('type');
+  console.log(project_type);
 
   return (
     <FormStyle>
@@ -158,7 +166,7 @@ const Payment = () => {
         {active === '4' ? (
           <Success />
         ) : (
-          <div className="payment-container">
+          <div className={`payment-container ${project_type}`}>
             {/* 団体情報・Organization Info */}
             <div className="organization-info-wrapper">
               <OrganizationInfo />
@@ -166,22 +174,34 @@ const Payment = () => {
 
             {/* フォーム・Form */}
             <div className="payment-form-wrapper">
-              <Card className="payment-box">
-                <StyledSteps className="mb-8">
-                  <StyledPaymentSteps
-                    className="payment-steps"
-                    current={active - 1}
-                    labelPlacement="vertical"
-                    responsive={false}
-                  >
-                    <Step title="申込内容" />
-                    <Step title="申込者情報" />
-                    {method === '1' && <Step title="決済情報" />}
-                  </StyledPaymentSteps>
-                </StyledSteps>
-                {active === '1' && <Step1 type={params?.id} />}
-                {active === '2' && <Step2 />}
-                {active === '3' && <Step3 />}
+              <Card
+                className={`${project_type !== 'monthly' ? 'payment-box' : 'payment-box mb-0'}`}
+              >
+                {project_type !== 'monthly' ? (
+                  <>
+                    <StyledSteps>
+                      <StyledPaymentSteps
+                        className="payment-steps"
+                        current={active - 1}
+                        labelPlacement="vertical"
+                        responsive={false}
+                      >
+                        <Step title="申込内容" />
+                        <Step title="申込者情報" />
+                        {method === '1' && <Step title="決済情報" />}
+                      </StyledPaymentSteps>
+                    </StyledSteps>
+                    {active === '1' && <Step1 project_type={project_type} />}
+                    {active === '2' && <Step2 project_type={project_type} />}
+                    {active === '3' && <Step3 project_type={project_type} />}
+                  </>
+                ) : (
+                  <>
+                    <Step1 project_type={project_type} />
+                    <Step2 project_type={project_type} />
+                    <Step3 project_type={project_type} />
+                  </>
+                )}
               </Card>
             </div>
           </div>

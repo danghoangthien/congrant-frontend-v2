@@ -10,6 +10,14 @@ export const DescriptionStyle = styled.div`
     width: 160px;
   }
 
+  table {
+    table-layout: fixed !important;
+
+    th {
+      width: 160px;
+    }
+  }
+
   & .ant-select {
     width: 100%;
   }
@@ -31,7 +39,7 @@ export const DescriptionStyle = styled.div`
     }
 
     & .ant-descriptions-item-label {
-      width: 200px;
+      width: 160px;
     }
 
     .ant-descriptions-bordered .ant-descriptions-view {

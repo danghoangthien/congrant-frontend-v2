@@ -6,59 +6,12 @@ import { Row, Col, Space, Card, Button } from 'antd';
 // Images
 import Logo from 'styles/assets/logo_congrant.svg';
 
-// Number of input fields that make up SSN
-// const numOfFields = 4;
-
-// const useSSNFields = () => {
-//   const [ssnValues, setValue] = React.useState({
-//     ssn1: '',
-//     ssn2: '',
-//     ssn3: '',
-//   });
-
-//   return {
-//     handleChange: e => {
-//       console.log('handleChange');
-//       const { maxLength, value, name } = e.target;
-//       const [fieldIndex] = name.split('-');
-//       console.log(fieldIndex);
-
-//       // Check if they hit the max character length
-//       if (value.length >= maxLength) {
-//         console.log('11111');
-//         console.log(parseInt(fieldIndex, 10));
-//         // Check if it's not the last input field
-//         if (parseInt(fieldIndex, 10) < numOfFields) {
-//           console.log('22222');
-//           // Get the next input field
-//           const nextSibling = document.querySelector(
-//             `input[name=ssn-${parseInt(fieldIndex, 10) + 1}]`,
-//           );
-//           console.log(nextSibling);
-
-//           // If found, focus the next field
-//           if (nextSibling !== null) {
-//             console.log('aaaaa');
-//             nextSibling.focus();
-//           }
-//         }
-//       }
-
-//       setValue({
-//         ...value,
-//         [`ssn${fieldIndex}`]: value,
-//       });
-//     },
-//   };
-// };
-
 const SettingInput = ({ placeholder, ...rest }) => (
   <StyledVericationBox placeholder={placeholder} {...rest} />
 );
 
 const EmailVerify = () => {
   const history = useHistory();
-  // const { handleChange } = useSSNFields();
   const handleChange = e => {
     const { maxLength, value, name } = e.target;
     const [fieldName, fieldIndex] = name.split('-');
@@ -119,7 +72,7 @@ const EmailVerify = () => {
               </Col>
               <Space className="mb-6" size={16}>
                 <SettingInput
-                  placeholder={'0'}
+                  placeholder="0"
                   maxLength={1}
                   name="field-1"
                   length="1"

@@ -1,11 +1,16 @@
 // ANTD
 import { Button, Row } from 'antd';
+// STYLE
 import styled from 'styled-components/macro';
 
 export const StyledIframeBoxDiv = styled.div`
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  width: 200px;
+
   .iframe-img {
-    height: 126px;
-    margin-bottom: 10px;
+    height: 111px;
 
     img {
       height: 100%;
@@ -20,7 +25,12 @@ export const StyledIframeBoxDiv = styled.div`
     line-height: 1.5;
     margin-bottom: 10px;
   }
+
+  .iframe-content {
+    padding: 8px 8px 16px;
+  }
 `;
+
 const IframeBox = ({ mainColor }) => {
   return (
     <StyledIframeBoxDiv>
@@ -30,12 +40,13 @@ const IframeBox = ({ mainColor }) => {
           alt=""
         />
       </div>
-      <div className="iframe-title">「わたし、きょうもいきたよ」1歳のあおちゃんに心臓移植を</div>
-      <Row>
+      <div className="iframe-content">
+        <div className="iframe-title">「わたし、きょうもいきたよ」1歳のあおちゃんに心臓移植を</div>
         <Row justify="center">
           <Button
-            type="primary"
-            size="large"
+            href={process.env.PUBLIC_URL + '/project/client_name/1/1'}
+            type="link"
+            // size="large"
             style={{
               fontSize: 14,
               fontWeight: 700,
@@ -43,12 +54,13 @@ const IframeBox = ({ mainColor }) => {
               borderRadius: 7,
               backgroundColor: mainColor,
               borderColor: mainColor,
+              color: '#ffffff',
             }}
           >
-            詳細を見る
+            詳細をみる
           </Button>
         </Row>
-      </Row>
+      </div>
     </StyledIframeBoxDiv>
   );
 };
