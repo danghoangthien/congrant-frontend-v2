@@ -12,7 +12,7 @@ import IframeBox from './IframeBox';
 
 const { TextArea } = Input;
 const APP_URL = process.env.REACT_APP_APP_URL;
-const iframeValue = `<iframe src="${APP_URL}" frameborder="0" width="300" height="380"></iframe>`;
+const iframeValue = `<iframe src="${APP_URL}/project_iframe/client_name/1" frameborder="0" width="300" height="380" onload="this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';"></iframe>`;
 
 const Action = ({ mainColor }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

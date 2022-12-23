@@ -5,6 +5,10 @@ import { DANGER_COLOR, BLUE_COLOR } from 'styles/StyleConstants';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { openNotification } from 'app/components/Notification';
 
+const APP_URL = process.env.REACT_APP_APP_URL;
+const embedCode = `<iframe src="${APP_URL}/project_iframe/client_name/1" frameborder="0" width="300" height="380" onload="this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';console.log('onloaded')"></iframe>'
+`;
+
 const HomePage = () => {
   const renderPageTitle = () => {
     return (
@@ -253,6 +257,7 @@ const HomePage = () => {
                 <Button onClick={loading}>Loading</Button>
               </Space>
             </Col>
+            {<div dangerouslySetInnerHTML={{ __html: embedCode }} />}
           </Row>
         </Card>
       </PageLayout>
