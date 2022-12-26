@@ -1,10 +1,20 @@
 import { DonationInfoStyle } from './DonationInfo.style';
 import { Progress, Row, Col, Space, Button } from 'antd';
 import Media from 'react-media';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 const DonationInfo = () => {
   const params = useParams();
+  const history = useHistory();
+
+  let link;
+  if (params.id === '1') {
+    link = `/payment`;
+  } else if (params.id === '2') {
+    link = `/payment?type=monthly`;
+  } else if (params.id === '3') {
+    link = `/payment?type=crowdfunding`;
+  }
 
   let donation_title;
   let donation_unit;
@@ -105,6 +115,9 @@ const DonationInfo = () => {
               <Col span={24}>
                 <Button
                   className="donate-btn"
+                  onClick={() => {
+                    history.push(link);
+                  }}
                   size="large"
                   type="primary"
                   style={{ width: '100%', backgroundColor: '#E34855', borderColor: '#E34855' }}

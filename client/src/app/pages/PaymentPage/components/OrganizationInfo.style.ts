@@ -14,6 +14,10 @@ export const OrganizationInfoStyle = styled.div`
     font-weight: 400;
     height: 400px;
     overflow: auto;
+
+    .monthly & {
+      height: auto;
+    }
   }
 
   .organization-image {

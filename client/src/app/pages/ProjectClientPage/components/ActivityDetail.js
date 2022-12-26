@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { List, Button, Skeleton, Image, Row, Col, Card } from 'antd';
+import { Button, Image } from 'antd';
 import Share from 'app/components/Share';
 // STYLE
 import styled from 'styled-components/macro';
@@ -42,6 +41,7 @@ const ActivityDetail = ({ mainColor }) => {
           alt=""
         />
       </div>
+      <div className="editor-content mb-6">エディターのコンテンツが入ります。</div>
       <div className="mb-10">
         <Share
           twitter={`https://github.com/nygardk/react-share`}

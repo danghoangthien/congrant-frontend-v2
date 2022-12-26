@@ -4,14 +4,6 @@ import { ScreenSizes } from 'styles/StyleConstants';
 
 export const CommentStyle = styled.div`
   width: 100%;
-
-  .ant-list-item {
-    padding: 24px 0;
-
-    &:first-child {
-      padding-top: 0;
-    }
-  }
 `;
 
 export const CommentItem = styled(List.Item)`
@@ -22,6 +14,18 @@ export const CommentItem = styled(List.Item)`
   .box-wrapper {
     padding-right: 30px;
     margin-bottom: 16px;
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      padding-right: 0;
+    }
+  }
+
+  .ant-avatar {
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+    }
   }
 
   .title {
@@ -66,6 +70,12 @@ export const ResponseItem = styled(List.Item)`
       position: absolute;
       top: 10px;
       left: -8px;
+
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        border-width: 6px 8px 6px 0;
+        left: -6px;
+        top: 14px;
+      }
     }
 
     .ant-list-item-meta-description {
