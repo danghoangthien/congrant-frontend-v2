@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useHistory } from 'react-router-dom';
 // ANTD
-import { Segmented, Row, Col, Card, Image, Space, Modal } from 'antd';
+import { Segmented, Row, Col, Card, Image, Space, Button } from 'antd';
 import { LearningPageLayout, LearningModal } from 'app/components/Layout/LearningPageLayout.style';
 // IMAGE
 import logo from 'styles/assets/learning/logo_congrant.svg';
@@ -18,6 +19,7 @@ import thumb05 from 'styles/assets/learning/thumb05.jpg';
 import thumb06 from 'styles/assets/learning/thumb06.jpg';
 
 const LearningPage = () => {
+  const history = useHistory();
   const [showType, setShowType] = useState(1);
 
   const handleSegmentedChange = e => {
@@ -156,7 +158,7 @@ const LearningPage = () => {
           onChange={handleSegmentedChange}
         />
       </div>
-      <div className="learning-content-wrapper">
+      <div className="learning-content-wrapper mb-12">
         <Row gutter={40}>
           {/* グッドガバナンス認証説明会（ダイジェスト版）～４つのポイントと27の評価基準～ */}
           {/* 認証制度 */}
@@ -771,6 +773,17 @@ const LearningPage = () => {
             </Col>
           )}
         </Row>
+      </div>
+      <div className="pb-8 px-16">
+        <Button
+          className="icon-btn"
+          icon={<span class="material-symbols-outlined">chevron_left</span>}
+          onClick={() => {
+            history.push(`/app/projects`);
+          }}
+        >
+          {'管理画面へもどる'}
+        </Button>
       </div>
     </LearningPageLayout>
   );

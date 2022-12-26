@@ -69,7 +69,7 @@ const CommentTab = ({ mainColor }) => {
   return (
     <CommentStyle>
       <List
-        className="Comment-list"
+        className="comment-list"
         loading={initLoading}
         itemLayout="horizontal"
         loadMore={loadMore}
@@ -79,11 +79,11 @@ const CommentTab = ({ mainColor }) => {
             <Skeleton title={false} loading={item.loading} active>
               <div className="content-wrapper">
                 <div className="box-wrapper">
-                  <Row wrap={false} justify="space-between" align="middle" className="mb-2">
+                  <Row wrap={false} justify="space-between" className="mb-2">
                     <Col>
                       <div className="title">オカダデンタルオフィス 岡田淳</div>
                     </Col>
-                    <Col>
+                    <Col className="pt-1">
                       <div className="date">2022/12/09</div>
                     </Col>
                   </Row>

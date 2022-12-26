@@ -20,7 +20,7 @@ import styled from 'styled-components/macro';
 // import ellipse1 from 'styles/assets/ellipse1';
 import { ScreenSizes } from 'styles/StyleConstants';
 
-const ProjectClientPage = () => {
+const ProjectClientPage = ({ link }) => {
   const history = useHistory();
   const usp = new URLSearchParams(window.location.search);
   const activity_id = usp.get('activity_id');
@@ -169,7 +169,7 @@ const ProjectClientPage = () => {
                 render={() => (
                   <Row className="mb-5">
                     <Col span={24}>
-                      <DonationInfo />
+                      <DonationInfo link={link} />
                     </Col>
                   </Row>
                 )}
@@ -269,13 +269,15 @@ const ProjectClientPage = () => {
                   query="(min-width: 992px)"
                   render={() => (
                     <div style={{ marginBottom: '115px' }}>
-                      <DonationInfo />
+                      <DonationInfo link={link} />
                     </div>
                   )}
                 />
                 {/* 団体情報・Organization Info */}
                 <OrganizationInfo logo={Logo} />
-                <Media query="(min-width: 992px)" render={() => <CourseInfo />} />
+                {params?.id === '3' && (
+                  <Media query="(min-width: 992px)" render={() => <CourseInfo />} />
+                )}
               </div>
             ) : (
               ''

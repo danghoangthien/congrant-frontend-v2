@@ -95,6 +95,11 @@ export const ProjectClientPageStyle = styled.div`
     .h-btn {
       font-weight: 700;
       border-radius: 7px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     .logo-wrapper {

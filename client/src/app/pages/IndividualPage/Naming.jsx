@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import { Card, Row, Col, Checkbox, Button, Table, Tooltip, Space } from 'antd';
-import { CopyOutlined } from '@ant-design/icons';
+import { Card, Row, Col, Checkbox, Button, Table } from 'antd';
 
 const Naming = () => {
   const renderPageTitle = () => {
@@ -48,20 +47,7 @@ const Naming = () => {
     email: {
       title: 'メールアドレス',
       dataIndex: 'email',
-      render: email => (
-        <Tooltip
-          title={
-            <>
-              <Space>
-                <CopyOutlined className="display-inline-flex" onClick={() => {}} />
-                {'コピー'}
-              </Space>
-            </>
-          }
-        >
-          <span>{email}</span>
-        </Tooltip>
-      ),
+      render: email => <span>{email}</span>,
       csvOutput: ({ email }) => email,
     },
     phone: {
@@ -111,7 +97,9 @@ const Naming = () => {
         <Card className="mb-6">
           <Row className="mb-3">
             <Col sm={24} md={24} lg={24}>
-              <span className="bold">{'名寄せ条件（AND）'}</span>
+              <span className="bold" style={{ fontSize: 14 }}>
+                {'名寄せ条件（AND）'}
+              </span>
             </Col>
           </Row>
           <Row className="mb-3">
