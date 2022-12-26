@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 // ANTD
 import { Layout, Row, Image, Col, Space, Button } from 'antd';
 // STYLE
@@ -14,7 +14,19 @@ const { Header, Footer, Content } = Layout;
 const MAIN_COLOR = '#e34855';
 
 const ProjectClientPage = ({ children }) => {
+  const history = useHistory();
   const params = useParams();
+
+  let link;
+  if (params.id === '1') {
+    link = `/payment`;
+  } else if (params.id === '2') {
+    link = `/payment?type=monthly`;
+  } else if (params.id === '3') {
+    link = `/payment?type=crowdfunding`;
+  }
+
+  console.log(link);
 
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement(
@@ -82,6 +94,9 @@ const ProjectClientPage = ({ children }) => {
                             <Button
                               size="large"
                               type="primary"
+                              onClick={() => {
+                                history.push(link);
+                              }}
                               className="h-btn"
                               style={{
                                 width: '148px',
@@ -122,7 +137,7 @@ const ProjectClientPage = ({ children }) => {
         </Header>
 
         {/* メイン・Main Content */}
-        <Content>{children}</Content>
+        <Content link={link}>{children}</Content>
 
         {/* フッター・Footer */}
         <Footer className="project-client-footer">

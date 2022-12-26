@@ -9,6 +9,8 @@ import { QRCode } from 'react-qrcode-logo';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { sleep } from 'utils/helper';
 import IframeBox from './IframeBox';
+// MEDIA QUERY
+import Media from 'react-media';
 
 const { TextArea } = Input;
 const APP_URL = process.env.REACT_APP_APP_URL;
@@ -125,56 +127,115 @@ const Action = ({ mainColor }) => {
       >
         <div className="modal-title">埋め込み</div>
         <div className="modal-content">
-          <Row wrap={false}>
-            <Col flex="200px">
-              <IframeBox mainColor={mainColor} />
-            </Col>
-            <Col flex="auto" style={{ paddingLeft: 22 }}>
-              <div style={{ fontSize: 12 }} className="mb-3">
-                埋め込みコードをコピーして、ホームページやブログのソースに記載してください。
-              </div>
-              <div className="iframe-copy-box mb-5">
-                <TextArea
-                  value={iframeValue}
-                  // onChange={e => setValue(e.target.value)}
-                  placeholder="Controlled autosize"
-                  autoSize={{ minRows: 5, maxRows: 5 }}
-                />
-              </div>
-              <div>
-                <CopyToClipboard
-                  text={iframeValue}
-                  onCopy={async () => {
-                    setIframeCopied(true);
-                    await sleep(2000);
-                    setIframeCopied(false);
-                  }}
-                >
-                  <Tooltip title={iframeCopiedTitle} visible={!!iframeCopied}>
-                    <Button
-                      className="icon-btn"
-                      size="large"
-                      style={{
-                        fontSize: 14,
-                        width: '100%',
-                        color: '#666666',
-                        boxShadow: 'none',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <span
-                        className="material-symbols-outlined fill-icon icon"
-                        style={{ color: '#929292' }}
+          <Media query={{ minWidth: 992 }}>
+            {matches =>
+              matches ? (
+                <Row wrap={false}>
+                  <Col flex="200px">
+                    <IframeBox mainColor={mainColor} />
+                  </Col>
+                  <Col flex="auto" style={{ paddingLeft: 22 }}>
+                    <div style={{ fontSize: 12 }} className="mb-3">
+                      埋め込みコードをコピーして、ホームページやブログのソースに記載してください。
+                    </div>
+                    <div className="iframe-copy-box mb-5">
+                      <TextArea
+                        value={iframeValue}
+                        // onChange={e => setValue(e.target.value)}
+                        placeholder="Controlled autosize"
+                        autoSize={{ minRows: 5, maxRows: 5 }}
+                      />
+                    </div>
+                    <div>
+                      <CopyToClipboard
+                        text={iframeValue}
+                        onCopy={async () => {
+                          setIframeCopied(true);
+                          await sleep(2000);
+                          setIframeCopied(false);
+                        }}
                       >
-                        content_copy
-                      </span>
-                      埋め込みコードをコピー
-                    </Button>
-                  </Tooltip>
-                </CopyToClipboard>
-              </div>
-            </Col>
-          </Row>
+                        <Tooltip title={iframeCopiedTitle} visible={!!iframeCopied}>
+                          <Button
+                            className="icon-btn"
+                            size="large"
+                            style={{
+                              fontSize: 14,
+                              width: '100%',
+                              color: '#666666',
+                              boxShadow: 'none',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <span
+                              className="material-symbols-outlined fill-icon icon"
+                              style={{ color: '#929292' }}
+                            >
+                              content_copy
+                            </span>
+                            埋め込みコードをコピー
+                          </Button>
+                        </Tooltip>
+                      </CopyToClipboard>
+                    </div>
+                  </Col>
+                </Row>
+              ) : (
+                <Row>
+                  <Col span={24} className="mb-4">
+                    <Row justify="center">
+                      <IframeBox mainColor={mainColor} />
+                    </Row>
+                  </Col>
+                  <Col span={24}>
+                    <div style={{ fontSize: 12 }} className="mb-3">
+                      埋め込みコードをコピーして、ホームページやブログのソースに記載してください。
+                    </div>
+                    <div className="iframe-copy-box mb-5">
+                      <TextArea
+                        value={iframeValue}
+                        // onChange={e => setValue(e.target.value)}
+                        placeholder="Controlled autosize"
+                        autoSize={{ minRows: 3, maxRows: 5 }}
+                      />
+                    </div>
+                    <div>
+                      <CopyToClipboard
+                        text={iframeValue}
+                        onCopy={async () => {
+                          setIframeCopied(true);
+                          await sleep(2000);
+                          setIframeCopied(false);
+                        }}
+                      >
+                        <Tooltip title={iframeCopiedTitle} visible={!!iframeCopied}>
+                          <Button
+                            className="icon-btn"
+                            size="large"
+                            style={{
+                              fontSize: 14,
+                              width: '100%',
+                              color: '#666666',
+                              boxShadow: 'none',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <span
+                              className="material-symbols-outlined fill-icon icon"
+                              style={{ color: '#929292' }}
+                            >
+                              content_copy
+                            </span>
+                            埋め込みコードをコピー
+                          </Button>
+                        </Tooltip>
+                      </CopyToClipboard>
+                    </div>
+                  </Col>
+                </Row>
+              )
+            }
+          </Media>
         </div>
       </ActionModal>
     </>
