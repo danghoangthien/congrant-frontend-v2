@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 // ANTD
 import { Row, Col, Modal, Button, Space, Card } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // STYLE
 import styled from 'styled-components/macro';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
@@ -21,19 +23,7 @@ export const StyledText = styled.div`
 `;
 
 const TwoFactorModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

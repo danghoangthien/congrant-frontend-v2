@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Button, Space, Modal, Typography } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 import styled from 'styled-components/macro';
 // STYLE
 import { StyledModalTitle } from 'styles/Modal.style';
@@ -12,19 +14,7 @@ const StyledSwapModal = styled(Modal)`
   }
 `;
 const Swap = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

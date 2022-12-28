@@ -1,25 +1,15 @@
 import React, { useState } from 'react';
 import { Row, Col, Space, Modal, DatePicker } from 'antd';
 import moment from 'moment';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // COMPONENTS
 import { SettingsInputContainer, SettingLabel, SettingInput, SettingSelect } from 'utils/Sprites';
 // STYLE
 import { StyledModalTitle } from 'styles/Modal.style';
 
 const ChangeAmount = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

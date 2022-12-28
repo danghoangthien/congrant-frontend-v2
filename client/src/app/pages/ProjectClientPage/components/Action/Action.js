@@ -4,6 +4,8 @@ import { ActionButton } from './Action.style';
 import { ActionModal } from './ActionModal.style';
 // ANTD
 import { Space, Button, Row, Col, Input, Tooltip } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // QR CODE
 import { QRCode } from 'react-qrcode-logo';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -14,22 +16,16 @@ import Media from 'react-media';
 
 const { TextArea } = Input;
 const APP_URL = process.env.REACT_APP_APP_URL;
-const iframeValue = `<iframe src="${APP_URL}/project_iframe/client_name/1" frameborder="0" width="300" height="380" onload="this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';"></iframe>`;
+const iframeValue = `<iframe src="${APP_URL}/project_iframe/client_name/1" frameborder="0" width="300" height="380"></iframe>`;
 
 const Action = ({ mainColor }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, showModal, , handleCancel] = useModalActions({});
   const [linkCopied, setLinkCopied] = useState(false);
   const [iframeCopied, setIframeCopied] = useState(false);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
   const linkCopiedTitle = linkCopied ? 'コピーしました' : null;
   const iframeCopiedTitle = iframeCopied ? 'コピーしました' : null;
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
   const showEmbedModal = () => {
     setIsEmbedModalOpen(true);
   };
