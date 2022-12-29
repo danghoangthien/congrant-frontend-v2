@@ -8,7 +8,7 @@ import Donation from './Donation';
 import ContinuousContract from './ContinuousContract';
 import Receipt from './Receipt';
 import { randomOutput } from 'utils/helper';
-import { LIST_MODE } from '../consts';
+import { LIST_MODE } from 'utils/consts';
 
 export const DETAIL_KEY_MAP = {
   BASIC_INFO: '1',

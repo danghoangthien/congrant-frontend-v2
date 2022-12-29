@@ -27,6 +27,7 @@ import {
   StyledCheckboxContainer,
   StyledInputPassword,
   StyledNavigation,
+  DescriptionStyle,
 } from 'styles/FormElement.style';
 import { StyledSegmented } from 'styles/Element.style';
 // CONST
@@ -34,7 +35,7 @@ import { TEXT_COLOR, TEXT_GRAY_COLOR, DANGER_COLOR } from 'styles/StyleConstants
 
 const InfoIcon = () => (
   <span
-    class="material-symbols-outlined fill-icon"
+    className="material-symbols-outlined fill-icon"
     style={{ fontSize: 13, display: 'flex', color: TEXT_COLOR, alignItems: 'center' }}
   >
     info
@@ -298,6 +299,14 @@ const Navigation = ({ setMode, label, identityLabel, id, listMode }) => {
   );
 };
 
+const DescriptionContainer = ({ children, mode, setMode, title }) => (
+  <DescriptionStyle className="no-border">
+    <Descriptions title={title} bordered column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}>
+      {children}
+    </Descriptions>
+  </DescriptionStyle>
+);
+
 export {
   SettingsInputContainer,
   SettingLabel,
@@ -330,4 +339,5 @@ export {
   CopiableText,
   SettingInputPassword,
   Navigation,
+  DescriptionContainer,
 };

@@ -14,18 +14,11 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import DomainIcon from '@mui/icons-material/Domain';
 import SettingsIcon from '@mui/icons-material/Settings';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import LogoutIcon from '@mui/icons-material/Logout';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 // IMAGE
 import userImage from 'styles/assets/icon_avatar.svg';
 
 // STYLE
 import { StyledSidebar } from './Sider.style';
-import { menuItems } from 'app/pages/IndividualPage/components/Receipt';
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -90,7 +83,9 @@ const sub_menu = (
         title: '',
         label: (
           <Link className="sub-user-menu-link" to={`/app/corporation-settings`}>
-            <AdminPanelSettingsIcon />
+            <span className="material-symbols-outlined fill-icon mr-2" style={{ fontSize: 16 }}>
+              admin_panel_settings
+            </span>
             団体設定
           </Link>
         ),
@@ -100,7 +95,9 @@ const sub_menu = (
         title: '',
         label: (
           <Link className="sub-user-menu-link" to={`/app/individuals-settings`}>
-            <ManageAccountsIcon />
+            <span className="material-symbols-outlined fill-icon mr-2" style={{ fontSize: 16 }}>
+              manage_accounts
+            </span>
             個人設定
           </Link>
         ),
@@ -110,7 +107,9 @@ const sub_menu = (
         title: '',
         label: (
           <Link className="sub-user-menu-link" to={`/app/payment-details/stripe`}>
-            <FormatListBulletedIcon />
+            <span className="material-symbols-outlined fill-icon mr-2" style={{ fontSize: 16 }}>
+              list
+            </span>
             決済明細
           </Link>
         ),
@@ -119,8 +118,22 @@ const sub_menu = (
         key: '4',
         title: '',
         label: (
+          <Link className="sub-user-menu-link" to={`/app/contract`}>
+            <span className="material-symbols-outlined fill-icon mr-2" style={{ fontSize: 16 }}>
+              edit_document
+            </span>
+            契約内容
+          </Link>
+        ),
+      },
+      {
+        key: '5',
+        title: '',
+        label: (
           <Link className="sub-user-menu-link" to={`/app/logout`}>
-            <LogoutIcon />
+            <span className="material-symbols-outlined fill-icon mr-2" style={{ fontSize: 16 }}>
+              logout
+            </span>
             ログアウト
           </Link>
         ),
@@ -232,21 +245,21 @@ const CustomSider = () => {
             <Col className="user-box-item will-collapsed-item" span={24}>
               <Link className="sub-menu-link" to={`test1`}>
                 割引プラン
-                <span class="material-symbols-outlined icon fill-icon">redeem</span>
+                <span className="material-symbols-outlined icon fill-icon">redeem</span>
               </Link>
             </Col>
             <Col className="user-box-item will-collapsed-item" span={24}>
               <Dropdown overlay={sub_menu2} placement="top" arrow={false}>
                 <span className="sub-menu-link">
                   ファンドレイジングを学ぶ
-                  <span class="material-symbols-outlined icon fill-icon">school</span>
+                  <span className="material-symbols-outlined icon fill-icon">school</span>
                 </span>
               </Dropdown>
             </Col>
             <Col className="user-box-item will-collapsed-item" span={24}>
               <Link className="sub-menu-link" to={`test3`} target="_blank">
                 ヘルプ＆サポート
-                <span class="material-symbols-outlined icon fill-icon">help</span>
+                <span className="material-symbols-outlined icon fill-icon">help</span>
               </Link>
             </Col>
             <Col className="user-box-item" span={24}>

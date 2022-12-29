@@ -17,7 +17,7 @@ import {
 } from 'antd';
 import { DescriptionStyle } from './BasicInfo.style';
 import { BoldLabel, CopiableText } from 'utils/Sprites';
-import { DETAIL_MODE, EDIT_MODE } from '../consts';
+import { DETAIL_MODE, EDIT_MODE } from 'utils/consts';
 
 const action_menu = (
   <Menu
@@ -36,7 +36,7 @@ const action_menu = (
 
 const dateFormat = 'YYYY-MM-DD';
 
-const BasicInfoTitle = ({ mode, setMode }) => {
+const Title = ({ mode, setMode }) => {
   const actionByMode = mode => {
     if (mode === DETAIL_MODE) {
       return (
@@ -85,7 +85,7 @@ const BasicInfoTitle = ({ mode, setMode }) => {
 const DescriptionContainer = ({ children, mode, setMode }) => (
   <DescriptionStyle className="no-border">
     <Descriptions
-      title={<BasicInfoTitle mode={mode} setMode={setMode} />}
+      title={<Title mode={mode} setMode={setMode} />}
       bordered
       column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
     >
@@ -110,12 +110,13 @@ const ViewModeContent = ({ data, mode, setMode }) => {
         <Descriptions.Item label={<BoldLabel label="担当者部署・肩書き" />}>
           {'営業部 部長'}
         </Descriptions.Item>
-
+        {/* 担当者名 */}
         <Descriptions.Item label={<BoldLabel label="担当者名" />}>{'遠藤 恵子'}</Descriptions.Item>
-
+        {/* 担当者名（ふりがな） */}
         <Descriptions.Item label={<BoldLabel label="担当者名（ふりがな）" />}>
           {'えんどう けいこ'}
         </Descriptions.Item>
+        {/* 広報物への法人名掲載 */}
         <Descriptions.Item label={<BoldLabel label="広報物への法人名掲載" />}>
           <CopiableText>{'許可'}</CopiableText>
         </Descriptions.Item>
@@ -175,7 +176,7 @@ const ViewModeContent = ({ data, mode, setMode }) => {
   );
 };
 
-const EditModeContent = ({ data, mode, setMode }) => (
+const EditModeContent = ({ data, mode, setMode, handleChangeSendaddr, sendadrr }) => (
   <>
     <DescriptionContainer mode={mode} setMode={setMode}>
       <Descriptions.Item label={<BoldLabel label="個人No." />}>
@@ -236,15 +237,55 @@ const EditModeContent = ({ data, mode, setMode }) => (
           <Col className="mb-2" sm={24} md={24} lg={24}>
             <Input value={'1-2-3＊＊＊＊＊マンション301号室'} />
           </Col>
+          <Col sm={24} md={24} lg={24}>
+            <Checkbox onChange={handleChangeSendaddr}>{'郵送物の送付先を別途指定する'}</Checkbox>
+          </Col>
         </Row>
       </Descriptions.Item>
+      {/* 郵送物送付先 */}
+      {sendadrr && (
+        <Descriptions.Item label={<BoldLabel label="郵送物送付先" />}>
+          <Row>
+            <Col className="mb-2" sm={24} md={24} lg={24}>
+              <Select placeholder={'選択してください'} onChange={() => {}} defaultValue={1}>
+                <Select.Option value={1}>{'日本'}</Select.Option>
+              </Select>
+            </Col>
+            <Col className="mb-2" sm={12} md={12} lg={12}>
+              <Input addonBefore="〒" value={'5500002'} />
+            </Col>
+            <Col className="pl-2 mb-2" sm={12} md={12} lg={12}>
+              <Select
+                disabled
+                placeholder={'選択してください'}
+                onChange={() => {}}
+                defaultValue={1}
+              >
+                <Select.Option value={1}>{'大阪府'}</Select.Option>
+              </Select>
+            </Col>
+            <Col className="mb-2" sm={24} md={24} lg={24}>
+              <Input value={'大阪市西区江戸堀'} />
+            </Col>
+            <Col className="mb-2" sm={24} md={24} lg={24}>
+              <Input value={'1-2-3＊＊＊＊＊ビル4F'} />
+            </Col>
+            <Col className="mb-2" sm={24} md={24} lg={24}>
+              <Input value={'◯◯株式会社'} />
+            </Col>
+            <Col sm={24} md={24} lg={24}>
+              <Input value={'代表取締役社長 田中 太郎'} />
+            </Col>
+          </Row>
+        </Descriptions.Item>
+      )}
       <Descriptions.Item label={<BoldLabel label="郵送物送付" />}>
         <Row>
-          <Col sm={24} md={12} lg={12}>
+          <Col className="mb-2" span={24}>
             <Checkbox checked>{'許可'}</Checkbox>
           </Col>
-          <Col className="pl-2" sm={24} md={12} lg={12}>
-            <Input suffix="部" value={'1'} />
+          <Col span={24}>
+            <Input suffix="部" value={'1'} style={{ width: '100%' }} />
           </Col>
         </Row>
       </Descriptions.Item>
@@ -292,15 +333,25 @@ const EditModeContent = ({ data, mode, setMode }) => (
 );
 
 const BasicInfo = ({ data }) => {
-  console.log('BasicInfo');
   const [mode, setMode] = useState(DETAIL_MODE);
-  console.log('BasicInfo mode', mode);
+  const [sendadrr, setSendadrr] = useState(false);
+
+  const handleChangeSendaddr = () => {
+    setSendadrr(!sendadrr);
+  };
+
   return (
     <>
       {mode === DETAIL_MODE ? (
         <ViewModeContent data={data} mode={mode} setMode={setMode} />
       ) : (
-        <EditModeContent data={data} mode={mode} setMode={setMode} />
+        <EditModeContent
+          data={data}
+          mode={mode}
+          setMode={setMode}
+          handleChangeSendaddr={handleChangeSendaddr}
+          sendadrr={sendadrr}
+        />
       )}
     </>
   );

@@ -7,18 +7,15 @@ const Notification = () => {
       <Col span={24} className="mb-6">
         <div className="page-title01">{'通知設定'}</div>
       </Col>
-      <Col span={24}>
+      <Col span={24} className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'運営からのお知らせ'} />}>
-          <Checkbox checked>{'運営からのお知らせを受け取る'}</Checkbox>
+          <Checkbox>{'運営からのお知らせを受け取る'}</Checkbox>
         </SettingsInputContainer>
       </Col>
-      <Col span={24} className="mb-5">
-        <SettingsInputContainer label={<SettingLabel label={'寄付決済関連のお知らせ'} />}>
+      <Col span={24}>
+        <SettingsInputContainer label={<SettingLabel label={'寄付決済関連の通知'} />}>
           <Space direction="vertical">
-            <Checkbox checked>{'新規申し込みの完了通知を受け取る'}</Checkbox>
-            <Checkbox checked>{'継続決済の成功通知を受け取る'}</Checkbox>
-            <Checkbox checked>{'継続決済の失敗通知を受け取る'}</Checkbox>
-            <Checkbox checked>{'継続決済の解約通知を受け取る'}</Checkbox>
+            <Checkbox>{'寄付決済関連の通知を受け取る'}</Checkbox>
           </Space>
         </SettingsInputContainer>
       </Col>

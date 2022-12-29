@@ -80,7 +80,7 @@ const Action = ({ mainColor }) => {
         width={480}
         footer={null}
         closeIcon={
-          <span class="material-symbols-outlined" style={{ color: '#1C1B1F' }}>
+          <span className="material-symbols-outlined" style={{ color: '#1C1B1F' }}>
             close
           </span>
         }
@@ -116,7 +116,7 @@ const Action = ({ mainColor }) => {
         width={560}
         footer={null}
         closeIcon={
-          <span class="material-symbols-outlined" style={{ color: '#1C1B1F' }}>
+          <span className="material-symbols-outlined" style={{ color: '#1C1B1F' }}>
             close
           </span>
         }

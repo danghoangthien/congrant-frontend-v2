@@ -14,6 +14,7 @@ import { GlobalStyle } from '../styles/global-styles';
 import AppPage from './pages/AppPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import ProjectClientPage from './pages/ProjectClientPage';
+import CancelRecurringPage from './pages/CancelRecurringPage';
 import PaymentPage from './pages/PaymentPage';
 // OTHER
 import { useTranslation } from 'react-i18next';
@@ -45,6 +46,12 @@ export function App() {
             <Route exact path={process.env.PUBLIC_URL + '/payment'}>
               <PaymentPage />
             </Route>
+
+            {/* 継続決済解約フォーム */}
+            <Route path={process.env.PUBLIC_URL + '/keizoku-cancel/form'}>
+              <CancelRecurringPage />
+            </Route>
+
             <Route path={process.env.PUBLIC_URL + '/app'}>
               <AppPage />
             </Route>

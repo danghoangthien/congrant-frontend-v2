@@ -1,6 +1,10 @@
-import React from 'react';
 import { Row, Col, Radio, DatePicker } from 'antd';
-import { SettingsInputContainer, SettingLabel, SettingTextarea } from 'utils/Sprites';
+import {
+  SettingsInputContainer,
+  SettingLabel,
+  SettingTextarea,
+  SettingHepler,
+} from 'utils/Sprites';
 import styled from 'styled-components/macro';
 import ImageUpload from 'app/components/ImageUpload';
 
@@ -47,17 +51,18 @@ const BasicSetting = () => {
         </SettingsInputContainer>
       </Row>
       {/* トップ画像 */}
-      <Row>
+      <Row className="mb-8">
         <SettingsInputContainer label={<SettingLabel label={'トップ画像'} />}>
           <ImageUpload />
-          <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>{'画像は1枚まで設定できます。'}</p>
+          <SettingHepler>画像は1枚まで設定できます。</SettingHepler>
         </SettingsInputContainer>
       </Row>
       {/* 公開日時 */}
-      <Row className="mb-6">
+      <Row>
         <SettingsInputContainer label={<SettingLabel label={'公開日時'} required />}>
           <Col sm={24} md={24} lg={24}>
             <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '256px' }} />
+            <SettingHepler>未来の日時を登録すると、その日時に自動的に公開されます。</SettingHepler>
           </Col>
         </SettingsInputContainer>
       </Row>

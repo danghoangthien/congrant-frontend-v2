@@ -42,7 +42,7 @@ const NoticeModal = ({ text, title, content }) => {
       {/* BUTTON */}
       <NoticeLink onClick={showModal} size="small">
         <span className="txt">{text}</span>
-        <span class="material-symbols-outlined fill-icon icon">info</span>
+        <span className="material-symbols-outlined fill-icon icon">info</span>
       </NoticeLink>
 
       {/* MODAL */}
@@ -53,7 +53,7 @@ const NoticeModal = ({ text, title, content }) => {
         onCancel={handleCancel}
         footer={null}
         bodyStyle={{ padding: '40px 24px' }}
-        closeIcon={<span class="material-symbols-outlined">close</span>}
+        closeIcon={<span className="material-symbols-outlined">close</span>}
       >
         <div className="mb-2" style={{ fontSize: 18, fontWeight: 700 }}>
           {title}

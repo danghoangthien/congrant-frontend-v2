@@ -1,6 +1,6 @@
 import { Descriptions, Row, Col, Button, Space, Dropdown, Menu, Badge } from 'antd';
 import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
-import { EDIT_MODE, LIST_MODE } from '../consts';
+import { EDIT_MODE, LIST_MODE } from 'utils/consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 import { StyledBadgeDot } from 'styles/global-styles';

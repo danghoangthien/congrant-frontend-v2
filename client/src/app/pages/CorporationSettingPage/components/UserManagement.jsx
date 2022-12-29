@@ -1,11 +1,25 @@
-import { Row, Col, Tag, Button, Table } from 'antd';
+import { Row, Col, Tag, Button, Table, Space } from 'antd';
 import InviteUser from './InviteUser';
+// CONST
+import { DANGER_COLOR } from 'styles/StyleConstants';
+// UTILS
+import { randomOutput } from 'utils/helper';
 
 const dataSource = Array.from(Array(3).keys()).map(i => ({
   id: `${i}`,
   authority: `管理者`,
   username: '吉川 はじめ',
   email: `yoshikawa@congrant.com`,
+  operation_authority: randomOutput([
+    'すべて',
+    <>
+      プロジェクトの変更
+      <br />
+      基本設定の変更
+    </>,
+    '-',
+  ]),
+  payment_notification: `受信`,
 }));
 
 const columnMap = {
@@ -22,16 +36,32 @@ const columnMap = {
     title: 'メールアドレス',
     dataIndex: 'email',
   },
+  operation_authority: {
+    title: '操作権限',
+    dataIndex: 'operation_authority',
+  },
+  payment_notification: {
+    title: '決済関連通知',
+    dataIndex: 'payment_notification',
+  },
   action: {
     width: 120,
     title: '操作',
     render: row => (
-      <Button
-        className="icon-btn less-shadow-btn"
-        icon={<span className="material-symbols-outlined fill-icon">delete</span>}
-      >
-        {'削除'}
-      </Button>
+      <Space>
+        <Button
+          className="more-menu-btn"
+          icon={<span className="material-symbols-outlined fill-icon">edit</span>}
+        ></Button>
+        <Button
+          className="more-menu-btn"
+          icon={
+            <span className="material-symbols-outlined fill-icon" style={{ color: DANGER_COLOR }}>
+              delete
+            </span>
+          }
+        ></Button>
+      </Space>
     ),
   },
 };

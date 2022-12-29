@@ -152,9 +152,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // BUTTON
-  .ant-btn {
-    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
-  }
+  // .ant-btn {
+  //   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  // }
 
   .less-shadow-btn {
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
@@ -499,7 +499,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .ant-checkbox-wrapper {
-    font-size: 16px;
+    // font-size: 16px;
   }
 
   // RADIO
@@ -597,6 +597,12 @@ export const GlobalStyle = createGlobalStyle`
   }
   .table-row-dark {
       background-color: #fbfbfb;
+  }
+
+  // UPLOAD
+  .ant-upload-list-text .ant-upload-span > *,
+  .ant-upload-list-picture .ant-upload-span > * {
+    display: flex;
   }
 `;
 

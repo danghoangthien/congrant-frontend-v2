@@ -10,6 +10,12 @@ export enum ScreenSizes {
   xlarge = '1920px',
 }
 
+// PLAN COLORS
+export const TRIAL_PLAN_COLOR = '#d42c8e';
+export const FREE_PLAN_COLOR = '#63b233';
+export const LIGHT_PLAN_COLOR = '#2878cb';
+export const STANDARD_PLAN_COLOR = '#de6536';
+
 // COLORS
 export const PRIMARY_COLOR = '#63b233';
 export const LIGHT_PRIMARY_COLOR = '#b1d999';

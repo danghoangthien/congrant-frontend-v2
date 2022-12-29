@@ -44,11 +44,19 @@ const Filters = ({ open }) => {
         <Col span={24}>
           <Form form={form} layout={'vertical'}>
             <Row gutter={24}>
+              {/* 受領日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
                 <Form.Item name={`field-a`} label={`受領日`}>
                   <RangePicker placeholder={['開始日', '終了日']} style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
+              {/* 入金日 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
+                <Form.Item name={`field-a`} label={`入金日`}>
+                  <RangePicker placeholder={['開始日', '終了日']} style={{ width: '100%' }} />
+                </Form.Item>
+              </Col>
+              {/* プロジェクト */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'b'}>
                 <Form.Item name={`field-b`} label={`プロジェクト`}>
                   <Select placeholder={'選択してください'} onChange={() => {}}>
@@ -56,13 +64,7 @@ const Filters = ({ open }) => {
                   </Select>
                 </Form.Item>
               </Col>
-              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
-                <Form.Item name={`field-c`} label={`受領方法`}>
-                  <Select placeholder={'選択してください'} onChange={() => {}}>
-                    <Select.Option value="1">{'---'}</Select.Option>
-                  </Select>
-                </Form.Item>
-              </Col>
+              {/* 寄付タイプ */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                 <Form.Item name={`field-e`} label={`寄付タイプ`}>
                   <Select placeholder={'選択してください'} onChange={() => {}}>
@@ -70,6 +72,7 @@ const Filters = ({ open }) => {
                   </Select>
                 </Form.Item>
               </Col>
+              {/* プラン */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                 <Form.Item name={`field-e`} label={`プラン`}>
                   <Select placeholder={'選択してください'} onChange={() => {}}>
@@ -77,6 +80,7 @@ const Filters = ({ open }) => {
                   </Select>
                 </Form.Item>
               </Col>
+              {/* 金額 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                 <Form.Item name={`field-d`} label={`金額`}>
                   <Input.Group compact className="num-range-input">
@@ -103,6 +107,62 @@ const Filters = ({ open }) => {
                       suffix="円"
                     />
                   </Input.Group>
+                </Form.Item>
+              </Col>
+              {/* 受領方法 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`受領方法`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              {/* 登録経路 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`登録経路`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              {/* 認知経路 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`認知経路`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              {/* 寄付の使用用途 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`寄付の使用用途`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              {/* 支援経験 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`支援経験`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              {/* 寄付理由 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`寄付理由`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              {/* 領収書ステータス */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`領収書ステータス`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
                 </Form.Item>
               </Col>
             </Row>
