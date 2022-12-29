@@ -777,7 +777,7 @@ const LearningPage = () => {
       <div className="pb-8 px-16">
         <Button
           className="icon-btn"
-          icon={<span class="material-symbols-outlined">chevron_left</span>}
+          icon={<span className="material-symbols-outlined">chevron_left</span>}
           onClick={() => {
             history.push(`/app/projects`);
           }}

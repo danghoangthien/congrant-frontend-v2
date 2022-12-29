@@ -1,5 +1,5 @@
 // ANTD
-import { Card, Row, Col, Button, Select, Form, Input, DatePicker } from 'antd';
+import { Card, Row, Col, Select, Form, Input, DatePicker } from 'antd';
 // COMPONENT
 import SaveFilter from 'app/components/Modal/SaveFilter';
 
@@ -49,7 +49,6 @@ const Filters = ({ open }) => {
                   </Select>
                 </Form.Item>
               </Col>
-
               {/* 寄付タイプ */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'b'}>
                 <Form.Item name={`field-b`} label={`寄付タイプ`}>
@@ -58,7 +57,6 @@ const Filters = ({ open }) => {
                   </Select>
                 </Form.Item>
               </Col>
-
               {/* プラン */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
                 <Form.Item name={`field-c`} label={`プラン`}>
@@ -67,7 +65,6 @@ const Filters = ({ open }) => {
                   </Select>
                 </Form.Item>
               </Col>
-
               {/* 金額 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                 <Form.Item name={`field-d`} label={`金額`}>
@@ -101,21 +98,18 @@ const Filters = ({ open }) => {
                   </Input.Group>
                 </Form.Item>
               </Col>
-
               {/* 初回決済日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
                 <Form.Item name={`field-a`} label={`初回決済日`}>
-                  <RangePicker placeholder={['開始日', '終了日']} />
+                  <DatePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
-
               {/* 最終決済日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
                 <Form.Item name={`field-a`} label={`最終決済日`}>
-                  <RangePicker placeholder={['開始日', '終了日']} />
+                  <DatePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
-
               {/* 累計寄付金額 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
                 <Form.Item name={`field-d`} label={`累計寄付金額`}>
@@ -149,10 +143,23 @@ const Filters = ({ open }) => {
                   </Input.Group>
                 </Form.Item>
               </Col>
-
               {/* 累計寄付回数 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
                 <Form.Item name={`field-c`} label={`累計寄付回数`}>
+                  <Select placeholder={'選択してください'} onChange={() => {}}>
+                    <Select.Option value="1">{'---'}</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+              {/* 解約日 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
+                <Form.Item name={`field-a`} label={`解約日`}>
+                  <DatePicker style={{ width: '100%' }} />
+                </Form.Item>
+              </Col>
+              {/* 解約理由 */}
+              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
+                <Form.Item name={`field-c`} label={`解約理由`}>
                   <Select placeholder={'選択してください'} onChange={() => {}}>
                     <Select.Option value="1">{'---'}</Select.Option>
                   </Select>

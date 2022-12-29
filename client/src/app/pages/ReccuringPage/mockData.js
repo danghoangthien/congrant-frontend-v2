@@ -87,6 +87,106 @@ export const menuItems = status => {
       },
     ];
   } else {
+    return [
+      {
+        key: '1',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              send
+            </span>
+            <span>{'再決済フォームを送る'}</span>
+          </Space>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              send
+            </span>
+            <span>{'解約フォームを送る'}</span>
+          </Space>
+        ),
+      },
+    ];
+  }
+};
+
+export const bulkMenuItems = status => {
+  // 継続中（ongoing contract）
+  if (status === 2) {
+    return [
+      {
+        key: '1',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              send
+            </span>
+            <span>{'再決済フォームを送る'}</span>
+          </Space>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              content_copy
+            </span>
+            <span>{'再決済フォームのURLをコピー'}</span>
+          </Space>
+        ),
+      },
+    ];
+  }
+  // 際決済待ち（waiting for re-payment）
+  else if (status === 1) {
+    return [
+      {
+        key: '1',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              autorenew
+            </span>
+            <span>{'金額変更'}</span>
+          </Space>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              do_disturb
+            </span>
+            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
+          </Space>
+        ),
+      },
+    ];
+  } else {
     return null;
   }
 };

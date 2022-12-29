@@ -1,7 +1,7 @@
 import { Descriptions, Row, Col, Button, Dropdown, Space, Menu } from 'antd';
 import NewReceipt from 'app/pages/ReceiptPage/components/NewReceipt';
 import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
-import { EDIT_MODE, LIST_MODE } from '../consts';
+import { EDIT_MODE, LIST_MODE } from 'utils/consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 import { LIGHT_GRAY } from 'styles/StyleConstants';

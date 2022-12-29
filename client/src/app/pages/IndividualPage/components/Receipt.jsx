@@ -5,7 +5,7 @@ import { StyledBadgeDot } from 'styles/global-styles';
 import { DANGER_COLOR } from 'styles/StyleConstants';
 import ReceiptDetail from './ReceiptDetail';
 import ReceiptEdit from './ReceiptEdit';
-import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from 'utils/consts';
 import ExportPDF from 'app/pages/ReceiptPage/components/ExportPDF';
 import { RECEIPT_STATUSES, RECEIPT_STATUS_COLOR } from 'utils/consts';
 

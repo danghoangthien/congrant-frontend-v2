@@ -3,7 +3,7 @@ import { Badge, Row, Col, Table, Tag } from 'antd';
 import { useMountEffect } from 'hook/useMountEffect';
 import { StyledBadgeDot } from 'styles/global-styles';
 import ContinuousContractDetail from './ContinuousContractDetail';
-import { LIST_MODE, DETAIL_MODE } from '../consts';
+import { LIST_MODE, DETAIL_MODE } from 'utils/consts';
 
 import {
   DONATION_TYPES,

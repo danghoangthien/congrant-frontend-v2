@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 // ANTD
-import { Drawer, Space } from 'antd';
+import { Drawer } from 'antd';
 import { sleep } from 'utils/helper';
-// STYLE
-import styled from 'styled-components/macro';
 
 const DrawerHandle = ({
   children,

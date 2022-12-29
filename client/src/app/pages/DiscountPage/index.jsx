@@ -72,7 +72,7 @@ const DiscountPage = () => {
     <>
       {renderPageTitle()}
       <PageLayout>
-        <div class="sub-page-title mb-4">コングラント利用料の割引</div>
+        <div className="sub-page-title mb-4">コングラント利用料の割引</div>
         <Row gutter={24} className="mb-10">
           <EqualHeight>
             <Col className="mb-3" lg={{ span: 8 }} md={{ span: 12 }}>
@@ -213,7 +213,7 @@ const DiscountPage = () => {
             </Col>
           </EqualHeight>
         </Row>
-        <div class="sub-page-title mb-4">特典</div>
+        <div className="sub-page-title mb-4">特典</div>
         <Row gutter={24} className="mb-10">
           <EqualHeight>
             <Col className="mb-3" lg={{ span: 8 }} md={{ span: 12 }}>

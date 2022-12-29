@@ -1,10 +1,9 @@
 import { Descriptions, Row, Col, Button, Dropdown, Badge, Menu } from 'antd';
 import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
-import { LIST_MODE } from '../consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 import { StyledBadgeDot } from 'styles/global-styles';
-import { DONATION_STATUS_COLOR, DONATION_STATUSES } from 'utils/consts';
+import { DONATION_STATUS_COLOR, DONATION_STATUSES, LIST_MODE } from 'utils/consts';
 
 // 操作メニュー・Action Menu
 const action_menu = (
@@ -90,6 +89,8 @@ const ContinuousContractDetail = ({ data, mode, setMode }) => {
         </Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="最終決済日" />}>2022-08-15</Descriptions.Item>
         <Descriptions.Item label={<BoldLabel label="解約日" />}>-</Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="解約理由" />}>-</Descriptions.Item>
+        <Descriptions.Item label={<BoldLabel label="解約理由詳細" />}>-</Descriptions.Item>
       </DescriptionContainer>
     </>
   );

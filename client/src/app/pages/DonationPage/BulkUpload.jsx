@@ -45,25 +45,29 @@ const BulkUpload = () => {
           <div className="item">
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
-                <div className="page-title">{'アップロードするファイル'}</div>
+                <div className="page-title" style={{ fontSize: 24 }}>
+                  {'アップロードするファイル'}
+                </div>
               </Col>
             </Row>
             <Row className="item mb-6">
               <Button
                 className="icon-btn less-shadow-btn"
-                icon={<span class="material-symbols-outlined">download</span>}
+                icon={<span className="material-symbols-outlined">download</span>}
               >
                 {'サンプルファイル（寄付決済用）をダウンロード'}
               </Button>
             </Row>
-            <Row className="item mb-14">
+            <Row className="item mb-14" style={{ width: '100%', maxWidth: 695 }}>
               <SettingsInputContainer label={<SettingLabel label={'ファイルアップロード'} />}>
-                <DraggerUpload style={{ width: '100%', maxWidth: 695 }} />
+                <DraggerUpload />
               </SettingsInputContainer>
             </Row>
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
-                <span className="page-title">{'処理方法'}</span>
+                <span className="page-title" style={{ fontSize: 24 }}>
+                  {'処理方法'}
+                </span>
               </Col>
             </Row>
             <Row className="item mb-6">
@@ -102,7 +106,9 @@ const BulkUpload = () => {
             </Row>
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
-                <span className="page-title">{'項目の関連づけ'}</span>
+                <span className="page-title" style={{ fontSize: 24 }}>
+                  {'項目の関連づけ'}
+                </span>
               </Col>
             </Row>
             <Row className="mb-5">

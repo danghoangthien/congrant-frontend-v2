@@ -33,7 +33,7 @@ const dataSource = [
     type: randomOutput([1, 2, 3]),
   },
   {
-    item: '住所',
+    item: '所在地',
     type: randomOutput([1, 2, 3]),
   },
   {

@@ -18,7 +18,12 @@ import Draggable from 'app/components/DraggableItems';
 import IndividualItemTable from './IndividualItemTable';
 import CorporationItemTable from './CorporationItemTable';
 // CONST
-import { EXTRA_LIGHT_GRAY, PRIMARY_COLOR } from 'styles/StyleConstants';
+import { EXTRA_LIGHT_GRAY, PRIMARY_COLOR, EXTRA_LIGHT_RED_COLOR } from 'styles/StyleConstants';
+
+const StyledBox = styled.div`
+  padding: 16px;
+  background: ${EXTRA_LIGHT_RED_COLOR};
+`;
 
 // コース選択の通知枠
 export const CourseNoteBox = styled.div`
@@ -127,7 +132,7 @@ const FormEdit = () => {
                   <Space align="center">
                     <Input size="large" placeholder={'3,000'} suffix={'円'} />
                     <Button className="ml-2 icon-btn" type="primary">
-                      <span class="material-symbols-outlined">add</span>
+                      <span className="material-symbols-outlined">add</span>
                       <span>{'追加'}</span>
                     </Button>
                   </Space>
@@ -192,7 +197,7 @@ const FormEdit = () => {
           )}
 
           {/* プラン選択 */}
-          {params?.id === '1' && donateType === 3 && (
+          {donateType === 3 && (
             <>
               <VerticalCheckboxContainer
                 className="pl-6 mb-6"
@@ -265,9 +270,32 @@ const FormEdit = () => {
             <span className="bold">{'法人'}</span>
           </Col>
         </Row>
-        <Row className="mb-5">
+        <Row className="mb-8">
           <Col span={24}>
             <CorporationItemTable />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={24} className="mb-4">
+            <span className="page-sub-title">{'匿名寄付機能'}</span>
+          </Col>
+          <Col span={24} className="mb-2">
+            <SettingsInputContainer>
+              <Checkbox checked style={{ fontSize: 16 }}>
+                {'匿名寄付を受け付ける'}
+              </Checkbox>
+            </SettingsInputContainer>
+          </Col>
+          <Col span={24}>
+            <StyledBox>
+              <div>匿名寄付機能とは</div>
+              <div>
+                匿名寄付機能は、決済フォームでの詳細情報の入力をユーザー自身でスキップできる機能です。上で設定した入力項目の必須・任意設定に関わらず、ユーザーは「メールアドレス」のみで決済を申し込めるようになります。
+                匿名寄付を受け付ける設定にすると、決済フォームに「匿名で申し込む」のチェックボックスが表示されます
+                ユーザーがチェックをつけると、メールアドレス以外の入力フォームが非表示になり、最低限の入力で申し込みを完了できます
+              </div>
+            </StyledBox>
           </Col>
         </Row>
       </div>

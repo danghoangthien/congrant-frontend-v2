@@ -1,6 +1,6 @@
 import { Descriptions, Row, Col, Button, Input, Select, Space } from 'antd';
 import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
-import { DETAIL_MODE, LIST_MODE } from '../consts';
+import { DETAIL_MODE, LIST_MODE } from 'utils/consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 
@@ -59,7 +59,7 @@ const DonationEdit = ({ data, mode, setMode }) => {
         listMode={LIST_MODE}
       />
       <Title mode={mode} setMode={setMode} />
-      <Row className="mb-8">
+      <Row className="mb-6">
         <Col span={24}>
           <DescriptionContainer>
             <Descriptions.Item label={<BoldLabel label="寄付No." />}>
@@ -108,7 +108,7 @@ const DonationEdit = ({ data, mode, setMode }) => {
       </Row>
 
       {/* カスタム項目 */}
-      <Row>
+      <Row className="mb-6">
         <Col span={24}>
           <ExtraFieldTitle />
         </Col>
@@ -139,6 +139,19 @@ const DonationEdit = ({ data, mode, setMode }) => {
             </Descriptions.Item>
           </DescriptionContainer>
         </Col>
+      </Row>
+
+      <Row justify="end">
+        <Space>
+          <Button onClick={() => setMode(DETAIL_MODE)}>{'キャンセル'}</Button>
+          <Button
+            className="icon-btn"
+            icon={<span className="material-symbols-outlined fill-icon">save</span>}
+            type="primary"
+          >
+            {'保存する'}
+          </Button>
+        </Space>
       </Row>
     </>
   );

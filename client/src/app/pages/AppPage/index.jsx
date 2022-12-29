@@ -30,6 +30,7 @@ import CkeditorPage from 'app/pages/CkeditorPage';
 import PaymentManagePage from 'app/pages/PaymentPage/PaymentManage';
 import LearningPage from 'app/pages/LearningPage';
 import DiscountPage from 'app/pages/DiscountPage';
+import ContractPage from 'app/pages/ContractPage';
 
 const AppPage = () => {
   const { path, ...rest } = useRouteMatch();
@@ -128,6 +129,9 @@ const AppPage = () => {
         </Route>
         <Route path={`${path}/discount`}>
           <DiscountPage />
+        </Route>
+        <Route path={`${path}/contract`}>
+          <ContractPage />
         </Route>
         <Route path={`${path}/editor`}>
           <EditorPage />

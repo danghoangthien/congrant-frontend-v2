@@ -1,6 +1,6 @@
 import { Descriptions, Row, Col, Button, Input, Select, Space, DatePicker } from 'antd';
 import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
-import { DETAIL_MODE, LIST_MODE } from '../consts';
+import { DETAIL_MODE, LIST_MODE } from 'utils/consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { PRIMARY_COLOR } from 'styles/StyleConstants';
 

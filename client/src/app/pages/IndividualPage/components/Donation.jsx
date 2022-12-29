@@ -3,7 +3,7 @@ import { Row, Col, Button, Table } from 'antd';
 import { useMountEffect } from 'hook/useMountEffect';
 import DonationDetail from './DonationDetail';
 import DonationEdit from './DonationEdit';
-import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from '../consts';
+import { LIST_MODE, DETAIL_MODE, EDIT_MODE } from 'utils/consts';
 import { DonationStyle } from './Donation.style';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
