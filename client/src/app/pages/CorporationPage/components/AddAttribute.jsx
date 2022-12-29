@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Radio, Space } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import styled from 'styled-components/macro';
@@ -15,21 +16,9 @@ const attributes = [
   { label: '属性の削除', value: 1 },
 ];
 const AddAttribute = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   const [activeTab, setActiveTab] = useState(attributes[0].value);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const onRadioChange = ({ target: { value } }) => {
     setActiveTab(value);

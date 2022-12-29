@@ -1,6 +1,8 @@
 import { useState } from 'react';
 // ANTD
 import { Row, Col, Modal, Button, DatePicker, Upload, message } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // ICON
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 // COMPONENT
@@ -64,19 +66,7 @@ const ChangeAdministrator = () => {
     </div>
   );
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Button } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -9,19 +10,7 @@ import {
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const TwoFactorModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

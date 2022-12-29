@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { Row, Space, Radio, Button, DatePicker, Col } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -81,19 +82,7 @@ const Form = () => (
   </StyledForm>
 );
 const NewReceipt = ({ title }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

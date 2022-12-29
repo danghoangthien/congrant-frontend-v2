@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Button, Space, DatePicker } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // COMPONENTS
 import {
   SettingsInputContainer,
@@ -131,19 +133,7 @@ const Form = () => {
 };
 
 const AddDonation = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

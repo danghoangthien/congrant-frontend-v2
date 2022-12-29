@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 // ANTD
-import { Drawer, Space } from 'antd';
+import { Drawer } from 'antd';
 import { sleep } from 'utils/helper';
-// STYLE
-import styled from 'styled-components/macro';
 
 const DrawerHandle = ({
   children,
@@ -12,7 +10,6 @@ const DrawerHandle = ({
   isOpen = false,
   bodyStyle = null,
 }) => {
-  console.log('bodyStyle', bodyStyle);
   const [open, setOpen] = useState(isOpen);
   // const StyledDrawer = styled(Drawer)`
   //   & .ant-drawer-content-wrapper {

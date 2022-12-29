@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Row, Col, Modal, Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
+import useModalActions from 'hook/useModalActions';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { BASIC_COLOR, CROWD_COLOR, MONTHLY_COLOR } from 'utils/consts';
 import {
@@ -13,19 +14,7 @@ import {
 
 const LaunchNewProject = () => {
   const history = useHistory();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

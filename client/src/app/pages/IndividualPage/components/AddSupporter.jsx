@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // ANTD
 import { Row, Col, Button, Radio, Checkbox, Space, DatePicker } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // COMPONENT
 import { SettingsInputContainer, SettingLabel, SettingInput, SettingSelect } from 'utils/Sprites';
 // STYLE
@@ -135,19 +137,7 @@ const Form = () => (
 );
 
 const AddSupporter = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

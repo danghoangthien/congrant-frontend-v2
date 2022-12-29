@@ -1,22 +1,11 @@
 import { useState } from 'react';
 import { Row, Modal, Button } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const InviteUser = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

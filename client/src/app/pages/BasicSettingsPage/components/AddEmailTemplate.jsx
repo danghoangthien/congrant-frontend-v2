@@ -1,6 +1,8 @@
 import { useState } from 'react';
 // ANTD
 import { Row, Modal, Button, Select } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // SPRITE
 import {
   SettingsInputContainer,
@@ -13,19 +15,7 @@ import {
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const AddEmailTemplate = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

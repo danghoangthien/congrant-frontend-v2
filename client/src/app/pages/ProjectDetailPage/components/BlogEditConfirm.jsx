@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Modal, Space, Button } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { StyledFormCheckbox } from 'styles/FormElement.style';
@@ -18,29 +19,7 @@ const options = [
 ];
 
 const BlogEditConfirm = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [activeTab, setActiveTab] = useState(attributes[0].value);
-
-  const handleChange = value => {
-    console.log(`selected ${value}`);
-  };
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const onRadioChange = ({ target: { value } }) => {
-    setActiveTab(value);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>
