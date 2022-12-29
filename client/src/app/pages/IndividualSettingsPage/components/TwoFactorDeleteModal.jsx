@@ -1,27 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Col, Modal, Button } from 'antd';
-import {
-  SettingsInputContainer,
-  SettingLabel,
-  SettingInput,
-  SettingInputPassword,
-} from 'utils/Sprites';
+import useModalActions from 'hook/useModalActions';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const TwoFactorModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

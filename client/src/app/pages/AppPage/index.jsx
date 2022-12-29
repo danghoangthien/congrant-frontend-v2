@@ -24,6 +24,9 @@ import CorporationBulkUpload from 'app/pages/CorporationPage/BulkUpload';
 import ProjectPage from 'app/pages/ProjectPage';
 import ProjectDetailPage from 'app/pages/ProjectDetailPage';
 import ReceiptPage from 'app/pages/ReceiptPage';
+import CreateReceipt from 'app/pages/ReceiptPage/CreateReceipt';
+import CreateReceiptHistory from 'app/pages/ReceiptPage/History';
+import ReceiptHistoryDetail from 'app/pages/ReceiptPage/HistoryDetail';
 import ReceiptBulkPage from 'app/pages/ReceiptBulkPage';
 import ReccuringPage from 'app/pages/ReccuringPage';
 import CkeditorPage from 'app/pages/CkeditorPage';
@@ -112,6 +115,11 @@ const AppPage = () => {
         <Route path={`${path}/receipts`}>
           <ReceiptPage />
         </Route>
+        <Route path={`${path}/receipts-create`}>
+          <CreateReceipt />
+        </Route>
+        <Route path={`${path}/receipts-create-history`} component={CreateReceiptHistory} />
+        <Route path={`${path}/receipts-create-history-detail`} component={ReceiptHistoryDetail} />
         <Route path={`${path}/receipts-bulk-create`}>
           <ReceiptBulkPage />
         </Route>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { Row, Space, Modal, Button, DatePicker } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import {
   SettingsInputContainer,
   SettingLabel,
@@ -14,19 +15,7 @@ import { PlusOutlined } from '@ant-design/icons';
 const dateFormat = 'YYYY-MM-DD';
 
 const NewReceipt = ({ title }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

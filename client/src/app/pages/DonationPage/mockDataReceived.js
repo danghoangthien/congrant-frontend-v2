@@ -8,6 +8,8 @@ import { StyledBadgeDot } from 'styles/global-styles';
 // COMPONENT
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
+import NewBulkReceipt from 'app/pages/ReceiptPage/components/NewBulkReceipt';
+import NewSingleReceipt from 'app/pages/ReceiptPage/components/NewSingleReceipt';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
 import {
@@ -184,14 +186,19 @@ const columnMap = {
     width: 120,
     title: '領収書',
     dataIndex: 'receipt_status',
-    render: receipt_status => (
-      <StyledBadgeDot>
-        <Badge
-          status={RECEIPT_STATUS_COLOR[receipt_status]}
-          text={RECEIPT_STATUSES[receipt_status]}
-        />
-      </StyledBadgeDot>
-    ),
+    render: receipt_status => {
+      if (receipt_status === 2) {
+        return <NewSingleReceipt />;
+      }
+      return (
+        <StyledBadgeDot>
+          <Badge
+            status={RECEIPT_STATUS_COLOR[receipt_status]}
+            text={RECEIPT_STATUSES[receipt_status]}
+          />
+        </StyledBadgeDot>
+      );
+    },
     csvOutput: ({ receipt_status }) => RECEIPT_STATUSES[receipt_status] || '',
   },
 };
@@ -244,6 +251,18 @@ const pagination = {
 const menuItems = selectedRowKeys => [
   {
     key: '1',
+    label: (
+      <Space
+        onClick={() => {
+          console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
+        }}
+      >
+        <NewBulkReceipt />
+      </Space>
+    ),
+  },
+  {
+    key: '2',
     label: (
       <Space
         onClick={() => {

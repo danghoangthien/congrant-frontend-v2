@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Radio, Space, Input, Checkbox } from 'antd';
+import { Row, Col, Modal, Button } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import {
   SettingsInputContainer,
   SettingLabel,
   SettingInput,
-  SettingInfoLabel,
   SettingTextarea,
 } from '../../CorporationSettingPage/components/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const ExportPDF = ({ title }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

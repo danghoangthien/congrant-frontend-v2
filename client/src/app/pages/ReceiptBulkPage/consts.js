@@ -1,8 +1,5 @@
 import { Space, Button } from 'antd';
 import { Link } from 'react-router-dom';
-import { StyledStatusTag } from 'styles/StatusTag.style';
-import { ProjectTitle as StyledProjectTitle } from 'app/pages/ProjectPage/index.style';
-import { PROJECT_STATUSES, PROJECT_STATUS_CLASSES } from 'utils/consts';
 import { TEXT_COLOR } from 'styles/StyleConstants';
 
 const HEADER_BREADCUMD_DATA = [

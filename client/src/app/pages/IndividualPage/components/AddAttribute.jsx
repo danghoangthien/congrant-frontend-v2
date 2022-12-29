@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Row, Col, Modal, Space, Select } from 'antd';
+import useModalActions from 'hook/useModalActions';
 import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import { StyledRadioGroup } from 'styles/Element.style';
@@ -17,24 +18,12 @@ const options = [
 ];
 
 const AddAttribute = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   const [activeTab, setActiveTab] = useState(attributes[0].value);
 
   const handleChange = value => {
     console.log(`selected ${value}`);
-  };
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
   };
 
   const onRadioChange = ({ target: { value } }) => {

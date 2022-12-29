@@ -1,25 +1,15 @@
 import { useState } from 'react';
 // ANTD
 import { Row, Col, Modal, Button, Radio, Space } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // SPRITE
 import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprites';
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
 const AddDonationPlan = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>

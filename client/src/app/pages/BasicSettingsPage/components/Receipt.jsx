@@ -1,9 +1,31 @@
 import { Helmet } from 'react-helmet-async';
+import styled from 'styled-components/macro';
 import { Row, Col, Button, Space, Table, Radio, Checkbox, DatePicker, Dropdown, Menu } from 'antd';
 import { SettingsInputContainer, SettingInput, SettingInfoLabel } from 'utils/Sprites';
 import { StyledForm } from '../BasicSettingsPage.style';
 import ReceiptTemplate from './ReceiptTemplate';
 import ImageUpload from 'app/components/ImageUpload';
+
+export const StyledRadioContainer = styled(Space)`
+  background: ${props => (props.checked ? '#FFFFFF' : '#FAFAF8')};
+  border: 1px solid ${props => (props.checked ? '#63B233' : '#D9D9D7')};
+  border-radius: 4px;
+  padding: 24px 16px;
+`;
+
+export const StyledWarningContainer = styled(Space)`
+  background: #f9eaea;
+  border: 1px solid #e39599;
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 12px;
+  line-height: 22px;
+  width: 100%;
+  .subtitle {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+  }
+`;
 
 const renderPageTitle = () => {
   return (
@@ -96,13 +118,59 @@ const Receipt = () => {
         </Col>
       </Row>
 
+      {/* 領収書の発行方法 */}
+      <Row className="mb-5">
+        <Col className="mb-2" sm={24} md={24} lg={24}>
+          <span className="page-sub-title">{'領収書の発行方法'}</span>
+        </Col>
+      </Row>
+      <Row className="mb-5" style={{ width: '50%' }} type="flex" gutter={12}>
+        <Col xs={12}>
+          <StyledRadioContainer checked direction="vertical">
+            <Radio value={1} checked>
+              {'手動発行（デフォルト）'}
+            </Radio>
+            <p>
+              {
+                '領収書を手動で発行します。年に一度まとめて領収書を発行する場合や、郵送での領収書発行を行う場合はこちらを選択してください。'
+              }
+            </p>
+          </StyledRadioContainer>
+        </Col>
+        <Col xs={12}>
+          <StyledRadioContainer xs={12} direction="vertical">
+            <Radio value={2}>{'かんたん自動発行'}</Radio>
+            <p>
+              {
+                '決済完了時にサポーター宛に送信される通知メールに、領収書のダウンロードリンク（ボタン）が掲載されます。'
+              }
+            </p>
+          </StyledRadioContainer>
+        </Col>
+      </Row>
+      <Row className="mb-5" style={{ width: '50%' }} type="flex" gutter={12}>
+        <Col xs={24}>
+          <StyledWarningContainer direction="vertical">
+            <span className="subtitle">{'かんたん自動発行の注意点'}</span>
+            <p>
+              {'銀行振込の場合は管理画面で入金消込を行なった時点で送信されます'}
+              <br />
+              {'手動、インポートで登録された寄付決済データの領収書は自動発行の対象外です'}
+              <br />
+              {
+                'メール（PDF）で発行した領収書は寄附金控除に利用できない場合があります。控除対象の寄付募集を行う場合は、必ず所轄庁に確認の上、団体の責任でご利用ください'
+              }
+            </p>
+          </StyledWarningContainer>
+        </Col>
+      </Row>
+
       {/* 寄付決済 */}
       <Row className="mb-5">
         <Col className="mb-2" sm={24} md={24} lg={24}>
           <span className="page-sub-title">{'基本設定'}</span>
         </Col>
       </Row>
-
       <StyledForm>
         <Row className="mb-14">
           {/*  印影 */}
@@ -147,22 +215,6 @@ const Receipt = () => {
       <Row className="mb-15">
         <Col sm={24} md={24} lg={24}>
           <ReceiptTemplate />
-        </Col>
-      </Row>
-
-      {/* 自動送付 */}
-      <Row className="mb-4">
-        <span className="page-sub-title">{'自動送付'}</span>
-      </Row>
-      <Row className="mb-5">
-        <Col className="mb-2" sm={24} md={24} lg={24}>
-          <Checkbox.Group>
-            <Space direction="vertical" align="center">
-              <Checkbox value={1}>{'「単発寄付」の領収書を自動送付する'}</Checkbox>
-              <Checkbox value={2}>{'「毎月寄付」の領収書を自動送付する'}</Checkbox>
-              <Checkbox value={3}>{'「毎年寄付」の領収書を自動送付する'}</Checkbox>
-            </Space>
-          </Checkbox.Group>
         </Col>
       </Row>
       <Row>

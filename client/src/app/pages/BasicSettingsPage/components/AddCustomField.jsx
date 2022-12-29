@@ -1,6 +1,8 @@
 import { useState } from 'react';
 // ANTD
 import { Row, Col, Modal, Button, Radio, Space, Input, Checkbox } from 'antd';
+// HOOKS
+import useModalActions from 'hook/useModalActions';
 // SPRITE
 import {
   SettingsInputContainer,
@@ -17,24 +19,12 @@ import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 const { TextArea } = Input;
 
 const AddCustomField = ({ title }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
   const [dataType, setDataType] = useState(1);
 
   const onDataTypeChange = e => {
     console.log('radio checked', e.target.value);
     setDataType(e.target.value);
-  };
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
   };
 
   return (

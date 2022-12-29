@@ -10,7 +10,6 @@ const DrawerHandle = ({
   isOpen = false,
   bodyStyle = null,
 }) => {
-  console.log('bodyStyle', bodyStyle);
   const [open, setOpen] = useState(isOpen);
   // const StyledDrawer = styled(Drawer)`
   //   & .ant-drawer-content-wrapper {
