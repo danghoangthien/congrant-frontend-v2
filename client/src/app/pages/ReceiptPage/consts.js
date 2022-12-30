@@ -47,37 +47,27 @@ const HEADER_BREADCUMD_DATA = [
           className="material-symbols-outlined fill-icon icon"
           style={{ fontSize: '14px', color: TEXT_COLOR }}
         >
-          flag
+          receipt
         </span>
         <span>{'領収書一覧'}</span>
       </Space>
     ),
-    uri: '/app/receipts',
+    uri: '/app/receipts-create-history',
   },
   {
     id: 2,
     title: '領収書作成履歴',
-    uri: '/app/receipts-create-history',
+    // uri: '/app/receipts-create-history',
   },
 ];
 
 const HeaderWithBreadcumd = ({ Breadcumd }) => (
   <Space
-    className="px-6 py-3"
-    style={{ background: '#ffffff', width: '100%' }}
+    className="px-9 py-6"
+    style={{ background: '#ffffff', width: '100%', borderBottom: '1px solid #d9d9d7' }}
     direction="vertical"
   >
-    <Space style={{ width: '100%' }} size={16}>
-      <Link to="/app/receipts">
-        <Button
-          className="icon-btn less-shadow-btn"
-          icon={<span className="material-symbols-outlined fill-icon">chevron_left</span>}
-        >
-          {'一覧へもどる'}
-        </Button>
-      </Link>
-      {Breadcumd}
-    </Space>
+    {Breadcumd}
   </Space>
 );
 

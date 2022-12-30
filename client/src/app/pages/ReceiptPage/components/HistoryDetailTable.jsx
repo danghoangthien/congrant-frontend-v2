@@ -15,24 +15,22 @@ const contextDropdownItems = metaData.menuItems;
 
 const HistoryTable = () => (
   <StyledTable>
-    <Card bodyStyle={{ padding: 0, overflow: 'hidden' }}>
-      <Table
-        className="clickable-table"
-        TableName="領収書一覧"
-        tableLayout="fixed"
-        model="receiptHistoryDetail"
-        metaData={metaData}
-        Detail={
-          <Detail
-            activeKey={DETAIL_KEY_MAP.RECEIPT}
-            data={{ receipt_id: 1 }}
-            viewMode={DETAIL_MODE}
-          />
-        }
-        contextButtons={[MailButton]}
-        contextDropdownItems={contextDropdownItems}
-      />
-    </Card>
+    <Table
+      className="clickable-table"
+      TableName="領収書一覧"
+      tableLayout="fixed"
+      model="receiptHistoryDetail"
+      metaData={metaData}
+      Detail={
+        <Detail
+          activeKey={DETAIL_KEY_MAP.RECEIPT}
+          data={{ receipt_id: 1 }}
+          viewMode={DETAIL_MODE}
+        />
+      }
+      contextButtons={[MailButton]}
+      contextDropdownItems={contextDropdownItems}
+    />
   </StyledTable>
 );
 

@@ -18,6 +18,7 @@ const dataSource = Array.from(Array(5).keys()).map(i => ({
 
 const columnMap = {
   created_at: {
+    width: 180,
     title: '作成日時',
     dataIndex: 'created_at',
   },
@@ -26,7 +27,7 @@ const columnMap = {
     dataIndex: 'number',
   },
   target_supporter: {
-    title: '作成者',
+    title: '対象サポーター',
     dataIndex: 'target_supporter',
   },
   creator: {
@@ -34,7 +35,7 @@ const columnMap = {
     dataIndex: 'creator',
   },
   action: {
-    width: 380,
+    width: 120,
     title: 'アクション',
     render: row => (
       <Space>
@@ -68,7 +69,7 @@ const menu = (
         key: '2',
         label: (
           <Space>
-            <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+            <span style={{ color: DANGER_COLOR }}>{'一括削除'}</span>
           </Space>
         ),
       },

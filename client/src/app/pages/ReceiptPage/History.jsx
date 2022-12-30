@@ -8,6 +8,7 @@ import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import HistoryTable from 'app/pages/ReceiptPage/components/HistoryTable';
 import Breadcumd from 'app/components/Breadcumd';
 import { HEADER_BREADCUMD_DATA, HeaderWithBreadcumd } from './consts';
+
 export const StyledTag = styled(Tag)`
   width: 40px;
   height: 40px;

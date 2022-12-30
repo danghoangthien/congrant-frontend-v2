@@ -2,19 +2,6 @@ import { Breadcrumb, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
-// Example BREADCUMD_DATA
-// const BREADCUMD_DATA = [
-//   {
-//     id: 1,
-//     title: 'Stripe決済',
-//     uri: '/payments/stripe'
-//   },
-//   {
-//     id:2,
-//     title: 'テレコム決済',
-//     uri: '/payments/telecom'
-//   }
-// ]
 const Breadcumb = ({
   active,
   data = [],
@@ -25,6 +12,7 @@ const Breadcumb = ({
   const breadCumdContentClassName = style === 'button' ? 'bread-crumb-content' : '';
   const breadCumdSeparator = style === 'button' ? null : separator;
   const breadCumdActiveStyle = style === 'button' ? null : { color: 'rgba(0, 0, 0, 0.5)' };
+
   return (
     <Breadcrumb
       style={{ display: 'flex' }}
