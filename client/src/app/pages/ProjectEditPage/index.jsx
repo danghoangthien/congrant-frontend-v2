@@ -16,6 +16,8 @@ import { DownOutlined } from '@ant-design/icons';
 import { PLACEHOLDER_COLOR } from 'styles/StyleConstants';
 import Breadcumd from 'app/components/Breadcumd';
 import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from 'app/pages/ProjectDetailPage/consts';
+// META
+import { Helmet } from 'react-helmet-async';
 
 export const EDIT_KEY_MAP = {
   BASIC_INFO: '1',
@@ -73,8 +75,19 @@ const ProjectEditPage = ({ activeKey }) => {
       uri: null,
     },
   ];
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'プロジェクト編集'}</title>
+          <meta name="description" content={'プロジェクト編集'} />
+        </Helmet>
+      </>
+    );
+  };
   return (
     <>
+      {renderPageTitle()}
       <ProjectDetailHeader
         Breadcumd={<Breadcumd data={BREADCUMD_DATA} active={BREADCUMD_DATA[2].id} />}
       />

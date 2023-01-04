@@ -58,7 +58,7 @@ export const DonationInfoStyle = styled.div`
   .statistic {
     font-weight: 700;
     border-bottom: 1px solid #dddddd;
-    padding: 10px 7px;
+    padding: 10px 0;
 
     .ant-space-item {
       // line-height: 1;

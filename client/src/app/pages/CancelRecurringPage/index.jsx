@@ -12,7 +12,7 @@ import {
 } from 'utils/Sprites/RecurringFormElement';
 // STYLE
 import styled from 'styled-components/macro';
-import { EXTRA_LIGHT_GRAY } from 'styles/StyleConstants';
+import { EXTRA_LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const StyledFormCard = styled(Card)`
   border: none;
@@ -31,7 +31,7 @@ const StyledFormCard = styled(Card)`
   }
 
   .money-box {
-    background: ${EXTRA_LIGHT_GRAY};
+    background: ${EXTRA_LIGHT_GRAY_COLOR};
     font-size: 20px;
     font-weight: 700;
     text-align: center;

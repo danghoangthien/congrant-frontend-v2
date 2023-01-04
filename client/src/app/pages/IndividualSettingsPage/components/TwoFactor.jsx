@@ -6,12 +6,12 @@ import TwoFactorDeleteModal from './TwoFactorDeleteModal';
 import TwoFactorModal from './TwoFactorModal';
 // STYLE
 import styled from 'styled-components/macro';
-import { EXTRA_LIGHT_GRAY } from 'styles/StyleConstants';
+import { EXTRA_LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const StyledBox = styled.div`
   padding: 24px;
   border-radius: 4px;
-  background-color: ${EXTRA_LIGHT_GRAY};
+  background-color: ${EXTRA_LIGHT_GRAY_COLOR};
   width: 100%;
   max-width: 600px;
 `;

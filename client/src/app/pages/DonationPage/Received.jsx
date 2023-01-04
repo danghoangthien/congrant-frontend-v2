@@ -9,7 +9,7 @@ import SendMail from 'app/components/SendMail';
 import Filters from './components/Filters';
 import AddDonation from './components/AddDonation';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
-import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
+import { DETAIL_MODE } from 'utils/consts';
 import './Models/received';
 // STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';

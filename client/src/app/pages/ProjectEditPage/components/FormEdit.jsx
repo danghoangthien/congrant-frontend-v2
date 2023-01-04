@@ -18,7 +18,11 @@ import Draggable from 'app/components/DraggableItems';
 import IndividualItemTable from './IndividualItemTable';
 import CorporationItemTable from './CorporationItemTable';
 // CONST
-import { EXTRA_LIGHT_GRAY, PRIMARY_COLOR, EXTRA_LIGHT_RED_COLOR } from 'styles/StyleConstants';
+import {
+  EXTRA_LIGHT_GRAY_COLOR,
+  PRIMARY_COLOR,
+  EXTRA_LIGHT_RED_COLOR,
+} from 'styles/StyleConstants';
 
 const StyledBox = styled.div`
   padding: 16px;
@@ -28,7 +32,7 @@ const StyledBox = styled.div`
 // コース選択の通知枠
 export const CourseNoteBox = styled.div`
   text-align: center;
-  background: ${EXTRA_LIGHT_GRAY};
+  background: ${EXTRA_LIGHT_GRAY_COLOR};
   border-radius: 4px;
   padding: 23px 10px;
   font-size: 16px;
@@ -41,10 +45,14 @@ export const CourseNoteBox = styled.div`
 
 const FormEdit = () => {
   const params = useParams();
+  const searchParam = new URLSearchParams(window.location.search);
+  const project_type = searchParam.get('type');
+  // console.log(project_type);
   const [donateType, setDonateType] = useState(1);
 
   const handleTypeChange = e => {
     setDonateType(e.target.value);
+    console.log(donateType);
   };
 
   const onChange = checkedValues => {
@@ -73,9 +81,9 @@ const FormEdit = () => {
         {/* 募集する寄付タイプ */}
         <Row className="mb-8">
           <SettingsInputContainer label={<SettingLabel label={'募集する寄付タイプ'} required />}>
-            <Checkbox checked>{'単発'}</Checkbox>
+            <Checkbox disabled={project_type === '3' && true}>{'単発'}</Checkbox>
             <Checkbox>{'毎月'}</Checkbox>
-            <Checkbox>{'毎年'}</Checkbox>
+            <Checkbox disabled={project_type === '3' && true}>{'毎年'}</Checkbox>
           </SettingsInputContainer>
         </Row>
 
@@ -99,12 +107,21 @@ const FormEdit = () => {
         {/* 募集形式 */}
         <div className="mb-14">
           <Row className="mb-4">
-            <SettingsInputContainer label={<SettingInfoLabel label={'募集形式'} required />}>
+            <SettingsInputContainer
+              label={
+                <SettingInfoLabel
+                  label={project_type === '2' ? '募集する金額・コース' : '募集形式'}
+                  required
+                />
+              }
+            >
               <Radio.Group onChange={handleTypeChange} value={donateType}>
                 <Radio value={1}>{'自由入力'}</Radio>
                 <Radio value={2}>{'金額選択'}</Radio>
-                {params?.id === '1' && <Radio value={3}>{'プラン選択'}</Radio>}
-                {params?.id === '2' && <Radio value={4}>{'コース選択'}</Radio>}
+                {(project_type === '1' || project_type === '3') && (
+                  <Radio value={3}>{'プラン選択'}</Radio>
+                )}
+                {project_type === '2' && <Radio value={4}>{'コース選択'}</Radio>}
               </Radio.Group>
             </SettingsInputContainer>
           </Row>
@@ -222,7 +239,7 @@ const FormEdit = () => {
             </>
           )}
 
-          {params?.id === '2' && donateType === 4 && (
+          {donateType === 4 && (
             <>
               <Row className="mb-8">
                 <Col span={24}>

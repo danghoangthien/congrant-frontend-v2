@@ -3,7 +3,7 @@ import { StyledTable } from './HistoryTable.style';
 import Table from 'app/components/Table';
 import SendMail from 'app/components/SendMail';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
-import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
+import { DETAIL_MODE } from 'utils/consts';
 import * as metaData from './../historyDetailMetaData';
 import '../Models/historyDetail';
 

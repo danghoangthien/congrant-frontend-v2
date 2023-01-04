@@ -3,13 +3,16 @@ import styled from 'styled-components/macro';
 import { Card, Descriptions } from 'antd';
 import {
   TEXT_GRAY_COLOR,
-  GRAY,
-  EXTRA_LIGHT_GRAY,
-  LIGHT_GRAY,
+  GRAY_COLOR,
+  EXTRA_LIGHT_GRAY_COLOR,
+  LIGHT_GRAY_COLOR,
   BLUE_COLOR,
   EXTRA_LIGHT_BLUE_COLOR,
   ORANGE_COLOR,
   EXTRA_LIGHT_ORANGE_COLOR,
+  EXTRA_LIGHT_PRIMARY_COLOR,
+  PRIMARY_COLOR,
+  DANGER_COLOR,
 } from 'styles/StyleConstants';
 
 export const StyledCard = styled(Card)`
@@ -17,17 +20,33 @@ export const StyledCard = styled(Card)`
     padding: 32px;
 
     &:not(:last-of-type) {
-      border-bottom: 1px solid ${GRAY};
+      border-bottom: 1px solid ${GRAY_COLOR};
     }
   }
 
   .contract-status {
-    display: inline-box;
+    display: inline-block;
     font-size: 20px;
     font-weight: 600;
     background: #fbeaf4;
-    padding: 10px 20px;
+    padding: 6px 20px;
     border-radius: 8px;
+
+    &.trial {
+      background: #fbeaf4;
+    }
+    &.free {
+      color: ${PRIMARY_COLOR};
+      background: ${EXTRA_LIGHT_PRIMARY_COLOR};
+    }
+    &.light {
+      color: ${BLUE_COLOR};
+      background: ${EXTRA_LIGHT_BLUE_COLOR};
+    }
+    &.standard {
+      color: ${ORANGE_COLOR};
+      background: ${EXTRA_LIGHT_ORANGE_COLOR};
+    }
   }
 
   .box-ttl {
@@ -40,13 +59,17 @@ export const StyledCard = styled(Card)`
   .status-name {
     font-size: 16px;
     font-weight: 600;
+
+    &.danger {
+      color: ${DANGER_COLOR};
+    }
   }
 `;
 
 export const StyledDescriptions = styled(Descriptions)`
   .descriptions-head {
     font-weight: 600;
-    background: ${EXTRA_LIGHT_GRAY};
+    background: ${EXTRA_LIGHT_GRAY_COLOR};
   }
 
   .ant-descriptions-item {
@@ -66,7 +89,7 @@ export const StyledDescriptions = styled(Descriptions)`
   }
 
   .ant-descriptions-row {
-    border-bottom: 1px solid ${LIGHT_GRAY};
+    border-bottom: 1px solid ${LIGHT_GRAY_COLOR};
   }
 
   .plan-box-ttl {

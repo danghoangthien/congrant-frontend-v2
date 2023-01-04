@@ -2,9 +2,9 @@ import styled from 'styled-components/macro';
 // CONST
 import {
   WARNING_COLOR,
-  EXTRA_DARK_GRAY,
+  EXTRA_DARK_GRAY_COLOR,
   PRIMARY_COLOR,
-  LIGHT_GRAY,
+  LIGHT_GRAY_COLOR,
   TEXT_GRAY_COLOR,
 } from 'styles/StyleConstants';
 // ANTD
@@ -57,7 +57,7 @@ export const LearningPageLayout = styled.div`
 
   .segmented {
     width: 100%;
-    background: ${EXTRA_DARK_GRAY};
+    background: ${EXTRA_DARK_GRAY_COLOR};
     padding: 8px 10px;
     margin-bottom: 40px;
 
@@ -109,7 +109,7 @@ export const LearningPageLayout = styled.div`
 
     .learning-tag {
       display: inline-block;
-      background: ${LIGHT_GRAY};
+      background: ${LIGHT_GRAY_COLOR};
       color: ${PRIMARY_COLOR};
       font-size: 12px;
       font-weight: 600;
@@ -162,7 +162,7 @@ export const LearningModal = styled(Modal)`
 
   .learning-tag {
     display: inline-block;
-    background: ${LIGHT_GRAY};
+    background: ${LIGHT_GRAY_COLOR};
     color: ${PRIMARY_COLOR};
     font-size: 12px;
     font-weight: 600;

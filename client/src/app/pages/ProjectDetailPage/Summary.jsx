@@ -11,6 +11,8 @@ import ActivityTable from './components/Activity/ActivityTable';
 import CommentTable from './components/CommentTable';
 // Icons
 import { HEADER_BREADCUMD_DATA, SUMMARY_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
+// UTILS
+import { randomOutput } from 'utils/helper';
 
 const Summary = () => {
   const params = useParams();
@@ -54,7 +56,7 @@ const Summary = () => {
 
           {/* 右の部分・Right Part */}
           <Col>
-            <Link className="sidebar-link" to={`edit`}>
+            <Link className="sidebar-link" to={`edit?type=${randomOutput([1, 2, 3])}`}>
               <Button icon={<EditIcon />} type="primary" className="icon-btn">
                 {'プロジェクトの編集'}
               </Button>

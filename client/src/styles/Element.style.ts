@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro';
-import { WHITE_COLOR, PRIMARY_COLOR, GRAY, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+import { WHITE_COLOR, PRIMARY_COLOR, GRAY_COLOR, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 import { Segmented, Radio } from 'antd';
 
 export const StyledSegmented = styled(Segmented)`
   width: 100%;
-  border: 1px solid ${GRAY};
+  border: 1px solid ${GRAY_COLOR};
   padding: 0;
   overflow: hidden;
 

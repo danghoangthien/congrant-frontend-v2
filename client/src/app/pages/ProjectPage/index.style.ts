@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { LIGHT_GRAY } from 'styles/StyleConstants';
+import { LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 
 export const ProjectTitle = styled.div`
   font-weight: 600;
@@ -40,7 +40,7 @@ export const ProjectCard = styled.div`
     }
 
     &:not(:last-of-type) {
-      border-bottom: 1px solid ${LIGHT_GRAY};
+      border-bottom: 1px solid ${LIGHT_GRAY_COLOR};
     }
   }
   & .project-head {

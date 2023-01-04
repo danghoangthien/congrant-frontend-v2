@@ -7,10 +7,10 @@ import useModalActions from 'hook/useModalActions';
 import styled from 'styled-components/macro';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 // CONTS
-import { EXTRA_LIGHT_GRAY } from 'styles/StyleConstants';
+import { EXTRA_LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 
 export const StyledCard = styled(Card)`
-  background: ${EXTRA_LIGHT_GRAY};
+  background: ${EXTRA_LIGHT_GRAY_COLOR};
   border-radius: 0;
   border: none !important;
 `;

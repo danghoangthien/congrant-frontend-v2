@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Table, Tag } from 'antd';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
-import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
 import { randomOutput } from 'utils/helper';
-import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'utils/consts';
+import { DONATION_TYPE_COLORS, DONATION_TYPES, DETAIL_MODE } from 'utils/consts';
 
 export const dataSource = Array.from(Array(5).keys()).map(i => ({
   donation_id: i + 1,

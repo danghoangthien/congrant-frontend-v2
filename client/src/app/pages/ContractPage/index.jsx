@@ -7,6 +7,9 @@ import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { StyledCard, StyledDescriptions } from './ContractPage.style';
 // UTILS
 import { randomOutput } from 'utils/helper';
+import { DANGER_COLOR } from 'styles/StyleConstants';
+
+import { CONTRACT_PLANS, CONTRACT_STATUES } from 'utils/consts';
 
 const ContractPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +33,23 @@ const ContractPage = () => {
   console.log(status);
   console.log(auto_update);
   console.log(next_plan);
+
+  const contract_info = {
+    now: {
+      plan: 1,
+      day_left: null,
+      start_date: '2022年4月10日',
+      end_date: '2022年5月10日',
+      status: 1,
+    },
+    next: {
+      plan: 3,
+      day_left: null,
+      start_date: '2022年4月10日',
+      end_date: '2022年5月10日',
+      status: 4,
+    },
+  };
 
   const renderPageTitle = () => {
     return (
@@ -103,64 +123,144 @@ const ContractPage = () => {
             <div className="page-sub-title mb-3">契約中のプラン</div>
             <Row align="middle">
               <Col className="mr-6">
-                <span className="contract-status">お試し中</span>
+                <span
+                  className={`contract-status`}
+                  style={{
+                    color: CONTRACT_PLANS[contract_info.now.plan][1],
+                    background: CONTRACT_PLANS[contract_info.now.plan][2],
+                  }}
+                >
+                  {CONTRACT_PLANS[contract_info.now.plan][0]}
+                </span>
               </Col>
               <Col className="mr-8">
                 <Space size={16}>
                   <div className="box-ttl">有効期間</div>
-                  <div className="box-txt">2022年4月10日〜2022年5月10日（あと15日）</div>
+                  <div className="box-txt">
+                    {contract_info.now.start_date}〜
+                    {contract_info.now.plan !== 2 ? contract_info.now.end_date : '無期限'}
+                    {contract_info.now.day_left && (
+                      <>
+                        （あと
+                        <span style={{ color: DANGER_COLOR }}>{contract_info.now.day_left}</span>
+                        日）
+                      </>
+                    )}
+                  </div>
                 </Space>
               </Col>
               <Col>
                 <Space size={16}>
                   <div className="box-ttl">ステータス</div>
-                  <div className="status-name">プラン未選択</div>
-                  <Space className="btn-wrapper">
-                    <Button
-                      type="primary"
-                      onClick={e => {
-                        e.stopPropagation();
-                        showModal();
-                      }}
-                    >
-                      プラン選択
-                    </Button>
-                  </Space>
+                  {contract_info.now.status && (
+                    <div className="status-name">{CONTRACT_STATUES[contract_info.now.status]}</div>
+                  )}
+                  {contract_info.now.status === 1 && (
+                    <Space className="btn-wrapper">
+                      <Button
+                        type="primary"
+                        onClick={e => {
+                          e.stopPropagation();
+                          showModal();
+                        }}
+                      >
+                        プラン選択
+                      </Button>
+                    </Space>
+                  )}
+                  {(contract_info.now.status === 2 || contract_info.now.status === 3) &&
+                    contract_info.now.plan !== 2 && (
+                      <Space className="btn-wrapper">
+                        <Button
+                          type="primary"
+                          onClick={e => {
+                            e.stopPropagation();
+                            showModal();
+                          }}
+                        >
+                          更新
+                        </Button>
+                        <Button
+                          onClick={e => {
+                            e.stopPropagation();
+                            showModal();
+                          }}
+                        >
+                          変更
+                        </Button>
+                      </Space>
+                    )}
+                  {contract_info.now.status === 5 && (
+                    <Space className="btn-wrapper">
+                      <Button
+                        onClick={e => {
+                          e.stopPropagation();
+                          showModal();
+                        }}
+                      >
+                        変更
+                      </Button>
+                    </Space>
+                  )}
+                  {contract_info.now.plan === 2 && contract_info.now.day_left === null && (
+                    <Space className="btn-wrapper">
+                      <Button
+                        type="primary"
+                        onClick={e => {
+                          e.stopPropagation();
+                          showModal();
+                        }}
+                      >
+                        プランアップ
+                      </Button>
+                      <Button
+                        onClick={e => {
+                          e.stopPropagation();
+                          showModal();
+                        }}
+                      >
+                        解約
+                      </Button>
+                    </Space>
+                  )}
                 </Space>
               </Col>
             </Row>
           </div>
-          <div className="card-box">
-            <div className="page-sub-title mb-3">次の契約</div>
-            <Row align="middle">
-              <Col className="mr-6">
-                <span className="contract-status">お試し中</span>
-              </Col>
-              <Col className="mr-8">
-                <Space size={16}>
-                  <div className="box-ttl">有効期間</div>
-                  <div className="box-txt">2022年4月10日〜2022年5月10日（あと15日）</div>
-                </Space>
-              </Col>
-              <Col>
-                <Space size={16}>
-                  <div className="box-ttl">ステータス</div>
-                  <div className="status-name">プラン未選択</div>
-                  <Space className="btn-wrapper">
-                    <Button
-                      type="primary"
-                      onClick={e => {
-                        e.stopPropagation();
-                        showModal();
-                      }}
-                    >
-                      プラン選択
-                    </Button>
+          {contract_info.next && (
+            <div className="card-box">
+              <div className="page-sub-title mb-3">次の契約</div>
+              <Row align="middle">
+                <Col className="mr-6">
+                  <span
+                    className={`contract-status`}
+                    style={{
+                      color: CONTRACT_PLANS[contract_info.next.plan][1],
+                      background: CONTRACT_PLANS[contract_info.next.plan][2],
+                    }}
+                  >
+                    {CONTRACT_PLANS[contract_info.next.plan][0]}
+                  </span>
+                </Col>
+                <Col className="mr-8">
+                  <Space size={16}>
+                    <div className="box-ttl">有効期間</div>
+                    <div className="box-txt">
+                      {contract_info.next.start_date}〜
+                      {contract_info.next.plan !== 2 ? contract_info.next.end_date : '無期限'}
+                      {contract_info.next.day_left && (
+                        <>
+                          （あと
+                          <span style={{ color: DANGER_COLOR }}>{contract_info.next.day_left}</span>
+                          日）
+                        </>
+                      )}
+                    </div>
                   </Space>
-                </Space>
-              </Col>
-            </Row>
-          </div>
+                </Col>
+              </Row>
+            </div>
+          )}
           <div className="card-box">
             <div className="page-sub-title mb-3">契約履歴</div>
             <Table dataSource={dataSource} columns={columns} pagination={false} />
@@ -202,17 +302,20 @@ const ContractPage = () => {
                 </Row>
                 <div className="plan-box-ttl -light">ライトプラン</div>
                 <Row justify="center">
-                  {/* <Button
-                    type="primary"
-                    onClick={e => {
-                      e.stopPropagation();
-                    }}
-                  >
-                    お支払いへ進む
-                  </Button> */}
-                  <Button type="primary" disabled>
-                    契約中
-                  </Button>
+                  {contract_info.now.plan === 1 ? (
+                    <Button
+                      type="primary"
+                      onClick={e => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      お支払いへ進む
+                    </Button>
+                  ) : (
+                    <Button type="primary" disabled>
+                      契約中
+                    </Button>
+                  )}
                 </Row>
               </div>
             </Descriptions.Item>
