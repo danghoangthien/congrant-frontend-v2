@@ -72,7 +72,10 @@ const StyledTemplatePreviewText = styled.div`
 `;
 
 const BasicSetting = () => {
-  const params = useParams();
+  // const params = useParams();
+  const searchParam = new URLSearchParams(window.location.search);
+  const project_type = searchParam.get('type');
+  // console.log(project_type);
   const [selectedColor, setSelectedColor] = useState(null);
   const [projectTarget, setProjectTarget] = useState(null);
 
@@ -141,7 +144,7 @@ const BasicSetting = () => {
           </Col>
 
           {/* テーマカラー */}
-          <Col className="mb-8">
+          <Col span={24} className="mb-8">
             <SettingsInputContainer label={<SettingLabel label={'テーマカラー'} required />}>
               <Col className="mb-6" span={24}>
                 <Space size={24} align="center">
@@ -172,7 +175,7 @@ const BasicSetting = () => {
               </Col>
               <Col span={24}>
                 {selectedColor && (
-                  <StyledTemplatePreview>
+                  <StyledTemplatePreview style={{ width: '100%', maxWidth: 600 }}>
                     <Space size={24}>
                       <StyledTemplatePreviewButton selectedcolor={selectedColor}>
                         {'ボタンサンプル'}
@@ -187,8 +190,8 @@ const BasicSetting = () => {
             </SettingsInputContainer>
           </Col>
 
-          {/* 目標金額 */}
-          {params?.id !== '2' ? (
+          {/* ベーシック */}
+          {project_type === '1' && (
             <>
               {/* プロジェクトの目標値 */}
               <Col span={24} className="mb-8">
@@ -198,7 +201,7 @@ const BasicSetting = () => {
                       <Col span={12}>
                         <SettingSelect
                           onChange={value => setProjectTarget(value)}
-                          placeholder={'設定しない'}
+                          placeholder={'選択してください'}
                           value={projectTarget}
                           size="large"
                         >
@@ -255,7 +258,9 @@ const BasicSetting = () => {
                 </SettingsInputContainer>
               </Col>
             </>
-          ) : (
+          )}
+          {/* クラファン */}
+          {project_type === '2' && (
             <>
               {/* 目標金額 */}
               <Col span={24} className="mb-8">
@@ -286,6 +291,42 @@ const BasicSetting = () => {
                     />
                   </Col>
                   <Col>
+                    <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
+                  </Col>
+                </SettingsInputContainer>
+              </Col>
+
+              {/* 受付期間 */}
+              <Col span={24}>
+                <SettingsInputContainer label={<SettingLabel label={'受付期間'} required />}>
+                  <Col span={24}>
+                    <SettingRangePicker
+                      style={{ maxWidth: 600, width: '100%' }}
+                      placeholder={['開始日', '終了日']}
+                    />
+                  </Col>
+                  <Col span={24}>
+                    <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
+                  </Col>
+                </SettingsInputContainer>
+              </Col>
+            </>
+          )}
+          {/* マンスリー */}
+          {project_type === '3' && (
+            <>
+              {/* 目標金額 */}
+              <Col span={24} className="mb-8">
+                <SettingsInputContainer label={<SettingLabel label={'目標人数'} required />}>
+                  <Col span={24}>
+                    <SettingInput
+                      size="large"
+                      style={{ maxWidth: 160, width: '100%' }}
+                      placeholder={'100'}
+                      suffix="人"
+                    />
+                  </Col>
+                  <Col span={24}>
                     <StyledSubtitle>{'受付開始後の変更はできません'}</StyledSubtitle>
                   </Col>
                 </SettingsInputContainer>

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { TEXT_GRAY_COLOR, RED_COLOR, GRAY, LIGHT_GRAY } from 'styles/StyleConstants';
+import { TEXT_GRAY_COLOR, RED_COLOR, GRAY_COLOR, LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 import { Input, Select, DatePicker, Space, Radio, InputNumber, Checkbox } from 'antd';
 
 import { ScreenSizes } from 'styles/StyleConstants';
@@ -25,10 +25,10 @@ export const StyledRadioGroup = styled.div`
       height: 45px;
     }
     & .ant-radio-button-wrapper-checked {
-      border-color: ${GRAY};
+      border-color: ${GRAY_COLOR};
     }
     .ant-radio-button-wrapper-checked:not([class*=' ant-radio-button-wrapper-disabled']).ant-radio-button-wrapper:first-child {
-      border-right-color: ${GRAY};
+      border-right-color: ${GRAY_COLOR};
     }
     .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
       box-shadow: 0px;
@@ -43,7 +43,7 @@ export const StyledRadioGroup = styled.div`
   & .ant-space-item:last-child {
     & .ant-radio-button-wrapper {
       border-radius: 0 0 10px 10px;
-      border-bottom: solid 1px ${GRAY};
+      border-bottom: solid 1px ${GRAY_COLOR};
     }
   }
 `;
@@ -475,7 +475,7 @@ export const StyledCheckboxContainer = styled(Checkbox.Group)`
 export const StyledNavigation = styled(Space)`
   width: 100%;
   padding: 8px 16px;
-  background: ${LIGHT_GRAY};
+  background: ${LIGHT_GRAY_COLOR};
   border-radius: 4px;
 `;
 
@@ -527,7 +527,7 @@ export const DescriptionStyle = styled.div`
     }
 
     .ant-descriptions-bordered .ant-descriptions-row:last-child {
-      border-bottom: 1px solid ${LIGHT_GRAY};
+      border-bottom: 1px solid ${LIGHT_GRAY_COLOR};
     }
   }
 `;

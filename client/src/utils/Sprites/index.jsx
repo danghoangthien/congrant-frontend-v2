@@ -244,7 +244,7 @@ const DraggableInputItem = ({ count, InputComponent }) => (
     {/* <Badge
       count={'99'}
       className="roboto-mono"
-      style={{ backgroundColor: LIGHT_GRAY, color: TEXT_GRAY_COLOR }}
+      style={{ backgroundColor: LIGHT_GRAY_COLOR, color: TEXT_GRAY_COLOR }}
     /> */}
     <span
       className="material-symbols-outlined fill-icon"

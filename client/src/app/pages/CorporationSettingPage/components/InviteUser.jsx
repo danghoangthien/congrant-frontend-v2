@@ -6,6 +6,7 @@ import {
   SettingInfoLabel,
 } from 'utils/Sprites';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
+import useModalActions from 'hook/useModalActions';
 
 const InviteUser = () => {
   const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});

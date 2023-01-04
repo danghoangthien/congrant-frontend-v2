@@ -4,14 +4,14 @@ import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
 import { EDIT_MODE, LIST_MODE } from 'utils/consts';
 import { DescriptionStyle } from './BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
-import { LIGHT_GRAY } from 'styles/StyleConstants';
+import { LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 
 import styled from 'styled-components/macro';
 
 const CommentContainer = styled.div`
   padding: 12px;
-  border-top: 1px solid ${LIGHT_GRAY};
-  border-bottom: 1px solid ${LIGHT_GRAY};
+  border-top: 1px solid ${LIGHT_GRAY_COLOR};
+  border-bottom: 1px solid ${LIGHT_GRAY_COLOR};
 `;
 
 // 操作メニュー・Action Menu

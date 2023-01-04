@@ -1,5 +1,5 @@
 // ANTD
-import { Tag, Badge, Space, Button, Dropdown, Menu, Tooltip, Row } from 'antd';
+import { Tag, Badge, Space, Button, Dropdown, Menu, Tooltip } from 'antd';
 // STYLE
 import { StyledBadgeDot } from 'styles/global-styles';
 // COMPONENT
@@ -15,7 +15,7 @@ import {
   DONATION_TYPE_COLORS,
   DONATION_STATUS_COLOR,
   DONATION_STATUSES,
-} from './consts';
+} from 'utils/consts';
 // IMAGE
 import noteIclon from 'styles/assets/note.svg';
 

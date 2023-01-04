@@ -5,8 +5,8 @@ import {
   PRIMARY_COLOR,
   WARNING_COLOR,
   BORDER_RADIUS,
-  GRAY,
-  LIGHT_GRAY,
+  GRAY_COLOR,
+  LIGHT_GRAY_COLOR,
   TEXT_COLOR,
   TEXT_GRAY_COLOR,
   PLACEHOLDER_COLOR,
@@ -190,7 +190,7 @@ export const GlobalStyle = createGlobalStyle`
 
   // CARD
   .ant-card {
-    border: 1px solid ${GRAY};
+    border: 1px solid ${GRAY_COLOR};
     overflow: hidden;
   }
 
@@ -216,12 +216,12 @@ export const GlobalStyle = createGlobalStyle`
 
   // BREADCRUMB
   & .bread-crumb {
-    border: 1px solid ${GRAY};
+    border: 1px solid ${GRAY_COLOR};
     overflow: hidden;
     border-radius: ${BORDER_RADIUS};
       
     li:not(:last-of-type) .bread-crumb-content {
-      border-right: 1px solid ${GRAY};
+      border-right: 1px solid ${GRAY_COLOR};
     }
 
     .bread-crumb-content {
@@ -270,14 +270,14 @@ export const GlobalStyle = createGlobalStyle`
 
   // ANTD TABLE
   .ant-table-thead>tr>th {
-    border-color: ${LIGHT_GRAY};
+    border-color: ${LIGHT_GRAY_COLOR};
     border-top: 1px solid transparent;
     background: #fafaf8;
     font-weight: 600;
   }
   
   .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan]):before {
-    background-color: ${LIGHT_GRAY};
+    background-color: ${LIGHT_GRAY_COLOR};
   }
 
   .ant-table-thead>tr>th,
@@ -424,11 +424,11 @@ export const GlobalStyle = createGlobalStyle`
 
   .ant-tabs-card>.ant-tabs-nav .ant-tabs-tab, 
   .ant-tabs-card>div>.ant-tabs-nav .ant-tabs-tab {
-    border-color: ${GRAY};
+    border-color: ${GRAY_COLOR};
   }
 
   .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before {
-    border-color: ${GRAY};
+    border-color: ${GRAY_COLOR};
   }
 
   .ant-tabs-tab {

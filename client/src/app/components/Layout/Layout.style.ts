@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { PRIMARY_COLOR, GRAY, TEXT_COLOR } from 'styles/StyleConstants';
+import { PRIMARY_COLOR, GRAY_COLOR, TEXT_COLOR } from 'styles/StyleConstants';
 
 export const SlyledLayout = styled.div<{}>`
   min-height: 100vh;
@@ -77,11 +77,11 @@ export const SlyledLayout = styled.div<{}>`
   //   margin: 0;
   //   padding: 8px 24px !important;
   //   height: auto;
-  //   border-top: 1px solid ${GRAY};
+  //   border-top: 1px solid ${GRAY_COLOR};
   // }
 
   & .sub-menu-item {
-    border-top: 1px solid ${GRAY};
+    border-top: 1px solid ${GRAY_COLOR};
 
     .ant-menu-title-content {
       width: 100%;
@@ -100,7 +100,7 @@ export const SlyledLayout = styled.div<{}>`
         margin: 0;
         padding: 8px 24px !important;
         height: auto;
-        border-top: 1px solid ${GRAY};
+        border-top: 1px solid ${GRAY_COLOR};
       }
     }
   }
@@ -140,7 +140,7 @@ export const SlyledLayout = styled.div<{}>`
   //     margin: 0;
   //     padding: 8px 24px !important;
   //     height: auto;
-  //     border-top: 1px solid ${GRAY};
+  //     border-top: 1px solid ${GRAY_COLOR};
   //     color: ${TEXT_COLOR};
 
   //     &:hover {
@@ -158,7 +158,7 @@ export const SlyledLayout = styled.div<{}>`
 
   //   & .user-box {
   //     padding: 16px 24px;
-  //     border-top: 1px solid ${GRAY};
+  //     border-top: 1px solid ${GRAY_COLOR};
   
   //     .user-name {
   //       font-size: 12px;

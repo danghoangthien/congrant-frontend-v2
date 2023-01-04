@@ -1,5 +1,5 @@
 // ANTD
-import { Row, Col, Tag } from 'antd';
+import { Row, Col, Tag, Button } from 'antd';
 // STYLE
 import styled from 'styled-components/macro';
 // LAYOUT
@@ -29,9 +29,18 @@ const History = () => {
         Breadcumd={<Breadcumd data={DETAIL_BREADCUMD_DATA} active={DETAIL_BREADCUMD_DATA[2].id} />}
       />
       <PageLayout>
-        <Row className="mb-6">
-          <Col span={24}>
-            <div className="sub-page-title">{'一括作成履歴'}</div>
+        <Row className="mb-6" justify="space-between" align="middle">
+          <Col>
+            <div className="sub-page-title">{'領収書作成履歴'}</div>
+          </Col>
+          <Col>
+            <Button
+              type="primary"
+              className="icon-btn"
+              icon={<span className="material-symbols-outlined fill-icon">receipt</span>}
+            >
+              領収書一括ダウンロード
+            </Button>
           </Col>
         </Row>
         <Row className="mb-5">

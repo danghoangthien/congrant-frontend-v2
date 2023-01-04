@@ -11,9 +11,27 @@ import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { randomOutput } from 'utils/helper';
 
 export const StyledTable = styled(Table)`
+  width: 100%;
+
   td,
   th {
     vertical-align: middle;
+  }
+`;
+
+export const StyledDescriptions = styled(Descriptions)`
+  width: 100%;
+
+  .ant-descriptions-item-label,
+  .ant-descriptions-item-content,
+  .ant-descriptions-view {
+    border-left: none;
+    border-right: none;
+  }
+
+  .ant-descriptions-item-label,
+  .ant-descriptions-item-content {
+    padding: 12px;
   }
 `;
 
@@ -30,15 +48,17 @@ const dataSource = Array.from(Array(4).keys()).map(i => ({
 const columnMap = {
   supporter_name: {
     title: (
-      <Space direction="vertical">
+      <>
         <span>{'サポーター名'}</span>
+        <br />
         <span>{'（寄付件数・金額）'}</span>
-      </Space>
+      </>
     ),
     render: row => {
       return (
-        <Space direction="vertical">
+        <>
           <span>{randomOutput(['田中 太郎'])}</span>
+          <br />
           <span>
             {randomOutput([
               '（1件・3,000円)',
@@ -47,11 +67,11 @@ const columnMap = {
               '(1件・10,000円)',
             ])}
           </span>
-        </Space>
+        </>
       );
     },
   },
-  address: {
+  name: {
     title: '領収書宛名',
     render: row => (
       <SettingInput
@@ -63,8 +83,7 @@ const columnMap = {
     title: '領収書住所',
     render: row => (
       <SettingTextarea
-        autoSize={{ minRows: 3 }}
-        rows="3"
+        autoSize={{ minRows: 2 }}
         value={randomOutput([
           '大阪府大阪市西区江戸堀123-456 コングラントマンション101',
           '大阪府大阪市天王寺区玉造本町1-12-3SUZUKIビル1F',
@@ -73,7 +92,6 @@ const columnMap = {
       />
     ),
   },
-
   internal_memo: {
     title: (
       <Space direction="vertical">
@@ -82,15 +100,10 @@ const columnMap = {
       </Space>
     ),
     render: row => (
-      <SettingTextarea
-        autoSize={{ minRows: 3 }}
-        rows="3"
-        value={randomOutput(['会社宛に作成', ''])}
-      />
+      <SettingTextarea autoSize={{ minRows: 2 }} value={randomOutput(['会社宛に作成', ''])} />
     ),
   },
   action: {
-    width: 300,
     title: 'アクション',
     render: row => (
       <Space align="center">
@@ -128,67 +141,46 @@ const CreateReceipt = () => {
     <>
       {renderPageTitle()}
       <PageLayout>
-        <div className="mb-7">
-          <Row justify="space-between" align="middle">
-            {/* 左の部分・Left Part */}
-            <Col>
-              <Row type="flex" align="middle">
-                <Col className="mr-6">
-                  <div className="sub-page-title">{'領収書作成'}</div>
-                </Col>
-              </Row>
-            </Col>
-            {/* 右の部分・Right Part */}
-            <Col />
-          </Row>
-        </div>
+        <div className="sub-page-title mb-6">{'領収書作成'}</div>
 
-        <Card bodyStyle={{ padding: '48px 32px' }}>
-          <div className="item">
-            <Row className="mb-5">
+        <Card bodyStyle={{ padding: 40 }}>
+          <div>
+            <Row className="mb-8">
               <Col sm={24} md={24} lg={24}>
                 <div className="page-title">{'確認画面'}</div>
               </Col>
             </Row>
-            <Row className="mb-5">
-              <Col sm={24} md={12} lg={12}>
-                <Descriptions
-                  column={1}
-                  title={<span className="page-sub-title">{'作成方法'}</span>}
-                  bordered
-                >
+            <Row className="mb-10">
+              <Col span={24}>
+                <div className="page-sub-title mb-4">{'作成方法'}</div>
+                <StyledDescriptions column={1} bordered style={{ maxWidth: 600 }}>
                   <Descriptions.Item label={<BoldLabel label="作成方法" />}>
                     {'合計領収書（サポーターごと）'}
                   </Descriptions.Item>
                   <Descriptions.Item label={<BoldLabel label="領収書テンプレート" />}>
                     {'標準領収書'}
                   </Descriptions.Item>
-                </Descriptions>
+                </StyledDescriptions>
               </Col>
             </Row>
-            <Row className="mb-5">
+            <Row className="mb-4">
               <Col sm={24} md={24} lg={24}>
                 <Space direction="vertical">
-                  <span className="page-sub-title">{'作成方法'}</span>
-                  <span className="page-sub-title" style={{ fontSize: '14px' }}>
+                  <div className="page-sub-title">{'作成する領収書'}</div>
+                  <div style={{ fontWeight: 600 }}>
                     {
                       '4件の領収書を作成します。宛名・住所の変更、メモを残す場合は以下から編集してください。'
                     }
-                  </span>
+                  </div>
                 </Space>
               </Col>
             </Row>
-            <Row className="item mb-6">
-              <StyledTable
-                tableLayout="fixed"
-                dataSource={dataSource}
-                columns={columns}
-                pagination={false}
-              />
+            <Row className="mb-10">
+              <StyledTable dataSource={dataSource} columns={columns} pagination={false} />
             </Row>
-            <Row className="item mb-6">
+            <Row>
               <Space style={{ width: '40%' }}>
-                <StyledHighlightText>{'キャンセル'}</StyledHighlightText>
+                <Button>{'キャンセル'}</Button>
                 <Link to={'/app/receipts-create-history'}>
                   <Button
                     onClick={e => {
@@ -196,7 +188,7 @@ const CreateReceipt = () => {
                     }}
                     type="primary"
                   >
-                    <StyledHighlightText>{'この条件で領収書を作成する'}</StyledHighlightText>
+                    {'この条件で領収書を作成する'}
                   </Button>
                 </Link>
               </Space>

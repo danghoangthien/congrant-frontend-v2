@@ -1,4 +1,17 @@
-import { DARK_GRAY, SUCCESS_COLOR, WARNING_COLOR } from 'styles/StyleConstants';
+import {
+  DARK_GRAY_COLOR,
+  SUCCESS_COLOR,
+  WARNING_COLOR,
+  ORANGE_COLOR,
+  EXTRA_LIGHT_ORANGE_COLOR,
+  BLUE_COLOR,
+  EXTRA_LIGHT_BLUE_COLOR,
+  PRIMARY_COLOR,
+  EXTRA_LIGHT_PRIMARY_COLOR,
+  PINK_COLOR,
+  EXTRA_LIGHT_PINK_COLOR,
+  DANGER_COLOR,
+} from 'styles/StyleConstants';
 
 export const LIST_MODE = 0;
 export const DETAIL_MODE = 1;
@@ -37,7 +50,7 @@ const DONATION_STATUSES = {
 const DONATION_STATUS_COLOR = {
   1: [SUCCESS_COLOR],
   2: [WARNING_COLOR],
-  3: [DARK_GRAY],
+  3: [DARK_GRAY_COLOR],
 };
 
 const PROJECT_TYPES = {
@@ -91,7 +104,7 @@ const RECEIPT_STATUSES = {
 const RECEIPT_STATUS_COLOR = {
   0: [WARNING_COLOR],
   1: [SUCCESS_COLOR],
-  2: [DARK_GRAY],
+  2: [DARK_GRAY_COLOR],
 };
 
 const PLANS = {
@@ -106,6 +119,72 @@ const REGISTER_ROUTES = {
   1: 'コングラント経由',
   2: '手動入力',
   3: 'インポート',
+};
+
+// 審査ステータス
+const INSPECT_STATUES = {
+  1: [
+    '審査情報未入力',
+    ORANGE_COLOR,
+    EXTRA_LIGHT_ORANGE_COLOR,
+    <>
+      必要事項を登録して
+      <br />
+      審査を開始してください
+    </>,
+    '審査情報の登録へ進む',
+    '/app/verification',
+  ],
+  2: [
+    '審査中',
+    BLUE_COLOR,
+    EXTRA_LIGHT_BLUE_COLOR,
+    <>
+      審査完了を待つ間に
+      <br />
+      プロジェクトページを作成しましょう
+    </>,
+    'プロジェクトの作成',
+    '/app/projects',
+  ],
+  3: [
+    '審査完了',
+    PRIMARY_COLOR,
+    EXTRA_LIGHT_PRIMARY_COLOR,
+    <>
+      審査が完了しました
+      <br />
+      プロジェクトページを公開しましょう
+    </>,
+    'プロジェクト',
+    '/app/projects',
+  ],
+};
+
+// 現在のプラン
+const CONTRACT_PLANS = {
+  1: ['お試し中', PINK_COLOR, EXTRA_LIGHT_PINK_COLOR],
+  2: ['フリープラン', PRIMARY_COLOR, EXTRA_LIGHT_PRIMARY_COLOR],
+  3: ['ライトプラン', BLUE_COLOR, EXTRA_LIGHT_BLUE_COLOR],
+  4: ['スタンダードプラン', ORANGE_COLOR, EXTRA_LIGHT_ORANGE_COLOR],
+};
+
+// 契約ステータス
+const CONTRACT_STATUES = {
+  1: [
+    <>
+      <span style={{ color: DANGER_COLOR }}>プラン未選択</span>
+    </>,
+  ],
+  2: ['契約中'],
+  3: [
+    <>
+      <span style={{ color: DANGER_COLOR }}>更新が必要です</span>
+    </>,
+  ],
+  4: ['更新済み'],
+  5: ['自動更新予定'],
+  6: ['フリープランへの変更を受け付けました'],
 };
 
 const BASIC_COLOR = '#63B233';
@@ -135,4 +214,7 @@ export {
   CROWD_COLOR,
   MONTHLY_COLOR,
   REGISTER_ROUTES,
+  INSPECT_STATUES,
+  CONTRACT_PLANS,
+  CONTRACT_STATUES,
 };

@@ -63,7 +63,9 @@ const LaunchNewProject = () => {
             </StyledProjectLaunchType>
           </Col>
           <Col span={8}>
-            <StyledProjectLaunchType onClick={() => history.push(`/app/projects/new?type=2`)}>
+            <StyledProjectLaunchType
+              onClick={() => history.push(`/app/projects/new-project?type=2`)}
+            >
               <StyledProjectLaunchTypeInfo color="#E9F1FA" className="mb-5">
                 {'短期で集中的に集める'}
               </StyledProjectLaunchTypeInfo>
@@ -88,7 +90,9 @@ const LaunchNewProject = () => {
             </StyledProjectLaunchType>
           </Col>
           <Col span={8}>
-            <StyledProjectLaunchType onClick={() => history.push(`/app/projects/new?type=3`)}>
+            <StyledProjectLaunchType
+              onClick={() => history.push(`/app/projects/new-project?type=3`)}
+            >
               <StyledProjectLaunchTypeInfo color="#F9EAEA" className="mb-5">
                 {'マンスリーサポーターを増やす'}
               </StyledProjectLaunchTypeInfo>

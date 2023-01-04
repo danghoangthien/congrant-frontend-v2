@@ -26,22 +26,22 @@ export const ORANGE_COLOR = '#de6536';
 export const PINK_COLOR = '#d42c8e';
 export const RED_COLOR = '#c72a32';
 export const WHITE_COLOR = '#ffffff';
-export const DARK_GRAY = '#a6a6a2';
-export const GRAY = '#d9d9d7';
-export const BLACK = '#262626';
+export const DARK_GRAY_COLOR = '#a6a6a2';
+export const GRAY_COLOR = '#d9d9d7';
+export const BLACK_COLOR = '#262626';
 
 export const LIGHT_BLUE_COLOR = '#94bce5';
 export const LIGHT_ORANGE_COLOR = '#efb29b';
 export const LIGHT_PINK_COLOR = '#ea96c6';
 export const LIGHT_RED_COLOR = '#e39599';
-export const LIGHT_GRAY = '#f0f0ee';
+export const LIGHT_GRAY_COLOR = '#f0f0ee';
 
 export const EXTRA_LIGHT_BLUE_COLOR = '#e9f1fa';
 export const EXTRA_LIGHT_ORANGE_COLOR = '#fcf0eb';
 export const EXTRA_LIGHT_PINK_COLOR = '#fbeaf4';
 export const EXTRA_LIGHT_RED_COLOR = '#f9eaea';
-export const EXTRA_LIGHT_GRAY = '#fafaf8';
-export const EXTRA_DARK_GRAY = '#595957';
+export const EXTRA_LIGHT_GRAY_COLOR = '#fafaf8';
+export const EXTRA_DARK_GRAY_COLOR = '#595957';
 
 export const SUCCESS_COLOR = '#52c41a';
 export const WARNING_COLOR = '#faad14';

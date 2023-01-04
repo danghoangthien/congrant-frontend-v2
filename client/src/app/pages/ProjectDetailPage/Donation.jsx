@@ -10,7 +10,7 @@ import * as metaData from 'app/pages/DonationPage/mockDataReceived';
 import 'app/pages/DonationPage/Models/received';
 import Breadcumd from 'app/components/Breadcumd';
 import Detail, { DETAIL_KEY_MAP } from '../IndividualPage/components/Detail';
-import { DETAIL_MODE } from 'app/pages/IndividualPage/consts';
+import { DETAIL_MODE } from 'utils/consts';
 // Icons
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';

@@ -97,10 +97,22 @@ const DonationInfo = () => {
                 </div>
               </Row>
             </Col>
+            <Col span={24}>
+              <Row justify="space-between" className="statistic">
+                <Space align="center">
+                  <span className="material-symbols-outlined icon">calendar_month</span>
+                  <span className="title">残り</span>
+                </Space>
+                <div>
+                  <span className="num">14</span>
+                  <span className="unit">日</span>
+                </div>
+              </Row>
+            </Col>
           </Row>
         )}
 
-        {params?.id === '3' && (
+        {(params?.id === '3' || params?.id === '2') && (
           <Row>
             <Col span={24}>
               <div className="expire-date">2022年12月15日 23:59:59まで</div>

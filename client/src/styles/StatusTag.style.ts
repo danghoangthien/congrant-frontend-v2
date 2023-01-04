@@ -1,12 +1,12 @@
 import styled from 'styled-components/macro';
 import { Tag } from 'antd';
 import {
-  EXTRA_DARK_GRAY,
+  EXTRA_DARK_GRAY_COLOR,
   PRIMARY_COLOR,
   WARNING_COLOR,
   EXTRA_LIGHT_PRIMARY_COLOR,
-  EXTRA_LIGHT_GRAY,
-  GRAY,
+  EXTRA_LIGHT_GRAY_COLOR,
+  GRAY_COLOR,
 } from 'styles/StyleConstants';
 
 export const StyledStatusTag = styled(Tag)`
@@ -28,7 +28,7 @@ export const StyledStatusTag = styled(Tag)`
     background: ${WARNING_COLOR};
   }
   &.non-public {
-    background: ${EXTRA_DARK_GRAY};
+    background: ${EXTRA_DARK_GRAY_COLOR};
   }
 `;
 
@@ -39,7 +39,7 @@ export const StyledStatusTag2 = styled(Tag)`
     color: ${PRIMARY_COLOR};
   }
   &.non-public {
-    background: ${EXTRA_LIGHT_GRAY};
-    border: 1px solid ${GRAY};
+    background: ${EXTRA_LIGHT_GRAY_COLOR};
+    border: 1px solid ${GRAY_COLOR};
   }
 `;

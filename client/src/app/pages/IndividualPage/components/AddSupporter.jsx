@@ -40,7 +40,7 @@ const Form = () => (
       </SettingsInputContainer>
     </Row>
     <Row className="mb-6">
-      <SettingsInputContainer label={<SettingLabel label={'性別'} />}>
+      <SettingsInputContainer label={<SettingLabel label={'性別'} required />}>
         <Radio.Group onChange={() => {}} value={1}>
           <Radio value={1}>{'男性'}</Radio>
           <Radio value={2}>{'女性'}</Radio>

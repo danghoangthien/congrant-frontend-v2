@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import { ScreenSizes } from 'styles/StyleConstants';
-import { EXTRA_LIGHT_GRAY } from 'styles/StyleConstants';
+import { EXTRA_LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 
 export const PaymentPageStyle = styled.div`
   height: 100%;
@@ -209,7 +209,7 @@ export const PaymentPageStyle = styled.div`
     text-align: center;
     font-weight: 700;
     font-size: 20px;
-    background: ${EXTRA_LIGHT_GRAY};
+    background: ${EXTRA_LIGHT_GRAY_COLOR};
     padding: 13px 60px;
     border-radius: 4px;
     position: relative;

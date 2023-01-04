@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { LIGHT_GRAY } from 'styles/StyleConstants';
+import { LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 
 export const DescriptionStyle = styled.div`
   & .ant-descriptions-header {
@@ -49,7 +49,7 @@ export const DescriptionStyle = styled.div`
     }
 
     .ant-descriptions-bordered .ant-descriptions-row:last-child {
-      border-bottom: 1px solid ${LIGHT_GRAY};
+      border-bottom: 1px solid ${LIGHT_GRAY_COLOR};
     }
   }
 `;

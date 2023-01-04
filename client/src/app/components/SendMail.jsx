@@ -12,10 +12,10 @@ import {
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import styled from 'styled-components/macro';
-import { EXTRA_LIGHT_GRAY, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+import { EXTRA_LIGHT_GRAY_COLOR, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 export const StyledReceivers = styled(Space)`
-  background: ${EXTRA_LIGHT_GRAY};
+  background: ${EXTRA_LIGHT_GRAY_COLOR};
   border-radius: 4px;
   font-size: 12px;
   padding: 16px;
