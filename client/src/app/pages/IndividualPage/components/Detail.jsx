@@ -5,7 +5,7 @@ import BasicInfo from './BasicInfo';
 import CorporationBasicInfo from './CorporationBasicInfo';
 import Memo from './Memo';
 import Donation from './Donation';
-import ContinuousContract from './ContinuousContract';
+import ContinuousContract from '../../ReccuringPage/components/ContinuousContract';
 import Receipt from './Receipt';
 import { randomOutput } from 'utils/helper';
 import { LIST_MODE } from 'utils/consts';

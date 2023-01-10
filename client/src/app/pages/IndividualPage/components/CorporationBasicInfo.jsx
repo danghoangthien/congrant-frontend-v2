@@ -192,8 +192,16 @@ const EditModeContent = ({ data, mode, setMode, handleChangeSendaddr, sendadrr }
           </Col>
         </Row>
       </Descriptions.Item>
+      {/* ふりがな */}
       <Descriptions.Item label={<BoldLabel label="ふりがな" />}>
-        <Input value={'たなか たろう'} />
+        <Row>
+          <Col sm={24} md={12} lg={12}>
+            <Input value={'たなか'} />
+          </Col>
+          <Col className="pl-2" sm={24} md={12} lg={12}>
+            <Input value={'たろう'} />
+          </Col>
+        </Row>
       </Descriptions.Item>
       <Descriptions.Item label={<BoldLabel label="広報物への氏名掲載" />}>
         <Checkbox checked>{'許可'}</Checkbox>
@@ -204,6 +212,7 @@ const EditModeContent = ({ data, mode, setMode, handleChangeSendaddr, sendadrr }
           <Radio value={1}>{'男性'}</Radio>
           <Radio value={2}>{'女性'}</Radio>
           <Radio value={3}>{'その他'}</Radio>
+          <Radio value={4}>{'無回答'}</Radio>
         </Radio.Group>
       </Descriptions.Item>
 

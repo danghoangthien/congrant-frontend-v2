@@ -1,8 +1,9 @@
-import { Table, Menu, Space, Select } from 'antd';
+import { Table, Menu, Space, Select, Row } from 'antd';
 import { DANGER_COLOR } from 'styles/StyleConstants';
 import Reply from './Reply';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from 'app/pages/IndividualPage/components/Detail';
+import { TableStyle } from 'app/components/Table/Table.style';
 
 const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -13,42 +14,6 @@ const dataSource = Array.from(Array(10).keys()).map(i => ({
   comment: '応援しています！',
   reply: 'ありがとうございます！',
 }));
-
-const menu = (
-  <Menu
-    className="action-menu"
-    items={[
-      {
-        key: '1',
-        label: (
-          <Space>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              content_copy
-            </span>
-            <span>{'複製'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
-            >
-              delete
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
-          </Space>
-        ),
-      },
-    ]}
-  />
-);
 
 const columns = [
   {
@@ -105,17 +70,18 @@ const columns = [
 ];
 
 const CommentTable = () => (
-  <Table
-    className="common-table"
-    tableLayout="fixed"
-    dataSource={dataSource}
-    columns={columns}
-    pagination={false}
-    rowClassName={record => {
-      console.log('record', record);
-      return record.status === 1 ? 'table-row-light' : 'table-row-dark';
-    }}
-  />
+  <TableStyle>
+    <Table
+      className="common-table"
+      tableLayout="fixed"
+      dataSource={dataSource}
+      columns={columns}
+      rowClassName={record => {
+        console.log('record', record);
+        return record.status === 1 ? 'table-row-light' : 'table-row-dark';
+      }}
+    />
+  </TableStyle>
 );
 
 export default CommentTable;

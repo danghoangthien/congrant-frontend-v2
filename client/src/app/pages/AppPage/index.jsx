@@ -2,6 +2,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import AppLayout from 'app/components/Layout';
 
 import HomePage from 'app/pages/HomePage';
+import DummyPage from 'app/pages/DummyPage';
 import LoginPage from 'app/pages/LoginPage';
 import RegisterCompletePage from 'app/pages/LoginPage/Complete';
 import RegisterReviewPage from 'app/pages/VerificationPage';
@@ -78,6 +79,9 @@ const AppPage = () => {
       <AppLayout>
         <Route path={`${path}/home`}>
           <HomePage />
+        </Route>
+        <Route path={`${path}/dummy`}>
+          <DummyPage />
         </Route>
         <Route path={`${path}/projects/:id`}>
           <ProjectDetailPage />

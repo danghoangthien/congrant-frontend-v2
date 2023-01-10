@@ -97,6 +97,7 @@ const NewReceipt = ({ title }) => {
         <span>{'作成する'}</span>
       </Button>
       <StyledModal
+        zIndex={9999}
         title={<StyledModalTitle className="modal-title">{'領収書の新規作成'}</StyledModalTitle>}
         visible={isModalOpen}
         onOk={handleOk}

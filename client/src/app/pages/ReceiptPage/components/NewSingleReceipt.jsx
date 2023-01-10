@@ -31,6 +31,7 @@ const NewSingleReceipt = () => {
         </Button>
 
         <Modal
+          zIndex={9999}
           title={<StyledModalTitle>{'領収書の作成'}</StyledModalTitle>}
           visible={isModalOpen}
           width={650}
