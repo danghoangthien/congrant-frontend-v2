@@ -130,8 +130,8 @@ const CreateReceipt = () => {
     return (
       <>
         <Helmet>
-          <title>{'一括アップロード（寄付決済）'}</title>
-          <meta name="description" content={'...'} />
+          <title>{'領収書作成'}</title>
+          <meta name="description" content={'領収書作成'} />
         </Helmet>
       </>
     );
@@ -147,7 +147,7 @@ const CreateReceipt = () => {
           <div>
             <Row className="mb-8">
               <Col sm={24} md={24} lg={24}>
-                <div className="page-title">{'確認画面'}</div>
+                <div style={{ fontSize: 24, fontWeight: 600 }}>{'確認画面'}</div>
               </Col>
             </Row>
             <Row className="mb-10">
@@ -180,13 +180,16 @@ const CreateReceipt = () => {
             </Row>
             <Row>
               <Space style={{ width: '40%' }}>
-                <Button>{'キャンセル'}</Button>
+                <Button type="text" style={{ fontWeight: 600 }}>
+                  {'キャンセル'}
+                </Button>
                 <Link to={'/app/receipts-create-history-detail'}>
                   <Button
                     onClick={e => {
                       e.stopPropagation();
                     }}
                     type="primary"
+                    style={{ fontWeight: 600 }}
                   >
                     {'この条件で領収書を作成する'}
                   </Button>

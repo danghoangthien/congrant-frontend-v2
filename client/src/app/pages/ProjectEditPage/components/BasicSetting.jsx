@@ -113,6 +113,8 @@ const BasicSetting = () => {
               <SettingTextarea
                 style={{ maxWidth: 600, width: '100%' }}
                 rows={4}
+                showCount
+                maxLength={400}
                 placeholder={
                   'NPO法人コングラントは、XXX県XX市でこども食堂を毎週金曜日に開催しています。地元の食材を使って、こどもたちに暖かくておいしい食事をお腹いっぱいに食べてもらいたい！そのためには皆さまからのご支援が必要です。子どもたちのために、食堂の運営資金のサポートをしていただけませんか？'
                 }

@@ -48,21 +48,14 @@ const SUMMARY_BREADCUMD_DATA = id => {
   ];
 };
 
-const ProjectDetailHeader = ({ Breadcumd }) => (
+const ProjectDetailHeader = ({ Link, Breadcumd }) => (
   <Space
     className="px-6 py-3"
     style={{ background: '#ffffff', width: '100%' }}
     direction="vertical"
   >
     <Space style={{ width: '100%' }} size={16}>
-      <Link to="/app/projects">
-        <Button
-          className="icon-btn less-shadow-btn"
-          icon={<span className="material-symbols-outlined fill-icon">chevron_left</span>}
-        >
-          {'一覧へもどる'}
-        </Button>
-      </Link>
+      {Link}
       {Breadcumd}
     </Space>
     <Space style={{ width: '100%' }}>

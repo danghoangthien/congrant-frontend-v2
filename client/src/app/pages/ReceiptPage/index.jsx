@@ -18,27 +18,9 @@ const MailButton = ({ selectedRowKeys }) => <SendMail />;
 // その他の操作メニュー
 const contextDropdownItems = metaData.menuItems;
 
-const headerContextDropdownItems = [
-  {
-    key: '1',
-    label: (
-      <Link to={`/app/receipts-bulk-create/history`}>
-        <Space onClick={() => {}}>
-          <span
-            className="material-symbols-outlined"
-            style={{ fontSize: '16px', verticalAlign: 'middle' }}
-          >
-            history
-          </span>
-          <span>{'一括作成履歴'}</span>
-        </Space>
-      </Link>
-    ),
-  },
-];
-
 const ReceiptPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+
   const renderPageTitle = () => {
     return (
       <>
@@ -91,17 +73,15 @@ const ReceiptPage = () => {
 
             {/* 右の部分・Right Part */}
             <Col>
-              <Space>
-                <Dropdown
-                  overlay={<Menu items={headerContextDropdownItems} />}
-                  placement="bottomRight"
+              <Link to="/app/receipts-create-history">
+                <Button
+                  className="icon-btn"
+                  icon={<span className="material-symbols-outlined fill-icon">history</span>}
+                  onClick={() => setFilterOpen(!filterOpen)}
                 >
-                  <Button
-                    className="more-menu-btn"
-                    icon={<span className="material-symbols-outlined">more_horiz</span>}
-                  />
-                </Dropdown>
-              </Space>
+                  {'領収書作成履歴'}
+                </Button>
+              </Link>
             </Col>
           </Row>
         </div>

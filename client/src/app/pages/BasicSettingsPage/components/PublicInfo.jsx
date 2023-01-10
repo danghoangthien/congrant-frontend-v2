@@ -7,7 +7,9 @@ import {
   SettingInfoLabel,
   SettingLabel,
 } from 'utils/Sprites';
+// STYLE
 import { StyledForm } from '../BasicSettingsPage.style';
+// COMPONENT
 import ImageUpload from 'app/components/ImageUpload';
 
 const PublicInfo = () => {
@@ -23,7 +25,7 @@ const PublicInfo = () => {
         <Row className="mb-8">
           {/*  団体ロゴ */}
           <Col span={24} className="mb-6">
-            <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} />}>
+            <SettingsInputContainer label={<SettingInfoLabel label={'団体ロゴ'} required />}>
               <ImageUpload />
             </SettingsInputContainer>
           </Col>

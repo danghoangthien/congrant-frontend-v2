@@ -100,7 +100,7 @@ const Naming = () => {
         <Card className="mb-6">
           <Row className="mb-3">
             <Col sm={24} md={24} lg={24}>
-              <span className="bold" style={{ fontSize: 14 }}>
+              <span className="bold" style={{ fontSize: 16 }}>
                 {'名寄せ条件（AND）'}
               </span>
             </Col>
@@ -131,6 +131,7 @@ const Naming = () => {
             <Col sm={24} md={24} lg={24}>
               <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={{}} />}>
                 <Table
+                  className="clickable-table"
                   dataSource={dataSource}
                   columns={columns}
                   rowSelection={{
@@ -169,7 +170,7 @@ const Naming = () => {
             <Col sm={24} md={24} lg={24}>
               <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={{}} />}>
                 <Table
-                  tableLayout="fixed"
+                  className="clickable-table"
                   dataSource={dataSource}
                   columns={columns}
                   rowSelection={{
