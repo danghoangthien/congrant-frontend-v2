@@ -75,6 +75,7 @@ const AppPage = () => {
       <Route path={`${path}/learning`}>
         <LearningPage />
       </Route>
+
       <AppLayout>
         <Route path={`${path}/home`}>
           <HomePage />
