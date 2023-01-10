@@ -1,9 +1,11 @@
-import { Descriptions, Row, Col, Button, Dropdown, Badge, Menu } from 'antd';
+import { Descriptions, Row, Col, Space, Dropdown, Badge, Menu } from 'antd';
 import { BoldLabel, CopiableText, Navigation } from 'utils/Sprites';
-import { DescriptionStyle } from './BasicInfo.style';
+import { DescriptionStyle } from 'app/pages/IndividualPage/components/BasicInfo.style';
 import { StyledDonationTypeTag } from 'styles/Tag.style';
 import { StyledBadgeDot } from 'styles/global-styles';
 import { DONATION_STATUS_COLOR, DONATION_STATUSES, LIST_MODE } from 'utils/consts';
+import ChangeAmount from './ChangeAmount';
+import Cancel from './Cancel';
 
 // 操作メニュー・Action Menu
 const action_menu = (
@@ -28,12 +30,10 @@ const Title = ({ mode, setMode }) => {
         <div className="sub-page-title -sml">{'継続契約詳細'}</div>
       </Col>
       <Col type="flex" align="right" sm={24} md={12} lg={12}>
-        <Dropdown overlay={action_menu} placement="bottomRight">
-          <Button
-            className="more-menu-btn"
-            icon={<span className="material-symbols-outlined">more_horiz</span>}
-          />
-        </Dropdown>
+        <Space>
+          <ChangeAmount />
+          <Cancel />
+        </Space>
       </Col>
     </Row>
   );

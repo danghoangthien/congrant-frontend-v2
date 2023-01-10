@@ -145,8 +145,10 @@ const IndividualPage = () => {
         </div>
 
         {/* ページコンテンツ・Page Content */}
-        <div className="item">
+        <div>
           <Table
+            style={{ minHeight: '2500px' }}
+            key="supporterList"
             tableLayout="fixed"
             TableName="個人サポーター一覧"
             model="supporterList"

@@ -5,6 +5,8 @@ import { StyledBadgeDot } from 'styles/global-styles';
 // COMPONENT
 import DrawerHandle from '../../components/DrawerHandle';
 import Detail from '../IndividualPage/components/Detail';
+import ChangeAmount from './components/ChangeAmountClone';
+import Cancel from './components/CancelClone';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
@@ -59,31 +61,11 @@ export const menuItems = status => {
     return [
       {
         key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
-          </Space>
-        ),
+        label: <ChangeAmount />,
       },
       {
         key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              do_disturb
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
-          </Space>
-        ),
+        label: <Cancel />,
       },
     ];
   } else {
@@ -161,13 +143,7 @@ export const bulkMenuItems = status => {
         key: '1',
         label: (
           <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
+            <ChangeAmount />
           </Space>
         ),
       },
@@ -377,16 +353,18 @@ const columnMap = {
     width: 120,
     title: 'アクション',
     render: row => (
-      <Dropdown
-        overlay={[1, 2].includes(row.status) ? <Menu items={menuItems(row.status)} /> : <></>}
-        placement="bottomRight"
-      >
-        <Button
-          className="more-menu-btn"
-          style={{ display: [1, 2].includes(row.status) ? 'flex' : 'none' }}
-          icon={<span className="material-symbols-outlined">more_horiz</span>}
-        />
-      </Dropdown>
+      <Space onClick={e => e.stopPropagation()}>
+        <Dropdown
+          overlay={[1, 2].includes(row.status) ? <Menu items={menuItems(row.status)} /> : <></>}
+          placement="bottomRight"
+        >
+          <Button
+            className="more-menu-btn"
+            style={{ display: [1, 2].includes(row.status) ? 'flex' : 'none' }}
+            icon={<span className="material-symbols-outlined">more_horiz</span>}
+          />
+        </Dropdown>
+      </Space>
     ),
   },
 };

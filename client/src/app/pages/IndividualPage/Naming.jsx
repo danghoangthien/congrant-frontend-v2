@@ -1,7 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-import { Card, Row, Col, Checkbox, Button, Table } from 'antd';
+import { Card, Row, Col, Checkbox, Button, Table, Space } from 'antd';
+import DrawerHandle from 'app/components/DrawerHandle';
+import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
+import { DETAIL_MODE } from 'utils/consts';
 
 const Naming = () => {
   const renderPageTitle = () => {
@@ -126,14 +129,16 @@ const Naming = () => {
           </Row>
           <Row>
             <Col sm={24} md={24} lg={24}>
-              <Table
-                dataSource={dataSource}
-                columns={columns}
-                rowSelection={{
-                  ...rowSelection,
-                }}
-                pagination={false}
-              />
+              <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={{}} />}>
+                <Table
+                  dataSource={dataSource}
+                  columns={columns}
+                  rowSelection={{
+                    ...rowSelection,
+                  }}
+                  pagination={false}
+                />
+              </DrawerHandle>
             </Col>
           </Row>
           <Row className="py-4 px-6">
@@ -162,15 +167,17 @@ const Naming = () => {
           </Row>
           <Row className="mb-3">
             <Col sm={24} md={24} lg={24}>
-              <Table
-                tableLayout="fixed"
-                dataSource={dataSource}
-                columns={columns}
-                rowSelection={{
-                  ...rowSelection,
-                }}
-                pagination={false}
-              />
+              <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={{}} />}>
+                <Table
+                  tableLayout="fixed"
+                  dataSource={dataSource}
+                  columns={columns}
+                  rowSelection={{
+                    ...rowSelection,
+                  }}
+                  pagination={false}
+                />
+              </DrawerHandle>
             </Col>
           </Row>
           <Row className="py-4 px-6">

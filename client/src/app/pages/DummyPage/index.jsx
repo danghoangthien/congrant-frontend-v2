@@ -5,7 +5,7 @@ import { DANGER_COLOR, BLUE_COLOR } from 'styles/StyleConstants';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { openNotification } from 'app/components/Notification';
 
-const APP_URL = process.env.REACT_APP_APP_URL;
+const APP_URL = 'http://congrant.test:9001';
 const embedCode = `<iframe src="${APP_URL}/project_iframe/client_name/1" frameborder="0" width="300" height="380"></iframe>'
 `;
 
