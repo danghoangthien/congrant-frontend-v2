@@ -17,6 +17,7 @@ export const LIGHT_PLAN_COLOR = '#2878cb';
 export const STANDARD_PLAN_COLOR = '#de6536';
 
 // COLORS
+export const PRIMARY_ADMIN_COLOR = '#2878cb';
 export const PRIMARY_COLOR = '#63b233';
 export const LIGHT_PRIMARY_COLOR = '#b1d999';
 export const EXTRA_LIGHT_PRIMARY_COLOR = '#eff7eb';
