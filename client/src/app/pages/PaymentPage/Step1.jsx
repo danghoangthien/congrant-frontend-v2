@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 // ANTD
-import { Row, Col, Space, Divider, Card } from 'antd';
+import { Row, Col, Space } from 'antd';
 // COMPONENT
 import {
   SettingsInputContainer,

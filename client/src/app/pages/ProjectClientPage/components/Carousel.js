@@ -15,7 +15,7 @@ const Carousel = () => {
   return (
     <CarouselStyle>
       <Row>
-        <Col span={24} className="mb-6">
+        <Col span={24} className="carousel-wrapper">
           <Swiper
             spaceBetween={10}
             effect={'fade'}
@@ -61,7 +61,7 @@ const Carousel = () => {
         <Col span={24}>
           <Swiper
             onSwiper={setThumbsSwiper}
-            spaceBetween={12}
+            spaceBetween={10}
             slidesPerView={3}
             freeMode={true}
             watchSlidesProgress={true}

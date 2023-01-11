@@ -19,11 +19,11 @@ const ProjectClientPage = ({ children }) => {
 
   let link;
   if (params.id === '1') {
-    link = `/payment`;
+    link = `/payment#form`;
   } else if (params.id === '2') {
-    link = `/payment?type=monthly`;
+    link = `/payment?type=monthly#form`;
   } else if (params.id === '3') {
-    link = `/payment?type=crowdfunding`;
+    link = `/payment?type=crowdfunding#form`;
   }
 
   console.log(link);
@@ -63,8 +63,8 @@ const ProjectClientPage = ({ children }) => {
             style={{ width: '100%' }}
           >
             <Col span={24}>
-              <Row justify="space-between" ali>
-                <Col lg={{ span: 24 }}>
+              <Row justify="space-between" align="middle">
+                <Col span={24}>
                   <Row align="middle" justify="space-between">
                     <Col>
                       <div className="logo-wrapper">
@@ -85,12 +85,12 @@ const ProjectClientPage = ({ children }) => {
                         />
                       </div>
                     </Col>
-                    <Col style={{ display: 'flex' }}>
-                      <Media
-                        query="(min-width: 992px)"
-                        render={() => (
-                          <Space size={20} type="flex" align="center">
-                            <div id="google_translate_element"></div>
+                    <Col>
+                      <Row align="middle">
+                        <div id="google_translate_element"></div>
+                        <Media
+                          query="(min-width: 992px)"
+                          render={() => (
                             <Button
                               size="large"
                               type="primary"
@@ -99,6 +99,7 @@ const ProjectClientPage = ({ children }) => {
                               }}
                               className="h-btn"
                               style={{
+                                marginLeft: 20,
                                 width: '148px',
                                 borderColor: MAIN_COLOR,
                                 background: `linear-gradient(95.98deg, ${MAIN_COLOR} 14.71%, #F11628 91.59%)`,
@@ -106,31 +107,12 @@ const ProjectClientPage = ({ children }) => {
                             >
                               寄付する
                             </Button>
-                          </Space>
-                        )}
-                      />
+                          )}
+                        />
+                      </Row>
                     </Col>
                   </Row>
                 </Col>
-                <Media
-                  query="(max-width: 991px)"
-                  render={() => (
-                    <Col>
-                      <Button
-                        size="large"
-                        className="h-btn"
-                        type="primary"
-                        style={{
-                          width: 120,
-                          borderColor: MAIN_COLOR,
-                          background: `linear-gradient(95.98deg, ${MAIN_COLOR} 14.71%, #F11628 91.59%)`,
-                        }}
-                      >
-                        寄付する
-                      </Button>
-                    </Col>
-                  )}
-                />
               </Row>
             </Col>
           </Row>
@@ -144,11 +126,25 @@ const ProjectClientPage = ({ children }) => {
           <Row>
             <Col className="mb-3" type="flex" align="center" span={24}>
               <div className="footer-logo">
-                <Image
-                  preview={false}
-                  // width={154}
-                  src={CongrantLogo}
-                />
+                <Media queries={{ small: '(max-width: 991px)' }}>
+                  {matches =>
+                    matches.small ? (
+                      <Image
+                        preview={false}
+                        // width={154}
+                        height={27}
+                        src={CongrantLogo}
+                      />
+                    ) : (
+                      <Image
+                        preview={false}
+                        // width={154}
+                        height={35}
+                        src={CongrantLogo}
+                      />
+                    )
+                  }
+                </Media>
               </div>
             </Col>
             <Col type="flex" align="center" span={24}>
@@ -159,7 +155,15 @@ const ProjectClientPage = ({ children }) => {
                       <span>
                         このページは寄付・会費決済サービス
                         <br />
-                        「コングラント」で作成されています。
+                        <a
+                          className="external-link"
+                          href="http://congrant.com/jp/"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          コングラント
+                        </a>
+                        で作成されています。
                       </span>
                     ) : (
                       <span>
@@ -181,6 +185,28 @@ const ProjectClientPage = ({ children }) => {
             </Col>
           </Row>
         </Footer>
+
+        <Media
+          query="(max-width: 991px)"
+          render={() => (
+            <div className="fixed-btn-wrapper">
+              <Button
+                size="large"
+                type="primary"
+                onClick={() => {
+                  history.push(link);
+                }}
+                style={{
+                  width: '100%',
+                  borderColor: MAIN_COLOR,
+                  background: `linear-gradient(95.98deg, ${MAIN_COLOR} 14.71%, #F11628 91.59%)`,
+                }}
+              >
+                寄付する
+              </Button>
+            </div>
+          )}
+        />
       </ProjectClientPageStyle>
     </>
   );

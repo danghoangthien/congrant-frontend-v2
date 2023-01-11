@@ -25,7 +25,7 @@ const ProjectClientPage = ({ link }) => {
   const usp = new URLSearchParams(window.location.search);
   const activity_id = usp.get('activity_id');
   const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
-  const MAIN_COLOR = '#e34855';
+  const MAIN_COLOR = 'blue';
 
   const ProjectStyle = styled.div`
     .swiper-slide-thumb-active:after {
@@ -176,13 +176,13 @@ const ProjectClientPage = ({ link }) => {
               />
 
               {/* 概要文・Description Text */}
-              <Row className="mb-6">
+              <Row>
                 <div className="project-description">
                   虐待を次世代に相続させない最も有効な事は、虐待を受けたこどもに「特定の大人との愛着」を丁寧に時間をかけてしっかり形成し直し、そのこども達がやがて成人して親になれるよう、健全に育つ土壌を整えることです。根本的に虐待が防止できる社会を、一緒に実現しませんか？
                 </div>
               </Row>
 
-              <Row className="mb-6" align="middle">
+              <Row className="mb-7" align="middle">
                 {/* SNSシェアー・Share Buttons */}
                 <Col className="share-container">
                   <Share
@@ -192,9 +192,14 @@ const ProjectClientPage = ({ link }) => {
                   />
                 </Col>
                 {/* 操作ボタン・Action Buttons */}
-                <Col className="action-container">
-                  <Action mainColor={MAIN_COLOR} />
-                </Col>
+                <Media
+                  query="(min-width: 992px)"
+                  render={() => (
+                    <Col className="action-container">
+                      <Action mainColor={MAIN_COLOR} />
+                    </Col>
+                  )}
+                />
               </Row>
 
               {/* メインコンテンツ・Main Content */}
