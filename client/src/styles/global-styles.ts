@@ -316,6 +316,16 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .style-table {
+    .ant-table-pagination.ant-pagination {
+      margin: 16px 24px;
+    }
+
+    .ant-pagination-item-link .anticon {
+      vertical-align: 0.125em;
+    }
+  }
+
   // POP-UP MENU
 
   // ANTD INPUT
@@ -502,6 +512,18 @@ export const GlobalStyle = createGlobalStyle`
     // font-size: 16px;
   }
 
+  .ant-checkbox-group {
+    &.vertical {
+      .ant-checkbox-wrapper {
+        display: flex;
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
   // RADIO
   .ant-radio-wrapper {
     font-size: 16px;
@@ -594,15 +616,28 @@ export const GlobalStyle = createGlobalStyle`
 
   .table-row-light {
     background-color: #ffffff;
+
+    &:hover > td {
+      background-color: initial !important;
+    }
   }
   .table-row-dark {
-      background-color: #fbfbfb;
+    background-color: ${GRAY_COLOR};
+
+    &:hover > td {
+      background-color: initial !important;
+    }
   }
 
   // UPLOAD
   .ant-upload-list-text .ant-upload-span > *,
   .ant-upload-list-picture .ant-upload-span > * {
     display: flex;
+  }
+
+  .ant-upload-list-item-name {
+    width: auto;
+    flex: none !important;
   }
 `;
 

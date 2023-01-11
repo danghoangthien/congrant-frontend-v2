@@ -1,5 +1,4 @@
-import { Table, Menu, Space, Select, Row } from 'antd';
-import { DANGER_COLOR } from 'styles/StyleConstants';
+import { Table, Space, Select } from 'antd';
 import Reply from './Reply';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from 'app/pages/IndividualPage/components/Detail';
@@ -38,7 +37,7 @@ const columns = [
     render: status => {
       if ([1, 2].includes(status)) {
         return (
-          <Select defaultValue={status}>
+          <Select defaultValue={status} style={{ width: '100%' }}>
             <Select.Option value={1}>{'公開'}</Select.Option>
             <Select.Option value={2}>{'非公開'}</Select.Option>
           </Select>
@@ -69,10 +68,11 @@ const columns = [
   },
 ];
 
-const CommentTable = () => (
+const CommentTable = ({ ...rest }) => (
   <TableStyle>
     <Table
       className="common-table"
+      {...rest}
       tableLayout="fixed"
       dataSource={dataSource}
       columns={columns}

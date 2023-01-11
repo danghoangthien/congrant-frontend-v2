@@ -22,11 +22,18 @@ import {
   EXTRA_LIGHT_GRAY_COLOR,
   PRIMARY_COLOR,
   EXTRA_LIGHT_RED_COLOR,
+  LIGHT_RED_COLOR,
 } from 'styles/StyleConstants';
 
 const StyledBox = styled.div`
   padding: 16px;
   background: ${EXTRA_LIGHT_RED_COLOR};
+  border: 1px solid ${LIGHT_RED_COLOR};
+`;
+
+const StyledList = styled.ul`
+  padding-left: 12px;
+  margin: 0;
 `;
 
 // コース選択の通知枠
@@ -295,7 +302,7 @@ const FormEdit = () => {
 
         <Row>
           <Col span={24} className="mb-4">
-            <span className="page-sub-title">{'匿名寄付機能'}</span>
+            <span style={{ fontSize: 16, fontWeight: 600 }}>{'匿名寄付機能'}</span>
           </Col>
           <Col span={24} className="mb-2">
             <SettingsInputContainer>
@@ -306,11 +313,19 @@ const FormEdit = () => {
           </Col>
           <Col span={24}>
             <StyledBox>
-              <div>匿名寄付機能とは</div>
-              <div>
+              <div className="mb-2" style={{ fontSize: 12, fontWeight: 600 }}>
+                匿名寄付機能とは
+              </div>
+              <div style={{ fontSize: 12, letterSpacing: '0.07em' }}>
                 匿名寄付機能は、決済フォームでの詳細情報の入力をユーザー自身でスキップできる機能です。上で設定した入力項目の必須・任意設定に関わらず、ユーザーは「メールアドレス」のみで決済を申し込めるようになります。
-                匿名寄付を受け付ける設定にすると、決済フォームに「匿名で申し込む」のチェックボックスが表示されます
-                ユーザーがチェックをつけると、メールアドレス以外の入力フォームが非表示になり、最低限の入力で申し込みを完了できます
+                <StyledList>
+                  <li>
+                    匿名寄付を受け付ける設定にすると、決済フォームに「匿名で申し込む」のチェックボックスが表示されます
+                  </li>
+                  <li>
+                    ユーザーがチェックをつけると、メールアドレス以外の入力フォームが非表示になり、最低限の入力で申し込みを完了できます
+                  </li>
+                </StyledList>
               </div>
             </StyledBox>
           </Col>

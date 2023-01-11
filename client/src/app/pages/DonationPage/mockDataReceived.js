@@ -252,31 +252,33 @@ const menuItems = selectedRowKeys => [
   {
     key: '1',
     label: (
-      <Space
+      <div
         onClick={() => {
           console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
         <NewBulkReceipt />
-      </Space>
+      </div>
     ),
   },
   {
     key: '2',
     label: (
-      <Space
+      <div
         onClick={() => {
           console.log('contextDropdownItems selectedRowKeys', selectedRowKeys);
         }}
       >
-        <span
-          className="material-symbols-outlined fill-icon"
-          style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
-        >
-          delete
-        </span>
-        <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
-      </Space>
+        <Space>
+          <span
+            className="material-symbols-outlined fill-icon"
+            style={{ fontSize: '16px', verticalAlign: 'middle', color: DANGER_COLOR }}
+          >
+            delete
+          </span>
+          <span style={{ color: DANGER_COLOR }}>{'削除'}</span>
+        </Space>
+      </div>
     ),
   },
 ];

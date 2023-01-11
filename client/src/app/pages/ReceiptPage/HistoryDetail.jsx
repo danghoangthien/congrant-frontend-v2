@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 // ANTD
 import { Row, Col, Tag, Button } from 'antd';
 // STYLE
@@ -23,8 +24,20 @@ const DETAIL_BREADCUMD_DATA = [
   },
 ];
 const History = () => {
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'領収書作成履歴'}</title>
+          <meta name="description" content={'領収書作成履歴'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
     <>
+      {renderPageTitle()}
       <HeaderWithBreadcumd
         Breadcumd={<Breadcumd data={DETAIL_BREADCUMD_DATA} active={DETAIL_BREADCUMD_DATA[2].id} />}
       />

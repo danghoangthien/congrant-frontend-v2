@@ -52,11 +52,11 @@ const Cancel = () => {
         onCancel={handleCancel}
         width={572}
         footer={[
-          <Button key="cancel" onClick={handleCancel}>
+          <Button key="cancel" type="text" onClick={handleCancel}>
             {'キャンセル'}
           </Button>,
           <Button key="ok" className="active" type="danger" onClick={handleOk}>
-            <span>{'金額を変更する'}</span>
+            <span>{'解約する'}</span>
           </Button>,
         ]}
         closeIcon={<span className="material-symbols-outlined">close</span>}
@@ -77,12 +77,10 @@ const Cancel = () => {
           </Col>
         </Row>
         <Row className="item mb-6">
-          <SettingsInputContainer
-            label={<SettingLabel label={'解約理由（複数選択可）'} required />}
-          >
+          <SettingsInputContainer label={<SettingLabel label={'解約理由（複数選択可）'} />}>
             <Row align="middle" justify="space-between">
               <Col sm={24} md={24} lg={24}>
-                <Checkbox.Group options={options} defaultValue={[1]} />
+                <Checkbox.Group className="vertical" options={options} defaultValue={[1]} />
               </Col>
             </Row>
           </SettingsInputContainer>

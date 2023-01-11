@@ -28,10 +28,22 @@ const Summary = () => {
     );
   };
 
+  const LinkText = (
+    <Link to="/app/projects">
+      <Button
+        className="icon-btn less-shadow-btn"
+        icon={<span className="material-symbols-outlined fill-icon">chevron_left</span>}
+      >
+        {'一覧へもどる'}
+      </Button>
+    </Link>
+  );
+
   return (
     <>
       {renderPageTitle()}
       <ProjectDetailHeader
+        Link={LinkText}
         Breadcumd={<Breadcumd data={HEADER_BREADCUMD_DATA} active={HEADER_BREADCUMD_DATA[1].id} />}
       />
       <PageLayout>
@@ -97,7 +109,7 @@ const Summary = () => {
             </Link>
           </Row>
           <Row>
-            <ActivityTable />
+            <ActivityTable pagination={false} />
           </Row>
           <Row justify="end" className="py-4 px-6">
             <Link className="sidebar-link" to={`blogs`}>
@@ -123,7 +135,7 @@ const Summary = () => {
             </Space>
           </Row>
           <Row>
-            <CommentTable />
+            <CommentTable pagination={false} />
           </Row>
           <Row justify="end" className="py-4 px-6">
             <Link className="sidebar-link" to={`comments`}>

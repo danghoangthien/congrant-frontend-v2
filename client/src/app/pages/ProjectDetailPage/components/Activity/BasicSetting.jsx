@@ -42,7 +42,9 @@ const BasicSetting = () => {
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'概要文（最大400文字）'} required />}>
           <SettingTextarea
+            showCount
             rows={10}
+            maxLength={400}
             style={{ width: '600px' }}
             placeholder={
               'NPO法人コングラントは、XXX県XX市でこども食堂を毎週金曜日に開催しています。地元の食材を使って、こどもたちに暖かくておいしい食事をお腹いっぱいに食べてもらいたい！そのためには皆さまからのご支援が必要です。子どもたちのために、食堂の運営資金のサポートをしていただけませんか？'
