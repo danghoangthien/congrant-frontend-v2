@@ -4,7 +4,7 @@ import { Modal } from 'antd';
 import { PRIMARY_COLOR, WHITE_COLOR } from 'styles/StyleConstants';
 
 export const StyledModalTitle = styled.div`
-  font-size: 24px;
+  font-size: 20px;
 `;
 
 export const StyledModal = styled(Modal)`

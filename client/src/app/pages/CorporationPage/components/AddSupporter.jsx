@@ -60,7 +60,7 @@ const Form = () => {
         </SettingsInputContainer>
       </Row>
       <Row className="mb-6">
-        <SettingsInputContainer label={<SettingLabel label={'電話番号'} required />}>
+        <SettingsInputContainer label={<SettingLabel label={'電話番号'} />}>
           <SettingInput size="large" placeholder={'08000000000'} />
         </SettingsInputContainer>
       </Row>

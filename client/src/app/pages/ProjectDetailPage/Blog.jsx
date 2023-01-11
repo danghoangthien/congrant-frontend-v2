@@ -1,15 +1,31 @@
+import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
+// ANTD
 import { Row, Col, Card, Button } from 'antd';
 import AddIcon from '@mui/icons-material/Add';
-// Styles
+// STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-// Components
+// COMPONENT
 import ActivityTable from './components/Activity/ActivityTable';
 import Breadcumd from 'app/components/Breadcumd';
+// CONST
 import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 
 const Blog = () => {
+  // META情報
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'活動報告'}</title>
+          <meta name="description" content={'活動報告'} />
+        </Helmet>
+      </>
+    );
+  };
+
   const params = useParams();
+
   const BLOG_BREADCUMD_DATA = [
     HEADER_BREADCUMD_DATA[0],
     {
@@ -23,9 +39,23 @@ const Blog = () => {
       uri: `/app/projects/${params.id}/blogs`,
     },
   ];
+
+  const LinkText = (
+    <Link to={`/app/projects/${params.id}/summary`}>
+      <Button
+        className="icon-btn less-shadow-btn"
+        icon={<span className="material-symbols-outlined fill-icon">chevron_left</span>}
+      >
+        {'プロジェクトトップへもどる'}
+      </Button>
+    </Link>
+  );
+
   return (
     <>
+      {renderPageTitle()}
       <ProjectDetailHeader
+        Link={LinkText}
         Breadcumd={<Breadcumd data={BLOG_BREADCUMD_DATA} active={BLOG_BREADCUMD_DATA[2].id} />}
       />
       <PageLayout>
@@ -53,7 +83,7 @@ const Blog = () => {
         {/* 活動報告 */}
         <Card className="mb-5 table-card pb-0" bodyStyle={{ padding: 0 }}>
           <Row>
-            <ActivityTable />
+            <ActivityTable className="style-table" />
           </Row>
         </Card>
       </PageLayout>

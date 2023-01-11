@@ -1,5 +1,7 @@
+// ANTD
 import { Row, Col, Button, Space, Checkbox } from 'antd';
-import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
+// SRPITE
+import { SettingsInputContainer, SettingLabel, SettingInfoLabel } from 'utils/Sprites';
 
 const Notification = () => {
   return (
@@ -9,13 +11,13 @@ const Notification = () => {
       </Col>
       <Col span={24} className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'運営からのお知らせ'} />}>
-          <Checkbox>{'運営からのお知らせを受け取る'}</Checkbox>
+          <Checkbox style={{ fontSize: 16 }}>{'運営からのお知らせを受け取る'}</Checkbox>
         </SettingsInputContainer>
       </Col>
       <Col span={24}>
-        <SettingsInputContainer label={<SettingLabel label={'寄付決済関連の通知'} />}>
+        <SettingsInputContainer label={<SettingInfoLabel label={'寄付決済関連の通知'} />}>
           <Space direction="vertical">
-            <Checkbox>{'寄付決済関連の通知を受け取る'}</Checkbox>
+            <Checkbox style={{ fontSize: 16 }}>{'寄付決済関連の通知を受け取る'}</Checkbox>
           </Space>
         </SettingsInputContainer>
       </Col>

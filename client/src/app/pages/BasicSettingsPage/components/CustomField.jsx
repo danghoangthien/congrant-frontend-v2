@@ -134,7 +134,11 @@ const CustomField = () => {
           <span className="page-sub-title">{'寄付決済'}</span>
         </Col>
         <Col sm={24} md={24} lg={24}>
-          <DraggableTable dataSource={donationPaymentDatasource} columns={columns} />
+          <DraggableTable
+            dataSource={donationPaymentDatasource}
+            columns={columns}
+            pagination={false}
+          />
         </Col>
       </Row>
       <Row className="mb-8">

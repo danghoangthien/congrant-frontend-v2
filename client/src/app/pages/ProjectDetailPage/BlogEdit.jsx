@@ -1,13 +1,15 @@
-import { Tabs, Row, Col, Card, Button, Select, Space } from 'antd';
-import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
+// ANTD
+import { Tabs, Row, Col, Card, Select, Space } from 'antd';
+// COMPONENT
 import BasicSetting from './components/Activity/BasicSetting';
 import PageEdit from './components/Activity/PageEdit';
 import BlogEditConfirm from './components/BlogEditConfirm';
-import SaveIcon from '@mui/icons-material/Save';
 import Breadcumd from 'app/components/Breadcumd';
-
+// CONST
 import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
-// Styles
+// STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
 export const DETAIL_KEY_MAP = {
@@ -17,6 +19,7 @@ export const DETAIL_KEY_MAP = {
 
 const Edit = ({ activeKey }) => {
   const params = useParams();
+
   const BLOG_BREADCUMD_DATA = [
     HEADER_BREADCUMD_DATA[0],
     {
@@ -35,8 +38,21 @@ const Edit = ({ activeKey }) => {
       uri: `/app/projects/${params.id}/blogs/${params.blogId}/edit`,
     },
   ];
+
+  const renderPageTitle = () => {
+    return (
+      <>
+        <Helmet>
+          <title>{'活動報告編集'}</title>
+          <meta name="description" content={'活動報告編集'} />
+        </Helmet>
+      </>
+    );
+  };
+
   return (
     <>
+      {renderPageTitle()}
       <ProjectDetailHeader
         Breadcumd={<Breadcumd data={BLOG_BREADCUMD_DATA} active={BLOG_BREADCUMD_DATA[3].id} />}
       />

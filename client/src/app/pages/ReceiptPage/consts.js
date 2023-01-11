@@ -15,7 +15,7 @@ const HEADER_BREADCUMD_DATA = [
         <span>{'領収書一覧'}</span>
       </Space>
     ),
-    //uri: '/app/receipts-create-history',
+    uri: '/app/receipts',
   },
   {
     id: 2,

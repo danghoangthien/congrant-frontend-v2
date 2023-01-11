@@ -187,10 +187,35 @@ const CONTRACT_STATUES = {
   6: ['フリープランへの変更を受け付けました'],
 };
 
+// CG審査
+const CG_VERIFICATION = {
+  1: ['OK', SUCCESS_COLOR],
+  2: ['NG', DANGER_COLOR],
+};
+
+// St審査
+const ST_VERIFICATION = {
+  1: ['OK', SUCCESS_COLOR],
+  2: ['保留', WARNING_COLOR],
+  3: ['対象外', ''],
+};
+
+// 審査状況
+const VERIFICATION_STATUS = {
+  1: ['StOK', SUCCESS_COLOR],
+  2: ['審査中', '#1890FF'],
+  3: ['NG', DANGER_COLOR],
+  4: ['TelOK', SUCCESS_COLOR],
+};
+
+// 利用中の決済
+const USING_PAYMENT = {
+  1: ['Stripe', '#635BFF'],
+  2: ['テレコム', '#DB3333'],
+};
+
 const BASIC_COLOR = '#63B233';
-
 const CROWD_COLOR = '#2878CB';
-
 const MONTHLY_COLOR = '#C72A32';
 
 export {
@@ -217,4 +242,8 @@ export {
   INSPECT_STATUES,
   CONTRACT_PLANS,
   CONTRACT_STATUES,
+  CG_VERIFICATION,
+  ST_VERIFICATION,
+  VERIFICATION_STATUS,
+  USING_PAYMENT,
 };

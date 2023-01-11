@@ -92,6 +92,10 @@ export const StyledDescriptions = styled(Descriptions)`
     border-bottom: 1px solid ${LIGHT_GRAY_COLOR};
   }
 
+  .plan-box {
+    width: 100%;
+  }
+
   .plan-box-ttl {
     text-align: center;
     font-size: 20px;

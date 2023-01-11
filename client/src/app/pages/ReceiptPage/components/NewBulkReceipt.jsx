@@ -36,20 +36,21 @@ const NewBulkReceipt = () => {
 
   return (
     <>
-      <Space
-        onClick={e => {
-          e.stopPropagation();
+      <div
+        onClick={() => {
           showModal();
         }}
       >
-        <span
-          className="material-symbols-outlined fill-icon"
-          style={{ fontSize: '16px', verticalAlign: 'middle' }}
-        >
-          receipt
-        </span>
-        <span>{'領収書作成'}</span>
-      </Space>
+        <Space>
+          <span
+            className="material-symbols-outlined fill-icon"
+            style={{ fontSize: '16px', verticalAlign: 'middle' }}
+          >
+            receipt
+          </span>
+          <span>{'領収書作成'}</span>
+        </Space>
+      </div>
 
       <Modal
         title={<StyledModalTitle>{'領収書の作成（一括作成）'}</StyledModalTitle>}
@@ -103,8 +104,8 @@ const NewBulkReceipt = () => {
                         <Image width={150} src={receipt01} preview={false} />
                       </Row>
                       <div style={{ fontSize: 14 }}>
-                        <span style={{ fontWeight: 600 }}>{'1つの寄付決済につ'}</span>
-                        {'き1つの領収書ファイルを作成します。'}
+                        <span style={{ fontWeight: 600 }}>{'1つの寄付決済につき1つ'}</span>
+                        {'の領収書ファイルを作成します。'}
                       </div>
                     </Radio>
                   </StyledRadioContainer>
@@ -119,8 +120,8 @@ const NewBulkReceipt = () => {
                         <Image width={150} src={receipt02} preview={false} />
                       </Row>
                       <div style={{ fontSize: 14 }}>
-                        <span style={{ fontWeight: 600 }}>{'1人のサポーターにつ'}</span>
-                        {'き1つの領収書ファイルを作成します。'}
+                        <span style={{ fontWeight: 600 }}>{'1人のサポーターにつき1つ'}</span>
+                        {'の領収書ファイルを作成します。'}
                       </div>
                     </Radio>
                   </StyledRadioContainer>

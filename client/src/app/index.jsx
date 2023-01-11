@@ -12,6 +12,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from '../styles/global-styles';
 // PAGE
 import AppPage from './pages/AppPage';
+import AdminPage from './pages/AdminPages';
 import { NotFoundPage } from './pages/NotFoundPage';
 import ProjectClientPage from './pages/ProjectClientPage';
 import CancelRecurringPage from './pages/CancelRecurringPage';
@@ -52,9 +53,16 @@ export function App() {
               <CancelRecurringPage />
             </Route>
 
+            {/* ユーザー側 */}
             <Route path={process.env.PUBLIC_URL + '/app'}>
               <AppPage />
             </Route>
+
+            {/* 運営側 */}
+            <Route path={process.env.PUBLIC_URL + '/admin'}>
+              <AdminPage />
+            </Route>
+
             <Route component={NotFoundPage} />
           </Switch>
         </ScrollToTop>

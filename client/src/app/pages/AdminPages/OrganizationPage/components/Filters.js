@@ -154,7 +154,7 @@ const Filters = ({ open }) => {
               {/* 解約日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
                 <Form.Item name={`field-a`} label={`解約日`}>
-                  <RangePicker style={{ width: '100%' }} />
+                  <DatePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* 解約理由 */}

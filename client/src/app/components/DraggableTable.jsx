@@ -47,11 +47,13 @@ const DraggableBodyRow = ({ index, moveRow, className, style, ...restProps }) =>
 
 const DraggableTable = ({ columns = [], dataSource = [], ...rest }) => {
   const [data, setData] = useState(dataSource);
+
   const components = {
     body: {
       row: DraggableBodyRow,
     },
   };
+
   const moveRow = useCallback(
     (dragIndex, hoverIndex) => {
       const dragRow = data[dragIndex];
@@ -66,6 +68,7 @@ const DraggableTable = ({ columns = [], dataSource = [], ...rest }) => {
     },
     [data],
   );
+
   return (
     <DndProvider backend={HTML5Backend}>
       <Table
