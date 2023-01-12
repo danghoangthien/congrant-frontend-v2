@@ -8,13 +8,13 @@ import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
 import './Models/index';
 
-const OrganizationPage = () => {
+const NewsPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const renderPageTitle = () => {
     return (
       <>
         <Helmet>
-          <title>{'登録団体'}</title>
+          <title>{'お知らせ'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -31,7 +31,7 @@ const OrganizationPage = () => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <div className="page-title">{'登録団体'}</div>
+                  <div className="page-title">{'お知らせ'}</div>
                 </Col>
                 <Col className="mr-2">
                   <Input
@@ -64,8 +64,8 @@ const OrganizationPage = () => {
           <Table
             className="clickable-table"
             tableLayout="fixed"
-            TableName="継続契約一覧"
-            model="organizationList"
+            TableName="お知らせ一覧"
+            model="newsList"
             metaData={metaData}
             showRowSelection={false}
           />
@@ -75,4 +75,4 @@ const OrganizationPage = () => {
   );
 };
 
-export default OrganizationPage;
+export default NewsPage;

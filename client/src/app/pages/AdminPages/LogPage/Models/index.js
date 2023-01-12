@@ -8,8 +8,8 @@ const INITIAL_STATE = {
   column_setting: getWithExpiry(COLUMN_SETTING_LOCALSTORAGE) || Object.keys(columnMap),
 };
 
-const organizationList = {
-  name: 'organizationList',
+const adminLogList = {
+  name: 'adminLogList',
   state: INITIAL_STATE, // initial state
   reducers: {
     setData(state, payload) {
@@ -56,4 +56,4 @@ const organizationList = {
   },
 };
 
-store.addModel(organizationList);
+store.addModel(adminLogList);

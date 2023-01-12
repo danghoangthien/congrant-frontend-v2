@@ -24,6 +24,7 @@ const DataTable = ({
   showDownLoad = true,
   ExtraTitle = null,
   contextDropdownItems = () => {},
+  showRowSelection = true,
 }) => {
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
@@ -45,11 +46,13 @@ const DataTable = ({
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-    columnWidth: '48px',
-  };
+  const rowSelection = showRowSelection
+    ? {
+        selectedRowKeys,
+        onChange: onSelectChange,
+        columnWidth: '48px',
+      }
+    : null;
 
   // ページネーション・Pagination
   const renderPagination = () => {
@@ -151,7 +154,7 @@ const DataTable = ({
                   // y: '100vh',
                 }}
                 rowKey={'key'} /** must be unique, ex: ID or seq */
-                rowSelection={{ ...rowSelection }}
+                rowSelection={rowSelection}
                 loading={loading}
                 dataSource={items}
                 pagination={false}
