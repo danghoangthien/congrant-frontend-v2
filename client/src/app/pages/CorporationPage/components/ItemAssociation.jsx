@@ -1,6 +1,5 @@
 import { Table } from 'antd';
 import { SettingSelect } from 'utils/Sprites';
-const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const dataSource = [
   {
@@ -135,6 +134,7 @@ const dataSource = [
     registration_example: '',
   },
 ];
+
 const columnMap = {
   congrant_item: {
     width: 200,
@@ -148,7 +148,6 @@ const columnMap = {
     render: file_item => (
       <SettingSelect
         {...{
-          size: 'large',
           placeholder: '選択してください',
           ...(file_item ? { value: file_item } : {}),
         }}

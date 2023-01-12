@@ -29,6 +29,7 @@ const StyledBox = styled.div`
   padding: 16px;
   background: ${EXTRA_LIGHT_RED_COLOR};
   border: 1px solid ${LIGHT_RED_COLOR};
+  border-radius: 4px;
 `;
 
 const StyledList = styled.ul`

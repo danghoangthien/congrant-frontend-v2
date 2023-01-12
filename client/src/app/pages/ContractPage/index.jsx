@@ -37,7 +37,7 @@ const ContractPage = () => {
   const contract_info = {
     now: {
       plan: 1,
-      day_left: null,
+      day_left: 15,
       start_date: '2022年4月10日',
       end_date: '2022年5月10日',
       status: 1,

@@ -179,10 +179,36 @@ const ViewModeContent = ({ data, mode, setMode }) => {
 const EditModeContent = ({ data, mode, setMode, handleChangeSendaddr, sendadrr }) => (
   <>
     <DescriptionContainer mode={mode} setMode={setMode}>
-      <Descriptions.Item label={<BoldLabel label="個人No." />}>
+      <Descriptions.Item label={<BoldLabel label="法人No." />}>
         <CopiableText>{'123456'}</CopiableText>
       </Descriptions.Item>
-      <Descriptions.Item label={<BoldLabel label="氏名" />}>
+      {/* 法人名 */}
+      <Descriptions.Item label={<BoldLabel label="法人名" />}>
+        <Row>
+          <Col span={24}>
+            <Input value={'リタワークス株式会社'} />
+          </Col>
+        </Row>
+      </Descriptions.Item>
+      {/* 法人名（ふりがな） */}
+      <Descriptions.Item label={<BoldLabel label="法人名（ふりがな）" />}>
+        <Row>
+          <Col span={24}>
+            <Input value={'りたわーくすかぶしきがいしゃ'} />
+          </Col>
+        </Row>
+      </Descriptions.Item>
+
+      {/* 担当者部署・肩書き */}
+      <Descriptions.Item label={<BoldLabel label="担当者部署・肩書き" />}>
+        <Row>
+          <Col span={24}>
+            <Input value={'営業部 部長'} />
+          </Col>
+        </Row>
+      </Descriptions.Item>
+      {/* 担当者名 */}
+      <Descriptions.Item label={<BoldLabel label="担当者名" />}>
         <Row>
           <Col sm={24} md={12} lg={12}>
             <Input value={'田中'} />
@@ -192,8 +218,8 @@ const EditModeContent = ({ data, mode, setMode, handleChangeSendaddr, sendadrr }
           </Col>
         </Row>
       </Descriptions.Item>
-      {/* ふりがな */}
-      <Descriptions.Item label={<BoldLabel label="ふりがな" />}>
+      {/* 担当者名（ふりがな） */}
+      <Descriptions.Item label={<BoldLabel label="担当者名（ふりがな）" />}>
         <Row>
           <Col sm={24} md={12} lg={12}>
             <Input value={'たなか'} />
@@ -203,22 +229,11 @@ const EditModeContent = ({ data, mode, setMode, handleChangeSendaddr, sendadrr }
           </Col>
         </Row>
       </Descriptions.Item>
+
       <Descriptions.Item label={<BoldLabel label="広報物への氏名掲載" />}>
         <Checkbox checked>{'許可'}</Checkbox>
       </Descriptions.Item>
 
-      <Descriptions.Item label={<BoldLabel label="性別" />}>
-        <Radio.Group onChange={() => {}} value={1}>
-          <Radio value={1}>{'男性'}</Radio>
-          <Radio value={2}>{'女性'}</Radio>
-          <Radio value={3}>{'その他'}</Radio>
-          <Radio value={4}>{'無回答'}</Radio>
-        </Radio.Group>
-      </Descriptions.Item>
-
-      <Descriptions.Item label={<BoldLabel label="生年月日" />}>
-        <DatePicker defaultValue={moment('1991-08-01', dateFormat)} format={dateFormat} />
-      </Descriptions.Item>
       <Descriptions.Item label={<BoldLabel label="メールアドレス" />}>
         <Input value={'tanaka.taro@gmail.com'} />
       </Descriptions.Item>

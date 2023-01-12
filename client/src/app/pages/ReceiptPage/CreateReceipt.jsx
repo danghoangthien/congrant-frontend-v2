@@ -180,11 +180,12 @@ const CreateReceipt = () => {
             </Row>
             <Row>
               <Space style={{ width: '40%' }}>
-                <Button type="text" style={{ fontWeight: 600 }}>
+                <Button size="large" type="text" style={{ fontWeight: 600 }}>
                   {'キャンセル'}
                 </Button>
                 <Link to={'/app/receipts-create-history-detail'}>
                   <Button
+                    size="large"
                     onClick={e => {
                       e.stopPropagation();
                     }}

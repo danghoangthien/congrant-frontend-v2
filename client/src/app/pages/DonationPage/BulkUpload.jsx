@@ -42,7 +42,7 @@ const BulkUpload = () => {
         </div>
 
         <Card bodyStyle={{ padding: '48px 32px' }}>
-          <div className="item">
+          <div>
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
                 <div className="page-title" style={{ fontSize: 24 }}>
@@ -50,7 +50,7 @@ const BulkUpload = () => {
                 </div>
               </Col>
             </Row>
-            <Row className="item mb-6">
+            <Row className="mb-6">
               <Button
                 className="icon-btn less-shadow-btn"
                 icon={<span className="material-symbols-outlined">download</span>}
@@ -58,7 +58,7 @@ const BulkUpload = () => {
                 {'サンプルファイル（寄付決済用）をダウンロード'}
               </Button>
             </Row>
-            <Row className="item mb-14" style={{ width: '100%', maxWidth: 695 }}>
+            <Row className="mb-14" style={{ width: '100%', maxWidth: 695 }}>
               <SettingsInputContainer label={<SettingLabel label={'ファイルアップロード'} />}>
                 <DraggerUpload />
               </SettingsInputContainer>
@@ -70,11 +70,11 @@ const BulkUpload = () => {
                 </span>
               </Col>
             </Row>
-            <Row className="item mb-6">
+            <Row className="mb-6">
               <SettingsInputContainer
                 label={<SettingLabel label={'アップロードしたファイルの処理方法'} required />}
               >
-                <Radio.Group onChange={() => {}} defaultValue={2}>
+                <Radio.Group defaultValue={2}>
                   <Space direction="horizontal">
                     <Radio value={1}>{'新規レコードとして登録する'}</Radio>
                     <Radio value={2}>{'既存レコードは更新する'}</Radio>
@@ -82,7 +82,7 @@ const BulkUpload = () => {
                 </Radio.Group>
               </SettingsInputContainer>
             </Row>
-            <Row className="item mb-6">
+            <Row className="mb-6">
               <SettingsInputContainer
                 label={<SettingLabel label={'レコードIDを記載した列の項目名'} required />}
               >
@@ -111,12 +111,14 @@ const BulkUpload = () => {
                 </span>
               </Col>
             </Row>
-            <Row className="mb-5">
-              <ItemAssociation />
+            <Row className="mb-8">
+              <Col span={24} style={{ width: '100%', maxWidth: 695 }}>
+                <ItemAssociation />
+              </Col>
             </Row>
-            <Row className="mt-15">
-              <Col sm={24} md={24} lg={24} type="flex" align="center">
-                <Button type="primary" style={{ fontWeight: 600 }} size="large">
+            <Row>
+              <Col span={24} style={{ width: '100%', maxWidth: 695 }} type="flex" align="end">
+                <Button type="primary" size="large" style={{ fontWeight: '600' }}>
                   {'アップロード'}
                 </Button>
               </Col>

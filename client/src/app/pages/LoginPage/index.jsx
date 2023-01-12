@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
 import { Tabs, Space } from 'antd';

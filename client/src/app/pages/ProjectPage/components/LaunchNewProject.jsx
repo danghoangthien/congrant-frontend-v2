@@ -83,7 +83,7 @@ const LaunchNewProject = () => {
                     <strong>{'単発寄付のみ'}</strong>
                     {'を募集できます'}
                   </li>
-                  <li>{'募集期間を指定する必要があります。'}</li>
+                  <li>{'募集期間を指定する必要があります'}</li>
                   <li>{'目標金額、寄付状況を表示できます'}</li>
                 </ul>
               </StyledProjectLaunchList>

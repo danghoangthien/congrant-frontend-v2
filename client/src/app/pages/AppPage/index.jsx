@@ -5,6 +5,7 @@ import HomePage from 'app/pages/HomePage';
 import DummyPage from 'app/pages/DummyPage';
 import LoginPage from 'app/pages/LoginPage';
 import RegisterCompletePage from 'app/pages/LoginPage/Complete';
+import ResetPasswordPage from 'app/pages/LoginPage/ResetPassword';
 import RegisterReviewPage from 'app/pages/VerificationPage';
 import RegisterStepsPage from 'app/pages/VerificationPage/Steps';
 import VerificationConfirmationPage from 'app/pages/VerificationPage/Confirmation';
@@ -48,6 +49,10 @@ const AppPage = () => {
       {/* [FO_004] コングラントID登録 */}
       <Route exact path={`${path}/register/complete`}>
         <RegisterCompletePage />
+      </Route>
+      {/* [FO_012] パスワードを忘れた方 */}
+      <Route exact path={`${path}/reset_password`}>
+        <ResetPasswordPage />
       </Route>
       {/* [FO_005] 利用審査 */}
       <Route exact path={`${path}/verification`}>
