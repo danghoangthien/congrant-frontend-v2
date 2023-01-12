@@ -9,6 +9,11 @@ export const OrganizationInfoStyle = styled.div`
     margin-bottom: 6px;
   }
 
+  .more-btn {
+    padding: 0;
+    font-size: 14px;
+  }
+
   .organization-description {
     font-size: 14px;
     font-weight: 400;
@@ -16,6 +21,10 @@ export const OrganizationInfoStyle = styled.div`
     overflow: auto;
 
     .monthly & {
+      height: auto;
+    }
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
       height: auto;
     }
   }

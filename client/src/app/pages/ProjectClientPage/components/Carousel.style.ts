@@ -5,6 +5,14 @@ import { media } from 'styles/media';
 export const CarouselStyle = styled.div`
   width: 100%;
 
+  .carousel-wrapper {
+    margin-bottom: 24px;
+
+    @media screen and (max-width: ${ScreenSizes.mobile}) {
+      margin-bottom: 10px;
+    }
+  }
+
   .ant-image-img {
     height: 100%;
     object-fit: cover;

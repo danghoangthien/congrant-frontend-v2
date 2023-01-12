@@ -41,7 +41,7 @@ const IframeBox = ({ mainColor }) => {
         />
       </div>
       <div className="iframe-content">
-        <div className="iframe-title">「わたし、きょうもいきたよ」1歳のあおちゃんに心臓移植を</div>
+        <div className="iframe-title">NPO法人コングラントをサポーターとして支えてください</div>
         <Row justify="center">
           <Button
             href={process.env.PUBLIC_URL + '/project/client_name/1/1'}

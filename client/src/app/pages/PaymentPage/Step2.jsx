@@ -288,7 +288,7 @@ const Step2 = ({ project_type }) => {
               </Col>
 
               {/* 住所 */}
-              <Col className="mb-7" span={24}>
+              <Col className="mb-7" span={24} id="address">
                 <SettingsInputContainer
                   label={<FormLabel label={type === '1' ? '住所' : '所在地'} required />}
                 >
@@ -298,6 +298,7 @@ const Step2 = ({ project_type }) => {
                       required
                       size="large"
                       defaultValue="日本"
+                      getPopupContainer={() => document.getElementById('address')}
                       options={[
                         {
                           value: '日本',
@@ -462,7 +463,7 @@ const Step2 = ({ project_type }) => {
       </div>
 
       {/* ボタン */}
-      <div className="box-wrapper">
+      <div>
         {method === '2' && ( // 銀行振込
           <>
             {/* 合計金額 */}
@@ -550,7 +551,7 @@ const Step2 = ({ project_type }) => {
 
       {/* ボタン */}
       {project_type !== 'monthly' && (
-        <div className="box-wrapper">
+        <div>
           <Row>
             <Col span={24}>
               <Row justify="space-between">

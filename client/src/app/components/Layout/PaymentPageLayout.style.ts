@@ -49,6 +49,25 @@ export const PaymentPageStyle = styled.div`
     text-decoration: underline;
   }
 
+  & .project-client-footer {
+    background: #f5f5f3;
+    border-top: 1px solid #dddddd;
+  }
+
+  & .copy-right {
+    font-size: 13px;
+    font-weight: 400;
+    color: #666666;
+
+    .external-link {
+      font-weight: 700;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   & .project-client-header {
     border-bottom: 1px solid #e7e7e7;
     background: #ffffff;
@@ -110,7 +129,7 @@ export const PaymentPageStyle = styled.div`
     background: #f5f5f3;
 
     @media screen and (max-width: ${ScreenSizes.medium}) {
-      padding: 25px 20px 30px;
+      padding: 25px 20px 0;
     }
   }
 
@@ -181,6 +200,10 @@ export const PaymentPageStyle = styled.div`
       @media screen and (max-width: ${ScreenSizes.medium}) {
         padding: 40px 20px;
       }
+    }
+
+    @media screen and (max-width: ${ScreenSizes.medium}) {
+      margin: 0 -20px;
     }
   }
 

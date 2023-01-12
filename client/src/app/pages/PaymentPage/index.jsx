@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // ANTD
 import { Steps, Card } from 'antd';
@@ -23,29 +23,32 @@ import { hexToRgbA } from 'utils/helper';
 const { Step } = Steps;
 
 const Payment = () => {
-  const MAIN_COLOR = '#E34855';
+  const MAIN_COLOR = '#00FFFF';
   const { active } = useSelector(state => state['paymentStep']);
   const { method } = useSelector(state => state['paymentMethod']);
+  const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [active]);
+    if (location.hash) {
+      console.log(location.hash.slice(1));
+      let elem = document.getElementById(location.hash.slice(1));
+      console.log(elem);
+      if (elem) {
+        console.log(elem.offsetTop);
 
-  // function hexToRgbA(hex, opacity) {
-  //   var c;
-  //   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-  //     c = hex.substring(1).split('');
-  //     if (c.length === 3) {
-  //       c = [c[0], c[0], c[1], c[1], c[2], c[2]];
-  //     }
-  //     c = '0x' + c.join('');
-  //     return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + opacity + ')';
-  //   }
-  //   throw new Error('Bad Hex');
-  // }
+        setTimeout(() => {
+          window.scrollTo({ top: elem.offsetTop - 64, left: 0, behavior: 'smooth' });
+        }, 100);
+        // elem.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      console.log('else');
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+    // window.scrollTo(0, 0);
+  }, [location]);
 
   const RGBA_MAIN_COLOR = hexToRgbA(MAIN_COLOR, 0.1);
-  // const RGBA_MAIN_COLOR2 = hexToRgbA(MAIN_COLOR);
 
   // STEP STYLE
   const StyledSteps = styled.div`
@@ -111,16 +114,23 @@ const Payment = () => {
       box-shadow: 0 0 0 2px ${hexToRgbA(MAIN_COLOR, 0.2)};
     }
 
-    .ant-radio-inner::after {
+    .ant-radio-inner::after,
+    .ant-btn-primary {
       background-color: ${MAIN_COLOR};
     }
 
-    .ant-btn-primary {
-      background: ${MAIN_COLOR};
+    #address {
+      .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+        background-color: ${MAIN_COLOR};
+      }
     }
 
     .ant-radio-button-wrapper:hover,
     .change-amount-button,
+    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
+    .ant-btn:hover,
+    .ant-btn:focus,
+    .more-btn,
     a {
       color: ${MAIN_COLOR};
     }
@@ -173,7 +183,7 @@ const Payment = () => {
             </div>
 
             {/* フォーム・Form */}
-            <div className="payment-form-wrapper">
+            <div className="payment-form-wrapper" id="form">
               <Card
                 className={`${project_type !== 'monthly' ? 'payment-box' : 'payment-box mb-0'}`}
               >
