@@ -3,19 +3,19 @@ import { Helmet } from 'react-helmet-async';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './metaData';
-import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
+import { Button, Input, Row, Col } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
 import './Models/index';
 
-const OrganizationPage = () => {
+const RecurringPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const renderPageTitle = () => {
     return (
       <>
         <Helmet>
-          <title>{'登録団体'}</title>
-          <meta name="description" content={'...'} />
+          <title>{'継続契約'}</title>
+          <meta name="description" content={'継続契約'} />
         </Helmet>
       </>
     );
@@ -31,7 +31,7 @@ const OrganizationPage = () => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <div className="page-title">{'登録団体'}</div>
+                  <div className="page-title">{'継続契約'}</div>
                 </Col>
                 <Col className="mr-2">
                   <Input
@@ -65,7 +65,7 @@ const OrganizationPage = () => {
             className="clickable-table"
             tableLayout="fixed"
             TableName="継続契約一覧"
-            model="organizationList"
+            model="adminRecurringList"
             metaData={metaData}
             showRowSelection={false}
           />
@@ -75,4 +75,4 @@ const OrganizationPage = () => {
   );
 };
 
-export default OrganizationPage;
+export default RecurringPage;

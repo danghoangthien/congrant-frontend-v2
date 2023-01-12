@@ -1,23 +1,11 @@
 // ANTD
-import { Tag, Badge, Space, Button, Dropdown, Menu, Tooltip } from 'antd';
-// STYLE
-import { StyledBadgeDot } from 'styles/global-styles';
-// COMPONENT
-import DrawerHandle from '../../components/DrawerHandle';
-import Detail from '../IndividualPage/components/Detail';
-import ChangeAmount from './components/ChangeAmountClone';
-import Cancel from './components/CancelClone';
+import { Space, Tag, Tooltip } from 'antd';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import {
-  DONATION_TYPES,
-  DONATION_TYPE_COLORS,
-  DONATION_STATUS_COLOR,
-  DONATION_STATUSES,
-} from 'utils/consts';
+import { DONATION_TYPES, PLANS, DONATION_TYPE_COLORS } from 'utils/consts';
 // IMAGE
 import noteIclon from 'styles/assets/note.svg';
 
@@ -61,11 +49,31 @@ export const menuItems = status => {
     return [
       {
         key: '1',
-        label: <ChangeAmount />,
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              autorenew
+            </span>
+            <span>{'金額変更'}</span>
+          </Space>
+        ),
       },
       {
         key: '2',
-        label: <Cancel />,
+        label: (
+          <Space onClick={() => {}}>
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              do_disturb
+            </span>
+            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
+          </Space>
+        ),
       },
     ];
   } else {
@@ -143,7 +151,13 @@ export const bulkMenuItems = status => {
         key: '1',
         label: (
           <Space onClick={() => {}}>
-            <ChangeAmount />
+            <span
+              className="material-symbols-outlined fill-icon"
+              style={{ fontSize: '16px', verticalAlign: 'middle' }}
+            >
+              autorenew
+            </span>
+            <span>{'金額変更'}</span>
           </Space>
         ),
       },
@@ -167,82 +181,76 @@ export const bulkMenuItems = status => {
   }
 };
 
-const dataSource = [
-  {
-    donation_no: '12345678',
-    key: '1',
-    recurring_id: '1',
-    status: 1,
-    supporter: '山田 花子',
-    donation_type: '1',
-    plan: 'ゴールドサポーター',
-    amount: '10,000円/月',
-    first_payment_date: '2022-09-30',
-    last_payment_date: '2023-04-15',
-    money: '24,000円',
-    times: '8回',
-    reason: '解約日・理由',
-  },
-  {
-    donation_no: '12345678',
-    key: '2',
-    recurring_id: '2',
-    status: 2,
-    supporter: '山田 花子',
-    donation_type: '2',
-    plan: 'ゴールドサポーター',
-    amount: '10,000円/月',
-    first_payment_date: '2022-09-30',
-    last_payment_date: '2023-04-15',
-    money: '24,000円',
-    times: '8回',
-    reason: '解約日・理由',
-  },
-  {
-    donation_no: '12345678',
-    key: '3',
-    recurring_id: '3',
-    status: 3,
-    supporter: '山田 花子',
-    donation_type: '1',
-    plan: 'ゴールドサポーター',
-    amount: '10,000円/月',
-    first_payment_date: '2022-09-30',
-    last_payment_date: '2023-04-15',
-    money: '24,000円',
-    times: '8回',
-    reason: '解約日・理由',
-  },
-];
+// const dataSource = [
+//   {
+//     key: '1',
+//     organization_id: '12345678',
+//     organization_name: '認定NPO法人コングラント',
+//     test: 'テスト',
+//     discount: 'TSJ',
+//     plan: 'スタンダード（TSJ）',
+//     plan_end_date: '2022-12-31',
+//     next_plan: 'スタンダード',
+//     cg_verification: 1,
+//     st_verification: 1,
+//     verification_status: 1,
+//     using_payment: {
+//       stripe: 1,
+//       telecom: 2,
+//     },
+//     cg_payment_money: '1,123,000,000',
+//     cg_payment_number: '10,000',
+//     public_porjects: 3,
+//     no_public_porjects: 10,
+//     register_date: '2022-12-17 12:12:12',
+//     verify_end_date: '2022-12-17 12:12:12',
+//   },
+// ];
+
+const dataSource = Array.from(Array(500).keys()).map(i => ({
+  key: `${i}`,
+  donation_number: `${i + 1234567}`,
+  supporter_number: randomOutput([12345678]),
+  organization_id: randomOutput([12345678]),
+  organization_name: randomOutput(['認定NPO法人コングラント']),
+  donation_type: randomOutput([1, 2, 3]),
+  plan: randomOutput([1, 2, 3, 4, '']),
+  money: 30000000,
+  quantity: 1,
+  first_payment_date: '2022-09-30',
+  last_payment_date: '2023-04-15',
+  times: '8回',
+  reason: randomOutput(['解約日・理由']),
+}));
 
 const columnMap = {
   // 継続契約No.
-  donation_no: {
+  donation_number: {
     fixed: 'left',
     width: 120,
     title: '継続契約No.',
-    dataIndex: 'donation_no',
+    dataIndex: 'donation_number',
   },
-  // サポーター
-  supporter: {
-    width: 160,
-    title: 'サポーター',
-    render: row => (
-      <DrawerHandle drawerTitle="田中 太郎" drawerComponent={<Detail data={row} />}>
-        <span className="supporter-link">{row.supporter}</span>
-      </DrawerHandle>
-    ),
-  },
-  // ステータス
-  status: {
+  // サポーターNo.
+  supporter_number: {
+    fixed: 'left',
     width: 120,
-    title: 'ステータス',
-    dataIndex: 'status',
-    render: status => (
-      <StyledBadgeDot>
-        <Badge color={DONATION_STATUS_COLOR[status][0]} text={DONATION_STATUSES[status]} />
-      </StyledBadgeDot>
-    ),
+    title: 'サポーターNo.',
+    dataIndex: 'supporter_number',
+    csvOutput: ({ supporter_number }) => supporter_number,
+    defaultVisible: false,
+  },
+  // 団体ID
+  organization_id: {
+    width: 80,
+    title: '団体ID',
+    dataIndex: 'organization_id',
+  },
+  // 団体名
+  organization_name: {
+    width: 200,
+    title: '団体名',
+    dataIndex: 'organization_name',
   },
   // 寄付タイプ
   donation_type: {
@@ -260,47 +268,44 @@ const columnMap = {
         {DONATION_TYPES[donation_type] || ''}
       </Tag>
     ),
+    csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
+    defaultVisible: true,
   },
   // プラン
   plan: {
     width: 160,
     title: 'プラン',
-    render: () => {
-      const plan = randomOutput([
-        'シルバーサポーター',
-        '賛助会員（都度更新）',
-        '正会員（自動更新）',
-      ]);
-      return <>{plan}</>;
-    },
+    render: ({ plan }) => <>{PLANS[plan] || ''}</>,
+    csvOutput: row => <>{'プラン'}</>,
+    defaultVisible: false,
   },
-  // 初回決済日
-  unit_price_number_of_unit: {
+  // 単価・口数
+  money_and_quantity: {
     width: 120,
     title: '単価・口数',
-    render: () => {
-      const unit_price = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
-      const number_of_unit = randomOutput(['3', '6', '9']);
+    render: ({ money, quantity }) => {
       return (
         <>
-          <span>{unit_price}</span>
-          <br />
-          <span>
-            {number_of_unit}
-            {'口'}
-          </span>
+          {money && (
+            <>
+              {money.toLocaleString()}円
+              <br />
+            </>
+          )}
+          {quantity}口
         </>
       );
     },
+    csvOutput: ({ money, quantity }) => `${money.toLocaleString()} ${quantity}口`,
+    defaultVisible: true,
   },
   // 金額
   amount: {
     width: 120,
     title: '金額',
-    render: () => {
-      const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
-      return amount;
-    },
+    render: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
+    csvOutput: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
+    defaultVisible: true,
   },
   // 初回決済日
   first_payment_date: {
@@ -348,28 +353,9 @@ const columnMap = {
       );
     },
   },
-  // アクション
-  operate: {
-    width: 120,
-    title: 'アクション',
-    render: row => (
-      <Space onClick={e => e.stopPropagation()}>
-        <Dropdown
-          overlay={[1, 2].includes(row.status) ? <Menu items={menuItems(row.status)} /> : <></>}
-          placement="bottomRight"
-        >
-          <Button
-            className="more-menu-btn"
-            style={{ display: [1, 2].includes(row.status) ? 'flex' : 'none' }}
-            icon={<span className="material-symbols-outlined">more_horiz</span>}
-          />
-        </Dropdown>
-      </Space>
-    ),
-  },
 };
 
-const COLUMN_SETTING_LOCALSTORAGE = 'continuous_contract_list_column_setting';
+const COLUMN_SETTING_LOCALSTORAGE = 'news_list_column_setting';
 
 const getRenderColumns = () => {
   let visibleColumns = Object.keys(columnMap);

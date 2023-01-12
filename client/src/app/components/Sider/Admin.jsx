@@ -55,7 +55,14 @@ const menuData = [
   {
     label: 'レコード',
     key: '/app/record',
-    children: [getItem('寄付決済', '1'), getItem('継続契約', '2'), getItem('領収書', '3')],
+    children: [
+      {
+        label: '寄付決済',
+        key: '/app/donations',
+      },
+      getItem('継続契約', '/app/recurring'),
+      getItem('領収書', '3'),
+    ],
   },
   {
     label: 'プロジェクト',

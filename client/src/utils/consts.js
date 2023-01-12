@@ -208,6 +208,12 @@ const VERIFICATION_STATUS = {
   4: ['TelOK', SUCCESS_COLOR],
 };
 
+// お知らせステータス
+const NEWS_STATUSES = {
+  1: ['公開', SUCCESS_COLOR],
+  2: ['非公開', DARK_GRAY_COLOR],
+};
+
 // 利用中の決済
 const USING_PAYMENT = {
   1: ['Stripe', '#635BFF'],
@@ -245,5 +251,6 @@ export {
   CG_VERIFICATION,
   ST_VERIFICATION,
   VERIFICATION_STATUS,
+  NEWS_STATUSES,
   USING_PAYMENT,
 };
