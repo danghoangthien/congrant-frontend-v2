@@ -4,6 +4,7 @@ import {
   SettingLabel,
   SettingInput,
   SettingInputPassword,
+  HorizontalInputContainer,
 } from 'utils/Sprites';
 import ChangeEmail from './ChangeEmail';
 import ChangePassword from './ChangePassword';
@@ -17,43 +18,56 @@ const BasicInformation = () => {
 
       {/* ユーザー名 */}
       <Col span={24}>
-        <Col span={24} className="mb-6">
-          <SettingsInputContainer label={<SettingLabel label={'ユーザー名'} required />}>
-            <SettingInput
-              size="large"
-              style={{ width: '100%', maxWidth: 600 }}
-              placeholder={'荒木雄大'}
-            />
-          </SettingsInputContainer>
-        </Col>
+        <Row>
+          <Col span={24} className="mb-6" style={{ width: '100%', maxWidth: 600 }}>
+            <HorizontalInputContainer label={<SettingLabel required label={'生年月日'} />}>
+              <Row gutter={16} className="horizontal-input-wrapper">
+                <Col xs={{ span: 12 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                  <SettingInput
+                    size="large"
+                    style={{ width: '100%', maxWidth: 600 }}
+                    placeholder={'荒木'}
+                  />
+                </Col>
+                <Col xs={{ span: 12 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 12 }}>
+                  <SettingInput
+                    size="large"
+                    style={{ width: '100%', maxWidth: 600 }}
+                    placeholder={'雄大'}
+                  />
+                </Col>
+              </Row>
+            </HorizontalInputContainer>
+          </Col>
 
-        {/* メールアドレス */}
-        <Col span={24}>
-          <div style={{ width: '100%', maxWidth: 600 }}>
-            <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
-              <Row className="mb-2">
-                <SettingInput size="large" placeholder={'araki@congrant.com'} disabled />
-              </Row>
-              <Row align="end">
-                <ChangeEmail />
-              </Row>
-            </SettingsInputContainer>
-          </div>
-        </Col>
+          {/* メールアドレス */}
+          <Col span={24}>
+            <div style={{ width: '100%', maxWidth: 600 }}>
+              <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
+                <Row className="mb-2">
+                  <SettingInput size="large" placeholder={'araki@congrant.com'} disabled />
+                </Row>
+                <Row align="end">
+                  <ChangeEmail />
+                </Row>
+              </SettingsInputContainer>
+            </div>
+          </Col>
 
-        {/* パスワード */}
-        <Col span={24}>
-          <div style={{ width: '100%', maxWidth: 600 }}>
-            <SettingsInputContainer label={<SettingLabel label={'パスワード'} required />}>
-              <Row className="mb-2">
-                <SettingInputPassword size="large" placeholder={'********'} disabled />
-              </Row>
-              <Row align="end">
-                <ChangePassword />
-              </Row>
-            </SettingsInputContainer>
-          </div>
-        </Col>
+          {/* パスワード */}
+          <Col span={24}>
+            <div style={{ width: '100%', maxWidth: 600 }}>
+              <SettingsInputContainer label={<SettingLabel label={'パスワード'} required />}>
+                <Row className="mb-2">
+                  <SettingInputPassword size="large" placeholder={'********'} disabled />
+                </Row>
+                <Row align="end">
+                  <ChangePassword />
+                </Row>
+              </SettingsInputContainer>
+            </div>
+          </Col>
+        </Row>
       </Col>
 
       <Col span={24} className="item mt-15">
