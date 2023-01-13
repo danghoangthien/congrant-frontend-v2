@@ -5,7 +5,7 @@ import { Row, Col, Card, Button } from 'antd';
 // STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // COMPONENT
-import CommentTable from './components/CommentTable';
+import CommentTable from './components/Comment/CommentTableFull';
 import Breadcumd from 'app/components/Breadcumd';
 // CONST
 import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from './consts';

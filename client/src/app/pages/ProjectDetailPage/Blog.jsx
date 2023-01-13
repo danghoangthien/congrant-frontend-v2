@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 // STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 // COMPONENT
-import ActivityTable from './components/Activity/ActivityTable';
+import ActivityTableFull from './components/Activity/ActivityTableFull';
 import Breadcumd from 'app/components/Breadcumd';
 // CONST
 import { HEADER_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
@@ -83,7 +83,7 @@ const Blog = () => {
         {/* 活動報告 */}
         <Card className="mb-5 table-card pb-0" bodyStyle={{ padding: 0 }}>
           <Row>
-            <ActivityTable className="style-table" />
+            <ActivityTableFull className="style-table" />
           </Row>
         </Card>
       </PageLayout>

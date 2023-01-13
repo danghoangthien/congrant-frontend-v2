@@ -3,9 +3,11 @@ import AdminLayout from 'app/components/Layout/AdminLayout';
 
 import OrganizationPage from 'app/pages/AdminPages/OrganizationPage';
 import NewsPage from 'app/pages/AdminPages/NewsPage';
+import NewsDetailPage from 'app/pages/AdminPages/NewsPage/NewsDetail';
 import DonationPage from 'app/pages/AdminPages/DonationPage';
 import RecurringPage from 'app/pages/AdminPages/RecurringPage';
 import LogPage from 'app/pages/AdminPages/LogPage';
+import MailLogPage from 'app/pages/AdminPages/MailLogPage';
 
 const AdminPage = () => {
   const { path, ...rest } = useRouteMatch();
@@ -16,7 +18,10 @@ const AdminPage = () => {
         <Route path={`${path}/organization`}>
           <OrganizationPage />
         </Route>
-        <Route path={`${path}/news`}>
+        <Route path={`${path}/news/:id`}>
+          <NewsDetailPage />
+        </Route>
+        <Route exact path={`${path}/news`}>
           <NewsPage />
         </Route>
         <Route path={`${path}/donations`}>
@@ -27,6 +32,9 @@ const AdminPage = () => {
         </Route>
         <Route path={`${path}/using_log`}>
           <LogPage />
+        </Route>
+        <Route path={`${path}/mail_log`}>
+          <MailLogPage />
         </Route>
       </AdminLayout>
     </Switch>

@@ -1,10 +1,25 @@
-import { Table, Space, Select } from 'antd';
-import Reply from './Reply';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components/macro';
+// ANTD
+import { Space, Select } from 'antd';
+// STYLE
+// UTILS
+import { randomOutput } from 'utils/helper';
+import { getWithExpiry } from 'utils/localStorageHandler';
+// CONST
+import Reply from './../Reply';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail from 'app/pages/IndividualPage/components/Detail';
-import { TableStyle } from 'app/components/Table/Table.style';
 
-const randomOutput = arr => arr[Math.floor(Math.random() * arr.length)];
+const StyledLink = styled(Link)`
+  color: #000000;
+
+  & .material-symbols-outlined {
+    font-size: 16px;
+    margin-left: 8px;
+    vertical-align: text-bottom;
+  }
+`;
 
 const dataSource = Array.from(Array(10).keys()).map(i => ({
   pub_date: '2023-04-01',
@@ -14,14 +29,14 @@ const dataSource = Array.from(Array(10).keys()).map(i => ({
   reply: 'ありがとうございます！',
 }));
 
-const columns = [
-  {
+const columnMap = {
+  pub_date: {
     width: 150,
     title: '公開日時',
     dataIndex: 'pub_date',
     render: pub_date => pub_date,
   },
-  {
+  name: {
     width: 150,
     title: 'お名前',
     render: row => (
@@ -30,7 +45,7 @@ const columns = [
       </DrawerHandle>
     ),
   },
-  {
+  status: {
     width: 150,
     title: '公開/非公開',
     dataIndex: 'status',
@@ -45,17 +60,17 @@ const columns = [
       } else return <span>{'非公開希望'}</span>;
     },
   },
-  {
+  comment: {
     title: 'コメント',
     dataIndex: 'comment',
     render: comment => '応援しています！',
   },
-  {
+  reply: {
     title: '返信',
     dataIndex: 'reply',
     render: reply => 'ありがとうございます！',
   },
-  {
+  action: {
     width: 150,
     title: 'アクション',
     align: 'center',
@@ -66,22 +81,29 @@ const columns = [
       </Space>
     ),
   },
-];
+};
 
-const CommentTable = ({ ...rest }) => (
-  <TableStyle>
-    <Table
-      className="common-table"
-      {...rest}
-      tableLayout="fixed"
-      dataSource={dataSource}
-      columns={columns}
-      rowClassName={record => {
-        console.log('record', record);
-        return record.status === 1 ? 'table-row-light' : 'table-row-dark';
-      }}
-    />
-  </TableStyle>
-);
+const COLUMN_SETTING_LOCALSTORAGE = 'admin_log_list_column_setting';
 
-export default CommentTable;
+const getRenderColumns = () => {
+  let visibleColumns = Object.keys(columnMap);
+  const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
+  if (columnsInSetting) {
+    visibleColumns = visibleColumns.filter(columnName => {
+      return columnsInSetting.includes(columnName);
+    });
+  }
+  const renderColumns = visibleColumns.map(columnName => {
+    return columnMap[columnName];
+  });
+  return renderColumns;
+};
+
+const pagination = {
+  current_page: 1,
+  limit: 50,
+  total_items: 500,
+  total_page: 10,
+};
+
+export { getRenderColumns, dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap };

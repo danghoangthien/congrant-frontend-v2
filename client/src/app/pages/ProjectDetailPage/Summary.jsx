@@ -8,7 +8,7 @@ import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import Breadcumd from 'app/components/Breadcumd';
 import SummaryTable from './components/SummaryTable';
 import ActivityTable from './components/Activity/ActivityTable';
-import CommentTable from './components/CommentTable';
+import CommentTable from './components/Comment/CommentTable';
 // Icons
 import { HEADER_BREADCUMD_DATA, SUMMARY_BREADCUMD_DATA, ProjectDetailHeader } from './consts';
 // UTILS
