@@ -12,7 +12,7 @@ const Register = () => {
     return (
       <>
         <Helmet>
-          <title>{'お試し登録'}</title>
+          <title>{'新規登録'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -25,9 +25,14 @@ const Register = () => {
       <div className="item pa-10">
         <Row className="mb-2">
           <Col sm={24} md={24} lg={24} type="flex" align="center">
-            <span className="page-sub-title" style={{ fontSize: '28px' }}>
-              {'お試し登録'}
-            </span>
+            <span style={{ fontSize: 28, fontWeight: 600 }}>{'新規登録'}</span>
+          </Col>
+          <Col span={24} type="flex" align="center" className="mb-8" style={{ lineHeight: 1.5 }}>
+            <div>
+              ご登録から翌月末まで有料プランをお試しできます。
+              <br />
+              フリープランでのご利用も可能です。
+            </div>
           </Col>
         </Row>
 
@@ -65,16 +70,18 @@ const Register = () => {
           </Col>
         </Row>
 
-        <Button
-          type="primary"
-          size="large"
-          style={{ width: '100%' }}
-          onClick={() => {
-            history.push('/app/register/verify_email');
-          }}
-        >
-          {'お試し登録'}
-        </Button>
+        <Row>
+          <Button
+            type="primary"
+            size="large"
+            style={{ width: '100%' }}
+            onClick={() => {
+              history.push('/app/register/verify_email');
+            }}
+          >
+            {'お試し登録'}
+          </Button>
+        </Row>
       </div>
     </>
   );

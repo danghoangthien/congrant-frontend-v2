@@ -22,8 +22,8 @@ const History = () => {
     return (
       <>
         <Helmet>
-          <title>{'一括作成履歴'}</title>
-          <meta name="description" content={'一括作成履歴'} />
+          <title>{'領収書作成履歴'}</title>
+          <meta name="description" content={'領収書作成履歴'} />
         </Helmet>
       </>
     );
@@ -38,7 +38,7 @@ const History = () => {
       <PageLayout>
         <Row className="mb-6">
           <Col span={24}>
-            <div className="sub-page-title">{'一括作成履歴'}</div>
+            <div className="sub-page-title">{'領収書作成履歴'}</div>
           </Col>
         </Row>
         <Row className="mb-5">

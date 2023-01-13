@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { Row, Col, Button, Card, Space, Radio } from 'antd';
 import { SettingsInputContainer, SettingLabel, SettingSelect } from 'utils/Sprites';
 import ItemAssociation from './components/ItemAssociation';
-import DownloadIcon from '@mui/icons-material/Download';
 import DraggerUpload from 'app/components/DraggerUpload';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
@@ -41,21 +40,25 @@ const BulkUpload = () => {
             <Col />
           </Row>
         </div>
+
         <Card className="px-1">
-          <div className="item">
+          <div>
             <Row className="mb-5">
               <Col sm={24} md={24} lg={24}>
                 <span className="page-title">{'口座情報'}</span>
               </Col>
             </Row>
-            <Row className="item mb-6">
-              <Button icon={<DownloadIcon />}>
-                {'サンプルファイル（法人サポーター用）をダウンロード'}
+            <Row className="mb-6">
+              <Button
+                className="icon-btn"
+                icon={<span class="material-symbols-outlined">download</span>}
+              >
+                {'サンプルファイル（個人サポーター用）をダウンロード'}
               </Button>
             </Row>
-            <Row className="item mb-6">
+            <Row className="mb-6" style={{ width: '100%', maxWidth: 695 }}>
               <SettingsInputContainer label={<SettingLabel label={'ファイルアップロード'} />}>
-                <DraggerUpload style="" />
+                <DraggerUpload />
               </SettingsInputContainer>
             </Row>
             <Row className="mb-5">
@@ -63,11 +66,11 @@ const BulkUpload = () => {
                 <span className="page-title">{'処理方法'}</span>
               </Col>
             </Row>
-            <Row className="item mb-6">
+            <Row className="mb-6">
               <SettingsInputContainer
                 label={<SettingLabel label={'アップロードしたファイルの処理方法'} required />}
               >
-                <Radio.Group onChange={() => {}} defaultValue={2}>
+                <Radio.Group defaultValue={2}>
                   <Space direction="horizontal">
                     <Radio value={1}>{'新規レコードとして登録する'}</Radio>
                     <Radio value={2}>{'既存レコードは更新する'}</Radio>
@@ -75,11 +78,15 @@ const BulkUpload = () => {
                 </Radio.Group>
               </SettingsInputContainer>
             </Row>
-            <Row className="item mb-6">
+            <Row className="mb-6">
               <SettingsInputContainer
                 label={<SettingLabel label={'レコードIDを記載した列の項目名'} required />}
               >
-                <SettingSelect size="large" placeholder={'選択してください'} />
+                <SettingSelect
+                  size="large"
+                  placeholder={'選択してください'}
+                  style={{ width: 210 }}
+                />
               </SettingsInputContainer>
               <p
                 style={{
@@ -98,13 +105,15 @@ const BulkUpload = () => {
                 <span className="page-title">{'項目の関連づけ'}</span>
               </Col>
             </Row>
-            <Row className="mb-5">
-              <ItemAssociation />
+            <Row className="mb-8">
+              <Col span={24} style={{ width: '100%', maxWidth: 695 }}>
+                <ItemAssociation />
+              </Col>
             </Row>
-            <Row className="mt-15">
-              <Col sm={24} md={24} lg={24} type="flex" align="center">
-                <Button type="primary">
-                  <span style={{ fontWeight: '600' }}>{'アップロード'}</span>
+            <Row>
+              <Col span={24} style={{ width: '100%', maxWidth: 695 }} type="flex" align="end">
+                <Button type="primary" size="large" style={{ fontWeight: '600' }}>
+                  {'アップロード'}
                 </Button>
               </Col>
             </Row>

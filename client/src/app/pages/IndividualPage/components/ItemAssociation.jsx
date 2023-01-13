@@ -129,6 +129,7 @@ const dataSource = [
     registration_example: '',
   },
 ];
+
 const columnMap = {
   congrant_item: {
     width: 200,
@@ -142,7 +143,6 @@ const columnMap = {
     render: file_item => (
       <SettingSelect
         {...{
-          size: 'large',
           placeholder: '選択してください',
           ...(file_item ? { value: file_item } : {}),
         }}

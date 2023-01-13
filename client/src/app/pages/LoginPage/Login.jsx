@@ -44,17 +44,14 @@ const Login = () => {
         </Row>
 
         <Row className="mb-8">
-          <Button
-            type="primary"
-            size="large"
-            style={{ fontWeight: '600', width: '100%' }}
-            onClick={() => {}}
-          >
-            {'ログイン'}
-          </Button>
+          <Link to={'/app/login/authentication'} style={{ width: '100%' }}>
+            <Button type="primary" size="large" style={{ fontWeight: '600', width: '100%' }}>
+              {'ログイン'}
+            </Button>
+          </Link>
         </Row>
         <Row>
-          <Link to={'/app/projects'}>{'パスワードを忘れた方はこちら'}</Link>
+          <Link to={'/app/reset_password'}>{'パスワードを忘れた方はこちら'}</Link>
         </Row>
       </div>
     </>

@@ -4,12 +4,15 @@ import AppLayout from 'app/components/Layout';
 import HomePage from 'app/pages/HomePage';
 import DummyPage from 'app/pages/DummyPage';
 import LoginPage from 'app/pages/LoginPage';
+import RegisterUserPage from 'app/pages/LoginPage/RegisterUser';
 import RegisterCompletePage from 'app/pages/LoginPage/Complete';
+import ResetPasswordPage from 'app/pages/LoginPage/ResetPassword';
 import RegisterReviewPage from 'app/pages/VerificationPage';
 import RegisterStepsPage from 'app/pages/VerificationPage/Steps';
 import VerificationConfirmationPage from 'app/pages/VerificationPage/Confirmation';
 import VerificationCompletePage from 'app/pages/VerificationPage/Complete';
 import EmailVerifyPage from 'app/pages/LoginPage/EmailVerify';
+import AuthenticationPage from 'app/pages/LoginPage/Authentication';
 import DonationPage from 'app/pages/DonationPage';
 import DonationBulkUploadPage from 'app/pages/DonationPage/BulkUpload';
 import EditorPage from 'app/pages/EditorPage';
@@ -49,6 +52,10 @@ const AppPage = () => {
       <Route exact path={`${path}/register/complete`}>
         <RegisterCompletePage />
       </Route>
+      {/* [FO_012] パスワードを忘れた方 */}
+      <Route exact path={`${path}/reset_password`}>
+        <ResetPasswordPage />
+      </Route>
       {/* [FO_005] 利用審査 */}
       <Route exact path={`${path}/verification`}>
         <RegisterReviewPage />
@@ -65,9 +72,17 @@ const AppPage = () => {
       <Route exact path={`${path}/verification/complete`}>
         <VerificationCompletePage />
       </Route>
+      {/* 2段階認証 */}
+      <Route exact path={`${path}/login/authentication`}>
+        <AuthenticationPage />
+      </Route>
       {/* [FO_001] ログイン */}
       <Route path={`${path}/login`}>
         <LoginPage />
+      </Route>
+      {/* ユーザー登録 */}
+      <Route path={`${path}/register/user`}>
+        <RegisterUserPage />
       </Route>
       {/* [FO_002] お試し登録 */}
       <Route path={`${path}/register`}>
