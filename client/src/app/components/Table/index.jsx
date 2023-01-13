@@ -25,7 +25,9 @@ const DataTable = ({
   ExtraTitle = null,
   contextDropdownItems = () => {},
   showRowSelection = true,
+  ...rest
 }) => {
+  console.log('hasTableSetting', hasTableSetting);
   const dispatch = useDispatch();
   const [activeRow, setActiveRow] = useState(null);
   const [isAllRecordsSelected, setIsAllRecordsSelected] = useState(false);
@@ -113,33 +115,34 @@ const DataTable = ({
       <>
         <Card bodyStyle={{ padding: 0 }} className={hasSelected && 'mb-14'}>
           {/* カードタイトル・Card Head */}
-          <Row className="py-4 px-6" justify="space-between">
-            <Col>
-              <Space size={24}>
-                <span className="table-title">{TableName}</span>
-                {showDownLoad && <Download model={model} columnMap={metaData.columnMap} />}
-              </Space>
-            </Col>
-            {ExtraTitle && (
-              <Col type="flex" align="right">
-                {ExtraTitle}
-              </Col>
-            )}
-            {hasTableSetting && (
+          {TableName && (
+            <Row className="py-4 px-6" justify="space-between">
               <Col>
-                <Row align="middle" justify="end">
-                  <Col className="text-center">
-                    <TableSetting
-                      model={model}
-                      columnMap={metaData.columnMap}
-                      localstorageKey={metaData.COLUMN_SETTING_LOCALSTORAGE}
-                    />
-                  </Col>
-                </Row>
+                <Space size={24}>
+                  <span className="table-title">{TableName}</span>
+                  {showDownLoad && <Download model={model} columnMap={metaData.columnMap} />}
+                </Space>
               </Col>
-            )}
-          </Row>
-
+              {ExtraTitle && (
+                <Col type="flex" align="right">
+                  {ExtraTitle}
+                </Col>
+              )}
+              {hasTableSetting && (
+                <Col>
+                  <Row align="middle" justify="end">
+                    <Col className="text-center">
+                      <TableSetting
+                        model={model}
+                        columnMap={metaData.columnMap}
+                        localstorageKey={metaData.COLUMN_SETTING_LOCALSTORAGE}
+                      />
+                    </Col>
+                  </Row>
+                </Col>
+              )}
+            </Row>
+          )}
           {/* テーブル・Table */}
           <Row className="index-table-wrapper">
             <Col span={24}>
@@ -164,6 +167,7 @@ const DataTable = ({
                     onClick: () => setActiveRow(record),
                   };
                 }}
+                {...rest}
               />
             </Col>
           </Row>

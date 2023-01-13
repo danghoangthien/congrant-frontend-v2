@@ -214,6 +214,12 @@ const NEWS_STATUSES = {
   2: ['非公開', DARK_GRAY_COLOR],
 };
 
+// お知らせステータス
+const MAIL_STATUSES = {
+  1: ['送信済み', SUCCESS_COLOR],
+  2: ['550エラー', DANGER_COLOR],
+};
+
 // 利用中の決済
 const USING_PAYMENT = {
   1: ['Stripe', '#635BFF'],
@@ -252,5 +258,6 @@ export {
   ST_VERIFICATION,
   VERIFICATION_STATUS,
   NEWS_STATUSES,
+  MAIL_STATUSES,
   USING_PAYMENT,
 };

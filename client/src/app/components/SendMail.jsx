@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // ANTD
-import { Row, Modal, Button, Space } from 'antd';
+import { Row, Modal, Button, Space, Select } from 'antd';
 // SPRITE
 import {
   SettingsInputContainer,
@@ -13,6 +13,7 @@ import {
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 import styled from 'styled-components/macro';
 import { EXTRA_LIGHT_GRAY_COLOR, TEXT_GRAY_COLOR } from 'styles/StyleConstants';
+import { useMountEffect } from 'hook/useMountEffect';
 
 export const StyledReceivers = styled(Space)`
   background: ${EXTRA_LIGHT_GRAY_COLOR};
@@ -36,7 +37,10 @@ export const StyledDehighlightText = styled.span`
 
 const SendMail = ({ selectedRowKeys }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTag, setSelectedTag] = useState(null);
+  const [mailContent, setMailContent] = useState('');
 
+  useMountEffect(() => {});
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -125,8 +129,26 @@ const SendMail = ({ selectedRowKeys }) => {
         </Row>
         <Row>
           <SettingsInputContainer label={<SettingLabel label={'本文'} required />}>
-            <SettingSelect className="mb-1" value={'差込タグ'} style={{ width: 216 }} />
-            <SettingTextarea rows="10" />
+            <SettingSelect
+              className="mb-1"
+              style={{ width: 216 }}
+              onChange={value => {
+                setSelectedTag(selectedTagValue => {
+                  setMailContent(mailcontentValue => `${mailcontentValue} ${value}`);
+                  return value;
+                });
+              }}
+            >
+              <Select.Option value={'差込タグ 1'}>{'差込タグ 1'}</Select.Option>
+              <Select.Option value={'差込タグ 2'}>{'差込タグ 2'}</Select.Option>
+            </SettingSelect>
+            <SettingTextarea
+              rows="10"
+              onChange={e => {
+                setMailContent(e.target.value);
+              }}
+              value={mailContent}
+            />
           </SettingsInputContainer>
         </Row>
       </Modal>

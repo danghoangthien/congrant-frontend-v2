@@ -176,9 +176,8 @@ const CustomSider = () => {
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
   const { pathname } = useLocation();
-  const selectedItem = menuData
-    .filter(({ key }) => pathname.indexOf(key) === 0)
-    .map(({ key }) => key);
+  console.log('pathname', pathname);
+  const selectedItem = menuData.filter(({ key }) => pathname === key).map(({ key }) => key);
   return (
     <StyledSidebar
       breakpoint="xl"
