@@ -5,9 +5,9 @@ import { FacebookShareButton, TwitterShareButton, LineShareButton } from 'react-
 // IMAGE
 import IconLine from 'styles/assets/icon_line.png';
 
-const Share = ({ twitter, facebook, line }) => {
+const Share = ({ twitter, facebook, line, ...rest }) => {
   return (
-    <Row gutter={15} align="middle">
+    <Row gutter={15} align="middle" {...rest}>
       {/* Twitter */}
       {twitter && (
         <Col>

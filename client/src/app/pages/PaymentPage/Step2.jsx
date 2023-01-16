@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 // ANTD
 import { Row, Col, Checkbox } from 'antd';
 // COMPONENT
@@ -30,6 +31,28 @@ import {
 import './Models/index';
 
 const Step2 = ({ project_type }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      console.log(location.hash.slice(1));
+      let elem = document.getElementById(location.hash.slice(1));
+      console.log(elem);
+      if (elem) {
+        console.log(elem.offsetTop);
+
+        setTimeout(() => {
+          window.scrollTo({ top: elem.offsetTop - 64, left: 0, behavior: 'smooth' });
+        }, 100);
+        // elem.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      console.log('else');
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+    // window.scrollTo(0, 0);
+  }, [location]);
+
   const [type, setType] = useState('1');
   const [destination, setDestination] = useState(false);
   const [anonymous, setAnonymous] = useState(false);
@@ -237,20 +260,26 @@ const Step2 = ({ project_type }) => {
                 <>
                   {/* 性別・個人・Indiviual */}
                   <Col className="mb-7" span={24}>
-                    <SettingsInputContainer label={<FormLabel required label={'性別'} />}>
-                      <FormRadioGroupHorizontal defaultValue="a" style={{ width: '100%' }}>
-                        <FormRadio value="a" label="男性" />
-                        <FormRadio value="b" label="女性" />
-                        <FormRadio value="b" label="その他" />
-                      </FormRadioGroupHorizontal>
-                    </SettingsInputContainer>
+                    <HorizontalInputContainer label={<FormLabel required label={'性別'} />}>
+                      <Row gutter={10} className="horizontal-input-wrapper">
+                        <Col span={8}>
+                          <FormRadio value="a" style={{ width: '100%' }} label="男性" />
+                        </Col>
+                        <Col span={8}>
+                          <FormRadio value="b" style={{ width: '100%' }} label="女性" />
+                        </Col>
+                        <Col span={8}>
+                          <FormRadio value="b" style={{ width: '100%' }} label="その他" />
+                        </Col>
+                      </Row>
+                    </HorizontalInputContainer>
                   </Col>
 
                   {/* 生年月日 */}
                   <Col className="mb-7" span={24}>
                     <HorizontalInputContainer label={<FormLabel required label={'生年月日'} />}>
                       <Row gutter={10} className="horizontal-input-wrapper">
-                        <Col xs={{ span: 12 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <Col span={8}>
                           <FormSelect
                             style={{ width: '100%' }}
                             required
@@ -258,7 +287,7 @@ const Step2 = ({ project_type }) => {
                             placeholder="年"
                           ></FormSelect>
                         </Col>
-                        <Col xs={{ span: 12 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <Col span={8}>
                           <FormSelect
                             style={{ width: '100%' }}
                             required
@@ -266,7 +295,7 @@ const Step2 = ({ project_type }) => {
                             placeholder="月"
                           ></FormSelect>
                         </Col>
-                        <Col xs={{ span: 12 }} sm={{ span: 12 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <Col span={8}>
                           <FormSelect
                             style={{ width: '100%' }}
                             required
@@ -465,7 +494,7 @@ const Step2 = ({ project_type }) => {
       {/* ボタン */}
       <div>
         {method === '2' && ( // 銀行振込
-          <>
+          <div className="box-wrapper">
             {/* 合計金額 */}
             {/* <Col span={24} className="mb-8">
             <Row className="mb-5" align="middle" justify="space-between">
@@ -545,7 +574,7 @@ const Step2 = ({ project_type }) => {
                 </StyledPrivacyCard>
               </Col>
             </Row>
-          </>
+          </div>
         )}
       </div>
 

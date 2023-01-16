@@ -70,13 +70,11 @@ export const CarouselStyle = styled.div`
         opacity: 0.8;
       }
 
-      @media screen and (max-width: ${ScreenSizes.mobile}) {
-        // width: auto !important;
-      }
+      width: 100px !important;
 
-      ${media.small`
-        width: 100px !important;
-      `}
+      @media screen and (max-width: ${ScreenSizes.medium}) {
+        width: 80px !important;
+      }
     }
 
     .img-cover {

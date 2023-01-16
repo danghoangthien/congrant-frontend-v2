@@ -34,6 +34,7 @@ export const ProjectClientPageStyle = styled.div`
     width: 100%;
     max-width: 1060px;
     margin: 0 auto;
+    position: relative;
 
     &.basic {
       max-width: 700px;
@@ -53,21 +54,6 @@ export const ProjectClientPageStyle = styled.div`
     }
   }
 
-  & .copy-right {
-    font-size: 13px;
-    font-weight: 400;
-    color: #666666;
-
-    .external-link {
-      font-weight: 700;
-      color: #2952a2;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
   & main {
     min-height: 100%;
     padding: 50px 20px 100px;
@@ -75,11 +61,6 @@ export const ProjectClientPageStyle = styled.div`
     @media screen and (max-width: ${ScreenSizes.medium}) {
       padding: 25px 20px 30px;
     }
-  }
-
-  & .project-client-footer {
-    background: none;
-    border-top: 1px solid #dddddd;
   }
 
   & .project-client-header {
@@ -193,24 +174,6 @@ export const ProjectClientPageStyle = styled.div`
 
     .ant-tabs-tab {
       padding-bottom: 20px;
-    }
-  }
-
-  & .footer-logo {
-    // width: 200px;
-
-    .ant-image {
-      // height: 35px;
-
-      // img {
-      //   width: 100%;
-      //   height: 100%;
-      //   object-fit: contain;
-      // }
-
-      @media screen and (max-width: ${ScreenSizes.medium}) {
-        // height: 27px;
-      }
     }
   }
 

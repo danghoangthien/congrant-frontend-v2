@@ -49,25 +49,6 @@ export const PaymentPageStyle = styled.div`
     text-decoration: underline;
   }
 
-  & .project-client-footer {
-    background: #f5f5f3;
-    border-top: 1px solid #dddddd;
-  }
-
-  & .copy-right {
-    font-size: 13px;
-    font-weight: 400;
-    color: #666666;
-
-    .external-link {
-      font-weight: 700;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
   & .project-client-header {
     border-bottom: 1px solid #e7e7e7;
     background: #ffffff;

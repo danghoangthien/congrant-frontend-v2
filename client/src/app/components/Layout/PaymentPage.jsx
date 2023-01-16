@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+// STYLE
 import { PaymentPageStyle } from './PaymentPageLayout.style';
+// ANTD
 import { Layout, Row, Image, Col, Space } from 'antd';
+// MEDIA QUERY
 import Media from 'react-media';
-import CongrantLogo from 'styles/assets/logo_congrant_gray.svg';
+// COMPONENT
+import ProjectFooter from './ProjectFooter';
 // IMAGE
 const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 const PaymentPage = ({ children }) => {
   const googleTranslateElementInit = () => {
@@ -81,69 +85,7 @@ const PaymentPage = ({ children }) => {
         <Content>{children}</Content>
 
         {/* フッター・Footer */}
-        <Footer className="project-client-footer">
-          <Row>
-            <Col className="mb-3" type="flex" align="center" span={24}>
-              <div className="footer-logo">
-                <Media queries={{ small: '(max-width: 991px)' }}>
-                  {matches =>
-                    matches.small ? (
-                      <Image
-                        preview={false}
-                        // width={154}
-                        height={27}
-                        src={CongrantLogo}
-                      />
-                    ) : (
-                      <Image
-                        preview={false}
-                        // width={154}
-                        height={35}
-                        src={CongrantLogo}
-                      />
-                    )
-                  }
-                </Media>
-              </div>
-            </Col>
-            <Col type="flex" align="center" span={24}>
-              <div className="copy-right">
-                <Media queries={{ small: '(max-width: 991px)' }}>
-                  {matches =>
-                    matches.small ? (
-                      <span>
-                        このページは寄付・会費決済サービス
-                        <br />
-                        <a
-                          className="external-link"
-                          href="http://congrant.com/jp/"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          コングラント
-                        </a>
-                        で作成されています。
-                      </span>
-                    ) : (
-                      <span>
-                        このページは寄付・会費決済サービス「
-                        <a
-                          className="external-link"
-                          href="http://congrant.com/jp/"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          コングラント
-                        </a>
-                        」で作成されています。
-                      </span>
-                    )
-                  }
-                </Media>
-              </div>
-            </Col>
-          </Row>
-        </Footer>
+        <ProjectFooter />
       </PaymentPageStyle>
     </>
   );
