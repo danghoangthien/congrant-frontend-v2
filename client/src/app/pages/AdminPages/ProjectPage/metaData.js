@@ -1,13 +1,21 @@
 // ANTD
-import { Space, Tag, Tooltip } from 'antd';
+import { Badge, Space, Tag, Button } from 'antd';
+// STYLE
+import { StyledBadgeDot } from './ProjectPage.style';
+import { StyledProjectPaymentTypeTag } from 'styles/Tag.style';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import { DONATION_TYPES, PLANS, DONATION_TYPE_COLORS } from 'utils/consts';
-// IMAGE
-import noteIclon from 'styles/assets/note.svg';
+import {
+  ADMIN_PROJECT_STATUSES,
+  CONTRACT_PLANS,
+  PROJECT_TYPES,
+  DONATION_TYPE_COLORS,
+  DONATION_TYPES,
+  PROJECT_PAYMENT_TYPES,
+} from 'utils/consts';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
@@ -181,76 +189,122 @@ export const bulkMenuItems = status => {
   }
 };
 
-// const dataSource = [
-//   {
-//     key: '1',
-//     organization_id: '12345678',
-//     organization_name: '認定NPO法人コングラント',
-//     test: 'テスト',
-//     discount: 'TSJ',
-//     plan: 'スタンダード（TSJ）',
-//     plan_end_date: '2022-12-31',
-//     next_plan: 'スタンダード',
-//     cg_verification: 1,
-//     st_verification: 1,
-//     verification_status: 1,
-//     using_payment: {
-//       stripe: 1,
-//       telecom: 2,
-//     },
-//     cg_payment_money: '1,123,000,000',
-//     cg_payment_number: '10,000',
-//     public_porjects: 3,
-//     no_public_porjects: 10,
-//     register_date: '2022-12-17 12:12:12',
-//     verify_end_date: '2022-12-17 12:12:12',
-//   },
-// ];
-
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
-  donation_number: `${i + 1234567}`,
-  supporter_number: randomOutput([12345678]),
+  project_id: `${i + 1}`,
+  project_name: randomOutput(['NPO法人コングラントをサポーターとして支えてください。']),
+  status: randomOutput([1, 2, 3]),
   organization_id: randomOutput([12345678]),
   organization_name: randomOutput(['認定NPO法人コングラント']),
+  plan: randomOutput([1, 2, 3, 4]),
+  project_type: PROJECT_TYPES[randomOutput([1, 2, 3])],
+  reception_period: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
   donation_type: randomOutput([1, 2, 3]),
-  plan: randomOutput([1, 2, 3, 4, '']),
-  money: 30000000,
-  quantity: 1,
-  first_payment_date: '2022-09-30',
-  last_payment_date: '2023-04-15',
-  times: '8回',
-  reason: randomOutput(['解約日・理由']),
+  payment_system: randomOutput([1, 2]),
+  payment_system: randomOutput([1, 2]),
+  option: randomOutput(['ぷらす８', '-', 'giving100']),
+  end_date: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  discount: randomOutput(['TSJ', '']),
+  usage_fee: randomOutput(['76,800円', '48,000円', '96,000円', '0円']),
+  payment_method: randomOutput(['カード決済', '銀行振込']),
+  settlement_date: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  public_app_date: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  updated_at: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
 }));
 
 const columnMap = {
-  // 継続契約No.
-  donation_number: {
+  // プロジェクトID
+  project_id: {
     fixed: 'left',
     width: 120,
-    title: '継続契約No.',
-    dataIndex: 'donation_number',
+    title: 'プロジェクトID',
+    dataIndex: 'project_id',
   },
-  // サポーターNo.
-  supporter_number: {
-    fixed: 'left',
-    width: 120,
-    title: 'サポーターNo.',
-    dataIndex: 'supporter_number',
-    csvOutput: ({ supporter_number }) => supporter_number,
-    defaultVisible: false,
+  // プロジェクト名
+  project_name: {
+    width: 200,
+    title: 'プロジェクト名',
+    dataIndex: 'project_name',
   },
-  // 団体ID
-  organization_id: {
-    width: 80,
-    title: '団体ID',
-    dataIndex: 'organization_id',
+  // リンク
+  link: {
+    width: 200,
+    title: 'リンク',
+    dataIndex: 'link',
+    render: () => <Button type="link">{randomOutput(['公開リンク', 'プレビュー'])}</Button>,
   },
   // 団体名
   organization_name: {
     width: 200,
     title: '団体名',
     dataIndex: 'organization_name',
+  },
+  // プラン
+  plan: {
+    width: 160,
+    title: 'プラン',
+    render: ({ plan }) => {
+      console.log(CONTRACT_PLANS[plan], 'debug contract plan');
+      return <>{CONTRACT_PLANS[plan][0] || ''}</>;
+    },
+    csvOutput: row => <>{'プラン'}</>,
+    defaultVisible: false,
+  },
+  //ステータス
+  status: {
+    width: 120,
+    title: 'ステータス',
+    dataIndex: 'status',
+    render: status => (
+      <StyledBadgeDot>
+        <Badge color={ADMIN_PROJECT_STATUSES[status][1]} text={ADMIN_PROJECT_STATUSES[status][0]} />
+      </StyledBadgeDot>
+    ),
+  },
+  // 編集
+  edit: {
+    width: 200,
+    title: 'リンク',
+    dataIndex: 'link',
+    render: () =>
+      randomOutput([<Button>{'編集'}</Button>, <Button type="primary">{'審査'}</Button>]),
+  },
+  // プロジェクトタイプ
+  project_type: {
+    width: 200,
+    title: 'プロジェクトタイプ',
+    dataIndex: 'project_type',
+  },
+  //受付期間
+  reception_period: {
+    width: 200,
+    title: '受付期間',
+    dataIndex: 'reception_period',
   },
   // 寄付タイプ
   donation_type: {
@@ -268,90 +322,35 @@ const columnMap = {
         {DONATION_TYPES[donation_type] || ''}
       </Tag>
     ),
-    csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
-    defaultVisible: true,
   },
-  // プラン
-  plan: {
-    width: 160,
-    title: 'プラン',
-    render: ({ plan }) => <>{PLANS[plan][0] || ''}</>,
-    csvOutput: row => <>{'プラン'}</>,
-    defaultVisible: false,
+  // 決済システム
+  payment_system: {
+    width: 100,
+    title: '決済システム',
+    dataIndex: 'payment_system',
+    render: payment_system => (
+      <StyledProjectPaymentTypeTag projectPaymentType={payment_system}>
+        {PROJECT_PAYMENT_TYPES[payment_system]}
+      </StyledProjectPaymentTypeTag>
+    ),
   },
-  // 単価・口数
-  money_and_quantity: {
+  // オプション
+  option: {
     width: 120,
-    title: '単価・口数',
-    render: ({ money, quantity }) => {
-      return (
-        <>
-          {money && (
-            <>
-              {money.toLocaleString()}円
-              <br />
-            </>
-          )}
-          {quantity}口
-        </>
-      );
-    },
-    csvOutput: ({ money, quantity }) => `${money.toLocaleString()} ${quantity}口`,
-    defaultVisible: true,
+    title: 'オプション',
+    dataIndex: 'option',
   },
-  // 金額
-  amount: {
+  // 公開申請日
+  public_app_date: {
     width: 120,
-    title: '金額',
-    render: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
-    csvOutput: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
-    defaultVisible: true,
+    title: '公開申請日 ',
+    dataIndex: 'public_app_date',
   },
-  // 初回決済日
-  first_payment_date: {
+  // 更新日
+  updated_at: {
     width: 120,
-    title: '初回決済日',
-    dataIndex: 'first_payment_date',
-  },
-  // 最終決済日
-  last_payment_date: {
-    width: 120,
-    title: '最終決済日',
-    dataIndex: 'last_payment_date',
-  },
-  // 累計寄付回数
-  cumulative_amount: {
-    width: 120,
-    title: '累計寄付金額',
-    render: () => {
-      const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
-      return amount;
-    },
-  },
-  // 累計寄付回数
-  cumulative_times: {
-    width: 120,
-    title: '累計寄付回数',
-    render: ({ times }) => {
-      return <>{times}</>;
-    },
-  },
-  // 解約日・理由
-  date_and_reason: {
-    width: 160,
-    title: '解約日・理由',
-    render: ({ reason }) => {
-      return (
-        <Space>
-          <span>{'2022-04-01'}</span>
-          <div style={{ textAlign: 'center' }}>
-            <Tooltip title={reason}>
-              <img src={noteIclon} alt="" />
-            </Tooltip>
-          </div>
-        </Space>
-      );
-    },
+    title: '更新日',
+    dataIndex: 'updated_at',
   },
 };
 

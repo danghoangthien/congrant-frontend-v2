@@ -1,13 +1,13 @@
 // ANTD
-import { Space, Tag, Tooltip } from 'antd';
+import { Space, Badge } from 'antd';
+// STYLE
+import { StyledBadgeDot } from './AmountPage';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import { DONATION_TYPES, PLANS, DONATION_TYPE_COLORS } from 'utils/consts';
-// IMAGE
-import noteIclon from 'styles/assets/note.svg';
+import { AMOUNT_STATUSES } from 'utils/consts';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
@@ -181,64 +181,29 @@ export const bulkMenuItems = status => {
   }
 };
 
-// const dataSource = [
-//   {
-//     key: '1',
-//     organization_id: '12345678',
-//     organization_name: '認定NPO法人コングラント',
-//     test: 'テスト',
-//     discount: 'TSJ',
-//     plan: 'スタンダード（TSJ）',
-//     plan_end_date: '2022-12-31',
-//     next_plan: 'スタンダード',
-//     cg_verification: 1,
-//     st_verification: 1,
-//     verification_status: 1,
-//     using_payment: {
-//       stripe: 1,
-//       telecom: 2,
-//     },
-//     cg_payment_money: '1,123,000,000',
-//     cg_payment_number: '10,000',
-//     public_porjects: 3,
-//     no_public_porjects: 10,
-//     register_date: '2022-12-17 12:12:12',
-//     verify_end_date: '2022-12-17 12:12:12',
-//   },
-// ];
-
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
-  donation_number: `${i + 1234567}`,
-  supporter_number: randomOutput([12345678]),
+  status: randomOutput([1, 2, 3]),
+  application_datetime: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
   organization_id: randomOutput([12345678]),
   organization_name: randomOutput(['認定NPO法人コングラント']),
-  donation_type: randomOutput([1, 2, 3]),
-  plan: randomOutput([1, 2, 3, 4, '']),
-  money: 30000000,
-  quantity: 1,
-  first_payment_date: '2022-09-30',
-  last_payment_date: '2023-04-15',
-  times: '8回',
-  reason: randomOutput(['解約日・理由']),
+  supporter_number: randomOutput([12345678]),
+  membership_phone_number: randomOutput(['0938354758', '000111222333', '0808272727']),
+  current_amount: randomOutput(['4,000']),
+  amount_after_change: randomOutput(['6,000', '7,000']),
 }));
 
 const columnMap = {
-  // 継続契約No.
-  donation_number: {
-    fixed: 'left',
-    width: 120,
-    title: '継続契約No.',
-    dataIndex: 'donation_number',
-  },
-  // サポーターNo.
-  supporter_number: {
-    fixed: 'left',
-    width: 120,
-    title: 'サポーターNo.',
-    dataIndex: 'supporter_number',
-    csvOutput: ({ supporter_number }) => supporter_number,
-    defaultVisible: false,
+  // 申請日時
+  application_datetime: {
+    width: 145,
+    title: '申請日時',
+    dataIndex: 'application_datetime',
   },
   // 団体ID
   organization_id: {
@@ -252,110 +217,47 @@ const columnMap = {
     title: '団体名',
     dataIndex: 'organization_name',
   },
-  // 寄付タイプ
-  donation_type: {
+  // サポーターNo.
+  supporter_number: {
+    fixed: 'left',
     width: 120,
-    title: '寄付タイプ',
-    dataIndex: 'donation_type',
-    render: donation_type => (
-      <Tag
-        style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
-        }}
-      >
-        {DONATION_TYPES[donation_type] || ''}
-      </Tag>
-    ),
-    csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
-    defaultVisible: true,
-  },
-  // プラン
-  plan: {
-    width: 160,
-    title: 'プラン',
-    render: ({ plan }) => <>{PLANS[plan][0] || ''}</>,
-    csvOutput: row => <>{'プラン'}</>,
+    title: 'サポーターNo.',
+    dataIndex: 'supporter_number',
+    csvOutput: ({ supporter_number }) => supporter_number,
     defaultVisible: false,
   },
-  // 単価・口数
-  money_and_quantity: {
-    width: 120,
-    title: '単価・口数',
-    render: ({ money, quantity }) => {
-      return (
-        <>
-          {money && (
-            <>
-              {money.toLocaleString()}円
-              <br />
-            </>
-          )}
-          {quantity}口
-        </>
-      );
-    },
-    csvOutput: ({ money, quantity }) => `${money.toLocaleString()} ${quantity}口`,
-    defaultVisible: true,
+  // テレコム会員番号
+  membership_phone_number: {
+    width: 200,
+    title: 'テレコム会員番号',
+    dataIndex: 'membership_phone_number',
   },
-  // 金額
-  amount: {
-    width: 120,
-    title: '金額',
-    render: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
-    csvOutput: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
-    defaultVisible: true,
+  // 今の金額
+  current_amount: {
+    width: 200,
+    title: '今の金額',
+    dataIndex: 'current_amount',
   },
-  // 初回決済日
-  first_payment_date: {
-    width: 120,
-    title: '初回決済日',
-    dataIndex: 'first_payment_date',
+  // 変更後の金額
+  amount_after_change: {
+    width: 200,
+    title: '変更後の金額',
+    dataIndex: 'amount_after_change',
   },
-  // 最終決済日
-  last_payment_date: {
+  //ステータス
+  status: {
     width: 120,
-    title: '最終決済日',
-    dataIndex: 'last_payment_date',
-  },
-  // 累計寄付回数
-  cumulative_amount: {
-    width: 120,
-    title: '累計寄付金額',
-    render: () => {
-      const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
-      return amount;
-    },
-  },
-  // 累計寄付回数
-  cumulative_times: {
-    width: 120,
-    title: '累計寄付回数',
-    render: ({ times }) => {
-      return <>{times}</>;
-    },
-  },
-  // 解約日・理由
-  date_and_reason: {
-    width: 160,
-    title: '解約日・理由',
-    render: ({ reason }) => {
-      return (
-        <Space>
-          <span>{'2022-04-01'}</span>
-          <div style={{ textAlign: 'center' }}>
-            <Tooltip title={reason}>
-              <img src={noteIclon} alt="" />
-            </Tooltip>
-          </div>
-        </Space>
-      );
-    },
+    title: 'ステータス',
+    dataIndex: 'status',
+    render: status => (
+      <StyledBadgeDot>
+        <Badge color={AMOUNT_STATUSES[status][1]} text={AMOUNT_STATUSES[status][0]} />
+      </StyledBadgeDot>
+    ),
   },
 };
 
-const COLUMN_SETTING_LOCALSTORAGE = 'news_list_column_setting';
+const COLUMN_SETTING_LOCALSTORAGE = 'admin_management_user_list_column_setting';
 
 const getRenderColumns = () => {
   let visibleColumns = Object.keys(columnMap);
