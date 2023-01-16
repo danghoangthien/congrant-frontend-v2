@@ -81,6 +81,17 @@ const PROJECT_STATUSES = {
   3: '非公開',
   4: '非公開（引継済）',
 };
+const ADMIN_PROJECT_STATUSES = {
+  1: ['公開', SUCCESS_COLOR],
+  2: ['審査待ち', WARNING_COLOR],
+  3: ['非公開', DARK_GRAY_COLOR],
+  4: ['非公開（引継済）', DARK_GRAY_COLOR],
+};
+
+const USER_STATUSES = {
+  1: ['有効', SUCCESS_COLOR],
+  2: ['無効', DARK_GRAY_COLOR],
+};
 
 const PROJECT_STATUS_CLASSES = {
   1: 'public',
@@ -187,6 +198,11 @@ const CONTRACT_STATUES = {
   6: ['フリープランへの変更を受け付けました'],
 };
 
+const CONTRACT_PLAN_STATUSES = {
+  1: ['利用中', SUCCESS_COLOR],
+  2: ['開始前', DANGER_COLOR],
+  3: ['終了', DARK_GRAY_COLOR],
+};
 // CG審査
 const CG_VERIFICATION = {
   1: ['OK', SUCCESS_COLOR],
@@ -212,6 +228,13 @@ const VERIFICATION_STATUS = {
 const NEWS_STATUSES = {
   1: ['公開', SUCCESS_COLOR],
   2: ['非公開', DARK_GRAY_COLOR],
+};
+
+// お知らせステータス
+const AMOUNT_STATUSES = {
+  1: ['変更完了', SUCCESS_COLOR],
+  2: ['保留', WARNING_COLOR],
+  3: ['未完了', DARK_GRAY_COLOR],
 };
 
 // お知らせステータス
@@ -260,4 +283,8 @@ export {
   NEWS_STATUSES,
   MAIL_STATUSES,
   USING_PAYMENT,
+  CONTRACT_PLAN_STATUSES,
+  ADMIN_PROJECT_STATUSES,
+  USER_STATUSES,
+  AMOUNT_STATUSES,
 };

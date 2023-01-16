@@ -1,13 +1,13 @@
 // ANTD
-import { Space, Tag, Tooltip } from 'antd';
+import { Space, Badge } from 'antd';
+// STYLE
+import { StyledBadgeDot } from './ManagementUser.style';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import { DONATION_TYPES, PLANS, DONATION_TYPE_COLORS } from 'utils/consts';
-// IMAGE
-import noteIclon from 'styles/assets/note.svg';
+import { USER_STATUSES } from 'utils/consts';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
@@ -181,64 +181,40 @@ export const bulkMenuItems = status => {
   }
 };
 
-// const dataSource = [
-//   {
-//     key: '1',
-//     organization_id: '12345678',
-//     organization_name: '認定NPO法人コングラント',
-//     test: 'テスト',
-//     discount: 'TSJ',
-//     plan: 'スタンダード（TSJ）',
-//     plan_end_date: '2022-12-31',
-//     next_plan: 'スタンダード',
-//     cg_verification: 1,
-//     st_verification: 1,
-//     verification_status: 1,
-//     using_payment: {
-//       stripe: 1,
-//       telecom: 2,
-//     },
-//     cg_payment_money: '1,123,000,000',
-//     cg_payment_number: '10,000',
-//     public_porjects: 3,
-//     no_public_porjects: 10,
-//     register_date: '2022-12-17 12:12:12',
-//     verify_end_date: '2022-12-17 12:12:12',
-//   },
-// ];
-
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
-  donation_number: `${i + 1234567}`,
-  supporter_number: randomOutput([12345678]),
+  status: randomOutput([1, 2]),
+  last_login_at: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  email: randomOutput([
+    'araki@congrant.com',
+    `yoshikawa@congrant.com`,
+    'takahashi@congrant.com',
+    'oshida@congrant.com',
+  ]),
+  authority: randomOutput(['システム管理者', 'サポート担当者']),
+  user_id: randomOutput([1000001, 1000003, 1000005, 1000002, 1000004]),
+  user_name: randomOutput(['荒木雄大', '荒木 雄大', '押田 悠希', '内藤 千賀']),
   organization_id: randomOutput([12345678]),
   organization_name: randomOutput(['認定NPO法人コングラント']),
-  donation_type: randomOutput([1, 2, 3]),
-  plan: randomOutput([1, 2, 3, 4, '']),
-  money: 30000000,
-  quantity: 1,
-  first_payment_date: '2022-09-30',
-  last_payment_date: '2023-04-15',
-  times: '8回',
-  reason: randomOutput(['解約日・理由']),
 }));
 
 const columnMap = {
-  // 継続契約No.
-  donation_number: {
-    fixed: 'left',
-    width: 120,
-    title: '継続契約No.',
-    dataIndex: 'donation_number',
+  // ユーザーID
+  user_id: {
+    width: 80,
+    title: 'ユーザーID',
+    dataIndex: 'user_id',
   },
-  // サポーターNo.
-  supporter_number: {
-    fixed: 'left',
+  // ユーザー名
+  user_name: {
     width: 120,
-    title: 'サポーターNo.',
-    dataIndex: 'supporter_number',
-    csvOutput: ({ supporter_number }) => supporter_number,
-    defaultVisible: false,
+    title: 'ユーザー名',
+    dataIndex: 'user_name',
   },
   // 団体ID
   organization_id: {
@@ -252,110 +228,37 @@ const columnMap = {
     title: '団体名',
     dataIndex: 'organization_name',
   },
-  // 寄付タイプ
-  donation_type: {
+  //ステータス
+  status: {
     width: 120,
-    title: '寄付タイプ',
-    dataIndex: 'donation_type',
-    render: donation_type => (
-      <Tag
-        style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
-        }}
-      >
-        {DONATION_TYPES[donation_type] || ''}
-      </Tag>
+    title: 'ステータス',
+    dataIndex: 'status',
+    render: status => (
+      <StyledBadgeDot>
+        <Badge color={USER_STATUSES[status][1]} text={USER_STATUSES[status][0]} />
+      </StyledBadgeDot>
     ),
-    csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
-    defaultVisible: true,
   },
-  // プラン
-  plan: {
-    width: 160,
-    title: 'プラン',
-    render: ({ plan }) => <>{PLANS[plan][0] || ''}</>,
-    csvOutput: row => <>{'プラン'}</>,
-    defaultVisible: false,
+  email: {
+    width: 200,
+    title: 'メールアドレス',
+    dataIndex: 'email',
+    csvOutput: email => email,
   },
-  // 単価・口数
-  money_and_quantity: {
+  authority: {
     width: 120,
-    title: '単価・口数',
-    render: ({ money, quantity }) => {
-      return (
-        <>
-          {money && (
-            <>
-              {money.toLocaleString()}円
-              <br />
-            </>
-          )}
-          {quantity}口
-        </>
-      );
-    },
-    csvOutput: ({ money, quantity }) => `${money.toLocaleString()} ${quantity}口`,
-    defaultVisible: true,
+    title: '権限',
+    dataIndex: 'authority',
   },
-  // 金額
-  amount: {
-    width: 120,
-    title: '金額',
-    render: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
-    csvOutput: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
-    defaultVisible: true,
-  },
-  // 初回決済日
-  first_payment_date: {
-    width: 120,
-    title: '初回決済日',
-    dataIndex: 'first_payment_date',
-  },
-  // 最終決済日
-  last_payment_date: {
-    width: 120,
-    title: '最終決済日',
-    dataIndex: 'last_payment_date',
-  },
-  // 累計寄付回数
-  cumulative_amount: {
-    width: 120,
-    title: '累計寄付金額',
-    render: () => {
-      const amount = randomOutput(['30,000,000円', '3,000円', '6,000円', '9,000円']);
-      return amount;
-    },
-  },
-  // 累計寄付回数
-  cumulative_times: {
-    width: 120,
-    title: '累計寄付回数',
-    render: ({ times }) => {
-      return <>{times}</>;
-    },
-  },
-  // 解約日・理由
-  date_and_reason: {
-    width: 160,
-    title: '解約日・理由',
-    render: ({ reason }) => {
-      return (
-        <Space>
-          <span>{'2022-04-01'}</span>
-          <div style={{ textAlign: 'center' }}>
-            <Tooltip title={reason}>
-              <img src={noteIclon} alt="" />
-            </Tooltip>
-          </div>
-        </Space>
-      );
-    },
+  // 最終ログイン日時
+  last_login_at: {
+    width: 100,
+    title: '最終ログイン日時',
+    dataIndex: 'last_login_at',
   },
 };
 
-const COLUMN_SETTING_LOCALSTORAGE = 'news_list_column_setting';
+const COLUMN_SETTING_LOCALSTORAGE = 'admin_management_user_list_column_setting';
 
 const getRenderColumns = () => {
   let visibleColumns = Object.keys(columnMap);
