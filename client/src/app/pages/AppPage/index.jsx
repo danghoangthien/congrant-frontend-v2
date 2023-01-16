@@ -15,7 +15,6 @@ import EmailVerifyPage from 'app/pages/LoginPage/EmailVerify';
 import AuthenticationPage from 'app/pages/LoginPage/Authentication';
 import DonationPage from 'app/pages/DonationPage';
 import DonationBulkUploadPage from 'app/pages/DonationPage/BulkUpload';
-import EditorPage from 'app/pages/EditorPage';
 import BasicSettingsPage from 'app/pages/BasicSettingsPage';
 import CorporationSettingPage from 'app/pages/CorporationSettingPage';
 import IndividualSettingsPage from 'app/pages/IndividualSettingsPage';
@@ -33,7 +32,6 @@ import CreateReceiptHistory from 'app/pages/ReceiptPage/History';
 import ReceiptHistoryDetail from 'app/pages/ReceiptPage/HistoryDetail';
 import ReceiptBulkPage from 'app/pages/ReceiptBulkPage';
 import ReccuringPage from 'app/pages/ReccuringPage';
-import CkeditorPage from 'app/pages/CkeditorPage';
 import PaymentManagePage from 'app/pages/PaymentPage/PaymentManage';
 import LearningPage from 'app/pages/LearningPage';
 import DiscountPage from 'app/pages/DiscountPage';
@@ -160,12 +158,6 @@ const AppPage = () => {
         </Route>
         <Route path={`${path}/contract`}>
           <ContractPage />
-        </Route>
-        <Route path={`${path}/editor`}>
-          <EditorPage />
-        </Route>
-        <Route path={`${path}/ckeditor`}>
-          <CkeditorPage />
         </Route>
       </AppLayout>
     </Switch>
