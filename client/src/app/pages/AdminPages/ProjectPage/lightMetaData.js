@@ -16,6 +16,7 @@ import {
   DONATION_TYPES,
   PROJECT_PAYMENT_TYPES,
 } from 'utils/consts';
+import Examination from './components/Examination';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
@@ -256,7 +257,11 @@ const columnMap = {
     width: 200,
     title: 'リンク',
     dataIndex: 'link',
-    render: () => <Button type="link">{randomOutput(['公開リンク', 'プレビュー'])}</Button>,
+    render: () => (
+      <Button onClick={e => e.stopPropagation()}>
+        {randomOutput(['公開リンク', 'プレビュー'])}
+      </Button>
+    ),
   },
   // 団体名
   organization_name: {
@@ -291,8 +296,11 @@ const columnMap = {
     width: 200,
     title: 'リンク',
     dataIndex: 'link',
-    render: () =>
-      randomOutput([<Button>{'編集'}</Button>, <Button type="primary">{'審査'}</Button>]),
+    render: () => (
+      <Space onClick={e => e.stopPropagation()}>
+        {randomOutput([<Button>{'編集'}</Button>, <Examination />])}
+      </Space>
+    ),
   },
   // プロジェクトタイプ
   project_type: {

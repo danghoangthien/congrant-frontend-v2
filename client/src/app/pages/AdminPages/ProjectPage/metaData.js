@@ -256,7 +256,7 @@ const columnMap = {
     width: 200,
     title: 'リンク',
     dataIndex: 'link',
-    render: () => <Button type="link">{randomOutput(['公開リンク', 'プレビュー'])}</Button>,
+    render: () => <Button>{randomOutput(['公開リンク', 'プレビュー'])}</Button>,
   },
   // 団体名
   organization_name: {
