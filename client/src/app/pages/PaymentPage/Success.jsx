@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // ANTD
 import { Row, Col, Image } from 'antd';
@@ -9,6 +10,10 @@ import Share from 'app/components/Share';
 import Media from 'react-media';
 
 const Success = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const history = useHistory();
   const { method } = useSelector(state => state['paymentMethod']);
 
@@ -19,7 +24,7 @@ const Success = () => {
         {method === '1' && (
           <Col span={24} className="mb-8">
             <Row justify="center">
-              <Image src={SuccessImage} preview={false} />
+              <img src={SuccessImage} preview={false} alt="" />
             </Row>
           </Col>
         )}
@@ -87,6 +92,7 @@ const Success = () => {
 
             {/* SNSシェア・SNS Share Start */}
             <Share
+              justify="center"
               twitter={`https://github.com/nygardk/react-share`}
               facebook={`https://github.com/nygardk/react-share`}
               line={`https://github.com/nygardk/react-share`}

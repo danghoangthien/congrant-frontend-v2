@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 // ANTD
-import { Layout, Row, Image, Col, Space, Button } from 'antd';
+import { Layout, Row, Image, Col, Button } from 'antd';
 // STYLE
 import { ProjectClientPageStyle } from './ProjectClientPageLayout.style';
 // MEDIA QUERY
 import Media from 'react-media';
-// IMAGE
-import CongrantLogo from 'styles/assets/logo_congrant_gray.svg';
-const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
+// COMPONENT
+import ProjectFooter from './ProjectFooter';
 
-const { Header, Footer, Content } = Layout;
+const Logo = 'https://npojcsa.com/data/media/npojcsa/common/logo.png';
+const { Header, Content } = Layout;
 const MAIN_COLOR = '#e34855';
 
 const ProjectClientPage = ({ children }) => {
@@ -19,11 +19,11 @@ const ProjectClientPage = ({ children }) => {
 
   let link;
   if (params.id === '1') {
-    link = `/payment#form`;
+    link = `/payment`;
   } else if (params.id === '2') {
-    link = `/payment?type=monthly#form`;
+    link = `/payment?type=monthly`;
   } else if (params.id === '3') {
-    link = `/payment?type=crowdfunding#form`;
+    link = `/payment?type=crowdfunding`;
   }
 
   console.log(link);
@@ -122,69 +122,7 @@ const ProjectClientPage = ({ children }) => {
         <Content link={link}>{children}</Content>
 
         {/* フッター・Footer */}
-        <Footer className="project-client-footer">
-          <Row>
-            <Col className="mb-3" type="flex" align="center" span={24}>
-              <div className="footer-logo">
-                <Media queries={{ small: '(max-width: 991px)' }}>
-                  {matches =>
-                    matches.small ? (
-                      <Image
-                        preview={false}
-                        // width={154}
-                        height={27}
-                        src={CongrantLogo}
-                      />
-                    ) : (
-                      <Image
-                        preview={false}
-                        // width={154}
-                        height={35}
-                        src={CongrantLogo}
-                      />
-                    )
-                  }
-                </Media>
-              </div>
-            </Col>
-            <Col type="flex" align="center" span={24}>
-              <div className="copy-right">
-                <Media queries={{ small: '(max-width: 991px)' }}>
-                  {matches =>
-                    matches.small ? (
-                      <span>
-                        このページは寄付・会費決済サービス
-                        <br />
-                        <a
-                          className="external-link"
-                          href="http://congrant.com/jp/"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          コングラント
-                        </a>
-                        で作成されています。
-                      </span>
-                    ) : (
-                      <span>
-                        このページは寄付・会費決済サービス「
-                        <a
-                          className="external-link"
-                          href="http://congrant.com/jp/"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          コングラント
-                        </a>
-                        」で作成されています。
-                      </span>
-                    )
-                  }
-                </Media>
-              </div>
-            </Col>
-          </Row>
-        </Footer>
+        <ProjectFooter />
 
         <Media
           query="(max-width: 991px)"

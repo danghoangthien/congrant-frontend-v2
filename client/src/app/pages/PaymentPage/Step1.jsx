@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 // ANTD
 import { Row, Col, Space } from 'antd';
 // COMPONENT
@@ -21,6 +22,10 @@ import PaymentImage from 'styles/assets/icon_payment.svg';
 import './Models/index';
 
 const Step1 = ({ project_type }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // const [method, setMethod] = useState('1');
   const { method } = useSelector(state => state['paymentMethod']);
   const dispatch = useDispatch();

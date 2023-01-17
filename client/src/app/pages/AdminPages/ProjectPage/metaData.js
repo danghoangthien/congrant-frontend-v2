@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 // ANTD
 import { Badge, Space, Tag, Button } from 'antd';
 // STYLE
@@ -7,7 +8,7 @@ import { StyledProjectPaymentTypeTag } from 'styles/Tag.style';
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
-import { DANGER_COLOR } from 'styles/StyleConstants';
+import { DANGER_COLOR, PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
 import {
   ADMIN_PROJECT_STATUSES,
   CONTRACT_PLANS,
@@ -191,44 +192,38 @@ export const bulkMenuItems = status => {
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
-  project_id: `${i + 1}`,
+  project_id: `${i + 123456}`,
   project_name: randomOutput(['NPO法人コングラントをサポーターとして支えてください。']),
   status: randomOutput([1, 2, 3]),
   organization_id: randomOutput([12345678]),
   organization_name: randomOutput(['認定NPO法人コングラント']),
   plan: randomOutput([1, 2, 3, 4]),
-  project_type: PROJECT_TYPES[randomOutput([1, 2, 3])],
-  reception_period: randomOutput([
-    <Space>
-      <span>2023-01-09</span>
-      <span>12:34:56</span>
-    </Space>,
-  ]),
-  donation_type: randomOutput([1, 2, 3]),
-  payment_system: randomOutput([1, 2]),
-  payment_system: randomOutput([1, 2]),
-  option: randomOutput(['ぷらす８', '-', 'giving100']),
-  end_date: randomOutput([
-    <Space>
-      <span>2023-01-09</span>
-      <span>12:34:56</span>
-    </Space>,
-  ]),
   discount: randomOutput(['TSJ', '']),
   usage_fee: randomOutput(['76,800円', '48,000円', '96,000円', '0円']),
   payment_method: randomOutput(['カード決済', '銀行振込']),
-  settlement_date: randomOutput([
-    <Space>
-      <span>2023-01-09</span>
-      <span>12:34:56</span>
+  // プロジェクトタイプ
+  project_type: PROJECT_TYPES[randomOutput([1, 2, 3])],
+  // 受付期間
+  reception_period: randomOutput([
+    <Space size={0} direction="vertical">
+      <span>2023-01-09〜</span>
+      <span>2023-02-28</span>
     </Space>,
   ]),
+  // 寄付タイプ
+  donation_type: randomOutput([1, 2, 3]),
+  // 決済システム
+  payment_system: randomOutput([1, 2]),
+  // オプション
+  option: randomOutput(['ぷらす８', '-', 'giving100']),
+  // 公開申請日
   public_app_date: randomOutput([
-    <Space>
+    <Space size={0}>
       <span>2023-01-09</span>
       <span>12:34:56</span>
     </Space>,
   ]),
+  // 更新日
   updated_at: randomOutput([
     <Space>
       <span>2023-01-09</span>
@@ -241,36 +236,46 @@ const columnMap = {
   // プロジェクトID
   project_id: {
     fixed: 'left',
-    width: 120,
+    width: 160,
     title: 'プロジェクトID',
     dataIndex: 'project_id',
   },
   // プロジェクト名
   project_name: {
-    width: 200,
+    width: 320,
     title: 'プロジェクト名',
     dataIndex: 'project_name',
   },
   // リンク
   link: {
-    width: 200,
+    width: 120,
     title: 'リンク',
     dataIndex: 'link',
     render: () => <Button>{randomOutput(['公開リンク', 'プレビュー'])}</Button>,
   },
   // 団体名
   organization_name: {
-    width: 200,
+    width: 240,
     title: '団体名',
-    dataIndex: 'organization_name',
+    render: ({ organization_name }) => {
+      return (
+        <Link className="admin-link" to={'/admin/home'}>
+          {organization_name}
+        </Link>
+      );
+    },
   },
   // プラン
   plan: {
-    width: 160,
+    width: 120,
     title: 'プラン',
     render: ({ plan }) => {
       console.log(CONTRACT_PLANS[plan], 'debug contract plan');
-      return <>{CONTRACT_PLANS[plan][0] || ''}</>;
+      return (
+        <Link className="admin-link" to={'/admin/home'}>
+          {CONTRACT_PLANS[plan][0] || ''}
+        </Link>
+      );
     },
     csvOutput: row => <>{'プラン'}</>,
     defaultVisible: false,
@@ -288,11 +293,20 @@ const columnMap = {
   },
   // 編集
   edit: {
-    width: 200,
+    width: 80,
     title: 'リンク',
     dataIndex: 'link',
     render: () =>
-      randomOutput([<Button>{'編集'}</Button>, <Button type="primary">{'審査'}</Button>]),
+      randomOutput([
+        <Button>{'編集'}</Button>,
+        <Button
+          type="primary"
+          className="fade"
+          style={{ backgroundColor: PRIMARY_ADMIN_COLOR, borderColor: PRIMARY_ADMIN_COLOR }}
+        >
+          {'審査'}
+        </Button>,
+      ]),
   },
   // プロジェクトタイプ
   project_type: {
@@ -302,13 +316,13 @@ const columnMap = {
   },
   //受付期間
   reception_period: {
-    width: 200,
+    width: 160,
     title: '受付期間',
     dataIndex: 'reception_period',
   },
   // 寄付タイプ
   donation_type: {
-    width: 120,
+    width: 160,
     title: '寄付タイプ',
     dataIndex: 'donation_type',
     render: donation_type => (
@@ -325,7 +339,7 @@ const columnMap = {
   },
   // 決済システム
   payment_system: {
-    width: 100,
+    width: 120,
     title: '決済システム',
     dataIndex: 'payment_system',
     render: payment_system => (
@@ -342,13 +356,13 @@ const columnMap = {
   },
   // 公開申請日
   public_app_date: {
-    width: 120,
+    width: 200,
     title: '公開申請日 ',
     dataIndex: 'public_app_date',
   },
   // 更新日
   updated_at: {
-    width: 120,
+    width: 200,
     title: '更新日',
     dataIndex: 'updated_at',
   },

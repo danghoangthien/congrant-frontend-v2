@@ -1,6 +1,7 @@
 import { Layout, ConfigProvider } from 'antd';
 import React from 'react';
 import { SlyledLayout } from './Layout.style';
+import { AdminLayoutPage } from './AdminLayoutPage.style';
 
 import AdminSider from '../Sider/Admin';
 
@@ -10,16 +11,18 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <ConfigProvider autoInsertSpaceInButton={false}>
-        <SlyledLayout>
-          <Layout>
-            {/* サイド・Sidebar */}
-            <AdminSider />
+        <AdminLayoutPage>
+          <SlyledLayout>
             <Layout>
-              {/* メイン・Main Content */}
-              <Content>{children}</Content>
+              {/* サイド・Sidebar */}
+              <AdminSider />
+              <Layout>
+                {/* メイン・Main Content */}
+                <Content>{children}</Content>
+              </Layout>
             </Layout>
-          </Layout>
-        </SlyledLayout>
+          </SlyledLayout>
+        </AdminLayoutPage>
       </ConfigProvider>
     </>
   );

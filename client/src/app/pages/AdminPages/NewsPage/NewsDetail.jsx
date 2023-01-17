@@ -1,13 +1,10 @@
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 // ANTD
 import { Tabs, Row, Col, Card, Button, Space } from 'antd';
 // COMPONENT
 import BasicSetting from './components/BasicSetting';
-// import PageEdit from './components/Activity/PageEdit';
-// import BlogEditConfirm from './components/BlogEditConfirm';
-// import Breadcumd from 'app/components/Breadcumd';
-// CONST
 // STYLE
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
@@ -17,8 +14,6 @@ export const DETAIL_KEY_MAP = {
 };
 
 const Detail = ({ activeKey }) => {
-  const params = useParams();
-
   const renderPageTitle = () => {
     return (
       <>
@@ -48,15 +43,20 @@ const Detail = ({ activeKey }) => {
             </Row>
           </Col>
         </Row>
-        <Card>
+        <Card bodyStyle={{ padding: 32 }}>
           <Row justify="space-between" align="middle" className="item mb-5">
             {/* 左の部分・Left Part */}
             <Col>
               <Row type="flex" align="middle">
-                <Col className="mr-6">
-                  <Space>
-                    <Button type="primary">{'<'}</Button>
-                    <div className="sub-page-title">{'新規お知らせ'}</div>
+                <Col>
+                  <Space size={16}>
+                    <Link to={'/admin/news'}>
+                      <Button
+                        className="more-menu-btn"
+                        icon={<span className="material-symbols-outlined">chevron_left</span>}
+                      />
+                    </Link>
+                    <div style={{ fontSize: 28, fontWeight: 600 }}>{'新規お知らせ'}</div>
                   </Space>
                 </Col>
               </Row>

@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 // ANTD
-import { Row, Col, Space, Divider, Checkbox, Card } from 'antd';
+import { Row, Col, Space, Checkbox } from 'antd';
 // import ReactInputMask from 'react-input-mask';
 // COMPONENT
 import {
@@ -32,6 +33,28 @@ import GooglePayImage from 'styles/assets/icon_gg_pay.svg';
 import { isChrome, isSafari } from 'react-device-detect';
 
 const Step3 = ({ project_type }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      console.log(location.hash.slice(1));
+      let elem = document.getElementById(location.hash.slice(1));
+      console.log(elem);
+      if (elem) {
+        console.log(elem.offsetTop);
+
+        setTimeout(() => {
+          window.scrollTo({ top: elem.offsetTop - 64, left: 0, behavior: 'smooth' });
+        }, 100);
+        // elem.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      console.log('else');
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+    // window.scrollTo(0, 0);
+  }, [location]);
+
   const dispatch = useDispatch();
   const [cardValue, setCardValue] = useState('');
   const [expiryValue, setExpiryValue] = useState('');

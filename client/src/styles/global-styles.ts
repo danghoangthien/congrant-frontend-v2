@@ -28,10 +28,19 @@ export const GlobalStyle = createGlobalStyle`
   *::selection {
     background: highlight;
     color: inherit;
-}
+  }
 
   body {
     font-family: system-ui;
+  }
+
+  // OTHER CLASS
+  .fade {
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   // FONTS

@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // ANTD
 import { Steps, Card } from 'antd';
@@ -23,30 +22,9 @@ import { hexToRgbA } from 'utils/helper';
 const { Step } = Steps;
 
 const Payment = () => {
-  const MAIN_COLOR = '#00FFFF';
+  const MAIN_COLOR = '#e34855';
   const { active } = useSelector(state => state['paymentStep']);
   const { method } = useSelector(state => state['paymentMethod']);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash) {
-      console.log(location.hash.slice(1));
-      let elem = document.getElementById(location.hash.slice(1));
-      console.log(elem);
-      if (elem) {
-        console.log(elem.offsetTop);
-
-        setTimeout(() => {
-          window.scrollTo({ top: elem.offsetTop - 64, left: 0, behavior: 'smooth' });
-        }, 100);
-        // elem.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      console.log('else');
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }
-    // window.scrollTo(0, 0);
-  }, [location]);
 
   const RGBA_MAIN_COLOR = hexToRgbA(MAIN_COLOR, 0.1);
 
@@ -64,10 +42,6 @@ const Payment = () => {
       color: ${MAIN_COLOR};
     }
 
-    .external-link {
-      color: ${MAIN_COLOR};
-    }
-
     .ant-steps-item-finish .ant-steps-item-icon {
       border-color: ${MAIN_COLOR};
     }
@@ -82,6 +56,15 @@ const Payment = () => {
     width: 100%;
     height: 100%;
     font-family: 'Noto Sans JP', sans-serif;
+
+    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
+      box-shadow: 0 0 0 3px ${hexToRgbA(MAIN_COLOR, 0.15)};
+    }
+
+    .ant-input-affix-wrapper:focus,
+    .ant-input-affix-wrapper-focused {
+      box-shadow: 0 0 0 2px ${hexToRgbA(MAIN_COLOR, 0.15)};
+    }
 
     .ant-radio-checked .ant-radio-inner,
     .ant-radio-wrapper-checked,
@@ -121,15 +104,13 @@ const Payment = () => {
 
     #address {
       .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-        background-color: ${MAIN_COLOR};
+        background-color: ${hexToRgbA(MAIN_COLOR, 0.1)};
       }
     }
 
     .ant-radio-button-wrapper:hover,
     .change-amount-button,
     .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
-    .ant-btn:hover,
-    .ant-btn:focus,
     .more-btn,
     a {
       color: ${MAIN_COLOR};

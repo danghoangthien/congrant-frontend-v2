@@ -64,7 +64,7 @@ const ProjectPage = () => {
           <Table
             className="clickable-table"
             tableLayout="fixed"
-            TableName="契約一覧"
+            TableName="操作ログ一覧"
             model="adminProjectList"
             metaData={metaData}
             showRowSelection={false}

@@ -19,7 +19,7 @@ import CancelRecurringPage from './pages/CancelRecurringPage';
 import PaymentPage from './pages/PaymentPage';
 // OTHER
 import { useTranslation } from 'react-i18next';
-// import ScrollToTop from 'app/components/ScrollToTop';
+import ScrollToTop from 'app/components/ScrollToTop';
 import IframeBoxPage from './pages/ProjectClientPage/IframeBoxPage';
 
 export function App() {
@@ -36,34 +36,36 @@ export function App() {
         >
           <meta name="description" content="A Congrant application." />
         </Helmet>
-        <Switch>
-          <Route path={process.env.PUBLIC_URL + '/project_iframe/client_name/:id'}>
-            <IframeBoxPage />
-          </Route>
-          <Route path={process.env.PUBLIC_URL + '/project/client_name/:id/:tabId'}>
-            <ProjectClientPage />
-          </Route>
-          <Route exact path={process.env.PUBLIC_URL + '/payment'}>
-            <PaymentPage />
-          </Route>
+        <ScrollToTop>
+          <Switch>
+            <Route path={process.env.PUBLIC_URL + '/project_iframe/client_name/:id'}>
+              <IframeBoxPage />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + '/project/client_name/:id/:tabId'}>
+              <ProjectClientPage />
+            </Route>
+            <Route exact path={process.env.PUBLIC_URL + '/payment'}>
+              <PaymentPage />
+            </Route>
 
-          {/* 継続決済解約フォーム */}
-          <Route path={process.env.PUBLIC_URL + '/keizoku-cancel/form'}>
-            <CancelRecurringPage />
-          </Route>
+            {/* 継続決済解約フォーム */}
+            <Route path={process.env.PUBLIC_URL + '/keizoku-cancel/form'}>
+              <CancelRecurringPage />
+            </Route>
 
-          {/* ユーザー側 */}
-          <Route path={process.env.PUBLIC_URL + '/app'}>
-            <AppPage />
-          </Route>
+            {/* ユーザー側 */}
+            <Route path={process.env.PUBLIC_URL + '/app'}>
+              <AppPage />
+            </Route>
 
-          {/* 運営側 */}
-          <Route path={process.env.PUBLIC_URL + '/admin'}>
-            <AdminPage />
-          </Route>
+            {/* 運営側 */}
+            <Route path={process.env.PUBLIC_URL + '/admin'}>
+              <AdminPage />
+            </Route>
 
-          <Route component={NotFoundPage} />
-        </Switch>
+            <Route component={NotFoundPage} />
+          </Switch>
+        </ScrollToTop>
       </BrowserRouter>
     </>
   );

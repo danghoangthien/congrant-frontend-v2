@@ -35,7 +35,7 @@ const AdminPage = () => {
         <Route exact path={`${path}/organization`}>
           <OrganizationPage />
         </Route>
-        <Route path={`${path}/project`}>
+        <Route path={`${path}/projects`}>
           <ProjectPage />
         </Route>
         <Route path={`${path}/management-user`}>
@@ -65,10 +65,10 @@ const AdminPage = () => {
         <Route path={`${path}/amount-deposit`}>
           <DepositPage />
         </Route>
-        <Route path={`${path}/using_log`}>
+        <Route path={`${path}/logs`}>
           <LogPage />
         </Route>
-        <Route path={`${path}/mail_log`}>
+        <Route path={`${path}/mail-log`}>
           <MailLogPage />
         </Route>
       </AdminLayout>
