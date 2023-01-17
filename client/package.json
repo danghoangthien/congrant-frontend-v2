@@ -108,7 +108,7 @@
     "axios": "0.27.2",
     "babel-plugin-import": "1.13.5",
     "big-number": "2.0.0",
-    "ckeditor5-custom-build": "file:./ckeditor5",
+    "ckeditor5-custom-build": "./packages/ckeditor5-custom-build-0.0.2.tgz",
     "connected-react-router": "6.9.3",
     "craco-less": "2.0.0",
     "css-loader": "6.7.1",
