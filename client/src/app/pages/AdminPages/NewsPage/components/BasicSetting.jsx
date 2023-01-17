@@ -20,14 +20,9 @@ export const StyledRadioGroup = styled(Radio.Group)`
 const BasicSetting = () => {
   return (
     <>
-      <Row className="mb-8">
-        <Col sm={24} md={24} lg={24}>
-          <span className="page-title01">{'基本設定'}</span>
-        </Col>
-      </Row>
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'公開ステータス'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
+          <Col sm={24} md={24} lg={24}>
             <Radio.Group onChange={() => {}} value={1}>
               <Space direction="horizontal">
                 <Radio value={1}>{'公開'}</Radio>
@@ -39,7 +34,7 @@ const BasicSetting = () => {
       </Row>
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'公開範囲'} required />}>
-          <Col className="item mb-5" sm={24} md={24} lg={24}>
+          <Col sm={24} md={24} lg={24}>
             <Radio.Group onChange={() => {}} value={1}>
               <Space direction="horizontal">
                 <Radio value={1}>{'全体'}</Radio>
@@ -52,10 +47,8 @@ const BasicSetting = () => {
       <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'お知らせタイトル'} required />}>
           <SettingTextarea
-            showCount
             rows={2}
-            maxLength={400}
-            style={{ width: '600px' }}
+            style={{ width: '600px', fontSize: 14 }}
             value={
               'お知らせのタイトルが入ります。お知らせのタイトルが入ります。お知らせのタイトルが入ります。'
             }
@@ -88,13 +81,13 @@ const BasicSetting = () => {
           <SettingTextarea
             showCount
             rows={5}
-            maxLength={400}
+            maxLength={200}
             style={{ width: '600px' }}
             value={''}
           />
         </SettingsInputContainer>
       </Row>
-      <Row>
+      <Row className="mb-6">
         <SettingsInputContainer label={<SettingLabel label={'公開日時'} />}>
           <Col sm={24} md={24} lg={24}>
             <DatePicker size="large" placeholder={'yyyy-mm-dd'} style={{ width: '600px' }} />
