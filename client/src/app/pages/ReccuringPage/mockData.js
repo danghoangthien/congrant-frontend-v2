@@ -12,12 +12,7 @@ import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import {
-  DONATION_TYPES,
-  DONATION_TYPE_COLORS,
-  DONATION_STATUS_COLOR,
-  DONATION_STATUSES,
-} from 'utils/consts';
+import { DONATION_TYPES, DONATION_STATUSES } from 'utils/consts';
 // IMAGE
 import noteIclon from 'styles/assets/note.svg';
 
@@ -240,7 +235,7 @@ const columnMap = {
     dataIndex: 'status',
     render: status => (
       <StyledBadgeDot>
-        <Badge color={DONATION_STATUS_COLOR[status][0]} text={DONATION_STATUSES[status]} />
+        <Badge color={DONATION_STATUSES[status][1]} text={DONATION_STATUSES[status][0]} />
       </StyledBadgeDot>
     ),
   },
@@ -252,12 +247,12 @@ const columnMap = {
     render: donation_type => (
       <Tag
         style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+          color: DONATION_TYPES[donation_type][3],
+          backgroundColor: DONATION_TYPES[donation_type][1],
+          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
         }}
       >
-        {DONATION_TYPES[donation_type] || ''}
+        {DONATION_TYPES[donation_type][0] || ''}
       </Tag>
     ),
   },

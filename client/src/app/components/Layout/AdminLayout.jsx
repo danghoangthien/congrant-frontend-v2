@@ -1,5 +1,4 @@
 import { Layout, ConfigProvider } from 'antd';
-import React from 'react';
 import { SlyledLayout } from './Layout.style';
 import { AdminLayoutPage } from './AdminLayoutPage.style';
 

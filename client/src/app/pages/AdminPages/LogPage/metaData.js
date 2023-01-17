@@ -1,13 +1,11 @@
+import { Link } from 'react-router-dom';
 // ANTD
-import { Badge, Space, Tag } from 'antd';
-// STYLE
-import { StyledBadgeDot, StyledPaymentTypeTag } from './LogPage.style';
+import { Space } from 'antd';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import { NEWS_STATUSES } from 'utils/consts';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
@@ -181,37 +179,11 @@ export const bulkMenuItems = status => {
   }
 };
 
-// const dataSource = [
-//   {
-//     key: '1',
-//     organization_id: '12345678',
-//     organization_name: '認定NPO法人コングラント',
-//     test: 'テスト',
-//     discount: 'TSJ',
-//     plan: 'スタンダード（TSJ）',
-//     plan_end_date: '2022-12-31',
-//     next_plan: 'スタンダード',
-//     cg_verification: 1,
-//     st_verification: 1,
-//     verification_status: 1,
-//     using_payment: {
-//       stripe: 1,
-//       telecom: 2,
-//     },
-//     cg_payment_money: '1,123,000,000',
-//     cg_payment_number: '10,000',
-//     public_porjects: 3,
-//     no_public_porjects: 10,
-//     register_date: '2022-12-17 12:12:12',
-//     verify_end_date: '2022-12-17 12:12:12',
-//   },
-// ];
-
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
   status: randomOutput([1, 2]),
   operation_at: randomOutput([
-    <Space direction={'vertical'}>
+    <Space size={0}>
       <span>2023-01-09</span>
       <span>12:34:56</span>
     </Space>,
@@ -232,25 +204,29 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 const columnMap = {
   // 操作日時
   operation_at: {
-    width: 100,
+    width: 200,
     title: '操作日時',
     dataIndex: 'operation_at',
   },
   // 団体ID
   organization_id: {
-    width: 80,
+    width: 120,
     title: '団体ID',
     dataIndex: 'organization_id',
   },
   // 団体名
   organization_name: {
-    width: 200,
+    width: 280,
     title: '団体名',
-    dataIndex: 'organization_name',
+    render: ({ organization_name }) => (
+      <Link to={'/admin/home'} className="admin-link">
+        {organization_name}
+      </Link>
+    ),
   },
   // ユーザーID
   user_id: {
-    width: 80,
+    width: 120,
     title: 'ユーザーID',
     dataIndex: 'user_id',
   },
@@ -262,13 +238,13 @@ const columnMap = {
   },
   // 操作種別
   operation_type: {
-    width: 80,
+    width: 200,
     title: '操作種別',
     dataIndex: 'operation_type',
   },
   // 操作内容
   operation_detail: {
-    width: 200,
+    width: 240,
     title: '操作内容',
     dataIndex: 'operation_detail',
   },

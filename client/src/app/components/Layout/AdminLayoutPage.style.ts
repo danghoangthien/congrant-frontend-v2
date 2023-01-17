@@ -2,16 +2,12 @@ import styled from 'styled-components/macro';
 import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
 
 export const AdminLayoutPage = styled.div`
-  * {
-    letter-spacing: 0.07em;
-  }
-
   .page-title {
     color: ${PRIMARY_ADMIN_COLOR};
   }
 
-  .ant-btn:hover,
-  .ant-btn:focus {
+  .ant-btn:hover:not(.ant-btn-primary),
+  .ant-btn:focus:not(.ant-btn-primary) {
     color: ${PRIMARY_ADMIN_COLOR};
     border-color: ${PRIMARY_ADMIN_COLOR};
   }

@@ -24,9 +24,9 @@ const RECEIPT_METHODS = {
 };
 
 const DONATION_TYPES = {
-  1: '単発',
-  2: '毎月',
-  3: '毎年',
+  1: ['単発', '#E9F1FA', '#94BCE5', '#2878CB'], // background, border, color
+  2: ['毎月', '#FCF0EB', '#EFB29B', '#DE6536'],
+  3: ['毎年', '#FBEAF4', '#EA96C6', '#D42C8E'],
 };
 
 const DONATION_TYPE_CLASSES = {
@@ -42,9 +42,9 @@ const DONATION_TYPE_COLORS = {
 };
 
 const DONATION_STATUSES = {
-  1: '継続中',
-  2: '再決済待ち',
-  3: '解約',
+  1: ['継続中', SUCCESS_COLOR],
+  2: ['再決済待ち', WARNING_COLOR],
+  3: ['解約', DARK_GRAY_COLOR],
 };
 
 const DONATION_STATUS_COLOR = {
@@ -81,6 +81,7 @@ const PROJECT_STATUSES = {
   3: '非公開',
   4: '非公開（引継済）',
 };
+
 const ADMIN_PROJECT_STATUSES = {
   1: ['公開', SUCCESS_COLOR],
   2: ['審査待ち', WARNING_COLOR],
@@ -203,6 +204,7 @@ const CONTRACT_PLAN_STATUSES = {
   2: ['開始前', DANGER_COLOR],
   3: ['終了', DARK_GRAY_COLOR],
 };
+
 // CG審査
 const CG_VERIFICATION = {
   1: ['OK', SUCCESS_COLOR],

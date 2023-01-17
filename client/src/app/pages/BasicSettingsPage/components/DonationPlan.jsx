@@ -6,7 +6,7 @@ import { Row, Col, Tag, Button, Dropdown, Menu, Space } from 'antd';
 import AddDonationPlan from './AddDonationPlan';
 import DraggableTable from 'app/components/DraggableTable';
 // CONST
-import { DONATION_TYPE_COLORS, DONATION_TYPES } from 'utils/consts';
+import { DONATION_TYPES } from 'utils/consts';
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const renderPageTitle = () => {
@@ -104,12 +104,12 @@ const columnMap = {
     render: donation_type => (
       <Tag
         style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+          color: DONATION_TYPES[donation_type][3],
+          backgroundColor: DONATION_TYPES[donation_type][1],
+          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
         }}
       >
-        {DONATION_TYPES[donation_type] || ''}
+        {DONATION_TYPES[donation_type][0] || ''}
       </Tag>
     ),
   },

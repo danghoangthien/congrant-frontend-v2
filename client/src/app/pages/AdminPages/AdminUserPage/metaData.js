@@ -4,63 +4,37 @@ import { Space, Badge } from 'antd';
 import { StyledBadgeDot } from './ManagementUser.style';
 // UTILS
 import { randomOutput } from 'utils/helper';
+import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { USER_STATUSES } from 'utils/consts';
 
+import Edit from './components/Edit';
+
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
-  // ユーザーID
-  user_id: randomOutput([1000001, 1000003, 1000005, 1000002, 1000004]),
-  // ユーザー名
-  user_name: randomOutput(['荒木雄大', '荒木 雄大', '押田 悠希', '内藤 千賀']),
-  // 団体ID
-  organization_id: randomOutput([12345678]),
-  // 団体名
-  organization_name: randomOutput(['認定NPO法人コングラント']),
-  // ステータス
   status: randomOutput([1, 2]),
-  // メールアドレス
+  last_login_at: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
   email: randomOutput([
     'araki@congrant.com',
     `yoshikawa@congrant.com`,
     'takahashi@congrant.com',
     'oshida@congrant.com',
   ]),
-  // 権限
-  authority: randomOutput(['管理者', '一般']),
-  // 最終ログイン日時
-  last_login_at: randomOutput([
-    <Space size={0}>
-      <span>2023-01-09</span>
-      <span>12:34:56</span>
-    </Space>,
-  ]),
+  authority: randomOutput(['システム管理者', 'サポート担当者']),
+  user_name: randomOutput(['荒木雄大', '荒木 雄大', '押田 悠希', '内藤 千賀']),
 }));
 
 const columnMap = {
-  // ユーザーID
-  user_id: {
-    width: 160,
-    title: 'ユーザーID',
-    dataIndex: 'user_id',
-  },
   // ユーザー名
   user_name: {
-    width: 160,
+    width: 200,
     title: 'ユーザー名',
     dataIndex: 'user_name',
-  },
-  // 団体ID
-  organization_id: {
-    width: 160,
-    title: '団体ID',
-    dataIndex: 'organization_id',
-  },
-  // 団体名
-  organization_name: {
-    width: 240,
-    title: '団体名',
-    dataIndex: 'organization_name',
   },
   //ステータス
   status: {
@@ -73,14 +47,16 @@ const columnMap = {
       </StyledBadgeDot>
     ),
   },
+  // メールアドレス
   email: {
-    width: 240,
+    width: 350,
     title: 'メールアドレス',
     dataIndex: 'email',
     csvOutput: email => email,
   },
+  // 権限
   authority: {
-    width: 120,
+    width: 200,
     title: '権限',
     dataIndex: 'authority',
   },
@@ -90,10 +66,28 @@ const columnMap = {
     title: '最終ログイン日時',
     dataIndex: 'last_login_at',
   },
+  // 編集
+  action: {
+    width: 120,
+    title: 'アクション',
+    render: row => (
+      <Space>
+        <Edit btn_text="編集" />
+      </Space>
+    ),
+  },
 };
+
+const COLUMN_SETTING_LOCALSTORAGE = 'admin_management_user_list_column_setting';
 
 const getRenderColumns = () => {
   let visibleColumns = Object.keys(columnMap);
+  const columnsInSetting = getWithExpiry(COLUMN_SETTING_LOCALSTORAGE);
+  if (columnsInSetting) {
+    visibleColumns = visibleColumns.filter(columnName => {
+      return columnsInSetting.includes(columnName);
+    });
+  }
   const renderColumns = visibleColumns.map(columnName => {
     return columnMap[columnName];
   });
@@ -107,4 +101,4 @@ const pagination = {
   total_page: 10,
 };
 
-export { getRenderColumns, dataSource, pagination, columnMap };
+export { getRenderColumns, dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap };

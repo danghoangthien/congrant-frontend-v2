@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 // ANTD
 import { Badge, Space } from 'antd';
 // STYLE
@@ -6,180 +7,7 @@ import { StyledBadgeDot, StyledPaymentTypeTag } from './OrganizationPage.style';
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
-import { DANGER_COLOR } from 'styles/StyleConstants';
 import { CG_VERIFICATION, ST_VERIFICATION, VERIFICATION_STATUS, USING_PAYMENT } from 'utils/consts';
-
-// その他の操作メニュー・Bulk Select Record Action Menu
-export const menuItems = status => {
-  // 継続中（ongoing contract）
-  if (status === 2) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              content_copy
-            </span>
-            <span>{'再決済フォームのURLをコピー'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-  // 際決済待ち（waiting for re-payment）
-  else if (status === 1) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              do_disturb
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
-          </Space>
-        ),
-      },
-    ];
-  } else {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'解約フォームを送る'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-};
-
-export const bulkMenuItems = status => {
-  // 継続中（ongoing contract）
-  if (status === 2) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              content_copy
-            </span>
-            <span>{'再決済フォームのURLをコピー'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-  // 際決済待ち（waiting for re-payment）
-  else if (status === 1) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              do_disturb
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
-          </Space>
-        ),
-      },
-    ];
-  } else {
-    return null;
-  }
-};
 
 const dataSource = [
   {
@@ -194,10 +22,67 @@ const dataSource = [
     cg_verification: 1,
     st_verification: 1,
     verification_status: 1,
-    using_payment: {
-      stripe: 1,
-      telecom: 2,
-    },
+    using_payment: [1],
+    cg_payment_money: '1,123,000,000',
+    cg_payment_number: '10,000',
+    public_porjects: 3,
+    no_public_porjects: 10,
+    register_date: '2022-12-17 12:12:12',
+    verify_end_date: '2022-12-17 12:12:12',
+  },
+  {
+    key: '2',
+    organization_id: '12345678',
+    organization_name: '認定NPO法人コングラント',
+    test: 'テスト',
+    discount: 'TSJ',
+    plan: 'スタンダード（TSJ）',
+    plan_end_date: '2022-12-31',
+    next_plan: 'スタンダード',
+    cg_verification: 1,
+    st_verification: 1,
+    verification_status: 1,
+    using_payment: [1, 2],
+    cg_payment_money: '1,123,000,000',
+    cg_payment_number: '10,000',
+    public_porjects: 3,
+    no_public_porjects: 10,
+    register_date: '2022-12-17 12:12:12',
+    verify_end_date: '2022-12-17 12:12:12',
+  },
+  {
+    key: '3',
+    organization_id: '12345678',
+    organization_name: '認定NPO法人コングラント',
+    test: 'テスト',
+    discount: 'TSJ',
+    plan: 'スタンダード（TSJ）',
+    plan_end_date: '2022-12-31',
+    next_plan: 'スタンダード',
+    cg_verification: 1,
+    st_verification: 1,
+    verification_status: 1,
+    using_payment: [2],
+    cg_payment_money: '1,123,000,000',
+    cg_payment_number: '10,000',
+    public_porjects: 3,
+    no_public_porjects: 10,
+    register_date: '2022-12-17 12:12:12',
+    verify_end_date: '2022-12-17 12:12:12',
+  },
+  {
+    key: '4',
+    organization_id: '12345678',
+    organization_name: '認定NPO法人コングラント',
+    test: 'テスト',
+    discount: 'TSJ',
+    plan: 'スタンダード（TSJ）',
+    plan_end_date: '2022-12-31',
+    next_plan: 'スタンダード',
+    cg_verification: 1,
+    st_verification: 1,
+    verification_status: 1,
+    using_payment: [],
     cg_payment_money: '1,123,000,000',
     cg_payment_number: '10,000',
     public_porjects: 3,
@@ -219,7 +104,11 @@ const columnMap = {
   organization_name: {
     width: 280,
     title: '団体名',
-    dataIndex: 'organization_name',
+    render: ({ organization_name, organization_id }) => (
+      <Link to={`/admin/organisations/${organization_id}`} className="admin-link">
+        {organization_name}
+      </Link>
+    ),
   },
   // テスト
   test: {
@@ -237,7 +126,11 @@ const columnMap = {
   plan: {
     width: 200,
     title: '今のプラン',
-    dataIndex: 'plan',
+    render: ({ plan }) => (
+      <Link to={'/admin/home'} className="admin-link">
+        {plan}
+      </Link>
+    ),
   },
   // 今のプランの終了予定日
   plan_end_date: {
@@ -249,7 +142,11 @@ const columnMap = {
   next_plan: {
     width: 200,
     title: '次のプラン',
-    dataIndex: 'next_plan',
+    render: ({ next_plan }) => (
+      <Link to={'/admin/home'} className="admin-link">
+        {next_plan}
+      </Link>
+    ),
   },
   // CG審査
   cg_verification: {
@@ -300,12 +197,20 @@ const columnMap = {
     dataIndex: 'using_payment',
     render: using_payment => (
       <Space>
-        <StyledPaymentTypeTag color={USING_PAYMENT[using_payment.stripe][1]}>
-          {USING_PAYMENT[using_payment.stripe][0]}
-        </StyledPaymentTypeTag>
-        <StyledPaymentTypeTag color={USING_PAYMENT[using_payment.telecom][1]}>
-          {USING_PAYMENT[using_payment.telecom][0]}
-        </StyledPaymentTypeTag>
+        {using_payment.includes(1) ? (
+          <StyledPaymentTypeTag color={USING_PAYMENT[1][1]}>
+            {USING_PAYMENT[1][0]}
+          </StyledPaymentTypeTag>
+        ) : (
+          <StyledPaymentTypeTag color={'#d9d9d7'}>{USING_PAYMENT[1][0]}</StyledPaymentTypeTag>
+        )}
+        {using_payment.includes(2) ? (
+          <StyledPaymentTypeTag color={USING_PAYMENT[2][1]}>
+            {USING_PAYMENT[2][0]}
+          </StyledPaymentTypeTag>
+        ) : (
+          <StyledPaymentTypeTag color={'#d9d9d7'}>{USING_PAYMENT[2][0]}</StyledPaymentTypeTag>
+        )}
       </Space>
     ),
   },

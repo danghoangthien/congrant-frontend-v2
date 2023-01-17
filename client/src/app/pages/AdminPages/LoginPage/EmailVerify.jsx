@@ -5,6 +5,22 @@ import { LoginPageLayout, StyledVericationBox } from 'app/components/Layout/Logi
 import { Row, Col, Space, Card, Button } from 'antd';
 // Images
 import Logo from 'styles/assets/logo_congrant.svg';
+import styled from 'styled-components/macro';
+import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+  font-weight: 600;
+  background: ${PRIMARY_ADMIN_COLOR};
+  border-color: ${PRIMARY_ADMIN_COLOR};
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+    background: ${PRIMARY_ADMIN_COLOR};
+    border-color: ${PRIMARY_ADMIN_COLOR};
+  }
+`;
 
 const SettingInput = ({ placeholder, ...rest }) => (
   <StyledVericationBox placeholder={placeholder} {...rest} />
@@ -91,22 +107,26 @@ const EmailVerify = () => {
                   onChange={handleChange}
                 />
               </Space>
-              <Button
+              <StyledButton
                 size="large"
                 type="primary"
                 className="mb-4"
                 style={{ width: '100%', fontWeight: '600' }}
                 onClick={() => {
-                  history.push(`/app/register/complete`);
+                  history.push(`/admin/login`);
                 }}
               >
                 {'ログイン'}
-              </Button>
+              </StyledButton>
               <Col span={24}>
                 <Row justify="left">
-                  <span type="link" class="ant-btn-link">
+                  <Button
+                    type="text"
+                    class="ant-btn-link"
+                    style={{ color: PRIMARY_ADMIN_COLOR, padding: 0 }}
+                  >
                     {'コード再送'}
-                  </span>
+                  </Button>
                 </Row>
               </Col>
             </Row>

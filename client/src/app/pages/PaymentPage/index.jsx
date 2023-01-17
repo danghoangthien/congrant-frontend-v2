@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 // ANTD
 import { Steps, Card } from 'antd';
@@ -22,9 +22,22 @@ import { hexToRgbA } from 'utils/helper';
 const { Step } = Steps;
 
 const Payment = () => {
+  const myRef = useRef(null);
   const MAIN_COLOR = '#e34855';
   const { active } = useSelector(state => state['paymentStep']);
   const { method } = useSelector(state => state['paymentMethod']);
+
+  useEffect(() => {
+    console.log(active);
+    if (active === '3' || active === '2') {
+      window.scrollTo({
+        top: myRef.current.offsetTop - 64,
+        behavior: 'smooth',
+      });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  }, [active]);
 
   const RGBA_MAIN_COLOR = hexToRgbA(MAIN_COLOR, 0.1);
 
@@ -122,6 +135,11 @@ const Payment = () => {
       border-color: ${MAIN_COLOR};
     }
 
+    .ant-btn:hover:not(.ant-btn-primary),
+    .ant-btn:focus:not(.ant-btn-primary) {
+      color: ${MAIN_COLOR};
+    }
+
     .bank-box {
       background: ${RGBA_MAIN_COLOR};
     }
@@ -145,10 +163,8 @@ const Payment = () => {
     );
   };
 
-  const params = useParams();
   const searchParam = new URLSearchParams(window.location.search);
   const project_type = searchParam.get('type');
-  console.log(project_type);
 
   return (
     <FormStyle>
@@ -164,7 +180,7 @@ const Payment = () => {
             </div>
 
             {/* フォーム・Form */}
-            <div className="payment-form-wrapper" id="form">
+            <div className="payment-form-wrapper" ref={myRef}>
               <Card
                 className={`${project_type !== 'monthly' ? 'payment-box' : 'payment-box mb-0'}`}
               >

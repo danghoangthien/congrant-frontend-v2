@@ -10,6 +10,7 @@ import {
   TEXT_COLOR,
   TEXT_GRAY_COLOR,
   PLACEHOLDER_COLOR,
+  PRIMARY_ADMIN_COLOR,
   DANGER_COLOR,
 } from 'styles/StyleConstants';
 
@@ -221,6 +222,31 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     font-size: 14px;
     color: ${TEXT_GRAY_COLOR};
+  }
+
+  .admin-modal {
+    .ant-radio-checked .ant-radio-inner {
+      border-color: ${PRIMARY_ADMIN_COLOR};
+    }
+
+    .ant-radio-inner::after {
+      background-color: ${PRIMARY_ADMIN_COLOR};
+    }
+
+    .ant-btn-primary {
+      background-color: ${PRIMARY_ADMIN_COLOR};
+      border-color: ${PRIMARY_ADMIN_COLOR};
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .ant-btn:hover:not(.ant-btn-primary),
+    .ant-btn:focus:not(.ant-btn-primary) {
+      color: ${PRIMARY_ADMIN_COLOR};
+      border-color: ${PRIMARY_ADMIN_COLOR};
+    }
   }
 
   // BREADCRUMB

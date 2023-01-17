@@ -1,211 +1,15 @@
+import { Link } from 'react-router-dom';
 // ANTD
-import { Space, Tag, Tooltip } from 'antd';
+import { Space, Tag, Tooltip, Badge } from 'antd';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
-import { DANGER_COLOR } from 'styles/StyleConstants';
-import { DONATION_TYPES, PLANS, DONATION_TYPE_COLORS } from 'utils/consts';
+import { DONATION_TYPES, PLANS, DONATION_STATUSES } from 'utils/consts';
 // IMAGE
 import noteIclon from 'styles/assets/note.svg';
-
-// その他の操作メニュー・Bulk Select Record Action Menu
-export const menuItems = status => {
-  // 継続中（ongoing contract）
-  if (status === 2) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              content_copy
-            </span>
-            <span>{'再決済フォームのURLをコピー'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-  // 際決済待ち（waiting for re-payment）
-  else if (status === 1) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              do_disturb
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
-          </Space>
-        ),
-      },
-    ];
-  } else {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'解約フォームを送る'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-};
-
-export const bulkMenuItems = status => {
-  // 継続中（ongoing contract）
-  if (status === 2) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              content_copy
-            </span>
-            <span>{'再決済フォームのURLをコピー'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-  // 際決済待ち（waiting for re-payment）
-  else if (status === 1) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              do_disturb
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
-          </Space>
-        ),
-      },
-    ];
-  } else {
-    return null;
-  }
-};
-
-// const dataSource = [
-//   {
-//     key: '1',
-//     organization_id: '12345678',
-//     organization_name: '認定NPO法人コングラント',
-//     test: 'テスト',
-//     discount: 'TSJ',
-//     plan: 'スタンダード（TSJ）',
-//     plan_end_date: '2022-12-31',
-//     next_plan: 'スタンダード',
-//     cg_verification: 1,
-//     st_verification: 1,
-//     verification_status: 1,
-//     using_payment: {
-//       stripe: 1,
-//       telecom: 2,
-//     },
-//     cg_payment_money: '1,123,000,000',
-//     cg_payment_number: '10,000',
-//     public_porjects: 3,
-//     no_public_porjects: 10,
-//     register_date: '2022-12-17 12:12:12',
-//     verify_end_date: '2022-12-17 12:12:12',
-//   },
-// ];
+// STYLE
+import { StyledBadgeDot } from 'styles/global-styles';
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
@@ -215,6 +19,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
   organization_name: randomOutput(['認定NPO法人コングラント']),
   donation_type: randomOutput([1, 2, 3]),
   plan: randomOutput([1, 2, 3, 4, '']),
+  status: randomOutput([1, 2, 3]),
   money: 30000000,
   quantity: 1,
   first_payment_date: '2022-09-30',
@@ -242,15 +47,30 @@ const columnMap = {
   },
   // 団体ID
   organization_id: {
-    width: 80,
+    width: 120,
     title: '団体ID',
     dataIndex: 'organization_id',
   },
   // 団体名
   organization_name: {
-    width: 200,
+    width: 280,
     title: '団体名',
-    dataIndex: 'organization_name',
+    render: ({ organization_name }) => (
+      <Link to={'/admin/home'} className="admin-link">
+        {organization_name}
+      </Link>
+    ),
+  },
+  //ステータス
+  status: {
+    width: 120,
+    title: 'ステータス',
+    dataIndex: 'status',
+    render: status => (
+      <StyledBadgeDot>
+        <Badge color={DONATION_STATUSES[status][1]} text={DONATION_STATUSES[status][0]} />
+      </StyledBadgeDot>
+    ),
   },
   // 寄付タイプ
   donation_type: {
@@ -260,12 +80,12 @@ const columnMap = {
     render: donation_type => (
       <Tag
         style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+          color: DONATION_TYPES[donation_type][3],
+          backgroundColor: DONATION_TYPES[donation_type][1],
+          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
         }}
       >
-        {DONATION_TYPES[donation_type] || ''}
+        {DONATION_TYPES[donation_type][0] || ''}
       </Tag>
     ),
     csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],
@@ -275,13 +95,13 @@ const columnMap = {
   plan: {
     width: 160,
     title: 'プラン',
-    render: ({ plan }) => <>{PLANS[plan][0] || ''}</>,
+    render: ({ plan }) => <>{PLANS[plan] || ''}</>,
     csvOutput: row => <>{'プラン'}</>,
     defaultVisible: false,
   },
   // 単価・口数
   money_and_quantity: {
-    width: 120,
+    width: 130,
     title: '単価・口数',
     render: ({ money, quantity }) => {
       return (
@@ -301,7 +121,7 @@ const columnMap = {
   },
   // 金額
   amount: {
-    width: 120,
+    width: 130,
     title: '金額',
     render: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,
     csvOutput: ({ money, quantity }) => `${(money * quantity).toLocaleString()}円`,

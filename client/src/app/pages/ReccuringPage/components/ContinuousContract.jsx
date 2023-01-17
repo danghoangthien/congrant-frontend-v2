@@ -5,12 +5,7 @@ import { StyledBadgeDot } from 'styles/global-styles';
 import ContinuousContractDetail from './ContinuousContractDetail';
 import { LIST_MODE, DETAIL_MODE } from 'utils/consts';
 
-import {
-  DONATION_TYPES,
-  DONATION_TYPE_COLORS,
-  DONATION_STATUS_COLOR,
-  DONATION_STATUSES,
-} from 'utils/consts';
+import { DONATION_TYPES, DONATION_STATUS_COLOR, DONATION_STATUSES } from 'utils/consts';
 
 const Title = () => {
   return (
@@ -65,12 +60,12 @@ const ListModeContent = ({ data, mode, setMode }) => {
       render: donation_type => (
         <Tag
           style={{
-            color: DONATION_TYPE_COLORS[donation_type][2],
-            backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-            border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+            color: DONATION_TYPES[donation_type][3],
+            backgroundColor: DONATION_TYPES[donation_type][1],
+            border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
           }}
         >
-          {DONATION_TYPES[donation_type] || ''}
+          {DONATION_TYPES[donation_type][0] || ''}
         </Tag>
       ),
     },

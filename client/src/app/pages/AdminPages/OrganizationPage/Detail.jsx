@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
 // ANTD
 import { Tabs, Row, Col, Card, Button, Space } from 'antd';
 // COMPONENT
@@ -40,7 +40,7 @@ const Detail = ({ activeKey }) => {
             <Row type="flex" align="middle">
               <Col className="mr-6">
                 <Space>
-                  <div className="sub-page-title">{'登録団体'}</div>
+                  <div className="page-title">{'登録団体'}</div>
                 </Space>
               </Col>
             </Row>
@@ -52,9 +52,16 @@ const Detail = ({ activeKey }) => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <Space>
-                    <Button type="primary">{'<'}</Button>
-                    <div className="sub-page-title">{'認定NPO法人コングラント（団体ID:1234）'}</div>
+                  <Space size={16}>
+                    <Link to={'/admin/news'}>
+                      <Button
+                        className="more-menu-btn"
+                        icon={<span className="material-symbols-outlined">chevron_left</span>}
+                      />
+                    </Link>
+                    <div style={{ fontSize: 28, fontWeight: 600 }}>
+                      {'認定NPO法人コングラント（団体ID:1234）'}
+                    </div>
                   </Space>
                 </Col>
               </Row>

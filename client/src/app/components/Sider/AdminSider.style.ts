@@ -1,11 +1,18 @@
 import styled from 'styled-components/macro';
 import { Layout } from 'antd';
-import { PRIMARY_COLOR, GRAY_COLOR, TEXT_COLOR } from 'styles/StyleConstants';
+import { PRIMARY_COLOR, GRAY_COLOR, TEXT_COLOR, EXTRA_LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
 const { Sider } = Layout;
 
 export const StyledSidebar = styled(Sider)`
   background: #ffffff;
   border-right: 1px solid ${GRAY_COLOR};
+
+  .ant-menu-sub.ant-menu-inline > .ant-menu-item,
+  .ant-menu-sub.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+    padding: 0 40px !important;
+    background: ${EXTRA_LIGHT_GRAY_COLOR};
+    border-top: none;
+  }
 
   .collapsed-wrapper {
     display: none;

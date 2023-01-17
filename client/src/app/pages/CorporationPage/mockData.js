@@ -1,6 +1,6 @@
 import { getWithExpiry } from 'utils/localStorageHandler';
 // ANTD
-import { Menu, Dropdown, Tag, Button, Space, Row, Tooltip } from 'antd';
+import { Menu, Dropdown, Tag, Button, Space, Tooltip } from 'antd';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
 // UTILS

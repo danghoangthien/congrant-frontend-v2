@@ -1,11 +1,9 @@
 import store from 'appRedux/store';
-import { dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap } from '../metaData';
-import { getWithExpiry } from 'utils/localStorageHandler';
+import { dataSource, pagination } from '../metaData';
 const INITIAL_STATE = {
   items: [],
   pagination: {},
   download_items: [],
-  column_setting: getWithExpiry(COLUMN_SETTING_LOCALSTORAGE) || Object.keys(columnMap),
 };
 
 const model = {

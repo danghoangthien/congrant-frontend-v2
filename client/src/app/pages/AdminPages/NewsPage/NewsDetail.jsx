@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
 // ANTD
 import { Tabs, Row, Col, Card, Button, Space } from 'antd';
 // COMPONENT
@@ -37,7 +36,7 @@ const Detail = ({ activeKey }) => {
             <Row type="flex" align="middle">
               <Col className="mr-6">
                 <Space>
-                  <div className="sub-page-title">{'お知らせ'}</div>
+                  <div className="page-title">{'お知らせ'}</div>
                 </Space>
               </Col>
             </Row>

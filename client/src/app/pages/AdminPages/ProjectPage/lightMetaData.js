@@ -12,7 +12,6 @@ import {
   ADMIN_PROJECT_STATUSES,
   CONTRACT_PLANS,
   PROJECT_TYPES,
-  DONATION_TYPE_COLORS,
   DONATION_TYPES,
   PROJECT_PAYMENT_TYPES,
 } from 'utils/consts';
@@ -207,7 +206,6 @@ const dataSource = Array.from(Array(5).keys()).map(i => ({
   ]),
   donation_type: randomOutput([1, 2, 3]),
   payment_system: randomOutput([1, 2]),
-  payment_system: randomOutput([1, 2]),
   option: randomOutput(['ぷらす８', '-', 'giving100']),
   end_date: randomOutput([
     <Space>
@@ -322,12 +320,12 @@ const columnMap = {
     render: donation_type => (
       <Tag
         style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+          color: DONATION_TYPES[donation_type][3],
+          backgroundColor: DONATION_TYPES[donation_type][1],
+          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
         }}
       >
-        {DONATION_TYPES[donation_type] || ''}
+        {DONATION_TYPES[donation_type][0] || ''}
       </Tag>
     ),
   },
