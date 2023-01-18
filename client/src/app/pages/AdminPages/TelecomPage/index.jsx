@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Table from 'app/components/Table';
-import SendMail from 'app/components/SendMail';
 import Filters from './components/Filters';
 import * as metaData from './metaData';
 import { Button, Input, Row, Col } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
-
 import './Models/index';
 
-const MailButton = ({ selectedRowKeys }) => <SendMail />;
 const contextDropdownItems = selectedRowKeys => [
   {
     key: '1',
@@ -84,7 +81,6 @@ const AmountPage = () => {
             TableName="金額変更申請一覧"
             model="@admin//amountList"
             metaData={metaData}
-            contextButtons={[MailButton]}
             contextDropdownItems={contextDropdownItems}
           />
         </div>

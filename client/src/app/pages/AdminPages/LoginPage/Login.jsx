@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import { Row, Card, Input, Button, Col } from 'antd';
 import { LoginPageLayout } from 'app/components/Layout/LoginLayout.style';
 import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
+import styled from 'styled-components/macro';
+import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+  font-weight: 600;
+  background: ${PRIMARY_ADMIN_COLOR};
+  border-color: ${PRIMARY_ADMIN_COLOR};
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+    background: ${PRIMARY_ADMIN_COLOR};
+    border-color: ${PRIMARY_ADMIN_COLOR};
+  }
+`;
 
 const Login = () => {
   const renderPageTitle = () => {
@@ -44,14 +60,9 @@ const Login = () => {
             </SettingsInputContainer>
           </Row>
           <Row className="mb-8">
-            <Button
-              type="primary"
-              size="large"
-              style={{ fontWeight: '600', width: '100%' }}
-              onClick={() => {}}
-            >
+            <StyledButton type="primary" size="large" onClick={() => {}}>
               {'ワンタイムパスワード送信'}
-            </Button>
+            </StyledButton>
           </Row>
         </Card>
       </div>

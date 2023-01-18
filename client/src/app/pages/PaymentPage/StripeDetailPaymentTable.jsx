@@ -3,7 +3,7 @@ import { Table, Tag } from 'antd';
 import DrawerHandle from 'app/components/DrawerHandle';
 import Detail, { DETAIL_KEY_MAP } from 'app/pages/IndividualPage/components/Detail';
 import { randomOutput } from 'utils/helper';
-import { DONATION_TYPE_COLORS, DONATION_TYPES, DETAIL_MODE } from 'utils/consts';
+import { DONATION_TYPES, DETAIL_MODE } from 'utils/consts';
 
 export const dataSource = Array.from(Array(5).keys()).map(i => ({
   donation_id: i + 1,
@@ -33,12 +33,12 @@ const columnMap = {
     render: donation_type => (
       <Tag
         style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+          color: DONATION_TYPES[donation_type][3],
+          backgroundColor: DONATION_TYPES[donation_type][1],
+          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
         }}
       >
-        {DONATION_TYPES[donation_type] || ''}
+        {DONATION_TYPES[donation_type][0] || ''}
       </Tag>
     ),
   },

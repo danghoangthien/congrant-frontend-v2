@@ -18,7 +18,6 @@ import {
   PLANS,
   RECEIPT_STATUSES,
   RECEIPT_STATUS_COLOR,
-  DONATION_TYPE_COLORS,
   REGISTER_ROUTES,
 } from 'utils/consts';
 // IMAGE
@@ -91,12 +90,12 @@ const columnMap = {
     render: donation_type => (
       <Tag
         style={{
-          color: DONATION_TYPE_COLORS[donation_type][2],
-          backgroundColor: DONATION_TYPE_COLORS[donation_type][0],
-          border: `1px solid ${DONATION_TYPE_COLORS[donation_type][1]}`,
+          color: DONATION_TYPES[donation_type][3],
+          backgroundColor: DONATION_TYPES[donation_type][1],
+          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
         }}
       >
-        {DONATION_TYPES[donation_type] || ''}
+        {DONATION_TYPES[donation_type][0] || ''}
       </Tag>
     ),
     csvOutput: ({ donation_type }) => DONATION_TYPES[donation_type],

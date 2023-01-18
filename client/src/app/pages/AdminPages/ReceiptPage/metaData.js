@@ -1,185 +1,15 @@
+import { Link } from 'react-router-dom';
 // ANTD
-import { Space, Tag, Tooltip } from 'antd';
+import { Tooltip, Badge, Button } from 'antd';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
-import { DANGER_COLOR } from 'styles/StyleConstants';
 import { RECEIPT_STATUSES, RECEIPT_STATUS_COLOR } from 'utils/consts';
 // IMAGE
 import noteIclon from 'styles/assets/note.svg';
-
-// その他の操作メニュー・Bulk Select Record Action Menu
-export const menuItems = status => {
-  // 継続中（ongoing contract）
-  if (status === 2) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              content_copy
-            </span>
-            <span>{'再決済フォームのURLをコピー'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-  // 際決済待ち（waiting for re-payment）
-  else if (status === 1) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              do_disturb
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
-          </Space>
-        ),
-      },
-    ];
-  } else {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'解約フォームを送る'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-};
-
-export const bulkMenuItems = status => {
-  // 継続中（ongoing contract）
-  if (status === 2) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              send
-            </span>
-            <span>{'再決済フォームを送る'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              content_copy
-            </span>
-            <span>{'再決済フォームのURLをコピー'}</span>
-          </Space>
-        ),
-      },
-    ];
-  }
-  // 際決済待ち（waiting for re-payment）
-  else if (status === 1) {
-    return [
-      {
-        key: '1',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              autorenew
-            </span>
-            <span>{'金額変更'}</span>
-          </Space>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <Space onClick={() => {}}>
-            <span
-              className="material-symbols-outlined fill-icon"
-              style={{ color: DANGER_COLOR, fontSize: '16px', verticalAlign: 'middle' }}
-            >
-              do_disturb
-            </span>
-            <span style={{ color: DANGER_COLOR }}>{'解約'}</span>
-          </Space>
-        ),
-      },
-    ];
-  } else {
-    return null;
-  }
-};
+// STYLE
+import { StyledBadgeDot } from 'styles/global-styles';
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
@@ -197,12 +27,12 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 const columnMap = {
   // 領収書No.
   receipt_no: {
+    width: 120,
     title: '領収書No.',
     dataIndex: 'receipt_no',
   },
   // サポーターNo.
   supporter_number: {
-    fixed: 'left',
     width: 120,
     title: 'サポーターNo.',
     dataIndex: 'supporter_number',
@@ -211,15 +41,19 @@ const columnMap = {
   },
   // 団体ID
   organization_id: {
-    width: 80,
+    width: 120,
     title: '団体ID',
     dataIndex: 'organization_id',
   },
   // 団体名
   organization_name: {
-    width: 200,
+    width: 280,
     title: '団体名',
-    dataIndex: 'organization_name',
+    render: ({ organization_name }) => (
+      <Link to={'/admin/home'} className="admin-link">
+        {organization_name}
+      </Link>
+    ),
   },
   // 発行ステータス
   receipt_status: {
@@ -272,12 +106,7 @@ const columnMap = {
   action: {
     width: 120,
     title: 'アクション',
-    render: row => (
-      <Button
-        className="more-menu-btn"
-        icon={<span className="material-symbols-outlined">more_horiz</span>}
-      />
-    ),
+    render: row => <Button>プレビュー</Button>,
   },
 };
 

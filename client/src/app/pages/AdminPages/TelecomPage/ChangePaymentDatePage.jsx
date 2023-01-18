@@ -10,12 +10,12 @@ export const StyledDescriptions = styled(Descriptions)`
   }
 `;
 
-const AmountPage = () => {
+const ChangePaymentDatePage = () => {
   const renderPageTitle = () => {
     return (
       <>
         <Helmet>
-          <title>{'金額変更'}</title>
+          <title>{'入金日設定'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -26,23 +26,19 @@ const AmountPage = () => {
     <>
       {renderPageTitle()}
       <PageLayout>
-        <Row justify="space-between" align="middle">
+        <Row className="mb-6" justify="space-between" align="middle">
           {/* 左の部分・Left Part */}
           <Col>
-            <Row type="flex" align="middle">
-              <Col className="mr-6">
-                <div className="page-title">{'金額変更'}</div>
-              </Col>
-            </Row>
+            <div className="page-title">{'入金日設定'}</div>
           </Col>
         </Row>
         {/* ページコンテンツ・Page Content */}
-        <Card className="mb-6" bodyStyle={{ padding: '24px 24px 0' }}>
-          <Row justify="space-between" align="middle" className="item mb-5">
+        <Card bodyStyle={{ padding: '24px 24px 0' }}>
+          <Row justify="space-between" align="middle" className="mb-8">
             {/* 左の部分・Left Part */}
             <Col>
               <Row type="flex" align="middle">
-                <Col className="mr-6">
+                <Col>
                   <Select
                     defaultValue={{
                       value: '1',
@@ -65,8 +61,9 @@ const AmountPage = () => {
               </Space>
             </Col>
           </Row>
+
           <Row>
-            <Col span={12}>
+            <Col span={24} style={{ maxWidth: 544 }}>
               <StyledDescriptions className="mb-6" column={1} bordered>
                 <Descriptions.Item label="2023-01">{'19日'}</Descriptions.Item>
                 <Descriptions.Item label="2023-02">{'19日'}</Descriptions.Item>
@@ -89,4 +86,4 @@ const AmountPage = () => {
   );
 };
 
-export default AmountPage;
+export default ChangePaymentDatePage;

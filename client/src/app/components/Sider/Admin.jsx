@@ -40,38 +40,34 @@ const menuData = [
   },
   {
     label: '団体',
-    key: '/admin/organization',
-    children: [
-      getItem('登録団体', '1'),
-      getItem('未承認', '2'),
-      getItem('ユーザーアカウント', '3'),
-    ],
+    key: '/admin/organisations',
+    children: [getItem(<Link to={'/admin/organisations'}>登録団体</Link>, '1')],
   },
   {
     label: '契約',
     key: '/app/contract',
-    children: [getItem('契約プラン', '1'), getItem('利用料支払履歴', '2')],
+    children: [getItem(<Link to={'/admin/agreements'}>契約プラン</Link>, '1')],
   },
   {
     label: 'レコード',
     key: '/app/record',
     children: [
-      {
-        label: '寄付決済',
-        key: '/app/donations',
-      },
-      getItem('継続契約', '/app/recurring'),
-      getItem('領収書', '3'),
+      getItem(<Link to={'/admin/records/donations'}>寄付決済</Link>, '1'),
+      getItem(<Link to={'/admin/records/recurrings'}>継続契約</Link>, '2'),
+      getItem(<Link to={'/admin/records/receipts'}>領収書</Link>, '3'),
     ],
   },
   {
     label: 'プロジェクト',
-    key: '/admin/project',
+    key: '/admin/projects',
   },
   {
     label: 'テレコム',
     key: '/app/telecom',
-    children: [getItem('金額変更', '1'), getItem('入金日設定', '2')],
+    children: [
+      getItem(<Link to={'/admin/telecom/change-amount'}>金額変更</Link>, '1'),
+      getItem(<Link to={'/admin/telecom/change-payment-date'}>入金日設定</Link>, '2'),
+    ],
   },
   {
     label: 'お知らせ',
@@ -80,12 +76,26 @@ const menuData = [
   {
     label: 'ログ',
     key: '/app/log',
-    children: [getItem('操作ログ', '1'), getItem('通知メールログ', '2')],
+    children: [
+      getItem(<Link to={'/admin/logs'}>操作ログ</Link>, '1'),
+      getItem(<Link to={'/admin/mail-logs'}>通知メールログ</Link>, '2'),
+    ],
   },
   {
-    label: 'アカウント',
+    label: 'ユーザー',
     key: '/app/account',
-    children: [getItem('管理アカウント', '1'), getItem('ユーザーアカウント', '2')],
+    children: [
+      getItem(<Link to={'/admin/admin-users'}>運営管理ユーザー</Link>, '1'),
+      getItem(<Link to={'/admin/users'}>利用ユーザー</Link>, '2'),
+    ],
+  },
+  {
+    label: <Link to={'/admin/payment-details'}>入金明細</Link>,
+    key: '/admin/payment-details',
+  },
+  {
+    label: <Link to={'/admin/payment-templates'}>メールテンプレート</Link>,
+    key: '/admin/mail-templates',
   },
 ];
 

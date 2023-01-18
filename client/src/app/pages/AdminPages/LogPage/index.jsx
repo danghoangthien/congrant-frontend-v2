@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import Table from 'app/components/Table';
 import Filters from './components/Filters';
 import * as metaData from './metaData';
-import { Button, Input, Row, Col, Space, Switch, Badge } from 'antd';
+import { Button, Input, Row, Col } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 
 import './Models/index';
@@ -67,7 +67,7 @@ const LogPage = () => {
             TableName="操作ログ一覧"
             model="adminLogList"
             metaData={metaData}
-            showRowSelection={false}
+            // showRowSelection={false}
           />
         </div>
       </PageLayout>

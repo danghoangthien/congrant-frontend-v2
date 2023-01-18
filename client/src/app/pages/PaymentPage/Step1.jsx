@@ -29,7 +29,6 @@ const Step1 = ({ project_type }) => {
   // const [method, setMethod] = useState('1');
   const { method } = useSelector(state => state['paymentMethod']);
   const dispatch = useDispatch();
-  console.log(project_type);
 
   const onMethodChange = e => {
     dispatch.paymentMethod.setMethod(e.target.value);

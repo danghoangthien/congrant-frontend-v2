@@ -44,8 +44,8 @@ const IframeBox = ({ mainColor }) => {
         <div className="iframe-title">NPO法人コングラントをサポーターとして支えてください</div>
         <Row justify="center">
           <Button
-            href={process.env.PUBLIC_URL + '/project/client_name/1/1'}
-            type="link"
+            // href={process.env.PUBLIC_URL + '/project/client_name/1/1'}
+            // type="link"
             // size="large"
             style={{
               fontSize: 14,

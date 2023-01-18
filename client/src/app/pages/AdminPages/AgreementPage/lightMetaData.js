@@ -1,13 +1,13 @@
 // ANTD
-import { Space, Badge } from 'antd';
+import { Badge, Space } from 'antd';
 // STYLE
-import { StyledBadgeDot } from './AmountPage';
+import { StyledBadgeDot } from './AgreementPage.style';
 // UTILS
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { DANGER_COLOR } from 'styles/StyleConstants';
-import { AMOUNT_STATUSES } from 'utils/consts';
+import { CONTRACT_PLAN_STATUSES, CONTRACT_PLANS } from 'utils/consts';
 
 // その他の操作メニュー・Bulk Select Record Action Menu
 export const menuItems = status => {
@@ -181,68 +181,68 @@ export const bulkMenuItems = status => {
   }
 };
 
-const dataSource = Array.from(Array(500).keys()).map(i => ({
+const dataSource = Array.from(Array(5).keys()).map(i => ({
   key: `${i}`,
+  contract_id: `${i + 1}`,
   status: randomOutput([1, 2, 3]),
-  application_datetime: randomOutput([
+  organization_id: randomOutput([12345678]),
+  organization_name: randomOutput(['認定NPO法人コングラント']),
+  plan: randomOutput([1, 2, 3, 4]),
+  start_date: randomOutput([
     <Space>
       <span>2023-01-09</span>
       <span>12:34:56</span>
     </Space>,
   ]),
-  organization_id: randomOutput([12345678]),
-  organization_name: randomOutput(['認定NPO法人コングラント']),
-  supporter_number: randomOutput([12345678]),
-  membership_phone_number: randomOutput(['0938354758', '000111222333', '0808272727']),
-  current_amount: randomOutput(['4,000']),
-  amount_after_change: randomOutput(['6,000', '7,000']),
+  end_date: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  discount: randomOutput(['TSJ', '']),
+  usage_fee: randomOutput(['76,800円', '48,000円', '96,000円', '0円']),
+  payment_method: randomOutput(['カード決済', '銀行振込']),
+  settlement_date: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  payment_id_stripe: randomOutput(['pi_3MPHLhIpWNr6g9AQ2TKPl2lE']),
+  created_at: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  updated_at: randomOutput([
+    <Space>
+      <span>2023-01-09</span>
+      <span>12:34:56</span>
+    </Space>,
+  ]),
+  last_updated: randomOutput(['荒木雄大']),
 }));
 
 const columnMap = {
-  // 申請日時
-  application_datetime: {
-    width: 145,
-    title: '申請日時',
-    dataIndex: 'application_datetime',
-  },
-  // 団体ID
-  organization_id: {
-    width: 80,
-    title: '団体ID',
-    dataIndex: 'organization_id',
-  },
-  // 団体名
-  organization_name: {
-    width: 200,
-    title: '団体名',
-    dataIndex: 'organization_name',
-  },
-  // サポーターNo.
-  supporter_number: {
+  // 契約ID
+  contract_id: {
     fixed: 'left',
-    width: 120,
-    title: 'サポーターNo.',
-    dataIndex: 'supporter_number',
-    csvOutput: ({ supporter_number }) => supporter_number,
+    width: 50,
+    title: '契約ID',
+    dataIndex: 'contract_id',
+  },
+  // プラン
+  plan: {
+    width: 160,
+    title: 'プラン',
+    render: ({ plan }) => {
+      console.log(CONTRACT_PLANS[plan], 'debug contract plan');
+      return <>{CONTRACT_PLANS[plan][0] || ''}</>;
+    },
+    csvOutput: row => <>{'プラン'}</>,
     defaultVisible: false,
-  },
-  // テレコム会員番号
-  membership_phone_number: {
-    width: 200,
-    title: 'テレコム会員番号',
-    dataIndex: 'membership_phone_number',
-  },
-  // 今の金額
-  current_amount: {
-    width: 200,
-    title: '今の金額',
-    dataIndex: 'current_amount',
-  },
-  // 変更後の金額
-  amount_after_change: {
-    width: 200,
-    title: '変更後の金額',
-    dataIndex: 'amount_after_change',
   },
   //ステータス
   status: {
@@ -251,13 +251,49 @@ const columnMap = {
     dataIndex: 'status',
     render: status => (
       <StyledBadgeDot>
-        <Badge color={AMOUNT_STATUSES[status][1]} text={AMOUNT_STATUSES[status][0]} />
+        <Badge color={CONTRACT_PLAN_STATUSES[status][1]} text={CONTRACT_PLAN_STATUSES[status][0]} />
       </StyledBadgeDot>
     ),
   },
+  // 契約開始日
+  start_date: {
+    width: 200,
+    title: '契約開始日',
+    dataIndex: 'start_date',
+  },
+  // 契約終了日
+  end_date: {
+    width: 80,
+    title: '契約終了日',
+    dataIndex: 'end_date',
+  },
+  // 割引
+  discount: {
+    width: 100,
+    title: '割引',
+    dataIndex: 'discount',
+  },
+  // 決済日
+  settlement_date: {
+    width: 120,
+    title: '決済日',
+    dataIndex: 'settlement_date',
+  },
+  // 作成日時
+  created_at: {
+    width: 120,
+    title: '作成日時',
+    dataIndex: 'created_at',
+  },
+  // 更新日時
+  updated_at: {
+    width: 120,
+    title: '更新日時',
+    dataIndex: 'updated_at',
+  },
 };
 
-const COLUMN_SETTING_LOCALSTORAGE = 'admin_management_user_list_column_setting';
+const COLUMN_SETTING_LOCALSTORAGE = 'news_list_column_setting';
 
 const getRenderColumns = () => {
   let visibleColumns = Object.keys(columnMap);
@@ -275,9 +311,9 @@ const getRenderColumns = () => {
 
 const pagination = {
   current_page: 1,
-  limit: 50,
-  total_items: 500,
-  total_page: 10,
+  limit: 5,
+  total_items: 5,
+  total_page: 1,
 };
 
 export { getRenderColumns, dataSource, pagination, COLUMN_SETTING_LOCALSTORAGE, columnMap };

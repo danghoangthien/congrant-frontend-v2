@@ -24,7 +24,7 @@ const Success = () => {
         {method === '1' && (
           <Col span={24} className="mb-8">
             <Row justify="center">
-              <img src={SuccessImage} preview={false} alt="" />
+              <img src={SuccessImage} preview={false} style={{ width: '100%' }} alt="" />
             </Row>
           </Col>
         )}

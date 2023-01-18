@@ -8,14 +8,14 @@ import { SettingsInputContainer, SettingLabel, SettingInput } from 'utils/Sprite
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 
-const Edit = () => {
+const Edit = ({ btn_text }) => {
   const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
 
   return (
     <>
       {/* モーダル起動ボタン・Modal Open Button */}
       <Button className="icon-btn" onClick={showModal} type="primary">
-        <span>{'編集'}</span>
+        <span>{btn_text}</span>
       </Button>
 
       {/* モーダル・Modal */}
@@ -27,7 +27,9 @@ const Edit = () => {
         width={650}
         className="modalStyle"
         cancelText="キャンセル"
+        cancelButtonProps={{ type: 'text' }}
         okText="登録"
+        wrapClassName="admin-modal"
       >
         <Row className="item mb-2">
           <SettingsInputContainer label={<SettingLabel label={'ユーザー名'} required />}>
@@ -40,7 +42,7 @@ const Edit = () => {
               </Col>
             </Row>
           </SettingsInputContainer>
-          <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} />}>
+          <SettingsInputContainer label={<SettingLabel label={'メールアドレス'} required />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <SettingInput placeholder={''} />
             </Col>
@@ -50,6 +52,18 @@ const Edit = () => {
           >
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <SettingInput placeholder={'+818012345678'} />
+            </Col>
+          </SettingsInputContainer>
+          <SettingsInputContainer label={<SettingLabel label={'権限'} required />}>
+            <Col className="item mb-5" sm={24} md={24} lg={24}>
+              <Col sm={24} md={24} lg={24}>
+                <Radio.Group className="admin-radio" onChange={() => {}} defaultValue={1}>
+                  <Space direction="horizontal">
+                    <Radio value={1}>{'システム管理者'}</Radio>
+                    <Radio value={2}>{'サポート担当者'}</Radio>
+                  </Space>
+                </Radio.Group>
+              </Col>
             </Col>
           </SettingsInputContainer>
         </Row>
