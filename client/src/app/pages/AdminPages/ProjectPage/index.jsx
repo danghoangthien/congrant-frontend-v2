@@ -14,7 +14,7 @@ const ProjectPage = () => {
     return (
       <>
         <Helmet>
-          <title>{'契約プラン'}</title>
+          <title>{'プロジェクト'}</title>
           <meta name="description" content={'...'} />
         </Helmet>
       </>
@@ -31,7 +31,7 @@ const ProjectPage = () => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <div className="page-title">{'契約プラン'}</div>
+                  <div className="page-title">{'プロジェクト'}</div>
                 </Col>
                 <Col className="mr-2">
                   <Input
@@ -64,7 +64,7 @@ const ProjectPage = () => {
           <Table
             className="clickable-table"
             tableLayout="fixed"
-            TableName="操作ログ一覧"
+            TableName="プロジェクト一覧"
             model="adminProjectList"
             metaData={metaData}
             showRowSelection={false}

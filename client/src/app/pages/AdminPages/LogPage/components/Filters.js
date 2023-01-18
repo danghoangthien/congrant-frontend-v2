@@ -23,13 +23,13 @@ const Filters = ({ open }) => {
             <Row gutter={24}>
               {/* 操作日時 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`操作日時`}>
+                <Form.Item name={`操作日時`} label={`操作日時`}>
                   <RangePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* 団体名 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`団体名`}>
+                <Form.Item name={`団体名`} label={`団体名`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'NPO法人コングラント'}</Select.Option>
                   </Select>
@@ -37,7 +37,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* ユーザーID */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'b'}>
-                <Form.Item name={`field-b`} label={`ユーザーID`}>
+                <Form.Item name={`ユーザーID`} label={`ユーザーID`}>
                   <Input
                     style={{
                       width: '100%',

@@ -24,7 +24,7 @@ const Filters = ({ open }) => {
             <Row gutter={24}>
               {/* 団体名 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`団体名`}>
+                <Form.Item name={`団体名`} label={`団体名`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'NPO法人コングラント'}</Select.Option>
                   </Select>
@@ -32,7 +32,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* ステータス */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-b`} label={`ステータス`}>
+                <Form.Item name={`ステータス`} label={`ステータス`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'有効'}</Select.Option>
                     <Select.Option value="1">{'無効'}</Select.Option>

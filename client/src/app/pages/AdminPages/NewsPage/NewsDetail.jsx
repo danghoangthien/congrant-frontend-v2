@@ -17,8 +17,8 @@ const Detail = ({ activeKey }) => {
     return (
       <>
         <Helmet>
-          <title>{'活動報告編集'}</title>
-          <meta name="description" content={'活動報告編集'} />
+          <title>{'お知らせ編集'}</title>
+          <meta name="description" content={'お知らせ編集'} />
         </Helmet>
       </>
     );

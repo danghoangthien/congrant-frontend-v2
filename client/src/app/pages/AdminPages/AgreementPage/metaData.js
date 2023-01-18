@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 // ANTD
 import { Badge, Space } from 'antd';
 // STYLE
@@ -54,7 +55,13 @@ const columnMap = {
   organization_name: {
     width: 280,
     title: '団体名',
-    dataIndex: 'organization_name',
+    render: ({ organization_name }) => {
+      return (
+        <Link className="admin-link" to={'/admin/home'}>
+          {organization_name}
+        </Link>
+      );
+    },
   },
   // プラン
   plan: {
@@ -62,7 +69,11 @@ const columnMap = {
     title: 'プラン',
     render: ({ plan }) => {
       console.log(CONTRACT_PLANS[plan], 'debug contract plan');
-      return <>{CONTRACT_PLANS[plan][0] || ''}</>;
+      return (
+        <Link className="admin-link" to={'/admin/home'}>
+          {CONTRACT_PLANS[plan][0] || ''}
+        </Link>
+      );
     },
     csvOutput: row => <>{'プラン'}</>,
     defaultVisible: false,

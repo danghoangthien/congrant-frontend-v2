@@ -24,31 +24,34 @@ const Filters = ({ open }) => {
             <Row gutter={24}>
               {/* ステータス */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`ステータス`}>
+                <Form.Item name={`ステータス`} label={`ステータス`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
-                    <Select.Option value="1">{'---'}</Select.Option>
+                    <Select.Option value="1">{'公開'}</Select.Option>
+                    <Select.Option value="2">{'非公開'}</Select.Option>
                   </Select>
                 </Form.Item>
               </Col>
               {/* 公開日時 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`公開日時`}>
+                <Form.Item name={`公開日時`} label={`公開日時`}>
                   <RangePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* 公開範囲 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`公開範囲`}>
+                <Form.Item name={`公開範囲`} label={`公開範囲`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
-                    <Select.Option value="1">{'---'}</Select.Option>
+                    <Select.Option value="1">{'全体'}</Select.Option>
+                    <Select.Option value="2">{'登録団体'}</Select.Option>
                   </Select>
                 </Form.Item>
               </Col>
               {/* タグ */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`タグ`}>
+                <Form.Item name={`タグ`} label={`タグ`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
-                    <Select.Option value="1">{'---'}</Select.Option>
+                    <Select.Option value="1">{'アップデート'}</Select.Option>
+                    <Select.Option value="2">{'重要'}</Select.Option>
                   </Select>
                 </Form.Item>
               </Col>

@@ -24,13 +24,13 @@ const Filters = ({ open }) => {
             <Row gutter={24}>
               {/* 送信日時 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`送信日時`}>
+                <Form.Item name={`送信日時`} label={`送信日時`}>
                   <RangePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* ステータス */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-b`} label={`ステータス`}>
+                <Form.Item name={`ステータス`} label={`ステータス`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'送信済み'}</Select.Option>
                     <Select.Option value="2">{'エラー'}</Select.Option>
@@ -39,7 +39,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* メール種別 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'b'}>
-                <Form.Item name={`field-c`} label={`寄付タイプ`}>
+                <Form.Item name={`メール種別`} label={`メール種別`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'活動報告更新通知'}</Select.Option>
                     <Select.Option value="2">{'決済完了'}</Select.Option>
@@ -48,7 +48,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* 団体名 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'c'}>
-                <Form.Item name={`field-d`} label={`団体名`}>
+                <Form.Item name={`団体名`} label={`団体名`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'NPO法人コングラント'}</Select.Option>
                   </Select>

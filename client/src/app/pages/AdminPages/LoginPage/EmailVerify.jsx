@@ -65,10 +65,6 @@ const EmailVerify = () => {
     <>
       {renderPageTitle()}
       <LoginPageLayout>
-        <Space className="mb-8" align="center">
-          <img className="logo-icon" src={Logo} alt="コングラントロゴ" />
-        </Space>
-
         <div style={{ width: '100%', maxWidth: 480 }}>
           <Card className="login-card mb-6" bodyStyle={{ padding: '40px' }}>
             <Row>
@@ -112,9 +108,7 @@ const EmailVerify = () => {
                 type="primary"
                 className="mb-4"
                 style={{ width: '100%', fontWeight: '600' }}
-                onClick={() => {
-                  history.push(`/admin/login`);
-                }}
+                href="/admin/projects"
               >
                 {'ログイン'}
               </StyledButton>

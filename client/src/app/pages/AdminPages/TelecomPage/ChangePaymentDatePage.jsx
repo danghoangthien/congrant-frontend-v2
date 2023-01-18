@@ -8,6 +8,21 @@ export const StyledDescriptions = styled(Descriptions)`
   .ant-descriptions-item-label {
     font-weight: 600;
   }
+
+  .ant-descriptions-view {
+    border-left: none;
+    border-right: none;
+  }
+
+  .ant-descriptions-item-label,
+  .ant-descriptions-item-content {
+    padding: 12px !important;
+  }
+
+  .ant-descriptions-row > th,
+  .ant-descriptions-row > td {
+    border-left: none;
+    border-right: none;
 `;
 
 const ChangePaymentDatePage = () => {
@@ -64,7 +79,7 @@ const ChangePaymentDatePage = () => {
 
           <Row>
             <Col span={24} style={{ maxWidth: 544 }}>
-              <StyledDescriptions className="mb-6" column={1} bordered>
+              <StyledDescriptions size="small" className="mb-6" column={1} bordered>
                 <Descriptions.Item label="2023-01">{'19日'}</Descriptions.Item>
                 <Descriptions.Item label="2023-02">{'19日'}</Descriptions.Item>
                 <Descriptions.Item label="2023-03">{'19日'}</Descriptions.Item>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 // ANTD
-import { Badge, Space, Tag, Button } from 'antd';
+import { Badge, Space, Tag, Button, Row } from 'antd';
 // STYLE
 import { StyledBadgeDot } from './ProjectPage.style';
 import { StyledProjectPaymentTypeTag } from 'styles/Tag.style';
@@ -8,7 +8,12 @@ import { StyledProjectPaymentTypeTag } from 'styles/Tag.style';
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
-import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
+import {
+  PRIMARY_ADMIN_COLOR,
+  PLACEHOLDER_COLOR,
+  EXTRA_LIGHT_GRAY_COLOR,
+  GRAY_COLOR,
+} from 'styles/StyleConstants';
 import {
   ADMIN_PROJECT_STATUSES,
   CONTRACT_PLANS,
@@ -36,23 +41,24 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
       <span>2023-01-09〜</span>
       <span>2023-02-28</span>
     </Space>,
+    '-',
   ]),
   // 寄付タイプ
-  donation_type: randomOutput([1, 2, 3]),
+  donation_type: randomOutput([[1, 2, 3], [1, 2], [2, 3], [3]]),
   // 決済システム
   payment_system: randomOutput([1, 2]),
   // オプション
   option: randomOutput(['ぷらす８', '-', 'giving100']),
   // 公開申請日
   public_app_date: randomOutput([
-    <Space size={0}>
+    <Space size={4}>
       <span>2023-01-09</span>
       <span>12:34:56</span>
     </Space>,
   ]),
   // 更新日
   updated_at: randomOutput([
-    <Space>
+    <Space size={4}>
       <span>2023-01-09</span>
       <span>12:34:56</span>
     </Space>,
@@ -84,13 +90,11 @@ const columnMap = {
   organization_name: {
     width: 240,
     title: '団体名',
-    render: ({ organization_name }) => {
-      return (
-        <Link className="admin-link" to={'/admin/home'}>
-          {organization_name}
-        </Link>
-      );
-    },
+    render: ({ organization_name, organization_id }) => (
+      <Link to={`/admin/organisations/${organization_id}`} className="admin-link">
+        {organization_name}
+      </Link>
+    ),
   },
   // プラン
   plan: {
@@ -121,7 +125,7 @@ const columnMap = {
   // 編集
   edit: {
     width: 80,
-    title: 'リンク',
+    title: '編集',
     dataIndex: 'edit',
     render: () =>
       randomOutput([
@@ -153,15 +157,64 @@ const columnMap = {
     title: '寄付タイプ',
     dataIndex: 'donation_type',
     render: donation_type => (
-      <Tag
-        style={{
-          color: DONATION_TYPES[donation_type][3],
-          backgroundColor: DONATION_TYPES[donation_type][1],
-          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
-        }}
-      >
-        {DONATION_TYPES[donation_type][0] || ''}
-      </Tag>
+      <Space size={0}>
+        {donation_type.includes(1) ? (
+          <Tag
+            style={{
+              color: DONATION_TYPES[1][3],
+              backgroundColor: DONATION_TYPES[1][1],
+              border: `1px solid ${DONATION_TYPES[1][2]}`,
+            }}
+          >
+            {DONATION_TYPES[1][0] || ''}
+          </Tag>
+        ) : (
+          <Tag
+            color={EXTRA_LIGHT_GRAY_COLOR}
+            style={{ color: PLACEHOLDER_COLOR, borderColor: GRAY_COLOR }}
+          >
+            {DONATION_TYPES[1][0] || ''}
+          </Tag>
+        )}
+
+        {donation_type.includes(2) ? (
+          <Tag
+            style={{
+              color: DONATION_TYPES[2][3],
+              backgroundColor: DONATION_TYPES[2][1],
+              border: `1px solid ${DONATION_TYPES[2][2]}`,
+            }}
+          >
+            {DONATION_TYPES[2][0] || ''}
+          </Tag>
+        ) : (
+          <Tag
+            color={EXTRA_LIGHT_GRAY_COLOR}
+            style={{ color: PLACEHOLDER_COLOR, borderColor: GRAY_COLOR }}
+          >
+            {DONATION_TYPES[2][0] || ''}
+          </Tag>
+        )}
+
+        {donation_type.includes(3) ? (
+          <Tag
+            style={{
+              color: DONATION_TYPES[3][3],
+              backgroundColor: DONATION_TYPES[3][1],
+              border: `1px solid ${DONATION_TYPES[3][2]}`,
+            }}
+          >
+            {DONATION_TYPES[3][0] || ''}
+          </Tag>
+        ) : (
+          <Tag
+            color={EXTRA_LIGHT_GRAY_COLOR}
+            style={{ color: PLACEHOLDER_COLOR, borderColor: GRAY_COLOR }}
+          >
+            {DONATION_TYPES[3][0] || ''}
+          </Tag>
+        )}
+      </Space>
     ),
   },
   // 決済システム
@@ -170,9 +223,11 @@ const columnMap = {
     title: '決済システム',
     dataIndex: 'payment_system',
     render: payment_system => (
-      <StyledProjectPaymentTypeTag projectPaymentType={payment_system}>
-        {PROJECT_PAYMENT_TYPES[payment_system]}
-      </StyledProjectPaymentTypeTag>
+      <Row justify="center">
+        <StyledProjectPaymentTypeTag projectPaymentType={payment_system}>
+          {PROJECT_PAYMENT_TYPES[payment_system]}
+        </StyledProjectPaymentTypeTag>
+      </Row>
     ),
   },
   // オプション

@@ -1,22 +1,9 @@
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import React, { useState } from 'react';
+import { useState } from 'react';
 // ANTD
 import { Row, Col, Menu, Button } from 'antd';
 // Icons
-import LogoText from 'styles/assets/logo_text.svg';
-import LogoIcon from 'styles/assets/logo_icon.svg';
 import MenuIcon from '@mui/icons-material/Menu';
-import PersonIcon from '@mui/icons-material/Person';
-import HomeIcon from '@mui/icons-material/Home';
-import FlagIcon from '@mui/icons-material/Flag';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
-import ReceiptIcon from '@mui/icons-material/Receipt';
-import DomainIcon from '@mui/icons-material/Domain';
-import SettingsIcon from '@mui/icons-material/Settings';
-// IMAGE
-import userImage from 'styles/assets/icon_avatar.svg';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 
 import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
 
@@ -58,7 +45,7 @@ const menuData = [
     ],
   },
   {
-    label: 'プロジェクト',
+    label: <Link to={'/admin/projects'}>プロジェクト</Link>,
     key: '/admin/projects',
   },
   {
@@ -70,7 +57,7 @@ const menuData = [
     ],
   },
   {
-    label: 'お知らせ',
+    label: <Link to={'/admin/news'}>お知らせ</Link>,
     key: '/admin/news',
   },
   {
@@ -155,7 +142,9 @@ const AdminSider = () => {
         </div>
         <Row justify="center">
           <Col span={24} className="pb-6 px-6">
-            <Button style={{ width: '100%' }}>ログアウト</Button>
+            <Button href="/admin/login" style={{ width: '100%' }}>
+              ログアウト
+            </Button>
           </Col>
         </Row>
       </div>

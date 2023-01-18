@@ -22,13 +22,13 @@ const Filters = ({ open }) => {
             <Row gutter={24}>
               {/* 申込日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`申込日`}>
+                <Form.Item name={`申込日`} label={`申込日`}>
                   <DatePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* ステータス */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`ステータス`}>
+                <Form.Item name={`ステータス`} label={`ステータス`}>
                   <Select placeholder={'選択してください'} onChange={() => {}}>
                     <Select.Option value="1">{'すべて'}</Select.Option>
                   </Select>

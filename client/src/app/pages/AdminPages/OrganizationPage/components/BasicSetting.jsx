@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Row, Col, Radio, Descriptions, Badge, Space, Table, Button, Tag } from 'antd';
 import styled from 'styled-components/macro';
-import { SUCCESS_COLOR } from 'styles/StyleConstants';
+import {
+  SUCCESS_COLOR,
+  PLACEHOLDER_COLOR,
+  EXTRA_LIGHT_GRAY_COLOR,
+  GRAY_COLOR,
+} from 'styles/StyleConstants';
 import { StyledProjectPaymentTypeTag } from 'styles/Tag.style';
 import { StyledBadgeDot } from './../OrganizationPage.style';
 import { PROJECT_PAYMENT_TYPES } from 'utils/consts';
@@ -158,7 +163,7 @@ const dataSource2 = Array.from(Array(5).keys()).map(i => ({
     </Space>,
   ]),
   // 寄付タイプ
-  donation_type: randomOutput([1, 2, 3]),
+  donation_type: randomOutput([[1, 2, 3], [1, 2], [2, 3], [3]]),
   // 決済システム
   payment_system: randomOutput([1, 2]),
   // オプション
@@ -180,18 +185,21 @@ const dataSource2 = Array.from(Array(5).keys()).map(i => ({
 }));
 
 const columns2 = [
+  // プロジェクトID
   {
     title: 'プロジェクトID',
     width: 169,
     dataIndex: 'project_id',
     key: 'project_id',
   },
+  // プロジェクト名
   {
     title: 'プロジェクト名',
     width: 288,
     dataIndex: 'project_name',
     key: 'project_name',
   },
+  // リンク
   {
     title: 'リンク',
     width: 120,
@@ -199,6 +207,7 @@ const columns2 = [
     dataIndex: 'link',
     render: () => <Button>{randomOutput(['公開リンク', 'プレビュー'])}</Button>,
   },
+  // ステータス
   {
     title: 'ステータス',
     width: 120,
@@ -210,6 +219,7 @@ const columns2 = [
       </StyledBadgeDot>
     ),
   },
+  // 編集
   {
     title: '編集',
     width: 80,
@@ -227,27 +237,78 @@ const columns2 = [
         </Button>,
       ]),
   },
+  // プロジェクトタイプ
   {
     title: 'プロジェクトタイプ',
     width: 200,
     key: 'project_type',
     dataIndex: 'project_type',
   },
+  // 寄付タイプ
   {
     title: '寄付タイプ',
     width: 160,
     key: 'donation_type',
     dataIndex: 'donation_type',
     render: donation_type => (
-      <Tag
-        style={{
-          color: DONATION_TYPES[donation_type][3],
-          backgroundColor: DONATION_TYPES[donation_type][1],
-          border: `1px solid ${DONATION_TYPES[donation_type][2]}`,
-        }}
-      >
-        {DONATION_TYPES[donation_type][0] || ''}
-      </Tag>
+      <Space size={0}>
+        {donation_type.includes(1) ? (
+          <Tag
+            style={{
+              color: DONATION_TYPES[1][3],
+              backgroundColor: DONATION_TYPES[1][1],
+              border: `1px solid ${DONATION_TYPES[1][2]}`,
+            }}
+          >
+            {DONATION_TYPES[1][0] || ''}
+          </Tag>
+        ) : (
+          <Tag
+            color={EXTRA_LIGHT_GRAY_COLOR}
+            style={{ color: PLACEHOLDER_COLOR, borderColor: GRAY_COLOR }}
+          >
+            {DONATION_TYPES[1][0] || ''}
+          </Tag>
+        )}
+
+        {donation_type.includes(2) ? (
+          <Tag
+            style={{
+              color: DONATION_TYPES[2][3],
+              backgroundColor: DONATION_TYPES[2][1],
+              border: `1px solid ${DONATION_TYPES[2][2]}`,
+            }}
+          >
+            {DONATION_TYPES[2][0] || ''}
+          </Tag>
+        ) : (
+          <Tag
+            color={EXTRA_LIGHT_GRAY_COLOR}
+            style={{ color: PLACEHOLDER_COLOR, borderColor: GRAY_COLOR }}
+          >
+            {DONATION_TYPES[2][0] || ''}
+          </Tag>
+        )}
+
+        {donation_type.includes(3) ? (
+          <Tag
+            style={{
+              color: DONATION_TYPES[3][3],
+              backgroundColor: DONATION_TYPES[3][1],
+              border: `1px solid ${DONATION_TYPES[3][2]}`,
+            }}
+          >
+            {DONATION_TYPES[3][0] || ''}
+          </Tag>
+        ) : (
+          <Tag
+            color={EXTRA_LIGHT_GRAY_COLOR}
+            style={{ color: PLACEHOLDER_COLOR, borderColor: GRAY_COLOR }}
+          >
+            {DONATION_TYPES[3][0] || ''}
+          </Tag>
+        )}
+      </Space>
     ),
   },
 ];
@@ -324,7 +385,7 @@ const BasicSetting = () => {
 
       <Row className="mb-6">
         <Col span={24} className="mb-2">
-          <div style={{ fontWeight: 600 }}>契約プラン</div>
+          <div style={{ fontSize: 16, fontWeight: 600 }}>契約プラン</div>
         </Col>
         <Col span={24}>
           <Table
@@ -341,7 +402,7 @@ const BasicSetting = () => {
 
       <Row>
         <Col span={24} className="mb-2">
-          <div style={{ fontWeight: 600 }}>プロジェクト</div>
+          <div style={{ fontSize: 16, fontWeight: 600 }}>プロジェクト</div>
         </Col>
         <Col span={24}>
           <Table

@@ -53,13 +53,13 @@ const Detail = ({ activeKey }) => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <Space size={16}>
-                    <Link to={'/admin/news'}>
+                    <Link to={'/admin/organisations '}>
                       <Button
                         className="more-menu-btn"
                         icon={<span className="material-symbols-outlined">chevron_left</span>}
                       />
                     </Link>
-                    <div style={{ fontSize: 28, fontWeight: 600 }}>
+                    <div style={{ fontSize: 24, fontWeight: 600 }}>
                       {'認定NPO法人コングラント（団体ID:1234）'}
                     </div>
                   </Space>

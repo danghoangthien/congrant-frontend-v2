@@ -12,7 +12,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
   // 送信日時
   send_at: randomOutput([
-    <Space size={0}>
+    <Space size={4}>
       <span>2023-01-09</span>
       <span>12:34:56</span>
     </Space>,
@@ -49,7 +49,6 @@ const columnMap = {
   },
   // ステータス
   status: {
-    fixed: 'left',
     width: 200,
     title: 'ステータス',
     dataIndex: 'status',
