@@ -17,6 +17,8 @@ import ProjectPage from 'app/pages/AdminPages//ProjectPage';
 import AdminUserPage from 'app/pages/AdminPages//AdminUserPage';
 import UserPage from 'app/pages/AdminPages//UserPage';
 import TelecomPage from 'app/pages/AdminPages/TelecomPage';
+import PaymentPage from 'app/pages/AdminPages/PaymentPage';
+import PaymentTemplatePage from 'app/pages/AdminPages/PaymentTemplatePage';
 import ChangePaymentDate from 'app/pages/AdminPages/TelecomPage/ChangePaymentDatePage';
 
 const AdminPage = () => {
@@ -81,6 +83,14 @@ const AdminPage = () => {
         {/* テレコム / 入金日設定・TE_002 */}
         <Route path={`${path}/telecom/change-payment-date`}>
           <ChangePaymentDate />
+        </Route>
+        {/* 入金明細 PD_001 */}
+        <Route exact path={`${path}/payment-details`}>
+          <PaymentPage />
+        </Route>
+        {/* 入金明細 PM_001 */}
+        <Route exact path={`${path}/payment-templates`}>
+          <PaymentTemplatePage />
         </Route>
         {/* ログ / アクセス・操作ログ・LOG_001 */}
         <Route path={`${path}/logs`}>

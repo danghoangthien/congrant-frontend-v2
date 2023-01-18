@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // ANTD
-import { Row, Col, Modal, Button, Radio, Space } from 'antd';
+import { Row, Col, Modal, Button, Radio, Space, Checkbox } from 'antd';
 // HOOKS
 import useModalActions from 'hook/useModalActions';
 // SPRITE
@@ -16,7 +16,7 @@ import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 // CONST
 import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
 
-const statusOkTextMap = ['変更する', '変更する', '確認画面へ進む', '確認画面へ進む'];
+const statusOkTextMap = ['通知メールを送信', '確認画面へ進む'];
 
 const Examination = () => {
   const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
@@ -44,7 +44,7 @@ const Examination = () => {
         okText={statusOkTextMap[status - 1]}
       >
         <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'審査状況'} />}>
+          <SettingsInputContainer label={<SettingLabel label={'審査結果'} required />}>
             <Col className="item mb-5" sm={24} md={24} lg={24}>
               <Radio.Group
                 onChange={e => {
@@ -54,42 +54,33 @@ const Examination = () => {
                 value={status}
               >
                 <Space direction="horizontal">
-                  <Radio value={1}>{'審査中'}</Radio>
-                  <Radio value={2}>{'OK'}</Radio>
-                  <Radio value={3}>{'保留'}</Radio>
-                  <Radio value={4}>{'NG（利用不可）'}</Radio>
+                  <Radio value={1}>{'承認'}</Radio>
+                  <Radio value={2}>{'保留（承認不可）'}</Radio>
                 </Space>
               </Radio.Group>
             </Col>
           </SettingsInputContainer>
         </Row>
-        {status === 3 && (
+        {status === 1 && (
           <>
-            <Row className="item mb-5" justify="space-between" align="middle">
-              {/* 左の部分・Left Part */}
-              <Col>
-                <span>{'保留理由'}</span>
-              </Col>
-              {/* 右の部分・Right Part */}
-              <Col>
-                <SettingSelect
-                  style={{ width: '100%' }}
-                  size="large"
-                  placeholder={'テンプレートを選択'}
-                />
-              </Col>
-            </Row>
             <Row className="item mb-2">
-              <SettingTextarea rows="5" value={''} />
+              <Checkbox.Group
+                options={[
+                  { label: 'giving100', value: 1 },
+                  { label: 'givingSDGs', value: 2 },
+                  { label: 'ぷらす8”', value: 3 },
+                ]}
+                defaultValue={[1]}
+              />
             </Row>
           </>
         )}
-        {status === 4 && (
+        {status === 2 && (
           <>
             <Row className="item mb-2" justify="space-between" align="middle">
               {/* 左の部分・Left Part */}
               <Col>
-                <span>{'NG理由'}</span>
+                <span>{'修正内容'}</span>
               </Col>
               {/* 右の部分・Right Part */}
               <Col>
@@ -103,11 +94,11 @@ const Examination = () => {
             <Row className="item mb-2">
               <SettingTextarea rows="5" value={''} />
             </Row>
+            <Row className="item mb-2">
+              <SettingCheckbox>{'通知メールを送信する'}</SettingCheckbox>
+            </Row>
           </>
         )}
-        <Row className="item mb-2">
-          <SettingCheckbox>{'通知メールを送信する'}</SettingCheckbox>
-        </Row>
       </Modal>
     </>
   );

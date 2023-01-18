@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button, Row, Col, Descriptions, Card, Space, Select } from 'antd';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
@@ -26,6 +27,7 @@ export const StyledDescriptions = styled(Descriptions)`
 `;
 
 const ChangePaymentDatePage = () => {
+  const [isEdit, setIsEdit] = useState(false);
   const renderPageTitle = () => {
     return (
       <>
@@ -72,7 +74,14 @@ const ChangePaymentDatePage = () => {
             {/* 右の部分・Right Part */}
             <Col>
               <Space>
-                <Button type="primary">{'編集'}</Button>
+                <Button
+                  onClick={() => {
+                    setIsEdit(isEdit => !isEdit);
+                  }}
+                  type="primary"
+                >
+                  {!!isEdit ? '登録' : '編集'}
+                </Button>
               </Space>
             </Col>
           </Row>
@@ -80,18 +89,17 @@ const ChangePaymentDatePage = () => {
           <Row>
             <Col span={24} style={{ maxWidth: 544 }}>
               <StyledDescriptions size="small" className="mb-6" column={1} bordered>
-                <Descriptions.Item label="2023-01">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-02">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-03">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-04">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-05">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-06">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-07">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-08">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-09">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-10">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-11">{'19日'}</Descriptions.Item>
-                <Descriptions.Item label="2023-12">{'19日'}</Descriptions.Item>
+                {['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'].map(i => (
+                  <Descriptions.Item label={`2023-${i}`}>
+                    {!!isEdit ? (
+                      <Select style={{ width: '100%' }} defaultValue={'19日'}>
+                        <Select.Option>{'19日'}</Select.Option>ß
+                      </Select>
+                    ) : (
+                      '19日'
+                    )}
+                  </Descriptions.Item>
+                ))}
               </StyledDescriptions>
             </Col>
           </Row>
