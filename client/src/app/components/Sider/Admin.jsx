@@ -45,12 +45,12 @@ const menuData = [
   },
   {
     label: '契約',
-    key: '/app/contract',
+    key: '/admin/contract',
     children: [getItem(<Link to={'/admin/agreements'}>契約プラン</Link>, '1')],
   },
   {
     label: 'レコード',
-    key: '/app/record',
+    key: '/admin/record',
     children: [
       getItem(<Link to={'/admin/records/donations'}>寄付決済</Link>, '1'),
       getItem(<Link to={'/admin/records/recurrings'}>継続契約</Link>, '2'),
@@ -63,7 +63,7 @@ const menuData = [
   },
   {
     label: 'テレコム',
-    key: '/app/telecom',
+    key: '/admin/telecom',
     children: [
       getItem(<Link to={'/admin/telecom/change-amount'}>金額変更</Link>, '1'),
       getItem(<Link to={'/admin/telecom/change-payment-date'}>入金日設定</Link>, '2'),
@@ -75,7 +75,7 @@ const menuData = [
   },
   {
     label: 'ログ',
-    key: '/app/log',
+    key: '/admin/log',
     children: [
       getItem(<Link to={'/admin/logs'}>操作ログ</Link>, '1'),
       getItem(<Link to={'/admin/mail-logs'}>通知メールログ</Link>, '2'),
@@ -83,7 +83,7 @@ const menuData = [
   },
   {
     label: 'ユーザー',
-    key: '/app/account',
+    key: '/admin/account',
     children: [
       getItem(<Link to={'/admin/admin-users'}>運営管理ユーザー</Link>, '1'),
       getItem(<Link to={'/admin/users'}>利用ユーザー</Link>, '2'),

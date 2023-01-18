@@ -114,6 +114,7 @@
     "css-loader": "6.7.1",
     "customize-cra": "1.0.0",
     "customize-cra-less-loader": "2.0.0",
+    "dayjs": "1.11.7",
     "fontfaceobserver": "2.1.0",
     "i18next": "21.6.6",
     "i18next-browser-languagedetector": "6.1.2",
