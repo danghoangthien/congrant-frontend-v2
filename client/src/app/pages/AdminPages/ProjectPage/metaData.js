@@ -16,6 +16,8 @@ import {
   DONATION_TYPES,
   PROJECT_PAYMENT_TYPES,
 } from 'utils/consts';
+import Edit from './components/Edit';
+import PublicReview from './components/PublicReview';
 
 const dataSource = Array.from(Array(500).keys()).map(i => ({
   key: `${i}`,
@@ -123,17 +125,9 @@ const columnMap = {
     width: 80,
     title: 'リンク',
     dataIndex: 'edit',
-    render: () =>
-      randomOutput([
-        <Button>{'編集'}</Button>,
-        <Button
-          type="primary"
-          className="fade"
-          style={{ backgroundColor: PRIMARY_ADMIN_COLOR, borderColor: PRIMARY_ADMIN_COLOR }}
-        >
-          {'審査'}
-        </Button>,
-      ]),
+    render: () => (
+      <Space onClick={e => e.stopPropagation()}>{randomOutput([<Edit />, <PublicReview />])}</Space>
+    ),
   },
   // プロジェクトタイプ
   project_type: {
