@@ -60,7 +60,7 @@ const Login = () => {
             </SettingsInputContainer>
           </Row>
           <Row className="mb-8">
-            <StyledButton type="primary" size="large" onClick={() => {}}>
+            <StyledButton type="primary" size="large" href="/admin/login/two-factor-auth">
               {'ワンタイムパスワード送信'}
             </StyledButton>
           </Row>

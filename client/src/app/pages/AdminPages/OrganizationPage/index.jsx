@@ -64,7 +64,7 @@ const OrganizationPage = () => {
           <Table
             className="clickable-table"
             tableLayout="fixed"
-            TableName="継続契約一覧"
+            TableName="登録団体一覧"
             model="organizationList"
             metaData={metaData}
             showRowSelection={false}

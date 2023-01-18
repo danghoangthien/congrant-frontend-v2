@@ -201,7 +201,7 @@ const CONTRACT_STATUES = {
 
 const CONTRACT_PLAN_STATUSES = {
   1: ['利用中', SUCCESS_COLOR],
-  2: ['開始前', DANGER_COLOR],
+  2: ['開始前', WARNING_COLOR],
   3: ['終了', DARK_GRAY_COLOR],
 };
 

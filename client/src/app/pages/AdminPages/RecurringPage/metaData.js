@@ -55,8 +55,8 @@ const columnMap = {
   organization_name: {
     width: 280,
     title: '団体名',
-    render: ({ organization_name }) => (
-      <Link to={'/admin/home'} className="admin-link">
+    render: ({ organization_name, organization_id }) => (
+      <Link to={`/admin/organisations/${organization_id}`} className="admin-link">
         {organization_name}
       </Link>
     ),

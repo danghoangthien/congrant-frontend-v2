@@ -24,7 +24,7 @@ const Filters = ({ open }) => {
             <Row gutter={24}>
               {/* テスト */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`テスト`}>
+                <Form.Item name={`テスト`} label={`テスト`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'テスト'}</Select.Option>
                     <Select.Option value="2">{'not:テスト'}</Select.Option>
@@ -33,7 +33,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* 割引 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`割引`}>
+                <Form.Item name={`割引`} label={`割引`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'TSJ'}</Select.Option>
                     <Select.Option value="2">{'JCNE'}</Select.Option>
@@ -42,7 +42,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* 今のプラン */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`今のプラン`}>
+                <Form.Item name={`今のプラン`} label={`今のプラン`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'ライト'}</Select.Option>
                     <Select.Option value="2">{'スタンダード'}</Select.Option>
@@ -51,13 +51,13 @@ const Filters = ({ open }) => {
               </Col>
               {/* 今のプランの終了予定日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`今のプランの終了予定日`}>
+                <Form.Item name={`今のプランの終了予定日`} label={`今のプランの終了予定日`}>
                   <RangePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* 審査状況 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`審査状況`}>
+                <Form.Item name={`審査状況`} label={`審査状況`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'StOK'}</Select.Option>
                     <Select.Option value="2">{'審査中'}</Select.Option>
@@ -66,7 +66,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* コングラント審査状況 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`コングラント審査状況`}>
+                <Form.Item name={`コングラント審査状況`} label={`コングラント審査状況`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'OK'}</Select.Option>
                     <Select.Option value="2">{'NG'}</Select.Option>
@@ -75,7 +75,7 @@ const Filters = ({ open }) => {
               </Col>
               {/* 決済総額 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'e'}>
-                <Form.Item name={`field-d`} label={`決済総額`}>
+                <Form.Item name={`決済総額`} label={`決済総額`}>
                   <Input.Group compact className="num-range-input">
                     <Input
                       style={{ width: 'calc(50% - 15px)', textAlign: 'center' }}
@@ -108,19 +108,19 @@ const Filters = ({ open }) => {
               </Col>
               {/* 登録日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`登録日`}>
+                <Form.Item name={`登録日`} label={`登録日`}>
                   <RangePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* 審査完了日 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`審査完了日`}>
+                <Form.Item name={`審査完了日`} label={`審査完了日`}>
                   <RangePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
               {/* 活動カテゴリ */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`活動カテゴリ`}>
+                <Form.Item name={`活動カテゴリ`} label={`活動カテゴリ`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
                     <Select.Option value="1">{'こども支援'}</Select.Option>
                     <Select.Option value="2">{'動物・ペット支援'}</Select.Option>

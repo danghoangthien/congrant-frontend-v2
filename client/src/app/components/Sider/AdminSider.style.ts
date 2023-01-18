@@ -12,6 +12,7 @@ export const StyledSidebar = styled(Sider)`
     padding: 0 40px !important;
     background: ${EXTRA_LIGHT_GRAY_COLOR};
     border-top: none;
+    font-size: 14px;
   }
 
   .collapsed-wrapper {

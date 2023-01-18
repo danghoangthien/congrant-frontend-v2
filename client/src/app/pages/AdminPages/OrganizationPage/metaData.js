@@ -4,10 +4,10 @@ import { Badge, Space } from 'antd';
 // STYLE
 import { StyledBadgeDot, StyledPaymentTypeTag } from './OrganizationPage.style';
 // UTILS
-import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
 import { CG_VERIFICATION, ST_VERIFICATION, VERIFICATION_STATUS, USING_PAYMENT } from 'utils/consts';
+import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
 
 const dataSource = [
   {
@@ -39,9 +39,9 @@ const dataSource = [
     plan: 'スタンダード（TSJ）',
     plan_end_date: '2022-12-31',
     next_plan: 'スタンダード',
-    cg_verification: 1,
-    st_verification: 1,
-    verification_status: 1,
+    cg_verification: 2,
+    st_verification: 2,
+    verification_status: 2,
     using_payment: [1, 2],
     cg_payment_money: '1,123,000,000',
     cg_payment_number: '10,000',
@@ -60,8 +60,8 @@ const dataSource = [
     plan_end_date: '2022-12-31',
     next_plan: 'スタンダード',
     cg_verification: 1,
-    st_verification: 1,
-    verification_status: 1,
+    st_verification: 3,
+    verification_status: 3,
     using_payment: [2],
     cg_payment_money: '1,123,000,000',
     cg_payment_number: '10,000',
@@ -79,9 +79,9 @@ const dataSource = [
     plan: 'スタンダード（TSJ）',
     plan_end_date: '2022-12-31',
     next_plan: 'スタンダード',
-    cg_verification: 1,
+    cg_verification: 2,
     st_verification: 1,
-    verification_status: 1,
+    verification_status: 4,
     using_payment: [],
     cg_payment_money: '1,123,000,000',
     cg_payment_number: '10,000',
@@ -97,7 +97,7 @@ const columnMap = {
   organization_id: {
     fixed: 'left',
     width: 120,
-    title: '団体ID.',
+    title: '団体ID',
     dataIndex: 'organization_id',
   },
   // 団体名
@@ -169,10 +169,14 @@ const columnMap = {
     dataIndex: 'st_verification',
     render: st_verification => (
       <StyledBadgeDot>
-        <Badge
-          color={ST_VERIFICATION[st_verification][1]}
-          text={ST_VERIFICATION[st_verification][0]}
-        />
+        {st_verification !== 3 ? (
+          <Badge
+            color={ST_VERIFICATION[st_verification][1]}
+            text={ST_VERIFICATION[st_verification][0]}
+          />
+        ) : (
+          <span style={{ color: TEXT_GRAY_COLOR }}>{ST_VERIFICATION[st_verification][0]}</span>
+        )}
       </StyledBadgeDot>
     ),
   },
@@ -180,8 +184,7 @@ const columnMap = {
   verification_status: {
     width: 120,
     title: '審査状況',
-    dataIndex: 'st_verification',
-    render: verification_status => (
+    render: ({ verification_status }) => (
       <StyledBadgeDot>
         <Badge
           color={VERIFICATION_STATUS[verification_status][1]}

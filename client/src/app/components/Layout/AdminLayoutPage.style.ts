@@ -6,6 +6,10 @@ export const AdminLayoutPage = styled.div`
     color: ${PRIMARY_ADMIN_COLOR};
   }
 
+  .ant-descriptions-title {
+    font-weight: 600;
+  }
+
   .ant-btn:hover:not(.ant-btn-primary),
   .ant-btn:focus:not(.ant-btn-primary) {
     color: ${PRIMARY_ADMIN_COLOR};
