@@ -43,7 +43,7 @@ const Page = ({ activeKey }) => {
           </Col>
         </Row>
         <Card bodyStyle={{ padding: 32 }}>
-          <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-6">
+          <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4}>
             <Tabs.TabPane tab="専用メール" key="1">
               <BasicSetting />
             </Tabs.TabPane>

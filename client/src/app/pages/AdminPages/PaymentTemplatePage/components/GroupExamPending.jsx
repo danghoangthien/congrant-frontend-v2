@@ -2,7 +2,7 @@ import { Space, Button } from 'antd';
 import { TableStyle } from 'app/components/Table/Table.style';
 // COMPONENT
 import DraggableTable from 'app/components/DraggableTable';
-import Registration from './Registration';
+import RegistrationEdit from './RegistrationEdit';
 import Preview from './Preview';
 // CONST
 import { TEXT_GRAY_COLOR } from 'styles/StyleConstants';
@@ -44,7 +44,7 @@ const columns = [
     dataIndex: 'action',
     render: () => (
       <Space>
-        <Registration />
+        <RegistrationEdit />
         <Button>{'複製'}</Button>
         <Button>{'削除'}</Button>
       </Space>

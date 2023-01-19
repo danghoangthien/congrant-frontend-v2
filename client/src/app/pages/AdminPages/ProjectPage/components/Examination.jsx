@@ -15,12 +15,19 @@ import { SettingCheckbox } from 'utils/Sprites/RecurringFormElement';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 // CONST
 import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
+import ScreeningConfirmation from './ScreeningConfirmation';
+import PendingConfirmation from './PendingConfirmation';
 
 const statusOkTextMap = ['変更する', '変更する', '確認画面へ進む', '確認画面へ進む'];
 
-const Examination = () => {
-  const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
+const Examination = ({ btn_text }) => {
+  const [isModalOpen, showModal, handleCancel] = useModalActions({});
   const [status, setStatus] = useState(1);
+  const handleOk = () => {
+    if (status === 3) {
+      // go to preview
+    }
+  };
   return (
     <>
       {/* モーダル起動ボタン・Modal Open Button */}
@@ -30,7 +37,7 @@ const Examination = () => {
         className="fade"
         style={{ backgroundColor: PRIMARY_ADMIN_COLOR, borderColor: PRIMARY_ADMIN_COLOR }}
       >
-        <span>{'審査'}</span>
+        <span>{btn_text || '審査'}</span>
       </Button>
       {/* モーダル・Modal */}
       <Modal
@@ -41,7 +48,20 @@ const Examination = () => {
         width={650}
         className="modalStyle"
         cancelText="キャンセル"
-        okText={statusOkTextMap[status - 1]}
+        footer={[
+          <Button key="cancel" type="text" onClick={handleCancel}>
+            {'キャンセル'}
+          </Button>,
+          <>
+            {status === 4 && <ScreeningConfirmation />}
+            {status === 3 && <PendingConfirmation />}
+            {[1, 2].includes(status) && (
+              <Button key="ok" className="active" type="primary" onClick={handleOk}>
+                <span>{statusOkTextMap[status - 1]}</span>
+              </Button>
+            )}
+          </>,
+        ]}
       >
         <Row className="item mb-2">
           <SettingsInputContainer label={<SettingLabel label={'審査状況'} />}>
@@ -65,7 +85,7 @@ const Examination = () => {
         </Row>
         {status === 3 && (
           <>
-            <Row className="item mb-5" justify="space-between" align="middle">
+            <Row className="item mb-2" justify="space-between" align="middle">
               {/* 左の部分・Left Part */}
               <Col>
                 <span>{'保留理由'}</span>
@@ -74,7 +94,7 @@ const Examination = () => {
               <Col>
                 <SettingSelect
                   style={{ width: '100%' }}
-                  size="large"
+                  size="medium"
                   placeholder={'テンプレートを選択'}
                 />
               </Col>
