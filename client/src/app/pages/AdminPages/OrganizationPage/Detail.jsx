@@ -1,15 +1,33 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 // ANTD
-import { Tabs, Row, Col, Card, Button, Space } from 'antd';
+import { Tabs, Row, Col, Card, Button, Space, Descriptions, Badge } from 'antd';
 // COMPONENT
 import BasicSetting from './components/BasicSetting';
-// import PageEdit from './components/Activity/PageEdit';
-// import BlogEditConfirm from './components/BlogEditConfirm';
-// import Breadcumd from 'app/components/Breadcumd';
 // CONST
+import { CONTRACT_PLAN_STATUSES } from 'utils/consts';
 // STYLE
+import { SettingSelect } from 'utils/Sprites';
+import styled from 'styled-components/macro';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
+import { StyledBadgeDot } from './OrganizationPage.style';
+import Examination from '../ProjectPage/components/Examination';
+
+export const StyledDescriptions = styled(Descriptions)`
+  .ant-descriptions-item-label {
+    font-weight: 600;
+  }
+
+  .ant-descriptions-header {
+    margin-bottom: 8px;
+  }
+
+  .ant-descriptions-small .ant-descriptions-row > th,
+  .ant-descriptions-small .ant-descriptions-row > td {
+    border-left: none;
+    border-right: none;
+  }
+`;
 
 export const DETAIL_KEY_MAP = {
   BASIC_SETTING: '1',
@@ -72,6 +90,50 @@ const Detail = ({ activeKey }) => {
               <Space>
                 <Button type="primary">{'サポートログイン'}</Button>
               </Space>
+            </Col>
+          </Row>
+          <Row className="item mb-5" gutter={24}>
+            <Col span={6}>
+              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+                <Descriptions.Item label="審査状況">
+                  <StyledBadgeDot>
+                    <Badge color={CONTRACT_PLAN_STATUSES[1][1]} text={<strong>{'StOK'}</strong>} />
+                  </StyledBadgeDot>
+                </Descriptions.Item>
+              </StyledDescriptions>
+            </Col>
+            <Col span={6}>
+              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+                <Descriptions.Item label="CG審査">
+                  <Row>
+                    <Col span="12">
+                      <StyledBadgeDot style={{ lineHeight: '32px' }}>
+                        <Badge
+                          color={CONTRACT_PLAN_STATUSES[1][1]}
+                          text={<strong>{'OK'}</strong>}
+                        />
+                      </StyledBadgeDot>
+                    </Col>
+                    <Col span="12" type="flex" align="right">
+                      <Examination btn_text={'変更'} />
+                    </Col>
+                  </Row>
+                </Descriptions.Item>
+              </StyledDescriptions>
+            </Col>
+            <Col span={6}>
+              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+                <Descriptions.Item label="割引設定">
+                  <SettingSelect style={{ width: '100%' }} size="large" placeholder={'TSJ'} />
+                </Descriptions.Item>
+              </StyledDescriptions>
+            </Col>
+            <Col span={6}>
+              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+                <Descriptions.Item label="テスト">
+                  <SettingSelect style={{ width: '100%' }} size="large" placeholder={'-'} />
+                </Descriptions.Item>
+              </StyledDescriptions>
             </Col>
           </Row>
           <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-6">
