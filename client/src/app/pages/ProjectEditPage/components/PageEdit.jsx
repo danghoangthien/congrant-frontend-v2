@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Row, Col, Tag, Image, Upload, Button, Tooltip, Dropdown, Menu } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import ImgCrop from 'antd-img-crop';
-import Editor from 'ckeditor5-custom-build/build/ckeditor';
-import { DndProvider, useDrg, useDrop } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { useState } from 'react';
+import { Row, Col, Tag } from 'antd';
 import { PageEditStyle } from './PageEdit.style';
 import styled from 'styled-components/macro';
+import { useMountEffect } from 'hook/useMountEffect';
+
+import ArticleEditor from 'article-editor/article-editor';
+console.log(ArticleEditor);
 
 export const StyledTag = styled(Tag)`
   width: 40px;
@@ -20,7 +19,7 @@ const data = {
     {
       id: 10314,
       type: 1,
-      source: 'みんなの夢AWARD8への支援を募集します',
+      source: '<h2>みんなの夢AWARD8への支援を募集します</h2>',
     },
     {
       id: 10315,
@@ -56,7 +55,10 @@ const data = {
     {
       id: 10320,
       type: 3,
-      source: ['https://congrant.com/img/groups/2/163/7/yume_award001.jpeg'],
+      source: [
+        'https://congrant.com/img/groups/2/163/7/yume_award001.jpeg',
+        'https://congrant.com/img/groups/2/163/7/yume_award001.jpeg',
+      ],
     },
     {
       id: 10321,
@@ -101,290 +103,76 @@ const data = {
   ],
 };
 
-console.log(Editor);
-// console.log(InlineEditor);
-// console.log(ClassicEditor);
-
-console.log(data);
-// console.log(HtmlEmbed);
-
-let heading_config = {
-  toolbar: ['heading', '|', 'alignment'],
-};
-
-let main_config = {
-  // plugins: [Paragraph, Bold, Italic],
-  // toolbar: ['bold', 'italic', 'htmlEmbed'],
-  // plugins: [HtmlEmbed],
-  toolbar: [
-    'bold',
-    'italic',
-    'underline',
-    'strikethrough',
-    'link',
-    'alignment',
-    'bulletedList',
-    'numberedList',
-    '|',
-    'blockQuote',
-    'insertTable',
-    'htmlEmbed',
-    'mediaEmbed',
-    'undo',
-    'redo',
-  ],
-  htmlEmbed: {
-    showPreviews: true,
-  },
-};
-
-let editors = [];
-
-let createEditor = function (id, config) {
-  Editor.create(document.querySelector(id), config);
-};
-
-console.log(editors);
-// console.log(Essentials);
+const result = data.blocks
+  .map(value => {
+    if (value.type === 3) {
+      console.log(value.source.length);
+      if (value.source.length === 3) {
+        const ex = value.source
+          .map(item => {
+            return `
+            <div class="column column-4">
+              <figure>
+                <img
+                  src=${item}
+                  alt=""
+                ></img>
+              </figure>
+            </div>
+          `;
+          })
+          .join('');
+        return `<div class="grid">${ex}</div>`;
+      } else if (value.source.length === 2) {
+        const ex = value.source
+          .map(item => {
+            return `
+            <div class="column column-6">
+              <figure>
+                <img
+                  src=${item}
+                  alt=""
+                ></img>
+              </figure>
+            </div>
+          `;
+          })
+          .join('');
+        return `<div class="grid">${ex}</div>`;
+      } else {
+        return value.source.map(item => {
+          return `<figure>
+          <img
+            src=${item}
+            alt=""
+          ></img>
+        </figure>`;
+        });
+      }
+    } else {
+      return value.source;
+    }
+  })
+  .join('');
 
 const PageEdit = () => {
-  const menu = (
-    <Menu
-      items={[
-        {
-          key: '1',
-          title: '',
-          label: <span>見出し</span>,
-        },
-        {
-          key: '2',
-          title: '',
-          label: <span>本文</span>,
-        },
-        {
-          key: '3',
-          title: '',
-          label: <span>画像</span>,
-        },
-      ]}
-    />
-  );
-
-  const menu2 = (
-    <Menu
-      items={[
-        {
-          key: '1',
-          title: '',
-          label: <span>削除</span>,
-        },
-      ]}
-    />
-  );
-
-  const [fileList, setFileList] = useState([
-    {
-      uid: '-1',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-  ]);
-
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-
-  const onChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
-  };
-  const onPreview = async file => {
-    let src = file.url;
-    if (!src) {
-      src = await new Promise(resolve => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file.originFileObj);
-        reader.onload = () => resolve(reader.result);
-      });
-    }
-    const image = new Image();
-    image.src = src;
-    const imgWindow = window.open(src);
-    imgWindow?.document.write(image.outerHTML);
-  };
-
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </div>
-  );
-
-  useEffect(() => {
-    // createEditor('#editor-1', heading_config);
-    // createEditor('#editor-2', heading_config);
-    createEditor('#editor-new-heading', heading_config);
-    createEditor('#editor-new-content', main_config);
-    data.blocks.map(block => {
-      console.log(block);
-      console.log(main_config);
-      if (block.type === 1) {
-        return createEditor('#editor-' + block.id, heading_config);
-      } else if (block.type === 2) {
-        return createEditor('#editor-' + block.id, main_config);
-      } else {
-        return false;
-      }
-    });
-  }, []);
+  const [editor, setEditor] = useState(null);
+  useMountEffect(() => {
+    setEditor(
+      ArticleEditor('#editor', {
+        content: result,
+      }),
+    );
+  });
 
   return (
     <PageEditStyle>
-      <Row className="mb-5 pl-10">
+      <Row className="mb-5">
         <Col sm={24} md={24} lg={24}>
           <span className="page-title">{'ページ編集'}</span>
         </Col>
-        <Col>
-          <DndProvider backend={HTML5Backend}>
-            <Row>
-              {data.blocks.map(block => {
-                if (block.type === 1) {
-                  // title
-                  return (
-                    <Col span={24} className="block-item">
-                      <div className="block-btn">
-                        <Dropdown overlay={menu} trigger={['click']}>
-                          <Button
-                            onClick={e => e.preventDefault()}
-                            size="small"
-                            type="primary"
-                            shape="circle"
-                            className="add-block-btn"
-                            icon={<span class="material-symbols-outlined">add</span>}
-                          />
-                        </Dropdown>
-                        <Dropdown overlay={menu2} trigger={['click']}>
-                          <Button
-                            onClick={e => e.preventDefault()}
-                            size="small"
-                            type="primary"
-                            shape="circle"
-                            className="menu-block-btn"
-                            icon={<span class="material-symbols-outlined">drag_indicator</span>}
-                          />
-                        </Dropdown>
-                      </div>
-                      <div
-                        id={`editor-${block.id}`}
-                        dangerouslySetInnerHTML={{ __html: `<h2>${block.source}</h2>` }}
-                      />
-                    </Col>
-                  );
-                } else if (block.type === 2) {
-                  // content
-                  return (
-                    <Col span={24} className="block-item">
-                      <div className="block-btn">
-                        <Dropdown overlay={menu} trigger={['click']}>
-                          <Button
-                            onClick={e => e.preventDefault()}
-                            size="small"
-                            type="primary"
-                            shape="circle"
-                            className="add-block-btn"
-                            icon={<span class="material-symbols-outlined">add</span>}
-                          />
-                        </Dropdown>
-                        <Dropdown overlay={menu2} trigger={['click']}>
-                          <Button
-                            onClick={e => e.preventDefault()}
-                            size="small"
-                            type="primary"
-                            shape="circle"
-                            className="menu-block-btn"
-                            icon={<span class="material-symbols-outlined">drag_indicator</span>}
-                          />
-                        </Dropdown>
-                      </div>
-                      <div
-                        id={`editor-${block.id}`}
-                        dangerouslySetInnerHTML={{ __html: block.source }}
-                      />
-                    </Col>
-                  );
-                } else if (block.type === 3) {
-                  // image
-                  return (
-                    <Col span={24} className="block-item">
-                      <div className="block-btn">
-                        <Dropdown overlay={menu} trigger={['click']}>
-                          <Button
-                            onClick={e => e.preventDefault()}
-                            size="small"
-                            type="primary"
-                            shape="circle"
-                            className="add-block-btn"
-                            icon={<span class="material-symbols-outlined">add</span>}
-                          />
-                        </Dropdown>
-                        <Dropdown overlay={menu2} trigger={['click']}>
-                          <Button
-                            onClick={e => e.preventDefault()}
-                            size="small"
-                            type="primary"
-                            shape="circle"
-                            className="menu-block-btn"
-                            icon={<span class="material-symbols-outlined">drag_indicator</span>}
-                          />
-                        </Dropdown>
-                      </div>
-                      <Row>
-                        {block.source.map(item => {
-                          return (
-                            <Col span={8}>
-                              <Image src={item} preview={false} />
-                            </Col>
-                          );
-                        })}
-                      </Row>
-                    </Col>
-                  );
-                } else {
-                  return <></>;
-                }
-              })}
-              <Col span={24}>
-                <div
-                  id={`editor-new-heading`}
-                  dangerouslySetInnerHTML={{ __html: `<h2>見出しが入ります</h2>` }}
-                />
-              </Col>
-              <Col span={24}>
-                <div
-                  id={`editor-new-content`}
-                  dangerouslySetInnerHTML={{ __html: `<div>コンテンツが入ります</div>` }}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <ImgCrop>
-                <Upload
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  listType="picture-card"
-                  fileList={fileList}
-                  onChange={handleChange}
-                  className={'upload-items-3'}
-                  onPreview={onPreview}
-                >
-                  {fileList.length >= 3 ? null : uploadButton}
-                </Upload>
-              </ImgCrop>
-            </Row>
-          </DndProvider>
+        <Col span={24} className="mb-10">
+          <textarea id="editor"></textarea>
         </Col>
       </Row>
     </PageEditStyle>

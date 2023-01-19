@@ -29,6 +29,7 @@ import { notification } from 'antd';
 // import moment from 'moment';
 import 'moment/locale/ja';
 import jaJp from 'antd/es/locale/ja_JP';
+import 'utils/articleEditor';
 
 // Initialize languages
 import './locales/i18n';
