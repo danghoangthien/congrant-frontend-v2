@@ -22,33 +22,17 @@ const Filters = ({ open }) => {
         <Col span={24}>
           <Form form={form} layout={'vertical'}>
             <Row gutter={24}>
-              {/* ステータス */}
-              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`ステータス`}>
-                  <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
-                    <Select.Option value="1">{'---'}</Select.Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-              {/* 公開日時 */}
+              {/* 入金月 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'d'}>
-                <Form.Item name={`field-a`} label={`公開日時`}>
-                  <RangePicker style={{ width: '100%' }} />
+                <Form.Item name={`入金月`} label={`入金月`}>
+                  <DatePicker style={{ width: '100%' }} />
                 </Form.Item>
               </Col>
-              {/* 公開範囲 */}
+              {/* 団体名 */}
               <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`公開範囲`}>
+                <Form.Item name={`団体名`} label={`団体名`}>
                   <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
-                    <Select.Option value="1">{'---'}</Select.Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-              {/* タグ */}
-              <Col lg={{ span: 6 }} xs={{ span: 12 }} md={{ span: 8 }} key={'a'}>
-                <Form.Item name={`field-a`} label={`タグ`}>
-                  <Select placeholder={'選択してください'} mode="multiple" onChange={() => {}}>
-                    <Select.Option value="1">{'---'}</Select.Option>
+                    <Select.Option value="1">{'NPO法人コングラント'}</Select.Option>
                   </Select>
                 </Form.Item>
               </Col>
