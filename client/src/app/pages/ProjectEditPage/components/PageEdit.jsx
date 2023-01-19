@@ -4,7 +4,7 @@ import { PageEditStyle } from './PageEdit.style';
 import styled from 'styled-components/macro';
 import { useMountEffect } from 'hook/useMountEffect';
 
-import ArticleEditor from 'article-editor/article-editor';
+import ArticleEditor from 'utils/article-editor/article-editor';
 console.log(ArticleEditor);
 
 export const StyledTag = styled(Tag)`
