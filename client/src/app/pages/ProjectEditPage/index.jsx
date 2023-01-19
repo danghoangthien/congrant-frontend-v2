@@ -119,7 +119,7 @@ const ProjectEditPage = ({ activeKey }) => {
         </Row>
 
         {/* Main Content */}
-        <Card className="item" bodyStyle={{ padding: '32px 40px' }}>
+        <Card bodyStyle={{ padding: '32px 40px' }} style={{ overflow: 'initial' }}>
           <Tabs
             defaultActiveKey={activeKey}
             type="card"

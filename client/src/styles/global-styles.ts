@@ -26,6 +26,10 @@ export const GlobalStyle = createGlobalStyle`
     // color: rgba(0,0,0,0.85);
   }
 
+  h2 {
+    font-size: 40px;
+  }
+
   *::selection {
     background: highlight;
     color: inherit;
