@@ -10,7 +10,8 @@ import Download from './components/Download';
 import './Models/index';
 
 const Page = () => {
-  const [filterOpen, setFilterOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(true);
+
   const renderPageTitle = () => {
     return (
       <>
@@ -32,23 +33,7 @@ const Page = () => {
             <Col>
               <Row type="flex" align="middle">
                 <Col className="mr-6">
-                  <div className="page-title">{'お知らせ'}</div>
-                </Col>
-                <Col className="mr-2">
-                  <Input
-                    className="free-search"
-                    placeholder="フリー検索"
-                    prefix={<span className="material-symbols-outlined">search</span>}
-                  />
-                </Col>
-                <Col>
-                  <Button
-                    className="filter-button"
-                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
-                    onClick={() => setFilterOpen(!filterOpen)}
-                  >
-                    {'フィルタ'}
-                  </Button>
+                  <div className="page-title">{'入金明細'}</div>
                 </Col>
               </Row>
             </Col>

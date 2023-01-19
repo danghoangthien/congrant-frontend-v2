@@ -1,4 +1,3 @@
-import { useState } from 'react';
 // ANTD
 import { Row, Modal, Button, Select } from 'antd';
 // HOOKS

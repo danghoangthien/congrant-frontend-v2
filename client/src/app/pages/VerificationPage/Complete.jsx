@@ -44,7 +44,7 @@ const Success = () => {
               <Image width={400} src={CompleteImage} preview={false} />
             </Col>
             <Col span={24}>
-              <Link to={'/'}>
+              <Link to={'/app/home'}>
                 <Button size="large" type="primary" style={{ fontWeight: '600', width: '100%' }}>
                   {'ホームへ'}
                 </Button>

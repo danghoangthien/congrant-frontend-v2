@@ -130,7 +130,7 @@ const sub_menu = (
         key: '5',
         title: '',
         label: (
-          <Link className="sub-user-menu-link" to={`/app/logout`}>
+          <Link className="sub-user-menu-link" to={`/app/login`}>
             <span className="material-symbols-outlined fill-icon mr-2" style={{ fontSize: 16 }}>
               logout
             </span>

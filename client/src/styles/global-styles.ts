@@ -200,7 +200,7 @@ export const GlobalStyle = createGlobalStyle`
 
   // CARD
   .ant-card {
-    border: 1px solid ${GRAY_COLOR};
+    // border: 1px solid ${GRAY_COLOR};
     overflow: hidden;
   }
 

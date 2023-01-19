@@ -1,11 +1,13 @@
 // ANTD
-import { Row, Col, Modal, Button, Radio, Space } from 'antd';
+import { Row, Col, Modal, Button, Space } from 'antd';
 // HOOKS
 import useModalActions from 'hook/useModalActions';
 // SPRITE
 import { SettingsInputContainer, SettingLabel, SettingInput, SettingTextarea } from 'utils/Sprites';
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
+// CONST
+import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
 
 const Register = props => {
   const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
@@ -13,8 +15,9 @@ const Register = props => {
     <>
       {/* モーダル起動ボタン・Modal Open Button */}
       <Button onClick={showModal} type="primary" {...props}>
-        <span>{'編集'}</span>
+        <span>{'新規作成'}</span>
       </Button>
+
       {/* モーダル・Modal */}
       <Modal
         title={<StyledModalTitle>{'メールテンプレート登録'}</StyledModalTitle>}
@@ -23,8 +26,21 @@ const Register = props => {
         onCancel={handleCancel}
         width={650}
         className="modalStyle"
-        cancelText="キャンセル"
-        okText={'登録'}
+        footer={
+          <Space>
+            <Button type="text" onClick={handleCancel}>
+              キャンセル
+            </Button>
+            <Button
+              type="primary"
+              className="fade"
+              style={{ background: PRIMARY_ADMIN_COLOR, borderColor: PRIMARY_ADMIN_COLOR }}
+              onClick={handleOk}
+            >
+              登録
+            </Button>
+          </Space>
+        }
       >
         <Row className="item mb-2">
           <SettingsInputContainer label={<SettingLabel label={'テンプレート名'} required />}>

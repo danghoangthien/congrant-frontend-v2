@@ -23,7 +23,7 @@ const contextDropdownItems = selectedRowKeys => [
 ];
 
 const AmountPage = () => {
-  const [filterOpen, setFilterOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(true);
   const renderPageTitle = () => {
     return (
       <>
@@ -46,22 +46,6 @@ const AmountPage = () => {
               <Row type="flex" align="middle">
                 <Col className="mr-6">
                   <div className="page-title">{'金額変更'}</div>
-                </Col>
-                <Col className="mr-2">
-                  <Input
-                    className="free-search"
-                    placeholder="フリー検索"
-                    prefix={<span className="material-symbols-outlined">search</span>}
-                  />
-                </Col>
-                <Col>
-                  <Button
-                    className="filter-button"
-                    icon={<span className="material-symbols-outlined fill-icon">filter_alt</span>}
-                    onClick={() => setFilterOpen(!filterOpen)}
-                  >
-                    {'フィルタ'}
-                  </Button>
                 </Col>
               </Row>
             </Col>
