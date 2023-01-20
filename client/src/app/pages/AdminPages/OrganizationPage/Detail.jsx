@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Tabs, Row, Col, Card, Button, Space, Descriptions, Badge } from 'antd';
 // COMPONENT
 import BasicSetting from './components/BasicSetting';
+import Examination from './components/Examination';
 // CONST
 import { CONTRACT_PLAN_STATUSES } from 'utils/consts';
 // STYLE
@@ -11,11 +12,20 @@ import { SettingSelect } from 'utils/Sprites';
 import styled from 'styled-components/macro';
 import { PageLayout } from 'app/components/Layout/PageLayout.style';
 import { StyledBadgeDot } from './OrganizationPage.style';
-import Examination from '../ProjectPage/components/Examination';
 
 export const StyledDescriptions = styled(Descriptions)`
+  .ant-descriptions-view {
+    height: 64px;
+    overflow: hidden;
+
+    table {
+      height: 100%;
+    }
+  }
+
   .ant-descriptions-item-label {
     font-weight: 600;
+    width: 96px;
   }
 
   .ant-descriptions-header {
@@ -52,7 +62,7 @@ const Detail = ({ activeKey }) => {
       <PageLayout>
         {/* Should create a component for this */}
 
-        <Row justify="space-between" align="middle" className="item mb-5">
+        <Row justify="space-between" align="middle" className="mb-5">
           {/* 左の部分・Left Part */}
           <Col>
             <Row type="flex" align="middle">
@@ -64,8 +74,9 @@ const Detail = ({ activeKey }) => {
             </Row>
           </Col>
         </Row>
+
         <Card>
-          <Row justify="space-between" align="middle" className="item mb-5">
+          <Row justify="space-between" align="middle" className="mb-5">
             {/* 左の部分・Left Part */}
             <Col>
               <Row type="flex" align="middle">
@@ -92,9 +103,10 @@ const Detail = ({ activeKey }) => {
               </Space>
             </Col>
           </Row>
-          <Row className="item mb-5" gutter={24}>
+
+          <Row className="mb-8" gutter={24}>
             <Col span={6}>
-              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+              <StyledDescriptions size="small" column={1} bordered>
                 <Descriptions.Item label="審査状況">
                   <StyledBadgeDot>
                     <Badge color={CONTRACT_PLAN_STATUSES[1][1]} text={<strong>{'StOK'}</strong>} />
@@ -103,7 +115,7 @@ const Detail = ({ activeKey }) => {
               </StyledDescriptions>
             </Col>
             <Col span={6}>
-              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+              <StyledDescriptions size="small" column={1} bordered>
                 <Descriptions.Item label="CG審査">
                   <Row>
                     <Col span="12">
@@ -122,21 +134,22 @@ const Detail = ({ activeKey }) => {
               </StyledDescriptions>
             </Col>
             <Col span={6}>
-              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+              <StyledDescriptions size="small" column={1} bordered>
                 <Descriptions.Item label="割引設定">
-                  <SettingSelect style={{ width: '100%' }} size="large" placeholder={'TSJ'} />
+                  <SettingSelect style={{ width: '100%' }} placeholder={'TSJ'} />
                 </Descriptions.Item>
               </StyledDescriptions>
             </Col>
             <Col span={6}>
-              <StyledDescriptions size="small" className="mb-10" column={1} bordered>
+              <StyledDescriptions size="small" column={1} bordered>
                 <Descriptions.Item label="テスト">
-                  <SettingSelect style={{ width: '100%' }} size="large" placeholder={'-'} />
+                  <SettingSelect style={{ width: '100%' }} placeholder={'-'} />
                 </Descriptions.Item>
               </StyledDescriptions>
             </Col>
           </Row>
-          <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4} className="mt-6">
+
+          <Tabs defaultActiveKey={activeKey} type="card" tabBarGutter={4}>
             <Tabs.TabPane tab="基本設定" key="1">
               <BasicSetting />
             </Tabs.TabPane>

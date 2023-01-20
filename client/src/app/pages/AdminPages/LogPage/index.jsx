@@ -62,7 +62,6 @@ const LogPage = () => {
         {/* ページコンテンツ・Page Content */}
         <div className="item">
           <Table
-            className="clickable-table"
             tableLayout="fixed"
             TableName="操作ログ一覧"
             model="adminLogList"

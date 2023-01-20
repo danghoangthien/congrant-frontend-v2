@@ -46,13 +46,15 @@ const SettingsInputContainer = ({ children, label }) => {
   return (
     <>
       {label && (
-        <Col className="item mb-2" sm={24} md={24} lg={24}>
+        <Col sm={24} md={24} lg={24}>
           <Space align="center">{label}</Space>
         </Col>
       )}
-      <Col className="item" sm={24} md={24} lg={24}>
-        {children}
-      </Col>
+      {children && (
+        <Col className="mt-2" sm={24} md={24} lg={24}>
+          {children}
+        </Col>
+      )}
     </>
   );
 };

@@ -68,7 +68,6 @@ const columnMap = {
     width: 200,
     title: 'プラン',
     render: ({ plan }) => {
-      console.log(CONTRACT_PLANS[plan], 'debug contract plan');
       return (
         <Link className="admin-link" to={'/admin/home'}>
           {CONTRACT_PLANS[plan][0] || ''}

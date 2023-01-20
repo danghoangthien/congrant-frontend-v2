@@ -33,15 +33,15 @@ const menuData = [
   {
     label: '契約',
     key: '/admin/contract',
-    children: [getItem(<Link to={'/admin/agreements'}>契約プラン</Link>, '1')],
+    children: [getItem(<Link to={'/admin/agreements'}>契約プラン</Link>, '2')],
   },
   {
     label: 'レコード',
     key: '/admin/record',
     children: [
-      getItem(<Link to={'/admin/records/donations'}>寄付決済</Link>, '1'),
-      getItem(<Link to={'/admin/records/recurrings'}>継続契約</Link>, '2'),
-      getItem(<Link to={'/admin/records/receipts'}>領収書</Link>, '3'),
+      getItem(<Link to={'/admin/records/donations'}>寄付決済</Link>, '3'),
+      getItem(<Link to={'/admin/records/recurrings'}>継続契約</Link>, '4'),
+      getItem(<Link to={'/admin/records/receipts'}>領収書</Link>, '5'),
     ],
   },
   {
@@ -52,8 +52,8 @@ const menuData = [
     label: 'テレコム',
     key: '/admin/telecom',
     children: [
-      getItem(<Link to={'/admin/telecom/change-amount'}>金額変更</Link>, '1'),
-      getItem(<Link to={'/admin/telecom/change-payment-date'}>入金日設定</Link>, '2'),
+      getItem(<Link to={'/admin/telecom/change-amount'}>金額変更</Link>, '6'),
+      getItem(<Link to={'/admin/telecom/change-payment-date'}>入金日設定</Link>, '7'),
     ],
   },
   {
@@ -64,16 +64,16 @@ const menuData = [
     label: 'ログ',
     key: '/admin/log',
     children: [
-      getItem(<Link to={'/admin/logs'}>操作ログ</Link>, '1'),
-      getItem(<Link to={'/admin/mail-logs'}>通知メールログ</Link>, '2'),
+      getItem(<Link to={'/admin/logs'}>操作ログ</Link>, '8'),
+      getItem(<Link to={'/admin/mail-logs'}>通知メールログ</Link>, '9'),
     ],
   },
   {
     label: 'ユーザー',
     key: '/admin/account',
     children: [
-      getItem(<Link to={'/admin/admin-users'}>運営管理ユーザー</Link>, '1'),
-      getItem(<Link to={'/admin/users'}>利用ユーザー</Link>, '2'),
+      getItem(<Link to={'/admin/admin-users'}>運営管理ユーザー</Link>, '10'),
+      getItem(<Link to={'/admin/users'}>利用ユーザー</Link>, '11'),
     ],
   },
   {
@@ -87,6 +87,14 @@ const menuData = [
 ];
 
 const items = menuData.map(({ label, key, icon, children }) => getItem(label, key, icon, children));
+const rootSubmenuKeys = [
+  '/admin/organisations',
+  '/admin/contract',
+  '/admin/record',
+  '/admin/telecom',
+  '/admin/log',
+  '/admin/account',
+];
 
 const AdminSider = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -95,6 +103,16 @@ const AdminSider = () => {
   const selectedItem = menuData
     .filter(({ key }) => pathname.indexOf(key) === 0)
     .map(({ key }) => key);
+
+  const [openKeys, setOpenKeys] = useState(['sub1']);
+  const onOpenChange = keys => {
+    const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
+    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      setOpenKeys(keys);
+    } else {
+      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    }
+  };
 
   return (
     <StyledSidebar
@@ -136,7 +154,9 @@ const AdminSider = () => {
               mode="inline"
               items={items}
               selectable
-              selectedKeys={selectedItem}
+              // selectedKeys={selectedItem}
+              openKeys={openKeys}
+              onOpenChange={onOpenChange}
             />
           </div>
         </div>

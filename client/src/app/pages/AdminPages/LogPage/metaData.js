@@ -204,6 +204,7 @@ const dataSource = Array.from(Array(500).keys()).map(i => ({
 const columnMap = {
   // 操作日時
   operation_at: {
+    fixed: 'left',
     width: 200,
     title: '操作日時',
     dataIndex: 'operation_at',

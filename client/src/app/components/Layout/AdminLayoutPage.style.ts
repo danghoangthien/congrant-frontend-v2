@@ -71,8 +71,14 @@ export const PreviewLayout = styled.div`
     border-style: solid;
   }
 
+  table.previewTable td,
+  table.previewTable tfoot th {
+    border: none;
+  }
+
   table.previewTable thead {
   }
+
   table.previewTable tfoot th {
     font-weight: 300;
     font-size: 12px;
@@ -95,6 +101,7 @@ export const StyledTemplateTitle = styled.div`
   font-weight: 600;
   font-size: 28px;
   margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.7);
 `;
 
 export const StyledContentText = styled.div`
@@ -117,5 +124,14 @@ export const StyledContentBox = styled.div`
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
+  margin-bottom: 16px;
+`;
+
+export const StyledHeading = styled.div`
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 3px solid ${GRAY_COLOR};
+  padding-bottom: 10px;
   margin-bottom: 16px;
 `;

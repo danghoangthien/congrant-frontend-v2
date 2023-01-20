@@ -9,17 +9,19 @@ import {
   SettingLabel,
   SettingSelect,
   SettingTextarea,
+  FormCheckbox,
 } from 'utils/Sprites';
-import { SettingCheckbox } from 'utils/Sprites/RecurringFormElement';
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 // CONST
 import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
+// COMPONENT
 import ScreeningConfirmation from './ScreeningConfirmation';
 import PendingConfirmation from './PendingConfirmation';
 
 const statusOkTextMap = ['変更する', '変更する', '確認画面へ進む', '確認画面へ進む'];
 
+// コングラント審査モーダル
 const Examination = ({ btn_text }) => {
   const [isModalOpen, showModal, handleCancel] = useModalActions({});
   const [status, setStatus] = useState(1);
@@ -28,6 +30,7 @@ const Examination = ({ btn_text }) => {
       // go to preview
     }
   };
+
   return (
     <>
       {/* モーダル起動ボタン・Modal Open Button */}
@@ -39,11 +42,12 @@ const Examination = ({ btn_text }) => {
       >
         <span>{btn_text || '審査'}</span>
       </Button>
+
       {/* モーダル・Modal */}
       <Modal
         title={<StyledModalTitle>{'コングラント審査'}</StyledModalTitle>}
         visible={isModalOpen}
-        onOk={handleOk}
+        // onOk={handleOk}
         onCancel={handleCancel}
         width={650}
         className="modalStyle"
@@ -83,50 +87,61 @@ const Examination = ({ btn_text }) => {
             </Col>
           </SettingsInputContainer>
         </Row>
+
+        {/* 保留理由・Archive Reason */}
         {status === 3 && (
           <>
-            <Row className="item mb-2" justify="space-between" align="middle">
+            <Row className="mb-2" justify="space-between" align="middle">
               {/* 左の部分・Left Part */}
               <Col>
-                <span>{'保留理由'}</span>
+                <SettingsInputContainer
+                  label={<SettingLabel label={'保留理由'} />}
+                ></SettingsInputContainer>
               </Col>
+
               {/* 右の部分・Right Part */}
               <Col>
                 <SettingSelect
-                  style={{ width: '100%' }}
-                  size="medium"
+                  style={{ width: 210 }}
+                  size="small"
                   placeholder={'テンプレートを選択'}
                 />
               </Col>
             </Row>
-            <Row className="item mb-2">
+            <Row className="mb-6">
               <SettingTextarea rows="5" value={''} />
             </Row>
           </>
         )}
+
+        {/* NG理由・Deny Reason */}
         {status === 4 && (
           <>
-            <Row className="item mb-2" justify="space-between" align="middle">
+            <Row className="mb-2" justify="space-between" align="middle">
               {/* 左の部分・Left Part */}
               <Col>
-                <span>{'NG理由'}</span>
+                <SettingsInputContainer
+                  label={<SettingLabel label={'NG理由'} />}
+                ></SettingsInputContainer>
               </Col>
+
               {/* 右の部分・Right Part */}
               <Col>
                 <SettingSelect
-                  style={{ width: '100%' }}
-                  size="medium"
+                  style={{ width: 210 }}
+                  size="small"
                   placeholder={'テンプレートを選択'}
                 />
               </Col>
             </Row>
-            <Row className="item mb-2">
+            <Row className="mb-6">
               <SettingTextarea rows="5" value={''} />
             </Row>
           </>
         )}
+
         <Row className="item mb-2">
-          <SettingCheckbox>{'通知メールを送信する'}</SettingCheckbox>
+          <FormCheckbox>{'通知メールを送信する'}</FormCheckbox>
         </Row>
       </Modal>
     </>

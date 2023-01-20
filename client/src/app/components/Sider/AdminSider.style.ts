@@ -1,6 +1,11 @@
 import styled from 'styled-components/macro';
 import { Layout } from 'antd';
-import { PRIMARY_COLOR, GRAY_COLOR, TEXT_COLOR, EXTRA_LIGHT_GRAY_COLOR } from 'styles/StyleConstants';
+import {
+  GRAY_COLOR,
+  TEXT_COLOR,
+  EXTRA_LIGHT_GRAY_COLOR,
+  PRIMARY_ADMIN_COLOR,
+} from 'styles/StyleConstants';
 const { Sider } = Layout;
 
 export const StyledSidebar = styled(Sider)`
@@ -13,6 +18,26 @@ export const StyledSidebar = styled(Sider)`
     background: ${EXTRA_LIGHT_GRAY_COLOR};
     border-top: none;
     font-size: 14px;
+  }
+
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+  .ant-menu-item:active, .ant-menu-submenu-title:active {
+    background: rgba(40, 120, 203, 0.1);
+  }
+
+  .ant-menu-inline .ant-menu-item::after {
+    border-color: ${PRIMARY_ADMIN_COLOR};
+  }
+
+  .ant-menu-item:hover,
+  .ant-menu-submenu-title:hover,
+  .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow,
+  .ant-menu-submenu-selected,
+  .ant-menu-item a:hover,
+  .ant-menu-item-selected a,
+  .ant-menu-item-selected a:hover,
+  .ant-menu-item-selected {
+    color: ${PRIMARY_ADMIN_COLOR};
   }
 
   .collapsed-wrapper {
@@ -115,7 +140,7 @@ export const StyledSidebar = styled(Sider)`
       }
 
       &:hover {
-        color: ${PRIMARY_COLOR};
+        color: ${PRIMARY_ADMIN_COLOR};
       }
 
       svg {

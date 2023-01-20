@@ -37,7 +37,7 @@ const ProjectFooter = () => {
               </Media>
             </div>
           </Col>
-          <Col type="flex" align="center" span={24}>
+          <Col type="flex" align="middle" span={24}>
             <div className="copy-right">
               <Media queries={{ small: '(max-width: 991px)' }}>
                 {matches =>
