@@ -51,9 +51,9 @@ export const DANGER_COLOR = '#ff4d4f';
 export const BACKGROUND_COLOR_1 = '#f0f0ee';
 export const BACKGROUND_COLOR_2 = '#ffffff';
 
-export const TEXT_COLOR = 'rgba(0,0,0,0.85)';
-export const TEXT_GRAY_COLOR = 'rgba(0,0,0,0.5)';
-export const PLACEHOLDER_COLOR = 'rgba(0,0,0,0.2)';
+export const TEXT_COLOR = 'rgba(0, 0, 0, 0.85)';
+export const TEXT_GRAY_COLOR = 'rgba(0, 0, 0, 0.5)';
+export const PLACEHOLDER_COLOR = 'rgba(0, 0, 0, 0.2)';
 export const TEXT_WHITE = '#ffffff';
 
 // BORDER RADIUS

@@ -17,6 +17,7 @@ const Examination = () => {
       <Button onClick={showModal}>
         <span>{'編集'}</span>
       </Button>
+
       {/* モーダル・Modal */}
       <Modal
         title={<StyledModalTitle>{'プロジェクト編集'}</StyledModalTitle>}
@@ -24,13 +25,21 @@ const Examination = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         width={650}
-        className="modalStyle"
-        cancelText="キャンセル"
-        okText={'登録'}
+        footer={
+          <Space>
+            <Button type="text" onClick={handleCancel}>
+              キャンセル
+            </Button>
+            <Button type="primary" onClick={handleOk}>
+              登録
+            </Button>
+          </Space>
+        }
       >
-        <Row className="item mb-2">
-          <SettingsInputContainer label={<SettingLabel label={'公開ステータス'} required />}>
-            <Col className="item mb-5" sm={24} md={24} lg={24}>
+        <Row className="mb-2">
+          {' '}
+          <Col className="mb-6" sm={24} md={24} lg={24}>
+            <SettingsInputContainer label={<SettingLabel label={'公開ステータス'} />}>
               <Radio.Group
                 onChange={e => {
                   setStatus(e.target.value);
@@ -42,18 +51,20 @@ const Examination = () => {
                   <Radio value={2}>{'非公開'}</Radio>
                 </Space>
               </Radio.Group>
-            </Col>
-          </SettingsInputContainer>
-        </Row>
-        <Row className="item mb-2">
-          <Checkbox.Group
-            options={[
-              { label: 'giving100', value: 1 },
-              { label: 'givingSDGs', value: 2 },
-              { label: 'ぷらす8”', value: 3 },
-            ]}
-            defaultValue={[1]}
-          />
+            </SettingsInputContainer>
+          </Col>{' '}
+          <Col sm={24} md={24} lg={24}>
+            <SettingsInputContainer label={<SettingLabel label={'オプション'} />}>
+              <Checkbox.Group
+                options={[
+                  { label: 'giving100', value: 1 },
+                  { label: 'givingSDGs', value: 2 },
+                  { label: 'ぷらす8”', value: 3 },
+                ]}
+                defaultValue={[1]}
+              />
+            </SettingsInputContainer>
+          </Col>
         </Row>
       </Modal>
     </>

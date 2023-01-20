@@ -30,10 +30,12 @@ const Payment = () => {
   useEffect(() => {
     console.log(active);
     if (active === '3' || active === '2') {
-      window.scrollTo({
-        top: myRef.current.offsetTop - 64,
-        behavior: 'smooth',
-      });
+      setTimeout(() => {
+        window.scrollTo({
+          top: myRef.current.offsetTop - 64,
+          behavior: 'smooth',
+        });
+      }, 300);
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }

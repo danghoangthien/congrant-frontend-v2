@@ -272,7 +272,6 @@ const columnMap = {
     width: 160,
     title: 'プラン',
     render: ({ plan }) => {
-      console.log(CONTRACT_PLANS[plan], 'debug contract plan');
       return <>{CONTRACT_PLANS[plan][0] || ''}</>;
     },
     csvOutput: row => <>{'プラン'}</>,

@@ -8,12 +8,7 @@ import { StyledProjectPaymentTypeTag } from 'styles/Tag.style';
 import { randomOutput } from 'utils/helper';
 import { getWithExpiry } from 'utils/localStorageHandler';
 // CONST
-import {
-  PRIMARY_ADMIN_COLOR,
-  PLACEHOLDER_COLOR,
-  EXTRA_LIGHT_GRAY_COLOR,
-  GRAY_COLOR,
-} from 'styles/StyleConstants';
+import { PLACEHOLDER_COLOR, EXTRA_LIGHT_GRAY_COLOR, GRAY_COLOR } from 'styles/StyleConstants';
 import {
   ADMIN_PROJECT_STATUSES,
   CONTRACT_PLANS,
@@ -21,6 +16,7 @@ import {
   DONATION_TYPES,
   PROJECT_PAYMENT_TYPES,
 } from 'utils/consts';
+// COMPONENT
 import Edit from './components/Edit';
 import PublicReview from './components/PublicReview';
 
@@ -103,7 +99,6 @@ const columnMap = {
     width: 120,
     title: 'プラン',
     render: ({ plan }) => {
-      console.log(CONTRACT_PLANS[plan], 'debug contract plan');
       return (
         <Link className="admin-link" to={'/admin/home'}>
           {CONTRACT_PLANS[plan][0] || ''}

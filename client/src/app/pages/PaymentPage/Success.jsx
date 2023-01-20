@@ -6,6 +6,7 @@ import { Row, Col, Image } from 'antd';
 import { StyledButton, StyledSuccess, StyledShareBox, StyledBankBox } from './PaymentPage.style';
 import './Models/index';
 import SuccessImage from 'styles/assets/img_success.svg';
+import SuccessImageSp from 'styles/assets/img_success_sp.svg';
 import Share from 'app/components/Share';
 import Media from 'react-media';
 
@@ -24,7 +25,25 @@ const Success = () => {
         {method === '1' && (
           <Col span={24} className="mb-8">
             <Row justify="center">
-              <img src={SuccessImage} preview={false} style={{ width: '100%' }} alt="" />
+              <Media queries={{ small: '(max-width: 991px)' }}>
+                {matches =>
+                  matches.small ? (
+                    <Image
+                      src={SuccessImageSp}
+                      preview={false}
+                      style={{ width: 295 }}
+                      alt="完了イラスト"
+                    />
+                  ) : (
+                    <Image
+                      src={SuccessImage}
+                      preview={false}
+                      style={{ width: 452 }}
+                      alt="完了イラスト"
+                    />
+                  )
+                }
+              </Media>
             </Row>
           </Col>
         )}

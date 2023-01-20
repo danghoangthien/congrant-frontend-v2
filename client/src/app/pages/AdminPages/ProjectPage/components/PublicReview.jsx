@@ -9,16 +9,18 @@ import {
   SettingLabel,
   SettingSelect,
   SettingTextarea,
+  FormCheckbox,
 } from 'utils/Sprites';
-import { SettingCheckbox } from 'utils/Sprites/RecurringFormElement';
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
 // CONST
 import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
+// COMPONENT
+import ScreeningConfirmation from './ScreeningConfirmation';
 
 const statusOkTextMap = ['通知メールを送信', '確認画面へ進む'];
 
-const Examination = () => {
+const PublicReview = () => {
   const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
   const [status, setStatus] = useState(1);
   return (
@@ -32,16 +34,30 @@ const Examination = () => {
       >
         <span>{'審査'}</span>
       </Button>
+
       {/* モーダル・Modal */}
       <Modal
-        title={<StyledModalTitle>{'コングラント審査'}</StyledModalTitle>}
+        title={<StyledModalTitle>{'公開審査'}</StyledModalTitle>}
         visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         width={650}
         className="modalStyle"
-        cancelText="キャンセル"
-        okText={statusOkTextMap[status - 1]}
+        footer={
+          <Space>
+            <Button type="text" onClick={handleCancel}>
+              キャンセル
+            </Button>
+            <>
+              {status === 2 && <ScreeningConfirmation />}
+              {[1].includes(status) && (
+                <Button type="primary" onClick={handleOk}>
+                  {statusOkTextMap[status - 1]}
+                </Button>
+              )}
+            </>
+          </Space>
+        }
       >
         <Row className="item mb-2">
           <SettingsInputContainer label={<SettingLabel label={'審査結果'} required />}>
@@ -61,6 +77,8 @@ const Examination = () => {
             </Col>
           </SettingsInputContainer>
         </Row>
+
+        {/* 承認 */}
         {status === 1 && (
           <>
             <Row className="item mb-2">
@@ -75,27 +93,32 @@ const Examination = () => {
             </Row>
           </>
         )}
+
+        {/* 保留（承認不可） */}
         {status === 2 && (
           <>
-            <Row className="item mb-2" justify="space-between" align="middle">
+            <Row className="mb-2" justify="space-between" align="middle">
               {/* 左の部分・Left Part */}
-              <Col>
-                <span>{'修正内容'}</span>
+              <Col type="flex" align="middle">
+                <SettingsInputContainer
+                  className="mb-0"
+                  label={<SettingLabel label={'修正内容'} required />}
+                ></SettingsInputContainer>
               </Col>
               {/* 右の部分・Right Part */}
               <Col>
                 <SettingSelect
-                  style={{ width: '100%' }}
-                  size="medium"
+                  style={{ width: 210 }}
+                  size="small"
                   placeholder={'テンプレートを選択'}
                 />
               </Col>
             </Row>
-            <Row className="item mb-2">
+            <Row className="mb-6">
               <SettingTextarea rows="5" value={''} />
             </Row>
-            <Row className="item mb-2">
-              <SettingCheckbox>{'通知メールを送信する'}</SettingCheckbox>
+            <Row>
+              <FormCheckbox>{'通知メールを送信する'}</FormCheckbox>
             </Row>
           </>
         )}
@@ -104,4 +127,4 @@ const Examination = () => {
   );
 };
 
-export default Examination;
+export default PublicReview;

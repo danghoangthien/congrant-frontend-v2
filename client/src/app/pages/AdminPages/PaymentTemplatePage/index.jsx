@@ -47,7 +47,7 @@ const Page = ({ activeKey }) => {
             <Tabs.TabPane tab="専用メール" key="1">
               <BasicSetting />
             </Tabs.TabPane>
-            <Tabs.TabPane tab="汎用メール" key="2">
+            <Tabs.TabPane tab="汎用メール" key="2" disabled>
               <></>
             </Tabs.TabPane>
           </Tabs>

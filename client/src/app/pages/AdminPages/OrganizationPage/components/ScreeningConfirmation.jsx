@@ -1,41 +1,22 @@
 // ANTD
-import { Row, Col, Modal, Button, Image, Card, Descriptions } from 'antd';
+import { Row, Col, Modal, Button, Image, Card } from 'antd';
 // HOOKS
 import useModalActions from 'hook/useModalActions';
 // SPRITE
 import { SettingsInputContainer, SettingLabel } from 'utils/Sprites';
 // STYLE
-import styled from 'styled-components/macro';
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
+// IMAGE
+import Logo from 'styles/assets/logo_congrant.svg';
+import LogoGray from 'styles/assets/logo_congrant_gray.svg';
+
 import {
   PreviewLayout,
   StyledTemplateTitle,
   StyledContentText,
   StyledContent,
-  StyledHeading,
-  StyledContentBox,
+  // StyledContentBox,
 } from 'app/components/Layout/AdminLayoutPage.style';
-// IMAGE
-import Logo from 'styles/assets/logo_congrant.svg';
-import LogoGray from 'styles/assets/logo_congrant_gray.svg';
-
-const StyledDescriptions = styled(Descriptions)`
-  width: 100%;
-
-  .ant-descriptions-item-label,
-  .ant-descriptions-item-content {
-    border: none !important;
-    padding: 12px !important;
-  }
-
-  .ant-descriptions-item-label {
-    font-weight: 600;
-  }
-
-  .ant-descriptions-view {
-    border: none;
-  }
-`;
 
 const Preview = props => {
   const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
@@ -44,9 +25,8 @@ const Preview = props => {
     <>
       {/* モーダル起動ボタン・Modal Open Button */}
       <Button onClick={showModal} type="primary" {...props}>
-        <span>{'確認画面へ進む'}</span>
+        <span>{'確認画面：審査保留'}</span>
       </Button>
-
       {/* モーダル・Modal */}
       <Modal
         title={<StyledModalTitle>{'確認画面：審査保留'}</StyledModalTitle>}
@@ -57,7 +37,7 @@ const Preview = props => {
         className="modalStyle"
         cancelButtonProps={{ type: 'text' }}
         cancelText="修正する"
-        okText={'送信する'}
+        okText={'登録'}
       >
         <Row className="mb-2">
           <Col span={24} className="mb-5">
@@ -67,9 +47,7 @@ const Preview = props => {
           </Col>
           <SettingsInputContainer label={<SettingLabel label={'件名'} />}>
             <Col className="mb-5" sm={24} md={24} lg={24}>
-              <StyledContentText>
-                {'【コングラント】プロジェクトの修正をお願いします'}
-              </StyledContentText>
+              <StyledContentText>{'【コングラント】審査結果について'}</StyledContentText>
             </Col>
           </SettingsInputContainer>
           <SettingsInputContainer label={<SettingLabel label={'メール本文'} />}>
@@ -86,46 +64,21 @@ const Preview = props => {
                   <tr>
                     <td>
                       <Card bordered={false}>
-                        <StyledTemplateTitle>
-                          {'プロジェクトの修正をお願いします'}
-                        </StyledTemplateTitle>
+                        <StyledTemplateTitle>{'審査結果について'}</StyledTemplateTitle>
                         <StyledContent>
                           認定NPO法人コングラント様
                           <br />
                           <br />
-                          以下のプロジェクトについて審査を行った結果、公開は「保留」になりました。
-                        </StyledContent>
-                        <StyledContent className="mb-10">
-                          <StyledDescriptions bordered column={1} size="small">
-                            <StyledDescriptions.Item label="プロジェクトID">
-                              1234
-                            </StyledDescriptions.Item>
-                            <StyledDescriptions.Item label="プロジェクト名">
-                              <span className="link">
-                                NPO法人コングラントへのご寄付をお願いします。
-                              </span>
-                            </StyledDescriptions.Item>
-                          </StyledDescriptions>
-                        </StyledContent>
-                        <StyledContent>
-                          <StyledHeading>修正内容</StyledHeading>
-                          以下をご確認いただき修正を行ってください。
+                          貴団体のコングラント利用審査の結果についてご案内いたします。
                           <br />
-                          <strong>修正完了後、再度公開申請をお願いします。</strong>
-                        </StyledContent>
-                        <StyledContent>
-                          <StyledContentBox>
-                            ・具体的な活動内容・活動実績をご記載ください
-                            <br />
-                            ・具体的な寄付の利用用途をご記載ください
-                          </StyledContentBox>
-                        </StyledContent>
-                        <StyledContent>
-                          お困りの場合は、<span className="link">よくある質問</span>
-                          をご覧いただくか、
+                          審査の結果、誠に恐れ入りますがコングラントの利用を承認できませんでした。
                           <br />
-                          <span className="link">support@congrant.com</span>
-                          までご連絡下さい。
+                          <br />
+                          審査理由につきましてはセキュリティの関係で回答はできかねます。
+                          何卒ご理解の程よろしくお願いします。
+                          <br />
+                          <br />
+                          この度はコングラントの利用を検討いただき誠にありがとうございました。
                         </StyledContent>
                       </Card>
                     </td>

@@ -564,9 +564,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // RADIO
-  .ant-radio-wrapper {
-    font-size: 16px;
-  }
+  // .ant-radio-wrapper {
+  //   font-size: 16px;
+  // }
 
   .ant-radio-checked .ant-radio-inner::after {
     transform: scale(0.6);

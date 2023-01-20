@@ -6,6 +6,8 @@ import useModalActions from 'hook/useModalActions';
 import { SettingsInputContainer, SettingLabel, SettingInput, SettingTextarea } from 'utils/Sprites';
 // STYLE
 import { StyledModalTitle } from 'app/components/Layout/PageLayout.style';
+// CONST
+import { PRIMARY_ADMIN_COLOR } from 'styles/StyleConstants';
 
 const RegisterEdit = props => {
   const [isModalOpen, showModal, handleOk, handleCancel] = useModalActions({});
@@ -23,8 +25,21 @@ const RegisterEdit = props => {
         onCancel={handleCancel}
         width={650}
         className="modalStyle"
-        cancelText="キャンセル"
-        okText={'登録'}
+        footer={
+          <Space>
+            <Button type="text" onClick={handleCancel}>
+              キャンセル
+            </Button>
+            <Button
+              type="primary"
+              className="fade"
+              style={{ background: PRIMARY_ADMIN_COLOR, borderColor: PRIMARY_ADMIN_COLOR }}
+              onClick={handleOk}
+            >
+              保存
+            </Button>
+          </Space>
+        }
       >
         <Row className="item mb-2">
           <SettingsInputContainer label={<SettingLabel label={'テンプレート名'} required />}>

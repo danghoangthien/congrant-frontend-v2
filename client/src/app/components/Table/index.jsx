@@ -147,7 +147,7 @@ const DataTable = ({
           <Row className="index-table-wrapper">
             <Col span={24}>
               <Table
-                className="clickable-table"
+                // className="clickable-table"
                 sticky={true}
                 key={Math.random()}
                 columns={columns}

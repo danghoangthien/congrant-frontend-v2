@@ -69,7 +69,7 @@ const contextDropdownItems = selectedRowKeys => [
 ];
 
 const CorporationPage = () => {
-  const url = window.location.pathname?.split('/');
+  const url = window.location.pathnamde?.split('/');
   const [filterOpen, setFilterOpen] = useState(false);
   const dispatch = useDispatch();
   const renderPageTitle = () => {
